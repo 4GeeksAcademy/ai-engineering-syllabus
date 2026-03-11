@@ -13,12 +13,7 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": [
-    "html",
-    "css",
-    "accessibility",
-    "tailwind-css"
-  ],
+  "technologies": ["html", "css", "accessibility", "tailwind-css"],
   "talents": [
     {
       "badge": "html-developer",
@@ -45,11 +40,8 @@
       "points": 1
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "solution": "reference/solution.html"
+  "solution": ".learn/solution.html"
 }

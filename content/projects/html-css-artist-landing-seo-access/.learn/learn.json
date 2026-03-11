@@ -24,6 +24,6 @@
   ],
   "translations": ["es", "en"],
   "projectType": "project",
-  "solution": "reference/solution.html",
+  "solution": ".learn/solution.html",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
 }

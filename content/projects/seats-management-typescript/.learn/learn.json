@@ -13,12 +13,7 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": [
-    "typescript",
-    "javascript",
-    "arrays",
-    "algorithms"
-  ],
+  "technologies": ["typescript", "javascript", "arrays", "algorithms"],
   "talents": [
     {
       "badge": "typescript-developer",
@@ -33,11 +28,8 @@
       "points": 2
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "solution": "reference/solution.ts"
+  "solution": ".learn/solution.ts"
 }
