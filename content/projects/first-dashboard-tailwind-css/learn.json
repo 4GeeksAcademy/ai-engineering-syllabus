@@ -43,5 +43,5 @@
   "translations": ["es", "en"],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "solution": ".learn/solution.html"
+  "solution": ".learn/solution.png"
 }

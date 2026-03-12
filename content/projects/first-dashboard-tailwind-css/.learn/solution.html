@@ -1,196 +1,704 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Influencer Performance Dashboard</title>
-  <meta name="description" content="Responsive analytics dashboard for an influencer, showing KPIs, drivers and detailed tables using only HTML and Tailwind CSS." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css" />
-</head>
-<body class="min-h-screen bg-slate-950 text-slate-50">
-  <div class="min-h-screen flex flex-col lg:flex-row">
-    <aside class="w-full lg:w-64 bg-slate-900 border-b lg:border-b-0 lg:border-r border-slate-800 p-4 flex lg:flex-col gap-4 items-center lg:items-start">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-full bg-indigo-500"></div>
-        <div>
-          <p class="text-sm font-semibold">Creator Control</p>
-          <p class="text-xs text-slate-400">Influencer dashboard</p>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Influencer Marketing Dashboard</title>
+    <!-- Tailwind CSS CDN with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Inter (optional for better typography) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans">
+    <!-- BEGIN: Main Dashboard Layout -->
+    <div class="flex flex-col md:flex-row min-h-screen">
+      <!-- BEGIN: Sidebar Navigation -->
+      <aside
+        class="w-full md:w-64 bg-slate-900 text-slate-300 flex-shrink-0"
+        data-purpose="sidebar-nav"
+      >
+        <div class="p-6 flex items-center gap-3">
+          <div
+            class="h-8 w-8 bg-gradient-to-tr from-pink-500 to-indigo-600 rounded-lg flex items-center justify-center"
+          >
+            <span class="material-symbols-outlined text-white text-xl"
+              >auto_awesome</span
+            >
+          </div>
+          <span class="font-bold text-xl text-white tracking-tight"
+            >Sarah's Studio</span
+          >
         </div>
-      </div>
-      <nav aria-label="Main navigation" class="flex-1">
-        <ul class="flex lg:flex-col gap-3 text-sm">
-          <li><a href="#kpis" class="text-indigo-300 hover:text-indigo-200">Top KPIs</a></li>
-          <li><a href="#drivers" class="text-slate-300 hover:text-white">Drivers</a></li>
-          <li><a href="#details" class="text-slate-300 hover:text-white">Details</a></li>
-        </ul>
-      </nav>
-    </aside>
-
-    <main class="flex-1 p-4 lg:p-8 space-y-8">
-      <header class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div>
-          <h1 id="kpis" class="text-2xl font-semibold tracking-tight">Performance overview</h1>
-          <p class="text-sm text-slate-400">Last 30 days · All platforms</p>
+        <nav class="mt-6 px-4 space-y-2">
+          <a
+            class="flex items-center gap-3 px-4 py-3 text-white bg-slate-800 rounded-lg"
+            data-purpose="nav-item"
+            href="#"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              ></path>
+            </svg>
+            <span class="font-medium">Dashboard</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+            data-purpose="nav-item"
+            href="#"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              ></path>
+            </svg>
+            <span class="font-medium">Partnerships</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+            data-purpose="nav-item"
+            href="#"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              ></path>
+            </svg>
+            <span class="font-medium">My Content</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+            data-purpose="nav-item"
+            href="#"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewbox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              ></path>
+            </svg>
+            <span class="font-medium">Finance</span>
+          </a>
+        </nav>
+        <div class="mt-auto p-4 border-t border-slate-800">
+          <div class="flex items-center gap-3 p-2">
+            <div
+              class="h-10 w-10 bg-slate-700 rounded-full flex items-center justify-center font-bold text-indigo-400"
+            >
+              JS
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-white">John Smith</p>
+              <p class="text-xs text-slate-500 italic">Content Creator</p>
+            </div>
+          </div>
         </div>
-        <div class="flex gap-2 text-xs">
-          <button class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900 text-slate-200">This month</button>
-          <button class="px-3 py-1 rounded-full border border-slate-800 text-slate-400">Last month</button>
-        </div>
-      </header>
-
-      <section aria-labelledby="top-kpis-heading" class="space-y-4">
-        <h2 id="top-kpis-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Top KPIs</h2>
-        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm">
-            <h3 class="text-xs font-medium text-slate-400">Revenue (commissions)</h3>
-            <p class="mt-2 text-2xl font-semibold">€8,420</p>
-            <p class="mt-1 text-xs text-emerald-400">+12.3% vs last period</p>
-          </article>
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm">
-            <h3 class="text-xs font-medium text-slate-400">Total conversions</h3>
-            <p class="mt-2 text-2xl font-semibold">1,284</p>
-            <p class="mt-1 text-xs text-emerald-400">+8.1% conversion rate</p>
-          </article>
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm">
-            <h3 class="text-xs font-medium text-slate-400">Engagement rate</h3>
-            <p class="mt-2 text-2xl font-semibold">5.8%</p>
-            <p class="mt-1 text-xs text-slate-400">Weighted across platforms</p>
-          </article>
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm">
-            <h3 class="text-xs font-medium text-slate-400">Cost per outcome</h3>
-            <p class="mt-2 text-2xl font-semibold">€3.21</p>
-            <p class="mt-1 text-xs text-emerald-400">-9.4% vs last period</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="drivers" aria-labelledby="drivers-heading" class="space-y-4">
-        <h2 id="drivers-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Drivers</h2>
-        <div class="grid gap-6 lg:grid-cols-2">
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm">
-            <h3 class="text-xs font-medium text-slate-400 mb-3">Conversion funnel</h3>
-            <table class="charts-css bar show-labels data-spacing-3 w-full text-xs text-slate-200">
-              <caption class="mb-2 text-left text-[0.7rem] text-slate-400">Funnel conversion by stage</caption>
-              <tbody>
-                <tr>
-                  <th scope="row">Impressions → Clicks</th>
-                  <td style="--size: 0.7"><span class="data">7.0%</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">Clicks → Product view</th>
-                  <td style="--size: 0.5"><span class="data">5.0%</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">Product view → Checkout</th>
-                  <td style="--size: 0.35"><span class="data">3.5%</span></td>
-                </tr>
-                <tr>
-                  <th scope="row">Checkout → Purchase</th>
-                  <td style="--size: 0.28"><span class="data">2.8%</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </article>
-
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm">
-            <h3 class="text-xs font-medium text-slate-400 mb-3">Performance by platform</h3>
-            <div class="space-y-3 text-xs">
-              <div class="flex items-center justify-between">
-                <span class="text-slate-300">Instagram</span>
-                <span class="text-emerald-400 font-medium">€4,120 · 4.9% conv.</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-slate-300">TikTok</span>
-                <span class="text-emerald-300 font-medium">€3,150 · 5.4% conv.</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-slate-300">YouTube</span>
-                <span class="text-slate-300 font-medium">€1,150 · 3.1% conv.</span>
+      </aside>
+      <!-- END: Sidebar Navigation -->
+      <!-- BEGIN: Main Content Area -->
+      <main
+        class="flex-1 p-4 md:p-10 overflow-y-auto"
+        data-purpose="main-dashboard-content"
+      >
+        <!-- Header Section -->
+        <header
+          class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4"
+        >
+          <div>
+            <h1 class="text-2xl font-bold text-slate-900">
+              My Brand Dashboard
+            </h1>
+            <p class="text-slate-500">
+              Personal performance tracking and campaign ROI overview.
+            </p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button
+              class="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 shadow-sm transition-all"
+            >
+              Download Report
+            </button>
+            <button
+              class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 shadow-md transition-all"
+            >
+              New Campaign
+            </button>
+          </div>
+        </header>
+        <!-- BEGIN: Block 1 - KPI Cards -->
+        <section
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+          data-purpose="kpi-section"
+        >
+          <!-- Total Revenue -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-slate-500 text-sm font-medium"
+                >Total Revenue</span
+              >
+              <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></path>
+                </svg>
               </div>
             </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="details" aria-labelledby="details-heading" class="space-y-6">
-        <h2 id="details-heading" class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Operational details</h2>
-
-        <div class="grid gap-6 xl:grid-cols-2">
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm overflow-x-auto">
-            <h3 class="text-xs font-medium text-slate-400 mb-3">Products</h3>
-            <table class="min-w-full text-xs text-left text-slate-200">
-              <thead class="text-[0.7rem] uppercase text-slate-400 border-b border-slate-800">
-                <tr>
-                  <th class="py-2 pr-4 font-medium">Product</th>
-                  <th class="py-2 pr-4 font-medium">Price</th>
-                  <th class="py-2 pr-4 font-medium">Commissions</th>
-                  <th class="py-2 pr-4 font-medium">Conversions</th>
-                  <th class="py-2 pr-4 font-medium">ROI</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-800">
-                <tr>
-                  <td class="py-2 pr-4">Product A</td>
-                  <td class="py-2 pr-4">€50</td>
-                  <td class="py-2 pr-4">€2,100</td>
-                  <td class="py-2 pr-4">280</td>
-                  <td class="py-2 pr-4 text-emerald-400">+160%</td>
-                </tr>
-                <tr>
-                  <td class="py-2 pr-4">Product B</td>
-                  <td class="py-2 pr-4">€120</td>
-                  <td class="py-2 pr-4">€4,260</td>
-                  <td class="py-2 pr-4">285</td>
-                  <td class="py-2 pr-4 text-emerald-400">+190%</td>
-                </tr>
-                <tr>
-                  <td class="py-2 pr-4">Product C</td>
-                  <td class="py-2 pr-4">€80</td>
-                  <td class="py-2 pr-4">€2,060</td>
-                  <td class="py-2 pr-4">190</td>
-                  <td class="py-2 pr-4 text-emerald-300">+135%</td>
-                </tr>
-              </tbody>
-            </table>
-          </article>
-
-          <article class="rounded-xl border border-slate-800 bg-slate-900/60 p-4 shadow-sm overflow-x-auto">
-            <h3 class="text-xs font-medium text-slate-400 mb-3">Campaigns</h3>
-            <table class="min-w-full text-xs text-left text-slate-200">
-              <thead class="text-[0.7rem] uppercase text-slate-400 border-b border-slate-800">
-                <tr>
-                  <th class="py-2 pr-4 font-medium">Campaign</th>
-                  <th class="py-2 pr-4 font-medium">Platform</th>
-                  <th class="py-2 pr-4 font-medium">Dates</th>
-                  <th class="py-2 pr-4 font-medium">Result</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-slate-800">
-                <tr>
-                  <td class="py-2 pr-4">Spring launch</td>
-                  <td class="py-2 pr-4">Instagram</td>
-                  <td class="py-2 pr-4">Mar 1–15</td>
-                  <td class="py-2 pr-4 text-emerald-400">+32% conv.</td>
-                </tr>
-                <tr>
-                  <td class="py-2 pr-4">Summer drops</td>
-                  <td class="py-2 pr-4">TikTok</td>
-                  <td class="py-2 pr-4">Jun 5–21</td>
-                  <td class="py-2 pr-4 text-emerald-300">+21% reach</td>
-                </tr>
-                <tr>
-                  <td class="py-2 pr-4">Collab series</td>
-                  <td class="py-2 pr-4">YouTube</td>
-                  <td class="py-2 pr-4">Ongoing</td>
-                  <td class="py-2 pr-4 text-slate-200">Stable</td>
-                </tr>
-              </tbody>
-            </table>
-          </article>
-        </div>
-      </section>
-    </main>
-  </div>
-</body>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900">€42,500.00</h3>
+              <p
+                class="text-emerald-500 text-xs font-semibold mt-1 flex items-center gap-1"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                12.5% vs last month
+              </p>
+            </div>
+          </div>
+          <!-- Total Commission -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-slate-500 text-sm font-medium"
+                >My Earnings (85%)</span
+              >
+              <div class="p-2 bg-indigo-50 text-indigo-600 rounded-lg">
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900">€36,125.00</h3>
+              <p class="text-slate-400 text-xs mt-1">After 15% platform fee</p>
+            </div>
+          </div>
+          <!-- Conversion Rate -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-slate-500 text-sm font-medium"
+                >Audience Impact</span
+              >
+              <div class="p-2 bg-orange-50 text-orange-600 rounded-lg">
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900">4.82%</h3>
+              <p
+                class="text-rose-500 text-xs font-semibold mt-1 flex items-center gap-1"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M14.707 10.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 12.586V5a1 1 0 112 0v7.586l2.293-2.293a1 1 0 011.414 0z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                0.4% drop
+              </p>
+            </div>
+          </div>
+          <!-- Avg Engagement -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-slate-500 text-sm font-medium"
+                >Avg. Engagement</span
+              >
+              <div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
+                <svg
+                  class="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></path>
+                  <path
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-slate-900">7.2%</h3>
+              <p
+                class="text-emerald-500 text-xs font-semibold mt-1 flex items-center gap-1"
+              >
+                <svg
+                  class="h-3 w-3"
+                  fill="currentColor"
+                  viewbox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M5.293 9.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 7.414V15a1 1 0 11-2 0V7.414L6.707 9.707a1 1 0 01-1.414 0z"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+                2.1% increase
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- END: Block 1 -->
+        <!-- BEGIN: Block 2 - Performance Drivers -->
+        <section
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8"
+          data-purpose="drivers-section"
+        >
+          <!-- Revenue by Platform -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"
+          >
+            <h3 class="text-lg font-bold text-slate-900 mb-6">
+              My Content Reach
+            </h3>
+            <div class="space-y-6">
+              <!-- Instagram -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-pink-500"></div>
+                    <span class="text-sm font-medium text-slate-700"
+                      >Instagram</span
+                    >
+                  </div>
+                  <span class="text-sm font-semibold text-slate-900"
+                    >€22,100 (52%)</span
+                  >
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2">
+                  <div
+                    class="bg-pink-500 h-2 rounded-full"
+                    style="width: 52%"
+                  ></div>
+                </div>
+              </div>
+              <!-- TikTok -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-slate-900"></div>
+                    <span class="text-sm font-medium text-slate-700"
+                      >TikTok</span
+                    >
+                  </div>
+                  <span class="text-sm font-semibold text-slate-900"
+                    >€14,450 (34%)</span
+                  >
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2">
+                  <div
+                    class="bg-slate-900 h-2 rounded-full"
+                    style="width: 34%"
+                  ></div>
+                </div>
+              </div>
+              <!-- YouTube -->
+              <div>
+                <div class="flex justify-between items-center mb-2">
+                  <div class="flex items-center gap-2">
+                    <div class="h-3 w-3 rounded-full bg-rose-600"></div>
+                    <span class="text-sm font-medium text-slate-700"
+                      >YouTube</span
+                    >
+                  </div>
+                  <span class="text-sm font-semibold text-slate-900"
+                    >€5,950 (14%)</span
+                  >
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2">
+                  <div
+                    class="bg-rose-600 h-2 rounded-full"
+                    style="width: 14%"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product Performance -->
+          <div
+            class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"
+          >
+            <h3 class="text-lg font-bold text-slate-900 mb-6">
+              Top Affiliate Products
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead>
+                  <tr class="text-slate-400 text-xs uppercase tracking-wider">
+                    <th class="pb-3 font-medium">Brand Partner</th>
+                    <th class="pb-3 font-medium">Avg. Price</th>
+                    <th class="pb-3 font-medium">Revenue</th>
+                    <th class="pb-3 font-medium">Conv. Rate</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm divide-y divide-slate-100">
+                  <tr>
+                    <td class="py-4 font-semibold text-slate-700">
+                      Product A (Skincare)
+                    </td>
+                    <td class="py-4">€50.00</td>
+                    <td class="py-4 text-slate-900 font-medium">€15,200</td>
+                    <td class="py-4">
+                      <span
+                        class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-xs font-bold"
+                        >5.2%</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 font-semibold text-slate-700">
+                      Product B (Apparel)
+                    </td>
+                    <td class="py-4">€120.00</td>
+                    <td class="py-4 text-slate-900 font-medium">€18,500</td>
+                    <td class="py-4">
+                      <span
+                        class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded-md text-xs font-bold"
+                        >4.1%</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 font-semibold text-slate-700">
+                      Product C (Accessory)
+                    </td>
+                    <td class="py-4">€80.00</td>
+                    <td class="py-4 text-slate-900 font-medium">€8,800</td>
+                    <td class="py-4">
+                      <span
+                        class="bg-slate-100 text-slate-600 px-2 py-1 rounded-md text-xs font-bold"
+                        >3.8%</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- END: Block 2 -->
+        <!-- BEGIN: Block 3 - Detailed Insights -->
+        <section class="space-y-8" data-purpose="detailed-insights-section">
+          <!-- Campaign Performance Table -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
+          >
+            <div
+              class="p-6 border-b border-slate-100 flex justify-between items-center"
+            >
+              <h3 class="text-lg font-bold text-slate-900">
+                Recent Brand Collaborations
+              </h3>
+              <span
+                class="text-sm text-indigo-600 font-medium cursor-pointer hover:underline"
+                >View All</span
+              >
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left whitespace-nowrap">
+                <thead
+                  class="bg-slate-50 text-slate-500 text-xs uppercase font-semibold"
+                >
+                  <tr>
+                    <th class="px-6 py-4">Brand Partner</th>
+                    <th class="px-6 py-4">Status</th>
+                    <th class="px-6 py-4">Followers</th>
+                    <th class="px-6 py-4">Revenue</th>
+                    <th class="px-6 py-4 text-indigo-600">My Payout</th>
+                    <th class="px-6 py-4">ROI</th>
+                  </tr>
+                </thead>
+                <tbody class="text-sm divide-y divide-slate-100">
+                  <!-- Row 1 -->
+                  <tr class="hover:bg-slate-50/50 transition-colors">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden"
+                        >
+                          <img
+                            alt="Avatar"
+                            class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp7DrIJ6ySOWQk5795GY2frWSM_5LX4oCe1dnIVk1-ND3GFx5dHNZxccRgePvDssYjULRBZJAId_uxnL7OQ-NL9SssG0onPx_QO9r-O4r7rmS5-XC8CmHP4S15UjBo258YE9MtJHvo1sWhOpAEOhA4PUHD8QZDdRxSvPAj93t0qz9a6BfmQvSzKHiWD_0XCTphYT4gO3kdeHbRNSBM9d7SthOa31q62gQjriwwPCgfJZ5ToVHoV40LW8_BCZhajv9PjU0N5EaCCto"
+                          />
+                        </div>
+                        <div>
+                          <p class="font-bold text-slate-800">Luxe Skincare</p>
+                          <p class="text-xs text-slate-500">Summer Campaign</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800"
+                        >Active</span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-slate-600 font-medium">245k</td>
+                    <td class="px-6 py-4 text-slate-900 font-semibold">
+                      €12,400.00
+                    </td>
+                    <td class="px-6 py-4 text-indigo-700 font-bold">
+                      €1,860.00
+                    </td>
+                    <td class="px-6 py-4 text-emerald-600 font-bold">6.2x</td>
+                  </tr>
+                  <!-- Row 2 -->
+                  <tr class="hover:bg-slate-50/50 transition-colors">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden"
+                        >
+                          <img
+                            alt="Avatar"
+                            class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqf3uVM_59g_s5INqQMp-SK6VkYTKunqk0-xZeDCIwy-vdf_pEgJ4Xu-QF4PQ3yGX5W7Q8ehyhaJ21ooiKUS5wqnt2HyZwgvfxqjS6LOdineQWPDZtBMBVNZEa7GVkz2q1khlZtsbb7YKznSizscIJKNGSZYd4R4Q5z_FlMSF6acUlT56s7xjfmjq22hiH25fyLmu8Q0fbf3NgxNtH3eXAX9C9F1Au1Vy61zrsxTjaAn1E73qgMR2dI2xSGz6cXuUtdD_BpR-3x6k"
+                          />
+                        </div>
+                        <div>
+                          <p class="font-bold text-slate-800">Urban Apparel</p>
+                          <p class="text-xs text-slate-500">Fall Collection</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800"
+                        >Active</span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-slate-600 font-medium">82k</td>
+                    <td class="px-6 py-4 text-slate-900 font-semibold">
+                      €4,200.00
+                    </td>
+                    <td class="px-6 py-4 text-indigo-700 font-bold">€630.00</td>
+                    <td class="px-6 py-4 text-emerald-600 font-bold">4.8x</td>
+                  </tr>
+                  <!-- Row 3 -->
+                  <tr class="hover:bg-slate-50/50 transition-colors">
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3">
+                        <div
+                          class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden"
+                        >
+                          <img
+                            alt="Avatar"
+                            class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd0mMEa-jhnZkqJol_9kQUUAa-6bwioJBBoAwqLq1V1OMGzsmGt0WvbtkG3WmnEgEvwjF8-36nlctBF9Sww7QfwaGtWEgE-xfq909u1_dUrPJXRY6JEhExDKFQ0KCOhoP47UyzQiqF3uArCIon2lcbs9dyRyQnDEihlZw5QRUxL2nsYb_TuMQRi8On38U-NB-DafadmLyi1DOtuLuq2672LA7BtyOWZIaCNYYxlcxplIE7FestMPxlmJQDUC3eR4y83oIA7NpVbVY"
+                          />
+                        </div>
+                        <div>
+                          <p class="font-bold text-slate-800">Tech Gadgets</p>
+                          <p class="text-xs text-slate-500">Review Video</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800"
+                        >Paused</span
+                      >
+                    </td>
+                    <td class="px-6 py-4 text-slate-600 font-medium">1.2M</td>
+                    <td class="px-6 py-4 text-slate-900 font-semibold">
+                      €21,900.00
+                    </td>
+                    <td class="px-6 py-4 text-indigo-700 font-bold">
+                      €3,285.00
+                    </td>
+                    <td class="px-6 py-4 text-emerald-600 font-bold">5.4x</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Platform Insights & Trends -->
+          <div
+            class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
+          >
+            <div class="p-6 border-b border-slate-100">
+              <h3 class="text-lg font-bold text-slate-900">
+                Recent Brand Collaborations
+              </h3>
+            </div>
+            <div
+              class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-100"
+            >
+              <!-- Instagram Insight -->
+              <div class="p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-pink-600">Instagram</span>
+                  <span class="text-xs font-semibold text-emerald-500"
+                    >+18% growth</span
+                  >
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-xs text-slate-500 uppercase">Clicks</p>
+                    <p class="text-lg font-bold">45.2k</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 uppercase">Shares</p>
+                    <p class="text-lg font-bold">1.2k</p>
+                  </div>
+                </div>
+              </div>
+              <!-- TikTok Insight -->
+              <div class="p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-slate-900">TikTok</span>
+                  <span class="text-xs font-semibold text-emerald-500"
+                    >+32% growth</span
+                  >
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-xs text-slate-500 uppercase">Views</p>
+                    <p class="text-lg font-bold">890k</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 uppercase">Completion</p>
+                    <p class="text-lg font-bold">42%</p>
+                  </div>
+                </div>
+              </div>
+              <!-- YouTube Insight -->
+              <div class="p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-rose-600">YouTube</span>
+                  <span class="text-xs font-semibold text-rose-500"
+                    >-2% drop</span
+                  >
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <p class="text-xs text-slate-500 uppercase">Avg. Watch</p>
+                    <p class="text-lg font-bold">4m 12s</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 uppercase">CTR</p>
+                    <p class="text-lg font-bold">2.8%</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- END: Block 3 -->
+      </main>
+      <!-- END: Main Content Area -->
+    </div>
+    <!-- END: Main Dashboard Layout -->
+  </body>
 </html>
