@@ -70,7 +70,7 @@ Organiza el dashboard en grandes bloques:
 
 > Ejemplo visual de dashboard administrativo:
 
-![Dashboard example](.learn/solution.png "Dashboard example")
+![Dashboard example](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/simple-dashboard-tailwind-css/.learn/solution.png "Dashboard example")
 
 ---
 
