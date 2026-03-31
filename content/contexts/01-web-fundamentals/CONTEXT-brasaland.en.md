@@ -81,7 +81,7 @@ Founded in Medellín in 2008, Brasaland began as a family dream: sharing the aut
 
 ### Brasa Points (featured section)
 
-**Earn points with every visit**
+#### Earn points with every visit
 
 - Accumulate 1 point for every $10,000 COP or $5 USD
 - Redeem your points for discounts and free dishes

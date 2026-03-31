@@ -81,7 +81,7 @@ Fundada en Medellín en 2008, Brasaland comenzó como un sueño familiar: compar
 
 ### Brasa Points (sección destacada)
 
-**Gana puntos con cada visita**
+#### Gana puntos con cada visita
 
 - Acumula 1 punto por cada $10.000 COP o $5 USD
 - Canjea tus puntos por descuentos y platos gratis
