@@ -30,6 +30,12 @@ Trabajas en la unidad **TrackFlow Tech**, reportando directamente al CTO Andrés
 
 ---
 
+## Alcance de idioma
+
+- El soporte multiidioma es **opcional pero altamente recomendado** por la operación de TrackFlow en Estados Unidos y España.
+- Debes escoger un **idioma base** para toda la experiencia del sitio y del formulario.
+- Si implementas un segundo idioma, trátalo como una mejora (sin reducir la calidad/completitud del idioma base).
+
 ## Contenido de la landing page
 
 Tu landing page debe incluir las siguientes secciones, en este orden:

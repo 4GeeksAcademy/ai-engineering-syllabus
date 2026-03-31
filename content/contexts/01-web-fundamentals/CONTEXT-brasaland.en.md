@@ -16,7 +16,7 @@ _Estas instrucciones están [disponibles en español](./CONTEXT-brasaland.es.md)
 
 ## Your department and the problem you must solve
 
-You work in **Brasaland Digital**, the internal team created by CEO Mariana Restrepo to lead the company's digital transformation, and you report directly to CTO Nicolás Park. Brasaland's current corporate website is from 2019, doesn't allow online orders, and only shows the menu. It doesn't reflect that the company operates in two countries or properly present the brand experience. Camila Ospina (Marketing Manager) needs a renewed, bilingual website (Spanish and English) that professionally presents the brand, shows locations in both countries, and captures information from people interested in joining the digital loyalty program.
+You work in **Brasaland Digital**, the internal team created by CEO Mariana Restrepo to lead the company's digital transformation, and you report directly to CTO Nicolás Park. Brasaland's current corporate website is from 2019, doesn't allow online orders, and only shows the menu. It doesn't reflect that the company operates in two countries or properly present the brand experience. Camila Ospina (Marketing Manager) needs a renewed website that professionally presents the brand, shows locations in both countries, and captures information from people interested in joining the digital loyalty program.
 
 ---
 
@@ -26,9 +26,15 @@ You work in **Brasaland Digital**, the internal team created by CEO Mariana Rest
 
 > Hi,
 >
-> We need to relaunch our corporate website. It should present Brasaland as what we are: a serious grilled food restaurant chain with presence in Colombia and the United States. I want a landing page that explains our value proposition, shows our locations in both countries, and presents our new digital loyalty program "Brasa Points." I also need a page with a form so people can register for the loyalty program. We currently use physical stamp cards that get lost and generate no data. I want to capture: name, email, phone, country, city, favorite location, dietary preferences, and how they found us. The site must be fully bilingual (Spanish and English), responsive, accessible, and SEO optimized. Use Tailwind and make sure the validations work perfectly.
+> We need to relaunch our corporate website. It should present Brasaland as what we are: a serious grilled food restaurant chain with presence in Colombia and the United States. I want a landing page that explains our value proposition, shows our locations in both countries, and presents our new digital loyalty program "Brasa Points." I also need a page with a form so people can register for the loyalty program. We currently use physical stamp cards that get lost and generate no data. I want to capture: name, email, phone, country, city, favorite location, dietary preferences, and how they found us. The site must be responsive, accessible, and SEO optimized. Multilingual support (Spanish and English) is optional but highly recommended; start with one base language. Use Tailwind and make sure the validations work perfectly.
 
 ---
+
+## Language scope
+
+- Multilingual support is **optional but highly recommended** given Brasaland's operations in Colombia and the United States.
+- You must choose one **base language** for the full website and form experience.
+- If you implement a second language, treat it as an enhancement (do not reduce quality/completeness in the base language).
 
 ## Landing page content
 
@@ -37,7 +43,7 @@ Your landing page must include the following sections, in this order:
 ### Header
 
 - Logo or name "Brasaland"
-- Language selector (ES | EN)
+- Language selector (ES | EN) if you implement a second language
 - Navigation: Home | Locations | Menu | Brasa Points | Contact
 
 ### Hero
@@ -180,6 +186,8 @@ The Brasa Points program is designed for **customers 18 or older who want to ear
 ## Required Schema.org markup
 
 Implement the following Schema.org markup on your landing page:
+
+If you deliver only one language, set `availableLanguage` to just that base language.
 
 ```json
 {

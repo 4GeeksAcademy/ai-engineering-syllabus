@@ -16,7 +16,7 @@ _These instructions are [available in English](./CONTEXT-brasaland.md)._
 
 ## Tu departamento y el problema que debes resolver
 
-Trabajas en **Brasaland Digital**, el equipo interno creado por la CEO Mariana Restrepo para liderar la transformación digital de la empresa, y reportas directamente al CTO Nicolás Park. El sitio web corporativo actual de Brasaland es de 2019, no permite pedidos en línea, y solo muestra el menú. No refleja que la empresa opera en dos países ni presenta adecuadamente la experiencia de marca. Camila Ospina (Gerente de Marketing) necesita un sitio web renovado, bilingüe (español e inglés), que presente la marca profesionalmente, muestre las ubicaciones en ambos países, y capture información de personas interesadas en formar parte del programa de fidelización digital.
+Trabajas en **Brasaland Digital**, el equipo interno creado por la CEO Mariana Restrepo para liderar la transformación digital de la empresa, y reportas directamente al CTO Nicolás Park. El sitio web corporativo actual de Brasaland es de 2019, no permite pedidos en línea, y solo muestra el menú. No refleja que la empresa opera en dos países ni presenta adecuadamente la experiencia de marca. Camila Ospina (Gerente de Marketing) necesita un sitio web renovado que presente la marca profesionalmente, muestre las ubicaciones en ambos países, y capture información de personas interesadas en formar parte del programa de fidelización digital.
 
 ---
 
@@ -26,9 +26,15 @@ Trabajas en **Brasaland Digital**, el equipo interno creado por la CEO Mariana R
 
 > Hola,
 >
-> Necesitamos relanzar nuestro sitio web corporativo. Debe presentar Brasaland como lo que somos: una cadena seria de restaurantes a la brasa con presencia en Colombia y Estados Unidos. Quiero una landing page que explique nuestra propuesta de valor, muestre nuestras ubicaciones en ambos países, y presente nuestro nuevo programa de fidelización digital "Brasa Points". También necesito una página con un formulario para que las personas puedan registrarse en el programa de fidelización. Actualmente usamos tarjetas físicas que se pierden y no generan datos. Quiero capturar: nombre, email, teléfono, país, ciudad, ubicación favorita, preferencias alimentarias, y cómo nos conocieron. El sitio debe ser completamente bilingüe (español e inglés), responsive, accesible, y optimizado para SEO. Usa Tailwind y asegúrate de que las validaciones funcionen perfectamente.
+> Necesitamos relanzar nuestro sitio web corporativo. Debe presentar Brasaland como lo que somos: una cadena seria de restaurantes a la brasa con presencia en Colombia y Estados Unidos. Quiero una landing page que explique nuestra propuesta de valor, muestre nuestras ubicaciones en ambos países, y presente nuestro nuevo programa de fidelización digital "Brasa Points". También necesito una página con un formulario para que las personas puedan registrarse en el programa de fidelización. Actualmente usamos tarjetas físicas que se pierden y no generan datos. Quiero capturar: nombre, email, teléfono, país, ciudad, ubicación favorita, preferencias alimentarias, y cómo nos conocieron. El sitio debe ser responsive, accesible, y optimizado para SEO. El soporte multiidioma (español e inglés) es opcional pero altamente recomendado; empieza con un idioma base. Usa Tailwind y asegúrate de que las validaciones funcionen perfectamente.
 
 ---
+
+## Alcance de idioma
+
+- El soporte multiidioma es **opcional pero altamente recomendado** por la operación de Brasaland en Colombia y Estados Unidos.
+- Debes escoger un **idioma base** para toda la experiencia del sitio y del formulario.
+- Si implementas un segundo idioma, trátalo como una mejora (sin reducir la calidad/completitud del idioma base).
 
 ## Contenido de la landing page
 
@@ -37,7 +43,7 @@ Tu landing page debe incluir las siguientes secciones, en este orden:
 ### Header
 
 - Logo o nombre "Brasaland"
-- Selector de idioma (ES | EN)
+- Selector de idioma (ES | EN) si implementas un segundo idioma
 - Navegación: Inicio | Ubicaciones | Menú | Brasa Points | Contacto
 
 ### Hero
@@ -180,6 +186,8 @@ El programa Brasa Points está diseñado para **clientes mayores de 18 años que
 ## Schema.org markup requerido
 
 Implementa el siguiente marcado Schema.org en tu landing page:
+
+Si entregas un solo idioma, configura `availableLanguage` únicamente con ese idioma base.
 
 ```json
 {

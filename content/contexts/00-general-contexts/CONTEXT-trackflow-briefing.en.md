@@ -80,7 +80,7 @@ Returns represent 18–25% of volume depending on client and country. Every retu
 
 TrackFlow serves two customer types: brands (B2B) and end consumers (B2C). The 15 agents handle both through email, WhatsApp, and phone with no unified ticketing system. 80% of queries could be answered automatically. There is no knowledge base. Coverage outside office hours is zero.
 
-**What they need:** A bilingual first-line CX agent (Spanish + English) resolving tracking queries and return status automatically, a semantic knowledge base indexed for RAG, a unified ticketing system, a real-time CX dashboard, and sentiment analysis to detect frustrated customers before escalation.
+**What they need:** A first-line CX agent resolving tracking queries and return status automatically, a semantic knowledge base indexed for RAG, a unified ticketing system, a real-time CX dashboard, and sentiment analysis to detect frustrated customers before escalation. Multilingual support (Spanish + English) is optional but highly recommended, starting from one base language.
 
 ---
 

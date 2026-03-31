@@ -78,7 +78,7 @@ Las devoluciones representan entre el 18% y el 25% del volumen según cliente y 
 
 TrackFlow atiende a dos tipos de cliente: las marcas (B2B) que contratan sus servicios y los consumidores finales (B2C) que reciben los paquetes. Los 15 agentes gestionan ambos a través de email, WhatsApp y teléfono sin un sistema unificado de tickets. El 80% de las consultas podría resolverse automáticamente. No hay base de conocimiento. La cobertura fuera del horario de oficina es cero.
 
-**Qué necesitan:** Un agente de CX de primera línea bilingüe (español + inglés) que resuelva automáticamente consultas de seguimiento y estado de devoluciones, una base de conocimiento semántica indexada para RAG, un sistema unificado de tickets, un dashboard de CX en tiempo real, y análisis de sentimiento para detectar clientes frustrados antes de que escalen.
+**Qué necesitan:** Un agente de CX de primera línea que resuelva automáticamente consultas de seguimiento y estado de devoluciones, una base de conocimiento semántica indexada para RAG, un sistema unificado de tickets, un dashboard de CX en tiempo real, y análisis de sentimiento para detectar clientes frustrados antes de que escalen. El soporte multiidioma (español + inglés) es opcional pero altamente recomendado, empezando por un idioma base.
 
 ---
 

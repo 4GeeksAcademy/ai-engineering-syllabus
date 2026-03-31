@@ -88,7 +88,7 @@ Gestionar 115 personas en 14 locales de dos países con legislaciones laborales 
 
 Todos los locales deben seguir las mismas recetas, técnicas de preparación y estándares de presentación independientemente del país. Los materiales de formación están en un Google Drive compartido que nadie sabe navegar. Cuando cambia una receta o un procedimiento, comunicar la actualización a los 14 locales en dos idiomas lleva días y suele generar confusión.
 
-**Qué necesitan:** Una plataforma de formación bilingüe con un catálogo de recetas con búsqueda, un itinerario de incorporación estructurado para el nuevo personal, y un sistema que distribuya actualizaciones de recetas a todos los locales simultáneamente en español e inglés.
+**Qué necesitan:** Una plataforma de formación con un catálogo de recetas con búsqueda, un itinerario de incorporación estructurado para el nuevo personal, y un sistema que distribuya actualizaciones de recetas a todos los locales simultáneamente. El soporte multiidioma (español e inglés) es opcional pero altamente recomendado, empezando por un idioma base.
 
 ---
 
@@ -116,7 +116,7 @@ Mariana gestiona una cadena de 14 locales en dos mercados sin un dashboard unifi
 
 Elige Brasaland si te atraen:
 
-- **Productos orientados al consumidor** — una app de fidelización, una web bilingüe, un CRM de clientes — construidos para personas reales que van a restaurantes.
+- **Productos orientados al consumidor** — una app de fidelización, una web corporativa, un CRM de clientes — construidos para personas reales que van a restaurantes.
 - **Complejidad multipaís** — construir sistemas que funcionen simultáneamente en dos países, dos monedas y dos idiomas.
 - **Operaciones a escala** — 14 locales físicos generando datos que hay que capturar, unificar y mostrar en tiempo real.
 - **Un dominio universalmente comprensible** — todo el mundo entiende qué hace un restaurante, lo que facilita centrarse en la ingeniería.

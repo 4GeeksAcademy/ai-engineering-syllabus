@@ -88,7 +88,7 @@ Managing 115 people across 14 locations in two countries with very different lab
 
 Every location must follow the same recipes, preparation techniques, and presentation standards regardless of country. Training materials are stored in a shared Google Drive that nobody can navigate. When a recipe or procedure changes, communicating the update to all 14 locations in two languages takes days and often creates confusion.
 
-**What they need:** A bilingual training platform with a searchable recipe catalogue, a structured onboarding path for new staff, and a system that pushes recipe updates to all locations simultaneously in Spanish and English.
+**What they need:** A training platform with a searchable recipe catalogue, a structured onboarding path for new staff, and a system that pushes recipe updates to all locations simultaneously. Multilingual support (Spanish and English) is optional but highly recommended, starting from one base language.
 
 ---
 
@@ -116,7 +116,7 @@ Mariana manages a 14-location chain across two markets without a unified dashboa
 
 Choose Brasaland if you are drawn to:
 
-- **Consumer-facing products** — a loyalty app, a bilingual website, a customer CRM — built for real people who eat at restaurants.
+- **Consumer-facing products** — a loyalty app, a corporate website, a customer CRM — built for real people who eat at restaurants.
 - **Multi-market complexity** — building systems that work simultaneously in two countries, two currencies, and two languages.
 - **Operations at scale** — 14 physical locations generating data that needs to be captured, unified, and surfaced in real time.
 - **A domain that is universally relatable** — everyone understands what a restaurant does, which makes it easier to focus on the engineering.

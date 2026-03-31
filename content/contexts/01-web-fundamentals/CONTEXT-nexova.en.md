@@ -30,6 +30,12 @@ You work in the **Marketing and Communications** team, led by Carmen Ruiz. Nexov
 
 ---
 
+## Language scope
+
+- Multilingual support is **optional but highly recommended** due to Nexova's operations between Spain and Miami.
+- You must choose one **base language** for the full website and form experience.
+- If you implement a second language, treat it as an enhancement (do not reduce quality/completeness in the base language).
+
 ## Landing page content
 
 Your landing page must include the following sections, in this order:
