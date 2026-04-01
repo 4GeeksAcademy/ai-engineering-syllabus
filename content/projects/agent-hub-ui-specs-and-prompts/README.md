@@ -9,7 +9,7 @@ By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](h
 
 _Estas instrucciones están [disponibles en Español](./README.es.md)._
 
-**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-coding-project) on how to start a coding project.
+**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
 <!-- endhide -->
 
@@ -59,7 +59,7 @@ The panel should feel professional and immediately usable as a reference for fut
 2. Create your own GitHub repository and update the remote URL to point to it.
 3. Open the project in GitHub Codespaces or clone it locally.
 4. Read the full brief carefully before writing the specification.
-5. Need help getting started? [Follow these instructions](https://4geeks.com/lesson/how-to-start-a-coding-project).
+5. Need help getting started? [Follow these instructions](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---
 

@@ -9,7 +9,7 @@ By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](h
 
 _These instructions are [available in Spanish](./README.es.md)._
 
-**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-coding-project) on how to start a coding project.
+**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
 <!-- endhide -->
 

@@ -70,7 +70,7 @@ This site must work on any device, meet web accessibility standards, be optimize
 
 Do not clone this repository because we are going to use a different template.
 
-1. Go to your company project repository that you already have. If you haven't created it yet, go to the [transversal project template repository](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) and click the "Use this template" button on the right, then select "Create a new repository", or [click here](https://github.com/new?template_name=ai-engineering-company-project-monorepo&template_owner=4GeeksAcademy).
+1. Go to your company project repository that you already have. If you haven't created it yet, go to the [transversal project template repository](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) and click the "Use this template" button on the right, then select [Create a new repository](https://github.com/new?template_name=ai-engineering-company-project-monorepo&template_owner=4GeeksAcademy).
 
 2. Once you have your own repository, open it in a Codespace or clone it locally.
 

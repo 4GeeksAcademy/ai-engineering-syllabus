@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de comenzar**: Lee tu **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** antes de escribir cualquier código — define los datos específicos de tu empresa, nombres de campos, valores de dominio y restricciones para tu implementación. También lee las [instrucciones](https://4geeks.com/es/lesson/como-comenzar-un-proyecto-de-programacion) sobre cómo comenzar un proyecto de programación.
+**Antes de comenzar**: Lee tu **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** antes de escribir cualquier código — define los datos específicos de tu empresa, nombres de campos, valores de dominio y restricciones para tu implementación. También lee las [instrucciones](https://4geeks.com/es/lesson/como-comenzar-un-proyecto-de-codificacion) sobre cómo comenzar un proyecto de programación.
 
 ---
 
@@ -70,7 +70,7 @@ Este sitio debe funcionar en cualquier dispositivo, cumplir con estándares de a
 
 No clones este repositorio porque vamos a usar una plantilla diferente.
 
-1. Ve a tu repositorio del proyecto de compañía que ya tienes. Si no lo has creado aún, ve al [repositorio plantilla del proyecto transversal](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) y haz clic en el botón de la derecha "Usar esta plantilla" y selecciona "Crear un nuevo repositorio" o [haz clic aquí](https://github.com/new?template_name=ai-engineering-company-project-monorepo&template_owner=4GeeksAcademy).
+1. Ve a tu repositorio del proyecto de compañía que ya tienes. Si no lo has creado aún, ve al [repositorio plantilla del proyecto transversal](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) y haz clic en el botón de la derecha "Usar esta plantilla" y selecciona [Crear un nuevo repositorio](https://github.com/new?template_name=ai-engineering-company-project-monorepo&template_owner=4GeeksAcademy).
 
 2. Una vez tengas tu propio repositorio, ábrelo en un Codespace o clónalo localmente.
 

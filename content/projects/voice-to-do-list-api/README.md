@@ -9,7 +9,7 @@ By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](h
 
 _These instructions are [available in Spanish](./README.es.md)._
 
-**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-coding-project) on how to start a coding project.
+**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
 <!-- endhide -->
 
@@ -88,7 +88,7 @@ Create your own GitHub repository, push your code there, and update the remote U
 git remote set-url origin https://github.com/YOUR_USERNAME/YOUR_REPO
 ```
 
-For additional setup guidance: [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-coding-project).
+For additional setup guidance: [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---
 
