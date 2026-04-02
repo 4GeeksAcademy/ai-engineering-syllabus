@@ -40,5 +40,16 @@
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/seats-management-typescript/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/seats-management-typescript/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/seats-management-typescript/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/seats-management-typescript/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Cinema Seat Manager in TypeScript with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/typescript-cinema-seat-manager #AIEngineering #LearnPack #4GeeksAcademy #typescript #javascript #arrays",
+      "es": "Acabo de completar Cinema Seat Manager en TypeScript con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/typescript-cinema-seat-manager #AIEngineering #LearnPack #4GeeksAcademy #typescript #javascript #arrays"
+    },
+    {
+      "en": "Built and shipped: Cinema Seat Manager in TypeScript. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/typescript-cinema-seat-manager #AIEngineering #LearnPack #4GeeksAcademy #typescript #javascript #arrays",
+      "es": "Construido y publicado: Cinema Seat Manager en TypeScript. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/typescript-cinema-seat-manager #AIEngineering #LearnPack #4GeeksAcademy #typescript #javascript #arrays"
+    }
+  ]
 }

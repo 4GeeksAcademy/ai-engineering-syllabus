@@ -52,5 +52,16 @@
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/simple-dashboard-tailwind-css/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/simple-dashboard-tailwind-css/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/simple-dashboard-tailwind-css/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/simple-dashboard-tailwind-css/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed A simple Dashboard with Tailwind CSS with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/simple-dashboard-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
+      "es": "Acabo de completar Un dashboard sencillo en Tailwind CSS con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/simple-dashboard-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
+    },
+    {
+      "en": "Built and shipped: A simple Dashboard with Tailwind CSS. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/simple-dashboard-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
+      "es": "Construido y publicado: Un dashboard sencillo en Tailwind CSS. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/simple-dashboard-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
+    }
+  ]
 }

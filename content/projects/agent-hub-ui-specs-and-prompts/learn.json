@@ -46,9 +46,23 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed AgentHub Admin Panel Specs and Prompt-Driven Prototype with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/agent-hub-ui-specs-and-prompts #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",
+      "es": "Acabo de completar Especificaciones y prototipo guiado por prompts de AgentHub con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/agent-hub-ui-specs-and-prompts #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript"
+    },
+    {
+      "en": "Built and shipped: AgentHub Admin Panel Specs and Prompt-Driven Prototype. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/agent-hub-ui-specs-and-prompts #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",
+      "es": "Construido y publicado: Especificaciones y prototipo guiado por prompts de AgentHub. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/agent-hub-ui-specs-and-prompts #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript"
+    }
+  ]
 }

@@ -58,5 +58,16 @@
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed My first collaborative professional project with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/first-collaborative-project-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
+      "es": "Acabo de completar Mi primer proyecto profesional colaborativo con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/first-collaborative-project-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
+    },
+    {
+      "en": "Built and shipped: My first collaborative professional project. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/first-collaborative-project-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
+      "es": "Construido y publicado: Mi primer proyecto profesional colaborativo. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/first-collaborative-project-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
+    }
+  ]
 }

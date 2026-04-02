@@ -13,7 +13,12 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": ["uml", "class-diagrams", "data-modeling", "system-design"],
+  "technologies": [
+    "uml",
+    "class-diagrams",
+    "data-modeling",
+    "system-design"
+  ],
   "talents": [
     {
       "badge": "data-modeler",
@@ -28,16 +33,32 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "delivery": {
     "instructions": {
       "us": "Upload the two PNG files exported from your diagrams: one for the music playlist player and one for the digital wallet.",
       "es": "Sube los dos archivos PNG exportados de tus diagramas: uno del reproductor de playlist de musica y otro de la billetera digital."
     },
-    "formats": ["png"],
+    "formats": [
+      "png"
+    ],
     "quantity": 2
   },
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-music-player/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-digital-wallet/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-digital-wallet/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Digital wallet modeling and class diagrams with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/digital-wallet-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling",
+      "es": "Acabo de completar Modelado de billetera digital y diagramas de clases con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/digital-wallet-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling"
+    },
+    {
+      "en": "Built and shipped: Digital wallet modeling and class diagrams. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/digital-wallet-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling",
+      "es": "Construido y publicado: Modelado de billetera digital y diagramas de clases. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/digital-wallet-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling"
+    }
+  ]
 }

@@ -49,5 +49,16 @@
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/chat-interface-real-ai-api/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/chat-interface-real-ai-api/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/chat-interface-real-ai-api/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/chat-interface-real-ai-api/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Talk to the Machine - Building a Chat Interface with a Real AI API with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/chat-interface-real-ai-api #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",
+      "es": "Acabo de completar Habla con la Maquina - Construyendo una Interfaz de Chat con una API de IA Real con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/chat-interface-real-ai-api #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript"
+    },
+    {
+      "en": "Built and shipped: Talk to the Machine - Building a Chat Interface with a Real AI API. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/chat-interface-real-ai-api #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",
+      "es": "Construido y publicado: Habla con la Maquina - Construyendo una Interfaz de Chat con una API de IA Real. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/chat-interface-real-ai-api #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript"
+    }
+  ]
 }

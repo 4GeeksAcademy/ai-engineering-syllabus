@@ -53,5 +53,16 @@
   ],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 1 — Your Company's Public Website with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",
+      "es": "Acabo de completar Hito 1 — Sitio web público de tu empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript"
+    },
+    {
+      "en": "Built and shipped: Milestone 1 — Your Company's Public Website. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",
+      "es": "Construido y publicado: Hito 1 — Sitio web público de tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript"
+    }
+  ]
 }

@@ -42,5 +42,16 @@
   ],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-coding-fundamentals/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-coding-fundamentals/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-coding-fundamentals/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 2 — Building Scripts to Automate Tasks with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",
+      "es": "Acabo de completar Hito 2 — Desarrollando scripts para automatizar tareas con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode"
+    },
+    {
+      "en": "Built and shipped: Milestone 2 — Building Scripts to Automate Tasks. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",
+      "es": "Construido y publicado: Hito 2 — Desarrollando scripts para automatizar tareas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode"
+    }
+  ]
 }

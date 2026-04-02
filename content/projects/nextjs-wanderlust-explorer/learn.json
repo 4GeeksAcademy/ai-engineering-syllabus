@@ -41,7 +41,10 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/nextjs-wanderlust-explorer/.learn/solution/README.md",
@@ -55,5 +58,6 @@
       "en": "Built and shipped: Wanderlust Explorer with React and Next.js. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/nextjs-wanderlust-explorer #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
       "es": "Construido y publicado: Wanderlust Explorer con React y Next.js. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/nextjs-wanderlust-explorer #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
     }
-  ]
+  ],
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-wanderlust-explorer/.learn/preview.png"
 }

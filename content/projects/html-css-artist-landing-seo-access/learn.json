@@ -52,5 +52,16 @@
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/html-css-artist-landing-seo-access/.learn/solution/README.md",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Showcase your friend's artist talent with a website with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
+      "es": "Acabo de completar Muestra el talento de tu amigo artista con un website con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
+    },
+    {
+      "en": "Built and shipped: Showcase your friend's artist talent with a website. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
+      "es": "Construido y publicado: Muestra el talento de tu amigo artista con un website. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
+    }
+  ]
 }

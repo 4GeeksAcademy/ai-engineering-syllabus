@@ -45,5 +45,16 @@
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/voice-to-do-list-api/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/voice-to-do-list-api/.learn/preview.png"
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/voice-to-do-list-api/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/voice-to-do-list-api/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Voice Command API - Talk to Your Task List with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/voice-to-do-list-api #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #restapi",
+      "es": "Acabo de completar Voice Command API - Habla con tu Lista de Tareas con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/voice-to-do-list-api #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #restapi"
+    },
+    {
+      "en": "Built and shipped: Voice Command API - Talk to Your Task List. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/voice-to-do-list-api #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #restapi",
+      "es": "Construido y publicado: Voice Command API - Habla con tu Lista de Tareas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/voice-to-do-list-api #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #restapi"
+    }
+  ]
 }
