@@ -29,7 +29,7 @@ Vas a usar [Groq](https://groq.com/), una plataforma que ofrece inferencia ultra
 >
 > - Una interfaz de chat donde el usuario pueda escribir mensajes y recibir respuestas del modelo
 > - Una cuenta en [Groq](https://console.groq.com/) con una API Key configurada en el proyecto
-> - La API debe ser llamada directamente desde el frontend usando `fetch` — el modelo a usar es `llama3-8b-8192`
+> - La API debe ser llamada directamente desde el frontend usando `fetch` — el modelo a usar es la variante de `llama3` (META) que ofrece Groq.
 > - Cada respuesta de Groq incluye un objeto `usage`. La interfaz debe usarlo para registrar y mostrar el consumo de tokens (tokens de prompt, tokens de completado y totales acumulados de la conversación entera)
 > - Al menos una métrica adicional de la respuesta de Groq debe mostrarse en la interfaz (tiempo de respuesta, tokens por segundo o nombre del modelo son opciones válidas)
 

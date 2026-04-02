@@ -29,7 +29,7 @@ You'll be using [Groq](https://groq.com/), a platform that provides ultra-fast i
 >
 > - A chat UI where the user can type messages and receive responses from the AI model
 > - An account on [Groq](https://console.groq.com/) with an API Key configured to work in the project
-> - The API must be called directly from the frontend using `fetch` — the model to use is `llama3-8b-8192`
+> - The API must be called directly from the frontend using `fetch` — the model to use is the `llama3` (META) variant provided by Groq.
 > - Each response from Groq includes a `usage` object. The interface must use it to track and display token usage (prompt tokens, completion tokens, and cumulative totals for the entire conversation)
 > - At least one additional metric from the Groq response must also be surfaced in the UI (response time, tokens per second, or model name are all valid choices)
 
