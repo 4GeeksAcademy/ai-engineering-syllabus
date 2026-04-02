@@ -1,0 +1,2306 @@
+{
+  "records": [
+    {
+      "id": "53f2bbdc-4ea0-4b34-b076-4f8e7c2736ac",
+      "full_name": "Michael Smith",
+      "email": "michael.smith@gmail.com",
+      "phone": "+1 423-828-6619",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": "https://linkedin.com/in/michael-smith",
+      "cv_url": "https://storage.example.com/cv/53f2bbdc-4ea0-4b34-b076-4f8e7c2736ac.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 6,
+      "applied_at": "2026-02-28T20:04:32.114Z",
+      "updated_at": "2026-03-27T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "dbb20683-26c4-4d30-8a25-0f85e496927a",
+          "record_id": "53f2bbdc-4ea0-4b34-b076-4f8e7c2736ac",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "7a791c89-35ae-4ec1-8ffa-ff82223f4a9a",
+      "full_name": "Víctor Alonso Domínguez",
+      "email": "victor.alonso.dominguez@gmail.com",
+      "phone": "+34 620243437",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/victor-alonso-dominguez",
+      "cv_url": "https://storage.example.com/cv/7a791c89-35ae-4ec1-8ffa-ff82223f4a9a.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 5,
+      "applied_at": "2026-03-06T20:04:32.114Z",
+      "updated_at": "2026-03-27T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "cda32176-dfb3-4076-aedc-21448c81a7c5",
+          "record_id": "7a791c89-35ae-4ec1-8ffa-ff82223f4a9a",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "9a71ab3b-2d92-4710-bb27-c07a7a927b27",
+      "full_name": "Elena Jiménez Vázquez",
+      "email": "elena.jimenez.vazquez@hotmail.es",
+      "phone": "+34 616826199",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": "https://linkedin.com/in/elena-jimenez-vazquez",
+      "cv_url": "https://storage.example.com/cv/9a71ab3b-2d92-4710-bb27-c07a7a927b27.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 1,
+      "applied_at": "2026-03-20T20:04:32.113Z",
+      "updated_at": "2026-03-20T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "3f6a6bd0-5271-413b-88b8-0568353c4373",
+          "record_id": "9a71ab3b-2d92-4710-bb27-c07a7a927b27",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "c53a1b59-f424-4c5e-93a0-6a635982fbbd",
+      "full_name": "Thomas Martinez",
+      "email": "thomas.martinez@yahoo.com",
+      "phone": "+1 345-679-1992",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/thomas-martinez",
+      "cv_url": "https://storage.example.com/cv/c53a1b59-f424-4c5e-93a0-6a635982fbbd.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 1,
+      "applied_at": "2026-03-25T20:04:32.114Z",
+      "updated_at": "2026-03-25T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "0cb5a854-1c6e-4312-9e54-f4fde87a40ac",
+          "record_id": "c53a1b59-f424-4c5e-93a0-6a635982fbbd",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "9dbd4c4f-c583-48e9-bade-54ecbf166e53",
+      "full_name": "Pablo Gil González",
+      "email": "pablo.gil.gonzalez@outlook.es",
+      "phone": "+34 645072766",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/9dbd4c4f-c583-48e9-bade-54ecbf166e53.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 6,
+      "applied_at": "2026-03-02T20:04:32.114Z",
+      "updated_at": "2026-03-25T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "c8fd0adb-37ac-449a-b9d1-c4ee7fb94fa3",
+      "full_name": "Emma Young",
+      "email": "emma.young@icloud.com",
+      "phone": "+1 513-914-7344",
+      "position": "Executive Assistant",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/c8fd0adb-37ac-449a-b9d1-c4ee7fb94fa3.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 6,
+      "applied_at": "2026-02-24T20:04:32.114Z",
+      "updated_at": "2026-03-21T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "62cf3795-2c9d-4d6e-9688-8e9e2458aa52",
+          "record_id": "c8fd0adb-37ac-449a-b9d1-c4ee7fb94fa3",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "b6088a89-a3b2-4a75-9bdc-3bbc2c46718e",
+      "full_name": "Alejandra Rivera Pérez",
+      "email": "alejandra.rivera.perez@outlook.com",
+      "phone": "+51 427 7070936",
+      "position": "Auxiliar de Dirección",
+      "linkedin_url": "https://linkedin.com/in/alejandra-rivera-perez",
+      "cv_url": "https://storage.example.com/cv/b6088a89-a3b2-4a75-9bdc-3bbc2c46718e.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 7,
+      "applied_at": "2026-03-11T20:04:32.113Z",
+      "updated_at": "2026-03-11T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "175d3b6d-dcb1-4c11-b4af-9f6dc863b2d1",
+          "record_id": "b6088a89-a3b2-4a75-9bdc-3bbc2c46718e",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "26a0befd-6ec0-497d-a5e0-991738878203",
+      "full_name": "Catalina Gutiérrez García",
+      "email": "catalina.gutierrez.garcia@outlook.com",
+      "phone": "+52 475 1452051",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/catalina-gutierrez-garcia",
+      "cv_url": "https://storage.example.com/cv/26a0befd-6ec0-497d-a5e0-991738878203.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 7,
+      "applied_at": "2026-03-14T20:04:32.113Z",
+      "updated_at": "2026-03-14T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "882aea8c-ac45-4e15-b0e8-1b78ed064f8a",
+          "record_id": "26a0befd-6ec0-497d-a5e0-991738878203",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "903e1b38-262a-48e5-8af4-3d16d1a0616a",
+      "full_name": "Richard Davis",
+      "email": "richard.davis@yahoo.com",
+      "phone": "+1 603-207-6287",
+      "position": "Asistente de Dirección",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/903e1b38-262a-48e5-8af4-3d16d1a0616a.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-05T20:04:32.113Z",
+      "updated_at": "2026-03-05T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "6422a513-9391-4465-9061-615a05a78304",
+          "record_id": "903e1b38-262a-48e5-8af4-3d16d1a0616a",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "6f482585-eaeb-4556-9634-d99f5181c843",
+      "full_name": "Santiago Reyes Hernández",
+      "email": "santiago.reyes.hernandez@yahoo.com",
+      "phone": "+57 223 2300898",
+      "position": "Auxiliar de Dirección",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/6f482585-eaeb-4556-9634-d99f5181c843.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-14T20:04:32.113Z",
+      "updated_at": "2026-03-14T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "53d5d985-acdf-425b-9234-88f0657e06a0",
+          "record_id": "6f482585-eaeb-4556-9634-d99f5181c843",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "968260d6-b416-4388-bb42-ff6b623f9513",
+      "full_name": "Fernanda Pérez Cruz",
+      "email": "fernanda.perez.cruz@yahoo.com",
+      "phone": "+57 345 3734441",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/968260d6-b416-4388-bb42-ff6b623f9513.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 1,
+      "applied_at": "2026-03-11T20:04:32.113Z",
+      "updated_at": "2026-03-11T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "8d728f1c-5130-4e97-ae3d-9ae3ed67a5b7",
+          "record_id": "968260d6-b416-4388-bb42-ff6b623f9513",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "e9eefafe-0c9a-46ae-aa06-abd6fa7eda65",
+      "full_name": "Adrián Jiménez Blanco",
+      "email": "adrian.jimenez.blanco@gmail.com",
+      "phone": "+34 671195492",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/e9eefafe-0c9a-46ae-aa06-abd6fa7eda65.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 6,
+      "applied_at": "2026-03-09T20:04:32.114Z",
+      "updated_at": "2026-03-26T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "5e04c7d5-1ff5-41e5-b588-ba8e38db7f84",
+          "record_id": "e9eefafe-0c9a-46ae-aa06-abd6fa7eda65",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "71ec2598-3b2d-47af-970c-2fb1739979ab",
+      "full_name": "Silvia Ruiz López",
+      "email": "silvia.ruiz.lopez@outlook.es",
+      "phone": "+34 637394797",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/silvia-ruiz-lopez",
+      "cv_url": "https://storage.example.com/cv/71ec2598-3b2d-47af-970c-2fb1739979ab.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-15T20:04:32.113Z",
+      "updated_at": "2026-03-15T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "f1708a41-069a-45cd-910e-e4a6e74f9311",
+          "record_id": "71ec2598-3b2d-47af-970c-2fb1739979ab",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "4aeca8b5-965c-4c41-86b4-08dd2e33eb13",
+      "full_name": "Alba Álvarez Rodríguez",
+      "email": "alba.alvarez.rodriguez@hotmail.es",
+      "phone": "+34 638020835",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/4aeca8b5-965c-4c41-86b4-08dd2e33eb13.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-22T20:04:32.114Z",
+      "updated_at": "2026-03-22T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "2b5d2a81-7954-48b2-b03b-573b6ad4816e",
+          "record_id": "4aeca8b5-965c-4c41-86b4-08dd2e33eb13",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "95b8692a-96b7-498a-9e9f-9d9cfb323e1d",
+      "full_name": "Barbara Miller",
+      "email": "barbara.miller@icloud.com",
+      "phone": "+1 677-735-7010",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/95b8692a-96b7-498a-9e9f-9d9cfb323e1d.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 1,
+      "applied_at": "2026-03-08T20:04:32.114Z",
+      "updated_at": "2026-03-31T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "3366acfd-5128-419b-b4ba-903b4562ecbd",
+          "record_id": "95b8692a-96b7-498a-9e9f-9d9cfb323e1d",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "1d62bdb7-cf71-4b0d-b80b-ed9adf7877ea",
+      "full_name": "Noah Wright",
+      "email": "noah.wright@gmail.com",
+      "phone": "+1 474-734-4399",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/noah-wright",
+      "cv_url": "https://storage.example.com/cv/1d62bdb7-cf71-4b0d-b80b-ed9adf7877ea.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 8,
+      "applied_at": "2026-03-14T20:04:32.114Z",
+      "updated_at": "2026-03-20T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "0d88c924-cc26-4d03-91a9-64c56dd055ae",
+          "record_id": "1d62bdb7-cf71-4b0d-b80b-ed9adf7877ea",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "19851426-68b3-424d-ade5-c79cd3c9626e",
+      "full_name": "Jimena Mendoza Reyes",
+      "email": "jimena.mendoza.reyes@live.com",
+      "phone": "+57 156 1623001",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/jimena-mendoza-reyes",
+      "cv_url": "https://storage.example.com/cv/19851426-68b3-424d-ade5-c79cd3c9626e.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 4,
+      "applied_at": "2026-03-02T20:04:32.114Z",
+      "updated_at": "2026-03-24T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "13649fab-170c-4237-b2b6-673af8847329",
+      "full_name": "Isabella Gómez Díaz",
+      "email": "isabella.gomez.diaz@live.com",
+      "phone": "+54 226 8877465",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/isabella-gomez-diaz",
+      "cv_url": "https://storage.example.com/cv/13649fab-170c-4237-b2b6-673af8847329.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 5,
+      "applied_at": "2026-03-11T20:04:32.114Z",
+      "updated_at": "2026-03-19T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "61140510-3739-4e0b-8738-146337e0f1d1",
+          "record_id": "13649fab-170c-4237-b2b6-673af8847329",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "813bd729-70fd-42a2-abec-a1a4c7e3f71b",
+      "full_name": "Marcos Martínez Díaz",
+      "email": "marcos.martinez.diaz@hotmail.es",
+      "phone": "+34 648020261",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/813bd729-70fd-42a2-abec-a1a4c7e3f71b.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 6,
+      "applied_at": "2026-03-13T20:04:32.114Z",
+      "updated_at": "2026-03-30T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "c805f3c4-3121-4ed2-a8b8-f5df480bdcc1",
+      "full_name": "Elizabeth Jones",
+      "email": "elizabeth.jones@gmail.com",
+      "phone": "+1 294-974-1427",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/elizabeth-jones",
+      "cv_url": "https://storage.example.com/cv/c805f3c4-3121-4ed2-a8b8-f5df480bdcc1.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-12T20:04:32.113Z",
+      "updated_at": "2026-03-12T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "d7fb48fa-979f-4840-a602-8463243295b6",
+          "record_id": "c805f3c4-3121-4ed2-a8b8-f5df480bdcc1",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "67aa9830-7258-43de-827c-a97a9725e900",
+      "full_name": "Silvia Romero Gil",
+      "email": "silvia.romero.gil@yahoo.es",
+      "phone": "+34 695045496",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/silvia-romero-gil",
+      "cv_url": "https://storage.example.com/cv/67aa9830-7258-43de-827c-a97a9725e900.pdf",
+      "status": "in_progress",
+      "stage": "personal_interview",
+      "experience_years": 4,
+      "applied_at": "2026-03-05T20:04:32.114Z",
+      "updated_at": "2026-03-26T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "af71d32e-cc85-4a40-a615-8af8789acd21",
+          "record_id": "67aa9830-7258-43de-827c-a97a9725e900",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        },
+        {
+          "id": "39f9c1e1-b3a2-400d-b4e4-6113ab22a17c",
+          "record_id": "67aa9830-7258-43de-827c-a97a9725e900",
+          "content": "Buen perfil humano. Encajaría bien con la cultura del equipo.",
+          "created_at": "2026-03-27T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 2
+    },
+    {
+      "id": "4ae2b814-3ad3-4276-8b35-c8f09d463a65",
+      "full_name": "Jackson Roberts",
+      "email": "jackson.roberts@gmail.com",
+      "phone": "+61 440452762",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/jackson-roberts",
+      "cv_url": "https://storage.example.com/cv/4ae2b814-3ad3-4276-8b35-c8f09d463a65.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 2,
+      "applied_at": "2026-03-26T20:04:32.114Z",
+      "updated_at": "2026-03-26T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "1c2024bb-84c8-4029-88db-81e36ee8108d",
+          "record_id": "4ae2b814-3ad3-4276-8b35-c8f09d463a65",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "c3ed1a8f-a29e-41c6-8add-0e28e7163054",
+      "full_name": "Amelia Adams",
+      "email": "amelia.adams@yahoo.com.au",
+      "phone": "+61 448781244",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/amelia-adams",
+      "cv_url": "https://storage.example.com/cv/c3ed1a8f-a29e-41c6-8add-0e28e7163054.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-22T20:04:32.114Z",
+      "updated_at": "2026-03-22T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "4981c6d6-144f-4b3f-8ad6-355557dedb70",
+          "record_id": "c3ed1a8f-a29e-41c6-8add-0e28e7163054",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "5e85703b-7bcf-412a-ac58-b8782695d2f5",
+      "full_name": "Fernanda Aguilar Martínez",
+      "email": "fernanda.aguilar.martinez@hotmail.com",
+      "phone": "+56 102 3105186",
+      "position": "Asistente de Dirección",
+      "linkedin_url": "https://linkedin.com/in/fernanda-aguilar-martinez",
+      "cv_url": "https://storage.example.com/cv/5e85703b-7bcf-412a-ac58-b8782695d2f5.pdf",
+      "status": "discarded",
+      "stage": "personal_interview",
+      "experience_years": 4,
+      "applied_at": "2026-03-10T20:04:32.114Z",
+      "updated_at": "2026-03-31T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "3f2515e5-46dc-4bba-8f86-8bd82d2eaf14",
+      "full_name": "Aiden Wright",
+      "email": "aiden.wright@hotmail.com",
+      "phone": "+61 465710973",
+      "position": "Gerente de Oficina",
+      "linkedin_url": "https://linkedin.com/in/aiden-wright",
+      "cv_url": "https://storage.example.com/cv/3f2515e5-46dc-4bba-8f86-8bd82d2eaf14.pdf",
+      "status": "in_progress",
+      "stage": "personal_interview",
+      "experience_years": 1,
+      "applied_at": "2026-03-05T20:04:32.114Z",
+      "updated_at": "2026-03-23T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "0866c6f5-5fe5-4660-9160-60b1e5aabfa3",
+          "record_id": "3f2515e5-46dc-4bba-8f86-8bd82d2eaf14",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        },
+        {
+          "id": "cc4f800f-15ad-4041-8abe-f3e07b46eda3",
+          "record_id": "3f2515e5-46dc-4bba-8f86-8bd82d2eaf14",
+          "content": "Entrevista fluida. Explica bien su experiencia y tiene pensamiento estructurado.",
+          "created_at": "2026-03-28T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 2
+    },
+    {
+      "id": "152a9d0a-9f60-402d-af87-fa6029191e00",
+      "full_name": "Ella King",
+      "email": "ella.king@hotmail.com",
+      "phone": "+61 496114832",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/ella-king",
+      "cv_url": "https://storage.example.com/cv/152a9d0a-9f60-402d-af87-fa6029191e00.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 8,
+      "applied_at": "2026-03-08T20:04:32.114Z",
+      "updated_at": "2026-03-20T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "c63a5a96-2746-4023-af66-4daa42391b07",
+      "full_name": "Charles Johnson",
+      "email": "charles.johnson@icloud.com",
+      "phone": "+1 222-979-9697",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": "https://linkedin.com/in/charles-johnson",
+      "cv_url": "https://storage.example.com/cv/c63a5a96-2746-4023-af66-4daa42391b07.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-12T20:04:32.113Z",
+      "updated_at": "2026-03-12T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "df1f1e87-eef7-49e0-a3a9-6395039d7f22",
+          "record_id": "c63a5a96-2746-4023-af66-4daa42391b07",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "657eb358-341b-4a2d-88a3-281f15ca59ce",
+      "full_name": "Lucía Molina Álvarez",
+      "email": "lucia.molina.alvarez@outlook.es",
+      "phone": "+34 689443478",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/lucia-molina-alvarez",
+      "cv_url": "https://storage.example.com/cv/657eb358-341b-4a2d-88a3-281f15ca59ce.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 7,
+      "applied_at": "2026-03-16T20:04:32.113Z",
+      "updated_at": "2026-03-16T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "24059903-b867-4856-8044-681d408ce318",
+          "record_id": "657eb358-341b-4a2d-88a3-281f15ca59ce",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "ad58a6ee-a65b-43e3-8b1e-819c1152a7c5",
+      "full_name": "Laura Álvarez Rodríguez",
+      "email": "laura.alvarez.rodriguez@gmail.com",
+      "phone": "+34 683332148",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/ad58a6ee-a65b-43e3-8b1e-819c1152a7c5.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-14T20:04:32.113Z",
+      "updated_at": "2026-03-14T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "4d85dd88-35aa-448a-ac14-ee86326456f6",
+          "record_id": "ad58a6ee-a65b-43e3-8b1e-819c1152a7c5",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "1ea49809-b917-402e-bf56-d6ba5d93b66b",
+      "full_name": "Lucas Thompson",
+      "email": "lucas.thompson@gmail.com",
+      "phone": "+61 478021545",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/lucas-thompson",
+      "cv_url": "https://storage.example.com/cv/1ea49809-b917-402e-bf56-d6ba5d93b66b.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 9,
+      "applied_at": "2026-03-04T20:04:32.114Z",
+      "updated_at": "2026-03-27T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "1e793d12-472f-4216-ab55-788c682970c2",
+          "record_id": "1ea49809-b917-402e-bf56-d6ba5d93b66b",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "4e039951-50b0-4c52-bd3c-a63e9f249e05",
+      "full_name": "Michael Lewis",
+      "email": "michael.lewis@icloud.com",
+      "phone": "+1 573-297-2541",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/michael-lewis",
+      "cv_url": "https://storage.example.com/cv/4e039951-50b0-4c52-bd3c-a63e9f249e05.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-07T20:04:32.113Z",
+      "updated_at": "2026-03-07T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "0db5760e-e50c-455c-a74e-c477ae9c236e",
+          "record_id": "4e039951-50b0-4c52-bd3c-a63e9f249e05",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "0f27c399-9031-403b-8e1d-02b9f664a4af",
+      "full_name": "Megan White",
+      "email": "megan.white@gmail.com",
+      "phone": "+1 704-814-6453",
+      "position": "Auxiliar de Dirección",
+      "linkedin_url": "https://linkedin.com/in/megan-white",
+      "cv_url": "https://storage.example.com/cv/0f27c399-9031-403b-8e1d-02b9f664a4af.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-09T20:04:32.113Z",
+      "updated_at": "2026-03-09T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "be10e6c3-f2e9-4c25-bdde-446dffcac0c8",
+          "record_id": "0f27c399-9031-403b-8e1d-02b9f664a4af",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "3771be2a-f769-4fa6-adbf-beba6c740680",
+      "full_name": "Nicolás García González",
+      "email": "nicolas.garcia.gonzalez@gmail.com",
+      "phone": "+58 538 7290150",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/nicolas-garcia-gonzalez",
+      "cv_url": "https://storage.example.com/cv/3771be2a-f769-4fa6-adbf-beba6c740680.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-07T20:04:32.113Z",
+      "updated_at": "2026-03-07T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "4eaed050-d086-4b81-bea4-f6631b9e199f",
+          "record_id": "3771be2a-f769-4fa6-adbf-beba6c740680",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "1cecf112-f9b4-4a39-a90f-1e7dece1ed20",
+      "full_name": "Ella Hill",
+      "email": "ella.hill@outlook.com",
+      "phone": "+1 561-308-6111",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/ella-hill",
+      "cv_url": "https://storage.example.com/cv/1cecf112-f9b4-4a39-a90f-1e7dece1ed20.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-04T20:04:32.113Z",
+      "updated_at": "2026-03-04T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "545c52a9-8bb8-42cf-961d-6a3208f14e1b",
+          "record_id": "1cecf112-f9b4-4a39-a90f-1e7dece1ed20",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "34987630-fabc-430c-afc2-fefb923b8669",
+      "full_name": "Jackson King",
+      "email": "jackson.king@icloud.com",
+      "phone": "+1 473-631-7909",
+      "position": "Executive Assistant",
+      "linkedin_url": "https://linkedin.com/in/jackson-king",
+      "cv_url": "https://storage.example.com/cv/34987630-fabc-430c-afc2-fefb923b8669.pdf",
+      "status": "discarded",
+      "stage": "technical_interview",
+      "experience_years": 8,
+      "applied_at": "2026-03-06T20:04:32.114Z",
+      "updated_at": "2026-03-13T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "b18d5fd5-3369-4984-8d67-0bf69b88364e",
+      "full_name": "Chloe Murphy",
+      "email": "chloe.murphy@yahoo.com.au",
+      "phone": "+1 433-216-1968",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/chloe-murphy",
+      "cv_url": "https://storage.example.com/cv/b18d5fd5-3369-4984-8d67-0bf69b88364e.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-11T20:04:32.113Z",
+      "updated_at": "2026-03-11T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "3f7d281d-4125-4958-9577-047090d0e834",
+          "record_id": "b18d5fd5-3369-4984-8d67-0bf69b88364e",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "7c28e3b3-ca92-489f-a2c0-f353f2528aa7",
+      "full_name": "Charles Miller",
+      "email": "charles.miller@gmail.com",
+      "phone": "+1 397-206-5511",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/7c28e3b3-ca92-489f-a2c0-f353f2528aa7.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-16T20:04:32.113Z",
+      "updated_at": "2026-03-16T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "d173e522-5149-43f9-ad9f-d850174ad74f",
+          "record_id": "7c28e3b3-ca92-489f-a2c0-f353f2528aa7",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "435c5a2c-d48e-41ea-ba82-8991d8164001",
+      "full_name": "Sebastián Pérez Martínez",
+      "email": "sebastian.perez.martinez@live.com",
+      "phone": "+52 468 9746227",
+      "position": "Asistente de Dirección",
+      "linkedin_url": "https://linkedin.com/in/sebastian-perez-martinez",
+      "cv_url": "https://storage.example.com/cv/435c5a2c-d48e-41ea-ba82-8991d8164001.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 2,
+      "applied_at": "2026-03-17T20:04:32.113Z",
+      "updated_at": "2026-03-17T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "9c0251f4-31c7-4cb1-bed8-2dc069f01304",
+          "record_id": "435c5a2c-d48e-41ea-ba82-8991d8164001",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "b18e02f9-933c-446e-8234-9e19029fd6e1",
+      "full_name": "Sebastián Romero Ramírez",
+      "email": "sebastian.romero.ramirez@hotmail.com",
+      "phone": "+57 953 5863721",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/sebastian-romero-ramirez",
+      "cv_url": "https://storage.example.com/cv/b18e02f9-933c-446e-8234-9e19029fd6e1.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 10,
+      "applied_at": "2026-03-07T20:04:32.113Z",
+      "updated_at": "2026-03-07T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "f2868a47-cd89-42af-aa0d-cd1211c46ee5",
+          "record_id": "b18e02f9-933c-446e-8234-9e19029fd6e1",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "b247ae01-166f-49f2-ac45-310933e3484a",
+      "full_name": "Catalina Mendoza Vargas",
+      "email": "catalina.mendoza.vargas@outlook.com",
+      "phone": "+52 181 7543661",
+      "position": "Gerente de Oficina",
+      "linkedin_url": "https://linkedin.com/in/catalina-mendoza-vargas",
+      "cv_url": "https://storage.example.com/cv/b247ae01-166f-49f2-ac45-310933e3484a.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 5,
+      "applied_at": "2026-03-08T20:04:32.113Z",
+      "updated_at": "2026-03-08T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "cdc31c0f-f5da-4539-b83c-b3017a17b76e",
+          "record_id": "b247ae01-166f-49f2-ac45-310933e3484a",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "11fa3083-2dc1-43ab-b11d-f143b77d02c5",
+      "full_name": "Ella Morris",
+      "email": "ella.morris@hotmail.com",
+      "phone": "+1 661-281-8627",
+      "position": "Office Manager",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/11fa3083-2dc1-43ab-b11d-f143b77d02c5.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-21T20:04:32.113Z",
+      "updated_at": "2026-03-21T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "9045091b-a739-432f-9607-db9a53f356f2",
+          "record_id": "11fa3083-2dc1-43ab-b11d-f143b77d02c5",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "5713e690-d231-429a-b3ed-2a5272f13732",
+      "full_name": "Alejandro Torres Ramos",
+      "email": "alejandro.torres.ramos@outlook.es",
+      "phone": "+34 631330324",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/alejandro-torres-ramos",
+      "cv_url": "https://storage.example.com/cv/5713e690-d231-429a-b3ed-2a5272f13732.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-19T20:04:32.113Z",
+      "updated_at": "2026-03-19T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "daca7823-0a5c-4c9b-b1bb-f90b28bdd6c6",
+          "record_id": "5713e690-d231-429a-b3ed-2a5272f13732",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "d31b5a83-9b22-48e0-9d81-a4f24a6935dd",
+      "full_name": "Emily Williams",
+      "email": "emily.williams@icloud.com",
+      "phone": "+1 650-351-3756",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/d31b5a83-9b22-48e0-9d81-a4f24a6935dd.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-24T20:04:32.113Z",
+      "updated_at": "2026-03-24T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "cac1546c-d9c1-4e55-8dee-6e75a16f6f8e",
+          "record_id": "d31b5a83-9b22-48e0-9d81-a4f24a6935dd",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "88c363a4-39a7-4a9b-8861-beba57ad132b",
+      "full_name": "Sofía Romero López",
+      "email": "sofia.romero.lopez@hotmail.com",
+      "phone": "+54 748 5954556",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/sofia-romero-lopez",
+      "cv_url": "https://storage.example.com/cv/88c363a4-39a7-4a9b-8861-beba57ad132b.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-18T20:04:32.113Z",
+      "updated_at": "2026-03-18T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "228a764a-7af4-4a33-870d-767eea27a2cc",
+          "record_id": "88c363a4-39a7-4a9b-8861-beba57ad132b",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "6e74f065-8842-4949-867d-96c895283296",
+      "full_name": "Jackson Green",
+      "email": "jackson.green@icloud.com",
+      "phone": "+61 477791020",
+      "position": "Asistente de Dirección",
+      "linkedin_url": "https://linkedin.com/in/jackson-green",
+      "cv_url": "https://storage.example.com/cv/6e74f065-8842-4949-867d-96c895283296.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 4,
+      "applied_at": "2026-03-02T20:04:32.114Z",
+      "updated_at": "2026-03-23T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "6cf97fc7-6e2e-4b9d-9b85-3852a989aadc",
+      "full_name": "María Ramos García",
+      "email": "maria.ramos.garcia@outlook.es",
+      "phone": "+34 661957446",
+      "position": "Executive Assistant",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/6cf97fc7-6e2e-4b9d-9b85-3852a989aadc.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-19T20:04:32.114Z",
+      "updated_at": "2026-03-19T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "a2204a8a-1a61-464b-a772-9f748d1fa700",
+          "record_id": "6cf97fc7-6e2e-4b9d-9b85-3852a989aadc",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "4626bb20-fc2f-4854-83e9-455a785ee36a",
+      "full_name": "Camila Cruz López",
+      "email": "camila.cruz.lopez@hotmail.com",
+      "phone": "+51 796 5868799",
+      "position": "Auxiliar de Dirección",
+      "linkedin_url": "https://linkedin.com/in/camila-cruz-lopez",
+      "cv_url": "https://storage.example.com/cv/4626bb20-fc2f-4854-83e9-455a785ee36a.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-15T20:04:32.113Z",
+      "updated_at": "2026-03-15T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "05720f78-6844-41d2-935e-5d1aebb6a420",
+          "record_id": "4626bb20-fc2f-4854-83e9-455a785ee36a",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "92e80d73-3216-4c78-bea7-974087254411",
+      "full_name": "Sofía Sánchez Castillo",
+      "email": "sofia.sanchez.castillo@gmail.com",
+      "phone": "+57 364 1963585",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/sofia-sanchez-castillo",
+      "cv_url": "https://storage.example.com/cv/92e80d73-3216-4c78-bea7-974087254411.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 5,
+      "applied_at": "2026-03-27T20:04:32.113Z",
+      "updated_at": "2026-03-27T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "5a1ae105-7e45-4e4d-b2b2-91c1a840e51d",
+          "record_id": "92e80d73-3216-4c78-bea7-974087254411",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "43146958-332a-4ce8-9834-ddc0cefe94c3",
+      "full_name": "Martín García Castillo",
+      "email": "martin.garcia.castillo@yahoo.com",
+      "phone": "+54 852 3074871",
+      "position": "Asistente de Dirección",
+      "linkedin_url": "https://linkedin.com/in/martin-garcia-castillo",
+      "cv_url": "https://storage.example.com/cv/43146958-332a-4ce8-9834-ddc0cefe94c3.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-23T20:04:32.113Z",
+      "updated_at": "2026-03-23T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "e36132cc-8fd1-43fe-b90f-d3893019b322",
+          "record_id": "43146958-332a-4ce8-9834-ddc0cefe94c3",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "c29e8544-c75b-4861-a276-b1a1e344dfa4",
+      "full_name": "Noah Wright",
+      "email": "noah.wright@yahoo.ca",
+      "phone": "+61 486535812",
+      "position": "Responsable de Administración",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/c29e8544-c75b-4861-a276-b1a1e344dfa4.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-13T20:04:32.114Z",
+      "updated_at": "2026-03-13T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "bb32e491-0e10-4c14-8378-c312e935cdb2",
+          "record_id": "c29e8544-c75b-4861-a276-b1a1e344dfa4",
+          "content": "Perfil revisado. Skills técnicos correctos, pendiente validar soft skills.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "cb55b8c1-a38d-44f0-965b-629c16a1b3f7",
+      "full_name": "Sophia Mitchell",
+      "email": "sophia.mitchell@yahoo.com.au",
+      "phone": "+1 506-143-7390",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/cb55b8c1-a38d-44f0-965b-629c16a1b3f7.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 5,
+      "applied_at": "2026-03-07T20:04:32.113Z",
+      "updated_at": "2026-03-07T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "72c9f65c-535a-461a-bfdf-4125cea1239a",
+          "record_id": "cb55b8c1-a38d-44f0-965b-629c16a1b3f7",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "b75840c6-c335-442e-a821-c6035d1a643b",
+      "full_name": "Irene Martínez Hernández",
+      "email": "irene.martinez.hernandez@hotmail.es",
+      "phone": "+34 665292651",
+      "position": "Office Manager",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/b75840c6-c335-442e-a821-c6035d1a643b.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 1,
+      "applied_at": "2026-03-19T20:04:32.113Z",
+      "updated_at": "2026-03-19T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "e62a33e0-5f85-4789-8cf6-df6a5fc5f790",
+          "record_id": "b75840c6-c335-442e-a821-c6035d1a643b",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "17995a4d-5188-44ff-aecd-ecaf64776df6",
+      "full_name": "Pilar López González",
+      "email": "pilar.lopez.gonzalez@gmail.com",
+      "phone": "+34 632566652",
+      "position": "Asistente de Dirección",
+      "linkedin_url": "https://linkedin.com/in/pilar-lopez-gonzalez",
+      "cv_url": "https://storage.example.com/cv/17995a4d-5188-44ff-aecd-ecaf64776df6.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 5,
+      "applied_at": "2026-02-18T20:04:32.114Z",
+      "updated_at": "2026-03-31T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "71124aeb-0281-47cb-ba73-5f76cc9601ef",
+          "record_id": "17995a4d-5188-44ff-aecd-ecaf64776df6",
+          "content": "Perfil revisado. Skills técnicos correctos, pendiente validar soft skills.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "d10a151a-b686-43f7-b810-7a5a3f9ab982",
+      "full_name": "Abigail Scott",
+      "email": "abigail.scott@gmail.com",
+      "phone": "+1 598-133-3164",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/d10a151a-b686-43f7-b810-7a5a3f9ab982.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-12T20:04:32.113Z",
+      "updated_at": "2026-03-12T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "b94e1438-c107-4904-8c8e-ea391fb21d48",
+          "record_id": "d10a151a-b686-43f7-b810-7a5a3f9ab982",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "0c501349-afd1-4c7a-93de-aec6717c9693",
+      "full_name": "Isabella Rodríguez Vargas",
+      "email": "isabella.rodriguez.vargas@hotmail.com",
+      "phone": "+52 569 7986692",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/isabella-rodriguez-vargas",
+      "cv_url": "https://storage.example.com/cv/0c501349-afd1-4c7a-93de-aec6717c9693.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 9,
+      "applied_at": "2026-02-18T20:04:32.114Z",
+      "updated_at": "2026-03-29T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "1d8eb6c8-6a3e-4fa2-bd3a-94cd90816b78",
+          "record_id": "0c501349-afd1-4c7a-93de-aec6717c9693",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "aef5f0ff-bd80-42db-96aa-191318c99c1d",
+      "full_name": "Sarah White",
+      "email": "sarah.white@hotmail.com",
+      "phone": "+1 254-850-3327",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/sarah-white",
+      "cv_url": "https://storage.example.com/cv/aef5f0ff-bd80-42db-96aa-191318c99c1d.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-05T20:04:32.114Z",
+      "updated_at": "2026-03-05T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "e80130b2-0feb-412f-8c19-2d0ce9778555",
+          "record_id": "aef5f0ff-bd80-42db-96aa-191318c99c1d",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "15b26aed-0c2b-4497-be1e-6c9f05f3090a",
+      "full_name": "Sergio Ramos Hernández",
+      "email": "sergio.ramos.hernandez@yahoo.es",
+      "phone": "+34 696088996",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/15b26aed-0c2b-4497-be1e-6c9f05f3090a.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 5,
+      "applied_at": "2026-02-26T20:04:32.114Z",
+      "updated_at": "2026-03-27T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "8e13dd82-c562-43b5-86fb-51df910cfbcb",
+      "full_name": "Andrés López López",
+      "email": "andres.lopez.lopez@outlook.com",
+      "phone": "+51 407 8318218",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/andres-lopez-lopez",
+      "cv_url": "https://storage.example.com/cv/8e13dd82-c562-43b5-86fb-51df910cfbcb.pdf",
+      "status": "in_progress",
+      "stage": "personal_interview",
+      "experience_years": 4,
+      "applied_at": "2026-03-08T20:04:32.114Z",
+      "updated_at": "2026-03-22T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "94fb7284-d9a8-4927-8cb6-0e9a624f1d5c",
+          "record_id": "8e13dd82-c562-43b5-86fb-51df910cfbcb",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        },
+        {
+          "id": "b34431a1-cece-46fd-aed3-c2c615065faa",
+          "record_id": "8e13dd82-c562-43b5-86fb-51df910cfbcb",
+          "content": "Mostró iniciativa y capacidad de trabajo en equipo. Muy buena impresión.",
+          "created_at": "2026-03-28T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 2
+    },
+    {
+      "id": "6ce3ca9f-d3ff-42be-9569-191b7f659b28",
+      "full_name": "Karen Jones",
+      "email": "karen.jones@yahoo.com",
+      "phone": "+1 770-957-9218",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": "https://linkedin.com/in/karen-jones",
+      "cv_url": "https://storage.example.com/cv/6ce3ca9f-d3ff-42be-9569-191b7f659b28.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 9,
+      "applied_at": "2026-03-01T20:04:32.114Z",
+      "updated_at": "2026-03-24T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "829df79a-d695-441e-88e4-7401ef5b772f",
+          "record_id": "6ce3ca9f-d3ff-42be-9569-191b7f659b28",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "dbd17539-5bcd-4c2b-ba2d-f06266030f87",
+      "full_name": "Charles Clark",
+      "email": "charles.clark@gmail.com",
+      "phone": "+1 282-582-5237",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/charles-clark",
+      "cv_url": "https://storage.example.com/cv/dbd17539-5bcd-4c2b-ba2d-f06266030f87.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 5,
+      "applied_at": "2026-03-06T20:04:32.113Z",
+      "updated_at": "2026-03-06T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "9e5ee158-f650-4f2c-a782-7be0f8c6d4f8",
+          "record_id": "dbd17539-5bcd-4c2b-ba2d-f06266030f87",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "6c3dc36f-6d15-4948-a9c0-14b93ddf6453",
+      "full_name": "Lucía Martínez Sánchez",
+      "email": "lucia.martinez.sanchez@live.com",
+      "phone": "+34 627571161",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": "https://linkedin.com/in/lucia-martinez-sanchez",
+      "cv_url": "https://storage.example.com/cv/6c3dc36f-6d15-4948-a9c0-14b93ddf6453.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-07T20:04:32.114Z",
+      "updated_at": "2026-03-07T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "77ae34b2-253b-4a6b-88c5-f9a31d6ed674",
+          "record_id": "6c3dc36f-6d15-4948-a9c0-14b93ddf6453",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "b06593d0-2728-4c93-adcc-94398ad596eb",
+      "full_name": "Óscar Molina Molina",
+      "email": "oscar.molina.molina@gmail.com",
+      "phone": "+34 696604097",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/oscar-molina-molina",
+      "cv_url": "https://storage.example.com/cv/b06593d0-2728-4c93-adcc-94398ad596eb.pdf",
+      "status": "in_progress",
+      "stage": "technical_interview",
+      "experience_years": 7,
+      "applied_at": "2026-02-22T20:04:32.114Z",
+      "updated_at": "2026-03-31T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "6d3c7cfd-8062-47b8-8d4e-609cf620b1c4",
+          "record_id": "b06593d0-2728-4c93-adcc-94398ad596eb",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        },
+        {
+          "id": "076afe00-846c-4dc1-b555-7f4e904a0d07",
+          "record_id": "b06593d0-2728-4c93-adcc-94398ad596eb",
+          "content": "Buena presencia y comunicación. Pendiente confirmar disponibilidad de incorporación.",
+          "created_at": "2026-03-27T20:04:32.114Z"
+        },
+        {
+          "id": "32b3e1e7-4cc4-4ce2-83a4-37ca415620f4",
+          "record_id": "b06593d0-2728-4c93-adcc-94398ad596eb",
+          "content": "Buen manejo de las herramientas del stack. Alguna duda en sistemas distribuidos.",
+          "created_at": "2026-03-30T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 3
+    },
+    {
+      "id": "6ce1721e-a746-4cc6-9347-e2c4be0cd164",
+      "full_name": "Sarah Lopez",
+      "email": "sarah.lopez@outlook.com",
+      "phone": "+1 760-261-1400",
+      "position": "Responsable de Administración",
+      "linkedin_url": "https://linkedin.com/in/sarah-lopez",
+      "cv_url": "https://storage.example.com/cv/6ce1721e-a746-4cc6-9347-e2c4be0cd164.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-16T20:04:32.113Z",
+      "updated_at": "2026-03-16T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "7ed5f41d-0bdd-4638-b582-58a79180a375",
+          "record_id": "6ce1721e-a746-4cc6-9347-e2c4be0cd164",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "bc19279b-fed5-4701-bdbe-1191295c8d98",
+      "full_name": "Noah Evans",
+      "email": "noah.evans@hotmail.com",
+      "phone": "+61 415838159",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/bc19279b-fed5-4701-bdbe-1191295c8d98.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 8,
+      "applied_at": "2026-03-04T20:04:32.114Z",
+      "updated_at": "2026-03-27T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "123ffba4-6914-4443-aa6d-e42efb52da8e",
+      "full_name": "Mary Martin",
+      "email": "mary.martin@gmail.com",
+      "phone": "+1 667-599-6543",
+      "position": "Técnica/o en Gestión y Organización",
+      "linkedin_url": "https://linkedin.com/in/mary-martin",
+      "cv_url": "https://storage.example.com/cv/123ffba4-6914-4443-aa6d-e42efb52da8e.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-19T20:04:32.113Z",
+      "updated_at": "2026-03-19T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "d9c2f13e-c6bd-45ac-8088-d57b65dc68d3",
+          "record_id": "123ffba4-6914-4443-aa6d-e42efb52da8e",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "6f7df066-e440-40f5-8926-eef16ca3d341",
+      "full_name": "Ashley Hernandez",
+      "email": "ashley.hernandez@hotmail.com",
+      "phone": "+1 289-996-2726",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/ashley-hernandez",
+      "cv_url": "https://storage.example.com/cv/6f7df066-e440-40f5-8926-eef16ca3d341.pdf",
+      "status": "discarded",
+      "stage": "review",
+      "experience_years": 2,
+      "applied_at": "2026-03-14T20:04:32.114Z",
+      "updated_at": "2026-03-31T20:04:32.114Z",
+      "notes": [],
+      "notes_count": 0
+    },
+    {
+      "id": "bca3c462-083f-45dd-8b71-ac898e8551be",
+      "full_name": "Grace Adams",
+      "email": "grace.adams@icloud.com",
+      "phone": "+1 571-959-9938",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/bca3c462-083f-45dd-8b71-ac898e8551be.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-15T20:04:32.114Z",
+      "updated_at": "2026-03-15T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "a1272b55-8d66-416a-a347-88f0ec6dd0b9",
+          "record_id": "bca3c462-083f-45dd-8b71-ac898e8551be",
+          "content": "Perfil revisado. Skills técnicos correctos, pendiente validar soft skills.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "a9d900cc-7503-436a-acd3-90daad3ee54f",
+      "full_name": "Martín Pérez Martínez",
+      "email": "martin.perez.martinez@hotmail.com",
+      "phone": "+51 859 8192503",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/a9d900cc-7503-436a-acd3-90daad3ee54f.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-04T20:04:32.113Z",
+      "updated_at": "2026-03-04T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "5d57f153-641d-41d5-b072-4e05fccc2741",
+          "record_id": "a9d900cc-7503-436a-acd3-90daad3ee54f",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "78127109-8ed2-4a8e-9d59-9e95a0f21a62",
+      "full_name": "Elizabeth Gonzalez",
+      "email": "elizabeth.gonzalez@gmail.com",
+      "phone": "+1 820-718-4831",
+      "position": "Executive Assistant",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/78127109-8ed2-4a8e-9d59-9e95a0f21a62.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 5,
+      "applied_at": "2026-03-04T20:04:32.114Z",
+      "updated_at": "2026-03-04T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "00baf774-dbf6-443a-ac7f-652121636be3",
+          "record_id": "78127109-8ed2-4a8e-9d59-9e95a0f21a62",
+          "content": "Perfil revisado. Skills técnicos correctos, pendiente validar soft skills.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "08107744-6f01-46a7-93fd-660b4aba6cc3",
+      "full_name": "Diego Rivera Torres",
+      "email": "diego.rivera.torres@live.com",
+      "phone": "+51 468 9356089",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/08107744-6f01-46a7-93fd-660b4aba6cc3.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 7,
+      "applied_at": "2026-03-23T20:04:32.113Z",
+      "updated_at": "2026-03-23T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "0943680e-b485-4667-b678-2e0c2e8ac620",
+          "record_id": "08107744-6f01-46a7-93fd-660b4aba6cc3",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "ab42c7e4-eb27-403d-92ea-42a1db25c642",
+      "full_name": "Oliver Hill",
+      "email": "oliver.hill@yahoo.ca",
+      "phone": "+1 555-861-3713",
+      "position": "Office Manager",
+      "linkedin_url": "https://linkedin.com/in/oliver-hill",
+      "cv_url": "https://storage.example.com/cv/ab42c7e4-eb27-403d-92ea-42a1db25c642.pdf",
+      "status": "in_progress",
+      "stage": "technical_interview",
+      "experience_years": 3,
+      "applied_at": "2026-02-06T20:04:32.114Z",
+      "updated_at": "2026-03-10T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "af5ad50f-95b0-404f-a8f2-9058c195c596",
+          "record_id": "ab42c7e4-eb27-403d-92ea-42a1db25c642",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        },
+        {
+          "id": "0dc2508a-e98b-454f-8625-f22c196bffc5",
+          "record_id": "ab42c7e4-eb27-403d-92ea-42a1db25c642",
+          "content": "Buen perfil humano. Encajaría bien con la cultura del equipo.",
+          "created_at": "2026-03-27T20:04:32.114Z"
+        },
+        {
+          "id": "5ad2b48d-928f-4660-ad31-309fad3e500f",
+          "record_id": "ab42c7e4-eb27-403d-92ea-42a1db25c642",
+          "content": "Prueba técnica enviada. Pendiente de recibir resultados.",
+          "created_at": "2026-03-31T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 3
+    },
+    {
+      "id": "3023cd20-118c-45a7-843b-88870bc04516",
+      "full_name": "Charles Moore",
+      "email": "charles.moore@hotmail.com",
+      "phone": "+1 398-908-8249",
+      "position": "Executive Assistant",
+      "linkedin_url": "https://linkedin.com/in/charles-moore",
+      "cv_url": "https://storage.example.com/cv/3023cd20-118c-45a7-843b-88870bc04516.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-15T20:04:32.113Z",
+      "updated_at": "2026-03-15T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "b1c7744a-825e-45bb-8f09-0e42e593d240",
+          "record_id": "3023cd20-118c-45a7-843b-88870bc04516",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "358f8063-835c-4fcb-942c-b9ecb57b8c61",
+      "full_name": "Diego Herrera Aguilar",
+      "email": "diego.herrera.aguilar@live.com",
+      "phone": "+54 460 9533642",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": "https://linkedin.com/in/diego-herrera-aguilar",
+      "cv_url": "https://storage.example.com/cv/358f8063-835c-4fcb-942c-b9ecb57b8c61.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 7,
+      "applied_at": "2026-03-14T20:04:32.113Z",
+      "updated_at": "2026-03-14T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "0e2e0ae2-23b7-498e-beaa-ba2f840487d5",
+          "record_id": "358f8063-835c-4fcb-942c-b9ecb57b8c61",
+          "content": "Perfil junior pero con proyectos personales relevantes. Vale la pena considerar.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "86f2b8cf-d96d-4fa3-a6e4-58c9fd442e40",
+      "full_name": "Mary Davis",
+      "email": "mary.davis@icloud.com",
+      "phone": "+1 451-255-7960",
+      "position": "Auxiliar de Dirección",
+      "linkedin_url": "https://linkedin.com/in/mary-davis",
+      "cv_url": "https://storage.example.com/cv/86f2b8cf-d96d-4fa3-a6e4-58c9fd442e40.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 10,
+      "applied_at": "2026-02-27T20:04:32.114Z",
+      "updated_at": "2026-03-22T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "bb556137-69d2-45e1-9595-3e5532bb5cae",
+          "record_id": "86f2b8cf-d96d-4fa3-a6e4-58c9fd442e40",
+          "content": "Perfil revisado. Skills técnicos correctos, pendiente validar soft skills.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "6be0e731-7cb7-4c6b-8b68-eb9043b6a678",
+      "full_name": "Mary Smith",
+      "email": "mary.smith@outlook.com",
+      "phone": "+1 344-186-4876",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/mary-smith",
+      "cv_url": "https://storage.example.com/cv/6be0e731-7cb7-4c6b-8b68-eb9043b6a678.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 2,
+      "applied_at": "2026-03-15T20:04:32.114Z",
+      "updated_at": "2026-03-15T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "1b3d9461-1cb2-43c0-a960-239e589cdc46",
+          "record_id": "6be0e731-7cb7-4c6b-8b68-eb9043b6a678",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "9914acef-8778-4201-ae00-95f1936e3ef6",
+      "full_name": "Noah Campbell",
+      "email": "noah.campbell@icloud.com",
+      "phone": "+1 669-459-3170",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/9914acef-8778-4201-ae00-95f1936e3ef6.pdf",
+      "status": "in_progress",
+      "stage": "personal_interview",
+      "experience_years": 6,
+      "applied_at": "2026-02-16T20:04:32.114Z",
+      "updated_at": "2026-03-26T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "2c5033b3-312e-46b6-bb1a-13f47000c456",
+          "record_id": "9914acef-8778-4201-ae00-95f1936e3ef6",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        },
+        {
+          "id": "b32f3074-971d-429b-b557-d2e399688e64",
+          "record_id": "9914acef-8778-4201-ae00-95f1936e3ef6",
+          "content": "Mostró iniciativa y capacidad de trabajo en equipo. Muy buena impresión.",
+          "created_at": "2026-03-27T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 2
+    },
+    {
+      "id": "6a4c0cb7-d991-4851-af66-6535c40f626b",
+      "full_name": "Marta Vázquez Alonso",
+      "email": "marta.vazquez.alonso@hotmail.es",
+      "phone": "+34 631967341",
+      "position": "Responsable de Administración",
+      "linkedin_url": "https://linkedin.com/in/marta-vazquez-alonso",
+      "cv_url": "https://storage.example.com/cv/6a4c0cb7-d991-4851-af66-6535c40f626b.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 10,
+      "applied_at": "2026-03-08T20:04:32.113Z",
+      "updated_at": "2026-03-08T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "6af4e1f2-3199-40ec-8fb2-4c755de6443f",
+          "record_id": "6a4c0cb7-d991-4851-af66-6535c40f626b",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "b61317ca-cb7e-43db-959b-75aab416ccb3",
+      "full_name": "Mariana Rodríguez Gutiérrez",
+      "email": "mariana.rodriguez.gutierrez@hotmail.com",
+      "phone": "+58 585 8481615",
+      "position": "Responsable de Administración",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/b61317ca-cb7e-43db-959b-75aab416ccb3.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-09T20:04:32.114Z",
+      "updated_at": "2026-03-09T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "52d0fc88-6977-4b4a-9bac-e5bf2b2760bc",
+          "record_id": "b61317ca-cb7e-43db-959b-75aab416ccb3",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "4cd4cb95-d936-4fc1-b171-43565f22a140",
+      "full_name": "Víctor Hernández Díaz",
+      "email": "victor.hernandez.diaz@outlook.es",
+      "phone": "+34 682598190",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/victor-hernandez-diaz",
+      "cv_url": "https://storage.example.com/cv/4cd4cb95-d936-4fc1-b171-43565f22a140.pdf",
+      "status": "in_progress",
+      "stage": "technical_interview",
+      "experience_years": 7,
+      "applied_at": "2026-03-01T20:04:32.114Z",
+      "updated_at": "2026-03-28T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "f633e7ed-4585-42af-a68a-c90eaeeaa17d",
+          "record_id": "4cd4cb95-d936-4fc1-b171-43565f22a140",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        },
+        {
+          "id": "354edfdb-fe57-427e-8422-9309eb1e17ed",
+          "record_id": "4cd4cb95-d936-4fc1-b171-43565f22a140",
+          "content": "Mostró iniciativa y capacidad de trabajo en equipo. Muy buena impresión.",
+          "created_at": "2026-03-28T20:04:32.114Z"
+        },
+        {
+          "id": "cbe5c04c-f2de-42e6-993b-c82fd0b9ce68",
+          "record_id": "4cd4cb95-d936-4fc1-b171-43565f22a140",
+          "content": "Entrevista técnica completada. Resolvió los ejercicios con soltura.",
+          "created_at": "2026-03-30T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 3
+    },
+    {
+      "id": "7b5d7cc1-4fa5-4f93-8f6c-4275e263f628",
+      "full_name": "Charlotte Robinson",
+      "email": "charlotte.robinson@yahoo.com.au",
+      "phone": "+1 602-166-9633",
+      "position": "Gerente de Oficina",
+      "linkedin_url": "https://linkedin.com/in/charlotte-robinson",
+      "cv_url": "https://storage.example.com/cv/7b5d7cc1-4fa5-4f93-8f6c-4275e263f628.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 5,
+      "applied_at": "2026-03-09T20:04:32.114Z",
+      "updated_at": "2026-03-09T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "82358fee-432c-4a64-8670-d400d2b79a44",
+          "record_id": "7b5d7cc1-4fa5-4f93-8f6c-4275e263f628",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "1fe74d1d-7161-4e60-98b5-997348196599",
+      "full_name": "Mateo Vargas Herrera",
+      "email": "mateo.vargas.herrera@yahoo.com",
+      "phone": "+56 738 9636206",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/1fe74d1d-7161-4e60-98b5-997348196599.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 8,
+      "applied_at": "2026-03-06T20:04:32.114Z",
+      "updated_at": "2026-03-19T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "03e574b1-c111-4283-a21b-2925a927f655",
+          "record_id": "1fe74d1d-7161-4e60-98b5-997348196599",
+          "content": "CV destacado. Experiencia en empresas del sector, encaja bien con el puesto.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "dbbd14ae-b13c-4801-adb9-b49a125f788f",
+      "full_name": "Adrián Pérez Jiménez",
+      "email": "adrian.perez.jimenez@hotmail.es",
+      "phone": "+34 673883062",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/dbbd14ae-b13c-4801-adb9-b49a125f788f.pdf",
+      "status": "in_progress",
+      "stage": "technical_interview",
+      "experience_years": 2,
+      "applied_at": "2026-02-17T20:04:32.114Z",
+      "updated_at": "2026-03-11T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "00c982fe-b620-4c40-b276-57eb282add95",
+          "record_id": "dbbd14ae-b13c-4801-adb9-b49a125f788f",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        },
+        {
+          "id": "f53f3693-be3a-4bee-8290-e10a6f7c4d69",
+          "record_id": "dbbd14ae-b13c-4801-adb9-b49a125f788f",
+          "content": "Entrevista fluida. Explica bien su experiencia y tiene pensamiento estructurado.",
+          "created_at": "2026-03-27T20:04:32.114Z"
+        },
+        {
+          "id": "315c4e07-114e-4b8b-b6ee-d5f98bf987ed",
+          "record_id": "dbbd14ae-b13c-4801-adb9-b49a125f788f",
+          "content": "Prueba técnica enviada. Pendiente de recibir resultados.",
+          "created_at": "2026-03-30T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 3
+    },
+    {
+      "id": "50eaf7ae-dbaf-4b48-a4a6-3558c2518209",
+      "full_name": "Jennifer Moore",
+      "email": "jennifer.moore@yahoo.com",
+      "phone": "+1 297-237-8602",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/50eaf7ae-dbaf-4b48-a4a6-3558c2518209.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 5,
+      "applied_at": "2026-03-10T20:04:32.114Z",
+      "updated_at": "2026-03-25T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "8b3a3025-5722-4bbf-83c8-d2655d1450e0",
+          "record_id": "50eaf7ae-dbaf-4b48-a4a6-3558c2518209",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "4e127b31-d8a7-4d6c-8bd7-a903f405f0b9",
+      "full_name": "Elijah Baker",
+      "email": "elijah.baker@yahoo.com.au",
+      "phone": "+61 425804637",
+      "position": "Executive Assistant",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/4e127b31-d8a7-4d6c-8bd7-a903f405f0b9.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 2,
+      "applied_at": "2026-03-27T20:04:32.113Z",
+      "updated_at": "2026-03-27T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "830f23e3-788b-4ed3-aeb6-54f7ce2ae678",
+          "record_id": "4e127b31-d8a7-4d6c-8bd7-a903f405f0b9",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "63cb5b38-bc41-49ca-a655-a94d537db497",
+      "full_name": "Fernanda Herrera Gutiérrez",
+      "email": "fernanda.herrera.gutierrez@hotmail.com",
+      "phone": "+57 251 1816764",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/63cb5b38-bc41-49ca-a655-a94d537db497.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-13T20:04:32.113Z",
+      "updated_at": "2026-03-13T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "1b7856d7-a493-4135-a94e-04542ad9c657",
+          "record_id": "63cb5b38-bc41-49ca-a655-a94d537db497",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "d5c59370-fee0-4fad-bc22-55632ed7a093",
+      "full_name": "Marcos López López",
+      "email": "marcos.lopez.lopez@gmail.com",
+      "phone": "+34 663053982",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/marcos-lopez-lopez",
+      "cv_url": "https://storage.example.com/cv/d5c59370-fee0-4fad-bc22-55632ed7a093.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 6,
+      "applied_at": "2026-03-10T20:04:32.114Z",
+      "updated_at": "2026-03-23T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "767b3fcd-81d2-4d54-82e0-7a3f1cef4a53",
+          "record_id": "d5c59370-fee0-4fad-bc22-55632ed7a093",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "a2ecc0c3-4677-45e0-b01b-4eb44d3761d0",
+      "full_name": "Amelia Baker",
+      "email": "amelia.baker@yahoo.com.au",
+      "phone": "+61 499255278",
+      "position": "Responsable de Administración",
+      "linkedin_url": "https://linkedin.com/in/amelia-baker",
+      "cv_url": "https://storage.example.com/cv/a2ecc0c3-4677-45e0-b01b-4eb44d3761d0.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 3,
+      "applied_at": "2026-03-17T20:04:32.113Z",
+      "updated_at": "2026-03-17T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "21781262-a941-4b14-a6a4-725fb686cd59",
+          "record_id": "a2ecc0c3-4677-45e0-b01b-4eb44d3761d0",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "376edab2-6b94-453f-bd47-55aa48df12e6",
+      "full_name": "Nicolás García Reyes",
+      "email": "nicolas.garcia.reyes@yahoo.com",
+      "phone": "+56 345 4375136",
+      "position": "Office Manager",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/376edab2-6b94-453f-bd47-55aa48df12e6.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-17T20:04:32.114Z",
+      "updated_at": "2026-03-17T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "ff6826e9-ec53-4fb6-92ed-b962cf040d84",
+          "record_id": "376edab2-6b94-453f-bd47-55aa48df12e6",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "e661ef4c-3e2a-47c9-ac8a-5d95892bd6d7",
+      "full_name": "Víctor Romero Blanco",
+      "email": "victor.romero.blanco@gmail.com",
+      "phone": "+34 630431381",
+      "position": "Coordinadora/or Administrativa/o",
+      "linkedin_url": "https://linkedin.com/in/victor-romero-blanco",
+      "cv_url": "https://storage.example.com/cv/e661ef4c-3e2a-47c9-ac8a-5d95892bd6d7.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 7,
+      "applied_at": "2026-03-18T20:04:32.113Z",
+      "updated_at": "2026-03-18T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "806243cd-a336-41b5-91bc-d274ba06258b",
+          "record_id": "e661ef4c-3e2a-47c9-ac8a-5d95892bd6d7",
+          "content": "Experiencia algo corta pero la formación es sólida. Revisar con más detalle.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "641c213f-8220-4969-852d-e8a6003dda59",
+      "full_name": "Robert Smith",
+      "email": "robert.smith@hotmail.com",
+      "phone": "+1 595-829-2978",
+      "position": "Responsable de Administración",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/641c213f-8220-4969-852d-e8a6003dda59.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 9,
+      "applied_at": "2026-03-12T20:04:32.113Z",
+      "updated_at": "2026-03-12T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "a990a7d8-0bfb-49a2-8d54-7753dd34421f",
+          "record_id": "641c213f-8220-4969-852d-e8a6003dda59",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "9e8272d3-aecd-4e03-a430-855280d04c7c",
+      "full_name": "Jimena López García",
+      "email": "jimena.lopez.garcia@hotmail.com",
+      "phone": "+52 261 9781191",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/9e8272d3-aecd-4e03-a430-855280d04c7c.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 7,
+      "applied_at": "2026-03-02T20:04:32.114Z",
+      "updated_at": "2026-03-19T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "b4a1a70a-58eb-4061-9643-558861b0efd0",
+          "record_id": "9e8272d3-aecd-4e03-a430-855280d04c7c",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "bacfdd42-2e14-4e18-ba80-18b0356bef09",
+      "full_name": "John Moore",
+      "email": "john.moore@gmail.com",
+      "phone": "+1 330-643-5647",
+      "position": "Responsable de Administración",
+      "linkedin_url": "https://linkedin.com/in/john-moore",
+      "cv_url": "https://storage.example.com/cv/bacfdd42-2e14-4e18-ba80-18b0356bef09.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 1,
+      "applied_at": "2026-03-21T20:04:32.113Z",
+      "updated_at": "2026-03-21T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "23a8a907-a660-4c25-9a3b-dfa7d6bf9e90",
+          "record_id": "bacfdd42-2e14-4e18-ba80-18b0356bef09",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "85e9bbf2-7ba0-41c5-a971-7b50bb762015",
+      "full_name": "Mary Martin",
+      "email": "mary.martin@outlook.com",
+      "phone": "+1 618-233-5045",
+      "position": "Licenciada/o en Administración de Empresas",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/85e9bbf2-7ba0-41c5-a971-7b50bb762015.pdf",
+      "status": "in_progress",
+      "stage": "review",
+      "experience_years": 5,
+      "applied_at": "2026-02-24T20:04:32.114Z",
+      "updated_at": "2026-03-28T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "91e156b6-f7d7-4979-92eb-869d08daba30",
+          "record_id": "85e9bbf2-7ba0-41c5-a971-7b50bb762015",
+          "content": "Candidatura recibida. Pendiente de revisión inicial por el equipo.",
+          "created_at": "2026-03-24T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "0fd9b2f9-8053-41aa-afa6-7244dd24a3e1",
+      "full_name": "Laura Navarro Torres",
+      "email": "laura.navarro.torres@hotmail.es",
+      "phone": "+34 653846638",
+      "position": "Asistente de Dirección",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/0fd9b2f9-8053-41aa-afa6-7244dd24a3e1.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 2,
+      "applied_at": "2026-03-10T20:04:32.113Z",
+      "updated_at": "2026-03-10T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "47aa93e1-bdd8-4c44-82ea-f1a7e568e6b8",
+          "record_id": "0fd9b2f9-8053-41aa-afa6-7244dd24a3e1",
+          "content": "CV revisado. Perfil interesante, experiencia alineada con el puesto.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "1cba5eb2-b337-4fd9-a74f-a5975c759db8",
+      "full_name": "Jennifer Hernandez",
+      "email": "jennifer.hernandez@gmail.com",
+      "phone": "+1 658-191-5677",
+      "position": "Gerente de Oficina",
+      "linkedin_url": "https://linkedin.com/in/jennifer-hernandez",
+      "cv_url": "https://storage.example.com/cv/1cba5eb2-b337-4fd9-a74f-a5975c759db8.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 8,
+      "applied_at": "2026-03-16T20:04:32.113Z",
+      "updated_at": "2026-03-16T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "7ab23fac-e1d1-4d34-b553-c8b49b674bab",
+          "record_id": "1cba5eb2-b337-4fd9-a74f-a5975c759db8",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "ff5a200c-d88b-48ca-9adb-ffe8479c269d",
+      "full_name": "Scarlett Baker",
+      "email": "scarlett.baker@outlook.com",
+      "phone": "+1 551-448-6851",
+      "position": "Jefa/e de Gabinete",
+      "linkedin_url": "https://linkedin.com/in/scarlett-baker",
+      "cv_url": "https://storage.example.com/cv/ff5a200c-d88b-48ca-9adb-ffe8479c269d.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 10,
+      "applied_at": "2026-03-15T20:04:32.113Z",
+      "updated_at": "2026-03-15T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "eefbef3f-02ce-44f9-b164-5c4a9bff84a9",
+          "record_id": "ff5a200c-d88b-48ca-9adb-ffe8479c269d",
+          "content": "Primera revisión completada. Candidato con buen potencial de crecimiento.",
+          "created_at": "2026-03-24T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "26b50bc5-04c6-450d-8f51-8b4ad8cc0a0c",
+      "full_name": "Ella Collins",
+      "email": "ella.collins@gmail.com",
+      "phone": "+61 472644649",
+      "position": "Executive Assistant",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/26b50bc5-04c6-450d-8f51-8b4ad8cc0a0c.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 10,
+      "applied_at": "2026-03-18T20:04:32.111Z",
+      "updated_at": "2026-03-18T20:04:32.111Z",
+      "notes": [
+        {
+          "id": "b579954d-5937-41f7-abf5-a20ab28b4d00",
+          "record_id": "26b50bc5-04c6-450d-8f51-8b4ad8cc0a0c",
+          "content": "Buen nivel técnico en el CV. Llama la atención su trayectoria en startups.",
+          "created_at": "2026-03-24T20:04:32.112Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "a491ffae-88b7-45ba-ac65-f1bc862b8c0a",
+      "full_name": "Laura Alonso Ruiz",
+      "email": "laura.alonso.ruiz@yahoo.es",
+      "phone": "+34 686128807",
+      "position": "Secretaria/o Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/laura-alonso-ruiz",
+      "cv_url": "https://storage.example.com/cv/a491ffae-88b7-45ba-ac65-f1bc862b8c0a.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-13T20:04:32.114Z",
+      "updated_at": "2026-03-13T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "43ea9b75-969f-4327-aaff-e968d856fec9",
+          "record_id": "a491ffae-88b7-45ba-ac65-f1bc862b8c0a",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "fb9228da-ab2d-4dca-aac8-41b44bd3235d",
+      "full_name": "Raquel Díaz Vázquez",
+      "email": "raquel.diaz.vazquez@yahoo.es",
+      "phone": "+34 673445462",
+      "position": "Asistente Ejecutiva/o",
+      "linkedin_url": "https://linkedin.com/in/raquel-diaz-vazquez",
+      "cv_url": "https://storage.example.com/cv/fb9228da-ab2d-4dca-aac8-41b44bd3235d.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 4,
+      "applied_at": "2026-03-16T20:04:32.113Z",
+      "updated_at": "2026-03-16T20:04:32.113Z",
+      "notes": [
+        {
+          "id": "646ea899-e13b-409a-beb2-70012d6fe6b2",
+          "record_id": "fb9228da-ab2d-4dca-aac8-41b44bd3235d",
+          "content": "Candidatura interesante. Tiene experiencia internacional, algo a valorar.",
+          "created_at": "2026-03-25T20:04:32.113Z"
+        }
+      ],
+      "notes_count": 1
+    },
+    {
+      "id": "2226463f-3c30-485b-877d-a3d5c249e0cb",
+      "full_name": "Oliver Thompson",
+      "email": "oliver.thompson@hotmail.com",
+      "phone": "+1 542-238-1938",
+      "position": "Responsable de Administración",
+      "linkedin_url": null,
+      "cv_url": "https://storage.example.com/cv/2226463f-3c30-485b-877d-a3d5c249e0cb.pdf",
+      "status": "received",
+      "stage": "pending",
+      "experience_years": 6,
+      "applied_at": "2026-03-08T20:04:32.114Z",
+      "updated_at": "2026-03-08T20:04:32.114Z",
+      "notes": [
+        {
+          "id": "4f1f5d1e-8870-4ee1-9773-092d28a999cb",
+          "record_id": "2226463f-3c30-485b-877d-a3d5c249e0cb",
+          "content": "CV bien estructurado. Experiencia previa en roles similares al ofertado.",
+          "created_at": "2026-03-25T20:04:32.114Z"
+        }
+      ],
+      "notes_count": 1
+    }
+  ]
+}

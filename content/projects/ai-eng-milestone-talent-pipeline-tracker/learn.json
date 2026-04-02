@@ -1,0 +1,62 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 3 — Talent Pipeline Tracker",
+    "es": "Hito 3 — Talent Pipeline Tracker"
+  },
+  "status": "published",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-talent-pipeline-tracker",
+  "description": {
+    "en": "Build the People & Talent frontend on top of the course REST API: candidate list and detail with Next.js App Router, filters and search via query params, CRUD notes, register and edit candidates, async UI states, and TypeScript types — aligned with CONTEXT-company.md.",
+    "es": "Construye el frontend de People & Talent sobre la API REST del curso: listado y detalle de candidatos con Next.js App Router, filtros y búsqueda con query params, notas CRUD, alta y edición de candidatos, estados asíncronos en la UI y tipos TypeScript — alineado con CONTEXT-company.md."
+  },
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwind-css",
+    "rest-api",
+    "app-router"
+  ],
+  "talents": [
+    {
+      "badge": "typescript-developer",
+      "points": 3
+    },
+    {
+      "badge": "react-developer",
+      "points": 3
+    },
+    {
+      "badge": "front-end-developer",
+      "points": 2
+    },
+    {
+      "badge": "tailwind-css-developer",
+      "points": 2
+    },
+    {
+      "badge": "clean-code-advocate",
+      "points": 2
+    }
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-talent-pipeline-tracker/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-talent-pipeline-tracker/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-talent-pipeline-tracker/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 3 — Talent Pipeline Tracker with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-talent-pipeline-tracker #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
+      "es": "Acabo de completar Hito 3 — Talent Pipeline Tracker con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-talent-pipeline-tracker #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
+    },
+    {
+      "en": "Built and shipped: Milestone 3 — Talent Pipeline Tracker. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-talent-pipeline-tracker #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
+      "es": "Construido y publicado: Hito 3 — Talent Pipeline Tracker. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-talent-pipeline-tracker #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
+    }
+  ]
+}

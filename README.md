@@ -39,7 +39,10 @@ You can find the practical projects in [`content/projects`](./content/projects):
 9. **[Talk to the Machine: Chat interface with a real AI API](./content/projects/chat-interface-real-ai-api)**  
    Browser chat interface that calls the Groq API with `fetch`, sends full conversation history, and tracks token usage plus response metrics.
 
-10. **[Voice to-do list with AI API](./content/projects/voice-to-do-list-api)**  
+10. **[Company Project Milestone: Talent Pipeline Tracker](./content/projects/ai-eng-milestone-talent-pipeline-tracker)**  
+    Milestone 3 — Next.js App Router frontend for the recruitment API: list and detail, filters, notes, candidate forms, async UI states, and TypeScript.
+
+11. **[Voice to-do list with AI API](./content/projects/voice-to-do-list-api)**  
     Voice-powered to-do workflow that captures user input and uses an AI API to transform spoken requests into actionable tasks.
 
 For more details on each project, open its folder inside `content/projects/` and read the corresponding `README.md` (and `README.es.md` when available).
