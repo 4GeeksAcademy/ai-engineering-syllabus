@@ -148,7 +148,7 @@ Do not clone this repository because we are going to use a different template.
 - [ ] Tailwind breakpoints (`sm:`, `md:`, `lg:`) are used appropriately
 - [ ] There is no unnecessary custom CSS (only Tailwind)
 - [ ] The design is visually coherent and professional
-- [ ] Performance is verified on the public URL with [PageSpeed Insights](https://pagespeed.web.dev/) with a minimum score of **80** (ideal: **above 90**)
+- [ ] Performance is verified on the public URL with [PageSpeed Insights](https://pagespeed.web.dev/) with a minimum score of **80** (ideal: **above 90**). You will have to publish your page to vercel in order to run google page speed because Codespaces has a warning message that blocks google page speed from visiting your website. 
 
 ### Accessibility
 
