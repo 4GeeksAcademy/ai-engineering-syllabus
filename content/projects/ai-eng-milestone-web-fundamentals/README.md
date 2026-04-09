@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge.
+## 🎯 The Challenge
 
 Your company has been successfully operating in a traditional way for years, but the world has changed. Customers search for information online before making decisions. Competitors already have a digital presence. And your company, despite its experience and quality, remains invisible on the internet.
 
