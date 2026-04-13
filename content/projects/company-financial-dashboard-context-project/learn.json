@@ -38,6 +38,8 @@
   "projectType": "project",
   "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/company-financial-dashboard-context-project/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed the Company financial dashboard context project with LearnPack @4GeeksAcademy: repo analysis with AI, actionable rules, and a project memory-bank. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #LearnPack #4GeeksAcademy #Git #Documentation",
