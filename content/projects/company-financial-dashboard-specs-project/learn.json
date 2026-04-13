@@ -1,0 +1,46 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Company financial dashboard specs project",
+    "es": "Proyecto de especificaciones del dashboard financiero de empresa"
+  },
+  "status": "draft",
+  "slug": "company-financial-dashboard-specs-project",
+  "description": {
+    "en": "Spec-first frontend assignment: TypeScript API/param types, component breakdown in components.md, and data-contract README for three dashboard features—aligned with live OpenAPI at /docs. No React implementation.",
+    "es": "Tarea frontend spec-first: tipos TypeScript de API/parámetros, desglose de componentes en components.md y README de contrato de datos para tres funcionalidades del dashboard—alineado con OpenAPI en /docs. Sin implementación React."
+  },
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": ["ai", "typescript", "documentation", "openapi", "git"],
+  "talents": [
+    {
+      "badge": "git-collaborator",
+      "points": 2
+    },
+    {
+      "badge": "ai-engineer",
+      "points": 3
+    },
+    {
+      "badge": "context-engineer",
+      "points": 2
+    }
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/company-financial-dashboard-specs-project/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-specs-project/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-specs-project/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed the Company financial dashboard specs project with LearnPack @4GeeksAcademy: TypeScript types from /docs, component specs, and data contracts for three dashboard features. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-specs-project #AIEngineering #LearnPack #4GeeksAcademy #TypeScript #Specs",
+      "es": "Acabo de completar el Company financial dashboard specs project con LearnPack @4GeeksAcademy: tipos TypeScript desde /docs, especificación de componentes y contratos de datos para tres funcionalidades del dashboard. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-specs-project #AIEngineering #LearnPack #4GeeksAcademy #TypeScript #Especificaciones"
+    },
+    {
+      "en": "Spec before build: financial dashboard features documented for devs and AI agents with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-specs-project #AIEngineering #Documentation #4GeeksAcademy",
+      "es": "Especificar antes de construir: funcionalidades del dashboard financiero documentadas para devs y agentes de IA con @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-specs-project #AIEngineering #Documentacion #4GeeksAcademy"
+    }
+  ]
+}
