@@ -1,4 +1,4 @@
-# Applying Spec Driven Development - Financial dashboard
+# Aplicando desarrollo guiado por especificaciones - Dashboard financiero
 
 <!-- hide -->
 
