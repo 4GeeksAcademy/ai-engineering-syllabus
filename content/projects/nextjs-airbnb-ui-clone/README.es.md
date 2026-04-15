@@ -9,7 +9,7 @@ Por [@4GeeksAcademy](https://github.com/4GeeksAcademy) y [otros colaboradores](h
 
 _Estas instrucciones están [disponibles en inglés](./README.md)._
 
-**Antes de empezar**: 📗 [Lee las instrucciones](https://4geeks.com/lesson/how-to-start-a-coding-project) sobre cómo iniciar un proyecto de código.
+**Antes de empezar**: 📗 [Lee las instrucciones](https://4geeks.com/lesson/como-comenzar-un-proyecto-de-codificacion) sobre cómo iniciar un proyecto de código.
 
 <!-- endhide -->
 
@@ -49,7 +49,7 @@ Después:
 
 1. Crea tu propio repositorio en GitHub.
 2. Inicializa git dentro de la carpeta del proyecto y sube tu primer commit.
-3. ¿Necesitas un repaso sobre el inicio de proyectos? [Lee esta guía](https://4geeks.com/lesson/how-to-start-a-coding-project).
+3. ¿Necesitas un repaso sobre el inicio de proyectos? [Lee esta guía](https://4geeks.com/lesson/como-comenzar-un-proyecto-de-codificacion).
 
 ---
 

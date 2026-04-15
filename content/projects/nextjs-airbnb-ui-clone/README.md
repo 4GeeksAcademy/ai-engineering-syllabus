@@ -9,7 +9,7 @@ By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](h
 
 _These instructions are [available in Spanish](./README.es.md)._
 
-**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-coding-project) on how to start a coding project.
+**Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
 <!-- endhide -->
 
@@ -49,7 +49,7 @@ Then:
 
 1. Create your own GitHub repository.
 2. Initialize git inside the project folder and push your initial commit.
-3. Need a refresher on project setup? [Read this guide](https://4geeks.com/lesson/how-to-start-a-coding-project).
+3. Need a refresher on project setup? [Read this guide](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---
 
