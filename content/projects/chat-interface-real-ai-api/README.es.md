@@ -53,8 +53,8 @@ Piensa en él como el pase de sesión que te da acceso. Sin él, el servidor de 
 Este proyecto parte de cero — generarás la interfaz inicial usando [v0.dev](https://v0.dev/), el generador de componentes de Vercel basado en IA.
 
 1. Ve a [https://v0.dev](https://v0.dev) y describe la interfaz que necesitas — por ejemplo: _"una interfaz de chat con un panel de historial de mensajes y una barra lateral con estadísticas de consumo de tokens"_
-2. Exporta o copia el código del componente React generado en un nuevo proyecto Next.js
-3. Crea tu propio repositorio público en GitHub, sube el código inicial y trabaja desde ahí
+2. Crea tu propio repositorio público en GitHub y ábrelo en Codespaces
+3. Exporta o copia el código del componente React/Next generado en V0 y pégalo en tu proyecto
 
 > 💡 v0 te dará un punto de partida — no un producto terminado. Tendrás que conectar las llamadas a la API, la gestión del estado y la persistencia tú mismo. Ese es el trabajo real.
 
