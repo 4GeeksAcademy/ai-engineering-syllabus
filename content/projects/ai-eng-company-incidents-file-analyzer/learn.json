@@ -1,0 +1,47 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Company Incident File Analyzer",
+    "es": "Analizador de archivo de incidentes de empresa"
+  },
+  "status": "published",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-company-incidents-analysis",
+  "description": {
+    "en": "Build a Python CLI script to validate and analyze incident CSV files based on CONTEXT-company.md, report invalid records and key metrics, and optionally export results to CSV.",
+    "es": "Construye un script CLI en Python para validar y analizar archivos CSV de incidentes según CONTEXT-company.md, reportar registros inválidos y métricas clave, y exportar resultados a CSV opcionalmente."
+  },
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": ["python", "csv", "data-validation", "data-analysis", "cli"],
+  "talents": [
+    {
+      "badge": "python-developer",
+      "points": 3
+    },
+    {
+      "badge": "data-analyst",
+      "points": 2
+    },
+    {
+      "badge": "problem-solver",
+      "points": 2
+    }
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-company-incidents-analysis/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-company-incidents-analysis/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-company-incidents-analysis/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Company Incident File Analysis with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-company-incidents-analysis #AIEngineering #LearnPack #4GeeksAcademy #python #csv #datavalidation",
+      "es": "Acabo de completar Análisis de archivo de incidentes de empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-company-incidents-analysis #AIEngineering #LearnPack #4GeeksAcademy #python #csv #datavalidation"
+    },
+    {
+      "en": "Built and shipped: Company Incident File Analysis. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-company-incidents-analysis #AIEngineering #LearnPack #4GeeksAcademy #python #csv #datavalidation",
+      "es": "Construido y publicado: Análisis de archivo de incidentes de empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-company-incidents-analysis #AIEngineering #LearnPack #4GeeksAcademy #python #csv #datavalidation"
+    }
+  ]
+}

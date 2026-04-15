@@ -40,7 +40,7 @@ When creating/updating `learn.json`, prioritize these keys:
 - `duration`, `video`, `authentication`, `assessment` when requested
 - `repository` (recommended, especially for cloud provisioning and Codespaces links)
 - `autoPlay` (optional behavior control)
-- `sharing` (optional social copy in multilingual assets)
+- `sharing` (recommended social copy in multilingual assets)
 
 Keep language objects consistent when multilingual content exists (for example `title.en`/`title.es`).
 
@@ -55,9 +55,10 @@ These fields are recommended for both asset types:
 - `slug`
 - `title` (prefer multilingual object: at least `en` and `es`)
 - `description` (prefer multilingual object: at least `en` and `es`)
-- `difficulty` (`easy`, `beginner`, `intermediate`, `hard`)
+- `difficulty` (`beginner`, `easy`, `intermediate`, `hard`)
 - `projectType` (must match real intent)
 - `preview`
+- `sharing` (array with bilingual entries for social share copy)
 - `technologies`
 - `grading`
 - `localhostOnly`
@@ -72,7 +73,6 @@ When `projectType` is `project`, additionally recommend:
 - `duration`
 - `autoPlay` (explicit true/false)
 - `repository`
-- `sharing` (array with bilingual entries, when social share copy is part of the deliverable)
 - `template_url` only when project template behavior is expected
 
 ### Exercise-only considerations
@@ -81,7 +81,6 @@ When `projectType` is `exercise`:
 
 - Keep config lean; include `delivery` only if needed.
 - Avoid `template_url` unless explicitly supported by the current backend flow.
-- `sharing` is optional and usually unnecessary.
 
 ## Step 3 - Enforce 4Geeks asset behavior rules
 
@@ -91,6 +90,7 @@ For BreatheCode sync, these are the critical rules:
 2. If `projectType` is `tutorial` -> interactive flow is enabled; `gitpod` depends on `localhostOnly`.
 3. If `grading` is `incremental` or `isolated` -> interactive flow is enabled; `gitpod` defaults to `!localhostOnly`.
 4. If `gitpod` is explicitly provided, it overrides the computed `gitpod`.
+5. **Set `gitpod: true` when the repository contains runnable code at its root** (e.g., `app.py`, `index.js`, `main.ts`, `Dockerfile`, etc.) instead of just a project brief README. This signals that the repo needs a cloud environment to run. If it is not clear whether the repo is code-first or brief-only, **ask the user before deciding**.
 
 Use these presets:
 
@@ -136,7 +136,11 @@ Before finalizing:
   - `incremental`: cumulative progression.
   - `isolated`: independent steps.
 - Ensure `delivery` matches expected submission type (`url`, `flags`, etc.).
-- Validate `difficulty` against allowed values only: `easy`, `beginner`, `intermediate`, `hard`.
+- Validate `difficulty` against allowed values only: `beginner`, `easy`, `intermediate`, `hard`. Propose a value based on the project scope and perceived complexity if not already set:
+  - `beginner`: single concept, minimal setup, very guided.
+  - `easy`: a few concepts, some autonomy, clear steps.
+  - `intermediate`: multiple concepts, moderate autonomy, some design decisions.
+  - `hard`: complex scope, significant autonomy, architecture or integration decisions required.
 - Prefer multilingual consistency (`title.en`/`title.es`, `description.en`/`description.es`) in 4Geeks content.
 - Ensure `preview` and `repository` URLs are valid and stable.
 
@@ -153,7 +157,7 @@ Apply these checks only when `projectType` is `project`:
 
 Apply these checks only when `projectType` is `exercise`:
 
-- Do not require `duration`, `sharing`, or `template_url`.
+- Do not require `duration` or `template_url`.
 - Confirm `grading` and progression model reflect exercise design (incremental vs isolated).
 
 ## Step 5.1 - Disallowed/deprecated keys guard
