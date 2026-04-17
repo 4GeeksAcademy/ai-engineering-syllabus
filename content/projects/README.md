@@ -51,6 +51,9 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 14. **[Voice to-do list with AI API](./voice-to-do-list-api)**  
     Build a voice-powered to-do flow that captures user input, integrates with an AI API, and transforms spoken requests into actionable task management behavior.
 
+15. **[AI basic Inventory Agent Loop](./ai-basic-inventory-agent-loop)**  
+    Build a basic FastAPI inventory API plus a Python AI agent loop that uses API endpoints as tools, logs each interaction to CSV, and supports natural-language stock operations.
+
 ---
 
 Each project has detailed instructions in its folder (`README.md` and, if present, `README.es.md`). To get started, open the project folder and follow the README.

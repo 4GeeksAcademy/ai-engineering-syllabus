@@ -1,0 +1,47 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "AI basic Inventory Agent Loop",
+    "es": "Bucle Básico de Agente de Inventario con IA"
+  },
+  "status": "draft",
+  "slug": "ai-basic-inventory-agent-loop",
+  "description": {
+    "en": "Build a FastAPI inventory API with CSV persistence and a Python AI agent that uses tool calling to update stock, answer low-inventory questions, and log each loop event in conversation_log.csv.",
+    "es": "Construye una API de inventario con FastAPI y persistencia en CSV, junto con un agente de IA en Python que use tool calling para actualizar stock, responder consultas de inventario bajo y registrar cada evento del bucle en conversation_log.csv."
+  },
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "fastapi",
+    "csv",
+    "api",
+    "llm",
+    "tool-calling",
+    "cli"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "grading": "incremental",
+  "localhostOnly": false,
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-basic-inventory-agent-loop/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-basic-inventory-agent-loop/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-basic-inventory-agent-loop/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed AI basic Inventory Agent Loop with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-basic-inventory-agent-loop #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #toolcalling",
+      "es": "Acabo de completar Agent Loop Básico de Inventario con IA con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-basic-inventory-agent-loop #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #toolcalling"
+    },
+    {
+      "en": "Built and shipped: AI basic Inventory Agent Loop. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-basic-inventory-agent-loop #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #toolcalling",
+      "es": "Construido y publicado: Agent Loop Básico de Inventario con IA. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-basic-inventory-agent-loop #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #toolcalling"
+    }
+  ],
+  "editor": {
+    "version": "1.0.73",
+    "agent": "claude-4-sonnet",
+    "mode": "agent"
+  }
+}
