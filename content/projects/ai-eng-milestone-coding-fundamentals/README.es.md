@@ -138,6 +138,12 @@ Implementa las siguientes funcionalidades en TypeScript. Todos los nombres de en
 - [ ] Incluye botones o controles para ejecutar diferentes operaciones (filtrar, buscar, ordenar, generar reportes)
 - [ ] Muestra los resultados de las operaciones en la interfaz de forma clara
 
+Si agregas una página `index.html` para probar tus funciones manualmente, asegúrate de poder servirla en local o en Codespaces con un comando simple como:
+
+```bash
+npx http-server . -p 3000 -a 0.0.0.0
+```
+
 ### Calidad de Código
 
 - [ ] Usa **nombres descriptivos** para variables, funciones e interfaces (camelCase para variables y funciones, PascalCase para interfaces)
