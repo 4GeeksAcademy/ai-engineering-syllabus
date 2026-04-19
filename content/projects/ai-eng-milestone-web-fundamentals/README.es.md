@@ -80,14 +80,13 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 
    ```markdown
    /
-   ├── server.py (o script equivalente para servir el proyecto en local y en Codespaces)
    ├── index.html (landing page)
    ├── application.html (formulario de aplicación/registro)
    ├── styles.css (solo si Tailwind CDN no es suficiente)
    └── validation.js (lógica de validación del formulario)
    ```
 
-5. Crea un script de ejecución para poder levantar el proyecto en el navegador durante el desarrollo. Debe ser compatible con Codespaces y poder ejecutarse con un comando claro desde la raíz del repositorio. Por ejemplo, puedes incluir un `server.py`.
+5. Asegúrate de poder levantar el proyecto en el navegador durante el desarrollo usando un comando compatible con Codespaces desde la raíz del repositorio. Por ejemplo: `npx http-server . -p 3000 -a 0.0.0.0`
 
 6. Comienza por la estructura HTML de la landing page, luego añade estilos con Tailwind, después trabaja en el formulario y finalmente implementa la validación.
 
@@ -98,7 +97,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 ### Landing Page
 
 - [ ] Crear `index.html` con estructura HTML5 semántica
-- [ ] Crear un script de servidor en la raíz, como `server.py`, para poder visualizar la aplicación durante el desarrollo
+- [ ] El proyecto puede ejecutarse localmente con un comando `npx` compatible con Codespaces
 - [ ] Implementar un `<header>` con logo/nombre de la empresa y navegación
 - [ ] Crear una sección hero que presente la empresa y su propuesta de valor
 - [ ] Añadir al menos dos secciones adicionales (características, beneficios, cómo funciona, experiencia, etc.)
@@ -147,7 +146,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 ### Diseño Responsive y Tailwind
 
 - [ ] El sitio es completamente responsive (se adapta a móvil, tablet y escritorio)
-- [ ] Existe un script documentado y funcional, compatible con Codespaces, para ejecutar el proyecto localmente
+- [ ] Existe un comando documentado y funcional, compatible con Codespaces, para ejecutar el proyecto localmente con `npx`
 - [ ] Se usa diseño mobile-first
 - [ ] Todos los estilos usan clases utilitarias de Tailwind
 - [ ] Los breakpoints de Tailwind (`sm:`, `md:`, `lg:`) se usan apropiadamente
@@ -188,7 +187,6 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 1. Asegúrate de que tu código esté pusheado a repositorio
 
 2. Verifica que los archivos principales estén presentes:
-   - `server.py` (o script equivalente para servir el proyecto)
    - `index.html`
    - `application.html`
    - `validation.js`
