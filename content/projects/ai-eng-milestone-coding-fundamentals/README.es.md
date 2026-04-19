@@ -64,23 +64,18 @@ Este hito se enfoca exclusivamente en lógica de programación y manipulación d
 
 **Estructura de archivos esperada:**
 
-Tu implementación debe vivir dentro de una aplicación del monorepo y organizarse en archivos TypeScript separados por responsabilidad:
+Tu implementación debe organizarse en archivos TypeScript separados por responsabilidad:
 
 ```text
-apps/
-└── tu-app-fundamentos-typescript/
-    ├── package.json       # Scripts opcionales como typecheck / console
-    ├── tsconfig.json      # Configuración de TypeScript
-    ├── src/
-    │   ├── types/
-    │   │   └── models.ts          # Interfaces y tipos
-    │   ├── utils/
-    │   │   ├── collections.ts     # Funciones para arrays
-    │   │   ├── search.ts          # Búsquedas lineal y binaria
-    │   │   ├── transformations.ts # Agregaciones y reportes
-    │   │   └── validations.ts     # Validaciones de negocio
-    │   └── demo.ts                # Entrada local opcional
-    └── index.html                 # Página de prueba (opcional)
+src/
+├── types/
+│   └── models.ts          Interfaces y tipos
+├── utils/
+│   ├── collections.ts     # Funciones para arrays
+│   ├── search.ts          # Búsquedas lineal y binaria
+│   ├── transformations.ts # Agregaciones y reportes
+│   └── validations.ts     # Validaciones de negocio
+└── index.html             # Página de prueba (opcional)
 ```
 
 Puedes incluir una página HTML simple con Tailwind CSS para probar tus funciones manualmente si lo deseas, pero el foco principal está en la lógica TypeScript.
@@ -106,9 +101,9 @@ Como mínimo, tu proyecto debe incluir un comando claro para validar o ejecutar 
    git checkout -b hito-2-fundamentos-programacion
    ```
 
-5. Crea una carpeta para este hito dentro de `apps/`, añade un `tsconfig.json` y organiza tu código según la estructura propuesta.
+5. Organiza tu código en la estructura de carpetas propuesta y comienza a implementar las funciones.
 
-6. Asegúrate de que el proyecto pueda validarse o ejecutarse con un comando claro de TypeScript desde la carpeta de la app. Ejemplo:
+6. Asegúrate de que el proyecto pueda validarse o ejecutarse con un comando claro de TypeScript durante el desarrollo. Ejemplo:
 
    ```bash
    npx tsc --noEmit
@@ -210,7 +205,6 @@ Implementa las siguientes funcionalidades en TypeScript. Todos los nombres de en
 5. En la descripción del PR incluye:
    - Qué funcionalidades implementaste
    - Qué desafíos encontraste y cómo los resolviste
-   - El comando que usaste para validar o ejecutar el proyecto TypeScript
    - Capturas de pantalla si implementaste la interfaz de prueba (opcional)
 
 6. Entrega el enlace de tu Pull Request en la plataforma de 4Geeks

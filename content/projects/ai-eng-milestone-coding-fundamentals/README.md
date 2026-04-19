@@ -64,23 +64,18 @@ This milestone focuses exclusively on programming logic and data manipulation wi
 
 **Expected file structure:**
 
-Your implementation should live inside an application folder in the monorepo and be organized in separate TypeScript files by responsibility:
+Your implementation should be organized in separate TypeScript files by responsibility:
 
 ```text
-apps/
-└── your-coding-fundamentals-app/
-    ├── package.json       # Optional scripts such as typecheck / console
-    ├── tsconfig.json      # TypeScript configuration
-    ├── src/
-    │   ├── types/
-    │   │   └── models.ts          # Interfaces and types
-    │   ├── utils/
-    │   │   ├── collections.ts     # Array functions
-    │   │   ├── search.ts          # Linear and binary searches
-    │   │   ├── transformations.ts # Aggregations and reports
-    │   │   └── validations.ts     # Business validations
-    │   └── demo.ts                # Optional local demo entry
-    └── index.html                 # Test page (optional)
+src/
+├── types/
+│   └── models.ts          # Interfaces and types
+├── utils/
+│   ├── collections.ts     # Array functions
+│   ├── search.ts          # Linear and binary searches
+│   ├── transformations.ts # Aggregations and reports
+│   └── validations.ts     # Business validations
+└── index.html             # Test page (optional)
 ```
 
 You can include a simple HTML page with Tailwind CSS to manually test your functions if you wish, but the main focus is on the TypeScript logic.
@@ -111,9 +106,9 @@ At minimum, your project must include a clear command to validate or execute the
    git checkout -b milestone-2-programming-fundamentals
    ```
 
-5. Create a folder for this milestone inside `apps/`, add a `tsconfig.json`, and organize your code in the proposed folder structure.
+5. Organize your code in the proposed folder structure and start implementing the functions.
 
-6. Make sure the project can be validated or executed with a clear TypeScript command from that app folder. Example:
+6. Make sure the project can be validated or executed with a clear TypeScript command during development. Example:
 
    ```bash
    npx tsc --noEmit
@@ -215,7 +210,6 @@ Implement the following functionalities in TypeScript. All entity names, fields,
 5. In the PR description include:
    - What functionalities you implemented
    - What challenges you encountered and how you solved them
-   - The command used to validate or run the TypeScript project
    - Screenshots if you implemented the test interface (optional)
 
 6. Submit the link to your Pull Request on the 4Geeks platform
