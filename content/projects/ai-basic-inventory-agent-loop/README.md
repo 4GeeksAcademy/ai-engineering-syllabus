@@ -107,7 +107,7 @@ pip install fastapi uvicorn openai python-dotenv
 Create a `.env` file at the root with your LLM API key:
 
 ```
-OPENAI_API_KEY=your_key_here
+GROQ_API_KEY=your_key_here
 ```
 
 ⚠️ **IMPORTANT:** Never commit your `.env` file. Add it to `.gitignore` before your first commit.
