@@ -1,0 +1,40 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Backend Architecture Proposal",
+    "es": "Propuesta de Arquitectura de Backend"
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-architectural-proposal",
+  "description": {
+    "en": "Draft a backend architecture proposal for your company project, including pattern choice, domain/module structure, FastAPI router organization, and key risks.",
+    "es": "Redacta una propuesta de arquitectura backend para el proyecto de tu empresa, incluyendo elección de patrón, estructura de dominios/módulos, organización de routers en FastAPI y riesgos clave."
+  },
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "architecture",
+    "fastapi",
+    "backend-design",
+    "technical-documentation"
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-architectural-proposal/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-architectural-proposal/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Backend Architecture Proposal with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-architectural-proposal #AIEngineering #LearnPack #4GeeksAcademy #architecture #fastapi #backenddesign",
+      "es": "Acabo de completar Propuesta de Arquitectura de Backend con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-architectural-proposal #AIEngineering #LearnPack #4GeeksAcademy #architecture #fastapi #backenddesign"
+    },
+    {
+      "en": "Built and shipped: Backend Architecture Proposal. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-architectural-proposal #AIEngineering #LearnPack #4GeeksAcademy #architecture #fastapi #backenddesign",
+      "es": "Construido y publicado: Propuesta de Arquitectura de Backend. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-architectural-proposal #AIEngineering #LearnPack #4GeeksAcademy #architecture #fastapi #backenddesign"
+    }
+  ]
+}
