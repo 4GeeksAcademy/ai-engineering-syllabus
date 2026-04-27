@@ -53,7 +53,7 @@ Example categories that fit this milestone: “run delivery checklist before PR�
 
 ## Part B — Next.js + TypeScript application
 
-Work happens inside the monorepo following the **template’s** intended app location (typically an `apps/*` or documented web package—students must follow the template READMEs, not invent a second parallel tree).
+Work happens inside the monorepo following the **template’s** intended app location (typically an `uis/*` or `services/*` or documented package—students must follow the template READMEs, not invent a second parallel tree).
 
 ### Public site on `/`
 

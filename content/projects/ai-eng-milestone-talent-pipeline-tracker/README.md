@@ -42,16 +42,16 @@ This is a real internal tool that real people will use from day one. Build it li
 This milestone is part of the course monorepo. You do not need to clone a new repository — yours already exists.
 
 1. Open the monorepo you have been working in throughout the course in **GitHub Codespaces** or clone it locally if you prefer working on your machine.
-2. Navigate to the `/apps` folder and create the directory for this milestone:
+2. Navigate to the `/uis` folder and create the directory for this milestone:
 
 ```text
-/apps/talent-pipeline-tracker/
+/uis/talent-pipeline-tracker/
 ```
 
 3. Initialize a Next.js project with TypeScript inside that folder:
 
 ```bash
-cd apps/talent-pipeline-tracker
+cd uis/talent-pipeline-tracker
 npx create-next-app@latest . --typescript --app --tailwind --eslint
 ```
 

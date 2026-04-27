@@ -1,6 +1,6 @@
 # Milestone 3 — Talent Pipeline Tracker (reference solution)
 
-This README is the canonical reference for **"Milestone 3 — Talent Pipeline Tracker"**. It describes how a correct implementation should be structured, how it should talk to the course REST API, and what reviewers should verify. The actual app lives in the student monorepo under `apps/talent-pipeline-tracker/`; this folder documents the expected design only.
+This README is the canonical reference for **"Milestone 3 — Talent Pipeline Tracker"**. It describes how a correct implementation should be structured, how it should talk to the course REST API, and what reviewers should verify. The actual app lives in the student monorepo under `uis/talent-pipeline-tracker/`; this folder documents the expected design only.
 
 ## Alignment with company context
 

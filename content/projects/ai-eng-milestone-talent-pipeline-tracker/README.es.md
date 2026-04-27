@@ -42,16 +42,16 @@ Esta es una herramienta interna real que va a usar gente real desde el primer d�
 Este hito forma parte del monorepo del curso. No necesitas clonar ningún repositorio nuevo — el tuyo ya existe.
 
 1. Abre el monorepo en el que has trabajado durante el curso en **GitHub Codespaces** o clónalo localmente si prefieres trabajar en tu máquina.
-2. Navega a la carpeta `/apps` y crea el directorio de este hito:
+2. Navega a la carpeta `/uis` y crea el directorio de este hito:
 
 ```
-/apps/talent-pipeline-tracker/
+/uis/talent-pipeline-tracker/
 ```
 
 3. Inicializa un proyecto Next.js con TypeScript dentro de esa carpeta:
 
 ```bash
-cd apps/talent-pipeline-tracker
+cd uis/talent-pipeline-tracker
 npx create-next-app@latest . --typescript --app --tailwind --eslint
 ```
 

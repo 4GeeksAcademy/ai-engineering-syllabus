@@ -62,18 +62,18 @@ There is no starter code. The project starts from scratch.
 - [ ] At the end of execution, ask the user: `Export results to CSV? [y / n]`. If they choose `y`, save the results to `results.csv` (one row per metric).
 - [ ] Verify that the results match exactly the expected values in your CONTEXT.
 
-### Phase 2 — Integration into the platform (`/apps`)
+### Phase 2 — Integration into the platform
 
 Once the script logic is validated, extract that same logic into reusable services and integrate it into the system.
 
-**Backend (`/apps/api`)**
+**Backend (`/services/api`)**
 
 - [ ] Create a `POST /api/incidents/analyze` endpoint that accepts a CSV file as `multipart/form-data`.
 - [ ] The endpoint must run the same validation and analysis logic as the script and return the summary as JSON.
 - [ ] Create a `GET /api/incidents/results/export` endpoint that returns the last analysis as a downloadable CSV.
 - [ ] Errors (empty file, incorrect format) must return appropriate HTTP responses with a descriptive message.
 
-**Frontend (`/apps/web`)**
+**Frontend (`/uis/web`)**
 
 - [ ] Create an incident analysis page accessible from the application menu.
 - [ ] Include a file upload component (drag & drop or file selector) that sends the CSV to the API endpoint.
@@ -124,8 +124,10 @@ scripts/
   analyze.py              ← analysis script (Phase 1)
   incidents-COMPANY.csv   ← test file (attached, see CONTEXT)
 
-apps/
+services/
   api/                    ← backend with analysis and export endpoints
+
+uis/
   web/                    ← web interface with file upload and visualisation
 ```
 
