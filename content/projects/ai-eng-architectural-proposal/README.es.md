@@ -52,14 +52,14 @@ Esta es tu oportunidad de demostrar que sabes pensar en un sistema antes de cons
 Este proyecto no parte de un template de código: el entregable es un documento técnico que vive dentro de tu proyecto transversal existente.
 
 1. Abre el repositorio de tu proyecto transversal (el monorepo que has venido construyendo desde el Hito 1)
-2. Crea el archivo `ARCHITECTURE_PROPOSAL.md` en la raíz del repositorio
+2. Crea el archivo `ARCHITECTURE_PROPOSAL.md` dentro del directorio `/docs` del repositorio
 3. Redacta tu propuesta en ese archivo
 
 ---
 
 ## 💻 Qué debes hacer
 
-- [ ] Crear el archivo `ARCHITECTURE_PROPOSAL.md` en la raíz de tu repositorio transversal
+- [ ] Crear el archivo `ARCHITECTURE_PROPOSAL.md` dentro del directorio `/docs` de tu repositorio transversal
 - [ ] En el documento, identificar y justificar el **patrón arquitectónico** más adecuado para tu empresa (MVC, arquitectura en capas, serverless u otro). La justificación debe estar vinculada a las características reales de tu empresa, no a una preferencia genérica
 - [ ] Proponer y describir la **estructura de carpetas y módulos** del proyecto backend, explicando el criterio de separación por dominio o responsabilidad utilizado
 - [ ] Incluir una sección sobre cómo organizarías los **endpoints y routers** de FastAPI según los dominios identificados. No es necesario escribir código: basta con describir qué rutas existirían y bajo qué criterio se agruparían

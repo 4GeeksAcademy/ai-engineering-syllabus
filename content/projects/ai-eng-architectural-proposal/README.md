@@ -52,14 +52,14 @@ This is your opportunity to show that you know how to think through a system bef
 This project does not start from a code template: the deliverable is a technical document that lives inside your existing transversal project.
 
 1. Open your transversal project repository (the monorepo you've been building since Milestone 1)
-2. Create the file `ARCHITECTURE_PROPOSAL.md` at the root of the repository
+2. Create the file `ARCHITECTURE_PROPOSAL.md` inside the repository's `/docs` directory
 3. Write your proposal in that file
 
 ---
 
 ## 💻 What You Need to Do
 
-- [ ] Create the `ARCHITECTURE_PROPOSAL.md` file at the root of your transversal project repository
+- [ ] Create the `ARCHITECTURE_PROPOSAL.md` file inside your transversal project's `/docs` directory
 - [ ] In the document, identify and justify the most suitable **architectural pattern** for your company (MVC, layered architecture, serverless, or other). The justification must be tied to your company's real characteristics, not to a generic preference
 - [ ] Propose and describe the **folder and module structure** of the backend project, explaining the domain or responsibility separation criteria used
 - [ ] Include a section on how you would organize **FastAPI endpoints and routers** according to the identified domains. No code is needed: just describe what routes would exist and under what grouping criteria
