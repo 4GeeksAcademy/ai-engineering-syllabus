@@ -58,10 +58,16 @@ npx create-next-app@latest . --typescript --app --tailwind --eslint
 4. Crea un archivo `.env.local` en la raíz de tu app con la URL base de la API:
 
 ```
-NEXT_PUBLIC_API_URL=https://your-api-url/api/v1
+NEXT_PUBLIC_API_URL=https://playground.4geeks.com/tracker/api/v1
 ```
 
-5. Arranca el servidor de desarrollo:
+5. Instala las dependencias:
+
+```bash
+npm install
+```
+
+6. Arranca el servidor de desarrollo:
 
 ```bash
 npm run dev
@@ -113,7 +119,7 @@ Si necesitas un recordatorio sobre cómo iniciar un proyecto, consulta [cómo in
 - [ ] Organiza el proyecto con una estructura de carpetas clara: `/components`, `/hooks` (si aplica), `/types`, `/lib` o `/services`.
 - [ ] Define tipos TypeScript para todas las estructuras de datos recibidas de la API.
 
-⚠️ **IMPORTANTE:** Los nombres de campos, etiquetas visibles, estados y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu **CONTEXT.md**. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, etiquetas visibles, estados y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu **CONTEXT.md**. Por ejemplo, si tu empresa es TrackFlow, la interfaz debe sentirse como una herramienta interna del equipo de People & Talent de TrackFlow, aunque los nombres de campos de la API sigan siendo los definidos por el tracker backend. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
 
 ⚠️ **IMPORTANTE:** Usa únicamente Next.js (App Router), React y TypeScript. No uses librerías externas de gestión de estado (Redux, Zustand, Jotai, etc.). El estado a nivel de componente con hooks es suficiente para este hito.
 
@@ -142,7 +148,7 @@ Si necesitas un recordatorio sobre cómo iniciar un proyecto, consulta [cómo in
 
 ## 📦 Cómo entregar
 
-Sube los cambios a tu repositorio del monorepo en GitHub y comparte el enlace siguiendo las instrucciones de entrega de tu instructor. Asegúrate de que el archivo `.env.local` no está commiteado — usa `.env.example` para documentar las variables de entorno necesarias.
+Sube los cambios a tu repositorio del monorepo en GitHub y comparte el enlace siguiendo las instrucciones de entrega de tu instructor. Asegúrate de que el archivo `.env.local` no está commiteado e incluye un `.env.example` para documentar las variables de entorno necesarias.
 
 ---
 

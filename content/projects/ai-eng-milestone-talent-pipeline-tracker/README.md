@@ -57,11 +57,17 @@ npx create-next-app@latest . --typescript --app --tailwind --eslint
 
 4. Create a `.env.local` file at the root of your app with the API base URL:
 
-```text
-NEXT_PUBLIC_API_URL=https://your-api-url/api/v1
+```
+NEXT_PUBLIC_API_URL=https://playground.4geeks.com/tracker/api/v1
 ```
 
-5. Run the development server:
+5. Install dependencies:
+
+```bash
+npm install
+```
+
+6. Run the development server:
 
 ```bash
 npm run dev
@@ -113,7 +119,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 - [ ] Organize the project with a clear folder structure: `/components`, `/hooks` (if applicable), `/types`, `/lib` or `/services`.
 - [ ] Define TypeScript types for all data structures received from the API.
 
-⚠️ **IMPORTANT:** The terminology, labels, and framing visible in your UI must reflect your company's context as described in your **CONTEXT.md**. A generic implementation that ignores the company scenario will not be accepted.
+⚠️ **IMPORTANT:** The terminology, labels, and framing visible in your UI must reflect your company's context as described in your **CONTEXT.md**. For example, if your company is TrackFlow, the interface should feel like an internal TrackFlow People & Talent tool, even though the API field names remain those defined by the tracker backend. A generic implementation that ignores the company scenario will not be accepted.
 
 ⚠️ **IMPORTANT:** Use only Next.js (App Router), React, and TypeScript. Do not use external state management libraries (Redux, Zustand, Jotai, etc.). Component-level state with hooks is sufficient for this milestone.
 
@@ -142,7 +148,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 
 ## 📦 How to Submit
 
-Push your changes to your monorepo on GitHub and share the link following your instructor's delivery instructions. Make sure `.env.local` is not committed — use `.env.example` to document the required environment variables.
+Push your changes to your monorepo on GitHub and share the link following your instructor's delivery instructions. Make sure `.env.local` is not committed, and include a `.env.example` file documenting the required environment variables.
 
 ---
 
