@@ -51,7 +51,7 @@ Your tech lead sends you the following brief via email:
 
 ### 💡 What you should know before starting
 
-This milestone focuses exclusively on programming logic and data manipulation with TypeScript. You will not use generative AI or prompting for this challenge — the goal is for you to master programming fundamentals autonomously.
+This milestone focuses exclusively on programming logic and data manipulation with TypeScript. You are encouraged to solve this challenge without AI support or, if needed, with only minimal AI usage, so you can strengthen your logical and analytical thinking and problem-solving skills, which are fundamental for every programmer.
 
 **Key concepts you'll apply:**
 

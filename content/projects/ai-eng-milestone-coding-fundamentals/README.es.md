@@ -51,7 +51,7 @@ Tu tech lead te envía el siguiente brief por correo:
 
 ### 💡 Qué debes saber antes de empezar
 
-Este hito se enfoca exclusivamente en lógica de programación y manipulación de datos con TypeScript. No utilizarás IA generativa ni prompting para este desafío — el objetivo es que domines los fundamentos de la programación de forma autónoma.
+Este hito se enfoca exclusivamente en lógica de programación y manipulación de datos con TypeScript. Se recomienda que intentes resolver este desafío sin ayuda de IA o, en su defecto, con un uso mínimo de ella, para fortalecer tus habilidades de pensamiento lógico, analítico y de resolución de problemas, fundamentales para cualquier programador.
 
 **Conceptos clave que aplicarás:**
 

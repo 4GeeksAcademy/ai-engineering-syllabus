@@ -4,7 +4,7 @@ The Artificial Intelligence Engineering syllabus has some milestone projects tha
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -26,4 +26,4 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 
 ## Contributors
 
-This content is part of the [AI Engineering Coding Bootcamp](https://4geeksacademy.com/en/career-programs/ai-engineering) at 4Geeks Academy. This work was created by [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors). Find out more information at [4GeeksAcademy.com](https://4geeksacademy.com).
+This content is part of the [AI Engineering Coding Bootcamp](https://4geeksacademy.com/en/career-programs/ai-engineering) at 4Geeks Academy. This work was created by [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors). Find out more information at [4GeeksAcademy.com](https://4geeksacademy.com).
