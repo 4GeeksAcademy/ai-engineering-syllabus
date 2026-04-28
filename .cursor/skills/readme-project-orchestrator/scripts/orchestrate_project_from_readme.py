@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 from pathlib import Path
 
@@ -60,6 +61,86 @@ def build_fallback_description(title: str, language: str) -> str:
 
 def infer_spanish_title(title_en: str) -> str:
     return title_en
+
+
+def extract_checklist_items(markdown: str) -> list[str]:
+    return [
+        line.strip()[6:].strip()
+        for line in markdown.splitlines()
+        if line.strip().startswith("- [ ] ")
+    ]
+
+
+def extract_api_routes(markdown: str) -> list[str]:
+    route_pattern = re.compile(r"`(GET|POST|PUT|PATCH|DELETE)\s+(/[^`]+)`")
+    routes: list[str] = []
+    for match in route_pattern.finditer(markdown):
+        route = f"{match.group(1)} {match.group(2)}"
+        if route not in routes:
+            routes.append(route)
+    return routes
+
+
+def build_solution_readme(title_en: str, readme_en: str) -> str:
+    checklist_items = extract_checklist_items(readme_en)
+    api_routes = extract_api_routes(readme_en)
+
+    checklist_preview = checklist_items[:8]
+    routes_preview = api_routes[:8]
+
+    checklist_lines = "\n".join(
+        f"- {item}" for item in checklist_preview
+    ) or "- Follow all checklist items from the project README."
+    routes_lines = "\n".join(
+        f"- `{route}`" for route in routes_preview
+    ) or "- Implement and validate the required routes from the README."
+
+    return (
+        f"# {title_en} - Reference Solution\n\n"
+        "## Purpose\n\n"
+        "This reference solution describes the expected architecture, implementation scope, and validation evidence for a complete submission.\n\n"
+        "## Solution Structure\n\n"
+        "- `app/models/` for persistence models and schema contracts.\n"
+        "- `app/services/` for business logic and route-independent operations.\n"
+        "- `app/routes/` (or equivalent) for API endpoint definitions.\n"
+        "- `app/core/security.py` (or equivalent) for JWT, password hashing, and auth dependencies.\n"
+        "- `tests/` for route, service, and auth behavior tests.\n\n"
+        "## Required Coverage (From README)\n\n"
+        f"{checklist_lines}\n\n"
+        "## Expected API Surface\n\n"
+        f"{routes_lines}\n\n"
+        "## Key Implementation Decisions\n\n"
+        "- Passwords are never stored in plain text; use `passlib` with `bcrypt`.\n"
+        "- JWT creation/validation is centralized in one security module.\n"
+        "- `get_current_user` is used as a reusable dependency on protected routes.\n"
+        "- Secret keys and token TTL come from environment variables.\n"
+        "- Unauthorized access returns `401`; forbidden ownership actions return `403`.\n\n"
+        "## Indicative Examples\n\n"
+        "### Example: Login success response\n\n"
+        "```json\n"
+        "{\n"
+        "  \"access_token\": \"<jwt-token>\",\n"
+        "  \"token_type\": \"bearer\"\n"
+        "}\n"
+        "```\n\n"
+        "### Example: Accessing a protected route without token\n\n"
+        "```json\n"
+        "{\n"
+        "  \"detail\": \"Not authenticated\"\n"
+        "}\n"
+        "```\n\n"
+        "### Example: Ownership violation\n\n"
+        "```json\n"
+        "{\n"
+        "  \"detail\": \"Forbidden\"\n"
+        "}\n"
+        "```\n\n"
+        "## Validation Notes\n\n"
+        "- Verify register -> login -> authenticated request flow in `/docs`.\n"
+        "- Validate invalid, malformed, and expired token scenarios.\n"
+        "- Confirm protected and public routes behavior matches the rubric.\n"
+        "- Ensure the final output remains aligned with all project evaluation criteria.\n"
+    )
 
 
 def main() -> int:
@@ -154,22 +235,7 @@ def main() -> int:
         learn_data, indent=2, ensure_ascii=False) + "\n")
 
     solution_readme = solution_dir / "README.md"
-    if not solution_readme.exists():
-        write_text(
-            solution_readme,
-            (
-                f"# {title_en} - Reference Solution\n\n"
-                "## Purpose\n\n"
-                "This solution documents what a complete submission should contain.\n\n"
-                "## Expected Deliverable\n\n"
-                "- A complete response aligned with all checklist items from the project README.\n"
-                "- Clear architectural reasoning, module boundaries, and risk analysis.\n"
-                "- Output quality consistent with evaluation criteria.\n\n"
-                "## Validation Notes\n\n"
-                "- Compare your submission against the README rubric.\n"
-                "- Ensure scope, structure, and decisions are explicit and justified.\n"
-            ),
-        )
+    write_text(solution_readme, build_solution_readme(title_en, readme_en))
 
     social_script = (
         repo_root
