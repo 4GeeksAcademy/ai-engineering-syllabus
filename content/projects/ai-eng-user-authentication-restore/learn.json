@@ -1,0 +1,40 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "The Missing Piece: Password Reset Flow",
+    "es": "La Pieza Que Faltaba: Flujo de Restablecimiento de Contraseña"
+  },
+  "description": {
+    "en": "Complete the The Missing Piece: Password Reset Flow project following the README instructions.",
+    "es": "Completa el proyecto La Pieza Que Faltaba: Flujo de Restablecimiento de Contraseña siguiendo las instrucciones del README."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-user-authentication-restore",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "technical-documentation"
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-user-authentication-restore/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-user-authentication-restore/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed The Missing Piece: Password Reset Flow with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-user-authentication-restore #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar La Pieza Que Faltaba: Flujo de Restablecimiento de Contraseña con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-user-authentication-restore #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    },
+    {
+      "en": "Built and shipped: The Missing Piece: Password Reset Flow. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-user-authentication-restore #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: La Pieza Que Faltaba: Flujo de Restablecimiento de Contraseña. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-user-authentication-restore #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    }
+  ]
+}
