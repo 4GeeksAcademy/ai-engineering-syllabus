@@ -153,20 +153,6 @@ You cannot improve what you do not measure. You will learn to instrument applica
 
 ---
 
-### Real-Time
-
-`WebSockets` `Streaming` `Pub/Sub` `Event Architecture`
-
-The layer that makes AI feel alive. You will implement real-time communication between users and language models using streaming, WebSockets, and event-driven architectures — the same technology behind modern conversational interfaces.
-
-**Skills developed:**
-
-- Build support chats with LLMs in real time
-- Implement response streaming with generators (yield)
-- Integrate webhooks and pub/sub in AI applications
-
----
-
 ### Asynchronous Processing and Offloading
 
 `Queues` `Background jobs` `Workers` `Redis`
@@ -178,6 +164,20 @@ Tasks that must not block the user go to the queue. You will learn to implement 
 - Implement background processing for costly tasks
 - Manage process queues with workers
 - Use queues to delegate work between agents and services
+
+---
+
+### Real-Time
+
+`WebSockets` `Streaming` `Pub/Sub` `Event Architecture`
+
+The layer that makes AI feel alive. You will implement real-time communication between users and language models using streaming, WebSockets, and event-driven architectures — the same technology behind modern conversational interfaces.
+
+**Skills developed:**
+
+- Build support chats with LLMs in real time
+- Implement response streaming with generators (yield)
+- Integrate webhooks and pub/sub in AI applications
 
 ---
 
@@ -229,12 +229,12 @@ AI introduces attack vectors traditional security does not cover. You will learn
 
 These modules provide the essential foundations to collaborate effectively with software agents and review their work:
 
+- **Collaboration tools:** Command line, Git, and GitHub for collaborative, safe workflows.
+- **Containerization:** Packaging and deploying full applications with Docker for productive, reproducible environments.
 - **Programming:** Logic, algorithms, data structures, and OOP with TypeScript and Python to understand and improve AI-generated code.
 - **Modern frontend:** Building and reviewing interfaces with React, Next.js, and visual specs; accessible, optimized styling with HTML, CSS, and Tailwind.
 - **Databases:** SQL, PostgreSQL, and ORMs for robust data handling and relational queries.
-- **Containerization:** Packaging and deploying full applications with Docker for productive, reproducible environments.
 - **Optimization:** Performance strategies on frontend and backend: caching, serializers, lazy loading, and practices for high load.
-- **Collaboration tools:** Command line, Git, and GitHub for collaborative, safe workflows.
 
 This knowledge complements and strengthens the full development cycle of AI- and agent-driven systems.
 
