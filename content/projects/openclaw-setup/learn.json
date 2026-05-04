@@ -1,0 +1,37 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Setting Up Your Personal AI Agent with OpenClaw",
+    "es": "Configurando tu Agente de IA Personal con OpenClaw"
+  },
+  "description": {
+    "en": "Complete the Setting Up Your Personal AI Agent with OpenClaw project following the README instructions.",
+    "es": "Completa el proyecto Configurando tu Agente de IA Personal con OpenClaw siguiendo las instrucciones del README."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/openclaw/openclaw",
+  "slug": "openclaw-setup",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-setup/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Setting Up Your Personal AI Agent with OpenClaw with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-setup #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Configurando tu Agente de IA Personal con OpenClaw con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-setup #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    },
+    {
+      "en": "Built and shipped: Setting Up Your Personal AI Agent with OpenClaw. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-setup #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Configurando tu Agente de IA Personal con OpenClaw. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-setup #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    }
+  ]
+}
