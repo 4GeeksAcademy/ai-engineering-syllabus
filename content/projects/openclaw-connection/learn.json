@@ -1,0 +1,38 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Connect Your Agent: Telegram, Google Drive & Calendar",
+    "es": "Conecta tu Agente: Telegram, Google Drive y Calendario"
+  },
+  "description": {
+    "en": "Complete the Connect Your Agent: Telegram, Google Drive & Calendar project following the README instructions.",
+    "es": "Completa el proyecto Conecta tu Agente: Telegram, Google Drive y Calendario siguiendo las instrucciones del README."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/openclaw/openclaw",
+  "slug": "openclaw-connection",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "openclaw",
+    "telegram",
+    "zapier",
+    "mcp",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-connection/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-connection/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Connect Your Agent: Telegram, Google Drive & Calendar with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-connection #AIEngineering #LearnPack #4GeeksAcademy #openclaw #telegram #zapier",
+      "es": "Acabo de completar Conecta tu Agente: Telegram, Google Drive y Calendario con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-connection #AIEngineering #LearnPack #4GeeksAcademy #openclaw #telegram #zapier"
+    },
+    {
+      "en": "Built and shipped: Connect Your Agent: Telegram, Google Drive & Calendar. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-connection #AIEngineering #LearnPack #4GeeksAcademy #openclaw #telegram #zapier",
+      "es": "Construido y publicado: Conecta tu Agente: Telegram, Google Drive y Calendario. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-connection #AIEngineering #LearnPack #4GeeksAcademy #openclaw #telegram #zapier"
+    }
+  ]
+}
