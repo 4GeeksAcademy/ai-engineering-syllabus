@@ -153,20 +153,6 @@ No puedes mejorar lo que no mides. Aprenderás a instrumentar aplicaciones para 
 
 ---
 
-### Real-Time
-
-`WebSockets` `Streaming` `Pub/Sub` `Event Architecture`
-
-La capa que hace que la IA se sienta viva. Implementarás comunicación en tiempo real entre usuarios y modelos de lenguaje usando streaming, websockets y arquitecturas orientadas a eventos — la misma tecnología detrás de las interfaces conversacionales modernas.
-
-**Habilidades desarrolladas:**
-
-- Construir chats de soporte con LLMs en tiempo real
-- Implementar streaming de respuestas con generadores (yield)
-- Integrar webhooks y pub/sub en aplicaciones con IA
-
----
-
 ### Asynchronous Processing and Offloading
 
 `Queues` `Background jobs` `Workers` `Redis`
@@ -178,6 +164,20 @@ Tareas que no pueden bloquear al usuario van a la cola. Aprenderás a implementa
 - Implementar background processing para tareas costosas
 - Gestionar colas de procesos con workers
 - Usar colas para delegar trabajo entre agentes y servicios
+
+---
+
+### Real-Time
+
+`WebSockets` `Streaming` `Pub/Sub` `Event Architecture`
+
+La capa que hace que la IA se sienta viva. Implementarás comunicación en tiempo real entre usuarios y modelos de lenguaje usando streaming, websockets y arquitecturas orientadas a eventos — la misma tecnología detrás de las interfaces conversacionales modernas.
+
+**Habilidades desarrolladas:**
+
+- Construir chats de soporte con LLMs en tiempo real
+- Implementar streaming de respuestas con generadores (yield)
+- Integrar webhooks y pub/sub en aplicaciones con IA
 
 ---
 
@@ -229,12 +229,12 @@ La IA introduce vectores de ataque que la seguridad tradicional no cubre. Aprend
 
 Estos módulos aportan los fundamentos esenciales para colaborar de manera eficaz con agentes de software y revisar su trabajo:
 
+- **Herramientas de colaboración:** Dominio de la línea de comandos, Git y GitHub para flujos de trabajo colaborativos y seguros.
+- **Contenerización:** Empaquetado y despliegue de aplicaciones completas con Docker para entornos productivos y reproducibles.
 - **Programación:** Lógica, algoritmos, estructuras de datos y POO con TypeScript y Python para entender y mejorar el código generado por IA.
 - **Frontend moderno:** Construcción y revisión de interfaces con React, Next.js y especificaciones visuales; estilos accesibles y optimizados con HTML, CSS y Tailwind.
 - **Bases de datos:** Uso de SQL, PostgreSQL y ORMs para manejo robusto de datos y consultas relacionales.
-- **Contenerización:** Empaquetado y despliegue de aplicaciones completas con Docker para entornos productivos y reproducibles.
 - **Optimización:** Estrategias de rendimiento en frontend y backend: caching, serializers, lazy loading, buenas prácticas para alta demanda.
-- **Herramientas de colaboración:** Dominio de la línea de comandos, Git y GitHub para flujos de trabajo colaborativos y seguros.
 
 Este conocimiento complementa y potencia el ciclo completo de desarrollo de sistemas impulsados por IA y agentes.
 
