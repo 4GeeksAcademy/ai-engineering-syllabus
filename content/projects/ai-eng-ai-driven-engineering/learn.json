@@ -21,10 +21,12 @@
     "documentation",
     "agent-workflows"
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "grading": "incremental",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-ai-driven-engineering/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-ai-driven-engineering/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-ai-driven-engineering/.learn/preview.png",
@@ -37,5 +39,8 @@
       "en": "Built and shipped: Milestone 4 — AI-driven Engineering. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-ai-driven-engineering #AIEngineering #LearnPack #4GeeksAcademy #nextjs #typescript #ai",
       "es": "Construido y publicado: Hito 4 — Ingeniería impulsada por IA. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-ai-driven-engineering #AIEngineering #LearnPack #4GeeksAcademy #nextjs #typescript #ai"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

@@ -48,7 +48,6 @@
     ],
     "quantity": 2
   },
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-music-player/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-music-player/.learn/preview.png",
   "sharing": [
@@ -60,5 +59,8 @@
       "en": "Built and shipped: Music playlist player modeling and class diagrams. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/music-playlist-player-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling",
       "es": "Construido y publicado: Modelado de reproductor de playlist de musica y diagramas de clases. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/music-playlist-player-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

@@ -46,7 +46,6 @@
     "en"
   ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/nextjs-airbnb-ui-clone/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-airbnb-ui-clone/.learn/preview.png",
   "sharing": [
@@ -59,5 +58,8 @@
       "es": "Construido y publicado: Clonando la interfaz de Airbnb con Next.js y React. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/nextjs-airbnb-ui-clone #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
     }
   ],
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-airbnb-ui-clone/.learn/preview.png"
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-airbnb-ui-clone/.learn/preview.png",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

@@ -21,11 +21,13 @@
     "tool-calling",
     "cli"
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "grading": "incremental",
   "localhostOnly": false,
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-basic-inventory-agent-loop/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-basic-inventory-agent-loop/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-basic-inventory-agent-loop/.learn/preview.png",
@@ -43,5 +45,8 @@
     "version": "1.0.73",
     "agent": "claude-4-sonnet",
     "mode": "agent"
+  },
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
   }
 }

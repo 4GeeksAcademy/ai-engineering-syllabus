@@ -46,7 +46,6 @@
     "en"
   ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/nextjs-wanderlust-explorer/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-wanderlust-explorer/.learn/preview.png",
   "sharing": [
@@ -59,5 +58,8 @@
       "es": "Construido y publicado: Wanderlust Explorer con React y Next.js. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/nextjs-wanderlust-explorer #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
     }
   ],
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-wanderlust-explorer/.learn/preview.png"
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-wanderlust-explorer/.learn/preview.png",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

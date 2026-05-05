@@ -34,9 +34,11 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/company-financial-dashboard-context-project/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
@@ -49,5 +51,8 @@
       "en": "Built and documented: Building context from an existing project - Financial dashboard. From sparse handover to clear engineering rules and memory-bank with @4GeeksAcademy. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #RepositoryStewardship #4GeeksAcademy",
       "es": "Construido y documentado: Building context from an existing project - Financial dashboard. De un handover limitado a reglas de ingeniería claras y memory-bank con @4GeeksAcademy. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #RepositoryStewardship #4GeeksAcademy"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

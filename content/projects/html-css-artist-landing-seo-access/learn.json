@@ -51,7 +51,6 @@
   ],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/html-css-artist-landing-seo-access/.learn/solution/README.md",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",
   "sharing": [
@@ -63,5 +62,8 @@
       "en": "Built and shipped: Showcase your friend's artist talent with a website. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",
       "es": "Construido y publicado: Muestra el talento de tu amigo artista con un website. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

@@ -77,7 +77,15 @@ Required fields baseline:
 - `translations: ["es", "en"]`
 - `solution`
 - `preview`
-- `batch`
+- `telemetry.batch` (BreatheCode assignment telemetry URL; must live under a `telemetry` object, not as a top-level `batch` key)
+
+Example:
+
+```json
+"telemetry": {
+  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+}
+```
 
 Keep values consistent with README scope and rubric.
 
@@ -137,7 +145,7 @@ Notes:
 
 - [ ] `README.md` and `README.es.md` both exist and are aligned.
 - [ ] `.learn/solution/README.md` exists and matches project requirements.
-- [ ] `learn.json` is valid JSON and includes `solution` and `preview`.
+- [ ] `learn.json` is valid JSON and includes `solution`, `preview`, and `telemetry.batch` (not a top-level `batch`).
 - [ ] `.learn/preview.png` exists and is not an empty placeholder.
 - [ ] `learn.json.sharing` exists with bilingual (`en`, `es`) messages.
 - [ ] All URLs in `learn.json` point to `content/projects/<target_slug>/...`.

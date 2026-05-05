@@ -43,9 +43,11 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-talent-pipeline-tracker/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-talent-pipeline-tracker/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-talent-pipeline-tracker/.learn/preview.png",
@@ -58,5 +60,8 @@
       "en": "Built and shipped: Milestone 3 — Talent Pipeline Tracker. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-talent-pipeline-tracker #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
       "es": "Construido y publicado: Hito 3 — Talent Pipeline Tracker. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-talent-pipeline-tracker #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

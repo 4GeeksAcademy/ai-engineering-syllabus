@@ -35,9 +35,11 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/company-financial-dashboard-skills-project/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-skills-project/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-skills-project/.learn/preview.png",
@@ -50,5 +52,8 @@
       "en": "Scaled quality with composable agent skills on a real Next.js dashboard with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #skills.sh #4GeeksAcademy",
       "es": "Escalé calidad con skills de agente componibles en un dashboard Next.js real con @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #skills.sh #4GeeksAcademy"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

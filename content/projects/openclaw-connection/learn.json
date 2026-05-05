@@ -11,7 +11,7 @@
   "status": "draft",
   "template_url": "https://github.com/openclaw/openclaw",
   "slug": "openclaw-connection",
-  "difficulty": "intermediate",
+  "difficulty": "beginner",
   "duration": 3,
   "technologies": [
     "openclaw",
@@ -22,7 +22,6 @@
   ],
   "translations": ["es", "en"],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-connection/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-connection/.learn/preview.png",
   "sharing": [
@@ -34,5 +33,8 @@
       "en": "Built and shipped: Connect Your Agent: Telegram, Google Drive & Calendar. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-connection #AIEngineering #LearnPack #4GeeksAcademy #openclaw #telegram #zapier",
       "es": "Construido y publicado: Conecta tu Agente: Telegram, Google Drive y Calendario. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-connection #AIEngineering #LearnPack #4GeeksAcademy #openclaw #telegram #zapier"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

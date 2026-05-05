@@ -223,9 +223,16 @@ def main() -> int:
     )
     learn_data["translations"] = ["es", "en"]
     learn_data["projectType"] = "project"
-    learn_data["batch"] = learn_data.get(
-        "batch", "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+    default_batch = (
+        "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
     )
+    telemetry = learn_data.get("telemetry")
+    if isinstance(telemetry, dict) and telemetry.get("batch"):
+        batch_url = telemetry["batch"]
+    else:
+        batch_url = learn_data.get("batch", default_batch)
+    learn_data.pop("batch", None)
+    learn_data["telemetry"] = {"batch": batch_url}
     learn_data["solution"] = base_solution_url
     learn_data["preview"] = base_preview_url
     if "preview_url" in learn_data:

@@ -41,6 +41,7 @@ When creating/updating `learn.json`, prioritize these keys:
 - `repository` (recommended, especially for cloud provisioning and Codespaces links)
 - `autoPlay` (optional behavior control)
 - `sharing` (recommended social copy in multilingual assets)
+- `telemetry` (BreatheCode): object that contains `batch`, the assignment telemetry endpoint URL (typically `https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=` with the asset id appended when known). **Do not** put `batch` at the root of `learn.json`; it belongs only under `telemetry`.
 
 Keep language objects consistent when multilingual content exists (for example `title.en`/`title.es`).
 
@@ -190,6 +191,7 @@ When responding after edits:
 - [ ] Project-only fields were applied only to `project` assets.
 - [ ] Exercise configs remain minimal and do not force project-only fields.
 - [ ] No disallowed keys (`assignments`, `builder`) were introduced unintentionally.
+- [ ] Telemetry uses `telemetry.batch`, not a top-level `batch` key.
 
 ## References
 

@@ -37,7 +37,6 @@
     "en"
   ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-mileston-choose-company/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-choose-company/.learn/preview.png",
   "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-choose-company/.learn/preview.png",
@@ -50,5 +49,8 @@
       "en": "Built and shipped: Milestone 0 — Choose Your Company. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing",
       "es": "Construido y publicado: Hito 0 — Elige tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }

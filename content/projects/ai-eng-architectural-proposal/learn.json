@@ -24,7 +24,6 @@
     "en"
   ],
   "projectType": "project",
-  "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-architectural-proposal/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-architectural-proposal/.learn/preview.png",
   "sharing": [
@@ -36,5 +35,8 @@
       "en": "Built and shipped: Backend Architecture Proposal. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-architectural-proposal #AIEngineering #LearnPack #4GeeksAcademy #architecture #fastapi #backenddesign",
       "es": "Construido y publicado: Propuesta de Arquitectura de Backend. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-architectural-proposal #AIEngineering #LearnPack #4GeeksAcademy #architecture #fastapi #backenddesign"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
 }
