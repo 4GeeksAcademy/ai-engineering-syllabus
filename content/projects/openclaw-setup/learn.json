@@ -11,7 +11,7 @@
   "status": "draft",
   "template_url": "https://github.com/openclaw/openclaw",
   "slug": "openclaw-setup",
-  "difficulty": "intermediate",
+  "difficulty": "beginner",
   "duration": 2,
   "technologies": [
     "architecture",
