@@ -17,21 +17,19 @@ _These instructions are [available in English](./README.md)._
 
 ## 🎯 Tu reto
 
-Acabas de incorporarte como AI engineer en una consultora pequeña. Tu tech lead te asigna una tarea el primer día: el equipo necesita un asistente de IA autoalojado que corra en un VPS, que mantenga las conversaciones de clientes fuera de servidores de terceros y que pueda configurarse para usar distintos modelos de IA según el tipo de tarea.
+Llevas tiempo usando herramientas de IA de terceros como los chats comerciales. Funcionan, pero nunca son del todo tuyas. Quieres un asistente de IA propio — autoalojado en un VPS, privado, configurable a tu gusto y que puedas adaptar según la tarea. Sin depender de plataformas externas. Tuyo.
 
-"No podemos mandar todo a través de APIs comerciales", te explica. "Hay restricciones de cumplimiento normativo. Necesitamos nuestra propia instancia — privada, controlable, nuestra."
-
-La herramienta que usa el equipo es **OpenClaw**. Tu trabajo es desplegar y configurar una instancia funcional de OpenClaw en un VPS, conectarla a un modelo de IA a través de LiteLLM y verificar que responde correctamente en el chat local.
+La herramienta que vas a usar es **OpenClaw**. Tu objetivo es desplegar y configurar una instancia funcional en un VPS, conectarla a un modelo de IA a través de LiteLLM y verificar que responde correctamente en el chat local.
 
 Este no es un proyecto de código — es una tarea de infraestructura y configuración. El resultado principal es un sistema funcionando, no un repositorio. Dicho esto, si en algún momento personalizas el código de OpenClaw, un repositorio es el lugar correcto para registrar esos cambios — los buenos ingenieros versionan su trabajo. Por ahora, usarás un repositorio para documentar tu configuración con una captura de pantalla y un archivo de configuración como evidencia de entrega.
 
 > **Antes de empezar, asegúrate de entender:**
 >
-> - OpenClaw solo es útil si tiene un modelo conectado. Sin él, no hace nada. Parte de tu trabajo como AI engineer es saber qué modelo usar para cada tarea — no siempre el más potente, sino el más adecuado según el contexto, el coste y los requisitos de latencia.
+> - OpenClaw solo es útil si tiene un modelo conectado. Sin él, no hace nada. Parte de montar tu propio asistente es elegir qué modelo usar para cada tarea — no siempre el más potente, sino el más adecuado según el contexto, el coste y los requisitos de latencia.
 > - OpenClaw **no** es un entorno multi-tenant. Cualquier persona con acceso a la URL de tu VPS puede usarlo. Nunca lo expongas públicamente sin autenticación.
 > - Sigue siempre la guía de instalación de 4Geeks. El orden de los pasos de configuración importa — saltarlos o reordenarlos provoca errores difíciles de depurar.
 
-Tu tech lead espera una instancia funcional antes de que acabe el día. Ponla a correr.
+Ponlo a correr.
 
 ---
 

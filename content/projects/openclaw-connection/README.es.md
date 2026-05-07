@@ -17,13 +17,11 @@ _These instructions are [available in English](./README.md)._
 
 ## 🎯 Tu reto
 
-La pequeña consultora donde configuraste OpenClaw como asistente de IA interno está lista para el siguiente paso. El team lead quedó satisfecho con la configuración básica — el agente funciona, responde, tiene personalidad. Ahora quieren que haga cosas.
+Tu instancia de OpenClaw ya está funcionando como asistente personal. Responde, tiene personalidad, está conectada a un modelo de tu elección. Pero todavía es un asistente de escritorio — para usarlo tienes que estar frente al VPS o a la interfaz web.
 
-Esta mañana llegó el pedido: conectar el agente a las herramientas que el equipo ya usa para que cualquier miembro pueda delegar tareas simples directamente desde su teléfono. Sin dashboards, sin interfaces complejas — solo un mensaje por **Telegram** y el agente se encarga del resto.
+Quieres más. Quieres poder hablarle desde cualquier lugar — desde tu teléfono, mientras estás en movimiento — y que haga cosas en los servicios que ya usas a diario.
 
-> El team lead envió este mensaje por Slack:
->
-> > "El agente está funcionando muy bien como asistente básico. Ahora hagámoslo útil. Conéctalo a Google Docs y Google Calendar, y conéctalo a Telegram para que podamos hablarle desde cualquier lugar. Quiero probarlo yo mismo: le voy a mandar un mensaje pidiéndole que cree un documento, y espero que cree el doc, bloquee tiempo en mi calendario para revisarlo y me confirme en Telegram que ya está hecho. Nada complicado, solo un flujo que funcione de punta a punta."
+Tu siguiente paso: conectar el asistente a **Telegram**, **Google Docs** y **Google Calendar**. Así podrás mandarle un mensaje desde el móvil y que él cree un documento, bloquee tiempo en tu calendario y te confirme que ya está hecho. Sin abrir el portátil. Sin dashboards. Solo un mensaje y el resultado.
 
 Para integrar Google Docs y Google Calendar rápidamente sin construir conectores propios, usarás el **MCP de Zapier** — un puente que expone las acciones preconstruidas de Zapier como skills que tu agente puede invocar directamente. No es la única forma de conectar estos servicios, pero es el camino más rápido hacia un prototipo funcional.
 

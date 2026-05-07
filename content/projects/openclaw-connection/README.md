@@ -17,13 +17,11 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ## 🎯 Challenge
 
-The small consulting firm where you set up OpenClaw as an internal AI assistant is ready for the next step. The team lead was happy with the basic configuration — the agent is running, it responds, it has a personality. Now they want it to actually do things.
+Your OpenClaw instance is already running as a personal assistant. It responds, it has a personality, it's connected to a model of your choice. But it's still a desktop assistant — you have to be in front of the VPS or the web interface to use it.
 
-The request came in this morning: connect the agent to the tools the team already uses so that any team member can delegate simple tasks to it directly from their phone. No dashboards, no complex interfaces — just a message on **Telegram** and the agent takes care of the rest.
+You want more. You want to be able to talk to it from anywhere — from your phone, while you're on the go — and have it take actions in the services you already use every day.
 
-> The team lead sent this brief over Slack:
->
-> > "The agent is working great as a basic assistant. Now let's make it useful. Connect it to Google Docs and Google Calendar, and hook it up to Telegram so we can message it from anywhere. I want to test it myself: I'll send a message asking it to create a document, and I expect it to create the doc, block time in my calendar to review it, and confirm back to me in Telegram. Nothing fancy, just a working end-to-end flow."
+Your next step: connect the assistant to **Telegram**, **Google Docs**, and **Google Calendar**. That way you can send it a message from your phone, and it will create a document, block time in your calendar, and confirm it's done — no laptop required. No dashboards. Just a message and a result.
 
 To integrate Google Docs and Google Calendar quickly without building custom connectors, you'll use the **Zapier MCP** — a bridge that exposes Zapier's pre-built actions as skills your agent can call directly. It's not the only way to connect these services, but it's the fastest path to a working prototype.
 
