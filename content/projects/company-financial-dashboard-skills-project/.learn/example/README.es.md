@@ -2,7 +2,14 @@
 
 > **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio continúa con la app de catálogo de biblioteca comunitaria de la sesión de contexto anterior — mismo flujo de trabajo de cargar, aplicar y crear agent skills, con una base de código más accesible que el dashboard financiero.
 
+_These instructions are also available in [English](./README.md)._
+
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 La app del catálogo de biblioteca está funcionando, pero tu tech lead ha señalado dos áreas antes de que la rama pueda fusionarse: accesibilidad y buenas prácticas de despliegue. Han compartido dos agent skills para guiar a tu asistente de IA. Después de aplicarlas, explorarás el ecosistema de skills y escribirás una skill personalizada específica para el catálogo.
 

@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom-paced example to introduce the same concepts as the graded project (user authentication API). Use a different domain so students don't confuse it with their own work. A community plant swap platform is concrete and low-stakes — good for live coding. The goal is to work through the JWT + FastAPI pattern together, not to finish a production app.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small community has a FastAPI backend for listing and claiming plants that members want to swap. Right now any request — including creating, editing, and deleting listings — is fully public. Before the next version goes live, the maintainer needs the API secured: only authenticated members can post or manage listings.
 

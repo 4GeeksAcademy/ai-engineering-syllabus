@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is an in-class live example for teaching the concepts of the `seats-management-typescript` project. Use this scenario to demonstrate 2D arrays, matrix traversal, and function design in TypeScript. **Do not assign this as homework — it is a guided classroom exercise.**
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small municipal parking lot with **4 rows and 6 spaces per row** needs a simple management tool. The attendant currently tracks availability with a paper grid. Your team will build a TypeScript command-line program that lets the attendant see which spaces are free, reserve a space for a vehicle, and find two adjacent free spaces for oversized vehicles (e.g., a van or trailer).
 

@@ -1,8 +1,15 @@
 > **Ejemplo para usar en clase (solo instructores).** Usa este escenario para introducir el App Router de Next.js, hooks de React, Tailwind mobile-first y prompts de visión en una sesión de ~1-2 horas. Este archivo es un recurso pedagógico con un *dominio diferente* al del proyecto asignado. No lo compartas con los estudiantes como su brief de proyecto.
 
+_These instructions are also available in [English](./README.md)._
+
 # Interfaz de Alquiler de Coches — Ejemplo en Clase con Next.js y React
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una agencia de alquiler de coches quiere una interfaz moderna y mobile-first donde los usuarios puedan explorar los vehículos disponibles, ver los resultados de búsqueda y consultar el detalle de un coche concreto. El tech lead ha definido tres páginas y un conjunto de componentes a implementar.
 

@@ -2,7 +2,14 @@
 
 > **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio es una app de catálogo de biblioteca comunitaria en lugar de un dashboard financiero — mismo flujo de trabajo de comprensión de código con IA, reglas de ingeniería y documentación del memory bank, pero con una base de código más pequeña y familiar.
 
+_These instructions are also available in [English](./README.md)._
+
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Acabas de unirte a un pequeño equipo que mantiene una app de catálogo de biblioteca comunitaria. Hay un frontend en React y un backend en FastAPI, pero la entrega fue precipitada: no hay docs, no hay estándares de código escritos y no hay notas sobre qué está terminado o roto. Tu trabajo es usar tu asistente de IA para entender lo que existe, definir reglas para que sea mantenible y dejar un memory bank en el que cualquier colaborador futuro pueda apoyarse.
 

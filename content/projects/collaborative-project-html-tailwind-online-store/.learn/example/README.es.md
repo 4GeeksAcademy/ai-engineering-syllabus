@@ -2,7 +2,14 @@
 
 > **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio es el sitio web de una cafetería de barrio en lugar de una tienda de ropa francesa — mismas habilidades de HTML + Tailwind, flujo de trabajo colaborativo con Git y estructura semántica, pero con 3 vistas en lugar de 5.
 
+_These instructions are also available in [English](./README.md)._
+
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una cafetería local quiere un prototipo sencillo de sitio web para mostrar su menú y permitir a los clientes hacer un pedido anticipado. Trabajaréis en parejas: una persona se encarga de las vistas Home y Menú, la otra del formulario de pedido. Usaréis ramas de Git y pull requests para unir vuestro trabajo al final.
 

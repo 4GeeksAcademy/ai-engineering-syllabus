@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a simplified in-class example for the "Agent Hub UI Specs and Prompts" project. Use this scenario to introduce the spec-first workflow and core UI interactions (sidebar, modals, dropdowns, dark mode) in 1–2 hours. The original project covers the same technical concepts in a larger, more complex domain.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small public library called **Bookshelf Community Library** needs a basic admin panel to manage its catalog and loan activity. You've been brought in to prototype it. Before touching any HTML, you must write a specification document (`SPECS.md`) that describes what you'll build — precise enough that another developer (or an AI agent) could implement it without asking questions.
 

@@ -1,8 +1,15 @@
 > **Ejemplo para usar en clase (solo instructores).** Usa este escenario para introducir HTML semántico, Flexbox, accesibilidad y Schema.org en una sesión de ~1-2 horas. Este archivo es un recurso pedagógico con un *dominio diferente* al del proyecto asignado. No lo compartas con los estudiantes como su brief de proyecto.
 
+_These instructions are also available in [English](./README.md)._
+
 # Web Personal de un Chef — HTML, CSS, SEO y Accesibilidad (Ejemplo en Clase)
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Un chef autónomo llamado Marco Rossi organiza cenas privadas y eventos pop-up. Te ha pedido que construyas una landing page sencilla para que los clientes puedan encontrarle y contactar con él.
 

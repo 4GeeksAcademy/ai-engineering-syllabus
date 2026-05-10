@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo en vivo para clase que enseña los conceptos del proyecto `openclaw-setup`. Usa este escenario en clase para guiar a los estudiantes por el acceso a un VPS mediante SSH, la instalación de OpenClaw y la configuración de LiteLLM. **No lo asignes como tarea — es un ejercicio guiado en el aula.**
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una pequeña librería online quiere desplegar un asistente de IA autoalojado para responder las preguntas más comunes de sus clientes (estado de pedidos, política de devoluciones, recomendaciones de libros). No quieren pagar una suscripción a un chatbot SaaS y prefieren mantener sus datos en su propio servidor.
 

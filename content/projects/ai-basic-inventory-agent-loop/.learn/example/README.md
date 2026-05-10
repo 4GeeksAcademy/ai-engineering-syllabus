@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a simplified in-class example for the "AI Basic Inventory Agent Loop" project. Use this scenario to demonstrate the agent loop (Observe → Think → Act → Update) and tool calling with a FastAPI backend in 1–2 hours. The original project covers the same technical patterns in a coffee shop supply context.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 **PageTurner Books** is a small indie bookstore. The owner, Mia, wants to stop checking spreadsheets and start asking questions in plain language: *"How many copies of Dune do we have?"* or *"We just received 20 copies of The Midnight Library."*
 

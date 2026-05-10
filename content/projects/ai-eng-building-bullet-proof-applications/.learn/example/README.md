@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a simplified in-class example for the "Building Bullet-Proof Applications" project. Use this scenario to introduce pytest, test plans, and the three-tier test structure (happy path / edge case / failure mode) in 1–2 hours. The original project applies the same concepts to an authentication API with higher coverage requirements.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 Your team built a small **Task Manager API** with FastAPI. It has been working fine in development, but last week a teammate added a "complete task" feature that silently ignored tasks that didn't exist. No one noticed until a user reported it.
 

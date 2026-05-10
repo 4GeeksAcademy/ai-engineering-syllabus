@@ -2,7 +2,14 @@
 
 > **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio continúa con la app de catálogo de biblioteca comunitaria — mismo flujo de trabajo guiado por especificaciones (tipos TypeScript, specs de componentes, documentación del contrato de datos, casos borde), pero con dos funcionalidades en lugar de tres y una forma de API más sencilla.
 
+_These instructions are also available in [English](./README.md)._
+
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 El catálogo de biblioteca está en producción. Los bibliotecarios que lo usan quieren dos nuevas funcionalidades. Antes de que nadie escriba un componente React ni haga una llamada a la API, tu tech lead dice: **"Primero especificamos. Luego construimos."**
 

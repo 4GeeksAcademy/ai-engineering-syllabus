@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo en vivo para clase que enseña los conceptos del proyecto `openclaw-connection`. Usa este escenario en clase para guiar a los estudiantes por la configuración de canales de un agente y la integración con servicios externos mediante MCP. **No lo asignes como tarea — es un ejercicio guiado en el aula.**
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Un grupo de estudio de un bootcamp usa **Discord** como canal de comunicación principal y **Notion** para mantener apuntes compartidos. Quieren que su asistente OpenClaw viva dentro de Discord para que los miembros puedan hacerle preguntas y que automáticamente cree páginas en Notion con resúmenes de las sesiones de estudio.
 

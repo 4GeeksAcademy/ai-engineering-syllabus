@@ -1,8 +1,15 @@
 > **In-class example for instructors.** Use this scenario to introduce class diagrams with 5+ models in a ~1-hour session. This file is a teaching aid with a *different domain* than the assigned project. Do not share this with students as their project brief.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 # Podcast Platform — Object Modeling (In-Class Example)
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A startup is building a podcast streaming app. Before any code is written, the team needs a clear data model. The product lead sent this description:
 

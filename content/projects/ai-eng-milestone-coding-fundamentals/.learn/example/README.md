@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom example to introduce the concepts of the *Milestone 2 — Building Scripts to Automate Tasks* project using a simpler domain. It covers the same TypeScript skills (interfaces, filtering, sorting, linear search, binary search, aggregations, business validations, pure functions) but with a movie collection as the data model. Scope: 1–2 hour live session. Do NOT share this file with students before they attempt the main project.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A developer wants to build a personal movie collection manager. They have a list of movies stored as plain objects in TypeScript and need a set of reusable utility functions to filter, search, sort, and summarise the collection.
 

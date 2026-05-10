@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo de clase para introducir los conceptos del proyecto *Analizador de Incidencias* usando un dominio más sencillo. Cubre el mismo stack y los mismos patrones (script de análisis de CSV con validación y métricas, lógica compartida, API REST para subida de ficheros, interfaz web), pero está pensado para una sesión en vivo de 1 a 2 horas. NO compartir este archivo con los estudiantes antes de que intenten el proyecto principal.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una pequeña librería independiente ha exportado su inventario actual como un fichero CSV con 25 registros. Antes de importar estos datos en el nuevo sistema de gestión, el equipo necesita validarlos y generar un resumen rápido: cuántos libros hay en cada género, cuál es el precio medio según el estado, y cuántos registros tienen problemas.
 

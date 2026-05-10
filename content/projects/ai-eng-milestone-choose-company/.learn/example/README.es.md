@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo de clase para introducir los conceptos del proyecto *Milestone 0 — Elige tu empresa* usando un dominio más cercano y sencillo. Cubre las mismas habilidades (leer un documento de contexto, tomar una decisión estructurada, proponer una idea de agente de IA, configurar el entorno de desarrollo) pero con tres pequeños negocios locales en lugar de un escenario corporativo complejo. Úsalo como actividad de calentamiento de 30 a 45 minutos antes de que los estudiantes aborden el milestone principal. NO compartir este archivo con los estudiantes antes de que intenten el proyecto principal.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## La actividad
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Estás a punto de empezar un sprint de proyecto breve. Durante las próximas sesiones construirás una herramienta digital para un negocio local — y esta decisión condiciona todo lo que construirás a partir de aquí.
 

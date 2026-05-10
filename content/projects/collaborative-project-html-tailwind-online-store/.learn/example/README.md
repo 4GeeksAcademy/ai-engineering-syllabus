@@ -2,7 +2,14 @@
 
 > **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain is a neighborhood coffee shop website instead of a clothing brand online store — same HTML + Tailwind skills, Git collaboration workflow, and semantic structure, but with 3 views instead of 5.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A local coffee shop wants a simple prototype website to showcase their menu and allow customers to place a pre-order. You are working in pairs: one person handles the Home and Menu views, the other handles the Pre-order form. You will use Git branches and pull requests to merge your work together at the end.
 

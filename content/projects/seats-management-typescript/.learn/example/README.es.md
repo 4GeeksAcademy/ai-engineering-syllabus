@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo en vivo para clase que enseña los conceptos del proyecto `seats-management-typescript`. Usa este escenario para demostrar arrays bidimensionales, recorrido de matrices y diseño de funciones en TypeScript. **No lo asignes como tarea — es un ejercicio guiado en el aula.**
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Un pequeño aparcamiento municipal con **4 filas y 6 plazas por fila** necesita una herramienta de gestión sencilla. El vigilante lleva actualmente el control de disponibilidad en una cuadrícula de papel. Tu equipo construirá un programa de línea de comandos en TypeScript que le permita al vigilante ver qué plazas están libres, reservar una plaza para un vehículo y encontrar dos plazas contiguas libres para vehículos de gran tamaño (por ejemplo, una furgoneta o remolque).
 

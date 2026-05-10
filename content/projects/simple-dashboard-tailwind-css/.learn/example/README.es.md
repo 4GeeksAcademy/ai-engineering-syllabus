@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo en vivo para clase que enseña los conceptos del proyecto `simple-dashboard-tailwind-css`. Usa este escenario para guiar a los estudiantes en la construcción de un dashboard responsivo con Tailwind CSS y HTML semántico usando un enfoque mobile-first. **No lo asignes como tarea — es un ejercicio guiado en el aula.**
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Un pequeño gimnasio de barrio quiere un dashboard web sencillo para ver el estado de su negocio de un vistazo. El dueño lo consulta cada mañana desde el móvil y en el monitor de escritorio de la recepción. Necesita saber:
 

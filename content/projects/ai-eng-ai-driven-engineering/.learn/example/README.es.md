@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo simplificado en clase para el hito "AI-Driven Engineering". Usa este escenario para introducir el patrón de memory bank, `AGENTS.md`, reglas de agente y skills en el contexto de un monorepo pequeño — completable en 1–2 horas. El proyecto original aplica los mismos conceptos a un monorepo multi-empresa más grande con más hitos de código acumulado.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Estás trabajando en la plataforma digital de **Masa & Fuego**, una escuela de cocina local. El repositorio ya tiene una página de inicio (HTML) y algo de lógica de precios (TypeScript). Antes de añadir más funcionalidades, tu tech lead quiere que el repositorio esté **listo para IA**: el agente de código debe tener contexto persistente, un flujo de trabajo definido y al menos una skill reutilizable.
 

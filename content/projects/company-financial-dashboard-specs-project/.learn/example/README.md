@@ -2,7 +2,14 @@
 
 > **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain continues with the community library catalog app — same spec-driven workflow (TypeScript types, component specs, data contract docs, edge cases), but with two features instead of three, and a simpler API shape.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 The library catalog is live. The librarians using it want two new features. Before anyone writes a React component or makes an API call, your tech lead says: **"We spec first. Then we build."**
 

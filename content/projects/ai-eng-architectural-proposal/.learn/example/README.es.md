@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo simplificado en clase para el proyecto "Backend Architecture Proposal". Usa este escenario para practicar la escritura de un documento de arquitectura técnica antes de escribir ningún código — completable en 1–2 horas. El proyecto original aplica los mismos conceptos al monorepo propio de la empresa del alumno, acumulado a lo largo de varios hitos.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Acabas de unirte al equipo de backend de **Dishcraft**, una startup que está construyendo una plataforma online para compartir recetas. Los usuarios pueden publicar sus propias recetas, navegar por categorías, dejar valoraciones y guardar favoritas.
 

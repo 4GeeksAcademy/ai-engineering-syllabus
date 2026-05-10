@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a simplified in-class example for the "AI-Driven Engineering" milestone. Use this scenario to introduce the memory bank pattern, `AGENTS.md`, agent rules, and skills in the context of a small monorepo — completable in 1–2 hours. The original project applies the same concepts to a larger multi-company monorepo with more milestones of accumulated code.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 You're working on the digital platform for **Masa & Fuego**, a local cooking school. The repo already has a landing page (HTML) and some pricing logic (TypeScript). Before adding more features, your tech lead wants the repo to be **AI-ready**: the coding agent must have persistent context, a defined workflow, and at least one reusable skill.
 

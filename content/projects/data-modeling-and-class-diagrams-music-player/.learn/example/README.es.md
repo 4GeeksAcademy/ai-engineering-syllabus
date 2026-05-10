@@ -1,8 +1,15 @@
 > **Ejemplo para usar en clase (solo instructores).** Usa este escenario para introducir diagramas de clases con 5+ modelos en una sesión de ~1 hora. Este archivo es un recurso pedagógico con un *dominio diferente* al del proyecto asignado. No lo compartas con los estudiantes como su brief de proyecto.
 
+_These instructions are also available in [English](./README.md)._
+
 # Plataforma de Podcasts — Modelado de Objetos (Ejemplo en Clase)
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una startup está construyendo una app de streaming de podcasts. Antes de escribir ningún código, el equipo necesita un modelo de datos claro. La responsable de producto envió esta descripción:
 

@@ -1,8 +1,15 @@
 > **In-class example for instructors.** Use this scenario to introduce semantic HTML, Flexbox, accessibility, and Schema.org in a ~1–2 hour session. This file is a teaching aid with a *different domain* than the assigned project. Do not share this with students as their project brief.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 # Chef's Personal Website — HTML, CSS, SEO & Accessibility (In-Class Example)
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A freelance chef named Marco Rossi does private dinners and pop-up events. He has asked you to build a simple landing page so clients can find him online and get in touch.
 

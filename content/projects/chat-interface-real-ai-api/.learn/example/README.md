@@ -2,7 +2,14 @@
 
 > **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain is a cooking assistant chatbot instead of a general-purpose consultancy chat interface — same technical patterns, much smaller scope.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small cooking school wants an AI-powered assistant where students can type questions and get recipe suggestions or cooking tips. You will build a React/Next.js page that talks to the Groq API, tracks token consumption per session, and keeps the conversation alive after a page refresh.
 

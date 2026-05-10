@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom example to introduce the concepts of the *Milestone 0 — Choose Your Company* project using a simpler, more relatable domain. It covers the same skills (reading a context document, making a structured decision, proposing an AI agent idea, setting up a development environment) but with three small local businesses instead of a large corporate scenario. Use this as a 30–45 minute warm-up activity before students tackle the main milestone. Do NOT share this file with students before they attempt the main project.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The activity
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 You are about to start a short project sprint. Over the next few sessions you will build a digital tool for a local business — and this decision shapes everything you build from here.
 

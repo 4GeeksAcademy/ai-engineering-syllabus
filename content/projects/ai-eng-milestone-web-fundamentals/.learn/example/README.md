@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom-paced example to introduce the same concepts as the graded project (Milestone 1). Use a different domain so students don't confuse it with their own work. A bakery is a concrete, familiar business that everyone can reason about — ideal for a live coding session.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 **Sweet Corner Bakery** has been baking artisan bread and pastries in the same neighborhood for 12 years. Their customers know them by word of mouth, but they have zero online presence. The owner wants two things:
 

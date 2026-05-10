@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom example to introduce the concepts of the *Centralized Incident Manager* project using a simpler domain. It covers the same stack and patterns (data model with lifecycle, seeding, REST API, frontend form/list/summary, shared validation) but is scoped to a 1–2 hour live session. Do NOT share this file with students before they attempt the main project.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A developer maintains a personal portfolio website with several pages (Home, About, Projects, Contact). Visitors occasionally find bugs: broken links, missing images, layout issues, or typos. The developer wants a small internal tool to track these reports, assign them a priority, move them through a resolution lifecycle, and see a quick summary of what is pending.
 

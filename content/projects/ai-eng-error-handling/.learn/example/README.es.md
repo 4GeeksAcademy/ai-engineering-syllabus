@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo de clase para introducir los conceptos del proyecto *Gestión de Errores* usando un dominio más sencillo. Cubre los mismos patrones (UI de tres estados, try/catch acotado, sin stack traces al cliente, códigos de salida en scripts, optional chaining, bloques finally) aplicados a una pequeña app de recetas ya construida. Úsalo para demostrar el flujo de auditoría antes de que los estudiantes lo apliquen a su propio monorepo. NO compartir este archivo con los estudiantes antes de que intenten el proyecto principal.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Un equipo pequeño construyó la semana pasada una app de descubrimiento de recetas. Funciona la mayoría del tiempo, pero cuando algo falla, la experiencia se rompe de forma grave. Los usuarios ven mensajes de error técnicos en crudo, las páginas quedan en blanco y los scripts se caen sin dejar rastro útil.
 

@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is an in-class live example for teaching the concepts of the `openclaw-setup` project. Use this scenario during class to walk students through VPS access via SSH, OpenClaw installation, and LiteLLM configuration. **Do not assign this as homework — it is a guided classroom exercise.**
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small online bookshop wants to deploy a self-hosted AI assistant to handle common customer questions (order status, return policy, book recommendations). They don't want to pay for a SaaS chatbot subscription and prefer to keep their data on their own server.
 

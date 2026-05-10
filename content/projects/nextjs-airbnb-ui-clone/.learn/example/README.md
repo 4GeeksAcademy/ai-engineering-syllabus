@@ -1,8 +1,15 @@
 > **In-class example for instructors.** Use this scenario to introduce Next.js App Router, React hooks, mobile-first Tailwind, and vision prompting in a ~1–2 hour session. This file is a teaching aid with a *different domain* than the assigned project. Do not share this with students as their project brief.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 # Car Rental UI — Next.js & React In-Class Example
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A car rental agency wants a modern, mobile-first interface where users can browse available cars, see search results, and view the detail page for a specific vehicle. The tech lead has defined three pages and a set of components to implement.
 

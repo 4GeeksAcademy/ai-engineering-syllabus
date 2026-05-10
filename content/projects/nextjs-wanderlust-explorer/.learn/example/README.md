@@ -1,8 +1,15 @@
 > **In-class example for instructors.** Use this scenario to introduce URL-driven state, custom hooks, `useSearchParams`, and multi-page Next.js apps in a ~1–2 hour session. This file is a teaching aid with a *different domain* than the assigned project. Do not share this with students as their project brief.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 # Recipe Explorer — Next.js In-Class Example
 
 ## Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A food blog wants a recipe discovery app where users can search and filter recipes, save their favorites, and view a detail page for any recipe. The PM has sent the following spec:
 

@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo simplificado en clase para el proyecto "Building Bullet-Proof Applications". Usa este escenario para introducir pytest, los planes de tests y la estructura de tres niveles (camino feliz / caso límite / modo de fallo) en 1–2 horas. El proyecto original aplica los mismos conceptos a una API de autenticación con requisitos de cobertura más altos.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Tu equipo construyó una pequeña **API de Gestión de Tareas** con FastAPI. Funcionaba bien en desarrollo, pero la semana pasada un compañero añadió una funcionalidad de "completar tarea" que ignoraba silenciosamente las tareas que no existían. Nadie lo notó hasta que un usuario lo reportó.
 

@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom example to introduce the concepts of the *Error Handling* project using a simpler domain. It covers the same patterns (three-state UI, scoped try/catch, no stack traces to client, script exit codes, optional chaining, finally blocks) applied to a small pre-built recipe app. Use this to demonstrate the audit workflow before students apply it to their own monorepo. Do NOT share this file with students before they attempt the main project.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small team built a recipe discovery app last sprint. It works most of the time — but when things go wrong, the experience breaks down badly. Users see raw error messages, pages go blank, and scripts crash with no useful output.
 

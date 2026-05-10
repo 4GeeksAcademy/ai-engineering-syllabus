@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is an in-class live example for teaching the concepts of the `openclaw-connection` project. Use this scenario during class to walk students through agent channel configuration and MCP-based external service integration. **Do not assign this as homework — it is a guided classroom exercise.**
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A small study group at a bootcamp uses **Discord** as their main communication channel and **Notion** to keep shared study notes. They want their OpenClaw assistant to live inside Discord so members can ask it questions and have it automatically create Notion pages with summaries of study sessions.
 

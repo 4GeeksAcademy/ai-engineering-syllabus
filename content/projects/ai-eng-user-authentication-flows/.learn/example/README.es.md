@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo diseñado para el ritmo del aula que introduce los mismos conceptos que el proyecto evaluado (flujos de autenticación en el frontend). Se utiliza un dominio diferente para que los estudiantes no lo confundan con su propio trabajo. Una colección personal de recetas es suficientemente sencilla para razonar en clase mientras se cubren todos los patrones clave: almacenamiento de token, rutas protegidas, gestión de perfil y cierre de sesión.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 **Recipe Box** es una app Next.js donde los usuarios guardan y organizan sus recetas favoritas. La API ya requiere un token JWT en las rutas protegidas (implementado en la clase anterior). Ahora los estudiantes necesitan conectar el frontend: login, registro, página de perfil y protección de rutas para que solo los usuarios autenticados puedan acceder a su colección de recetas.
 

@@ -2,7 +2,14 @@
 
 > **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain continues with the community library catalog app from the previous context session — same workflow of loading, applying, and authoring agent skills, with a more approachable codebase than the financial dashboard.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 The library catalog app is working, but your tech lead has flagged two areas before the branch can be merged: accessibility and deployment best practices. They have shared two agent skills to guide your AI assistant. After applying them, you will explore the skills ecosystem and write one custom skill specific to the library catalog.
 

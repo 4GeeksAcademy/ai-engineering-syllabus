@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo en vivo para clase que enseña los conceptos del proyecto `voice-to-do-list-api`. Usa este escenario para demostrar endpoints CRUD con FastAPI, almacenamiento en memoria, integración con la API de Groq e ingeniería de prompts para extracción de intención. **No lo asignes como tarea — es un ejercicio guiado en el aula.**
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una periodista usa una aplicación de voz para capturar notas rápidas mientras trabaja en el campo. El frontend del navegador ya graba su voz, la transcribe con la Web Speech API y envía el texto a un backend. Tu trabajo es construir ese backend.
 

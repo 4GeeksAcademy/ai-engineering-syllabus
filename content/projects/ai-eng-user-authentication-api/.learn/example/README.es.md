@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo diseñado para el ritmo del aula que introduce los mismos conceptos que el proyecto evaluado (API de autenticación de usuarios). Se utiliza un dominio diferente para que los estudiantes no lo confundan con su propio trabajo. Una plataforma de intercambio de plantas comunitaria es concreta y sin riesgo — ideal para codificación en vivo. El objetivo es trabajar juntos el patrón JWT + FastAPI, no terminar una aplicación de producción.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una pequeña comunidad tiene un backend FastAPI para listar y reclamar plantas que los miembros quieren intercambiar. Ahora mismo cualquier petición — incluyendo crear, editar y eliminar listados — es completamente pública. Antes de que salga la siguiente versión, el mantenedor necesita asegurar la API: solo los miembros autenticados pueden publicar o gestionar listados.
 

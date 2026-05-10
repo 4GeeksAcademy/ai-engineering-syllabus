@@ -2,7 +2,14 @@
 
 > **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain is a community library catalog app instead of a financial dashboard — same workflow of AI-assisted codebase understanding, engineering rules, and memory bank documentation, but scoped to a smaller, more familiar codebase.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 You just joined a small team maintaining a community library catalog app. There is a React frontend and a FastAPI backend, but the handover was rushed: there are no docs, no coding standards written down, and no notes about what is finished or broken. Your job is to use your AI coding assistant to understand what exists, define rules to keep it maintainable, and leave behind a memory bank that any future contributor can rely on.
 

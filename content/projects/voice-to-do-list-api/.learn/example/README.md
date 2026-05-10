@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is an in-class live example for teaching the concepts of the `voice-to-do-list-api` project. Use this scenario to demonstrate FastAPI CRUD endpoints, in-memory storage, Groq API integration, and LLM prompt engineering for intent extraction. **Do not assign this as homework — it is a guided classroom exercise.**
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 A journalist uses a voice-first app to capture quick notes while reporting in the field. The browser frontend already records their voice, transcribes it with the Web Speech API, and sends the text to a backend. Your job is to build that backend.
 

@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo diseñado para el ritmo del aula que introduce los mismos conceptos que el proyecto evaluado (Hito 1). Se utiliza un dominio diferente para que los estudiantes no lo confundan con su propio trabajo. Una panadería es un negocio concreto y familiar que todo el mundo puede entender — ideal para una sesión de codificación en vivo.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 **Sweet Corner Bakery** lleva 12 años horneando pan artesanal y bollería en el mismo barrio. Sus clientes los conocen de boca en boca, pero no tienen ninguna presencia online. La propietaria quiere dos cosas:
 

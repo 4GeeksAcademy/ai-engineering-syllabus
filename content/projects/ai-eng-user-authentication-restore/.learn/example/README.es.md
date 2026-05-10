@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo diseñado para el ritmo del aula que introduce los mismos conceptos que el proyecto evaluado (flujo de restablecimiento de contraseña). Se utiliza un dominio diferente para que los estudiantes no lo confundan con su propio trabajo. Un rastreador de salud de mascotas es concreto y personal — los usuarios se preocupan por su cuenta, lo que hace que el escenario de "olvidé mi contraseña" se sienta real. El objetivo es trabajar juntos el flujo completo de restablecimiento: endpoints del backend, correo transaccional y páginas del frontend.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 **PawLog** es una app donde los dueños de mascotas registran las vacunas, visitas al veterinario y medicamentos de sus animales. El sistema de auth (registro, login, perfil) ya está funcionando. Lo que falta: los usuarios que olvidan su contraseña no tienen forma de recuperar su cuenta.
 

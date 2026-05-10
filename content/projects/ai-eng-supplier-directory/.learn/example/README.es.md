@@ -2,9 +2,16 @@
 
 > **Para el profesor:** Este es un ejemplo simplificado para trabajar en clase que introduce los mismos conceptos del proyecto Directorio de Proveedores — TinyDB, validación con Pydantic, seeders y endpoints con filtros — usando un dominio cotidiano. Es intencionalmente más corto para poder construirse en directo durante la sesión.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## 🎯 El reto
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una pequeña biblioteca comunitaria lleva el registro de sus libros en un archivo de texto. Te han pedido que lo reemplaces con una pequeña API FastAPI + TinyDB + Pydantic que arranque con datos precargados y rechace cualquier entrada inválida antes de que llegue a la base de datos.
 

@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo simplificado en clase para el proyecto "Agent Hub UI Specs and Prompts". Usa este escenario para introducir el flujo de trabajo spec-first y las interacciones de UI principales (sidebar, modales, dropdowns, modo oscuro) en 1–2 horas. El proyecto original cubre los mismos conceptos técnicos en un dominio más amplio y complejo.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una pequeña biblioteca pública llamada **Biblioteca Comunitaria Bookshelf** necesita un panel de administración básico para gestionar su catálogo y la actividad de préstamos. Te han contratado para prototiparlo. Antes de tocar ningún HTML, debes escribir un documento de especificación (`SPECS.md`) que describa lo que vas a construir — con suficiente detalle como para que otro desarrollador (o un agente de IA) pueda implementarlo sin hacer preguntas.
 

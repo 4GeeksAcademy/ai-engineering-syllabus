@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo de clase para introducir los conceptos del proyecto *Hito 2 — Desarrollando scripts para automatizar tareas* usando un dominio más sencillo. Cubre las mismas habilidades de TypeScript (interfaces, filtrado, ordenamiento, búsqueda lineal, búsqueda binaria, agregaciones, validaciones de negocio, funciones puras) pero con una colección de películas como modelo de datos. Alcance: sesión en vivo de 1 a 2 horas. NO compartir este archivo con los estudiantes antes de que intenten el proyecto principal.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una desarrolladora quiere construir un gestor de su colección personal de películas. Tiene una lista de películas almacenadas como objetos en TypeScript y necesita un conjunto de funciones utilitarias reutilizables para filtrar, buscar, ordenar y resumir la colección.
 

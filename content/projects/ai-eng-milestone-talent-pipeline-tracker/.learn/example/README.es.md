@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo diseñado para el ritmo del aula que introduce los mismos conceptos que el proyecto evaluado (Hito 3). Se utiliza un dominio diferente para que los estudiantes no lo confundan con su propio trabajo. El escenario es intencionalmente pequeño — el objetivo es una sesión de trabajo, no un producto terminado.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una biblioteca de barrio lleva el seguimiento de los préstamos de libros con notas adhesivas y una pizarra. La bibliotecaria necesita una herramienta interna sencilla para ver quién tiene cada libro, cuándo hay que devolverlo, y añadir notas rápidas cuando un lector llama.
 

@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo de clase para introducir los conceptos del proyecto *Gestor de Incidencias Centralizado* usando un dominio más sencillo. Cubre el mismo stack y los mismos patrones (modelo de datos con ciclo de vida, seed, API REST, formulario/listado/resumen en frontend, validación compartida), pero está pensado para una sesión en vivo de 1 a 2 horas. NO compartir este archivo con los estudiantes antes de que intenten el proyecto principal.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## El escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una desarrolladora mantiene su portfolio personal con varias páginas (Inicio, Sobre mí, Proyectos, Contacto). Los visitantes a veces encuentran bugs: enlaces rotos, imágenes que no cargan, problemas de layout o erratas. Quiere una pequeña herramienta interna para registrar esos reportes, asignarles prioridad, moverlos por un ciclo de vida de resolución y ver un resumen rápido de lo que está pendiente.
 

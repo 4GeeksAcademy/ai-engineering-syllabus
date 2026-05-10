@@ -2,9 +2,16 @@
 
 > **Instructor note:** This is a classroom-paced example to introduce the same concepts as the graded project (password reset flow). Use a different domain so students don't confuse it with their own work. A pet health tracker is concrete and personal — users care about their account, which makes the "forgot my password" scenario feel real. The goal is to work through the full reset flow together: backend endpoints, transactional email, and frontend pages.
 
+_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
+
 ---
 
 ## The Scenario
+
+### Scope note
+
+This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+
 
 **PawLog** is an app where pet owners log their animals' vaccinations, vet visits, and medications. The auth system (register, login, profile) is already working. The missing piece: users who forget their password have no way to recover their account.
 

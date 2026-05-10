@@ -2,9 +2,16 @@
 
 > **Nota para el instructor:** Este es un ejemplo simplificado en clase para el proyecto "AI Basic Inventory Agent Loop". Usa este escenario para demostrar el bucle del agente (Observar → Pensar → Actuar → Actualizar) y el uso de tools con un backend FastAPI en 1–2 horas. El proyecto original cubre los mismos patrones técnicos en el contexto de suministros para una cafetería.
 
+_These instructions are also available in [English](./README.md)._
+
 ---
 
 ## Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 **PageTurner Books** es una pequeña librería independiente. La dueña, Mia, quiere dejar de revisar hojas de cálculo y empezar a hacer preguntas en lenguaje natural: *"¿Cuántas copias de Dune tenemos?"* o *"Acaban de llegarnos 20 ejemplares de La Biblioteca de Medianoche."*
 

@@ -2,7 +2,14 @@
 
 > **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio es un asistente de cocina en lugar de una interfaz de chat para consultoría — mismos patrones técnicos, alcance mucho más reducido.
 
+_These instructions are also available in [English](./README.md)._
+
 ## El Escenario
+
+### Nota de alcance
+
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+
 
 Una pequeña escuela de cocina quiere un asistente con IA donde los estudiantes puedan escribir preguntas y recibir sugerencias de recetas o consejos culinarios. Construirás una página React/Next.js que se comunica con la API de Groq, registra el consumo de tokens por sesión y mantiene la conversación activa después de recargar la página.
 
