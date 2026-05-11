@@ -22,13 +22,13 @@ Como parte del equipo de **AI Engineering de Nexova**, llevas hitos construyendo
 
 El campo `branch` debe contener exactamente uno de estos valores:
 
-| Valor en base de datos | Nombre para mostrar |
-|---|---|
-| `central` | Central (Valencia / Miami) |
-| `valencia_headquarters` | Valencia — Sede Central |
-| `valencia_operations` | Valencia — Operaciones |
-| `miami_office` | Miami Office |
-| `remote` | Remoto (empleado sin sede fija) |
+| Valor en base de datos  | Nombre para mostrar             |
+| ----------------------- | ------------------------------- |
+| `central`               | Central (Valencia / Miami)      |
+| `valencia_headquarters` | Valencia — Sede Central         |
+| `valencia_operations`   | Valencia — Operaciones          |
+| `miami_office`          | Miami Office                    |
+| `remote`                | Remoto (empleado sin sede fija) |
 
 Cuando el origen sea `internal` o `customer` y no corresponda a una oficina específica, se usará `central`.
 
@@ -38,27 +38,27 @@ Cuando el origen sea `internal` o `customer` y no corresponda a una oficina espe
 
 El campo `category` debe contener exactamente uno de estos valores:
 
-| Valor | Descripción |
-|---|---|
+| Valor               | Descripción                                                                         |
+| ------------------- | ----------------------------------------------------------------------------------- |
 | `technical_failure` | Fallo de sistema o herramienta tecnológica (ATS, HubSpot, Zendesk, infraestructura) |
-| `process_error` | Error en un proceso operativo: selección, incorporación, formación, facturación |
-| `client_complaint` | Queja o reclamación de un cliente corporativo sobre el servicio prestado |
-| `candidate_issue` | Problema reportado por o relacionado con un candidato en proceso de selección |
-| `staff_issue` | Incidencia interna de RRHH: ausencia, conflicto, accidente, baja |
-| `sla_breach` | Incumplimiento de SLA comprometido con un cliente |
-| `data_quality` | Error o inconsistencia en datos de candidatos, clientes o reportes |
-| `other` | Cualquier incidencia que no encaje en las categorías anteriores |
+| `process_error`     | Error en un proceso operativo: selección, incorporación, formación, facturación     |
+| `client_complaint`  | Queja o reclamación de un cliente corporativo sobre el servicio prestado            |
+| `candidate_issue`   | Problema reportado por o relacionado con un candidato en proceso de selección       |
+| `staff_issue`       | Incidencia interna de RRHH: ausencia, conflicto, accidente, baja                    |
+| `sla_breach`        | Incumplimiento de SLA comprometido con un cliente                                   |
+| `data_quality`      | Error o inconsistencia en datos de candidatos, clientes o reportes                  |
+| `other`             | Cualquier incidencia que no encaje en las categorías anteriores                     |
 
 ---
 
 ## Estados y ciclo de vida
 
-| Valor | Significado en Nexova |
-|---|---|
-| `open` | Incidencia registrada, sin responsable asignado aún |
-| `in_progress` | Asignada a un equipo o persona, en gestión activa |
-| `resolved` | Resuelta y confirmada por quien la reportó o por el responsable |
-| `discarded` | Registrada por error, duplicada o fuera de alcance |
+| Valor         | Significado en Nexova                                           |
+| ------------- | --------------------------------------------------------------- |
+| `open`        | Incidencia registrada, sin responsable asignado aún             |
+| `in_progress` | Asignada a un equipo o persona, en gestión activa               |
+| `resolved`    | Resuelta y confirmada por quien la reportó o por el responsable |
+| `discarded`   | Registrada por error, duplicada o fuera de alcance              |
 
 Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progress → resolved`, `in_progress → discarded`. Los estados `resolved` y `discarded` son finales.
 
@@ -66,11 +66,11 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Orígenes
 
-| Valor | Cuándo usarlo en Nexova |
-|---|---|
+| Valor      | Cuándo usarlo en Nexova                                                         |
+| ---------- | ------------------------------------------------------------------------------- |
 | `customer` | Reportada por un cliente corporativo (empresa que contrata servicios de Nexova) |
-| `branch` | Reportada por personal de una de las oficinas de Nexova |
-| `internal` | Detectada internamente por tecnología, operaciones o dirección |
+| `branch`   | Reportada por personal de una de las oficinas de Nexova                         |
+| `internal` | Detectada internamente por tecnología, operaciones o dirección                  |
 
 ---
 
@@ -82,16 +82,16 @@ El fichero CSV del proyecto anterior contiene incidencias exportadas del helpdes
 
 **Mapeo de campos CSV → modelo:**
 
-| Campo CSV | Campo del modelo | Notas |
-|---|---|---|
-| `incident_id` | — | Solo para control de duplicados, no se almacena |
-| `title` | `title` | |
-| `description` | `description` | |
-| `category` | `category` | Verificar que el valor esté en la lista permitida |
-| `status` | `status` | Verificar que el valor esté en la lista permitida |
-| `created_at` | `created_at` | Respetar la fecha original |
-| — | `origin` | Siempre `"customer"` para todos los registros del seed |
-| — | `branch` | Siempre `"central"` para todos los registros del seed |
+| Campo CSV     | Campo del modelo | Notas                                                  |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
+| `title`       | `title`          |                                                        |
+| `description` | `description`    |                                                        |
+| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
+| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
+| `created_at`  | `created_at`     | Respetar la fecha original                             |
+| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
+| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
 
 Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
 

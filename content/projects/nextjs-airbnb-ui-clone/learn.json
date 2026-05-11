@@ -41,10 +41,7 @@
       "points": 2
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/nextjs-airbnb-ui-clone/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/nextjs-airbnb-ui-clone/.learn/preview.png",

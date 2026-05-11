@@ -21,10 +21,7 @@
     "tool-calling",
     "cli"
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "grading": "incremental",
   "localhostOnly": false,

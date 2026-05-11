@@ -58,8 +58,6 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
    ```
 4. Añádelos a tu `requirements.txt`.
 
-
-
 ---
 
 ## 💻 Qué Debes Hacer

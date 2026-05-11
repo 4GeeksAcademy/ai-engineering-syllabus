@@ -1,31 +1,29 @@
 {
-    "slug": "ai-eng-milestone-web-fundamentals",
-    "title": {
-        "us": "Milestone 1 \u2014 Your Company's Public Website",
-        "es": "Hito 1 \u2014 Sitio web p\u00fablico de tu empresa"
-    },
-    "description": {
-        "us": "Build your company's first digital touchpoint: a professional public website with a landing page and an application/sign-up form. Use semantic HTML5, Tailwind CSS, Schema.org markup, full form validation with JavaScript, responsive and accessible design. Follow CONTEXT.md for company-specific data and form fields.",
-        "es": "Construye el primer punto de contacto digital de tu empresa: un sitio web p\u00fablico profesional con landing page y formulario de aplicaci\u00f3n/registro. Usa HTML5 sem\u00e1ntico, Tailwind CSS, marcado Schema.org, validaci\u00f3n completa del formulario con JavaScript, dise\u00f1o responsive y accesible. Sigue el CONTEXT.md para los datos de la empresa y los campos del formulario."
-    },
-    "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-web-fundamentals/preview.png?raw=true",
-    "difficulty": "BEGINNER",
-    "duration": 2,
-    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-    "gitpod": true,
-    "technologies": [
-        "html-css",
-        "javascript",
-        "tailwind-css",
-        "accessibility",
-        "schema-org"
-    ],
-    "projectType": "project",
-    "delivery": {
-        "instructions": "",
-        "formats": [
-            "url"
-        ],
-        "regex": ""
-    }
+  "slug": "ai-eng-milestone-web-fundamentals",
+  "title": {
+    "us": "Milestone 1 \u2014 Your Company's Public Website",
+    "es": "Hito 1 \u2014 Sitio web p\u00fablico de tu empresa"
+  },
+  "description": {
+    "us": "Build your company's first digital touchpoint: a professional public website with a landing page and an application/sign-up form. Use semantic HTML5, Tailwind CSS, Schema.org markup, full form validation with JavaScript, responsive and accessible design. Follow CONTEXT.md for company-specific data and form fields.",
+    "es": "Construye el primer punto de contacto digital de tu empresa: un sitio web p\u00fablico profesional con landing page y formulario de aplicaci\u00f3n/registro. Usa HTML5 sem\u00e1ntico, Tailwind CSS, marcado Schema.org, validaci\u00f3n completa del formulario con JavaScript, dise\u00f1o responsive y accesible. Sigue el CONTEXT.md para los datos de la empresa y los campos del formulario."
+  },
+  "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-web-fundamentals/preview.png?raw=true",
+  "difficulty": "BEGINNER",
+  "duration": 2,
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "gitpod": true,
+  "technologies": [
+    "html-css",
+    "javascript",
+    "tailwind-css",
+    "accessibility",
+    "schema-org"
+  ],
+  "projectType": "project",
+  "delivery": {
+    "instructions": "",
+    "formats": ["url"],
+    "regex": ""
+  }
 }

@@ -17,18 +17,18 @@ TrackFlow trabaja con una red de proveedores que incluye carriers, suministros d
 
 Cada proveedor en el directorio de TrackFlow tiene la siguiente estructura:
 
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `name` | string, requerido | Nombre comercial del proveedor |
-| `country` | string, requerido | País del contrato: `"USA"` o `"Spain"` |
-| `categories` | lista de strings, requerido, mínimo 1 | Tipo de servicio o producto que provee (ver lista válida) |
-| `rate_per_shipment` | float, requerido, > 0 | Tarifa vigente por envío o unidad de servicio en la moneda del contrato |
-| `currency` | string, requerido | `"USD"` para USA, `"EUR"` para Spain |
-| `rate_updated_at` | datetime, generado por el sistema | Timestamp de la última actualización de tarifa |
-| `status` | string, requerido | `"active"` o `"suspended"` |
-| `service_zone` | string, opcional | Zona de cobertura del proveedor (ej. `"West Coast"`, `"Aragón"`) |
-| `contact_email` | string, opcional | Email de contacto del proveedor |
-| `notes` | string, opcional | Observaciones del equipo de operaciones |
+| Campo               | Tipo                                  | Descripción                                                             |
+| ------------------- | ------------------------------------- | ----------------------------------------------------------------------- |
+| `name`              | string, requerido                     | Nombre comercial del proveedor                                          |
+| `country`           | string, requerido                     | País del contrato: `"USA"` o `"Spain"`                                  |
+| `categories`        | lista de strings, requerido, mínimo 1 | Tipo de servicio o producto que provee (ver lista válida)               |
+| `rate_per_shipment` | float, requerido, > 0                 | Tarifa vigente por envío o unidad de servicio en la moneda del contrato |
+| `currency`          | string, requerido                     | `"USD"` para USA, `"EUR"` para Spain                                    |
+| `rate_updated_at`   | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa                          |
+| `status`            | string, requerido                     | `"active"` o `"suspended"`                                              |
+| `service_zone`      | string, opcional                      | Zona de cobertura del proveedor (ej. `"West Coast"`, `"Aragón"`)        |
+| `contact_email`     | string, opcional                      | Email de contacto del proveedor                                         |
+| `notes`             | string, opcional                      | Observaciones del equipo de operaciones                                 |
 
 ### Categorías válidas
 
@@ -243,4 +243,4 @@ La página del directorio debe permitirle a Carlos:
 
 ---
 
-*Documento interno — 4Geeks Academy · AI Engineering Track*
+_Documento interno — 4Geeks Academy · AI Engineering Track_

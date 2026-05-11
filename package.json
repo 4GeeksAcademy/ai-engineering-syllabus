@@ -1,0 +1,25 @@
+{
+  "name": "ai-engineering-syllabus",
+  "version": "1.0.0",
+  "description": "This repository contains the **AI Engineering syllabus** and related learning materials for 4Geeks Academy:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4GeeksAcademy/ai-engineering-syllabus.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/issues"
+  },
+  "homepage": "https://github.com/4GeeksAcademy/ai-engineering-syllabus#readme",
+  "devDependencies": {
+    "prettier": "^3.8.3"
+  }
+}

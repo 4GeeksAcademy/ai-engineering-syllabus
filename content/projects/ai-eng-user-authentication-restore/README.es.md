@@ -30,14 +30,17 @@ Tu tech lead ha abierto el ticket:
 > La plataforma necesita un mecanismo completo de restablecimiento de contraseña. Esto cubre tanto la API como el frontend:
 >
 > **Backend:**
+>
 > - `POST /auth/forgot-password` — recibe un email, valida que el usuario existe, genera un token de restablecimiento firmado de corta duración y envía un enlace de restablecimiento a la dirección del usuario.
 > - `POST /auth/reset-password` — recibe el token de restablecimiento y una nueva contraseña, valida el token (firma + expiración), hashea la nueva contraseña y actualiza el registro del usuario. El token debe quedar invalidado tras su uso.
 >
 > **Frontend:**
+>
 > - `/forgot-password` — formulario donde el usuario introduce su email. Siempre muestra un mensaje de confirmación tras el envío, independientemente de si la dirección existe, para evitar la enumeración de usuarios.
 > - `/reset-password` — formulario donde el usuario establece una nueva contraseña. Lee el token de restablecimiento del query string de la URL y lo envía a la API junto con la nueva contraseña. Si tiene éxito, redirige a `/login`.
 >
 > Para el envío de correos, elige uno de los siguientes servicios e intégralo:
+>
 > - [Mailgun](https://www.mailgun.com/)
 > - [MailerSend](https://www.mailersend.com/)
 > - [SendGrid (Twilio)](https://www.twilio.com/en-us/sendgrid)

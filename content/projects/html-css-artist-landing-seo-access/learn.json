@@ -13,12 +13,7 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": [
-    "html",
-    "css",
-    "accessibility",
-    "seo"
-  ],
+  "technologies": ["html", "css", "accessibility", "seo"],
   "talents": [
     {
       "badge": "html-developer",
@@ -45,10 +40,7 @@
       "points": 5
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/html-css-artist-landing-seo-access/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",

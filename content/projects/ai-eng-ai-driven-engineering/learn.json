@@ -21,10 +21,7 @@
     "documentation",
     "agent-workflows"
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "grading": "incremental",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-ai-driven-engineering/.learn/solution/README.md",

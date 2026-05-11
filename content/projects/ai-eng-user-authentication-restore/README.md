@@ -30,14 +30,17 @@ Your tech lead has opened the ticket:
 > The platform needs a full password reset mechanism. This covers both the API and the frontend:
 >
 > **Backend:**
+>
 > - `POST /auth/forgot-password` — receives an email, validates the user exists, generates a signed short-lived reset token, and sends a reset link to the user's email address.
 > - `POST /auth/reset-password` — receives the reset token and a new password, validates the token (signature + expiry), hashes the new password, and updates the user record. The token must be invalidated after use.
 >
 > **Frontend:**
+>
 > - `/forgot-password` — form where the user enters their email. Always shows a confirmation message after submission, regardless of whether the address exists, to prevent user enumeration.
 > - `/reset-password` — form where the user sets a new password. Reads the reset token from the URL query string and submits it to the API alongside the new password. On success, redirects to `/login`.
 >
 > For email delivery, choose one of the following services and integrate it:
+>
 > - [Mailgun](https://www.mailgun.com/)
 > - [MailerSend](https://www.mailersend.com/)
 > - [SendGrid (Twilio)](https://www.twilio.com/en-us/sendgrid)

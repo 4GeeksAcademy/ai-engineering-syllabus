@@ -13,12 +13,7 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": [
-    "uml",
-    "class-diagrams",
-    "data-modeling",
-    "system-design"
-  ],
+  "technologies": ["uml", "class-diagrams", "data-modeling", "system-design"],
   "talents": [
     {
       "badge": "data-modeler",
@@ -33,19 +28,14 @@
       "points": 2
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "delivery": {
     "instructions": {
       "us": "Upload the two PNG files exported from your diagrams: one for the music playlist player and one for the digital wallet.",
       "es": "Sube los dos archivos PNG exportados de tus diagramas: uno del reproductor de playlist de musica y otro de la billetera digital."
     },
-    "formats": [
-      "png"
-    ],
+    "formats": ["png"],
     "quantity": 2
   },
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-music-player/.learn/preview.png",

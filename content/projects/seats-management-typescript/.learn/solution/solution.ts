@@ -53,7 +53,10 @@ function reserveSeat(matrix: number[][], row: number, column: number): string {
   return `Seat (${row}, ${column}) has been reserved.`;
 }
 
-function countSeats(matrix: number[][]): { occupied: number; available: number } {
+function countSeats(matrix: number[][]): {
+  occupied: number;
+  available: number;
+} {
   let occupied = 0;
   let available = 0;
 
@@ -110,7 +113,7 @@ function demo(): void {
   if (adjacent) {
     const [first, second] = adjacent;
     console.log(
-      `First pair of adjacent seats found at (${first[0]}, ${first[1]}) and (${second[0]}, ${second[1]}).`
+      `First pair of adjacent seats found at (${first[0]}, ${first[1]}) and (${second[0]}, ${second[1]}).`,
     );
   } else {
     console.log("No pair of adjacent available seats found.");

@@ -17,17 +17,17 @@ Brasaland trabaja con alrededor de **20 proveedores activos** distribuidos entre
 
 Cada proveedor en el directorio de Brasaland tiene la siguiente estructura:
 
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `name` | string, requerido | Nombre comercial del proveedor |
-| `country` | string, requerido | País de operación: `"Colombia"` o `"USA"` |
-| `categories` | lista de strings, requerido, mínimo 1 | Categorías de producto que suministra (ver lista válida) |
-| `rate_per_unit` | float, requerido, > 0 | Tarifa vigente por unidad en la moneda del país |
-| `currency` | string, requerido | `"COP"` para Colombia, `"USD"` para USA |
-| `rate_updated_at` | datetime, generado por el sistema | Timestamp de la última actualización de tarifa |
-| `status` | string, requerido | `"active"` o `"suspended"` |
-| `contact_email` | string, opcional | Email de contacto del proveedor |
-| `notes` | string, opcional | Observaciones internas del equipo de compras |
+| Campo             | Tipo                                  | Descripción                                              |
+| ----------------- | ------------------------------------- | -------------------------------------------------------- |
+| `name`            | string, requerido                     | Nombre comercial del proveedor                           |
+| `country`         | string, requerido                     | País de operación: `"Colombia"` o `"USA"`                |
+| `categories`      | lista de strings, requerido, mínimo 1 | Categorías de producto que suministra (ver lista válida) |
+| `rate_per_unit`   | float, requerido, > 0                 | Tarifa vigente por unidad en la moneda del país          |
+| `currency`        | string, requerido                     | `"COP"` para Colombia, `"USD"` para USA                  |
+| `rate_updated_at` | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa           |
+| `status`          | string, requerido                     | `"active"` o `"suspended"`                               |
+| `contact_email`   | string, opcional                      | Email de contacto del proveedor                          |
+| `notes`           | string, opcional                      | Observaciones internas del equipo de compras             |
 
 ### Categorías válidas
 
@@ -230,4 +230,4 @@ La página del directorio debe permitirle a Lucía:
 
 ---
 
-*Documento interno — 4Geeks Academy · AI Engineering Track*
+_Documento interno — 4Geeks Academy · AI Engineering Track_

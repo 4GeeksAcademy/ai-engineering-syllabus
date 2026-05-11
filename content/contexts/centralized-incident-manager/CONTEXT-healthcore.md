@@ -26,21 +26,21 @@ Como parte del equipo de **HealthCore Digital**, llevas hitos construyendo la pl
 
 El campo `branch` debe contener exactamente uno de estos valores:
 
-| Valor en base de datos | Nombre para mostrar |
-|---|---|
-| `central` | Central (Austin / London) |
-| `austin_main` | Austin — Main Clinic |
-| `austin_north` | Austin — North |
-| `dallas_uptown` | Dallas Uptown |
-| `houston_med_center` | Houston Medical Center |
-| `san_antonio_west` | San Antonio West |
-| `miami_brickell` | Miami Brickell |
-| `miami_doral` | Miami Doral |
-| `orlando_east` | Orlando East |
-| `atlanta_midtown` | Atlanta Midtown |
-| `london_city` | London City |
-| `london_west` | London West End |
-| `manchester_central` | Manchester Central |
+| Valor en base de datos | Nombre para mostrar       |
+| ---------------------- | ------------------------- |
+| `central`              | Central (Austin / London) |
+| `austin_main`          | Austin — Main Clinic      |
+| `austin_north`         | Austin — North            |
+| `dallas_uptown`        | Dallas Uptown             |
+| `houston_med_center`   | Houston Medical Center    |
+| `san_antonio_west`     | San Antonio West          |
+| `miami_brickell`       | Miami Brickell            |
+| `miami_doral`          | Miami Doral               |
+| `orlando_east`         | Orlando East              |
+| `atlanta_midtown`      | Atlanta Midtown           |
+| `london_city`          | London City               |
+| `london_west`          | London West End           |
+| `manchester_central`   | Manchester Central        |
 
 Cuando el origen sea `internal` o `customer` y no corresponda a una clínica específica, se usará `central`.
 
@@ -50,28 +50,28 @@ Cuando el origen sea `internal` o `customer` y no corresponda a una clínica esp
 
 El campo `category` debe contener exactamente uno de estos valores:
 
-| Valor | Descripción |
-|---|---|
-| `clinical_equipment` | Fallo o problema con equipamiento clínico (sin datos de pacientes) |
-| `it_system` | Fallo de sistema tecnológico: EHR, portal de pacientes, facturación, integraciones |
-| `billing_error` | Error en el proceso de facturación o codificación de reclamaciones |
-| `compliance_breach` | Posible incumplimiento regulatorio (HIPAA / UK GDPR) — sin datos identificativos de pacientes |
+| Valor                | Descripción                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| `clinical_equipment` | Fallo o problema con equipamiento clínico (sin datos de pacientes)                                     |
+| `it_system`          | Fallo de sistema tecnológico: EHR, portal de pacientes, facturación, integraciones                     |
+| `billing_error`      | Error en el proceso de facturación o codificación de reclamaciones                                     |
+| `compliance_breach`  | Posible incumplimiento regulatorio (HIPAA / UK GDPR) — sin datos identificativos de pacientes          |
 | `patient_experience` | Problema de experiencia del paciente: cita, comunicación, tiempo de espera (sin datos identificativos) |
-| `staff_issue` | Incidencia de personal: ausencia, conflicto, formación obligatoria pendiente |
-| `facility_issue` | Problema de instalaciones: agua, electricidad, climatización, limpieza |
-| `referral_issue` | Problema en el proceso de derivación entre clínicas |
-| `other` | Cualquier incidencia que no encaje en las categorías anteriores |
+| `staff_issue`        | Incidencia de personal: ausencia, conflicto, formación obligatoria pendiente                           |
+| `facility_issue`     | Problema de instalaciones: agua, electricidad, climatización, limpieza                                 |
+| `referral_issue`     | Problema en el proceso de derivación entre clínicas                                                    |
+| `other`              | Cualquier incidencia que no encaje en las categorías anteriores                                        |
 
 ---
 
 ## Estados y ciclo de vida
 
-| Valor | Significado en HealthCore |
-|---|---|
-| `open` | Incidencia registrada, pendiente de asignar al responsable |
-| `in_progress` | Responsable identificado y gestión en curso |
-| `resolved` | Incidencia cerrada con acción correctiva documentada |
-| `discarded` | Registrada por error, duplicada o fuera de alcance |
+| Valor         | Significado en HealthCore                                  |
+| ------------- | ---------------------------------------------------------- |
+| `open`        | Incidencia registrada, pendiente de asignar al responsable |
+| `in_progress` | Responsable identificado y gestión en curso                |
+| `resolved`    | Incidencia cerrada con acción correctiva documentada       |
+| `discarded`   | Registrada por error, duplicada o fuera de alcance         |
 
 Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progress → resolved`, `in_progress → discarded`. Los estados `resolved` y `discarded` son finales.
 
@@ -79,11 +79,11 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Orígenes
 
-| Valor | Cuándo usarlo en HealthCore |
-|---|---|
-| `customer` | Reportada por un paciente o su representante (sin datos identificativos) |
-| `branch` | Reportada por personal clínico o administrativo de una clínica específica |
-| `internal` | Detectada por tecnología, cumplimiento normativo o dirección corporativa |
+| Valor      | Cuándo usarlo en HealthCore                                               |
+| ---------- | ------------------------------------------------------------------------- |
+| `customer` | Reportada por un paciente o su representante (sin datos identificativos)  |
+| `branch`   | Reportada por personal clínico o administrativo de una clínica específica |
+| `internal` | Detectada por tecnología, cumplimiento normativo o dirección corporativa  |
 
 ---
 
@@ -95,16 +95,16 @@ El fichero CSV del proyecto anterior contiene incidencias exportadas del sistema
 
 **Mapeo de campos CSV → modelo:**
 
-| Campo CSV | Campo del modelo | Notas |
-|---|---|---|
-| `incident_id` | — | Solo para control de duplicados, no se almacena |
-| `title` | `title` | |
-| `description` | `description` | |
-| `category` | `category` | Verificar que el valor esté en la lista permitida |
-| `status` | `status` | Verificar que el valor esté en la lista permitida |
-| `created_at` | `created_at` | Respetar la fecha original |
-| — | `origin` | Siempre `"customer"` para todos los registros del seed |
-| — | `branch` | Siempre `"central"` para todos los registros del seed |
+| Campo CSV     | Campo del modelo | Notas                                                  |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
+| `title`       | `title`          |                                                        |
+| `description` | `description`    |                                                        |
+| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
+| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
+| `created_at`  | `created_at`     | Respetar la fecha original                             |
+| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
+| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
 
 Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
 

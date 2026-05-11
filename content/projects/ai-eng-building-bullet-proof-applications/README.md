@@ -17,7 +17,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ## 🎯 Your Challenge
 
-Your company's authentication API is live, handling real users and real sessions. Last week, a teammate pushed a small refactor that broke token expiration logic — no tests caught it, and users reported being locked out for two hours before someone noticed. Your CTO's response was brief and direct: *"We need a test suite. Untested code is not production code."*
+Your company's authentication API is live, handling real users and real sessions. Last week, a teammate pushed a small refactor that broke token expiration logic — no tests caught it, and users reported being locked out for two hours before someone noticed. Your CTO's response was brief and direct: _"We need a test suite. Untested code is not production code."_
 
 Your task is to add a comprehensive battery of unit tests to the authentication API you built in the previous milestone. You'll work at the function and endpoint logic level — not testing serialisation or HTTP plumbing, but the actual business logic: does the token get generated correctly? Does an expired token get rejected? What happens when the password field is empty?
 
@@ -32,6 +32,7 @@ This is not about writing tests for their own sake. It's about building confiden
 > **Context:** Following last week's regression, we are requiring unit tests on all authentication endpoints before any further changes are merged.
 >
 > **Scope:**
+>
 > - Test suite must cover all endpoints in the authentication API
 > - Each endpoint must have at minimum: one happy-path test, one edge-case test, and one failure-mode test
 > - Use `pytest` for the FastAPI backend and `Jest` for any TypeScript logic
@@ -40,7 +41,7 @@ This is not about writing tests for their own sake. It's about building confiden
 >
 > **Deliverable:** A working test suite committed alongside the existing API code, with a brief `TESTING.md` explaining how to run it.
 
-Before writing your first test, define your test plan: list the cases you want to cover for each endpoint, identify the edge cases (empty fields, duplicate users, malformed tokens), and think through which inputs could produce unexpected behaviour. Then use AI to help you generate the test code — but you own the decisions about *what* to test.
+Before writing your first test, define your test plan: list the cases you want to cover for each endpoint, identify the edge cases (empty fields, duplicate users, malformed tokens), and think through which inputs could produce unexpected behaviour. Then use AI to help you generate the test code — but you own the decisions about _what_ to test.
 
 This is the kind of work that separates a junior who ships features from a professional who ships reliable software.
 
@@ -99,7 +100,7 @@ If you have any questions about how to set up a project from scratch, visit: [ho
 - [ ] Use AI to generate test boilerplate, but review and understand every test before committing it.
 - [ ] If a generated test reveals a bug in your existing code, fix the bug and document it in `TESTING.md`.
 
-⚠️ **IMPORTANT:** Do not test HTTP serialisation or framework internals. Every test must assert something about the business logic of your application — what the endpoint *decides*, not how it *responds*.
+⚠️ **IMPORTANT:** Do not test HTTP serialisation or framework internals. Every test must assert something about the business logic of your application — what the endpoint _decides_, not how it _responds_.
 
 ### 🏆 Extra activity — Close out the backlog while you're at it
 
@@ -112,6 +113,7 @@ The CTO just marked AUTH-088 as the blocker, but two other tickets have been sit
 > **Context:** The backoffice API has never had a test suite. No regressions have been reported, but that's probably because the team is small, not because the code is solid. Now that we have `pytest` configured, let's extend coverage before the team grows.
 >
 > **Scope:**
+>
 > - Pick at least two non-authentication endpoint groups from your backoffice API (e.g., resources, users, items — whatever your company's domain has)
 > - Apply the same three-tier structure: happy path, edge case, failure mode
 > - Aim for 60% coverage on the modules you test — lower bar than auth, but still meaningful
@@ -125,15 +127,16 @@ The CTO just marked AUTH-088 as the blocker, but two other tickets have been sit
 > **Context:** The frontend has accumulated utility functions over the past milestones — form validators, data formatters, API response handlers — that have never been tested. A bug in any of them could silently break the UI in ways that are hard to trace.
 >
 > **Scope:**
+>
 > - Identify at least three utility or helper functions in your Next.js / TypeScript frontend
 > - Write Jest unit tests for each: one happy-path test and one failure-mode test per function
 > - Functions that are good candidates: input validators, date or currency formatters, response parsers, token storage helpers
 >
 > **Deliverable:** A `__tests__/` directory inside your frontend project with the test files. Update `TESTING.md` with instructions to run frontend tests separately.
 
-- [ ] *(Extra)* Write pytest tests for at least two backoffice endpoint groups, reaching 60% coverage on those modules.
-- [ ] *(Extra)* Write Jest tests for at least three frontend utility functions (happy path + failure mode each).
-- [ ] *(Extra)* Update `TESTING.md` with coverage results and run instructions for both extra suites.
+- [ ] _(Extra)_ Write pytest tests for at least two backoffice endpoint groups, reaching 60% coverage on those modules.
+- [ ] _(Extra)_ Write Jest tests for at least three frontend utility functions (happy path + failure mode each).
+- [ ] _(Extra)_ Update `TESTING.md` with coverage results and run instructions for both extra suites.
 
 ---
 

@@ -13,12 +13,7 @@
   },
   "difficulty": "intermediate",
   "duration": 2,
-  "technologies": [
-    "python",
-    "csv",
-    "data-validation",
-    "data-analysis"
-  ],
+  "technologies": ["python", "csv", "data-validation", "data-analysis"],
   "talents": [
     {
       "badge": "python-developer",
@@ -33,10 +28,7 @@
       "points": 2
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-company-incidents-file-analyzer/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-company-incidents-file-analyzer/.learn/preview.png",

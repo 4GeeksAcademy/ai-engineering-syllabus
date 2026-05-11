@@ -25,6 +25,7 @@ Ana Whitfield, Head of Warehouse Operations, ha enviado el siguiente correo con 
 > Javier me confirmó ayer que el backend está listo. Necesito que alguien del equipo monte el frontend esta semana. El proceso de selección no se puede parar.
 >
 > Lo que necesito:
+>
 > - Ver todas las candidaturas con nombre, puesto, estado y etapa de un vistazo.
 > - Filtrar por estado y etapa, y buscar por nombre o email sin recargar la página.
 > - Entrar al detalle de cada candidato y cambiarle el estado o la etapa desde ahí.
@@ -38,11 +39,11 @@ Ana Whitfield, Head of Warehouse Operations, ha enviado el siguiente correo con 
 
 ## Contexto del proceso de selección
 
-| Campo | Valor |
-|---|---|
-| Puesto | Asistente de Dirección |
-| Empresa | TrackFlow |
-| Ubicación | Sede Zaragoza |
+| Campo          | Valor                                                                                                                  |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Puesto         | Asistente de Dirección                                                                                                 |
+| Empresa        | TrackFlow                                                                                                              |
+| Ubicación      | Sede Zaragoza                                                                                                          |
 | Perfil buscado | Experiencia en asistencia ejecutiva, gestión de agenda y viajes, inglés profesional, manejo de herramientas ofimáticas |
 
 ---
@@ -53,22 +54,22 @@ La API mock está desplegada de forma centralizada y es compartida por todos los
 
 ### Valores de `status`
 
-| Valor API | Etiqueta en la UI |
-|---|---|
-| `received` | Recibida |
-| `in_progress` | En proceso |
-| `selected` | Seleccionada |
-| `discarded` | Descartada |
+| Valor API     | Etiqueta en la UI |
+| ------------- | ----------------- |
+| `received`    | Recibida          |
+| `in_progress` | En proceso        |
+| `selected`    | Seleccionada      |
+| `discarded`   | Descartada        |
 
 ### Valores de `stage`
 
-| Valor API | Etiqueta en la UI |
-|---|---|
-| `pending` | Pendiente de revisión |
-| `review` | En revisión |
-| `personal_interview` | Entrevista personal |
-| `technical_interview` | Entrevista técnica |
-| `offer_presented` | Oferta presentada |
+| Valor API             | Etiqueta en la UI     |
+| --------------------- | --------------------- |
+| `pending`             | Pendiente de revisión |
+| `review`              | En revisión           |
+| `personal_interview`  | Entrevista personal   |
+| `technical_interview` | Entrevista técnica    |
+| `offer_presented`     | Oferta presentada     |
 
 > Los valores crudos de la API (`in_progress`, `personal_interview`, etc.) no deben aparecer nunca en la interfaz. Usa siempre las etiquetas de esta tabla.
 

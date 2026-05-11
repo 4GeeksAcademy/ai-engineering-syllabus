@@ -22,23 +22,23 @@ El formulario lo usarán **gerentes de local** (desde tablet en cocina o sala) y
 
 El campo `branch` debe contener exactamente uno de estos valores:
 
-| Valor en base de datos | Nombre para mostrar |
-|---|---|
-| `central` | Central (Medellín / Miami) |
-| `medellin_centro` | Medellín Centro |
-| `medellin_laureles` | Medellín Laureles |
-| `medellin_envigado` | Medellín Envigado |
-| `medellin_bello` | Medellín Bello |
-| `medellin_itagui` | Medellín Itagüí |
-| `bogota_chapinero` | Bogotá Chapinero |
-| `bogota_usaquen` | Bogotá Usaquén |
-| `cali_granada` | Cali Granada |
-| `barranquilla_norte` | Barranquilla Norte |
-| `miami_doral` | Miami Doral |
-| `miami_hialeah` | Miami Hialeah |
-| `miami_kendall` | Miami Kendall |
+| Valor en base de datos  | Nombre para mostrar         |
+| ----------------------- | --------------------------- |
+| `central`               | Central (Medellín / Miami)  |
+| `medellin_centro`       | Medellín Centro             |
+| `medellin_laureles`     | Medellín Laureles           |
+| `medellin_envigado`     | Medellín Envigado           |
+| `medellin_bello`        | Medellín Bello              |
+| `medellin_itagui`       | Medellín Itagüí             |
+| `bogota_chapinero`      | Bogotá Chapinero            |
+| `bogota_usaquen`        | Bogotá Usaquén              |
+| `cali_granada`          | Cali Granada                |
+| `barranquilla_norte`    | Barranquilla Norte          |
+| `miami_doral`           | Miami Doral                 |
+| `miami_hialeah`         | Miami Hialeah               |
+| `miami_kendall`         | Miami Kendall               |
 | `orlando_international` | Orlando International Drive |
-| `fort_lauderdale` | Fort Lauderdale |
+| `fort_lauderdale`       | Fort Lauderdale             |
 
 Cuando el origen sea `internal` o `customer` y no corresponda a un local específico, se usará `central`.
 
@@ -48,27 +48,27 @@ Cuando el origen sea `internal` o `customer` y no corresponda a un local especí
 
 El campo `category` debe contener exactamente uno de estos valores:
 
-| Valor | Descripción |
-|---|---|
-| `equipment_failure` | Fallo de equipamiento de cocina o sala (horno, freidora, cámara frigorífica, TPV) |
-| `supply_issue` | Problema con insumos: falta de producto, calidad deficiente, entrega incorrecta |
+| Valor                | Descripción                                                                       |
+| -------------------- | --------------------------------------------------------------------------------- |
+| `equipment_failure`  | Fallo de equipamiento de cocina o sala (horno, freidora, cámara frigorífica, TPV) |
+| `supply_issue`       | Problema con insumos: falta de producto, calidad deficiente, entrega incorrecta   |
 | `customer_complaint` | Queja o reclamación de cliente: producto, servicio, tiempo de espera, experiencia |
-| `staff_issue` | Incidencia relacionada con personal: ausencia, conflicto, accidente laboral leve |
-| `facility_issue` | Problema de instalaciones: agua, electricidad, climatización, limpieza |
-| `pos_system` | Error en el sistema de caja o TPV |
-| `delivery_issue` | Problema con pedidos a domicilio o plataformas de delivery |
-| `other` | Cualquier incidencia que no encaje en las categorías anteriores |
+| `staff_issue`        | Incidencia relacionada con personal: ausencia, conflicto, accidente laboral leve  |
+| `facility_issue`     | Problema de instalaciones: agua, electricidad, climatización, limpieza            |
+| `pos_system`         | Error en el sistema de caja o TPV                                                 |
+| `delivery_issue`     | Problema con pedidos a domicilio o plataformas de delivery                        |
+| `other`              | Cualquier incidencia que no encaje en las categorías anteriores                   |
 
 ---
 
 ## Estados y ciclo de vida
 
-| Valor | Significado en Brasaland |
-|---|---|
-| `open` | Incidencia recién registrada, pendiente de asignar |
+| Valor         | Significado en Brasaland                                           |
+| ------------- | ------------------------------------------------------------------ |
+| `open`        | Incidencia recién registrada, pendiente de asignar                 |
 | `in_progress` | El equipo de operaciones o el gerente del local está gestionándola |
-| `resolved` | Incidencia cerrada con solución confirmada |
-| `discarded` | Registrada por error o duplicada — no requiere acción |
+| `resolved`    | Incidencia cerrada con solución confirmada                         |
+| `discarded`   | Registrada por error o duplicada — no requiere acción              |
 
 Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progress → resolved`, `in_progress → discarded`. Los estados `resolved` y `discarded` son finales.
 
@@ -76,11 +76,11 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Orígenes
 
-| Valor | Cuándo usarlo en Brasaland |
-|---|---|
+| Valor      | Cuándo usarlo en Brasaland                                                  |
+| ---------- | --------------------------------------------------------------------------- |
 | `customer` | Queja o incidencia comunicada por un cliente (en local, por app, por email) |
-| `branch` | Reportada por el gerente o personal de un local específico |
-| `internal` | Detectada por el equipo corporativo (operaciones, tecnología, RRHH) |
+| `branch`   | Reportada por el gerente o personal de un local específico                  |
+| `internal` | Detectada por el equipo corporativo (operaciones, tecnología, RRHH)         |
 
 ---
 
@@ -92,16 +92,16 @@ El fichero CSV del proyecto anterior contiene incidencias exportadas del sistema
 
 **Mapeo de campos CSV → modelo:**
 
-| Campo CSV | Campo del modelo | Notas |
-|---|---|---|
-| `incident_id` | — | Solo para control de duplicados, no se almacena |
-| `title` | `title` | |
-| `description` | `description` | |
-| `category` | `category` | Verificar que el valor esté en la lista permitida |
-| `status` | `status` | Verificar que el valor esté en la lista permitida |
-| `created_at` | `created_at` | Respetar la fecha original |
-| — | `origin` | Siempre `"customer"` para todos los registros del seed |
-| — | `branch` | Siempre `"central"` para todos los registros del seed |
+| Campo CSV     | Campo del modelo | Notas                                                  |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
+| `title`       | `title`          |                                                        |
+| `description` | `description`    |                                                        |
+| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
+| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
+| `created_at`  | `created_at`     | Respetar la fecha original                             |
+| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
+| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
 
 Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
 

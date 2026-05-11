@@ -24,13 +24,13 @@ Como parte del equipo de **TrackFlow Tech**, llevas hitos construyendo la plataf
 
 El campo `branch` debe contener exactamente uno de estos valores:
 
-| Valor en base de datos | Nombre para mostrar |
-|---|---|
-| `central` | Central |
-| `la_warehouse` | Los Ángeles — Almacén |
-| `la_office` | Los Ángeles — Oficina |
-| `zaragoza_warehouse` | Zaragoza — Almacén |
-| `zaragoza_office` | Zaragoza — Oficina |
+| Valor en base de datos | Nombre para mostrar   |
+| ---------------------- | --------------------- |
+| `central`              | Central               |
+| `la_warehouse`         | Los Ángeles — Almacén |
+| `la_office`            | Los Ángeles — Oficina |
+| `zaragoza_warehouse`   | Zaragoza — Almacén    |
+| `zaragoza_office`      | Zaragoza — Oficina    |
 
 Cuando el origen sea `internal` o `customer` y no corresponda a una instalación específica, se usará `central`.
 
@@ -40,28 +40,28 @@ Cuando el origen sea `internal` o `customer` y no corresponda a una instalación
 
 El campo `category` debe contener exactamente uno de estos valores:
 
-| Valor | Descripción |
-|---|---|
-| `lost_parcel` | Paquete extraviado en tránsito o en almacén |
-| `delivery_failure` | Fallo de entrega: intento fallido, dirección incorrecta, cliente ausente no gestionado |
-| `inventory_discrepancy` | Diferencia entre stock registrado y stock físico |
-| `carrier_issue` | Problema imputable a un carrier: retraso, daño, incumplimiento de SLA |
-| `returns_issue` | Problema en el proceso de devolución o logística inversa |
-| `warehouse_incident` | Incidente en almacén: daño de mercancía, accidente, fallo de equipamiento |
-| `system_failure` | Fallo en sistema tecnológico: WMS, integraciones, API de carrier |
-| `client_complaint` | Queja de una empresa cliente sobre el servicio prestado por TrackFlow |
-| `other` | Cualquier incidencia que no encaje en las categorías anteriores |
+| Valor                   | Descripción                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------- |
+| `lost_parcel`           | Paquete extraviado en tránsito o en almacén                                            |
+| `delivery_failure`      | Fallo de entrega: intento fallido, dirección incorrecta, cliente ausente no gestionado |
+| `inventory_discrepancy` | Diferencia entre stock registrado y stock físico                                       |
+| `carrier_issue`         | Problema imputable a un carrier: retraso, daño, incumplimiento de SLA                  |
+| `returns_issue`         | Problema en el proceso de devolución o logística inversa                               |
+| `warehouse_incident`    | Incidente en almacén: daño de mercancía, accidente, fallo de equipamiento              |
+| `system_failure`        | Fallo en sistema tecnológico: WMS, integraciones, API de carrier                       |
+| `client_complaint`      | Queja de una empresa cliente sobre el servicio prestado por TrackFlow                  |
+| `other`                 | Cualquier incidencia que no encaje en las categorías anteriores                        |
 
 ---
 
 ## Estados y ciclo de vida
 
-| Valor | Significado en TrackFlow |
-|---|---|
-| `open` | Incidencia registrada, pendiente de asignar al equipo responsable |
-| `in_progress` | Coordinador o responsable de área está gestionándola activamente |
-| `resolved` | Resuelta: paquete entregado, stock corregido, cliente informado |
-| `discarded` | Registrada por error, duplicada o no accionable |
+| Valor         | Significado en TrackFlow                                          |
+| ------------- | ----------------------------------------------------------------- |
+| `open`        | Incidencia registrada, pendiente de asignar al equipo responsable |
+| `in_progress` | Coordinador o responsable de área está gestionándola activamente  |
+| `resolved`    | Resuelta: paquete entregado, stock corregido, cliente informado   |
+| `discarded`   | Registrada por error, duplicada o no accionable                   |
 
 Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progress → resolved`, `in_progress → discarded`. Los estados `resolved` y `discarded` son finales.
 
@@ -69,11 +69,11 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Orígenes
 
-| Valor | Cuándo usarlo en TrackFlow |
-|---|---|
-| `customer` | Reportada por una empresa cliente o un consumidor final |
-| `branch` | Detectada y reportada por personal de almacén u oficina de TrackFlow |
-| `internal` | Detectada internamente por tecnología, dirección u operaciones |
+| Valor      | Cuándo usarlo en TrackFlow                                           |
+| ---------- | -------------------------------------------------------------------- |
+| `customer` | Reportada por una empresa cliente o un consumidor final              |
+| `branch`   | Detectada y reportada por personal de almacén u oficina de TrackFlow |
+| `internal` | Detectada internamente por tecnología, dirección u operaciones       |
 
 ---
 
@@ -85,16 +85,16 @@ El fichero CSV del proyecto anterior contiene incidencias exportadas del sistema
 
 **Mapeo de campos CSV → modelo:**
 
-| Campo CSV | Campo del modelo | Notas |
-|---|---|---|
-| `incident_id` | — | Solo para control de duplicados, no se almacena |
-| `title` | `title` | |
-| `description` | `description` | |
-| `category` | `category` | Verificar que el valor esté en la lista permitida |
-| `status` | `status` | Verificar que el valor esté en la lista permitida |
-| `created_at` | `created_at` | Respetar la fecha original |
-| — | `origin` | Siempre `"customer"` para todos los registros del seed |
-| — | `branch` | Siempre `"central"` para todos los registros del seed |
+| Campo CSV     | Campo del modelo | Notas                                                  |
+| ------------- | ---------------- | ------------------------------------------------------ |
+| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
+| `title`       | `title`          |                                                        |
+| `description` | `description`    |                                                        |
+| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
+| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
+| `created_at`  | `created_at`     | Respetar la fecha original                             |
+| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
+| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
 
 Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
 

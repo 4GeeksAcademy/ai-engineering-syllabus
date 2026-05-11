@@ -17,19 +17,19 @@ HealthCore trabaja con proveedores externos en dos categorías amplias: proveedo
 
 Cada proveedor en el directorio de HealthCore tiene la siguiente estructura:
 
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `name` | string, requerido | Nombre comercial del proveedor o plataforma |
-| `country` | string, requerido | País del contrato: `"USA"` o `"UK"` |
-| `categories` | lista de strings, requerido, mínimo 1 | Tipo de servicio o producto que provee (ver lista válida) |
-| `monthly_rate` | float, requerido, > 0 | Coste mensual vigente en la moneda del contrato |
-| `currency` | string, requerido | `"USD"` para USA, `"GBP"` para UK |
-| `rate_updated_at` | datetime, generado por el sistema | Timestamp de la última actualización de tarifa |
-| `status` | string, requerido | `"active"` o `"suspended"` |
-| `compliance_agreement` | string, opcional | Tipo de acuerdo de cumplimiento firmado: `"BAA"`, `"DPA"`, `"both"`, o `null` si no aplica |
-| `contract_renewal_date` | string, opcional | Fecha de renovación del contrato (formato `YYYY-MM-DD`) |
-| `contact_email` | string, opcional | Email del account manager del proveedor |
-| `notes` | string, opcional | Observaciones internas |
+| Campo                   | Tipo                                  | Descripción                                                                                |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `name`                  | string, requerido                     | Nombre comercial del proveedor o plataforma                                                |
+| `country`               | string, requerido                     | País del contrato: `"USA"` o `"UK"`                                                        |
+| `categories`            | lista de strings, requerido, mínimo 1 | Tipo de servicio o producto que provee (ver lista válida)                                  |
+| `monthly_rate`          | float, requerido, > 0                 | Coste mensual vigente en la moneda del contrato                                            |
+| `currency`              | string, requerido                     | `"USD"` para USA, `"GBP"` para UK                                                          |
+| `rate_updated_at`       | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa                                             |
+| `status`                | string, requerido                     | `"active"` o `"suspended"`                                                                 |
+| `compliance_agreement`  | string, opcional                      | Tipo de acuerdo de cumplimiento firmado: `"BAA"`, `"DPA"`, `"both"`, o `null` si no aplica |
+| `contract_renewal_date` | string, opcional                      | Fecha de renovación del contrato (formato `YYYY-MM-DD`)                                    |
+| `contact_email`         | string, opcional                      | Email del account manager del proveedor                                                    |
+| `notes`                 | string, opcional                      | Observaciones internas                                                                     |
 
 ### Categorías válidas
 
@@ -256,4 +256,4 @@ La página del directorio debe permitirles:
 
 ---
 
-*Documento interno — 4Geeks Academy · AI Engineering Track*
+_Documento interno — 4Geeks Academy · AI Engineering Track_

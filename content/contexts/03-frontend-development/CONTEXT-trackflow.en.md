@@ -25,6 +25,7 @@ Ana Whitfield, Head of Warehouse Operations, has sent the following email with A
 > Javier confirmed to me yesterday that the backend is live. I need someone from the team to build the frontend this week. The selection process cannot stop.
 >
 > What I need:
+>
 > - See all candidates at a glance: name, position, status, and stage.
 > - Filter by status and stage, and search by name or email without reloading the page.
 > - Open a candidate's detail and update their status or stage from there.
@@ -38,12 +39,12 @@ Ana Whitfield, Head of Warehouse Operations, has sent the following email with A
 
 ## Context of the active search
 
-| Field | Value |
-|---|---|
-| Position | Executive Assistant |
-| Company | TrackFlow |
-| Location | Zaragoza headquarters |
-| Profile | Executive support experience, calendar and travel management, professional English, proficiency with office tools |
+| Field    | Value                                                                                                             |
+| -------- | ----------------------------------------------------------------------------------------------------------------- |
+| Position | Executive Assistant                                                                                               |
+| Company  | TrackFlow                                                                                                         |
+| Location | Zaragoza headquarters                                                                                             |
+| Profile  | Executive support experience, calendar and travel management, professional English, proficiency with office tools |
 
 ---
 
@@ -53,22 +54,22 @@ The mock API is centrally deployed and shared across all company contexts in the
 
 ### `status` values
 
-| API value | UI label |
-|---|---|
-| `received` | Received |
+| API value     | UI label    |
+| ------------- | ----------- |
+| `received`    | Received    |
 | `in_progress` | In progress |
-| `selected` | Selected |
-| `discarded` | Discarded |
+| `selected`    | Selected    |
+| `discarded`   | Discarded   |
 
 ### `stage` values
 
-| API value | UI label |
-|---|---|
-| `pending` | Pending review |
-| `review` | Under review |
-| `personal_interview` | Personal interview |
+| API value             | UI label            |
+| --------------------- | ------------------- |
+| `pending`             | Pending review      |
+| `review`              | Under review        |
+| `personal_interview`  | Personal interview  |
 | `technical_interview` | Technical interview |
-| `offer_presented` | Offer presented |
+| `offer_presented`     | Offer presented     |
 
 > Raw API values (`in_progress`, `personal_interview`, etc.) must never be visible in the interface. Always use the labels from this table.
 

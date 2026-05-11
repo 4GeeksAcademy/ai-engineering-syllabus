@@ -58,8 +58,6 @@ This project is an extension of your existing transversal project API. **Do not 
    ```
 4. Add them to your `requirements.txt`.
 
-
-
 ---
 
 ## 💻 What You Need to Do

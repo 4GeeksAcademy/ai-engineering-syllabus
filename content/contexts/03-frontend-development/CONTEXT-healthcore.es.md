@@ -25,6 +25,7 @@ Diane Foster, VP de People, ha enviado el siguiente correo con copia a James Ose
 > Hablé con el equipo técnico la semana pasada y me confirmaron que el backend está listo. Necesito que alguien construya el frontend ahora. No puedo llevar un proceso de selección profesional para nuestra propia sede en una hoja de cálculo — especialmente cuando al mismo tiempo le pedimos a los equipos clínicos que confíen en nuestros sistemas.
 >
 > Lo que necesito que haga la herramienta:
+>
 > - Mostrar todas las candidaturas en un listado con nombre, puesto, estado y etapa visibles de inmediato.
 > - Filtrar por estado y etapa, y buscar por nombre o email sin recargar la página.
 > - Abrir el detalle completo de un candidato y actualizar su estado o etapa desde ahí.
@@ -39,11 +40,11 @@ Diane Foster, VP de People, ha enviado el siguiente correo con copia a James Ose
 
 ## Contexto del proceso de selección
 
-| Campo | Valor |
-|---|---|
-| Puesto | Asistente de Dirección |
-| Empresa | HealthCore |
-| Ubicación | Sede de Austin |
+| Campo          | Valor                                                                                                                                |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Puesto         | Asistente de Dirección                                                                                                               |
+| Empresa        | HealthCore                                                                                                                           |
+| Ubicación      | Sede de Austin                                                                                                                       |
 | Perfil buscado | Experiencia en asistencia ejecutiva, gestión de agenda y viajes, inglés profesional, discreción en el manejo de información sensible |
 
 ---
@@ -54,22 +55,22 @@ La API mock está desplegada de forma centralizada y es compartida por todos los
 
 ### Valores de `status`
 
-| Valor API | Etiqueta en la UI |
-|---|---|
-| `received` | Recibida |
-| `in_progress` | En proceso |
-| `selected` | Seleccionada |
-| `discarded` | Descartada |
+| Valor API     | Etiqueta en la UI |
+| ------------- | ----------------- |
+| `received`    | Recibida          |
+| `in_progress` | En proceso        |
+| `selected`    | Seleccionada      |
+| `discarded`   | Descartada        |
 
 ### Valores de `stage`
 
-| Valor API | Etiqueta en la UI |
-|---|---|
-| `pending` | Pendiente de revisión |
-| `review` | En revisión |
-| `personal_interview` | Entrevista personal |
-| `technical_interview` | Entrevista técnica |
-| `offer_presented` | Oferta presentada |
+| Valor API             | Etiqueta en la UI     |
+| --------------------- | --------------------- |
+| `pending`             | Pendiente de revisión |
+| `review`              | En revisión           |
+| `personal_interview`  | Entrevista personal   |
+| `technical_interview` | Entrevista técnica    |
+| `offer_presented`     | Oferta presentada     |
 
 > Los valores crudos de la API (`in_progress`, `personal_interview`, etc.) no deben aparecer nunca en la interfaz. Usa siempre las etiquetas de esta tabla.
 

@@ -12,13 +12,7 @@
   },
   "difficulty": "intermediate",
   "duration": 2,
-  "technologies": [
-    "ai",
-    "typescript",
-    "documentation",
-    "openapi",
-    "git"
-  ],
+  "technologies": ["ai", "typescript", "documentation", "openapi", "git"],
   "talents": [
     {
       "badge": "git-collaborator",
@@ -33,10 +27,7 @@
       "points": 2
     }
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/company-financial-dashboard-specs-project/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-specs-project/.learn/preview.png",

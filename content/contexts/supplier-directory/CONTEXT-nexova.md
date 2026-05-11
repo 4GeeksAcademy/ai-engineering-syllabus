@@ -17,18 +17,18 @@ Nexova contrata servicios externos de forma recurrente: plataformas de publicaci
 
 Cada proveedor en el directorio de Nexova tiene la siguiente estructura:
 
-| Campo | Tipo | Descripción |
-|---|---|---|
-| `name` | string, requerido | Nombre comercial del proveedor o plataforma |
-| `country` | string, requerido | País del contrato activo: `"Spain"` o `"USA"` |
-| `categories` | lista de strings, requerido, mínimo 1 | Tipo de servicio que provee (ver lista válida) |
-| `monthly_rate` | float, requerido, > 0 | Coste mensual vigente en la moneda del contrato |
-| `currency` | string, requerido | `"EUR"` para Spain, `"USD"` para USA |
-| `rate_updated_at` | datetime, generado por el sistema | Timestamp de la última actualización de tarifa |
-| `status` | string, requerido | `"active"` o `"suspended"` |
-| `contract_renewal_date` | string, opcional | Fecha de renovación del contrato (formato `YYYY-MM-DD`) |
-| `contact_email` | string, opcional | Email del account manager del proveedor |
-| `notes` | string, opcional | Observaciones internas |
+| Campo                   | Tipo                                  | Descripción                                             |
+| ----------------------- | ------------------------------------- | ------------------------------------------------------- |
+| `name`                  | string, requerido                     | Nombre comercial del proveedor o plataforma             |
+| `country`               | string, requerido                     | País del contrato activo: `"Spain"` o `"USA"`           |
+| `categories`            | lista de strings, requerido, mínimo 1 | Tipo de servicio que provee (ver lista válida)          |
+| `monthly_rate`          | float, requerido, > 0                 | Coste mensual vigente en la moneda del contrato         |
+| `currency`              | string, requerido                     | `"EUR"` para Spain, `"USD"` para USA                    |
+| `rate_updated_at`       | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa          |
+| `status`                | string, requerido                     | `"active"` o `"suspended"`                              |
+| `contract_renewal_date` | string, opcional                      | Fecha de renovación del contrato (formato `YYYY-MM-DD`) |
+| `contact_email`         | string, opcional                      | Email del account manager del proveedor                 |
+| `notes`                 | string, opcional                      | Observaciones internas                                  |
 
 ### Categorías válidas
 
@@ -243,4 +243,4 @@ La página del directorio debe permitirle a Patricia:
 
 ---
 
-*Documento interno — 4Geeks Academy · AI Engineering Track*
+_Documento interno — 4Geeks Academy · AI Engineering Track_

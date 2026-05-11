@@ -1,4 +1,5 @@
 # Bienvenido a HealthCore
+
 ### AI Engineering · 4Geeks Academy — Briefing de empresa
 
 ---
@@ -43,5 +44,5 @@ La Dra. Okonkwo ha creado una unidad interna llamada **HealthCore Digital** para
 
 ---
 
-*Documento interno — 4Geeks Academy · AI Engineering Track*
-*Uso exclusivo para la generación de proyectos del programa*
+_Documento interno — 4Geeks Academy · AI Engineering Track_
+_Uso exclusivo para la generación de proyectos del programa_

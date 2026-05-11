@@ -25,6 +25,7 @@ Elena Vargas, L&D Manager, ha enviado el siguiente correo con copia a Sergio Mol
 > Sé que el backend está listo — hablé con Javier y me lo confirmó. Necesito que alguien de tu equipo monte el frontend ahora. No podemos seguir llevando un proceso de selección para nuestra propia empresa en una hoja de cálculo. Es un problema de imagen y nos está costando candidatos.
 >
 > Lo que necesito que haga la herramienta:
+>
 > - Mostrar todas las candidaturas en un listado con nombre, puesto, estado y etapa de un vistazo.
 > - Filtrar por estado y etapa, y buscar por nombre o email sin recargar la página.
 > - Abrir el detalle de un candidato y actualizar su estado o etapa desde ahí.
@@ -39,11 +40,11 @@ Elena Vargas, L&D Manager, ha enviado el siguiente correo con copia a Sergio Mol
 
 ## Contexto del proceso de selección
 
-| Campo | Valor |
-|---|---|
-| Puesto | Asistente de Dirección |
-| Empresa | Nexova |
-| Ubicación | Sede de Valencia |
+| Campo          | Valor                                                                                           |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| Puesto         | Asistente de Dirección                                                                          |
+| Empresa        | Nexova                                                                                          |
+| Ubicación      | Sede de Valencia                                                                                |
 | Perfil buscado | Experiencia en asistencia ejecutiva, gestión de agenda y viajes, inglés y español profesionales |
 
 ---
@@ -54,22 +55,22 @@ La API mock está desplegada de forma centralizada y es compartida por todos los
 
 ### Valores de `status`
 
-| Valor API | Etiqueta en la UI |
-|---|---|
-| `received` | Recibida |
-| `in_progress` | En proceso |
-| `selected` | Seleccionada |
-| `discarded` | Descartada |
+| Valor API     | Etiqueta en la UI |
+| ------------- | ----------------- |
+| `received`    | Recibida          |
+| `in_progress` | En proceso        |
+| `selected`    | Seleccionada      |
+| `discarded`   | Descartada        |
 
 ### Valores de `stage`
 
-| Valor API | Etiqueta en la UI |
-|---|---|
-| `pending` | Pendiente de revisión |
-| `review` | En revisión |
-| `personal_interview` | Entrevista personal |
-| `technical_interview` | Entrevista técnica |
-| `offer_presented` | Oferta presentada |
+| Valor API             | Etiqueta en la UI     |
+| --------------------- | --------------------- |
+| `pending`             | Pendiente de revisión |
+| `review`              | En revisión           |
+| `personal_interview`  | Entrevista personal   |
+| `technical_interview` | Entrevista técnica    |
+| `offer_presented`     | Oferta presentada     |
 
 > Los valores crudos de la API (`in_progress`, `personal_interview`, etc.) no deben aparecer nunca en la interfaz. Usa siempre las etiquetas de esta tabla.
 

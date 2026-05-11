@@ -25,6 +25,7 @@ Diane Foster, VP of People, has sent the following email with James Osei, CTO, o
 > I spoke with the tech team last week and they confirmed the backend is live. I need someone to build the frontend now. I cannot run a professional recruitment process for our own headquarters on a spreadsheet — especially when we are simultaneously asking clinical teams to trust our systems.
 >
 > What I need the tool to do:
+>
 > - Show all candidates in a list with name, position, status, and stage visible immediately.
 > - Filter by status and stage, and search by name or email without reloading the page.
 > - Open a candidate's full detail and update their status or stage from there.
@@ -39,12 +40,12 @@ Diane Foster, VP of People, has sent the following email with James Osei, CTO, o
 
 ## Context of the active search
 
-| Field | Value |
-|---|---|
-| Position | Executive Assistant |
-| Company | HealthCore |
-| Location | Austin headquarters |
-| Profile | Executive support experience, calendar and travel management, professional English, discretion in handling sensitive information |
+| Field    | Value                                                                                                                            |
+| -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Position | Executive Assistant                                                                                                              |
+| Company  | HealthCore                                                                                                                       |
+| Location | Austin headquarters                                                                                                              |
+| Profile  | Executive support experience, calendar and travel management, professional English, discretion in handling sensitive information |
 
 ---
 
@@ -54,22 +55,22 @@ The mock API is centrally deployed and shared across all company contexts in the
 
 ### `status` values
 
-| API value | UI label |
-|---|---|
-| `received` | Received |
+| API value     | UI label    |
+| ------------- | ----------- |
+| `received`    | Received    |
 | `in_progress` | In progress |
-| `selected` | Selected |
-| `discarded` | Discarded |
+| `selected`    | Selected    |
+| `discarded`   | Discarded   |
 
 ### `stage` values
 
-| API value | UI label |
-|---|---|
-| `pending` | Pending review |
-| `review` | Under review |
-| `personal_interview` | Personal interview |
+| API value             | UI label            |
+| --------------------- | ------------------- |
+| `pending`             | Pending review      |
+| `review`              | Under review        |
+| `personal_interview`  | Personal interview  |
 | `technical_interview` | Technical interview |
-| `offer_presented` | Offer presented |
+| `offer_presented`     | Offer presented     |
 
 > Raw API values (`in_progress`, `personal_interview`, etc.) must never be visible in the interface. Always use the labels from this table.
 
