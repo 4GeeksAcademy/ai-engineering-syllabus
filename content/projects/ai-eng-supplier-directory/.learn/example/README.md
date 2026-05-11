@@ -12,7 +12,6 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
 
-
 A small community library currently tracks its book catalog in a text file. You have been asked to replace it with a small FastAPI + TinyDB + Pydantic API that starts preloaded with data and rejects any invalid input before it hits the database.
 
 ---
