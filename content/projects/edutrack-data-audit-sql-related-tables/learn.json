@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "EduTrack Data Audit — Related Tables",
+    "es": "Auditoría de Datos en EduTrack — Tablas Relacionadas"
+  },
+  "description": {
+    "en": "Audit EduTrack's normalized schema in Supabase: model students, courses, and enrollments, write 10 multi-table SQL queries (JOINs, GROUP BY, HAVING), and document real findings in `analysis_report.md`.",
+    "es": "Audita el esquema normalizado de EduTrack en Supabase: modela estudiantes, cursos e inscripciones, escribe 10 consultas SQL entre tablas (JOINs, GROUP BY, HAVING) y documenta los hallazgos reales en `analysis_report.md`."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/edutrack-data-audit-sql-related-tables/edutrack_v2.sql",
+  "slug": "edutrack-data-audit-sql-related-tables",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "sql",
+    "supabase",
+    "postgres",
+    "joins",
+    "data-analysis",
+    "technical-documentation"
+  ],
+  "grading": "isolated",
+  "localhostOnly": false,
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/edutrack-data-audit-sql-related-tables/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/edutrack-data-audit-sql-related-tables/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed EduTrack Data Audit — Related Tables with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/edutrack-data-audit-sql-related-tables #AIEngineering #LearnPack #4GeeksAcademy #sql #supabase #postgres",
+      "es": "Acabo de completar Auditoría de Datos en EduTrack — Tablas Relacionadas con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/edutrack-data-audit-sql-related-tables #AIEngineering #LearnPack #4GeeksAcademy #sql #supabase #postgres"
+    },
+    {
+      "en": "Built and shipped: EduTrack Data Audit — Related Tables. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/edutrack-data-audit-sql-related-tables #AIEngineering #LearnPack #4GeeksAcademy #sql #supabase #postgres",
+      "es": "Construido y publicado: Auditoría de Datos en EduTrack — Tablas Relacionadas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/edutrack-data-audit-sql-related-tables #AIEngineering #LearnPack #4GeeksAcademy #sql #supabase #postgres"
+    }
+  ]
+}
