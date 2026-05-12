@@ -51,7 +51,7 @@ Implementation details to enforce:
 Expected behavior:
 
 - Loads initial suppliers from the assigned company context.
-- Executable with `pipenv run seed`.
+- Executable with `uv run seed`.
 - Idempotent: running multiple times does not duplicate existing suppliers.
 - Prints inserted count in terminal at the end.
 
