@@ -1,18 +1,18 @@
 {
-  "slug": "ai-eng-milestone-web-fundamentals",
-  "title": {
-    "us": "Milestone 1 \u2014 Your Company's Public Website",
-    "es": "Hito 1 \u2014 Sitio web p\u00fablico de tu empresa"
-  },
-  "description": {
-    "us": "Build your company's first digital touchpoint: a professional public website with a landing page and an application/sign-up form. Use semantic HTML5, Tailwind CSS, Schema.org markup, full form validation with JavaScript, responsive and accessible design. Follow CONTEXT.md for company-specific data and form fields.",
-    "es": "Construye el primer punto de contacto digital de tu empresa: un sitio web p\u00fablico profesional con landing page y formulario de aplicaci\u00f3n/registro. Usa HTML5 sem\u00e1ntico, Tailwind CSS, marcado Schema.org, validaci\u00f3n completa del formulario con JavaScript, dise\u00f1o responsive y accesible. Sigue el CONTEXT.md para los datos de la empresa y los campos del formulario."
-  },
-  "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-web-fundamentals/preview.png?raw=true",
-  "difficulty": "BEGINNER",
-  "duration": 2,
-  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "gitpod": true,
+  "title": {
+    "en": "Milestone 1 — Your Company's Public Website",
+    "es": "Hito 1 — Sitio web público de tu empresa"
+  },
+  "status": "published",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-web-fundamentals",
+  "description": {
+    "en": "Build your company's first digital touchpoint: a professional public website with a landing page and an application/sign-up form. Use semantic HTML5, Tailwind CSS, Schema.org markup, full form validation with JavaScript, responsive and accessible design. Follow CONTEXT.md for company-specific data and form fields.",
+    "es": "Construye el primer punto de contacto digital de tu empresa: un sitio web público profesional con landing page y formulario de aplicación/registro. Usa HTML5 semántico, Tailwind CSS, marcado Schema.org, validación completa del formulario con JavaScript, diseño responsive y accesible. Sigue el CONTEXT.md para los datos de la empresa y los campos del formulario."
+  },
+  "difficulty": "beginner",
+  "duration": 2,
   "technologies": [
     "html-css",
     "javascript",
@@ -20,10 +20,48 @@
     "accessibility",
     "schema-org"
   ],
+  "talents": [
+    {
+      "badge": "html-developer",
+      "points": 3
+    },
+    {
+      "badge": "tailwind-css-developer",
+      "points": 3
+    },
+    {
+      "badge": "javascript-developer",
+      "points": 3
+    },
+    {
+      "badge": "accessibility-expert",
+      "points": 2
+    },
+    {
+      "badge": "responsive-designer",
+      "points": 2
+    },
+    {
+      "badge": "front-end-developer",
+      "points": 2
+    }
+  ],
+  "translations": ["es", "en"],
   "projectType": "project",
-  "delivery": {
-    "instructions": "",
-    "formats": ["url"],
-    "regex": ""
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/preview.png",
+  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 1 — Your Company's Public Website with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss",
+      "es": "Acabo de completar Hito 1 — Sitio web público de tu empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss"
+    },
+    {
+      "en": "Built and shipped: Milestone 1 — Your Company's Public Website. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss",
+      "es": "Construido y publicado: Hito 1 — Sitio web público de tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss"
+    }
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3318"
   }
 }
