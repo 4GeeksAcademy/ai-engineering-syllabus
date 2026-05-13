@@ -41,11 +41,12 @@ Your tech lead has opened the ticket:
 >
 > For email delivery, choose one of the following services and integrate it:
 >
-> - [Mailgun](https://www.mailgun.com/)
-> - [MailerSend](https://www.mailersend.com/)
+> - [Resend](https://resend.com/)
 > - [SendGrid (Twilio)](https://www.twilio.com/en-us/sendgrid)
 >
-> All three offer a free tier sufficient for development. API keys must be stored in environment variables — never hardcoded.
+> **Why only these two?** For this exercise, **Resend** and **SendGrid** are the practical choices: you can complete the reset flow in development **without a custom domain** (Resend via their onboarding sender; SendGrid via trial/sandbox or a verified single sender — check their current docs). Alternatives such as Mailgun or MailerSend typically require you to **verify your own domain in DNS** before sending to arbitrary recipients, which blocks many students during the project.
+>
+> Both offer a free tier sufficient for development. API keys must be stored in environment variables — never hardcoded.
 
 ### Complementary knowledge: how a password reset flow works
 
@@ -77,7 +78,7 @@ Before you start, sign up for one of the email services listed above and obtain 
 
 - [ ] `POST /auth/forgot-password` — accepts `{ email }`. If the user exists, generate a reset token with a short expiry (15–60 minutes) and send an email containing the reset link. Always return a `200` response regardless of whether the email was found.
 - [ ] `POST /auth/reset-password` — accepts `{ token, new_password }`. Validate the token (signature and expiry). If valid, hash the new password, update the user record, and invalidate the token. Return `400` for invalid or expired tokens.
-- [ ] Integrate one transactional email service (Mailgun, MailerSend, or SendGrid) to send the reset email. The email must include the reset link and be readable on mobile.
+- [ ] Integrate one transactional email service (Resend or SendGrid) to send the reset email. The email must include the reset link and be readable on mobile.
 - [ ] Store the email service API key in an environment variable. Document which variable name to set in your `README` or `.env.example`.
 
 ### Frontend

@@ -41,11 +41,12 @@ Tu tech lead ha abierto el ticket:
 >
 > Para el envío de correos, elige uno de los siguientes servicios e intégralo:
 >
-> - [Mailgun](https://www.mailgun.com/)
-> - [MailerSend](https://www.mailersend.com/)
+> - [Resend](https://resend.com/)
 > - [SendGrid (Twilio)](https://www.twilio.com/en-us/sendgrid)
 >
-> Los tres ofrecen un tier gratuito suficiente para desarrollo. Las API keys deben almacenarse en variables de entorno — nunca en el código fuente.
+> **¿Por qué solo estos dos?** Para este ejercicio, **Resend** y **SendGrid** son las opciones prácticas: puedes completar el flujo en desarrollo **sin un dominio propio** (Resend con su remitente de onboarding; SendGrid en trial/sandbox o con un remitente único verificado — revisa su documentación actual). Alternativas como Mailgun o MailerSend suelen exigir **verificar tu propio dominio en DNS** antes de enviar a destinatarios arbitrarios, lo que bloquea a muchos estudiantes durante el proyecto.
+>
+> Ambos ofrecen un tier gratuito suficiente para desarrollo. Las API keys deben almacenarse en variables de entorno — nunca en el código fuente.
 
 ### Conocimiento complementario: cómo funciona un flujo de restablecimiento de contraseña
 
@@ -77,7 +78,7 @@ Antes de empezar, regístrate en uno de los servicios de email listados arriba y
 
 - [ ] `POST /auth/forgot-password` — acepta `{ email }`. Si el usuario existe, genera un token de restablecimiento con expiración corta (15–60 minutos) y envía un email con el enlace de restablecimiento. Devuelve siempre `200` independientemente de si el email fue encontrado.
 - [ ] `POST /auth/reset-password` — acepta `{ token, new_password }`. Valida el token (firma y expiración). Si es válido, hashea la nueva contraseña, actualiza el registro del usuario e invalida el token. Devuelve `400` para tokens inválidos o expirados.
-- [ ] Integra un servicio de correo transaccional (Mailgun, MailerSend o SendGrid) para enviar el email de restablecimiento. El email debe incluir el enlace de restablecimiento y ser legible en móvil.
+- [ ] Integra un servicio de correo transaccional para enviar el email de restablecimiento. El email debe incluir el enlace de restablecimiento y ser legible en móvil.
 - [ ] Almacena la API key del servicio de email en una variable de entorno. Documenta el nombre de la variable en tu `README` o en un `.env.example`.
 
 ### Frontend
