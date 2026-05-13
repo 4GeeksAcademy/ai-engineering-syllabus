@@ -71,18 +71,29 @@ Este proyecto no usa un repositorio de inicio — es un proyecto de configuraci�
 - [ ] Saltar el paso de Channel Workflows (se abordará en una sesión futura).
 - [ ] Abrir **Try Local Chat** y enviar un mensaje de prueba para confirmar que la instancia responde.
 
-### Archivo de configuración
+### Personalizando tu Asistente
 
-- [ ] Localizar el archivo `openclaw.json` en el servidor.
-- [ ] Revisar sus atributos principales y asegurarte de entender qué controla cada sección.
-- [ ] Copiar el `openclaw.json` a tu máquina local e incluirlo en tu repositorio de entrega.
+Ahora que OpenClaw está funcionando, es momento de hacerlo verdaderamente tuyo. En lugar de editar archivos de configuración manualmente, **conversarás con OpenClaw mismo** para personalizarlo.
 
-⚠️ **IMPORTANTE:** No publiques API Keys en tu repositorio. Antes de hacer commit del `openclaw.json`, elimina o reemplaza los valores reales de cualquier API Key con un placeholder (ej: `"api_key": "YOUR_KEY_HERE"`).
+- [ ] Abre la interfaz de chat local nuevamente.
+- [ ] Pídele a OpenClaw que configure los siguientes atributos personales conversando con él:
+  - **Name (Nombre):** El nombre de tu asistente (ej: "Name: Kai")
+  - **Emoji:** El avatar que representa a tu agente (ej: "Emoji: 🤖")
+  - **Greeting (Saludo):** El mensaje inicial al comenzar un chat (ej: "Greeting: ¡Hola!")
+
+> **Consejo:** Puedes decir algo como: _"Quiero configurarte. Establece tu nombre como Kai, tu emoji como 🤖 y tu saludo como '¡Hola, soy Kai, ¿en qué puedo ayudarte hoy?'"_
+
+- [ ] Una vez configurado, localiza el archivo `.openclaw/IDENTITY.md` en tu servidor.
+- [ ] Revísalo para confirmar que tu personalización se aplicó correctamente.
+- [ ] Copia el archivo `.openclaw/IDENTITY.md` a tu máquina local e inclúyelo en tu repositorio de entrega.
+
+⚠️ **ADVERTENCIA DE SEGURIDAD:** Nunca subas a GitHub archivos que contengan API keys, tokens, credenciales o datos sensibles. El archivo `.openclaw/IDENTITY.md` es seguro para compartir porque solo contiene datos de personalización pública (Name, Emoji, Greeting). Sin embargo, **nunca subas** archivos como `openclaw.json`, `.env`, archivos de configuración con secretos, o cualquier archivo que contenga información sensible.
 
 ### Evidencia de entrega
 
 - [ ] Tomar una captura de pantalla del chat local de OpenClaw que muestre una respuesta exitosa de la IA.
 - [ ] Añadir la captura a tu repositorio de GitHub como `proof.png` (o `.jpg`).
+- [ ] Añadir el archivo `.openclaw/IDENTITY.md` a tu repositorio (esto demuestra que personalizaste exitosamente tu asistente).
 - [ ] Añadir un `README.md` a tu repositorio con: el proveedor de VPS utilizado, el modelo elegido y una frase explicando por qué seleccionaste ese modelo para un asistente de propósito general.
 
 ---
@@ -92,18 +103,27 @@ Este proyecto no usa un repositorio de inicio — es un proyecto de configuraci�
 - [ ] OpenClaw está correctamente instalado y accesible en el VPS.
 - [ ] El proveedor LiteLLM está configurado y conectado a un modelo de IA funcional.
 - [ ] El chat local devuelve una respuesta válida de la IA (evidenciado por la captura de pantalla).
-- [ ] El `openclaw.json` está presente en el repositorio con los valores de API Key eliminados.
+- [ ] El archivo `.openclaw/IDENTITY.md` está presente en el repositorio mostrando Name, Emoji y Greeting personalizados.
+- [ ] La personalización se realizó conversando con OpenClaw (no editando archivos manualmente).
 - [ ] El `README.md` de entrega incluye los campos requeridos: proveedor de VPS, nombre del modelo y justificación de la elección del modelo.
 - [ ] Se utilizó SSH para conectarse al VPS (no una consola web ni herramienta gráfica).
 - [ ] Los pasos de configuración se siguieron en el orden correcto según la guía de 4Geeks.
 
-> Nota: La corrección de los valores internos del `openclaw.json` será revisada por el instructor directamente en el servidor — el archivo en el repositorio es solo para referencia.
+> Nota: El instructor puede verificar la personalización del asistente directamente en el servidor para asegurar que la configuración se aplicó correctamente.
 
 ---
 
 ## 📦 Cómo entregar
 
-Sube tu repositorio a GitHub (debe contener `proof.png` y `openclaw.json` con las keys saneadas) y comparte el enlace siguiendo las instrucciones de tu instructor.
+Sube tu repositorio a GitHub (debe contener `proof.png`, `.openclaw/IDENTITY.md` y un `README.md` con la documentación de tu VPS/modelo) y comparte el enlace siguiendo las instrucciones de tu instructor.
+
+⚠️ **ANTES DE HACER PUSH:** Verifica dos veces que NO estás subiendo ningún archivo con API keys, tokens, credenciales o configuración sensible. Solo sube:
+
+- `proof.png` (captura de pantalla)
+- `.openclaw/IDENTITY.md` (seguro - solo Name, Emoji, Greeting)
+- `README.md` (tu documentación)
+
+**Nunca subas:** `openclaw.json`, `.env`, archivos de credenciales, o cualquier configuración que contenga secretos.
 
 ---
 
