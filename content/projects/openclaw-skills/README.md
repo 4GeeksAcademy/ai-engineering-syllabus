@@ -33,9 +33,9 @@ Inside the `.openclaw` directory you'll find five Markdown files. Together they 
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `IDENTITY.md` | The agent's name and symbol. What it calls itself.                                                                                               |
 | `SOUL.md`     | Personality and working style. Whether it asks questions or figures things out first. How direct it is. What it values.                          |
-| `USER.md`     | Everything about you: your name, your job, your current projects, your context. This is what the agent reads to understand who it's working for. |
 | `AGENTS.md`   | Behavioral rules and hard limits. What the agent must never do regardless of instructions.                                                       |
-| `MEMORY.md`   | Curated memories: lessons learned, important dates, recurring patterns, things the agent should always keep in mind.                             |
+| `USER.md`     | Everything about you: your name, your job, your current projects, your context. This is what the agent reads to understand who it's working for. |
+| `TOOLS.md`    | Which connected services the agent may use, when to use each one, and conventions (default calendars, folders, labels, preferred channels).      |
 
 These files aren't decoration. When you ask your agent to draft an email or plan your week, it reads these files first. A well-written `USER.md` and `SOUL.md` are the difference between an output you'd actually use and one you'd rewrite from scratch.
 
@@ -110,9 +110,9 @@ Commit this file before starting implementation. It is part of the deliverable a
 
 - [ ] Open `IDENTITY.md` and give your agent a name and a symbol that feel right.
 - [ ] Write `SOUL.md` with enough specificity that the agent's personality is actually different from default — include how it handles uncertainty, whether it asks or acts first, and what kind of tone it uses with you.
-- [ ] Fill in `USER.md` with your real context: name, current projects, tools you use, goals, anything the agent should always know about you.
 - [ ] Set the hard limits in `AGENTS.md` — at minimum, one rule about privacy and one about when the agent should stop and ask rather than act.
-- [ ] Add at least three entries to `MEMORY.md` — things you've learned, a recurring pattern in how you work, or something the agent should always keep in mind.
+- [ ] Fill in `USER.md` with your real context: name, current projects, tools you use, goals, anything the agent should always know about you.
+- [ ] Fill in `TOOLS.md` with the services your agent can reach through Composio, when to use each one, and any defaults (which calendar, which Drive folder, how to sign off in Gmail, etc.).
 - [ ] Run `openclaw doctor` after editing all five. Zero errors before moving on.
 
 ### Document your design
@@ -133,7 +133,7 @@ Commit this file before starting implementation. It is part of the deliverable a
 
 ## ✅ What We Will Evaluate
 
-- [ ] All five configuration files (`IDENTITY.md`, `SOUL.md`, `USER.md`, `AGENTS.md`, `MEMORY.md`) contain specific, non-generic content.
+- [ ] All five configuration files (`IDENTITY.md`, `SOUL.md`, `AGENTS.md`, `USER.md`, `TOOLS.md`) contain specific, non-generic content.
 - [ ] `openclaw doctor` runs without errors.
 - [ ] `SKILLS_DESIGN.md` is committed before the implementation and answers all three design questions for each skill.
 - [ ] At least two skills are implemented as proper OpenClaw skills.

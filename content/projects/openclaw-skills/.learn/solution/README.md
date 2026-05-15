@@ -9,9 +9,9 @@ This document describes what a **complete submission** looks like for this assig
 - **`.openclaw/`** — five Markdown briefings the agent loads before acting:
   - `IDENTITY.md` — name and symbol; non-generic.
   - `SOUL.md` — concrete personality: uncertainty, ask vs act, tone.
-  - `USER.md` — real student context: role, projects, tools, goals.
   - `AGENTS.md` — hard limits; at least one privacy rule and one “stop and ask” rule.
-  - `MEMORY.md` — at least three curated entries (patterns, lessons, standing reminders).
+  - `USER.md` — real student context: role, projects, tools, goals.
+  - `TOOLS.md` — connected services, when to use each, and defaults (calendars, folders, channels).
 - **`SKILLS_DESIGN.md`** (repo root) — for **each** planned skill: the three design questions answered **before** implementation commits.
 - **Custom skills** — at least two skills implemented as proper OpenClaw skills (structured `SKILL.md` / skill folder per OpenClaw conventions), not one-off pasted prompts.
 
@@ -36,13 +36,13 @@ This document describes what a **complete submission** looks like for this assig
 These are **not** prescriptive; students choose their own repetitive workflows.
 
 - **Doc append** — skill reads user bullets + `USER.md` journal preferences → appends a dated section to a known Google Doc.
-- **Calendar block** — skill parses natural-language intent + `MEMORY.md` default durations → creates Calendar event with reminders.
+- **Calendar block** — skill parses natural-language intent + `TOOLS.md` calendar defaults → creates Calendar event with reminders.
 - **Telegram digest** — skill aggregates GitHub + `USER.md` repo list → sends formatted summary to Telegram.
 
 ## What is out of scope for a passing solution
 
 - New OAuth clients, API keys for unrelated services, or “connect Slack/Notion” as part of this assignment.
-- Generic one-line `SOUL.md` / empty `USER.md` / copy-pasted `MEMORY.md` entries with no personal grounding.
+- Generic one-line `SOUL.md` / empty `USER.md` / vague `TOOLS.md` with no real defaults or service conventions.
 
 ## Alignment with evaluation rubric
 

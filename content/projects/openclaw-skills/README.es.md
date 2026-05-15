@@ -29,13 +29,13 @@ Dos cosas van a cambiar eso. Primero, rellenarás los cinco archivos de configur
 
 Dentro del directorio `.openclaw` encontrarás cinco archivos Markdown. Juntos forman el briefing interno completo del agente. Ahora mismo están casi vacíos — ese es el trabajo.
 
-| Archivo       | Qué controla                                                                                                                              |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `IDENTITY.md` | El nombre y símbolo del agente. Cómo se llama a sí mismo.                                                                                 |
-| `SOUL.md`     | Personalidad y estilo de trabajo. Si pregunta antes de actuar o se pone en marcha primero. Cómo de directo es. Qué valora.                |
-| `USER.md`     | Todo sobre ti: tu nombre, tu trabajo, tus proyectos actuales, tu contexto. Esto es lo que el agente lee para entender para quién trabaja. |
-| `AGENTS.md`   | Reglas de comportamiento y límites inamovibles. Lo que el agente nunca debe hacer independientemente de las instrucciones.                |
-| `MEMORY.md`   | Memorias curadas: lecciones aprendidas, fechas importantes, patrones recurrentes, cosas que el agente debe tener siempre en mente.        |
+| Archivo       | Qué controla                                                                                                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `IDENTITY.md` | El nombre y símbolo del agente. Cómo se llama a sí mismo.                                                                                  |
+| `SOUL.md`     | Personalidad y estilo de trabajo. Si pregunta antes de actuar o se pone en marcha primero. Cómo de directo es. Qué valora.                 |
+| `AGENTS.md`   | Reglas de comportamiento y límites inamovibles. Lo que el agente nunca debe hacer independientemente de las instrucciones.                 |
+| `USER.md`     | Todo sobre ti: tu nombre, tu trabajo, tus proyectos actuales, tu contexto. Esto es lo que el agente lee para entender para quién trabaja.  |
+| `TOOLS.md`    | Qué servicios conectados puede usar el agente, cuándo usar cada uno y convenciones (calendario por defecto, carpetas, etiquetas, canales). |
 
 Estos archivos no son decoración. Cuando le pides a tu agente que redacte un correo o planifique tu semana, los lee primero. Un `USER.md` y un `SOUL.md` bien escritos son la diferencia entre un output que usarías tal cual y uno que reescribirías desde cero.
 
@@ -110,9 +110,9 @@ Haz commit de este archivo antes de empezar la implementación. Forma parte de l
 
 - [ ] Abre `IDENTITY.md` y dale a tu agente un nombre y un símbolo que te encajen.
 - [ ] Escribe `SOUL.md` con suficiente especificidad para que la personalidad del agente sea realmente diferente a la genérica — incluye cómo gestiona la incertidumbre, si pregunta o actúa primero, y qué tono usa contigo.
-- [ ] Rellena `USER.md` con tu contexto real: nombre, proyectos actuales, herramientas que usas, objetivos, cualquier cosa que el agente deba saber siempre sobre ti.
 - [ ] Establece los límites inamovibles en `AGENTS.md` — como mínimo, una regla sobre privacidad y una sobre cuándo el agente debe parar y preguntar en lugar de actuar.
-- [ ] Añade al menos tres entradas a `MEMORY.md` — cosas que has aprendido, un patrón recurrente en cómo trabajas, o algo que el agente deba tener siempre presente.
+- [ ] Rellena `USER.md` con tu contexto real: nombre, proyectos actuales, herramientas que usas, objetivos, cualquier cosa que el agente deba saber siempre sobre ti.
+- [ ] Rellena `TOOLS.md` con los servicios a los que tu agente puede acceder vía Composio, cuándo usar cada uno y los valores por defecto (qué calendario, qué carpeta de Drive, cómo firmar en Gmail, etc.).
 - [ ] Ejecuta `openclaw doctor` después de editar los cinco. Cero errores antes de continuar.
 
 ### Documenta tu diseño
@@ -133,7 +133,7 @@ Haz commit de este archivo antes de empezar la implementación. Forma parte de l
 
 ## ✅ Qué vamos a evaluar
 
-- [ ] Los cinco archivos de configuración (`IDENTITY.md`, `SOUL.md`, `USER.md`, `AGENTS.md`, `MEMORY.md`) contienen contenido específico y no genérico.
+- [ ] Los cinco archivos de configuración (`IDENTITY.md`, `SOUL.md`, `AGENTS.md`, `USER.md`, `TOOLS.md`) contienen contenido específico y no genérico.
 - [ ] `openclaw doctor` se ejecuta sin errores.
 - [ ] `SKILLS_DESIGN.md` está commiteado antes de la implementación y responde las tres preguntas de diseño para cada skill.
 - [ ] Al menos dos skills están implementadas como skills de OpenClaw correctas.
