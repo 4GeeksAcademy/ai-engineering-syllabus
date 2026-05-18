@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -32,6 +33,15 @@ def parse_args() -> argparse.Namespace:
         "--template-url",
         default="https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
         help="template_url value for learn.json",
+    )
+    parser.add_argument(
+        "--classroom-example",
+        choices=("yes", "no", "ask"),
+        default="ask",
+        help=(
+            "Whether to add an instructor classroom example brief under .learn/example/. "
+            "'ask' prompts after scaffolding when stdin is a TTY; otherwise defaults to no."
+        ),
     )
     return parser.parse_args()
 
@@ -79,6 +89,53 @@ def extract_api_routes(markdown: str) -> list[str]:
         if route not in routes:
             routes.append(route)
     return routes
+
+
+CLASSROOM_EXAMPLE_SKILL = (
+    ".cursor/skills/classroom-example-brief/SKILL.md"
+)
+
+
+def resolve_classroom_example_choice(choice: str) -> bool | None:
+    """Return True/False, or None when the user must decide outside the script."""
+    if choice == "yes":
+        return True
+    if choice == "no":
+        return False
+    if sys.stdin.isatty():
+        prompt = (
+            "\nInclude a classroom example brief for instructors "
+            "(.learn/example/README.md + README.es.md)?\n"
+            "Shorter parallel scenario for live class demos. "
+            f"Generate later with skill: {CLASSROOM_EXAMPLE_SKILL}\n"
+            "[y/N]: "
+        )
+        answer = input(prompt).strip().lower()
+        return answer in ("y", "yes", "s", "si", "sí")
+    return None
+
+
+def scaffold_classroom_example_request(target_dir: Path, slug: str) -> Path:
+    """Mark that instructor example briefs should be generated for this project."""
+    example_dir = target_dir / ".learn" / "example"
+    example_dir.mkdir(parents=True, exist_ok=True)
+    instructions = example_dir / "INSTRUCTIONS.md"
+    write_text(
+        instructions,
+        (
+            "# Classroom example brief — pending generation\n\n"
+            f"Project slug: `{slug}`\n\n"
+            "Apply the skill "
+            f"`{CLASSROOM_EXAMPLE_SKILL}` "
+            "to create bilingual instructor briefs in this folder:\n\n"
+            "- `README.md` (English)\n"
+            "- `README.es.md` (Spanish)\n\n"
+            "Read the official `README.md` and `README.es.md` at the project root first. "
+            "Use a different domain than the student project, same technical spine, "
+            "60–120 minute classroom scope.\n"
+        ),
+    )
+    return instructions
 
 
 def build_solution_readme(title_en: str, readme_en: str) -> str:
@@ -266,6 +323,31 @@ def main() -> int:
             ],
             check=True,
         )
+
+    classroom_example = resolve_classroom_example_choice(
+        args.classroom_example)
+    if classroom_example is None:
+        print(
+            "classroom_example",
+            "ask_required",
+        )
+        print(
+            "classroom_example_hint",
+            "Re-run with --classroom-example yes|no, or ask the user in chat, "
+            f"then apply {CLASSROOM_EXAMPLE_SKILL} if yes.",
+        )
+    elif classroom_example:
+        instructions_path = scaffold_classroom_example_request(
+            target_dir, args.target_slug
+        )
+        print("classroom_example", "yes")
+        print("classroom_example_instructions", str(instructions_path))
+        print(
+            "classroom_example_next_step",
+            f"Apply skill {CLASSROOM_EXAMPLE_SKILL} to generate README.md and README.es.md.",
+        )
+    else:
+        print("classroom_example", "no")
 
     print("target_dir", str(target_dir))
     print("project_url", base_project_url)
