@@ -123,6 +123,29 @@ Safety rule:
 - Do not run global regeneration across all projects unless the user explicitly requests it.
 - Apply social-sharing only to the target project.
 
+### Phase 5 - Classroom example brief for instructors (post-generation)
+
+After Phases 0–4 complete, the orchestrator script asks whether the project needs an **instructor classroom example brief** under `.learn/example/` (separate from the student README and from `.learn/solution/`).
+
+- Skill: `classroom-example-brief/SKILL.md`
+- Outputs when accepted: `.learn/example/README.md` and `.learn/example/README.es.md`
+- Purpose: shorter parallel scenario (different domain, same technical spine) for live class demos
+
+**How the question is asked**
+
+The script `orchestrate_project_from_readme.py` runs this step **after** scaffolding finishes:
+
+| Mode | Behavior |
+|------|----------|
+| `--classroom-example ask` (default) | Interactive `[y/N]` prompt when stdin is a TTY |
+| `--classroom-example yes` | Scaffolds `.learn/example/INSTRUCTIONS.md` and reports `classroom_example=yes`; agent must still run `classroom-example-brief` to write the briefs |
+| `--classroom-example no` | Skips; reports `classroom_example=no` |
+| `ask` + non-interactive (agent/CI) | Prints `classroom_example=ask_required`; agent must ask the user in chat, then re-run with `yes` or `no`, or apply the skill directly if `yes` |
+
+**Report requirement:** Final orchestration report must state `classroom_example: yes | no | ask_required`.
+
+If the user answers yes, apply `classroom-example-brief` before closing the task (unless they explicitly defer generation).
+
 ## Automation command (recommended)
 
 Use this command as the default execution path for new projects from README:
@@ -132,7 +155,8 @@ python3 .cursor/skills/readme-project-orchestrator/scripts/orchestrate_project_f
   --repo-root . \
   --target-slug "<target-slug>" \
   --source-readme "<absolute-or-relative-path-to-readme>" \
-  --source-readme-es "<optional-path-to-readme-es>"
+  --source-readme-es "<optional-path-to-readme-es>" \
+  --classroom-example ask
 ```
 
 Notes:
@@ -140,6 +164,7 @@ Notes:
 - The orchestrator bootstraps `README.md`, `README.es.md`, `.learn/solution/README.md`, and `learn.json`.
 - It then calls `generate-project-social-sharing` scoped by `--slug` to generate `.learn/preview.png` and `sharing` for the target project only.
 - If a translation file is not provided, it creates a fallback counterpart that must be replaced with a proper translation pass.
+- After scaffolding, use `--classroom-example ask` (default) to prompt for instructor example briefs, or pass `yes` / `no` when running non-interactively.
 
 ## Validation checklist (must pass)
 
@@ -150,6 +175,8 @@ Notes:
 - [ ] `learn.json.sharing` exists with bilingual (`en`, `es`) messages.
 - [ ] All URLs in `learn.json` point to `content/projects/<target_slug>/...`.
 - [ ] Phase 4 was executed (preview generated + sharing updated) before finalizing.
+- [ ] Phase 5 decision recorded: `classroom_example` is `yes`, `no`, or `ask_required`.
+- [ ] If `classroom_example` is `yes`, `.learn/example/README.md` and `.learn/example/README.es.md` exist (via `classroom-example-brief`).
 
 ## Response format after execution
 
@@ -158,4 +185,5 @@ Return a concise report with:
 1. Created/updated files
 2. Translation actions performed
 3. Which specialized skills were used per phase
-4. Final validation status
+4. `classroom_example`: `yes` | `no` | `ask_required` (and next step if `yes`)
+5. Final validation status
