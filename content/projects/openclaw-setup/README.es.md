@@ -38,7 +38,7 @@ Ponlo a correr.
 Este proyecto no usa un repositorio de inicio — es un proyecto de configuración de servidor. Sigue estos pasos para comenzar:
 
 1. Accede al VPS proporcionado por la plataforma (las credenciales se compartirán por la plataforma del curso).
-2. Conéctate al VPS usando tu editor Codespaces o VS Code para poder recibir ayuda de Copilot si la necesitas. También puedes conectarte al VPS mediante SSH desde tu terminal:
+2. Conéctate al VPS usando tu editor VS Code para poder recibir ayuda de Copilot si la necesitas. También puedes conectarte al VPS mediante SSH desde tu terminal:
 
    ```bash
    ssh tu_usuario@ip_de_tu_vps
