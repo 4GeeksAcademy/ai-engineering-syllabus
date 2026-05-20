@@ -41,7 +41,7 @@ Create `.learn/example/` if missing. **Do not** add `.learn/solution` content or
 After the opening instructor note, add a single line so both files discover each other:
 
 - In `README.es.md`: `_These instructions are also available in [English](./README.md)._`
-- In `README.md`: `_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._`
+- In `README.md`: `_Estas instrucciones también están disponibles en [español](./README.es.md)._`
 
 (Keep accents/spelling consistent with the syllabus README translation rule.)
 
