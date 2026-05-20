@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge.
+## 🎯 Challenge
 
 You’ve probably used commercial AI chat tools for a while. They work, but they never truly belong to you. Now you want your own AI assistant — self-hosted on a VPS, private, configurable to your needs, and adaptable for any task. No dependence on third-party platforms. 100% yours.
 
