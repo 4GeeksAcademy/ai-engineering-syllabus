@@ -27,6 +27,19 @@ Your tech lead has decided to take the next step: integrate a centralised incide
 
 An incident manager is not just a form connected to a database. In a real environment, each incident has a **lifecycle** (open → in progress → resolved → discarded) and an **origin** that defines its context: a customer complaint is not the same as an internal failure detected by a branch. The system must record who reported what, from where, when, and what state it is in — and must be able to aggregate that into useful metrics for leadership.
 
+### Complementary knowledge: improving an incident manager with embeddings
+
+An application like this one — structured forms, filters, and aggregated metrics — works well with exact field values. **Embeddings** add a semantic layer on top: they turn each incident's `title` and `description` into a dense vector that captures meaning, not just keywords.
+
+With that representation stored in a vector database (or an extension that supports similarity search), you can evolve the same system in several directions without changing the core CRUD model:
+
+- **Find similar incidents** — when someone registers a new report, surface past cases with comparable descriptions so support can reuse resolutions or spot recurring issues.
+- **Smarter search** — queries like "payment failed at checkout" can match incidents phrased differently ("card declined during purchase"), which keyword filters alone often miss.
+- **Duplicate and cluster detection** — group spikes of related reports across branches or origins before they flood the summary dashboard.
+- **Assisted triage** — suggest category or priority from the text of the description by comparing it to embeddings of historical incidents already labeled by your team.
+
+You do not need to implement any of this in the current delivery. The point is to see how the incident manager you are building today is a solid foundation: once descriptions live in the database, embeddings are a natural next step when the product needs search and intelligence beyond exact filters.
+
 ---
 
 ## 🌱 How to Start the Project
