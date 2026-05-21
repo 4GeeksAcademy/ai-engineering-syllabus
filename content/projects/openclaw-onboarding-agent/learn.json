@@ -11,7 +11,7 @@
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "slug": "openclaw-onboarding-agent",
-  "difficulty": "advanced",
+  "difficulty": "hard",
   "duration": 4,
   "technologies": [
     "openclaw",
