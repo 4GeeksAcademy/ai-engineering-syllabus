@@ -1,41 +1,37 @@
 {
-  "gitpod": false,
-  "title": {
-    "en": "My 4Geeks Assistant — Teaching OpenClaw to Track Your Progress",
-    "es": "Mi Asistente 4Geeks — Enseñándole a OpenClaw a seguir tu progreso"
-  },
-  "description": {
-    "en": "Teach OpenClaw focused BreatheCode skills (authenticate, list projects, pending work, progress) using your student token via secure config, document each skill in SKILL_LOG.md, and add two custom API skills—no template repo; work lives in your OpenClaw setup.",
-    "es": "Enseña a OpenClaw skills enfocadas de BreatheCode (autenticar, listar proyectos, trabajo pendiente, progreso) con tu token de estudiante en configuración segura, documenta cada skill en SKILL_LOG.md y añade dos skills API personalizadas; sin repo plantilla: el trabajo vive en tu OpenClaw."
-  },
-  "status": "draft",
-  "slug": "openclaw-integration",
-  "difficulty": "intermediate",
-  "duration": 3,
-  "technologies": [
-    "openclaw",
-    "agents",
-    "api-integration",
-    "breathecode",
-    "technical-documentation"
-  ],
-  "grading": "isolated",
-  "localhostOnly": true,
-  "translations": ["es", "en"],
-  "projectType": "project",
-  "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3612"
-  },
-  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-integration/.learn/preview.png",
-  "sharing": [
-    {
-      "en": "I just completed My 4Geeks Assistant — Teaching OpenClaw to Track Your Progress with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-integration #AIEngineering #LearnPack #4GeeksAcademy #openclaw #agents #apiintegration",
-      "es": "Acabo de completar Mi Asistente 4Geeks — Enseñándole a OpenClaw a seguir tu progreso con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-integration #AIEngineering #LearnPack #4GeeksAcademy #openclaw #agents #apiintegration"
+    "slug": "openclaw-integration",
+    "title": {
+        "us": "My 4Geeks Assistant \u2014 Teaching OpenClaw to Track Your Progress",
+        "es": "Mi Asistente 4Geeks \u2014 Ense\u00f1\u00e1ndole a OpenClaw a seguir tu progreso"
     },
-    {
-      "en": "Built and shipped: My 4Geeks Assistant — Teaching OpenClaw to Track Your Progress. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-integration #AIEngineering #LearnPack #4GeeksAcademy #openclaw #agents #apiintegration",
-      "es": "Construido y publicado: Mi Asistente 4Geeks — Enseñándole a OpenClaw a seguir tu progreso. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-integration #AIEngineering #LearnPack #4GeeksAcademy #openclaw #agents #apiintegration"
-    }
-  ]
+    "description": {
+        "us": "Teach OpenClaw focused BreatheCode skills (authenticate, list projects, pending work, progress) using your student token via secure config, document each skill in SKILL_LOG.md, and add two custom API skills\u2014no template repo; work lives in your OpenClaw setup.",
+        "es": "Ense\u00f1a a OpenClaw skills enfocadas de BreatheCode (autenticar, listar proyectos, trabajo pendiente, progreso) con tu token de estudiante en configuraci\u00f3n segura, documenta cada skill en SKILL_LOG.md y a\u00f1ade dos skills API personalizadas; sin repo plantilla: el trabajo vive en tu OpenClaw."
+    },
+    "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/preview.png?raw=true",
+    "difficulty": "INTERMEDIATE",
+    "duration": 3,
+    "template_url": null,
+    "gitpod": false,
+    "technologies": [
+        "openclaw",
+        "agents",
+        "api-integration",
+        "breathecode",
+        "technical-documentation"
+    ],
+    "projectType": "project",
+    "solution": {
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/.learn/solution/README.md",
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/.learn/solution/README.md"
+    },
+    "delivery": {
+        "instructions": "",
+        "formats": [
+            "url"
+        ],
+        "regex": ""
+    },
+    "grading": "isolated",
+    "localhostOnly": true
 }
