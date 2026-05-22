@@ -1,43 +1,35 @@
 {
-  "gitpod": true,
-  "title": {
-    "en": "Onboarding Agent with Memory",
-    "es": "Agente de Onboarding con Memoria"
-  },
-  "description": {
-    "en": "Build a company OpenClaw onboarding agent with persistent memory, Telegram and email, code-gated pairing approval, and daily HR summaries.",
-    "es": "Construye un agente OpenClaw de onboarding empresarial con memoria persistente, Telegram y correo, aprobación de pairing por código y resúmenes diarios para RRHH."
-  },
-  "status": "draft",
-  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-  "slug": "openclaw-onboarding-agent",
-  "difficulty": "hard",
-  "duration": 4,
-  "technologies": [
-    "openclaw",
-    "agents",
-    "telegram",
-    "agent-memory",
-    "technical-documentation"
-  ],
-  "translations": [
-    "es",
-    "en"
-  ],
-  "projectType": "project",
-  "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3614"
-  },
-  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-company/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-company/.learn/preview.png",
-  "sharing": [
-    {
-      "en": "I just completed Onboarding Agent with Memory with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-company #AIEngineering #LearnPack #4GeeksAcademy #OpenClaw #Agents #Telegram",
-      "es": "Acabo de completar Agente de Onboarding con Memoria con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-company #AIEngineering #LearnPack #4GeeksAcademy #OpenClaw #Agents #Telegram"
+    "slug": "openclaw-onboarding-agent-es",
+    "title": {
+        "es": "Agente de Onboarding con Memoria",
+        "us": "Onboarding Agent with Memory"
     },
-    {
-      "en": "Built and shipped: Onboarding Agent with Memory. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-company #AIEngineering #LearnPack #4GeeksAcademy #OpenClaw #Agents #Telegram",
-      "es": "Construido y publicado: Agente de Onboarding con Memoria. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-company #AIEngineering #LearnPack #4GeeksAcademy #OpenClaw #Agents #Telegram"
+    "description": {
+        "es": "Construye un agente OpenClaw de onboarding empresarial con memoria persistente, Telegram y correo, aprobaci\u00f3n de pairing por c\u00f3digo y res\u00famenes diarios para RRHH.",
+        "us": "Build a company OpenClaw onboarding agent with persistent memory, Telegram and email, code-gated pairing approval, and daily HR summaries."
+    },
+    "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-company/.learn/preview.png",
+    "difficulty": "HARD",
+    "duration": 4,
+    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+    "gitpod": true,
+    "technologies": [
+        "openclaw",
+        "agents",
+        "telegram",
+        "agent-memory",
+        "technical-documentation"
+    ],
+    "projectType": "project",
+    "solution": {
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-onboarding-agent/.learn/solution/README.md",
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-company/.learn/solution/README.md"
+    },
+    "delivery": {
+        "instructions": "",
+        "formats": [
+            "url"
+        ],
+        "regex": ""
     }
-  ]
 }
