@@ -119,7 +119,7 @@ OpenClaw creates a workspace folder at `~/.openclaw/workspace` where it stores y
 #### Step 3: Create GitHub Repository
 
 - [ ] Go to [GitHub](https://github.com/new) and create a **new repository**.
-- [ ] Name it: `openclaw-setup-<your_github_username>` (replace with your actual username).
+- [ ] Name it: `openclaw-<your_github_username>` (replace with your actual username).
 - [ ] Make it **Public** or **Private** (your choice).
 - [ ] **Do NOT** initialize with README, .gitignore, or license.
 - [ ] Click **"Create repository"**.
@@ -142,7 +142,7 @@ OpenClaw creates a workspace folder at `~/.openclaw/workspace` where it stores y
 - [ ] Add the GitHub remote (replace with your repository URL):
 
   ```bash
-  git remote add origin git@github.com:your_username/openclaw-setup-your_username.git
+  git remote add origin git@github.com:your_username/openclaw-your_username.git
   ```
 
 - [ ] Stage all files:
@@ -165,8 +165,8 @@ OpenClaw creates a workspace folder at `~/.openclaw/workspace` where it stores y
 
 #### Step 5: Verify Upload
 
-- [ ] Go to `https://github.com/your_username/openclaw-setup-your_username` in your browser.
-- [ ] Confirm that your workspace files are visible, including `.openclaw/IDENTITY.md`.
+- [ ] Go to `https://github.com/your_username/openclaw-your_username` in your browser.
+- [ ] Confirm that your workspace files are visible, including `.openclaw/workspace/IDENTITY.md`.
 - [ ] Take a screenshot of your GitHub repository page showing the uploaded workspace.
 
 ⚠️ **SECURITY WARNING:** The workspace folder should **only** contain safe files created by OpenClaw (like `IDENTITY.md` and chat logs). However, **before pushing**, verify that no sensitive files accidentally ended up in the workspace:
@@ -186,9 +186,9 @@ If you see files like `openclaw.json`, `.env`, or any configuration with API key
 - [ ] OpenClaw is correctly installed and accessible on the VPS.
 - [ ] LiteLLM provider is configured and connected to a working AI model.
 - [ ] The local chat interface returns a valid AI response (verified on server or by screenshot).
-- [ ] GitHub repository `openclaw-setup-<your_username>` exists and is accessible.
+- [ ] GitHub repository `openclaw-<your_username>` exists and is accessible.
 - [ ] The workspace folder (`~/.openclaw/workspace`) has been successfully pushed to GitHub.
-- [ ] `.openclaw/IDENTITY.md` is present in the repository showing personalized Name, Emoji, and Greeting.
+- [ ] `.openclaw/workspace/IDENTITY.md` is present in the repository showing personalized Name, Emoji, and Greeting.
 - [ ] The personalization was done by conversing with OpenClaw (not by manually editing files).
 - [ ] SSH key was properly configured to enable git push from the VPS.
 - [ ] Git commit history shows at least one commit with workspace contents.
@@ -206,11 +206,11 @@ Your delivery is the entire `~/.openclaw/workspace` folder pushed to GitHub from
 
 **Your repository should contain:**
 
-- `.openclaw/IDENTITY.md` (your personalized assistant identity)
+- `.openclaw/workspace/IDENTITY.md` (your personalized assistant identity)
 - Any chat logs or workspace files created by OpenClaw
 - Git commit history showing the push from the VPS
 
-**Submission format:** `https://github.com/your_username/openclaw-setup-your_username`
+**Submission format:** `https://github.com/your_username/openclaw-your_username`
 
 ⚠️ **FINAL SECURITY CHECK:** Before submitting, verify that your workspace does NOT contain:
 

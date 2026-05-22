@@ -27,11 +27,24 @@ Antes de implementar nada, debes identificar qué tipo de memoria de OpenClaw es
 
 - **`Memory.md`** — memoria persistente escrita por el agente para sí mismo, cargada en cada conversación. Útil para instrucciones permanentes o comportamientos que no cambian entre sesiones.
 - **`/memory` (carpeta de notas)** — notas que el agente genera cronológicamente. Útil para registrar eventos, cambios de estado y el historial de un proceso a lo largo del tiempo.
-- **mem0** — capa de memoria externa con almacenamiento vectorial. Permite guardar y recuperar información con búsqueda semántica, lo que resulta útil cuando el volumen de registros crece o cuando las consultas no son exactas sino aproximadas (por ejemplo: "¿qué empleados llevan más de una semana sin avanzar?").
 
-La elección del tipo de memoria también implica definir una **estrategia de búsqueda**: ¿cómo recuperará el agente el estado de un empleado concreto? ¿Por identificador exacto, por coincidencia de texto o por similitud semántica? Esa estrategia debe ser coherente con el mecanismo de memoria elegido y quedar documentada en el `MEMORY-DECISION.md`.
+Independientemente del mecanismo de almacenamiento que elijas, debes configurar **QMD** como método de búsqueda de memoria (sustituyendo el `memory_search` por defecto), con búsqueda por palabras clave, similitud semántica y reranking activados. QMD es cómo el agente recupera registros de onboarding cuando crece el volumen de empleados o cuando las consultas son aproximadas en lugar de exactas (por ejemplo: "¿qué empleados llevan más de una semana sin avanzar?").
+
+La elección del tipo de memoria también implica definir una **estrategia de búsqueda**: ¿cómo recuperará el agente el estado de un empleado concreto? ¿Por identificador exacto, por coincidencia de texto o por similitud semántica vía QMD? Esa estrategia debe ser coherente con el mecanismo de memoria elegido y quedar documentada en el `MEMORY-DECISION.md`.
 
 Tu decisión sobre qué tipo usar — y por qué — forma parte del entregable de este proyecto. Una implementación que no justifique la elección no estará completa.
+
+### Amnesia de contexto
+
+Los agentes de OpenClaw inician cada sesión con una **ventana de contexto limitada**. Todo lo que existe solo en el historial del chat se pierde tras un reinicio o al día siguiente — eso es la **amnesia de contexto**. En onboarding es inaceptable: RRHH no puede volver a introducir el estado de cada empleado a mano.
+
+Antes de implementar, responde esta pregunta de diseño:
+
+> **¿Qué debe recordar el agente si reinicia mañana?**
+
+Enumera cada dato que el agente debe seguir conociendo tras un reinicio (por empleado y a nivel global): identidad, estado actual, entregables pendientes, estado de verificación, fechas, contadores de cambios de estado y reglas del resumen matutino. Luego asigna cada ítem a **dónde** se guarda (`Memory.md`, `/memory` o ambos) y **cómo** se recupera (consulta QMD, búsqueda exacta en archivo, etc.).
+
+La **amnesia de contexto debe considerarse y resolverse** en tu implementación — no basta con mencionarla. La persistencia debe ser real (escritura en disco en cada transición de estado) y la recuperación debe demostrarse tras un reinicio.
 
 ### El flujo del agente
 
@@ -112,7 +125,9 @@ flowchart TD
 
 ### Configuración de memoria
 
-- [ ] Crear un archivo `MEMORY-DECISION.md` que justifique el tipo de memoria de OpenClaw elegido (`Memory.md`, `/memory` o mem0), la estrategia de búsqueda adoptada (exacta, textual o semántica) y por qué ambas decisiones son coherentes con el caso de uso
+- [ ] Crear un archivo `MEMORY-DECISION.md` que justifique el tipo de memoria de OpenClaw elegido (`Memory.md` o `/memory`), la estrategia de búsqueda adoptada (exacta, textual o semántica vía QMD) y por qué ambas decisiones son coherentes con el caso de uso
+- [ ] En `MEMORY-DECISION.md`, incluir una sección de **Amnesia de contexto**: responder *«¿Qué debe recordar el agente si reinicia mañana?»*, listar qué persistes, dónde se guarda cada dato, cómo QMD lo recupera y cómo verificaste la recuperación tras un reinicio
+- [ ] Instalar y configurar **QMD** como método de búsqueda de memoria, con búsqueda por palabras clave, similitud semántica y reranking activados; documentar al menos una consulta de prueba y su resultado en `MEMORY-DECISION.md`
 - [ ] Configurar la memoria del agente para registrar el estado de onboarding de cada empleado: nombre, correo electrónico, estado actual, entregables recibidos y fecha de inicio del proceso
 - [ ] Implementar la lógica que clasifica cada proceso en uno de tres estados — **no iniciado**, **activo** o **terminado** — y mantiene esa clasificación actualizada en memoria para que el resumen matutino la refleje correctamente
 
@@ -126,6 +141,10 @@ flowchart TD
 - [ ] Resumen matutino: implementar la tarea diaria que clasifica todos los procesos (no iniciados, activos, terminados) e indica el número de cambios de estado desde el día anterior
 - [ ] Cierre: el agente marca el proceso como terminado cuando todos los entregables han sido recibidos y actualiza la memoria en consecuencia
 
+### Entregable opcional — reflexión sobre mem0
+
+- [ ] *(Opcional)* Añadir un archivo `MEM0-REFLECTION.md` (o una sección dedicada en `MEMORY-DECISION.md`) que explique cómo una capa de memoria externa como **mem0** podría mejorar esta solución de onboarding: qué problemas resolvería mejor que `Memory.md` + `/memory` + QMD y qué trade-offs introduciría
+
 ⚠️ **IMPORTANTE:** Los roles de RRHH, los campos del empleado, las instrucciones de onboarding y los entregables requeridos deben corresponderse exactamente con lo especificado en tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**. Una implementación genérica que ignore el contexto no será aceptada.
 
 ---
@@ -135,8 +154,10 @@ flowchart TD
 - [ ] El nuevo workspace está separado del workspace personal y tiene su propio conjunto de archivos de configuración `.md` con rol y restricciones definidos
 - [ ] El canal de email está integrado en el workspace: el agente puede enviar correos de forma autónoma durante la ejecución del flujo
 - [ ] El skill de aprobación de pairings existe como script ejecutable, acepta el código como argumento y solo aprueba si el código es correcto
-- [ ] El archivo `MEMORY-DECISION.md` justifica el tipo de memoria elegido (`Memory.md`, `/memory` o mem0) y la estrategia de búsqueda adoptada, con argumento explícito de por qué son coherentes con el caso de uso
-- [ ] El estado de onboarding de cada empleado es recuperable tras un reinicio del agente — la persistencia es real, no depende de la sesión activa
+- [ ] El archivo `MEMORY-DECISION.md` justifica el tipo de memoria elegido (`Memory.md` o `/memory`) y la estrategia de búsqueda adoptada, con argumento explícito de por qué son coherentes con el caso de uso
+- [ ] `MEMORY-DECISION.md` documenta cómo se resolvió la **amnesia de contexto**: qué debe sobrevivir a un reinicio al día siguiente, dónde se persiste, cómo se recupera y evidencia de una prueba tras reinicio
+- [ ] QMD está configurado como método de búsqueda de memoria con búsqueda por palabras clave, similitud semántica y reranking activados; una consulta de prueba documentada demuestra la recuperación de registros de onboarding
+- [ ] El estado de onboarding de cada empleado es recuperable tras un reinicio del agente — la persistencia es real, no depende de la sesión activa; la amnesia de contexto está resuelta, no delegada al historial del chat
 - [ ] El resumen matutino clasifica correctamente los procesos en tres categorías (no iniciados, activos, terminados) e indica el número de cambios de estado ocurridos desde el día anterior
 - [ ] El flujo completo puede ejecutarse de principio a fin sin errores con al menos un empleado de prueba
 - [ ] El log del script de pairings registra cada aprobación con el dato de quién fue aprobado y cuándo
@@ -148,10 +169,10 @@ flowchart TD
 1. Asegúrate de que tu repositorio contenga:
    - Los archivos de configuración del nuevo workspace de OpenClaw
    - El skill de aprobación de pairings con su script
-   - El archivo `MEMORY-DECISION.md`
-   - Un `README` en la carpeta del proyecto con instrucciones para probar el flujo completo
+   - El archivo `MEMORY-DECISION.md` (incluida la sección de amnesia de contexto y la verificación tras reinicio)
+   - Un `README` en la carpeta del proyecto con instrucciones para probar el flujo completo (incluida una prueba tras reinicio)
 2. Haz push de tus cambios al repositorio
-3. Comparte el enlace al repositorio junto con la descripción del PR: el tipo de memoria elegido y un ejemplo real del estado guardado en memoria para un empleado de prueba
+3. Comparte el enlace al repositorio junto con la descripción del PR: el tipo de memoria elegido, cómo resolviste la amnesia de contexto y un ejemplo real del estado guardado en memoria para un empleado de prueba tras un reinicio
 
 ---
 

@@ -32,8 +32,10 @@ flowchart LR
 2. **Telegram channel** — installed and used in the onboarding workspace only.
 3. **Email integration** — agent can send welcome email autonomously during the flow.
 4. **Pairing approval skill** — executable script accepting verification code; logs each approval (who, when, code used); README note on why this is safer than blanket manual approval.
-5. **`MEMORY-DECISION.md`** — chosen memory type (`Memory.md`, `/memory`, or mem0), retrieval strategy (exact / text / semantic), and explicit consistency argument for this use case.
-6. **Flow implementation** — all steps in the README mermaid diagram, aligned with the learner’s `CONTEXT-company.md` (fields, HR roles, instructions, deliverables).
+5. **`MEMORY-DECISION.md`** — chosen memory type (`Memory.md` or `/memory`), retrieval strategy (exact / text / semantic via QMD), QMD configuration evidence (test query + result), explicit consistency argument for this use case, and a **Context amnesia** section documenting what must survive a next-day reboot, where each item is persisted, how it is retrieved, and restart-test evidence.
+6. **QMD** — installed and configured as the memory search method (keyword + semantic + reranking).
+7. ***(Optional)* `MEM0-REFLECTION.md`** — reflection on how mem0 could improve the solution and what trade-offs it would introduce.
+8. **Flow implementation** — all steps in the README mermaid diagram, aligned with the learner’s `CONTEXT-company.md` (fields, HR roles, instructions, deliverables).
 
 ## Memory model (indicative)
 
@@ -73,8 +75,8 @@ Regardless of mechanism, each active onboarding record should be recoverable aft
 - Workspace `.md` role and restrictions
 - Telegram + email in the onboarding workspace
 - Pairing skill with code-gated approval and logging
-- `MEMORY-DECISION.md` with justified memory type and retrieval strategy
-- Persistent per-employee state across agent restarts
+- `MEMORY-DECISION.md` with justified memory type and retrieval strategy; QMD configured with documented test query; context amnesia section with restart verification
+- Persistent per-employee state across agent restarts (context amnesia solved, not chat-only)
 - Full flow: HR notify → welcome email → Telegram contact → code → HR code to bot → approve → greet + instructions → deliverables → complete
 - Daily summary: three categories + count of state changes since previous day
 - All HR roles, fields, instructions, and deliverables match `CONTEXT-company.md`
@@ -100,8 +102,8 @@ Details:
 - Workspace separation and dedicated configuration files
 - Email sent autonomously during the flow
 - Pairing script exists, is code-gated, and logs approvals
-- `MEMORY-DECISION.md` justifies type + retrieval strategy
-- State survives restart (not session-only)
+- `MEMORY-DECISION.md` justifies type + retrieval strategy; documents context amnesia handling; QMD active with documented retrieval test
+- State survives restart (not session-only); next-day reboot test documented
 - Daily summary uses three statuses and reports state-change count
 - End-to-end test with at least one test employee
 - Pairing log records who was approved and when

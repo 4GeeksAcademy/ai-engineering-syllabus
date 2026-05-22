@@ -6,8 +6,8 @@ This reference solution describes the expected setup evidence for a successful O
 
 ## Solution Deliverables
 
-- GitHub repository named `openclaw-setup-<student_username>` containing the complete `~/.openclaw/workspace` folder.
-- `.openclaw/IDENTITY.md` in the workspace showing personalized Name, Emoji, and Greeting.
+- GitHub repository named `openclaw-<student_username>` containing the complete `~/.openclaw/workspace` folder.
+- `.openclaw/workspace/IDENTITY.md` in the workspace showing personalized Name, Emoji, and Greeting.
 - Git commit history showing at least one commit pushed from the VPS.
 - Optional: Screenshot of the GitHub repository page showing the uploaded workspace.
 
@@ -23,10 +23,10 @@ This reference solution describes the expected setup evidence for a successful O
 - Enable hooks when prompted.
 - Validate end-to-end response in local chat.
 - Personalize the assistant by conversing with OpenClaw to set Name, Emoji, and Greeting.
-- Verify that `.openclaw/IDENTITY.md` contains the personalized configuration.
+- Verify that `.openclaw/workspace/IDENTITY.md` contains the personalized configuration.
 - Generate SSH key on the VPS server.
 - Add the SSH public key to GitHub account.
-- Create GitHub repository named `openclaw-setup-<username>`.
+- Create GitHub repository named `openclaw-<username>`.
 - Navigate to `~/.openclaw/workspace` folder.
 - Initialize git repository (if not already done).
 - Add GitHub remote origin.
@@ -45,7 +45,7 @@ This reference solution describes the expected setup evidence for a successful O
   cat .gitignore
   ```
 
-- The `.openclaw/IDENTITY.md` file contains only public personalization data (Name, Emoji, Greeting) and is **safe to share**.
+- The `.openclaw/workspace/IDENTITY.md` file contains only public personalization data (Name, Emoji, Greeting) and is **safe to share**.
 - If `openclaw.json`, `.env`, or credential files are accidentally in the workspace, students must:
   1. NOT push to GitHub
   2. Contact instructor for guidance
@@ -58,9 +58,9 @@ This reference solution describes the expected setup evidence for a successful O
 
 - OpenClaw is reachable on the VPS.
 - Local chat returns a valid model response.
-- GitHub repository `openclaw-setup-<username>` exists and is public/accessible.
+- GitHub repository `openclaw-<username>` exists and is public/accessible.
 - Repository contains the complete workspace folder structure.
-- `.openclaw/IDENTITY.md` is present in the repository showing personalized Name, Emoji, and Greeting.
+- `.openclaw/workspace/IDENTITY.md` is present in the repository showing personalized Name, Emoji, and Greeting.
 - Personalization was done through conversation with OpenClaw (not manual file editing).
 - Git commit history shows at least one commit from the VPS (verifiable by commit author/timestamp).
 - SSH key was properly configured (verifiable by successful git push).

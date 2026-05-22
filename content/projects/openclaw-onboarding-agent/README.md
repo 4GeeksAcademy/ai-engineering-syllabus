@@ -27,11 +27,24 @@ Before implementing anything, you must identify which OpenClaw memory type is ap
 
 - **`Memory.md`** — persistent memory written by the agent for itself, loaded at the start of every conversation. Useful for permanent instructions or behaviours that do not change between sessions.
 - **`/memory` (notes folder)** — notes the agent generates chronologically. Useful for recording events, state changes, and the history of a process over time.
-- **mem0** — external memory layer with vector storage. Allows saving and retrieving information via semantic search, which is useful when the number of records grows or when queries are approximate rather than exact (e.g. "which employees have gone more than a week without progressing?").
 
-Choosing a memory type also means defining a **retrieval strategy**: how will the agent look up the state of a specific employee — by exact identifier, text match, or semantic similarity? That strategy must be consistent with the chosen memory mechanism and documented in `MEMORY-DECISION.md`.
+Regardless of which storage mechanism you choose, you must configure **QMD** as the memory search method (replacing the default `memory_search`), with keyword search, semantic similarity, and reranking enabled. QMD is how the agent retrieves onboarding records when the volume of employees grows or when queries are approximate rather than exact (e.g. "which employees have gone more than a week without progressing?").
+
+Choosing a memory type also means defining a **retrieval strategy**: how will the agent look up the state of a specific employee — by exact identifier, text match, or semantic similarity via QMD? That strategy must be consistent with the chosen memory mechanism and documented in `MEMORY-DECISION.md`.
 
 Your decision about which type to use — and why — is part of the deliverable. An implementation that does not justify the choice will not be considered complete.
+
+### Context amnesia
+
+OpenClaw agents start each session with a **limited context window**. Anything that exists only in chat history is lost after a restart or the next day — this is **context amnesia**. For onboarding, that is unacceptable: HR cannot re-enter every employee's state manually.
+
+Before you implement, answer this design question:
+
+> **What should the agent remember if it reboots tomorrow?**
+
+List every fact the agent must still know after a restart (per employee and globally): identity, current status, pending deliverables, verification state, dates, state-change counters, and any rules for the daily summary. Then map each item to **where** it is stored (`Memory.md`, `/memory`, or both) and **how** it is retrieved (QMD query, exact file lookup, etc.).
+
+**Context amnesia must be considered and solved** in your implementation — not merely mentioned. Persistence must be real (written to disk on every state transition), and recovery must be demonstrated after a restart.
 
 ### The agent flow
 
@@ -112,7 +125,9 @@ flowchart TD
 
 ### Memory configuration
 
-- [ ] Create a `MEMORY-DECISION.md` file justifying the chosen OpenClaw memory type (`Memory.md`, `/memory`, or mem0), the retrieval strategy adopted (exact, text-based, or semantic), and why both decisions are consistent with the use case
+- [ ] Create a `MEMORY-DECISION.md` file justifying the chosen OpenClaw memory type (`Memory.md` or `/memory`), the retrieval strategy adopted (exact, text-based, or semantic via QMD), and why both decisions are consistent with the use case
+- [ ] In `MEMORY-DECISION.md`, include a **Context amnesia** section: answer *"What should the agent remember if it reboots tomorrow?"*, list what you persist, where each item is stored, how QMD retrieves it, and how you verified recovery after a restart
+- [ ] Install and configure **QMD** as the memory search method, with keyword search, semantic similarity, and reranking enabled; document at least one test query and its result in `MEMORY-DECISION.md`
 - [ ] Configure the agent's memory to record each employee's onboarding state: name, email address, current status, received deliverables, and process start date
 - [ ] Implement the logic that classifies each process into one of three states — **not started**, **active**, or **completed** — and keeps that classification updated in memory so the daily summary reflects it correctly
 
@@ -126,6 +141,10 @@ flowchart TD
 - [ ] Daily summary: implement the daily task that classifies all processes (not started, active, completed) and reports the number of state changes since the previous day
 - [ ] Closure: the agent marks the process as complete when all deliverables have been received and updates memory accordingly
 
+### Optional deliverable — mem0 reflection
+
+- [ ] *(Optional)* Add a `MEM0-REFLECTION.md` file (or a dedicated section in `MEMORY-DECISION.md`) explaining how an external memory layer such as **mem0** could improve this onboarding solution — what problems it would solve better than `Memory.md` + `/memory` + QMD, and what trade-offs it would introduce
+
 ⚠️ **IMPORTANT:** HR roles, employee fields, onboarding instructions, and required deliverables must match exactly what is specified in your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**. A generic implementation that ignores the context will not be accepted.
 
 ---
@@ -135,8 +154,10 @@ flowchart TD
 - [ ] The new workspace is separate from the personal workspace and has its own set of `.md` configuration files with defined role and restrictions
 - [ ] Email sending is integrated in the workspace: the agent can send emails autonomously during flow execution
 - [ ] The pairing approval skill exists as an executable script, accepts the code as an argument, and only approves if the code is correct
-- [ ] `MEMORY-DECISION.md` justifies the chosen memory type (`Memory.md`, `/memory`, or mem0) and the retrieval strategy adopted, with an explicit argument for why both are consistent with the use case
-- [ ] Each employee's onboarding state is recoverable after an agent restart — persistence is real, not session-dependent
+- [ ] `MEMORY-DECISION.md` justifies the chosen memory type (`Memory.md` or `/memory`) and the retrieval strategy adopted, with an explicit argument for why both are consistent with the use case
+- [ ] `MEMORY-DECISION.md` documents how **context amnesia** was handled: what must survive a next-day reboot, where it is persisted, how it is retrieved, and evidence of a restart test
+- [ ] QMD is configured as the memory search method with keyword search, semantic similarity, and reranking enabled; a documented test query demonstrates retrieval against onboarding records
+- [ ] Each employee's onboarding state is recoverable after an agent restart — persistence is real, not session-dependent; context amnesia is solved, not deferred to chat history
 - [ ] The daily summary correctly classifies processes into three categories (not started, active, completed) and reports the number of state changes since the previous day
 - [ ] The complete flow can be executed from start to finish without errors using at least one test employee
 - [ ] The pairing script log records each approval with the details of who was approved and when
@@ -148,10 +169,10 @@ flowchart TD
 1. Make sure your repository contains:
    - The new OpenClaw workspace configuration files
    - The pairing approval skill with its script
-   - The `MEMORY-DECISION.md` file
-   - A `README` in the project folder with instructions for testing the complete flow
+   - The `MEMORY-DECISION.md` file (including the context amnesia section and restart verification)
+   - A `README` in the project folder with instructions for testing the complete flow (including a restart test)
 2. Push your changes to the repository
-3. Share the repository link along with: the memory type chosen and a real example of the state stored in memory for a test employee
+3. Share the repository link along with: the memory type chosen, how context amnesia was solved, and a real example of the state stored in memory for a test employee after a restart
 
 ---
 

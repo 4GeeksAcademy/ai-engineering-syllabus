@@ -1,0 +1,46 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Launch Ready: Containerized MVP from Scratch",
+    "es": "Listo para lanzar: MVP Contenedorizado desde Cero"
+  },
+  "description": {
+    "en": "Set up a containerized MVP launchpad: Next.js frontend, FastAPI backend, and PostgreSQL orchestrated with Docker Compose — one command to run the full stack.",
+    "es": "Configura la plataforma de lanzamiento de un MVP contenedorizado: frontend Next.js, backend FastAPI y PostgreSQL orquestados con Docker Compose — un solo comando para levantar el stack completo."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "launch-ready-containerized-mvp",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "docker",
+    "docker-compose",
+    "fastapi",
+    "nextjs",
+    "postgresql",
+    "technical-documentation"
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/launch-ready-containerized-mvp/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/launch-ready-containerized-mvp/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Launch Ready: Containerized MVP from Scratch with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/launch-ready-containerized-mvp #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Listo para lanzar: MVP Contenedorizado desde Cero con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/launch-ready-containerized-mvp #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    },
+    {
+      "en": "Built and shipped: Launch Ready: Containerized MVP from Scratch. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/launch-ready-containerized-mvp #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Listo para lanzar: MVP Contenedorizado desde Cero. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/launch-ready-containerized-mvp #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    }
+  ]
+}
