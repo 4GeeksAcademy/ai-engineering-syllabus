@@ -1,0 +1,42 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Company Monorepo Containerization",
+    "es": "Contenedorización del Monorepo de la Empresa"
+  },
+  "description": {
+    "en": "Dockerize an existing monorepo for development: one UI container running both Next.js apps with hot reload, a FastAPI backend with --reload, and Docker Compose orchestration with service-name networking.",
+    "es": "Dockeriza un monorepo existente para desarrollo: un contenedor de interfaces con ambas apps Next.js y recarga en caliente, backend FastAPI con --reload y orquestación con Docker Compose usando nombres de servicio."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-container-project",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "docker",
+    "docker-compose",
+    "fastapi",
+    "nextjs",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-container-project/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-container-project/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Company Monorepo Containerization with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-container-project #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #docker",
+      "es": "Acabo de completar Containerización del Monorepo de la Empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-container-project #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #docker"
+    },
+    {
+      "en": "Built and shipped: Company Monorepo Containerization. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-container-project #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #docker",
+      "es": "Construido y publicado: Containerización del Monorepo de la Empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-container-project #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #docker"
+    }
+  ]
+}
