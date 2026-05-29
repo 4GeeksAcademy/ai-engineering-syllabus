@@ -43,6 +43,63 @@ On the FastAPI backend, the most practical approach at this stage is **in-proces
 **TTL discipline**
 Every cached value must have an expiry. No TTL means stale data lives forever. Choose TTLs based on how often the underlying data changes — not on convenience.
 
+**How to spot candidates with evidence (not gut feel)**
+Before you cache anything, you need data. On the backend, the fastest way to see which endpoints deserve attention is to measure every request's duration.
+
+#### 1. Timing middleware (zero dependencies)
+
+Add this to your `main.py`:
+
+```python
+import time
+import logging
+from fastapi import Request
+
+logger = logging.getLogger("api.timing")
+
+@app.middleware("http")
+async def timing_middleware(request: Request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    duration = (time.perf_counter() - start) * 1000  # ms
+
+    logger.info(
+        f"{request.method} {request.url.path} → {response.status_code} | {duration:.1f}ms"
+    )
+    return response
+```
+
+You immediately get one log line per request:
+
+```text
+GET /users → 200 | 312.4ms
+POST /orders → 201 | 48.2ms
+GET /products → 200 | 891.7ms  ← 🐢
+```
+
+**What to look for in the logs?**
+
+| Signal in the log                                  | Question it answers                                     | Cache candidate?                  |
+| -------------------------------------------------- | ------------------------------------------------------- | --------------------------------- |
+| Consistently high latency (>100–200 ms)            | How expensive is the operation? (**cost** axis)         | Yes, if it repeats                |
+| Same route many times in a short window            | How often is it called? (**frequency** axis)            | Yes, if the response is identical |
+| Same path + same status + similar timings on reads | How stable is the underlying data? (**stability** axis) | Yes, with an appropriate TTL      |
+
+An endpoint that is slow **and** hit in bursts with the same parameters (e.g. `GET /products?category=electronics`) is a strong candidate. A `POST` that writes data or a `GET` whose response varies per user is not — unless you scope the cache key to that user.
+
+**Layer on real traffic:**
+
+1. Use your frontend or repeat the same requests (same URL, same query params).
+2. Rank the logs: paths with the most lines and highest `ms` go at the top of your candidate list.
+3. Cross-check with the report checklist: document in `CACHING_REPORT.md` the measured time _before_ caching and the estimated benefit _after_.
+
+**On the frontend:**
+
+- **React DevTools → Profiler**: components that re-render without real prop changes are candidates for `useMemo` or state splitting.
+- **Lazy Loading**: routes or modals not needed on first paint but heavy in the bundle (Network tab: large JS fetched only when entering that view).
+
+> ⚠️ Do not cache everything that looks slow: measure first, then prioritise cases where cost × frequency × stability justify the freshness/performance tradeoff.
+
 ---
 
 ## 🌱 How to Start the Project

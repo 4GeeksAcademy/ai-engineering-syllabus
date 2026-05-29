@@ -39,6 +39,28 @@ _These instructions are also available in [English](./README.md)._
 
 ### 3. Backend — una caché TTL + invalidación
 
+**Identifica candidatos primero.** La rúbrica completa (señales en logs → coste / frecuencia / estabilidad) está en el [README.es.md](../../README.es.md#cómo-identificar-candidatos-con-evidencia-no-por-intuición) del proyecto. En el mini-lab, añade esto a `main.py` de `library-api` antes de elegir `/books`:
+
+```python
+import time
+import logging
+from fastapi import Request
+
+logger = logging.getLogger("api.timing")
+
+@app.middleware("http")
+async def timing_middleware(request: Request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    duration = (time.perf_counter() - start) * 1000
+    logger.info(
+        f"{request.method} {request.url.path} → {response.status_code} | {duration:.1f}ms"
+    )
+    return response
+```
+
+Navega el catálogo dos veces: `GET /books` debe repetirse y ser lento en el primer impacto — eso justifica la caché TTL de abajo.
+
 | Endpoint          | ¿Caché? | TTL | Notas                                     |
 | ----------------- | ------- | --- | ----------------------------------------- |
 | `GET /books`      | Sí      | 45s | Catálogo público; estable entre préstamos |
@@ -61,6 +83,7 @@ _These instructions are also available in [English](./README.md)._
 
 ## Verificar juntos
 
+- [ ] Los logs de timing listan cada petición (`GET /books → 200 | …ms`); el primer `/books` más lento que el segundo tras calentar la caché.
 - [ ] El segundo `GET /books` es más rápido que el primero (o misma respuesta desde caché — demostrar con logs).
 - [ ] Tras `POST /books`, el siguiente `GET /books` incluye el título nuevo.
 - [ ] El chunk lazy aparece solo al entrar en la ruta que lo necesita (pestaña Network: JS separado).

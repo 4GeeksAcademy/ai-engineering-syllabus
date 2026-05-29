@@ -43,6 +43,63 @@ En el backend con FastAPI, el enfoque más práctico en esta etapa es una **cach
 **Disciplina con el TTL**
 Todo valor cacheado debe tener una expiración. Sin TTL, los datos obsoletos viven para siempre. Elige los TTL según la frecuencia con que cambian los datos subyacentes, no por comodidad.
 
+**Cómo identificar candidatos con evidencia (no por intuición)**
+Antes de cachear, necesitas datos. En el backend, la forma más rápida de ver qué endpoints merecen atención es medir el tiempo de cada petición.
+
+#### 1. Middleware de timing (sin dependencias)
+
+Añade esto a tu `main.py`:
+
+```python
+import time
+import logging
+from fastapi import Request
+
+logger = logging.getLogger("api.timing")
+
+@app.middleware("http")
+async def timing_middleware(request: Request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    duration = (time.perf_counter() - start) * 1000  # ms
+
+    logger.info(
+        f"{request.method} {request.url.path} → {response.status_code} | {duration:.1f}ms"
+    )
+    return response
+```
+
+Obtienes una línea de log por petición:
+
+```text
+GET /users → 200 | 312.4ms
+POST /orders → 201 | 48.2ms
+GET /products → 200 | 891.7ms  ← 🐢
+```
+
+**¿Qué buscar en los logs?**
+
+| Señal en el log                                           | Pregunta que responde                                      | ¿Candidato a caché?             |
+| --------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------- |
+| Latencia alta (>100–200 ms de forma consistente)          | ¿Cuánto cuesta la operación? (eje **coste**)               | Sí, si se repite                |
+| Misma ruta muchas veces en poco tiempo                    | ¿Con qué frecuencia se llama? (eje **frecuencia**)         | Sí, si la respuesta es la misma |
+| Mismo path + mismo status + tiempos similares en lecturas | ¿Los datos subyacentes cambian poco? (eje **estabilidad**) | Sí, con TTL acorde              |
+
+Un endpoint que aparece lento **y** se invoca en ráfagas con los mismos parámetros (p. ej. `GET /products?category=electronics`) es un candidato fuerte. Un `POST` que escribe datos o un `GET` con respuesta distinta por usuario no lo es — o solo con clave de caché acotada al usuario.
+
+**Complementa con tráfico real:**
+
+1. Navega tu frontend o lanza peticiones repetidas (misma URL, mismos query params).
+2. Ordena mentalmente los logs: los paths con más líneas y mayor `ms` van primero en tu lista de candidatos.
+3. Cruza con el checklist del informe: documenta en `CACHING_REPORT.md` el tiempo medido _antes_ de cachear y el estimado _después_.
+
+**En el frontend:**
+
+- **React DevTools → Profiler**: componentes que se re-renderizan sin cambio real de props son candidatos a `useMemo` o a dividir estado.
+- **Lazy Loading**: rutas o modales que no se usan en la carga inicial pero pesan en el bundle (pestaña Network: JS grande que solo se pide al entrar en esa vista).
+
+> ⚠️ No implementes caché en todo lo lento: primero mide, luego prioriza los casos donde coste × frecuencia × estabilidad justifican el intercambio frescura/rendimiento.
+
 ---
 
 ## 🌱 Cómo iniciar el proyecto

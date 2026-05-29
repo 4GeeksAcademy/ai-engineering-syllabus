@@ -109,6 +109,41 @@ function OrderStatsTable({ orders, statusFilter }: Props) {
 
 Do **not** memoize trivial string joins or one-liners.
 
+## Spotting cache candidates (before you implement)
+
+Students should measure first, then cache. Full guidelines (log table, frontend Profiler tips) live in [README.md](../../README.md#how-to-spot-candidates-with-evidence-not-gut-feel).
+
+Add to `app/main.py` (or `library-api/main.py` in the class example):
+
+```python
+import time
+import logging
+from fastapi import Request
+
+logger = logging.getLogger("api.timing")
+
+@app.middleware("http")
+async def timing_middleware(request: Request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    duration = (time.perf_counter() - start) * 1000
+
+    logger.info(
+        f"{request.method} {request.url.path} → {response.status_code} | {duration:.1f}ms"
+    )
+    return response
+```
+
+Example log output to cite in `CACHING_REPORT.md`:
+
+```text
+GET /catalog → 200 | 312.4ms
+POST /catalog/items → 201 | 48.2ms
+GET /catalog → 200 | 12.1ms   ← repeat hit; candidate confirmed
+```
+
+Document **measured ms before caching** and estimated benefit after TTL for each endpoint you cache.
+
 ## Backend examples
 
 ### In-process TTL cache + invalidation
@@ -187,6 +222,7 @@ Never use a global key like `dashboard:summary` for responses that include user-
 
 ## Validation notes
 
+- Timing middleware logs every request; first GET on a hot path slower than subsequent cached GET.
 - Hit cached GET twice: second response faster (log timestamps or use `/docs`).
 - After POST/PATCH/DELETE on related resource, next GET reflects new data.
 - `CACHING_REPORT.md` names specific components/endpoints from **your** monorepo, not generic placeholders.

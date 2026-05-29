@@ -39,6 +39,28 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 ### 3. Backend — one TTL cache + invalidation
 
+**Spot candidates first.** Full rubric (log signals → cost / frequency / stability) is in the project [README.md](../../README.md#how-to-spot-candidates-with-evidence-not-gut-feel). For the mini-lab, add this to `library-api` `main.py` before choosing `/books`:
+
+```python
+import time
+import logging
+from fastapi import Request
+
+logger = logging.getLogger("api.timing")
+
+@app.middleware("http")
+async def timing_middleware(request: Request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    duration = (time.perf_counter() - start) * 1000
+    logger.info(
+        f"{request.method} {request.url.path} → {response.status_code} | {duration:.1f}ms"
+    )
+    return response
+```
+
+Browse the catalog twice: `GET /books` should show up often and slow on the first hit — that justifies the TTL cache below.
+
 | Endpoint          | Cache? | TTL | Notes                                    |
 | ----------------- | ------ | --- | ---------------------------------------- |
 | `GET /books`      | Yes    | 45s | Public catalog; stable between check-ins |
@@ -61,6 +83,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 ## Verify together
 
+- [ ] Timing logs list each request (`GET /books → 200 | …ms`); first `/books` slower than second after cache warms.
 - [ ] Second `GET /books` is faster than first (or returns same payload from cache — demonstrate with logs).
 - [ ] After `POST /books`, next `GET /books` includes the new title.
 - [ ] Lazy chunk appears only when navigating to the route that needs it (Network tab: separate JS chunk).
