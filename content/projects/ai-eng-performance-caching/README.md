@@ -93,6 +93,14 @@ An endpoint that is slow **and** hit in bursts with the same parameters (e.g. `G
 2. Rank the logs: paths with the most lines and highest `ms` go at the top of your candidate list.
 3. Cross-check with the report checklist: document in `CACHING_REPORT.md` the measured time _before_ caching and the estimated benefit _after_.
 
+**😉 Realistic load in the database:**
+
+With only a handful of rows, almost every endpoint looks fast — timing logs will not show where caching actually helps. Before you trust the middleware output, **grow the dataset** on the tables your heaviest reads touch (catalog, orders, users with relations, etc.).
+
+- Ask your **coding agent** to generate a **seeder** (script in your stack: Alembic, Prisma seed, Django management command, etc.) or a **SQL script** that inserts many records, then review and run it locally.
+- Prioritise **data quality**, not just row count: varied names, categories, dates, prices, and valid foreign keys so filters, joins, sorts, and aggregations behave like production — not five hundred identical `"test"` rows.
+- Re-run the timing middleware after seeding. In `CACHING_REPORT.md`, note approximate row counts before vs. after and how latency on your chosen endpoints changed.
+
 **On the frontend:**
 
 - **React DevTools → Profiler**: components that re-render without real prop changes are candidates for `useMemo` or state splitting.

@@ -93,6 +93,14 @@ Un endpoint que aparece lento **y** se invoca en ráfagas con los mismos paráme
 2. Ordena mentalmente los logs: los paths con más líneas y mayor `ms` van primero en tu lista de candidatos.
 3. Cruza con el checklist del informe: documenta en `CACHING_REPORT.md` el tiempo medido _antes_ de cachear y el estimado _después_.
 
+**😉 Carga realista en la base de datos:**
+
+Con pocos registros, casi todo el API responde rápido y los logs de timing no revelan dónde el caching aporta valor. Antes de fiarte del middleware, **aumenta el volumen** en las tablas que alimentan tus lecturas más pesadas (catálogo, pedidos, usuarios con relaciones, etc.).
+
+- Pide a tu **agente de código** un **seeder** (script de tu stack: Alembic, seed de Prisma, comando de gestión en Django, etc.) o un **script SQL** que inserte muchos registros; revísalo y ejecútalo en local.
+- Prioriza la **calidad de los datos**, no solo la cantidad: nombres, categorías, fechas, precios y claves foráneas variadas y coherentes para que filtros, joins, ordenaciones y agregaciones cuesten trabajo de verdad — no quinientas filas idénticas `"test"`.
+- Vuelve a ejecutar el middleware de timing tras el seed. En `CACHING_REPORT.md`, indica volumen aproximado de filas antes y después y cómo cambió la latencia en los endpoints elegidos.
+
 **En el frontend:**
 
 - **React DevTools → Profiler**: componentes que se re-renderizan sin cambio real de props son candidatos a `useMemo` o a dividir estado.

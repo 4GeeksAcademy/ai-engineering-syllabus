@@ -61,6 +61,8 @@ async def timing_middleware(request: Request, call_next):
 
 Browse the catalog twice: `GET /books` should show up often and slow on the first hit — that justifies the TTL cache below.
 
+If the catalog has only a few mock books, timings stay misleadingly low. Seed **many** realistic titles first (agent-generated seeder or SQL script — varied authors, genres, years; see [README.md](../../README.md#realistic-load-in-the-database)), then re-check the logs.
+
 | Endpoint          | Cache? | TTL | Notes                                    |
 | ----------------- | ------ | --- | ---------------------------------------- |
 | `GET /books`      | Yes    | 45s | Public catalog; stable between check-ins |

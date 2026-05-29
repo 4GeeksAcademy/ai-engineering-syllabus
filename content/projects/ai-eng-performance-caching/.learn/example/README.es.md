@@ -61,6 +61,8 @@ async def timing_middleware(request: Request, call_next):
 
 Navega el catálogo dos veces: `GET /books` debe repetirse y ser lento en el primer impacto — eso justifica la caché TTL de abajo.
 
+Si el catálogo tiene pocos libros mock, los tiempos engañan. Haz **seed** de muchos títulos realistas antes (seeder o SQL con agente — autores, géneros y años variados; ver [README.es.md](../../README.es.md#carga-realista-en-la-base-de-datos)) y vuelve a mirar los logs.
+
 | Endpoint          | ¿Caché? | TTL | Notas                                     |
 | ----------------- | ------- | --- | ----------------------------------------- |
 | `GET /books`      | Sí      | 45s | Catálogo público; estable entre préstamos |

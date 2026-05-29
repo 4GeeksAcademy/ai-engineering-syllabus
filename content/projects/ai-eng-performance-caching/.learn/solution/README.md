@@ -144,6 +144,8 @@ GET /catalog → 200 | 12.1ms   ← repeat hit; candidate confirmed
 
 Document **measured ms before caching** and estimated benefit after TTL for each endpoint you cache.
 
+**Database volume:** With a tiny table, every GET looks fast and caching is hard to justify. Seed hundreds/thousands of realistic rows (agent-built seeder or SQL — quality varied data, not duplicate placeholders) on tables behind cached endpoints, then measure again. Note row counts and latency delta in the report. See [README.md](../../README.md#realistic-load-in-the-database).
+
 ## Backend examples
 
 ### In-process TTL cache + invalidation
