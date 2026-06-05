@@ -23,6 +23,8 @@ The cinema manager explained the situation in your kickoff meeting: "We have a s
 
 Your team lead wants you to build a command-line prototype in TypeScript before investing in a full web interface. The cinema doesn't need fancy features yet — just a solid foundation that handles the core logic correctly. If this works well, they'll expand it later with online booking and seat selection maps.
 
+![cinema diagram](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/assets/cover/images/cinema_matrix.png?raw=true)
+
 ### What makes a good seat reservation system?
 
 The key challenge is **data representation**. You need to model the screening room as a two-dimensional structure where each position represents a seat with two states: occupied or available. Think of it like a grid or matrix where each seat has a row number and a column number.
