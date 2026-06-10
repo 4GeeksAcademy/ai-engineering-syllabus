@@ -1,43 +1,38 @@
 {
-  "gitpod": true,
-  "title": {
-    "en": "Milestone 4 — AI-driven Engineering",
-    "es": "Hito 4 — Ingeniería impulsada por IA"
-  },
-  "status": "draft",
-  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-  "slug": "ai-eng-milestone-ai-driven-engineering",
-  "description": {
-    "en": "Build your company monorepo foundation for AI-assisted delivery: create an actionable memory-bank, define AGENTS.md workflow and rules, implement a reusable agent skill, and bootstrap the Next.js app with /internal-app and Milestone 2 logic integration.",
-    "es": "Construye la base del monorepo de tu empresa para un delivery asistido por IA: crea un memory-bank accionable, define flujo y reglas en AGENTS.md, implementa una skill reutilizable de agente y prepara la app Next.js con /internal-app e integración de la lógica del Hito 2."
-  },
-  "difficulty": "intermediate",
-  "duration": 3,
-  "technologies": [
-    "next.js",
-    "typescript",
-    "ai",
-    "monorepo",
-    "documentation",
-    "agent-workflows"
-  ],
-  "translations": ["es", "en"],
-  "projectType": "project",
-  "grading": "incremental",
-  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/preview.png",
-  "sharing": [
-    {
-      "en": "I just completed Milestone 4 — AI-driven Engineering with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-ai-driven-engineering #AIEngineering #LearnPack #4GeeksAcademy #nextjs #typescript #ai",
-      "es": "Acabo de completar Hito 4 — Ingeniería impulsada por IA con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-ai-driven-engineering #AIEngineering #LearnPack #4GeeksAcademy #nextjs #typescript #ai"
+    "slug": "ai-eng-ingenieria-impulsada-por-ia",
+    "title": {
+        "es": "Hito 4 \u2014 Ingenier\u00eda impulsada por IA",
+        "us": "Milestone 4 \u2014 AI-driven Engineering"
     },
-    {
-      "en": "Built and shipped: Milestone 4 — AI-driven Engineering. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-ai-driven-engineering #AIEngineering #LearnPack #4GeeksAcademy #nextjs #typescript #ai",
-      "es": "Construido y publicado: Hito 4 — Ingeniería impulsada por IA. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-ai-driven-engineering #AIEngineering #LearnPack #4GeeksAcademy #nextjs #typescript #ai"
+    "description": {
+        "es": "Construye la base del monorepo de tu empresa para un delivery asistido por IA: crea un memory-bank accionable, define flujo y reglas en AGENTS.md, implementa una skill reutilizable de agente y prepara la app Next.js con /internal-app e integraci\u00f3n de la l\u00f3gica del Hito 2.",
+        "us": "Build your company monorepo foundation for AI-assisted delivery: create an actionable memory-bank, define AGENTS.md workflow and rules, implement a reusable agent skill, and bootstrap the Next.js app with /internal-app and Milestone 2 logic integration."
+    },
+    "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-ai-driven-engineering/.learn/preview.png",
+    "difficulty": "INTERMEDIATE",
+    "duration": 3,
+    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+    "gitpod": true,
+    "technologies": [
+        "reactjs",
+        "typescript",
+        "ai",
+        "monorepo",
+        "documentation",
+        "agent-workflows"
+    ],
+    "projectType": "tutorial",
+    "solution": {
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md",
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md"
+    },
+    "grading": "incremental",
+    "localhostOnly": false,
+    "delivery": {
+        "instructions": "",
+        "formats": [
+            "url"
+        ],
+        "regex": ""
     }
-  ],
-  "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
-  }
 }
