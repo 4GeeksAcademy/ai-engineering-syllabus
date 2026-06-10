@@ -1,36 +1,34 @@
 {
-    "slug": "openclaw-setup",
-    "title": {
-        "us": "Setting Up Your Personal AI Agent with OpenClaw",
-        "es": "Configurando tu Agente de IA Personal con OpenClaw"
-    },
-    "description": {
-        "us": "Complete the Setting Up Your Personal AI Agent with OpenClaw project following the README instructions.",
-        "es": "Completa el proyecto Configurando tu Agente de IA Personal con OpenClaw siguiendo las instrucciones del README."
-    },
-    "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/preview.png?raw=true",
-    "difficulty": "BEGINNER",
-    "duration": 2,
-    "template_url": "https://github.com/openclaw/openclaw",
-    "gitpod": true,
-    "technologies": [
-        "fastapi",
-        "architecture",
-        "backend-design",
-        "technical-documentation"
-    ],
-    "projectType": "tutorial",
-    "solution": {
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/.learn/solution/README.md",
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/.learn/solution/README.md"
-    },
-    "grading": "incremental",
-    "localhostOnly": false,
-    "delivery": {
-        "instructions": "",
-        "formats": [
-            "url"
-        ],
-        "regex": ""
-    }
+  "slug": "openclaw-setup",
+  "title": {
+    "en": "Setting Up Your Personal AI Agent with OpenClaw",
+    "es": "Configurando tu Agente de IA Personal con OpenClaw"
+  },
+  "description": {
+    "en": "Complete the Setting Up Your Personal AI Agent with OpenClaw project following the README instructions.",
+    "es": "Completa el proyecto Configurando tu Agente de IA Personal con OpenClaw siguiendo las instrucciones del README."
+  },
+  "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/preview.png?raw=true",
+  "difficulty": "BEGINNER",
+  "duration": 2,
+  "template_url": "https://github.com/openclaw/openclaw",
+  "gitpod": true,
+  "technologies": [
+    "fastapi",
+    "architecture",
+    "backend-design",
+    "technical-documentation"
+  ],
+  "projectType": "tutorial",
+  "solution": {
+    "en": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/.learn/solution/README.md",
+    "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/.learn/solution/README.md"
+  },
+  "grading": "incremental",
+  "localhostOnly": false,
+  "delivery": {
+    "instructions": "",
+    "formats": ["url"],
+    "regex": ""
+  }
 }

@@ -1,11 +1,11 @@
 {
   "slug": "data-modeling-and-class-diagrams",
   "title": {
-    "us": "Digital wallet modeling and class diagrams",
+    "en": "Digital wallet modeling and class diagrams",
     "es": "Modelado de billetera digital y diagramas de clases"
   },
   "description": {
-    "us": "Model a digital wallet using class diagrams in diagram.4geeks.com. Deliver the diagram exported as a PNG file.",
+    "en": "Model a digital wallet using class diagrams in diagram.4geeks.com. Deliver the diagram exported as a PNG file.",
     "es": "Modela una billetera digital usando diagramas de clases en diagram.4geeks.com. Entrega el diagrama exportado como un archivo PNG."
   },
   "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/data-modeling-and-class-diagrams-digital-wallet/preview.png?raw=true",
@@ -17,7 +17,7 @@
   "projectType": "project",
   "delivery": {
     "instructions": {
-      "us": "Upload the two PNG files exported from your diagrams: one for the music playlist player and one for the digital wallet.",
+      "en": "Upload the two PNG files exported from your diagrams: one for the music playlist player and one for the digital wallet.",
       "es": "Sube los dos archivos PNG exportados de tus diagramas: uno del reproductor de playlist de musica y otro de la billetera digital."
     },
     "formats": ["png"],

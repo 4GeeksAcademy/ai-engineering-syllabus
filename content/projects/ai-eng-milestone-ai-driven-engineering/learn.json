@@ -1,38 +1,36 @@
 {
-    "slug": "ai-eng-ingenieria-impulsada-por-ia",
-    "title": {
-        "es": "Hito 4 \u2014 Ingenier\u00eda impulsada por IA",
-        "us": "Milestone 4 \u2014 AI-driven Engineering"
-    },
-    "description": {
-        "es": "Construye la base del monorepo de tu empresa para un delivery asistido por IA: crea un memory-bank accionable, define flujo y reglas en AGENTS.md, implementa una skill reutilizable de agente y prepara la app Next.js con /internal-app e integraci\u00f3n de la l\u00f3gica del Hito 2.",
-        "us": "Build your company monorepo foundation for AI-assisted delivery: create an actionable memory-bank, define AGENTS.md workflow and rules, implement a reusable agent skill, and bootstrap the Next.js app with /internal-app and Milestone 2 logic integration."
-    },
-    "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-ai-driven-engineering/.learn/preview.png",
-    "difficulty": "INTERMEDIATE",
-    "duration": 3,
-    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-    "gitpod": true,
-    "technologies": [
-        "reactjs",
-        "typescript",
-        "ai",
-        "monorepo",
-        "documentation",
-        "agent-workflows"
-    ],
-    "projectType": "tutorial",
-    "solution": {
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md",
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md"
-    },
-    "grading": "incremental",
-    "localhostOnly": false,
-    "delivery": {
-        "instructions": "",
-        "formats": [
-            "url"
-        ],
-        "regex": ""
-    }
+  "slug": "ai-eng-ingenieria-impulsada-por-ia",
+  "title": {
+    "es": "Hito 4 \u2014 Ingenier\u00eda impulsada por IA",
+    "en": "Milestone 4 \u2014 AI-driven Engineering"
+  },
+  "description": {
+    "es": "Construye la base del monorepo de tu empresa para un delivery asistido por IA: crea un memory-bank accionable, define flujo y reglas en AGENTS.md, implementa una skill reutilizable de agente y prepara la app Next.js con /internal-app e integraci\u00f3n de la l\u00f3gica del Hito 2.",
+    "en": "Build your company monorepo foundation for AI-assisted delivery: create an actionable memory-bank, define AGENTS.md workflow and rules, implement a reusable agent skill, and bootstrap the Next.js app with /internal-app and Milestone 2 logic integration."
+  },
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/preview.png",
+  "difficulty": "INTERMEDIATE",
+  "duration": 3,
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "gitpod": true,
+  "technologies": [
+    "reactjs",
+    "typescript",
+    "ai",
+    "monorepo",
+    "documentation",
+    "agent-workflows"
+  ],
+  "projectType": "tutorial",
+  "solution": {
+    "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md",
+    "en": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/solution/README.md"
+  },
+  "grading": "incremental",
+  "localhostOnly": false,
+  "delivery": {
+    "instructions": "",
+    "formats": ["url"],
+    "regex": ""
+  }
 }

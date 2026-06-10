@@ -1,14 +1,14 @@
 {
   "gitpod": true,
   "title": {
-    "us": "Showcase your friend's artist talent with a website",
+    "en": "Showcase your friend's artist talent with a website",
     "es": "Muestra el talento de tu amigo artista con un website"
   },
   "status": "published",
   "template_url": "https://github.com/4GeeksAcademy/html-hello",
   "slug": "html-css-artist-landing-seo-access",
   "description": {
-    "us": "Create an accessible and SEO-optimized landing page for an artist using semantic HTML and CSS.",
+    "en": "Create an accessible and SEO-optimized landing page for an artist using semantic HTML and CSS.",
     "es": "Crea una landing page accesible y optimizada para SEO para un artista utilizando HTML semántico y CSS."
   },
   "difficulty": "beginner",
