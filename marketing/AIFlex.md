@@ -22,7 +22,6 @@ AI Flex is designed for professionals who already know what skills they need, le
 | **Mentorship** | Optional add-on (+$25/mo) |
 | **Included tools** | LearnPack, AI Copilot (300 requests/mo), Codespaces, LLM tokens ($5/mo value), Community/WhatsApp |
 | **Certificate** | Yes — one per completed course |
-| **Free trial** | 7 days |
 | **Price** | Quarterly ($149.97), semi-annual ($299.94), or annual ($449.88). Annual plan includes 25% discount. No contracts, cancel anytime. |
 
 ---
@@ -231,8 +230,7 @@ Not sure which 4 to pick? These are the most popular starting combinations based
 | 🎯 **The AI-First Professional** | Prompt Engineering + Applied AI + No-Code & Automations + OpenClaw | Non-technical pros who want to automate their work with AI immediately |
 | ⚡ **The Career Switcher** | Deep Dive into Python + Backend Dev with Python + Vibe Coding + Applied AI | People pivoting into tech who want a coding foundation plus applied AI skills |
 | 📊 **The Data-Driven Analyst** | Deep Dive into Python + Data Science & ML + Applied AI + Prompt Engineering | Analysts, researchers, or consultants who work with data and want to add AI |
-| 🏗️ **The Builder** | Vibe Coding with AI + Backend Dev with Python + No-Code & Automations + OpenClaw | People who want to build products and automations, coding-optional approach |
-| 🤖 **The Automation Specialist** | No-Code & Automations + Prompt Engineering + OpenClaw + Applied AI | Operations, admin, and support professionals focused on workflow efficiency |
+| 🏗️ **The Builder** | Vibe Coding with AI + Backend Dev with Python + No-Code & Automations + OpenClaw | People who want to build products and automations, coding-optional approach|
 
 ---
 
