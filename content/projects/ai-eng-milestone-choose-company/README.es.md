@@ -43,7 +43,8 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 ## 💻 Qué tienes que hacer
 
 - [ ] **Lee los tres perfiles de empresa** completos. No hagas una lectura rápida — los detalles importan.
-- [ ] **Elige una empresa** y registra tu decisión en el archivo `company-choice.md` en la raíz de tu repositorio (si no existe, créalo).
+- [ ] **Elige una empresa** y registra tu decisión en el archivo `company-choice.md` en la raíz de tu repositorio.
+  - Si el archivo aún no existe, créalo usando el botón **Add file > Create new file** en GitHub.
   - Indica claramente: qué empresa elegiste y por qué (mínimo 3-5 frases).
   - Identifica al menos dos departamentos cuyos problemas encuentres más interesantes.
   - Identifica un reto de automatización o IA del milestone map que más ganas tengas de construir.

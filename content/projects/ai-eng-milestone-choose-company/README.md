@@ -43,7 +43,8 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 ## 💻 What You Need to Do
 
 - [ ] **Read all three company profiles** in full. Do not skim — the details matter.
-- [ ] **Choose one company** and record your decision in the `company-choice.md` file in the root of your repository (if it doesn't exist, create it).
+- [ ] **Choose one company** and record your decision in the `company-choice.md` file in the root of your repository.
+  - If the file doesn't exist yet, create it using the **Add file > Create new file** button on GitHub.
   - State clearly: which company you chose and why (3–5 sentences minimum).
   - Identify at least two departments whose problems you find most interesting.
   - Identify one automation or AI challenge from the milestone map that you are most looking forward to building.
