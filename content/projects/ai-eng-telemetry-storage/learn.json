@@ -1,0 +1,40 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Company's Telemetry – Storage",
+    "es": "Telemetría de la compañía – Almacenamiento"
+  },
+  "description": {
+    "en": "Replace the telemetry stub with persistent storage: create telemetry_events in Supabase (indexes, immutable write-only), validate each batch event with the existing TelemetryEvent Pydantic model, bulk-insert valid rows in one transaction, return received/stored/rejected counts — frontend unchanged, same endpoint URL.",
+    "es": "Sustituye el stub de telemetría por almacenamiento persistente: crea telemetry_events en Supabase (índices, solo escritura inmutable), valida cada evento del batch con el modelo Pydantic TelemetryEvent existente, inserta filas válidas en bulk en una transacción, devuelve conteos received/stored/rejected — frontend sin cambios, misma URL de endpoint."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-telemetry-storage",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "fastapi",
+    "supabase",
+    "postgresql",
+    "telemetry",
+    "backend-design"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-telemetry-storage/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-telemetry-storage/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Company's Telemetry – Storage with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-storage #AIEngineering #LearnPack #4GeeksAcademy #fastapi #supabase #postgresql #telemetry",
+      "es": "Acabo de completar Telemetría de la compañía – Almacenamiento con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-storage #AIEngineering #LearnPack #4GeeksAcademy #fastapi #supabase #postgresql #telemetry"
+    },
+    {
+      "en": "Built and shipped: Company's Telemetry – Storage. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-storage #AIEngineering #LearnPack #4GeeksAcademy #fastapi #supabase #postgresql #telemetry",
+      "es": "Construido y publicado: Telemetría de la compañía – Almacenamiento. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-storage #AIEngineering #LearnPack #4GeeksAcademy #fastapi #supabase #postgresql #telemetry"
+    }
+  ]
+}
