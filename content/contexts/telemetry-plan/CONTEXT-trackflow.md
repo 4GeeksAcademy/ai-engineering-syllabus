@@ -1,4 +1,4 @@
-# CONTEXT — TrackFlow · Telemetry Phase 1: Telemetry Plan Design
+# CONTEXT — TrackFlow · Telemetry Phase 1: Company's Telemetry plan design
 
 _Estas instrucciones también están disponibles en [español](./CONTEXT-trackflow.es.md)._
 

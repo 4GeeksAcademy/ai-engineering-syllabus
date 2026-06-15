@@ -1,4 +1,4 @@
-# Telemetry — Phase 1: Telemetry Plan Design
+# Company's Telemetry plan design
 
 <!-- hide -->
 

@@ -1,4 +1,4 @@
-# CONTEXT — Nexova · Telemetry Phase 1: Telemetry Plan Design
+# CONTEXT — Nexova · Telemetry Phase 1: Company's Telemetry plan design
 
 _Estas instrucciones también están disponibles en [español](./CONTEXT-nexova.es.md)._
 

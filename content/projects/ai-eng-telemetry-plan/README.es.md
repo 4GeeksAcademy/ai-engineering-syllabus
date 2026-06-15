@@ -1,4 +1,4 @@
-# Telemetría — Fase 1: Diseño del Plan de Telemetría
+# Diseño del plan de telemetría de la compañía
 
 <!-- hide -->
 

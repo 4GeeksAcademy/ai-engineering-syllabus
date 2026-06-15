@@ -1,4 +1,4 @@
-# Telemetry — Phase 1: Telemetry Plan Design — Reference Solution
+# Telemetry — Phase 1: Company's Telemetry plan design — Reference Solution
 
 This reference solution defines the expected quality bar for deliverables in the student's company monorepo fork:
 

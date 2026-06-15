@@ -1,8 +1,8 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Telemetry — Phase 1: Telemetry Plan Design",
-    "es": "Telemetría — Fase 1: Diseño del Plan de Telemetría"
+    "en": "Company's Telemetry plan design",
+    "es": "Diseño del plan de telemetría de la compañía"
   },
   "description": {
     "en": "Design a Telemetry Plan for your company inventory monorepo: identify three CONTEXT KPIs, map instrumentation points across inventory and backoffice flows, define a standard Event Envelope, specify at least five events with property allowlists, export event-schemas.json, and justify stream vs batch delivery — before writing instrumentation code.",
@@ -29,12 +29,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-telemetry-plan/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Telemetry — Phase 1: Telemetry Plan Design with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
-      "es": "Acabo de completar Telemetría — Fase 1: Diseño del Plan de Telemetría con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+      "en": "I just completed Company's Telemetry plan design with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Diseño del plan de telemetría de la compañía con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
     },
     {
-      "en": "Built and shipped: Telemetry — Phase 1: Telemetry Plan Design. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
-      "es": "Construido y publicado: Telemetría — Fase 1: Diseño del Plan de Telemetría. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+      "en": "Built and shipped: Company's Telemetry plan design. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Diseño del plan de telemetría de la compañía. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-telemetry-plan #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
     }
   ]
 }
