@@ -1,0 +1,26 @@
+{
+    "slug": "html-css-artist-landing-seo-access-es",
+    "title": {
+        "es": "Muestra el talento de tu amigo artista con un website",
+        "us": "Showcase your friend's artist talent with a website"
+    },
+    "description": {
+        "es": "Crea una landing page accesible y optimizada para SEO para un artista utilizando HTML sem\u00e1ntico y CSS.",
+        "us": "Create an accessible and SEO-optimized landing page for an artist using semantic HTML and CSS."
+    },
+    "preview": "",
+    "difficulty": null,
+    "duration": null,
+    "template_url": null,
+    "gitpod": true,
+    "technologies": [],
+    "projectType": "project",
+    "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/html-css-artist-landing-seo-access/.learn/solution/README.md",
+    "delivery": {
+        "instructions": "",
+        "formats": [
+            "url"
+        ],
+        "regex": ""
+    }
+}
