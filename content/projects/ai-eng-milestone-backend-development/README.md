@@ -66,6 +66,12 @@ This milestone extends the FastAPI service already present in your monorepo. You
 4. Add your Supabase connection string to `.env`. Your TinyDB configuration is already there — do not change it.
 5. Read your **CONTEXT-company.md** before defining any model — entity names and field constraints are specified there.
 
+### Supabase Connection Settings
+
+In the Supabase dashboard (**Connect → Direct**), use **Direct connection** as the connection method and **URI** as the type — then copy that string into `DATABASE_URL`.
+
+![Supabase connection settings: Direct connection method and URI type](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-backend-development/.learn/supabase-direct-connection-uri.png)
+
 ---
 
 ## 💻 What You Need to Do
