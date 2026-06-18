@@ -20,6 +20,9 @@
         "backend-design",
         "technical-documentation"
     ],
+    "telemetry": {
+      "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3683"
+    },
     "projectType": "tutorial",
     "solution": {
         "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/designing-data-pipeline/.learn/solution/README.md",
