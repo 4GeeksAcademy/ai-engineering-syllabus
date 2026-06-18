@@ -27,17 +27,17 @@ This skill is aligned with LearnPack docs (`preview`, multilingual metadata, and
 
 ## Run
 
-From repository root:
+From workspace root (`AIE-Projects`):
 
 ```bash
-python3 .cursor/skills/generate-project-social-sharing/scripts/generate_project_social_assets.py
+python3 ai-engineering-syllabus/.cursor/skills/generate-project-social-sharing/scripts/generate_project_social_assets.py
 ```
 
 Optional flags:
 
 ```bash
-python3 .cursor/skills/generate-project-social-sharing/scripts/generate_project_social_assets.py \
-  --project-root . \
+python3 ai-engineering-syllabus/.cursor/skills/generate-project-social-sharing/scripts/generate_project_social_assets.py \
+  --project-root ai-engineering-syllabus \
   --author "by 4Geeks Academy" \
   --preview-filename "preview.png" \
   --preview-key "preview" \

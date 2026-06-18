@@ -13,7 +13,12 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": ["html", "css", "accessibility", "seo"],
+  "technologies": [
+    "html",
+    "css",
+    "accessibility",
+    "seo"
+  ],
   "talents": [
     {
       "badge": "html-developer",
@@ -40,11 +45,13 @@
       "points": 5
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/html-css-artist-landing-seo-access/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/html-css-artist-landing-seo-access/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed Showcase your friend's artist talent with a website with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/html-css-artist-landing-seo-access #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",

@@ -125,14 +125,18 @@
       const titleEl = document.getElementById("title");
       const authorEl = document.getElementById("author");
       const illustrationImageEl = document.getElementById("illustrationImage");
-      const logoImageEl = document.getElementById("logoImage");
       const coverEl = document.getElementById("cover");
+
+      const markReady = () => {
+        coverEl.dataset.ready = "true";
+      };
 
       titleEl.textContent = cfg.title;
       authorEl.textContent = cfg.author;
-      illustrationImageEl.src = cfg.illustrationImage;
-      logoImageEl.src = cfg.logoImage;
       coverEl.style.setProperty("--background", cfg.background);
+      illustrationImageEl.addEventListener("load", markReady);
+      illustrationImageEl.addEventListener("error", markReady);
+      illustrationImageEl.src = cfg.illustrationImage;
     </script>
   </body>
 </html>

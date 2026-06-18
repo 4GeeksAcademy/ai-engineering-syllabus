@@ -46,11 +46,13 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/agent-hub-ui-specs-and-prompts/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed AgentHub Admin Panel Specs and Prompt-Driven Prototype with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/agent-hub-ui-specs-and-prompts #AIEngineering #LearnPack #4GeeksAcademy #html #css #javascript",

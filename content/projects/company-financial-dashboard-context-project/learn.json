@@ -34,11 +34,13 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/company-financial-dashboard-context-project/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed the Building context from an existing project - Financial dashboard with LearnPack @4GeeksAcademy: repo analysis with AI, actionable rules, and a project memory-bank. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #LearnPack #4GeeksAcademy #Git #Documentation",

@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -18,6 +19,18 @@ IMAGE_MAP = {
     "ai-web-development": "ai-web-development.svg",
     "ai-coding": "ai-coding.svg",
     "working-with-ai": "working-with-ai.svg",
+}
+
+# Explicit slug overrides beat keyword heuristics when metadata is ambiguous.
+SLUG_IMAGE_OVERRIDES = {
+    "ai-eng-telemetry-plan": IMAGE_MAP["workflow"],
+    "ai-eng-telemetry-storage": IMAGE_MAP["ai-coding"],
+    "ai-eng-telemetry-report": IMAGE_MAP["workflow"],
+    "ai-eng-telemetry-capture": IMAGE_MAP["ai-web-development"],
+    "ai-eng-user-authentication-flows": IMAGE_MAP["ai-web-development"],
+    "ai-eng-user-authentication-restore": IMAGE_MAP["ai-web-development"],
+    "ai-eng-application-caching": IMAGE_MAP["ai-coding"],
+    "ai-eng-backend-serialization": IMAGE_MAP["ai-coding"],
 }
 
 
@@ -104,41 +117,177 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def choose_image_filename(learn_data: dict) -> str:
-    technologies = " ".join(learn_data.get("technologies", []))
+def build_haystack(learn_data: dict) -> str:
+    technologies = " ".join(str(t)
+                            for t in (learn_data.get("technologies") or []))
     title_obj = learn_data.get("title", {}) or {}
     description_obj = learn_data.get("description", {}) or {}
     title_en = title_obj.get("en", "") or title_obj.get("us", "")
     description_en = description_obj.get(
         "en", "") or description_obj.get("us", "")
     slug = learn_data.get("slug", "")
-    haystack = " ".join([technologies, title_en, description_en, slug]).lower()
+    return " ".join([technologies, title_en, description_en, slug]).lower()
 
-    if any(
-        token in haystack
-        for token in ["workflow", "process", "diagram", "modeling", "class diagram", "uml"]
+
+def contains_token(haystack: str, token: str, *, word_boundary: bool = False) -> bool:
+    if not token:
+        return False
+    if word_boundary:
+        return re.search(rf"\b{re.escape(token)}\b", haystack) is not None
+    return token in haystack
+
+
+def contains_any(
+    haystack: str,
+    tokens: list[str],
+    *,
+    word_boundary: bool = False,
+) -> bool:
+    return any(
+        contains_token(haystack, token, word_boundary=word_boundary)
+        for token in tokens
+    )
+
+
+def choose_image_filename(learn_data: dict) -> str:
+    cover_image = learn_data.get("coverImage")
+    if isinstance(cover_image, str) and cover_image.strip():
+        return cover_image.strip()
+
+    slug = (learn_data.get("slug") or "").lower()
+    if slug in SLUG_IMAGE_OVERRIDES:
+        return SLUG_IMAGE_OVERRIDES[slug]
+
+    haystack = build_haystack(learn_data)
+
+    if slug in {
+        "openclaw-memory",
+        "openclaw-skills",
+        "openclaw-setup",
+        "ai-eng-milestone-choose-company",
+        "openclaw-onboarding-agent",
+    } or contains_any(
+        haystack,
+        [
+            "personal ai agent",
+            "choose your company",
+        ],
     ):
-        return IMAGE_MAP["workflow"]
+        return IMAGE_MAP["working-with-ai"]
 
-    if any(
-        token in haystack
-        for token in ["chat", "prompt", "conversation", "api", "communication", "llm"]
+    if contains_any(
+        haystack,
+        [
+            "docker",
+            "container",
+            "containerization",
+            "containerized",
+        ],
     ):
-        return IMAGE_MAP["ai-communication"]
-
-    if any(token in haystack for token in ["bash", "shell", "terminal", "cli", "command line"]):
         return IMAGE_MAP["command-line"]
 
-    if any(
-        token in haystack
-        for token in ["html", "css", "tailwind", "frontend", "dashboard", "web"]
+    if contains_any(
+        haystack,
+        [
+            "data pipeline",
+            "class diagram",
+            "uml",
+            "flowchart",
+            "diagram",
+            "modeling",
+            "architectural",
+            "telemetry plan",
+            "digital wallet",
+            "music playlist",
+            "vision-to-spec",
+            "ai-driven engineering",
+            "ingenieria impulsada",
+        ],
+    ) or (
+        contains_token(haystack, "workflow", word_boundary=True)
+        and not contains_any(haystack, ["next.js", "nextjs", "react", "frontend"])
+    ):
+        if not contains_any(
+            haystack,
+            ["next.js", "nextjs", "react", "tailwind", "html", "css", "frontend"],
+        ):
+            return IMAGE_MAP["workflow"]
+
+    if contains_any(
+        haystack,
+        [
+            "next.js",
+            "nextjs",
+            "react",
+            "tailwind",
+            "html",
+            "css",
+            "frontend",
+            "backoffice",
+            "dashboard",
+            "landing",
+            "seo",
+            "mobile-first",
+            "ui clone",
+            "web vitals",
+            "wanderlust",
+            "lighthouse",
+        ],
     ):
         return IMAGE_MAP["ai-web-development"]
 
-    if any(
-        token in haystack
-        for token in ["python", "javascript", "typescript", "coding", "code", "programming"]
+    if contains_any(
+        haystack,
+        [
+            "bash",
+            "shell",
+            "terminal",
+            "command line",
+        ],
+    ) or contains_token(haystack, "cli", word_boundary=True):
+        return IMAGE_MAP["command-line"]
+
+    if contains_any(
+        haystack,
+        [
+            "chat",
+            "conversation",
+            "voice",
+            "telegram",
+            "talk to the machine",
+            "talk to your",
+        ],
+        word_boundary=True,
+    ) or contains_token(haystack, "prompt", word_boundary=True) or slug.startswith(
+        "openclaw-"
     ):
+        return IMAGE_MAP["ai-communication"]
+
+    if contains_any(
+        haystack,
+        [
+            "python",
+            "javascript",
+            "typescript",
+            "fastapi",
+            "backend",
+            "orm",
+            "sqlmodel",
+            "postgresql",
+            "postgres",
+            "supabase",
+            "sql",
+            "serialization",
+            "caching",
+            "authentication",
+            "incident",
+            "coding",
+            "script",
+            "telemetry storage",
+            "supplier directory",
+            "inventory management with orm",
+        ],
+    ) or contains_token(haystack, "llm", word_boundary=True):
         return IMAGE_MAP["ai-coding"]
 
     return IMAGE_MAP["working-with-ai"]
@@ -157,6 +306,7 @@ def run_playwright_screenshot(page_url: str, output_file: Path, dry_run: bool) -
         "playwright",
         "screenshot",
         "--viewport-size=1024,576",
+        "--wait-for-selector=[data-ready=true]",
         page_url,
         str(output_file),
     ]
@@ -311,7 +461,6 @@ def main() -> int:
         generated += 1
 
         learn_data[args.preview_key] = preview_absolute_url
-        # Keep only one preview field by convention.
         if args.preview_key != "preview" and "preview" in learn_data:
             del learn_data["preview"]
         if args.preview_key != "preview_url" and "preview_url" in learn_data:

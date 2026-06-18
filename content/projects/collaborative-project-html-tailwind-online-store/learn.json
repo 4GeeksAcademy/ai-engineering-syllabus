@@ -51,13 +51,15 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "grading": "isolated",
   "localhostOnly": false,
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/collaborative-project-html-tailwind-online-store/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed My first collaborative professional project with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/first-collaborative-project-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",

@@ -23,7 +23,10 @@
   ],
   "grading": "isolated",
   "localhostOnly": false,
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "telemetry": {
     "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3592"

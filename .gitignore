@@ -4,6 +4,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.pyc
+__pycache__/
 
 # Env files
 .env

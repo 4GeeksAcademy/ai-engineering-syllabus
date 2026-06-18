@@ -13,7 +13,11 @@
   },
   "difficulty": "beginner",
   "duration": 2,
-  "technologies": ["typescript", "algorithms", "clean-code"],
+  "technologies": [
+    "typescript",
+    "algorithms",
+    "clean-code"
+  ],
   "talents": [
     {
       "badge": "typescript-developer",
@@ -32,10 +36,12 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-coding-fundamentals/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-coding-fundamentals/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed Milestone 2 — Building Scripts to Automate Tasks with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",

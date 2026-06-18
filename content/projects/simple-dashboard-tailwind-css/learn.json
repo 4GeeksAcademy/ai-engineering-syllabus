@@ -13,7 +13,12 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": ["html", "css", "accessibility", "tailwind-css"],
+  "technologies": [
+    "html",
+    "css",
+    "accessibility",
+    "tailwind-css"
+  ],
   "talents": [
     {
       "badge": "html-developer",
@@ -40,11 +45,13 @@
       "points": 1
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/simple-dashboard-tailwind-css/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/simple-dashboard-tailwind-css/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/simple-dashboard-tailwind-css/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed A simple Dashboard with Tailwind CSS with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/simple-dashboard-tailwind-css #AIEngineering #LearnPack #4GeeksAcademy #html #css #accessibility",

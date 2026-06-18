@@ -13,7 +13,12 @@
   },
   "difficulty": "beginner",
   "duration": 1,
-  "technologies": ["uml", "class-diagrams", "data-modeling", "system-design"],
+  "technologies": [
+    "uml",
+    "class-diagrams",
+    "data-modeling",
+    "system-design"
+  ],
   "talents": [
     {
       "badge": "data-modeler",
@@ -28,18 +33,22 @@
       "points": 2
     }
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "delivery": {
     "instructions": {
       "en": "Upload the two PNG files exported from your diagrams: one for the music playlist player and one for the digital wallet.",
       "es": "Sube los dos archivos PNG exportados de tus diagramas: uno del reproductor de playlist de musica y otro de la billetera digital."
     },
-    "formats": ["png"],
+    "formats": [
+      "png"
+    ],
     "quantity": 2
   },
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-music-player/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/data-modeling-and-class-diagrams-music-player/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed Music playlist player modeling and class diagrams with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/music-playlist-player-modeling-and-class-diagrams #AIEngineering #LearnPack #4GeeksAcademy #uml #classdiagrams #datamodeling",

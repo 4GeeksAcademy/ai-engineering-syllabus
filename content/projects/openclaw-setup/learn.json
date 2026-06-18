@@ -8,7 +8,7 @@
     "en": "Complete the Setting Up Your Personal AI Agent with OpenClaw project following the README instructions.",
     "es": "Completa el proyecto Configurando tu Agente de IA Personal con OpenClaw siguiendo las instrucciones del README."
   },
-  "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-setup/preview.png?raw=true",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-setup/.learn/preview.png",
   "difficulty": "BEGINNER",
   "duration": 2,
   "template_url": "https://github.com/openclaw/openclaw",
@@ -28,7 +28,9 @@
   "localhostOnly": false,
   "delivery": {
     "instructions": "",
-    "formats": ["url"],
+    "formats": [
+      "url"
+    ],
     "regex": ""
   }
 }

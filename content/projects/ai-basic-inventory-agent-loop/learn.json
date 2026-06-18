@@ -21,13 +21,15 @@
     "tool-calling",
     "cli"
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "grading": "incremental",
   "localhostOnly": false,
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-basic-inventory-agent-loop/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-basic-inventory-agent-loop/.learn/preview.png",
-  "preview_url": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-basic-inventory-agent-loop/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed AI Basic Inventory Agent Loop with LearnPack @4GeeksAcademy. Built a FastAPI inventory API + AI tool-calling loop with CSV logs. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-basic-inventory-agent-loop #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #toolcalling",

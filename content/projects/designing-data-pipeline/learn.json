@@ -21,7 +21,10 @@
     "backend-design",
     "technical-documentation"
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "grading": "isolated",
   "localhostOnly": true,
