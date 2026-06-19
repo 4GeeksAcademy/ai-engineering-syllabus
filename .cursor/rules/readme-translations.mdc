@@ -1,48 +1,48 @@
 ---
-description: Regla para traducciones de archivos README
+description: Rule for README file translations
 alwaysApply: true
 ---
 
-# Traducción de README
+# README Translation
 
-Cuando el usuario solicite traducir un README específico, debes aplicar la traducción sobre el archivo README del idioma objetivo que esté en el mismo directorio.
+When the user asks to translate a specific README, apply the translation to the target-language README file in the same directory.
 
-## Proceso
+## Process
 
-1. **Identificar el archivo fuente**: El usuario indicará qué README traducir (por ejemplo, `README.es.md` o `README.md`)
+1. **Identify the source file**: The user will indicate which README to translate (e.g. `README.es.md` or `README.md`).
 
-2. **Identificar el idioma objetivo**:
-   - Si el usuario pide traducir `README.es.md` → traducir a inglés en `README.md`
-   - Si el usuario pide traducir `README.md` → traducir a español en `README.es.md`
-   - Si hay otros idiomas (ej: `README.fr.md`), seguir el mismo patrón
+2. **Identify the target language**:
+   - If the user asks to translate `README.es.md` → translate to English in `README.md`
+   - If the user asks to translate `README.md` → translate to Spanish in `README.es.md`
+   - For other languages (e.g. `README.fr.md`), follow the same pattern
 
-3. **Aplicar la traducción**:
-   - Leer el archivo fuente completo
-   - Traducir todo el contenido manteniendo:
-     - La estructura y formato markdown
-     - Los enlaces y referencias
-     - Los bloques de código y ejemplos
-     - La estructura de secciones y títulos
-   - Escribir/actualizar el archivo README del idioma objetivo en el mismo directorio
+3. **Apply the translation**:
+   - Read the full source file
+   - Translate all content while preserving:
+     - Markdown structure and formatting
+     - Links and references
+     - Code blocks and examples
+     - Section and heading structure
+   - Write/update the target-language README in the same directory
 
-4. **Mantener consistencia**:
-   - Conservar los mismos badges, imágenes y enlaces
-   - Actualizar solo las referencias de idioma (ej: "available in English" → "available in Spanish")
-   - Mantener la misma estructura de archivos y rutas relativas
-   - **Regla explicita para la linea de idioma cruzado**:
-     - En `README.es.md`, la linea debe ir en ingles: `_These instructions are also available in [English](./README.md)._`
-     - En `README.md`, la linea debe ir en espanol: `_Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._`
+4. **Maintain consistency**:
+   - Keep the same badges, images, and links
+   - Update only language cross-reference lines (e.g. "available in English" → "available in Spanish")
+   - Keep the same file structure and relative paths
+   - **Explicit rule for the cross-language line**:
+     - In `README.es.md`, the line must be in English: `_These instructions are also available in [English](./README.md)._`
+     - In `README.md`, the line must be in Spanish: `_Estas instrucciones están [disponibles en español](./README.es.md)._`
 
-## Ejemplo
+## Example
 
-Si el usuario dice: "Traduce README.es.md a inglés"
+If the user says: "Translate README.es.md to English"
 
-1. Leer `/ruta/proyecto/README.es.md`
-2. Traducir el contenido al inglés
-3. Escribir/actualizar `/ruta/proyecto/README.md` con la traducción
+1. Read `/path/to/project/README.es.md`
+2. Translate the content to English
+3. Write/update `/path/to/project/README.md` with the translation
 
-Si el usuario dice: "Genera el contenido de README.md en inglés a partir de README.es.md"
+If the user says: "Generate README.md in English from README.es.md"
 
-1. Leer `/ruta/proyecto/README.es.md`
-2. Traducir el contenido al inglés
-3. Escribir/actualizar `/ruta/proyecto/README.md` con la traducción
+1. Read `/path/to/project/README.es.md`
+2. Translate the content to English
+3. Write/update `/path/to/project/README.md` with the translation

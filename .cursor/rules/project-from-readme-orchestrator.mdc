@@ -1,63 +1,63 @@
 ---
-description: Flujo obligatorio para crear proyectos desde README
+description: Mandatory workflow for creating projects from README files
 alwaysApply: true
 ---
 
 # Project from README Orchestrator
 
-Cuando el usuario pida crear/generar un proyecto desde uno o dos README, es obligatorio usar la skill:
+When the user asks to create or generate a project from one or two README files, you **must** use this skill:
 
 - `ai-engineering-syllabus/.cursor/skills/readme-project-orchestrator/SKILL.md`
 
-## Regla de activación
+## Activation rule
 
-Aplicar esta regla cuando el prompt incluya intención equivalente a:
+Apply this rule when the prompt includes intent equivalent to:
 
 - "genera/crea proyecto a partir de README"
 - "gen a @ai-engineering-syllabus/ project"
 - "nuevo proyecto usando este README"
 - "create project from readme"
 
-## Primera acción obligatoria
+## Required first action
 
-**No crear archivos a mano.** Ejecutar primero:
+**Do not create files by hand.** Run this first:
 
 ```bash
 python3 ai-engineering-syllabus/.cursor/skills/readme-project-orchestrator/scripts/orchestrate_project_from_readme.py \
   --repo-root ai-engineering-syllabus \
   --target-slug "<slug>" \
   --source-readme "<path>" \
-  --source-readme-es "<path-opcional>" \
+  --source-readme-es "<optional-path>" \
   --classroom-example ask
 ```
 
-## Anti-patrones (cierre inválido)
+## Anti-patterns (invalid completion)
 
-- Escribir `README.md` + `learn.json` sin ejecutar el script orquestador.
-- `learn.json` con URL en `preview` pero sin `.learn/preview.png` en disco.
-- Declarar la tarea terminada sin Phase 4 (social-sharing / preview).
-- Declarar la tarea terminada sin `README.md` y `README.es.md`.
+- Writing `README.md` + `learn.json` without running the orchestrator script.
+- `learn.json` has a `preview` URL but no `.learn/preview.png` on disk.
+- Declaring the task complete without Phase 4 (social-sharing / preview).
+- Declaring the task complete without `README.md` and `README.es.md`.
 
-## Pregunta obligatoria antes de generar
+## Required question before generating
 
-Antes de crear o copiar archivos del proyecto, **preguntar solo** si quiere el **brief de clase** (`.learn/example/`) — skill `ai-engineering-syllabus/.cursor/skills/classroom-example-brief/SKILL.md`. Ver Phase 5 en el orquestador.
+Before creating or copying project files, **ask only** whether they want the **classroom example brief** (`.learn/example/`) — skill `ai-engineering-syllabus/.cursor/skills/classroom-example-brief/SKILL.md`. See Phase 5 in the orchestrator.
 
-**No preguntar** por bloques citados del reto en el README del estudiante (p. ej. briefing del CTO, requisitos mínimos, “qué significa hacerlo bien”). Eso es **contenido oficial del proyecto** y se copia tal cual desde los README fuente.
+**Do not ask** about quoted challenge blocks in the student README (e.g. CTO briefs, minimum requirements, “what good looks like”). That is **official project content** and must be copied as-is from the source READMEs.
 
-## Requisitos mínimos antes de cerrar la tarea
+## Minimum requirements before closing the task
 
-- Debe constar en el informe `classroom_example`: `yes` | `no` | `ask_required`.
-- Deben existir `README.md` y `README.es.md` en el proyecto.
-- Debe existir `.learn/solution/README.md`.
-- Debe existir `learn.json` válido con:
+- The report must state `classroom_example`: `yes` | `no` | `ask_required`.
+- `README.md` and `README.es.md` must exist in the project.
+- `.learn/solution/README.md` must exist.
+- Valid `learn.json` with:
   - `slug`
   - `solution`
   - `preview`
-  - `sharing` bilingüe (`en` y `es`)
-- Debe existir `.learn/preview.png` generado para ese `slug` **en disco** (no basta con la URL en `learn.json`).
-- El informe final debe incluir `preview_generated: yes` solo si el archivo existe.
+  - bilingual `sharing` (`en` and `es`)
+- `.learn/preview.png` must exist for that `slug` **on disk** (a URL in `learn.json` alone is not enough).
+- The final report must include `preview_generated: yes` only when the file exists.
 
-## Alcance
+## Scope
 
-- El proceso de preview/sharing debe ejecutarse solo para el `slug` objetivo.
-- No regenerar social assets globales salvo petición explícita del usuario.
+- Preview/sharing must run only for the target `slug`.
+- Do not regenerate global social assets unless the user explicitly requests it.
