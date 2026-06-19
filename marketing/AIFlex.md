@@ -227,10 +227,10 @@ Not sure which 4 to pick? These are the most popular starting combinations based
 
 | Path | Courses | Best for |
 |------|---------|----------|
-| 🎯 **The AI-First Professional** | Prompt Engineering + Applied AI + No-Code & Automations + OpenClaw | Non-technical pros who want to automate their work with AI immediately |
+| 🎯 **The AI-First Professional** | Prompt Engineering + Applied AI + No-Code & Automations + Building Personal Assistants with AI | Non-technical pros who want to automate their work with AI immediately |
 | ⚡ **The Career Switcher** | Deep Dive into Python + Backend Dev with Python + Vibe Coding + Applied AI | People pivoting into tech who want a coding foundation plus applied AI skills |
 | 📊 **The Data-Driven Analyst** | Deep Dive into Python + Data Science & ML + Applied AI + Prompt Engineering | Analysts, researchers, or consultants who work with data and want to add AI |
-| 🏗️ **The Builder** | Vibe Coding with AI + Backend Dev with Python + No-Code & Automations + OpenClaw | People who want to build products and automations, coding-optional approach|
+| 🏗️ **The Builder** | Vibe Coding with AI + Backend Dev with Python + No-Code & Automations + Building Personal Assistants with AI | People who want to build products and automations, coding-optional approach|
 
 ---
 
