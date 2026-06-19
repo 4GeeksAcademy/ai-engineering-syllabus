@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Implementing a Resilient Data Pipeline",
+    "es": "Implementación de un Data Pipeline Resiliente"
+  },
+  "description": {
+    "en": "Implement the approved pipeline design in your company monorepo with Prefect: ETL flows and tasks, partial-failure tolerance, retries and result caching, idempotent load with run metadata, Docker deployment with schedule, and FastAPI endpoints to query last run status and trigger manual execution — aligned with PIPELINE_DESIGN.md and CONTEXT-company.md.",
+    "es": "Implementa en el monorepo de tu empresa el diseño de pipeline aprobado con Prefect: flows y tasks ETL, tolerancia a fallos parciales, reintentos y caché de resultados, carga idempotente con metadatos de ejecución, deployment Docker con schedule, y endpoints FastAPI para consultar el estado de la última ejecución y lanzar runs manuales — alineado con PIPELINE_DESIGN.md y CONTEXT-empresa.md."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-data-pipeline-build",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "prefect",
+    "data-engineering",
+    "etl",
+    "docker",
+    "fastapi",
+    "resilience",
+    "backend"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-data-pipeline-build/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-data-pipeline-build/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Implementing a Resilient Data Pipeline with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #prefect #dataengineering #etl",
+      "es": "Acabo de completar Implementación de un Data Pipeline Resiliente con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #prefect #dataengineering #etl"
+    },
+    {
+      "en": "Built and shipped: Implementing a Resilient Data Pipeline. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #prefect #dataengineering #etl",
+      "es": "Construido y publicado: Implementación de un Data Pipeline Resiliente. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #prefect #dataengineering #etl"
+    }
+  ]
+}
