@@ -7,7 +7,7 @@ By [@username](https://github.com/username) and [other contributors](https://git
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
 
-_Estas instrucciones están [disponibles en español](./README.es.md)._
+_These instructions are [available in Spanish](./README.es.md)._
 
 <!-- endhide -->
 
@@ -17,11 +17,11 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ## 🎯 The Challenge
 
-> 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
+> 📌 Development for this project must happen on the **VPS assigned by 4Geeks Academy**. From the company monorepo, you should only consult the company context and required company data.
 
 You have already built a personal workspace in OpenClaw and developed skills that allow your agent to interact with external systems. This project takes the next step: your company needs the agent not just to execute isolated tasks, but to **remember the state of a process over time** and act on that state autonomously, even across restarts.
 
-The People team has submitted an internal RFP: they need an agent that manages the employee onboarding process end to end. The process spans multiple communication channels, an identity verification step, and daily tracking of every active onboarding case.
+The People team has submitted an internal RFP: they need an agent that manages the employee onboarding process end to end. The process spans two communication channels — email and Telegram —, an identity verification step, and daily tracking of every active onboarding case.
 
 ### What kind of memory does this agent need?
 
@@ -102,7 +102,7 @@ flowchart TD
 
 ## 🌱 How to Start
 
-1. Work in the same repository you have been using for previous OpenClaw projects.
+1. Work and build this project on the VPS you previously configured with OpenClaw, provided by 4Geeks Academy. From the company monorepo, consult only the company context and company data.
 2. Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — it defines the employee fields, onboarding instructions, required deliverables, and any company-specific constraints.
 3. Create a new OpenClaw workspace dedicated exclusively to the onboarding agent.
 4. Identify which integrations the flow requires based on the process instructions and install them in the new workspace.

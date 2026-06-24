@@ -17,7 +17,7 @@ _These instructions are [available in English](./README.md)._
 
 ## 🎯 El Reto
 
-> 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
+> 📌 El desarrollo de este proyecto se realiza en el **VPS asignado por 4Geeks Academy**. Del monorepo de la empresa solo debes consultar el contexto y los datos necesarios de la empresa.
 
 Ya has construido un workspace personal en OpenClaw y has desarrollado skills que permiten a tu agente interactuar con sistemas externos. Este proyecto da el siguiente paso: tu empresa necesita que el agente no solo ejecute tareas aisladas, sino que **recuerde el estado de un proceso a lo largo del tiempo** y actúe sobre ese estado de forma autónoma, incluso entre reinicios.
 
@@ -102,7 +102,7 @@ flowchart TD
 
 ## 🌱 Cómo Empezar
 
-1. Trabaja en el mismo repositorio que has usado en los proyectos anteriores de OpenClaw.
+1. Trabaja y desarrolla este proyecto en el VPS que configuraste anteriormente con OpenClaw, dado por 4Geeks Academy. Del monorepo de la empresa consulta únicamente el contexto y los datos de la empresa.
 2. Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — define los campos del empleado, las instrucciones de onboarding, los entregables requeridos y cualquier restricción específica de tu empresa.
 3. Crea un nuevo workspace en OpenClaw dedicado exclusivamente al agente de onboarding.
 4. Identifica qué integraciones necesita el flujo según las instrucciones del proceso e instálalas en el nuevo workspace.
