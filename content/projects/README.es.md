@@ -1,4 +1,4 @@
-# Diseño del pipeline de datos de la compañía
+# Hito 6 — Diseño del pipeline de datos de la compañía (1/3)
 
 <!-- hide -->
 
