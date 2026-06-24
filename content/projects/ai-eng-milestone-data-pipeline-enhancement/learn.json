@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 6 — Pipeline Enhancements: Subflows, Tests and Deployment (Part 3 of 3)",
+    "es": "Hito 6 — Mejoras al Pipeline: Subflows, Tests y Deployment (Parte 3 de 3)"
+  },
+  "description": {
+    "en": "Bring your company Prefect data pipeline to production level in the monorepo: refactor the main flow into reusable extract-transform-load subflows with explicit inputs and outputs, add isolated unit tests for transformation tasks including defensive cases against malformed input, and complete the Docker deployment with schedule — verifying runs via Prefect Cloud CLI.",
+    "es": "Lleva el pipeline de datos Prefect de tu empresa a nivel de producción en el monorepo: refactoriza el flow principal en subflows reutilizables de extracción-transformación-carga con entradas y salidas explícitas, añade tests unitarios aislados para tasks de transformación incluyendo casos defensivos ante entrada malformada, y completa el deployment en Docker con schedule — verificando ejecuciones vía CLI de Prefect Cloud."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-data-pipeline-enhancement",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "architecture",
+    "data-engineering",
+    "etl",
+    "prefect",
+    "docker",
+    "pytest",
+    "backend-design"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-data-pipeline-enhancement/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-data-pipeline-enhancement/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 6 — Pipeline Enhancements: Subflows, Tests and Deployment (Part 3 of 3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Acabo de completar Hito 6 — Mejoras al Pipeline: Subflows, Tests y Deployment (Parte 3 de 3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+    },
+    {
+      "en": "Built and shipped: Milestone 6 — Pipeline Enhancements: Subflows, Tests and Deployment (Part 3 of 3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Construido y publicado: Hito 6 — Mejoras al Pipeline: Subflows, Tests y Deployment (Parte 3 de 3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+    }
+  ]
+}
