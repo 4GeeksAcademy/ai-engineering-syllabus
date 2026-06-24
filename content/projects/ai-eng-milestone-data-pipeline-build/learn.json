@@ -1,12 +1,12 @@
 {
-    "slug": "ai-eng-data-pipeline-build",
+    "slug": "ai-eng-data-pipeline-build-es",
     "title": {
-        "us": "Implementing a Resilient Data Pipeline",
-        "es": "Implementaci\u00f3n de un Data Pipeline Resiliente"
+        "es": "Implementaci\u00f3n de un Data Pipeline Resiliente",
+        "us": "Implementing a Resilient Data Pipeline"
     },
     "description": {
-        "us": "Implement the approved pipeline design in your company monorepo with Prefect: ETL flows and tasks, partial-failure tolerance, retries and result caching, idempotent load with run metadata, Docker deployment with schedule, and FastAPI endpoints to query last run status and trigger manual execution \u2014 aligned with PIPELINE_DESIGN.md and CONTEXT-company.md.",
-        "es": "Implementa en el monorepo de tu empresa el dise\u00f1o de pipeline aprobado con Prefect: flows y tasks ETL, tolerancia a fallos parciales, reintentos y cach\u00e9 de resultados, carga idempotente con metadatos de ejecuci\u00f3n, deployment Docker con schedule, y endpoints FastAPI para consultar el estado de la \u00faltima ejecuci\u00f3n y lanzar runs manuales \u2014 alineado con PIPELINE_DESIGN.md y CONTEXT-empresa.md."
+        "es": "Implementa en el monorepo de tu empresa el dise\u00f1o de pipeline aprobado con Prefect: flows y tasks ETL, tolerancia a fallos parciales, reintentos y cach\u00e9 de resultados, carga idempotente con metadatos de ejecuci\u00f3n, deployment Docker con schedule, y endpoints FastAPI para consultar el estado de la \u00faltima ejecuci\u00f3n y lanzar runs manuales \u2014 alineado con PIPELINE_DESIGN.md y CONTEXT-empresa.md.",
+        "us": "Implement the approved pipeline design in your company monorepo with Prefect: ETL flows and tasks, partial-failure tolerance, retries and result caching, idempotent load with run metadata, Docker deployment with schedule, and FastAPI endpoints to query last run status and trigger manual execution \u2014 aligned with PIPELINE_DESIGN.md and CONTEXT-company.md."
     },
     "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-data-pipeline-build/.learn/preview.png",
     "difficulty": "INTERMEDIATE",
@@ -24,8 +24,8 @@
     ],
     "projectType": "project",
     "solution": {
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-data-pipeline-build/.learn/solution/README.md",
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-data-pipeline-build/.learn/solution/README.md"
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-data-pipeline-build/.learn/solution/README.md",
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-data-pipeline-build/.learn/solution/README.md"
     },
     "delivery": {
         "instructions": "",
