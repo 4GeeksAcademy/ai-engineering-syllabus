@@ -1,4 +1,4 @@
-# Milestone 6 — Implementing a Resilient Data Pipeline (Part 2 of 3)
+# Implementing a Resilient Data Pipeline
 
 <!-- hide -->
 
@@ -19,12 +19,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-This project is **Part 2 of Milestone 6 — Telemetry and Data Pipelines**, which is completed in three stages:
-
-- **Part 1:** you designed the pipeline in `data/pipelines/PIPELINE_DESIGN.md`.
-- **Part 2 (this README):** you build the base pipeline with Prefect — flows, tasks, resilience, idempotency, and backend endpoints.
-- **Part 3:** you refactor into subflows, add unit tests, and complete the Docker deployment with a schedule.
-
 The pipeline design document is approved. Now it is time to build it. But there is a fundamental difference between a script that works on your machine and a pipeline that can run in production unattended: resilience.
 
 Your CTO has closed the design ticket and opened the implementation one:
@@ -44,7 +38,7 @@ Your CTO has closed the design ticket and opened the implementation one:
 
 A resilient pipeline is not one that never fails — it is one that fails well. In Prefect, that means three concrete things:
 
-- **Partial failure tolerance**: a failing task does not bring down the entire flow. Prefect distinguishes between critical tasks (whose failure should stop everything) and optional tasks (whose failure should be logged and allow the flow to continue).
+- **Partial failure tolerance**: a failing task does not bring down the entire flow. Prefect distinguishes between critical tasks (whose failure should stop everything) and optional tasks (whose failure should be logged and allow the flow to continue.
 - **Smart retries**: tasks that interact with external services (databases, APIs) are configured with `retries` and `retry_delay_seconds` to absorb transient failures without human intervention.
 - **Result caching**: if a task already produced a valid result recently, Prefect can reuse it rather than repeating the computation. This is especially useful for expensive transformations.
 
@@ -117,7 +111,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 
 1. Make sure `data/pipelines/pipeline.py`, the endpoints in `services/`, and any supporting files are committed to your monorepo fork.
 2. Commit with the message: `feat: implement resilient prefect pipeline`.
-3. Open a Pull Request with these changes and share the URL with your tech lead.
+3. Push your changes to your GitHub repository and share the URL with your tech lead.
 
 ---
 
