@@ -1,0 +1,36 @@
+{
+    "slug": "ai-eng-data-pipeline-design",
+    "title": {
+        "us": "Company's Data Pipeline Design",
+        "es": "Dise\u00f1o del pipeline de datos de la compa\u00f1\u00eda"
+    },
+    "description": {
+        "us": "Design a production-ready data pipeline for your company monorepo: document current telemetry state and Pandas report limitations, define ETL purpose and extraction format, diagram extract-transform-load with real entity names, specify idempotency and update-handling strategies, design an auditable execution log, and map flows, tasks, states, and Prefect blocks \u2014 before writing orchestration code.",
+        "es": "Dise\u00f1a un pipeline de datos listo para producci\u00f3n en el monorepo de tu empresa: documenta el estado actual de telemetr\u00eda y las limitaciones de los informes con Pandas, define prop\u00f3sito ETL y formato de extracci\u00f3n, diagrama extracci\u00f3n-transformaci\u00f3n-carga con nombres reales de entidades, especifica estrategias de idempotencia y manejo de actualizaciones, dise\u00f1a un log de ejecuci\u00f3n auditable y mapea flows, tasks, estados y bloques de Prefect \u2014 antes de escribir c\u00f3digo de orquestaci\u00f3n."
+    },
+    "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-data-pipeline-design/.learn/preview.png",
+    "difficulty": "INTERMEDIATE",
+    "duration": 3,
+    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+    "gitpod": true,
+    "technologies": [
+        "backend-design",
+        "technical-documentation",
+        "architecture",
+        "data-engineering",
+        "etl",
+        "prefect"
+    ],
+    "projectType": "project",
+    "solution": {
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-data-pipeline-design/.learn/solution/README.md",
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-data-pipeline-design/.learn/solution/README.md"
+    },
+    "delivery": {
+        "instructions": "",
+        "formats": [
+            "url"
+        ],
+        "regex": ""
+    }
+}
