@@ -1,4 +1,4 @@
-# Hito 6 — Implementación de un Data Pipeline Resiliente (Parte 2 de 3)
+# Implementación de un Data Pipeline Resiliente
 
 <!-- hide -->
 
@@ -18,12 +18,6 @@ _These instructions are [available in English](./README.md)._
 ## 🎯 El Reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
-
-Este proyecto forma parte del **Hito 6 — Telemetría y Data Pipelines**, que se completa en tres etapas:
-
-- **Parte 1:** diseñaste el pipeline en `data/pipelines/PIPELINE_DESIGN.md`.
-- **Parte 2 (este README):** construyes el pipeline base con Prefect — flows, tasks, resiliencia, idempotencia y endpoints en el backend.
-- **Parte 3:** refactorizas en subflows, añades tests unitarios y completas el deployment en Docker con schedule.
 
 El documento de diseño del pipeline está aprobado. Ahora toca construirlo. Pero hay una diferencia fundamental entre un script que funciona en tu máquina y un pipeline que puede ejecutarse en producción de forma desatendida: la resiliencia.
 
@@ -117,7 +111,7 @@ Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso si
 
 1. Asegúrate de que `data/pipelines/pipeline.py`, los endpoints en `services/` y cualquier archivo de soporte están en tu fork del monorepo.
 2. Haz commit con el mensaje: `feat: implement resilient prefect pipeline`.
-3. Abre un Pull Request con estos cambios y comparte la URL con tu tech lead.
+3. Sube los cambios a tu repositorio en GitHub y comparte la URL con tu tech lead.
 
 ---
 
