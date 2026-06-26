@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Background Processes",
+    "es": "Procesos en Segundo Plano"
+  },
+  "description": {
+    "en": "Build a nightly telemetry export cronjob in your company monorepo: implement scripts/nightly_export.py as an independent CLI process, add job_runs state machine with distributed lock and idempotency in services/job_runner, export previous-day telemetry to data/raw/ CSV, trigger the data pipeline as a subprocess, configure crontab or framework scheduler, support TARGET_DATE for testing, and log every execution with timestamp, job name, and status.",
+    "es": "Construye un cronjob nocturno de exportación de telemetría en el monorepo de tu empresa: implementa scripts/nightly_export.py como proceso CLI independiente, añade la máquina de estados job_runs con distributed lock e idempotencia en services/job_runner, exporta la telemetría del día anterior a CSV en data/raw/, lanza el pipeline de datos como subproceso, configura crontab o scheduler del framework, soporta TARGET_DATE para pruebas y registra cada ejecución con timestamp, nombre del job y estado."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-cronjobs",
+  "coverImage": "command-line.svg",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "python",
+    "cron",
+    "background-jobs",
+    "data-engineering",
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-cronjobs/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-cronjobs/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Background Processes with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cronjobs #AIEngineering #LearnPack #4GeeksAcademy #python #cron #backgroundjobs",
+      "es": "Acabo de completar Procesos en Segundo Plano con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cronjobs #AIEngineering #LearnPack #4GeeksAcademy #python #cron #backgroundjobs"
+    },
+    {
+      "en": "Built and shipped: Background Processes. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cronjobs #AIEngineering #LearnPack #4GeeksAcademy #python #cron #backgroundjobs",
+      "es": "Construido y publicado: Procesos en Segundo Plano. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cronjobs #AIEngineering #LearnPack #4GeeksAcademy #python #cron #backgroundjobs"
+    }
+  ]
+}
