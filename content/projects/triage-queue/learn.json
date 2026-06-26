@@ -1,0 +1,41 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Triage Queue — Priority Queue Manager",
+    "es": "Triage Queue — Gestor de Cola de Prioridad"
+  },
+  "description": {
+    "en": "Build a terminal Python priority queue manager for an emergency unit: model patients with triage levels (1–3), implement enqueue, dequeue, peek, list_queue, and stats, build a CLI menu, and document your data-structure choice and concurrent-mutation strategy using only the Python standard library.",
+    "es": "Construye un gestor de cola de prioridad en Python para terminal en una unidad de urgencias: modela pacientes con niveles de triaje (1–3), implementa enqueue, dequeue, peek, list_queue y stats, crea un menú CLI y documenta tu elección de estructura de datos y estrategia de mutación concurrente usando solo la biblioteca estándar de Python."
+  },
+  "status": "draft",
+  "template_url": "self",
+  "slug": "triage-queue",
+  "coverImage": "command-line.svg",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "python",
+    "data-structures",
+    "algorithms",
+    "cli",
+    "priority-queue"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/triage-queue/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/triage-queue/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Triage Queue — Priority Queue Manager with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/triage-queue #AIEngineering #LearnPack #4GeeksAcademy #python #datastructures #algorithms",
+      "es": "Acabo de completar Triage Queue — Gestor de Cola de Prioridad con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/triage-queue #AIEngineering #LearnPack #4GeeksAcademy #python #datastructures #algorithms"
+    },
+    {
+      "en": "Built and shipped: Triage Queue — Priority Queue Manager. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/triage-queue #AIEngineering #LearnPack #4GeeksAcademy #python #datastructures #algorithms",
+      "es": "Construido y publicado: Triage Queue — Gestor de Cola de Prioridad. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/triage-queue #AIEngineering #LearnPack #4GeeksAcademy #python #datastructures #algorithms"
+    }
+  ]
+}
