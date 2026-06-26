@@ -1,104 +1,181 @@
-# Hito 6 — Diseño del pipeline de datos de la compañía (1/3)
+# Proyectos de Ingeniería de IA
 
-<!-- hide -->
+Repositorio de proyectos prácticos del programa de **Ingeniería de IA** de 4Geeks Academy. Cada carpeta es un proyecto independiente con su propio README, criterios de evaluación y, cuando aplica, `learn.json` para la plataforma.
 
-Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
-
-[![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
-[![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
-
-_These instructions are [available in English](./README.md)._
-
-<!-- endhide -->
-
-**Antes de comenzar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir cualquier cosa — define los datos específicos de tu empresa, los eventos de telemetría que has capturado y los KPIs que ya has calculado.
+Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO, accesibilidad) y Tailwind, pasando por hitos de empresa y colaboración, **configuración e integraciones de agentes OpenClaw**, luego TypeScript y diseño de sistemas, React/Next.js y entrega asistida por IA, APIs, autenticación, agentes, rendimiento, telemetría, pipelines de datos, jobs en segundo plano y colas de mensajes.
 
 ---
 
-## 🎯 El Reto
+## Proyectos (orden sugerido)
 
-> 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
+0. **[Hito de empresa: Elige tu compañía](./ai-eng-milestone-choose-company)**  
+   `Hito 0` — Elige tu empresa ficticia, captúrala en `CONTEXT.md` y prepara la narrativa y los datos que reutilizarás en hitos posteriores.
 
-Has pasado las últimas semanas capturando eventos de telemetría, almacenándolos en base de datos y generando informes básicos con Pandas. Ahora tu tech lead quiere algo más: un pipeline de datos que sea robusto, auditable y que tu equipo pueda ejecutar con confianza en producción.
+1. **[Landing de artista: HTML, CSS, SEO y accesibilidad](./html-css-artist-landing-seo-access)**  
+   Landing accesible y optimizada para SEO de un artista usando HTML semántico y CSS.
 
-Tu CTO te ha enviado este brief a través del gestor de tareas del equipo:
+2. **[Dashboard simple con Tailwind CSS](./simple-dashboard-tailwind-css)**  
+   Dashboard responsive con HTML y Tailwind mostrando KPIs, drivers y detalles operativos (sin React).
 
-> > **Brief técnico — Pipeline de datos (Diseño)**
-> >
-> > Antes de escribir una sola línea de código de orquestación, necesito que documentes el diseño del pipeline de datos de nuestra plataforma. El equipo de datos ha recibido una RFP interna del área de operaciones: quieren saber exactamente cómo fluyen los datos desde que se capturan en la aplicación hasta que llegan a los dashboards. También quieren garantías sobre idempotencia y auditabilidad antes de aprobar el paso a producción.
-> >
-> > Entregable: un documento de diseño en Markdown dentro del monorepo. Sin código de orquestación todavía — primero el diseño, luego la implementación.
+3. **[Hito de empresa: Fundamentos web](./ai-eng-milestone-web-fundamentals)**  
+   `Hito 1` — Sitio público de tu empresa: landing más formulario de registro con HTML5 semántico, Tailwind, Schema.org y validación JavaScript. Sigue `CONTEXT.md` para datos y campos del formulario.
 
-### ¿Qué es un pipeline de datos robusto?
+4. **[Proyecto colaborativo: tienda online con HTML y Tailwind](./collaborative-project-html-tailwind-online-store)**  
+   Prototipo e-commerce colaborativo (mín. 5 páginas: Home, Catálogo, Producto, Carrito, Checkout) con HTML y Tailwind, trabajo en equipo con ramas y pull requests.
 
-Un pipeline de datos no es simplemente un script que mueve información de un sitio a otro. Un pipeline de producción tiene etapas bien definidas, maneja fallos de forma predecible y puede ser auditado. Los tres atributos clave que distinguen un pipeline robusto de uno que "simplemente funciona" son:
+5. **[Configura tu agente de IA personal con OpenClaw](./openclaw-setup)**  
+   Despliega y configura OpenClaw en un VPS con LiteLLM, valida el chat local y documenta un paquete de entrega seguro (config saneada + captura de prueba).
 
-- **Idempotencia**: ejecutar el pipeline dos veces sobre los mismos datos produce el mismo resultado, sin duplicados ni corrupción.
-- **Observabilidad**: cada ejecución deja trazas suficientes para saber qué pasó, cuándo y por qué.
-- **Recuperabilidad**: cuando el pipeline falla a mitad de camino, la siguiente ejecución sabe exactamente desde dónde retomar.
+6. **[Conecta tu agente: Telegram, Google Drive y Calendar](./openclaw-connection)**  
+   Proyecto solo de configuración: canal Telegram, Zapier MCP, acciones de Google Drive y Calendar, y flujo end-to-end confirmado con capturas (después de tener OpenClaw en marcha).
 
-Estos tres atributos son los que tu documento de diseño debe demostrar que has pensado en profundidad.
+7. **[Mi agente, a mi manera: enseña nuevas skills a tu asistente](./openclaw-skills)**  
+   Continúa en tu entorno OpenClaw y repo de tareas previas: completa los cinco archivos de briefing `.openclaw`, commitea `SKILLS_DESIGN.md` e implementa al menos dos skills OpenClaw usando solo integraciones Composio que ya tengas (Google apps, GitHub, Telegram).
+
+8. **[Mi asistente 4Geeks — OpenClaw sigue tu progreso](./openclaw-integration)**  
+   Conecta OpenClaw a la API de 4Geeks con tu token para que el agente reporte proyectos pendientes, progreso del curso y datos LearnPack relacionados.
+
+9. **[Dale memoria a tu agente](./openclaw-memory)**  
+   Configura tipos de memoria OpenClaw (episódica, semántica, procedimental), reestructura archivos del workspace y valida que el contexto persiste entre sesiones.
+
+10. **[Agente de onboarding con memoria](./openclaw-onboarding-agent)**  
+    Construye un flujo de onboarding empresarial: agente OpenClaw con memoria que lee plantillas HR y envía email de bienvenida personalizado desde tu `CONTEXT-empresa.md`.
+
+11. **[Gestor de asientos de cine (TypeScript)](./seats-management-typescript)**  
+    Sistema de reserva de asientos en terminal con array 2D: reservar, contar y buscar asientos adyacentes.
+
+12. **[Reproductor de playlist — Modelado de objetos](./data-modeling-and-class-diagrams-music-player)**  
+    Diagrama de clases UML para un reproductor de playlist en diagram.4geeks.com: entidades, tipos de datos y relaciones.
+
+13. **[Billetera digital — Modelado de objetos](./data-modeling-and-class-diagrams-digital-wallet)**  
+    Diagrama de clases UML para una billetera digital con historial de transacciones en diagram.4geeks.com.
+
+14. **[Hito de empresa: Fundamentos de programación (TypeScript)](./ai-eng-milestone-coding-fundamentals)**  
+    `Hito 2` — Fundamentos con TypeScript: módulos pequeños y testeables (control de flujo, arrays, objetos, funciones, casos límite) con buenas prácticas.
+
+15. **[Plataforma de alquiler de agentes IA: prototipo de panel admin](./agent-hub-ui-specs-and-prompts)**  
+    Frontend spec-driven: escribe `SPECS.md` primero, luego dashboard y vistas de gestión con HTML, Tailwind y JavaScript vanilla.
+
+16. **[Habla con la máquina: interfaz de chat con API de IA real](./chat-interface-real-ai-api)**  
+    Interfaz de chat en el navegador que llama a la API Groq con `fetch`, envía historial completo y rastrea tokens y métricas de respuesta.
+
+17. **[Wanderlust Explorer con React y Next.js](./nextjs-wanderlust-explorer)**  
+    App Next.js App Router desde cero: listado de experiencias con búsqueda y filtros en URL, páginas de detalle, favoritos en estado y dataset TypeScript local.
+
+18. **[Clon UI de Airbnb con Next.js y React](./nextjs-airbnb-ui-clone)**  
+    Clon UI Next.js 16 + TypeScript + Tailwind desde brief de producto: layout, componentes reutilizables y datos tipados.
+
+19. **[Hito de empresa: Talent Pipeline Tracker](./ai-eng-milestone-frontend-development)**  
+    `Hito 3` — Frontend Next.js App Router para la API de reclutamiento: listado y detalle de candidatos, filtros, CRUD de notas, formularios y estados async alineados con `CONTEXT-empresa.md`.
+
+20. **[Proyecto de contexto — dashboard financiero empresarial](./company-financial-dashboard-context-project)**  
+    Stewardship del repo: fork de repo full-stack, valida comprensión generada por IA, define reglas en `.agents/rules` y genera `memory-bank` con producto, stack y estado actual.
+
+21. **[Proyecto de specs — dashboard financiero empresarial](./company-financial-dashboard-specs-project)**  
+    Asignación spec-first: tipos TypeScript alineados con `/docs`, `components.md` y README de contrato de datos — sin implementación React.
+
+22. **[Proyecto de skills — dashboard financiero empresarial](./company-financial-dashboard-skills-project)**  
+    Continúa en el mismo repo: aplica skills de agente (`accessibility`, `vercel-react-best-practices`), explora `skills.sh`, autoría skill custom bajo `.skills/` y actualiza memory bank.
+
+23. **[Hito 4 — Ingeniería impulsada por IA](./ai-eng-milestone-ai-driven-engineering)**  
+    `Hito 4` — Layout monorepo: sitio Next.js público, backoffice interno, services/APIs e integración de hitos previos con flujo de entrega asistido por IA.
+
+24. **[Propuesta de arquitectura backend](./ai-eng-architectural-proposal)**  
+    Documento de arquitectura y diagramas para extender el sistema de la empresa (servicios, datos, riesgos y trade-offs).
+
+25. **[Lista de tareas por voz con API de IA](./voice-to-do-list-api)**  
+    Flujo to-do por voz: captura input del usuario, integra API de IA y transforma peticiones habladas en gestión de tareas.
+
+26. **[Analizador de incidentes — Script y panel de control](./ai-eng-company-incidents-file-analyzer)**  
+    Script Python para validar y resumir CSVs de incidentes, luego FastAPI + UI web para subir archivos, ver resúmenes y exportar resultados.
+
+27. **[Agent loop básico de inventario con IA](./ai-basic-inventory-agent-loop)**  
+    API FastAPI de inventario más agent loop Python que usa endpoints como tools, registra interacciones en CSV y soporta operaciones de stock en lenguaje natural.
+
+28. **[Directorio de proveedores — API de almacenamiento ligero](./ai-eng-supplier-directory)**  
+    API FastAPI + TinyDB + Pydantic: datos sembrados desde `CONTEXT`, validación, CRUD y filtros por país y categoría.
+
+29. **[Asegurando la API: autenticación y restricción de rutas en FastAPI](./ai-eng-user-authentication-api)**  
+    Auth JWT en la API de proveedores: registro, login, rutas protegidas, hash de contraseñas y checks de ownership.
+
+30. **[Conectando el candado: flujos de autenticación en el frontend](./ai-eng-user-authentication-flows)**  
+    Flujos frontend contra la API asegurada: login, registro, manejo de sesión y vistas protegidas.
+
+31. **[La pieza que faltaba: flujo de restablecimiento de contraseña](./ai-eng-user-authentication-restore)**  
+    Reset de contraseña end-to-end: tokens seguros, email o stub de desarrollo, y alineación UI/API.
+
+32. **[Construyendo aplicaciones a prueba de balas](./ai-eng-building-bullet-proof-applications)**  
+    Suite de tests unitarios en la API de autenticación: lógica de tokens, casos límite de validación y comportamiento de endpoints.
+
+33. **[Gestor centralizado de incidentes](./ai-eng-centralized-incident-manager)**  
+    Integra gestor de incidentes en tiempo real en el monorepo: registrar, consultar y rastrear incidentes desde el navegador con `CONTEXT-empresa.md`.
+
+34. **[Manejo de errores](./ai-eng-error-handling)**  
+    Audita y corrige manejo de errores en el monorepo: fallos de API, estados de carga, mensajes al usuario y salida de scripts antes del siguiente hito.
+
+35. **[Auditoría de datos EduTrack](./edutrack-data-audit-sql)**  
+    Auditoría SQL en dataset de inscripciones de una tabla: checks de calidad, agregaciones e informe escrito para operaciones.
+
+36. **[Auditoría EduTrack — Tablas relacionadas](./edutrack-data-audit-sql-related-tables)**  
+    SQL multi-tabla en esquema EduTrack normalizado: JOINs, métricas cruzadas y respuestas que relacionan estudiantes, cursos e inscripciones.
+
+37. **[Hito de empresa: Backend — Gestión de inventario](./ai-eng-milestone-backend-development)**  
+    `Hito 5` (backend) — API FastAPI + SQLModel de inventario en Supabase: dual-database, órdenes entrantes/salientes y reglas de negocio desde `CONTEXT-empresa.md`.
+
+38. **[Hito de empresa: Backoffice — Gestión de inventario](./ai-eng-inventory-management-backoffice)**  
+    `Hito 5` (frontend) — UI backoffice para operaciones de inventario conectada a la API del Hito 5.
+
+39. **[Listo para lanzar: MVP containerizado desde cero](./launch-ready-containerized-mvp)**  
+    Módulo standalone: Dockeriza un MVP pequeño generado con IA usando Dockerfile, Compose y ejecución local reproducible.
+
+40. **[Containerización del monorepo de la empresa](./ai-eng-container-project)**  
+    Containeriza el monorepo: `docker-compose.yml` multi-servicio, configuración de entorno y orquestación local lista para producción.
+
+41. **[Auditoría de rendimiento frontend](./ai-eng-performance-web-vitals)**  
+    Auditoría Lighthouse del sitio corporativo y backoffice, refactor de componentes/hooks reutilizables e informe antes/después con Core Web Vitals.
+
+42. **[Auditoría de serialización backend](./ai-eng-performance-serialization)**  
+    Auditoría endpoint por endpoint de serialización en la API del monorepo: DTOs, shaping de payloads y fixes de seguridad antes de escalar.
+
+43. **[Optimización de rendimiento: caché](./ai-eng-performance-caching)**  
+    Perfila hot paths frontend y API, implementa caché justificada (TTL, `useMemo`, caché FastAPI) y documenta trade-offs en informe técnico.
+
+44. **[Diseño del plan de telemetría de la empresa](./ai-eng-telemetry-plan)**  
+    Diseña `telemetry-plan.md` y `event-schemas.json` desde KPIs de inventario en `CONTEXT-empresa.md` antes de instrumentar código.
+
+45. **[Telemetría de la empresa — Captura frontend](./ai-eng-telemetry-capture)**  
+    `TelemetryService` en Next.js: cola, batch/debounce, `sendBeacon`, reintentos y API `track()` única hacia `POST /telemetry/events`.
+
+46. **[Telemetría de la empresa — Almacenamiento](./ai-eng-telemetry-storage)**  
+    Persiste telemetría por lotes en Supabase/PostgreSQL con validación por evento, aceptación parcial de lotes y contrato frontend sin cambios.
+
+47. **[Telemetría de la empresa — Informe](./ai-eng-telemetry-report)**  
+    Pipeline Pandas más `GET /telemetry/report` con métricas agrupadas, caché de respuesta 60s e informes accionables de inventario/uso.
+
+48. **[Diseñando un Data Pipeline: del dato crudo a los reportes confiables](./designing-data-pipeline)**  
+    Ejercicio standalone de diseño ETL para Veridian Logistics: analiza exportaciones CSV nocturnas con updates-as-inserts, documenta deduplicación e idempotencia y produce `PIPELINE_DESIGN.md` — sin código de orquestación.
+
+49. **[Hito 6 — Diseño del pipeline de datos de la compañía (1/3)](./ai-eng-milestone-data-pipeline-design)**  
+    `Hito 6` (diseño) — Documenta un pipeline de telemetría listo para producción en el monorepo: estado actual, diagrama ETL, idempotencia, log de ejecución y mapeo Prefect antes de escribir código.
+
+50. **[Hito 6 — Implementación de un Data Pipeline Resiliente (2/3)](./ai-eng-milestone-data-pipeline-build)**  
+    `Hito 6` (build) — Implementa flows Prefect extract-transform-load en el monorepo con reintentos, cargas idempotentes, deployment Docker programado y endpoints de estado/disparo del pipeline.
+
+51. **[Hito 6 — Mejora del pipeline de datos: Subflows y tests (3/3)](./ai-eng-milestone-data-pipeline-enhancement)**  
+    `Hito 6` (mejora) — Refactoriza el pipeline en subflows reutilizables, añade tests unitarios aislados para tasks de transformación y completa el deployment Docker de producción con verificación en Prefect Cloud.
+
+52. **[Procesos en segundo plano](./ai-eng-cronjobs)**  
+    Cronjob nocturno de exportación de telemetría en el monorepo: script CLI independiente, máquina de estados `job_runs`, distributed lock, exportación CSV idempotente, disparo del pipeline por subproceso y override `TARGET_DATE` para pruebas.
+
+53. **[Branch Queue — Cola de servicio etiquetada](./branch-queue)**  
+    Gestor de cola en terminal Python para sucursal bancaria: una `deque` por tipo de servicio, contador global de tickets, menú CLI y notas de diseño — solo stdlib.
+
+54. **[Triage Queue — Gestor de cola de prioridad](./triage-queue)**  
+    Cola de prioridad en terminal Python para urgencias: niveles de triaje 1–3 con FIFO dentro del nivel, cinco operaciones núcleo, menú CLI y notas de estructura de datos — solo stdlib.
+
+55. **[Colas de mensajes y tareas asíncronas](./ai-eng-message-queue)**  
+    Desacopla trabajo pesado de la API con Redis y Celery en el monorepo: `202` + `task_id`, `GET /tasks/{task_id}`, reintentos con backoff, Dead Letter Queue, worker como proceso separado y monitoreo con Flower.
 
 ---
 
-## 🌱 Cómo Empezar
-
-1. Haz un `git pull` en tu fork del monorepo para asegurarte de tener el estado más reciente.
-2. Explora la carpeta [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) del monorepo — contiene las subcarpetas `raw/`, `process/`, `pipelines/` y `eval/` que usarás a lo largo de este módulo.
-3. Crea el archivo `data/pipelines/PIPELINE_DESIGN.md` — ahí va tu documento de diseño.
-4. Lee tu `CONTEXT-empresa.md` para identificar qué eventos de telemetría tienes disponibles, qué KPIs ya calculas y cuáles son los requisitos específicos de tu empresa.
-
-> **Nota sobre las herramientas:** Hoy introduces **Prefect** como framework de orquestación — flows, tasks, estados y bloques de configuración. Tu documento de diseño debe reflejar cómo organizarías tu pipeline usando estos conceptos, aunque la implementación en código llega en los próximos días.
-
----
-
-## 💻 Qué Debes Hacer
-
-### Fase 1 — Análisis del estado actual
-
-- [ ] Documenta en una sección "Estado actual" los datos que ya tienes: qué eventos de telemetría has capturado, dónde están almacenados y qué informes ya generas con Pandas.
-- [ ] Identifica las limitaciones de tu implementación actual: ¿qué pasa si el script falla a mitad de ejecución? ¿puedes saber si los datos ya fueron procesados?
-
-### Fase 2 — Diseño del pipeline
-
-- [ ] Define el **propósito** del pipeline en una frase concreta: qué problema resuelve y qué valor entrega a tu empresa.
-- [ ] Especifica el **formato de extracción**: de dónde vienen los datos (tabla, endpoint, fichero), en qué formato llegan y con qué frecuencia se actualizan.
-- [ ] Diseña el **flujo de datos** con un diagrama en texto o Mermaid con al menos tres etapas claramente separadas: extracción, transformación y carga.
-- [ ] Describe cómo manejarías una fuente que **actualiza registros existentes** en lugar de insertar siempre nuevos — explica la estrategia concreta para evitar duplicados en tu caso.
-
-### Fase 3 — Resiliencia e idempotencia
-
-- [ ] Define la estrategia de **idempotencia**: si el pipeline falla durante la fase de carga y se vuelve a ejecutar, explica exactamente cómo garantizas que los datos ya cargados no se corrompen ni se duplican.
-- [ ] Diseña el **log de ejecución**: especifica los campos mínimos que registrarías en cada ejecución (inicio, fin, registros procesados, estado, errores) y explica por qué cada campo es necesario para auditar el pipeline en producción.
-
-### Fase 4 — Mapa a Prefect
-
-- [ ] Mapea tu diseño a los conceptos de Prefect: identifica cuáles serían tus **flows**, cuáles serían tus **tasks** y qué **estados** (Running, Completed, Failed) son relevantes para tu pipeline.
-- [ ] Indica qué configuración o credenciales gestionarías como **bloques de Prefect** (por ejemplo, la conexión a Supabase).
-
-⚠️ **IMPORTANTE:** El diseño debe ser específico para los datos de tu empresa. Los nombres de eventos, KPIs, tablas y entidades deben coincidir con lo especificado en tu `CONTEXT-empresa.md`. Un diseño genérico que ignore el contexto de tu empresa no será aceptado.
-
----
-
-## ✅ Qué Evaluaremos
-
-- [ ] El documento `data/pipelines/PIPELINE_DESIGN.md` existe en el monorepo y está escrito en Markdown legible.
-- [ ] El propósito del pipeline está definido en una frase concreta que menciona el negocio de la empresa, no solo la tecnología.
-- [ ] El diagrama de flujo muestra al menos tres etapas diferenciadas (extracción, transformación, carga) con el nombre de las entidades o tablas reales de la empresa.
-- [ ] La estrategia para manejar actualizaciones de registros existentes está documentada con un mecanismo concreto (ej.: upsert por clave primaria, marca de tiempo de última modificación, tabla de control).
-- [ ] La estrategia de idempotencia es explícita: describe qué ocurre en la segunda ejecución tras un fallo en la carga, no solo qué sería deseable.
-- [ ] El log de ejecución especifica al menos cinco campos con el nombre del campo, el tipo de dato y la justificación de por qué ese campo es necesario para auditoría.
-- [ ] El mapa a Prefect identifica al menos dos flows y tres tasks con nombres concretos alineados con las etapas del pipeline.
-- [ ] El diseño es coherente con los eventos de telemetría y KPIs definidos en el `CONTEXT-empresa.md`.
-
----
-
-## 📦 Cómo Entregar
-
-1. Asegúrate de que `data/pipelines/PIPELINE_DESIGN.md` está en tu fork del monorepo.
-2. Haz commit con el mensaje: `feat: add pipeline design document`.
-3. Sube los cambios a tu repositorio en GitHub y comparte la URL con tu tech lead.
-
----
-
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Full-Stack Software Developer](https://4geeksacademy.com/es/programas-de-carrera/desarrollo-full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/es/programas-de-carrera/ciencia-de-datos-ml), [Ciberseguridad](https://4geeksacademy.com/es/programas-de-carrera/ciberseguridad) e [Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia).
+Cada proyecto tiene instrucciones detalladas en su carpeta (`README.md` y, si existe, `README.es.md`). Para empezar, abre la carpeta del proyecto y sigue el README.
