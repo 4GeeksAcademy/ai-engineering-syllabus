@@ -51,7 +51,7 @@ This is the kind of audit task that comes up constantly in startups. The cleaner
 
 This project does not require a code repository — your deliverable is a SQL file with your queries and a Markdown report with your findings.
 
-1. Download the provided [edutrack.sql](edutrack.sql?raw=true) file from the platform.
+1. Download the provided [edutrack.sql](edutrack.sql) file from the platform.
 2. Log in to [Supabase](https://supabase.com) and create a new project.
 3. Go to **SQL Editor** and run the full contents of `edutrack.sql` to create and populate the database.
 4. Verify the import succeeded by running `SELECT * FROM enrollments LIMIT 5;`.
