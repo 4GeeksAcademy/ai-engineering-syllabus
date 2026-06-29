@@ -50,7 +50,7 @@ Las respuestas están en los datos — solo necesitas saber qué tablas unir.
 
 ## 🌱 Cómo iniciar el proyecto
 
-1. Descarga el archivo `edutrack_v2.sql` desde la plataforma.
+1. Descarga el archivo [edutrack_v2.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql-related-tables/edutrack_v2.sql) desde la plataforma.
 2. Inicia sesión en [Supabase](https://supabase.com) y crea un nuevo proyecto (o reutiliza el del proyecto anterior).
 3. Ve al **SQL Editor** y ejecuta el contenido completo de `edutrack_v2.sql` para crear y poblar el esquema normalizado.
 4. Verifica la importación ejecutando `SELECT * FROM enrollments LIMIT 5;`, `SELECT * FROM students LIMIT 5;` y `SELECT * FROM courses LIMIT 5;`.
