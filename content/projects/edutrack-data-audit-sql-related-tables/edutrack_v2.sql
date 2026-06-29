@@ -1,14 +1,14 @@
 -- ============================================================
--- EduTrack v2 — Base de datos normalizada (Día 37)
+-- EduTrack v2 — Normalized database
 -- ============================================================
--- Esta es la versión normalizada del esquema de EduTrack.
--- La tabla `enrollments` ya no contiene el nombre del instructor
--- directamente: ahora ese dato vive en `courses`.
+-- This is the standardised version of the EduTrack schema.
+-- The `enrollments` table no longer contains the instructor’s name
+-- directly: this information is now stored in `courses`.
 --
--- Instrucciones:
--- 1. Abre el SQL Editor de tu proyecto en Supabase
--- 2. Pega el contenido completo de este archivo y ejecútalo
--- 3. Verifica con:
+-- Instructions: 
+-- 1. Open your project’s SQL Editor in Supabase
+-- 2. Paste the entire contents of this file and run it
+-- 3. Check with:
 --      SELECT * FROM students LIMIT 5;
 --      SELECT * FROM courses LIMIT 5;
 --      SELECT * FROM enrollments LIMIT 5;
