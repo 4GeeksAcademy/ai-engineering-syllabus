@@ -176,6 +176,9 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 55. **[Message Queues and Async Tasks](./ai-eng-message-queue)**  
     Decouple heavy API work with Redis and Celery in the company monorepo: `202` + `task_id`, `GET /tasks/{task_id}`, retries with backoff, Dead Letter Queue, separate worker process, and Flower monitoring.
 
+56. **[Sentiment Analysis on Customer Reviews — WeLoveReviews](./ai-eng-sentiment-analysis-reviews)**  
+    Integrate `prajjwal1/bert-mini` from Hugging Face to classify 500 customer reviews, compare sentiment breakdown against a 4.5-star average, validate predictions manually, and deliver a client-ready report.
+
 ---
 
 Each project has detailed instructions in its folder (`README.md` and, if present, `README.es.md`). To get started, open the project folder and follow the README.

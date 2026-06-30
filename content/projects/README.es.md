@@ -176,6 +176,9 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 55. **[Colas de mensajes y tareas asíncronas](./ai-eng-message-queue)**  
     Desacopla trabajo pesado de la API con Redis y Celery en el monorepo: `202` + `task_id`, `GET /tasks/{task_id}`, reintentos con backoff, Dead Letter Queue, worker como proceso separado y monitoreo con Flower.
 
+56. **[Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews](./ai-eng-sentiment-analysis-reviews)**  
+    Integra `prajjwal1/bert-mini` de Hugging Face para clasificar 500 reseñas, compara la distribución de sentimiento con un promedio de 4.5 estrellas, valida predicciones manualmente y entrega un reporte listo para el cliente.
+
 ---
 
 Cada proyecto tiene instrucciones detalladas en su carpeta (`README.md` y, si existe, `README.es.md`). Para empezar, abre la carpeta del proyecto y sigue el README.

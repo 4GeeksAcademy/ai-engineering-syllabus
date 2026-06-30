@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Sentiment Analysis on Customer Reviews — WeLoveReviews",
+    "es": "Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews"
+  },
+  "description": {
+    "en": "Integrate a pretrained Hugging Face model (`prajjwal1/bert-mini`) to classify 500 customer reviews, compare sentiment breakdown against a 4.5-star average, manually validate predictions, and deliver a client-ready markdown report.",
+    "es": "Integra un modelo preentrenado de Hugging Face (`prajjwal1/bert-mini`) para clasificar 500 reseñas de clientes, compara la distribución de sentimiento con un promedio de 4.5 estrellas, valida predicciones manualmente y entrega un reporte en markdown listo para el cliente."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/python-hello",
+  "slug": "ai-eng-sentiment-analysis-reviews",
+  "coverImage": "ai-coding.svg",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "python",
+    "huggingface",
+    "transformers",
+    "pytorch",
+    "machine-learning",
+    "sentiment-analysis",
+    "data-analysis",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-sentiment-analysis-reviews/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-sentiment-analysis-reviews/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Sentiment Analysis on Customer Reviews — WeLoveReviews with LearnPack @4GeeksAcademy. Integrated a Hugging Face model on 500 reviews and compared sentiment vs star ratings. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-sentiment-analysis-reviews #AIEngineering #LearnPack #4GeeksAcademy #python #huggingface #machinelearning",
+      "es": "Acabo de completar Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews con LearnPack @4GeeksAcademy. Integré un modelo de Hugging Face sobre 500 reseñas y comparé sentimiento vs puntuación en estrellas. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-sentiment-analysis-reviews #AIEngineering #LearnPack #4GeeksAcademy #python #huggingface #machinelearning"
+    },
+    {
+      "en": "Built and shipped: Sentiment Analysis on Customer Reviews — WeLoveReviews. Learning by building with @4GeeksAcademy. Pretrained model integration, manual validation, and a client-ready report. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-sentiment-analysis-reviews #AIEngineering #LearnPack #4GeeksAcademy #python #transformers #sentimentanalysis",
+      "es": "Construido y publicado: Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews. Aprendiendo con proyectos reales en @4GeeksAcademy. Integración de modelo preentrenado, validación manual y reporte para el cliente. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-sentiment-analysis-reviews #AIEngineering #LearnPack #4GeeksAcademy #python #transformers #sentimentanalysis"
+    }
+  ]
+}
