@@ -29,8 +29,8 @@
   "telemetry": {
     "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3771"
   },
-  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-sentiment-analysis-reviews/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-sentiment-analysis-reviews/.learn/preview.png",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/existing-model-sentiment-analysis-reviews/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/existing-model-sentiment-analysis-reviews/.learn/preview.png",
   "sharing": [
     {
       "en": "I just completed Sentiment Analysis on Customer Reviews — WeLoveReviews with LearnPack @4GeeksAcademy. Integrated a Hugging Face model on 500 reviews and compared sentiment vs star ratings. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-sentiment-analysis-reviews #AIEngineering #LearnPack #4GeeksAcademy #python #huggingface #machinelearning",
