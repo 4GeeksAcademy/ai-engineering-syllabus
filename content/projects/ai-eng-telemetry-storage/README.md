@@ -47,6 +47,26 @@ Bulk insert solves this: all valid events in a batch are inserted in a single tr
 - The fixed columns (`event_type`, `timestamp`, `service`) are what support the analytical queries of the next project
 - The `tags` JSONB column stores the envelope `properties` object (allowlist keys only) without needing to alter the schema
 
+### 📚 Complementary Knowledge — Partial Validation (Per-Event Parsing)
+
+The `TelemetryEvent` Pydantic model is the contract — but **how** you apply it in FastAPI matters.
+
+**Do not type the entire request body as `list[TelemetryEvent]`.** If the endpoint signature is something like `batch: TelemetryBatch` where `events: list[TelemetryEvent]`, Pydantic validates every event before your handler runs. One invalid event in the batch → FastAPI returns `422` for the whole request → the frontend retries or drops the entire batch. That contradicts partial acceptance.
+
+Use **per-event parsing** instead:
+
+1. Accept the envelope loosely: `{ "events": [...] }` — each list item is a raw dict, not a pre-validated `TelemetryEvent`
+2. Loop inside the handler and call `TelemetryEvent.model_validate(raw)` on each item inside `try/except ValidationError`
+3. Valid events go to the bulk-insert list; invalid ones increment `rejected` — the loop continues
+4. Return HTTP `200` with `{ "received", "stored", "rejected" }` as long as the envelope itself is parseable (it has an `events` array)
+
+| Approach                                       | What happens with a mixed batch                         |
+| ---------------------------------------------- | ------------------------------------------------------- |
+| Typed body (`events: list[TelemetryEvent]`)    | Entire request fails with `422` — nothing stored        |
+| Per-event parsing (`model_validate` in a loop) | Valid events stored; invalid ones counted in `rejected` |
+
+The model is reused unchanged from Phase 2 — you use it as a **per-item validator**, not as the type of the full request body.
+
 ---
 
 ## 🌱 How to Start the Project
@@ -95,8 +115,8 @@ Bulk insert solves this: all valid events in a batch are inserted in a single tr
 ### Phase 2 — Real Endpoint in FastAPI
 
 - [ ] Replace the stub `POST /telemetry/events` with the full implementation. The real endpoint must:
-  - Accept the same body as the stub: `{ "events": list[TelemetryEvent] }`
-  - Validate each event against the `TelemetryEvent` Pydantic model — the same one defined in the previous phase, without modifying it
+  - Accept the same envelope as the stub: `{ "events": [...] }` — parse the list loosely; do **not** declare `events: list[TelemetryEvent]` as the FastAPI body type (see partial validation above)
+  - Validate each raw event individually with `TelemetryEvent.model_validate(...)` inside the handler — the same model from the previous phase, without modifying it
   - Reject individually the events that don't meet the contract, **without cancelling the batch** — valid events in the same batch are persisted regardless
   - Insert the valid events into `telemetry_events` in a single bulk insert operation
   - Return `{ "received": N, "stored": M, "rejected": R }` where N is the total received, M the persisted, and R the rejected
@@ -114,7 +134,7 @@ Bulk insert solves this: all valid events in a batch are inserted in a single tr
 
 - [ ] The `telemetry_events` table exists in Supabase with the eight columns, the three indexes, and no UPDATE/DELETE logic
 - [ ] The `POST /telemetry/events` endpoint does bulk insert and returns `{ "received", "stored", "rejected" }`
-- [ ] Invalid events are rejected individually without cancelling the batch — valid ones are persisted
+- [ ] Invalid events are rejected individually without cancelling the batch — valid ones are persisted (per-event `model_validate`, not a typed `list[TelemetryEvent]` body that would return `422` for the whole batch)
 - [ ] The `TelemetryEvent` Pydantic model has not been modified from the previous project — it is reused as-is
 - [ ] The frontend has not changed a single line — the stub → real substitution is completely transparent
 - [ ] Events appear in `telemetry_events` with `event_type`, `timestamp`, and `tags` correctly populated

@@ -47,6 +47,26 @@ El bulk insert resuelve esto: todos los eventos válidos de un batch se insertan
 - Las columnas fijas (`event_type`, `timestamp`, `service`) son las que soportan las queries analíticas del día siguiente
 - La columna `tags` JSONB almacena el objeto `properties` del envelope (solo claves de la allowlist) sin necesidad de alterar el esquema
 
+### 📚 Conocimiento complementario — Validación parcial (parseo por evento)
+
+El modelo Pydantic `TelemetryEvent` es el contrato — pero **cómo** lo aplicas en FastAPI importa.
+
+**No tipes el body completo como `list[TelemetryEvent]`.** Si la firma del endpoint es algo como `batch: TelemetryBatch` con `events: list[TelemetryEvent]`, Pydantic valida todos los eventos antes de entrar al handler. Un evento inválido en el batch → FastAPI devuelve `422` para toda la petición → el frontend reintenta o descarta el lote entero. Eso contradice la aceptación parcial.
+
+Usa **parseo por evento** en su lugar:
+
+1. Acepta el envelope de forma laxa: `{ "events": [...] }` — cada elemento de la lista es un dict en bruto, no un `TelemetryEvent` ya validado
+2. Itera dentro del handler y llama a `TelemetryEvent.model_validate(raw)` en cada ítem dentro de `try/except ValidationError`
+3. Los eventos válidos van a la lista de bulk insert; los inválidos incrementan `rejected` — el bucle continúa
+4. Devuelve HTTP `200` con `{ "received", "stored", "rejected" }` siempre que el envelope sea parseable (tiene un array `events`)
+
+| Enfoque                                       | Qué pasa con un batch mixto                                 |
+| --------------------------------------------- | ----------------------------------------------------------- |
+| Body tipado (`events: list[TelemetryEvent]`)  | Toda la petición falla con `422` — no se guarda nada        |
+| Parseo por evento (`model_validate` en bucle) | Los válidos se guardan; los inválidos cuentan en `rejected` |
+
+El modelo se reutiliza sin cambios respecto a la Fase 2 — lo usas como **validador por ítem**, no como tipo del body completo.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto
@@ -95,8 +115,8 @@ El bulk insert resuelve esto: todos los eventos válidos de un batch se insertan
 ### Fase 2 — Endpoint real en FastAPI
 
 - [ ] Reemplaza el stub `POST /telemetry/events` por la implementación completa. El endpoint real debe:
-  - Aceptar el mismo body que el stub: `{ "events": list[TelemetryEvent] }`
-  - Validar cada evento contra el modelo Pydantic `TelemetryEvent` — el mismo que definiste en la fase anterior, sin modificarlo
+  - Aceptar el mismo envelope que el stub: `{ "events": [...] }` — parsear la lista de forma laxa; **no** declarar `events: list[TelemetryEvent]` como tipo del body en FastAPI (ver validación parcial arriba)
+  - Validar cada evento en bruto individualmente con `TelemetryEvent.model_validate(...)` dentro del handler — el mismo modelo de la fase anterior, sin modificarlo
   - Rechazar con error individual los eventos que no cumplan el contrato, **sin cancelar el batch** — los eventos válidos del mismo lote se persisten igualmente
   - Insertar los eventos válidos en `telemetry_events` en una sola operación de bulk insert
   - Devolver `{ "received": N, "stored": M, "rejected": R }` donde N es el total recibido, M los persistidos y R los rechazados
@@ -114,7 +134,7 @@ El bulk insert resuelve esto: todos los eventos válidos de un batch se insertan
 
 - [ ] La tabla `telemetry_events` existe en Supabase con las ocho columnas, los tres índices y sin lógica de UPDATE/DELETE
 - [ ] El endpoint `POST /telemetry/events` hace bulk insert y devuelve `{ "received", "stored", "rejected" }`
-- [ ] Los eventos inválidos se rechazan individualmente sin cancelar el batch — los válidos se persisten
+- [ ] Los eventos inválidos se rechazan individualmente sin cancelar el batch — los válidos se persisten (parseo por evento con `model_validate`, no body tipado `list[TelemetryEvent]` que devolvería `422` para todo el lote)
 - [ ] El modelo Pydantic `TelemetryEvent` no ha sido modificado respecto al proyecto anterior — se reutiliza tal cual
 - [ ] El frontend no ha cambiado ninguna línea — la sustitución stub → real es completamente transparente
 - [ ] Los eventos aparecen en `telemetry_events` con `event_type`, `timestamp` y `tags` correctamente poblados

@@ -71,11 +71,12 @@ Envelope fields `eventId`, `sessionId`, `userId`, `schemaVersion`, and `requestI
 
 ### Behaviour
 
-1. Accept `{ "events": TelemetryEvent[] }` — **same contract as stub**
-2. Validate each event with the **unchanged** `TelemetryEvent` Pydantic model from Phase 2
-3. Invalid events increment `rejected` — **do not abort** the batch
-4. Valid events collected and inserted via **one bulk insert** (single transaction)
-5. Return HTTP `200`:
+1. Accept `{ "events": [...] }` — **same envelope as stub**, but parse the list loosely (raw dicts per item)
+2. **Do not** declare `events: list[TelemetryEvent]` as the FastAPI body type — that validates the whole batch atomically and returns `422` if any single event fails
+3. Validate each raw event inside the handler with the **unchanged** `TelemetryEvent` model from Phase 2 (`TelemetryEvent.model_validate(raw)` in a loop)
+4. Invalid events increment `rejected` — **do not abort** the batch
+5. Valid events collected and inserted via **one bulk insert** (single transaction)
+6. Return HTTP `200`:
 
 ```json
 {
@@ -181,7 +182,7 @@ Expected: `{ "received": 2, "stored": 1, "rejected": 1 }` and one new row in `te
 ## Common mistakes (incomplete submissions)
 
 - One INSERT per event instead of bulk
-- Entire batch fails when one event is invalid
+- Entire batch fails when one event is invalid (typed `list[TelemetryEvent]` body → `422` before handler runs)
 - Modified `TelemetryEvent` model breaking Phase 2 contract
 - Frontend changes to parse new response body
 - Missing GIN index on `tags`
