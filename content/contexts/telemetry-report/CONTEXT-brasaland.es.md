@@ -96,7 +96,7 @@ Si instrumentaste los eventos de autenticación en D47, implementa:
 
 - **`location_id` debe venir de `tags`**, no de una columna fija. Extráelo con Pandas: `df['location_id'] = df['tags'].apply(lambda x: x.get('location_id'))` — luego filtra las filas donde sea nulo antes de agrupar.
 - **Colombia y Florida deben estar siempre segmentadas** en la métrica de consumo — Felipe necesita comparar ambos mercados. La convención de nomenclatura de `location_id` (`medellin_*`, `bogota_*` para Colombia; `miami_*` para Florida) es lo que permite esa segmentación.
-- **El KPI de ratio de merma** (ConsumptionOrders con `reason = waste/spoilage/theft`) puede añadirse como tercera función si implementas la actividad adicional — filtra por `tags->>'reason' IN ('waste', 'spoilage', 'theft')` antes de agrupar.
+- **El KPI de ratio de merma** (ConsumptionOrders con `reason = waste/spoilage/theft`) puede añadirse como tercera función si implementas la actividad adicional — carga con SQL (`event_type` + timestamp), extrae `reason` de `tags` en Pandas, luego `df[df['reason'].isin(['waste', 'spoilage', 'theft'])]` antes de agrupar.
 
 ---
 

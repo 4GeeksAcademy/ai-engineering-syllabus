@@ -69,8 +69,20 @@ def dispatch_failure_rate_per_day(start_date, end_date):
       { "date": "2025-01-13", "warehouse": "zaragoza", "count": 34 }
     ],
     "dispatch_failure_rate_per_day": [
-      { "date": "2025-01-13", "warehouse": "los_angeles", "total": 90, "failures": 3, "failure_rate": 0.033 },
-      { "date": "2025-01-13", "warehouse": "zaragoza", "total": 35, "failures": 1, "failure_rate": 0.029 }
+      {
+        "date": "2025-01-13",
+        "warehouse": "los_angeles",
+        "total": 90,
+        "failures": 3,
+        "failure_rate": 0.033
+      },
+      {
+        "date": "2025-01-13",
+        "warehouse": "zaragoza",
+        "total": 35,
+        "failures": 1,
+        "failure_rate": 0.029
+      }
     ]
   }
 }
@@ -96,7 +108,7 @@ Si instrumentaste los eventos de autenticación en D47, implementa:
 
 - **`warehouse` debe venir de `tags`**, no de una columna fija. Extráelo con Pandas: `df['warehouse'] = df['tags'].apply(lambda x: x.get('warehouse'))` — luego filtra las filas donde sea nulo antes de agrupar.
 - **Los Ángeles y Zaragoza deben estar siempre segmentadas** — Thomas Harry nunca aceptará un número global que mezcle ambos almacenes. Si `warehouse` falta en una fila, exclúyela de la métrica en lugar de agruparla bajo un valor nulo.
-- **`destination_country` para el análisis de SLA** puede extraerse de `tags` en una tercera función si implementas la actividad adicional — filtra `dispatch_order_failed` por `destination_country = 'US'` para aislar los fallos de mayor sensibilidad contractual.
+- **`destination_country` para el análisis de SLA** puede extraerse de `tags` en una tercera función si implementas la actividad adicional — carga `dispatch_order_failed` con SQL (`event_type` + timestamp), extrae `destination_country` en Pandas, luego `df[df['destination_country'] == 'US']` antes de agrupar.
 
 ---
 

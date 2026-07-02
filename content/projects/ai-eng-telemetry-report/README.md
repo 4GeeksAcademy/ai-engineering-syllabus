@@ -40,12 +40,24 @@ The deliverable is a Python analysis pipeline and an endpoint that serves the re
 The data stored in `telemetry_events` answers the question "what happened?". Business questions are different: "how many orders failed per day this week?" or "what event type is most frequent?". Answering them requires transformation — always in the same order:
 
 ```
-load → filter → convert types → group → aggregate → serve
+load (SQL) → refine (Pandas) → convert types → group → aggregate → serve
 ```
 
-**Load** events from Supabase filtering by `event_type` and `timestamp` range — do not load the entire table.
+### Where each filter belongs
 
-**Filter** by the criterion relevant to that metric: only the last 7 days, only one event type, only one warehouse or clinic.
+| Criterion                                          | Layer                | How                                                                                                                                                 |
+| -------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `timestamp` range (`start_date` / `end_date`)      | **SQL**              | `WHERE timestamp >= :start AND timestamp < :end` — bounds are **inclusive start, exclusive end** in UTC                                             |
+| `event_type` (one or many)                         | **SQL**              | `WHERE event_type = '...'` or `WHERE event_type IN (...)` — ratio metrics need every type in the denominator loaded in one query                    |
+| `tags` dimensions (`warehouse`, `office`, etc.)    | **Pandas**           | Extract from `tags`, drop rows where the dimension is null, then `groupby` — segment **all** values, do not pre-filter to a single warehouse/clinic |
+| Derived flags (`is_failure`, rates)                | **Pandas**           | Build columns after load, then `.agg()`                                                                                                             |
+| Optional `tags` predicates (e.g. `reason = waste`) | **Pandas** (default) | Filter the DataFrame after extracting the field; SQL `tags->>'...'` push-down is optional optimisation, not required                                |
+
+**Load (SQL)** — fetch only rows the metric needs. Never load the entire `telemetry_events` table into memory.
+
+**Refine (Pandas)** — after load: extract `tags` fields, drop rows with null dimensions, apply any extra row-level filters the metric requires. This is **not** a substitute for SQL `event_type` / `timestamp` filtering.
+
+**Date window ownership** — the endpoint computes the default period (last 7 days when query params are omitted) and passes `start_date` / `end_date` into every metric function. Metric functions apply that window **once in SQL**; do not re-apply a separate "last 7 days" filter in Pandas.
 
 **Convert types** — timestamps arrive as strings. Doing `groupby()` on strings that look like dates produces incorrect groups without raising any error. Always convert before grouping:
 
@@ -84,8 +96,9 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 ### Phase 1 — Analysis Pipeline with Pandas
 
 - [ ] Create `services/telemetry/analysis.py` with at least **two metric functions**, each encapsulating the calculation of one KPI from your plan. Each function must:
-  - Receive `start_date` and `end_date` parameters to bound the analysed range
-  - Load from Supabase only the events relevant to that metric (filter by `event_type` and `timestamp` range in the query, not in Python)
+  - Receive `start_date` and `end_date` parameters (computed by the endpoint — inclusive start, exclusive end, UTC)
+  - Load from Supabase only the events relevant to that metric: filter `event_type` (single value or `IN (...)` for ratio metrics) and `timestamp` range **in the SQL query**, not in Python
+  - Refine in Pandas after load: extract `tags` dimensions, drop null dimension rows, apply any metric-specific row filters
   - Load the result into a Pandas DataFrame
   - Convert `timestamp` to `datetime` with `pd.to_datetime(..., utc=True)` before any grouping operation
   - Group with `groupby()` by the appropriate temporal dimension and aggregate with `.count()`, `.sum()`, or `.mean()`
@@ -96,7 +109,8 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 ### Phase 2 — Report Endpoint
 
 - [ ] Create the `GET /telemetry/report` endpoint in FastAPI. It must:
-  - Accept optional query parameters `start_date` and `end_date` in ISO 8601 format; if not provided, default to the last 7 days
+  - Accept optional query parameters `start_date` and `end_date` in ISO 8601 format; if not provided, default to the last 7 days (`start_date = now − 7d`, `end_date = now`, both UTC)
+  - Resolve the period once and pass `start_date` / `end_date` to every metric function — functions do not apply their own default window
   - Call the metric functions from the analysis pipeline with those parameters
   - Return a JSON with the structure:
     ```json
@@ -112,14 +126,14 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 
 ### 🔵 Additional Activity — Authentication Metric
 
-- [ ] If you instrumented the authentication flow in D47, add a third metric function that calculates the **daily login failure rate**: `user_login_failed` divided by total login attempts (`user_login_failed` + `user_login_succeeded`) per day. Include it in the endpoint under the key `auth_failure_rate`.
+- [ ] If you instrumented the authentication flow in D47, add a third metric function that calculates the **daily login failure rate**: `user_login_failed` divided by total login attempts (`user_login_failed` + `user_login_succeeded`) per day. Load both event types with `event_type IN (...)` in SQL, then compute the ratio in Pandas. Include it in the endpoint under the key `auth_failure_rate`.
 
 ---
 
 ## ✅ What We Will Evaluate
 
 - [ ] The file `services/telemetry/analysis.py` exists and contains at least two independent metric functions
-- [ ] Each function follows the formula `load → filter → convert types → group → aggregate` in that order
+- [ ] Each function follows the formula `load (SQL) → refine (Pandas) → convert types → group → aggregate` in that order
 - [ ] Timestamps are converted to `datetime` with `utc=True` before any temporal `groupby()`
 - [ ] No loops are used to calculate metrics — only Pandas operations
 - [ ] Each function returns a list of dicts serialisable to JSON

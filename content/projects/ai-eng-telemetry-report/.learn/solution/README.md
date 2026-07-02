@@ -39,8 +39,12 @@ flowchart LR
 ### Required pattern per metric function
 
 ```
-load (SQL filter) → filter (if needed in DF) → convert types → groupby → aggregate → to_dict records
+load (SQL: event_type + timestamp) → refine (Pandas: tags + row filters) → convert types → groupby → aggregate → to_dict records
 ```
+
+**SQL push-down (mandatory):** `event_type` (including `IN (...)` for ratio metrics) and `timestamp` range (`>= start`, `< end`, UTC).
+
+**Pandas refine (after load):** extract `tags` dimensions, drop null dimension rows, derived columns (`is_failure`), optional `tags` predicates. Do not re-apply the date window here.
 
 ### Function signature (indicative)
 
@@ -103,7 +107,7 @@ Each must:
 
 ### Additional activity — `auth_failure_rate`
 
-Daily ratio per day:
+Load `user_login_failed` and `user_login_succeeded` with `event_type IN (...)` in SQL. Daily ratio per day in Pandas:
 
 ```
 failed / (failed + succeeded)
@@ -117,10 +121,12 @@ Grouped by `date`, values in `[0.0, 1.0]`. Include under `metrics.auth_failure_r
 
 ### Query parameters
 
-| Param        | Required | Default                 |
-| ------------ | -------- | ----------------------- |
-| `start_date` | no       | now − 7 days (ISO 8601) |
-| `end_date`   | no       | now (ISO 8601)          |
+| Param        | Required | Default                      |
+| ------------ | -------- | ---------------------------- |
+| `start_date` | no       | now − 7 days (ISO 8601, UTC) |
+| `end_date`   | no       | now (ISO 8601, UTC)          |
+
+Bounds passed to SQL: **inclusive start, exclusive end**. Endpoint resolves defaults; metric functions do not.
 
 ### Response shape
 
@@ -174,6 +180,7 @@ Grouped by `date`, values in `[0.0, 1.0]`. Include under `metrics.auth_failure_r
 
 - `groupby()` on string timestamps → silent wrong buckets
 - Loading entire `telemetry_events` table into memory
+- Filtering `event_type` or `timestamp` in Pandas instead of SQL
 - Global scalar counts without date dimension
 - Pandas logic copy-pasted inside endpoint handler on every request (no cache)
 - Loops over DataFrame rows to sum/count
@@ -184,7 +191,7 @@ Grouped by `date`, values in `[0.0, 1.0]`. Include under `metrics.auth_failure_r
 ## Evaluation checklist
 
 - [ ] `services/telemetry/analysis.py` with ≥2 independent metric functions
-- [ ] Pipeline order: load → filter → convert → group → aggregate
+- [ ] Pipeline order: load (SQL) → refine (Pandas) → convert → group → aggregate
 - [ ] `pd.to_datetime(..., utc=True)` before temporal groupby
 - [ ] Pandas-only aggregation (no metric loops)
 - [ ] Returns `list[dict]` JSON-serialisable

@@ -96,7 +96,7 @@ If you instrumented authentication events in D47, implement:
 
 - **`location_id` must come from `tags`**, not from a fixed column. Use Pandas to extract it: `df['location_id'] = df['tags'].apply(lambda x: x.get('location_id'))` — then filter out rows where it is null before grouping.
 - **Separate Colombia and Florida** in the consumption metric — Felipe needs to compare both markets. The `location_id` naming convention (`medellin_*`, `bogota_*` for Colombia; `miami_*` for Florida) is what enables this segmentation.
-- **The waste ratio KPI** (ConsumptionOrders with `reason = waste/spoilage/theft`) can be added as a third function if you implement the additional activity — filter by `tags->>'reason' IN ('waste', 'spoilage', 'theft')` before grouping.
+- **The waste ratio KPI** (ConsumptionOrders with `reason = waste/spoilage/theft`) can be added as a third function if you implement the additional activity — load via SQL (`event_type` + timestamp), extract `reason` from `tags` in Pandas, then `df[df['reason'].isin(['waste', 'spoilage', 'theft'])]` before grouping.
 
 ---
 

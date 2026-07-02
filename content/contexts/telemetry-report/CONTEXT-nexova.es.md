@@ -95,7 +95,7 @@ Si instrumentaste los eventos de autenticación en D47, implementa:
 
 - **`office` debe venir de `tags`**, no de una columna fija. Extráelo con Pandas: `df['office'] = df['tags'].apply(lambda x: x.get('office'))` — luego filtra las filas donde sea nulo antes de agrupar.
 - **Valencia y Miami deben estar siempre segmentadas** en la métrica de asignaciones — Sergio necesita comparar ambas oficinas. Nunca agregues las dos oficinas en un único número sin dimensión de agrupamiento.
-- **Las asignaciones de licencias de software** (`asset_category = software_licence` en `tags`) pueden aislarse como filtro en una tercera función si implementas la actividad adicional — esto alimenta el KPI de auditoría de conformidad de licencias.
+- **Las asignaciones de licencias de software** (`asset_category = software_licence` en `tags`) pueden aislarse en una tercera función si implementas la actividad adicional — carga eventos relevantes con SQL (`event_type` + timestamp), extrae `asset_category` en Pandas, luego `df[df['asset_category'] == 'software_licence']` antes de agrupar.
 
 ---
 

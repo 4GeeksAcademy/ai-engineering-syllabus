@@ -32,7 +32,7 @@ _These instructions are also available in [English](./README.md)._
 
 - [ ] `checkouts_per_day(start_date, end_date)` → lista de `{ date, count }`
 - [ ] `checkout_failures_per_day(start_date, end_date)` → lista de `{ date, count }`
-- [ ] Carga con filtro SQL en `event_type` + rango `timestamp`
+- [ ] Carga con filtro SQL en `event_type` (+ `IN` para métricas de ratio) y rango `timestamp`; refina `tags` en Pandas
 - [ ] `pd.to_datetime(..., utc=True)` antes de `groupby('date')`
 - [ ] Sin loops por filas para agregar
 

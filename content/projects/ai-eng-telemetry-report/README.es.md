@@ -40,12 +40,24 @@ El entregable es un pipeline de análisis en Python y un endpoint que sirve el r
 Los datos almacenados en `telemetry_events` responden la pregunta "¿qué ocurrió?". Las preguntas del negocio son distintas: "¿cuántas órdenes fallaron por día esta semana?" o "¿qué tipo de evento es más frecuente?". Responderlas requiere transformación — siempre en el mismo orden:
 
 ```
-cargar → filtrar → convertir tipos → agrupar → agregar → servir
+cargar (SQL) → refinar (Pandas) → convertir tipos → agrupar → agregar → servir
 ```
 
-**Cargar** los eventos desde Supabase filtrando por `event_type` y rango de `timestamp` — no cargues toda la tabla.
+### Dónde va cada filtro
 
-**Filtrar** por el criterio relevante para esa métrica: solo los últimos 7 días, solo un tipo de evento, solo un almacén o clínica.
+| Criterio                                               | Capa                     | Cómo                                                                                                                                               |
+| ------------------------------------------------------ | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Rango `timestamp` (`start_date` / `end_date`)          | **SQL**                  | `WHERE timestamp >= :start AND timestamp < :end` — límites **inicio inclusivo, fin exclusivo** en UTC                                              |
+| `event_type` (uno o varios)                            | **SQL**                  | `WHERE event_type = '...'` o `WHERE event_type IN (...)` — métricas de ratio necesitan todos los tipos del denominador en una sola query           |
+| Dimensiones en `tags` (`warehouse`, `office`, etc.)    | **Pandas**               | Extraer de `tags`, descartar filas con dimensión nula, luego `groupby` — segmentar **todos** los valores, no pre-filtrar a un solo almacén/clínica |
+| Flags derivados (`is_failure`, tasas)                  | **Pandas**               | Crear columnas tras la carga, luego `.agg()`                                                                                                       |
+| Predicados opcionales en `tags` (ej. `reason = waste`) | **Pandas** (por defecto) | Filtrar el DataFrame tras extraer el campo; push-down SQL con `tags->>'...'` es optimización opcional, no obligatoria                              |
+
+**Cargar (SQL)** — traer solo las filas que la métrica necesita. Nunca cargar la tabla `telemetry_events` entera en memoria.
+
+**Refinar (Pandas)** — tras la carga: extraer campos de `tags`, descartar filas con dimensiones nulas, aplicar filtros adicionales a nivel de fila. Esto **no** sustituye el filtrado SQL por `event_type` / `timestamp`.
+
+**Propiedad de la ventana temporal** — el endpoint calcula el periodo por defecto (últimos 7 días si no hay query params) y pasa `start_date` / `end_date` a cada función de métrica. Las funciones aplican esa ventana **una sola vez en SQL**; no re-apliquen un filtro "últimos 7 días" en Pandas.
 
 **Convertir tipos** — los timestamps llegan como strings. Hacer `groupby()` sobre strings que parecen fechas produce grupos incorrectos sin lanzar ningún error. Convierte siempre antes de agrupar:
 
@@ -84,8 +96,9 @@ MÉTRICA = AGREGACIÓN(columna) agrupada por DIMENSIÓN
 ### Fase 1 — Pipeline de análisis con Pandas
 
 - [ ] Crea `services/telemetry/analysis.py` con al menos **dos funciones de métrica**, cada una encapsulando el cálculo de un KPI de tu plan. Cada función debe:
-  - Recibir parámetros `start_date` y `end_date` para acotar el rango analizado
-  - Cargar desde Supabase solo los eventos relevantes para esa métrica (filtrar por `event_type` y rango de `timestamp` en la query, no en Python)
+  - Recibir parámetros `start_date` y `end_date` (calculados por el endpoint — inicio inclusivo, fin exclusivo, UTC)
+  - Cargar desde Supabase solo los eventos relevantes: filtrar `event_type` (valor único o `IN (...)` para métricas de ratio) y rango de `timestamp` **en la query SQL**, no en Python
+  - Refinar en Pandas tras la carga: extraer dimensiones de `tags`, descartar filas con dimensión nula, aplicar filtros adicionales de la métrica
   - Cargar el resultado en un DataFrame de Pandas
   - Convertir `timestamp` a `datetime` con `pd.to_datetime(..., utc=True)` antes de cualquier operación de agrupamiento
   - Agrupar con `groupby()` por la dimensión temporal apropiada y agregar con `.count()`, `.sum()` o `.mean()`
@@ -96,7 +109,8 @@ MÉTRICA = AGREGACIÓN(columna) agrupada por DIMENSIÓN
 ### Fase 2 — Endpoint de reporte
 
 - [ ] Crea el endpoint `GET /telemetry/report` en FastAPI. Debe:
-  - Aceptar parámetros opcionales de query `start_date` y `end_date` en formato ISO 8601; si no se proporcionan, usar los últimos 7 días por defecto
+  - Aceptar parámetros opcionales de query `start_date` y `end_date` en formato ISO 8601; si no se proporcionan, usar los últimos 7 días por defecto (`start_date = now − 7d`, `end_date = now`, ambos UTC)
+  - Resolver el periodo una vez y pasar `start_date` / `end_date` a cada función de métrica — las funciones no aplican su propia ventana por defecto
   - Llamar a las funciones de métrica del pipeline de análisis con esos parámetros
   - Devolver un JSON con la estructura:
     ```json
@@ -112,14 +126,14 @@ MÉTRICA = AGREGACIÓN(columna) agrupada por DIMENSIÓN
 
 ### 🔵 Actividad adicional — Métrica de autenticación
 
-- [ ] Si instrumentaste el flujo de autenticación en D47, añade una tercera función de métrica que calcule la **tasa diaria de fallos de login**: `user_login_failed` dividido entre el total de intentos (`user_login_failed` + `user_login_succeeded`) por día. Inclúyela en el endpoint bajo la clave `auth_failure_rate`.
+- [ ] Si instrumentaste el flujo de autenticación en D47, añade una tercera función de métrica que calcule la **tasa diaria de fallos de login**: `user_login_failed` dividido entre el total de intentos (`user_login_failed` + `user_login_succeeded`) por día. Carga ambos tipos con `event_type IN (...)` en SQL, luego calcula el ratio en Pandas. Inclúyela en el endpoint bajo la clave `auth_failure_rate`.
 
 ---
 
 ## ✅ Qué Evaluaremos
 
 - [ ] El archivo `services/telemetry/analysis.py` existe y contiene al menos dos funciones de métrica independientes
-- [ ] Cada función sigue la fórmula `cargar → filtrar → convertir tipos → agrupar → agregar` en ese orden
+- [ ] Cada función sigue la fórmula `cargar (SQL) → refinar (Pandas) → convertir tipos → agrupar → agregar` en ese orden
 - [ ] Los timestamps se convierten a `datetime` con `utc=True` antes de cualquier `groupby()` temporal
 - [ ] No hay loops para calcular métricas — solo operaciones de Pandas
 - [ ] Cada función devuelve una lista de dicts serializable a JSON

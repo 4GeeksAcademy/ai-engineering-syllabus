@@ -95,7 +95,7 @@ If you instrumented authentication events in D47, implement:
 
 - **`office` must come from `tags`**, not from a fixed column. Use Pandas to extract it: `df['office'] = df['tags'].apply(lambda x: x.get('office'))` — then filter out rows where it is null before grouping.
 - **Valencia and Miami must be segmented** in the assignments metric — Sergio needs to compare both offices. Never aggregate across both offices without a grouping dimension.
-- **Software licence assignments** (`asset_category = software_licence` in `tags`) can be isolated as a filter in a third function if you implement the additional activity — this feeds the licence compliance audit trail KPI.
+- **Software licence assignments** (`asset_category = software_licence` in `tags`) can be isolated in a third function if you implement the additional activity — load relevant events via SQL (`event_type` + timestamp), extract `asset_category` in Pandas, then filter `df[df['asset_category'] == 'software_licence']` before grouping.
 
 ---
 
