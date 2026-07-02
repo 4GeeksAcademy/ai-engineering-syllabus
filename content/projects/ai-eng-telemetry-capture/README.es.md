@@ -103,10 +103,13 @@ El servicio de captura en el frontend no dispara una llamada HTTP por cada event
 - [ ] El endpoint stub `POST /telemetry/events` existe, acepta arrays con el modelo `TelemetryEvent` y devuelve `{ "received": N }`
 - [ ] El modelo Pydantic `TelemetryEvent` refleja el envelope estándar del plan de la Fase 1 con todos sus campos
 - [ ] La URL del endpoint se lee de `NEXT_PUBLIC_TELEMETRY_ENDPOINT` — no está hardcoded en el código
+- [ ] El backend declara `TELEMETRY_ENDPOINT` en su configuración de entorno para establecer el patrón desde el inicio
 - [ ] El `TelemetryService` implementa cola local, batch+debounce (10s / 20 eventos), flush con `sendBeacon` y retry con backoff
 - [ ] El servicio genera `sessionId` y `timestamp` automáticamente — el componente que llama a `track()` no los pasa manualmente
 - [ ] No hay llamadas directas a `fetch`/`axios` para telemetría fuera del `TelemetryService`
 - [ ] Los eventos del flujo de inventario están instrumentados respetando la allowlist de propiedades de cada evento
+- [ ] Los intentos fallidos de pedido (error de validación o stock insuficiente) se rastrean desde los bloques `catch`
+- [ ] La visualización de la lista de productos/stock se rastrea cuando la página de productos carga
 - [ ] No hay PII (email, nombre, contraseña) en ningún evento enviado
 - [ ] Las DevTools de red muestran batches llegando al endpoint con el formato correcto
 
