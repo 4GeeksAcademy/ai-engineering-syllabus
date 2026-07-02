@@ -70,7 +70,7 @@ Un flow que crece sin estructura acaba siendo tan difícil de mantener como el s
 - [ ] Verifica el deployment desde la CLI: `prefect deployment run <nombre-del-flow>/<nombre-del-deployment>` debe arrancar el flow sin errores.
 - [ ] Documenta en un comentario o en el propio `data/pipelines/PIPELINE_DESIGN.md` cómo pausar y reanudar el schedule: `prefect deployment pause-schedule` / `prefect deployment resume-schedule`.
 
-⚠️ **IMPORTANTE:** Los nombres de subflows, tasks y tests deben seguir el mismo vocabulario de dominio definido en tu `CONTEXT-empresa.md`. Un subflow llamado `extract_data` no es aceptable si tu empresa tiene entidades concretas — llámalo `extract_sales_events` o el nombre que corresponda.
+⚠️ **IMPORTANTE:** Los nombres de subflows, tasks y tests deben seguir el mismo vocabulario de dominio definido en `data/pipelines/PIPELINE_DESIGN.md`. Un subflow llamado `extract_data` no es aceptable si tu empresa tiene entidades concretas — llámalo `extract_sales_events` o el nombre que corresponda.
 
 ---
 
@@ -83,7 +83,7 @@ Un flow que crece sin estructura acaba siendo tan difícil de mantener como el s
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` pasa sin errores.
 - [ ] El deployment de Prefect tiene infraestructura Docker configurada como work pool y un schedule definido.
 - [ ] `prefect deployment run <nombre-del-flow>/<nombre-del-deployment>` arranca el flow sin errores.
-- [ ] Los nombres de subflows, tasks y tests reflejan el vocabulario de dominio del `CONTEXT-empresa.md`.
+- [ ] Los nombres de subflows, tasks y tests reflejan el vocabulario de dominio de `data/pipelines/PIPELINE_DESIGN.md`.
 
 ---
 

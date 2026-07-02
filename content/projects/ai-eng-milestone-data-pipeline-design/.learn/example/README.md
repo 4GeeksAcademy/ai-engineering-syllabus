@@ -16,13 +16,13 @@ In one session, draft a **mini `data/PIPELINE_DESIGN.md`** — no code.
 
 | Graded project (`ai-eng-milestone-data-pipeline-design`) | This class example                       |
 | -------------------------------------------------------- | ---------------------------------------- |
-| Company CONTEXT + inventory monorepo                     | Fictional GreenPatch CONTEXT (below)     |
+| Company monorepo                                         | Fictional GreenPatch scenario (below)    |
 | Full CTO brief + Prefect mapping                         | Same section headings, smaller narrative |
 | Commit to student monorepo                               | Local markdown only                      |
 
 ---
 
-## Mini context (use instead of CONTEXT-company.md)
+## Scenario data
 
 **Telemetry already captured:**
 
@@ -93,7 +93,7 @@ Add at least one more field with type and justification.
 
 ## Verify together
 
-- [ ] Current State references real events from the mini context — not generic placeholders.
+- [ ] Current State references real events from the scenario data — not generic placeholders.
 - [ ] Diagram shows three ETL stages with table names.
 - [ ] Idempotency describes concrete second-run behavior.
 - [ ] Prefect names map to pipeline stages, not abstract concepts only.

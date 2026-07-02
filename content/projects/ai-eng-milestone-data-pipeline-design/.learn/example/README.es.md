@@ -16,13 +16,13 @@ En una sesión, redacta un **mini `data/PIPELINE_DESIGN.md`** — sin código.
 
 | Proyecto evaluable (`ai-eng-milestone-data-pipeline-design`) | Este ejemplo de clase                              |
 | ------------------------------------------------------------ | -------------------------------------------------- |
-| CONTEXT de empresa + monorepo de inventario                  | CONTEXT ficticio GreenPatch (abajo)                |
+| Monorepo de la empresa                                       | Escenario ficticio GreenPatch (abajo)              |
 | Brief completo del CTO + mapa Prefect                        | Mismos encabezados de sección, narrativa más corta |
 | Commit al monorepo del estudiante                            | Solo Markdown local                                |
 
 ---
 
-## Mini contexto (usar en lugar de CONTEXT-empresa.md)
+## Datos del escenario
 
 **Telemetría ya capturada:**
 
@@ -93,7 +93,7 @@ Añade al menos un campo más con tipo y justificación.
 
 ## Verificar juntos
 
-- [ ] Estado actual referencia eventos reales del mini contexto — no placeholders genéricos.
+- [ ] Estado actual referencia eventos reales de los datos del escenario — no placeholders genéricos.
 - [ ] Diagrama muestra tres etapas ETL con nombres de tablas.
 - [ ] Idempotencia describe comportamiento concreto en la segunda ejecución.
 - [ ] Nombres Prefect mapean a etapas del pipeline, no solo conceptos abstractos.

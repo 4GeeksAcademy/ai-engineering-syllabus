@@ -7,11 +7,11 @@ This reference solution defines the expected quality bar for deliverables in the
 - Prefect deployment with Docker work pool and schedule
 - Schedule pause/resume documented in `PIPELINE_DESIGN.md` or inline comments
 
-The deliverable is **production-ready orchestration** built on the Part 2 pipeline. Generic subflow or test names that ignore CONTEXT entity vocabulary should be treated as incomplete.
+The deliverable is **production-ready orchestration** built on the Part 2 pipeline. Generic subflow or test names that ignore company domain vocabulary should be treated as incomplete.
 
-## Alignment with company context
+## Alignment with company domain
 
-All subflow names, task names, and test names must come from the student's assigned **CONTEXT-company.md** and their `PIPELINE_DESIGN.md`. The examples below use inventory telemetry naming — students must substitute their company-specific names.
+All subflow names, task names, and test names must come from the student's `PIPELINE_DESIGN.md` and monorepo domain vocabulary. The examples below use inventory telemetry naming — students must substitute their company-specific names.
 
 ---
 
@@ -192,7 +192,7 @@ prefect deployment resume-schedule telemetry-etl-flow/nightly-telemetry-etl
 - Fewer than three transformation tests, or no defensive test for malformed input
 - Deployment missing Docker work pool or schedule
 - `prefect deployment run` fails due to missing env vars in work pool template
-- Generic names (`extract_data`, `test_transform`) instead of CONTEXT vocabulary
+- Generic names (`extract_data`, `test_transform`) instead of company domain vocabulary
 - Optional notification subflow failure aborts the entire main flow
 
 ---
@@ -207,5 +207,5 @@ prefect deployment resume-schedule telemetry-etl-flow/nightly-telemetry-etl
 - [ ] Prefect deployment uses Docker work pool with defined schedule
 - [ ] `prefect deployment run <flow>/<deployment>` succeeds
 - [ ] Schedule pause/resume documented
-- [ ] Subflow, task, and test names match CONTEXT-company.md vocabulary
+- [ ] Subflow, task, and test names match `PIPELINE_DESIGN.md` vocabulary
 - [ ] Commit message `feat: refactor pipeline into subflows and add unit tests`

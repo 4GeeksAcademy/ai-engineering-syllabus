@@ -6,9 +6,9 @@ This reference solution defines the expected quality bar for deliverables in the
 
 The deliverable is **design documentation only** — no Prefect flows, Python scripts, migrations, or runnable ETL code. Another engineer should be able to implement the pipeline from this document without follow-up questions.
 
-## Alignment with company context
+## Alignment with company domain
 
-All event names, table names, KPIs, and business constraints must come from the student's assigned **CONTEXT-company.md**. Generic placeholders that ignore sector-specific telemetry or entity naming should be treated as incomplete.
+All event names, table names, KPIs, and business constraints must come from the student's company monorepo and existing telemetry work. Generic placeholders that ignore sector-specific telemetry or entity naming should be treated as incomplete.
 
 ---
 
@@ -22,7 +22,7 @@ A complete design should include at least:
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Current State**           | Telemetry events already captured, storage location (e.g. Supabase table), Pandas reports already generated, and explicit limitations (no run log, no idempotent re-run, no dedup on updates). |
 | **Purpose**                 | One concrete sentence tying the pipeline to company business value — not only "move data to a warehouse."                                                                                      |
-| **Extraction format**       | Source (table/API/file), format, refresh frequency, and volume expectations grounded in CONTEXT.                                                                                               |
+| **Extraction format**       | Source (table/API/file), format, refresh frequency, and volume expectations grounded in the monorepo data model.                                                                               |
 | **Data flow diagram**       | Mermaid or text diagram with extract → transform → load using real table/entity names from the company.                                                                                        |
 | **Update / dedup strategy** | Concrete mechanism for sources that insert updates as new rows (upsert, latest-by-timestamp, control table).                                                                                   |
 | **Idempotency strategy**    | What happens on the **second run** after a load-phase failure — staging, transactional merge, checkpoints.                                                                                     |
@@ -59,7 +59,7 @@ flowchart LR
 
 - Extract uses a **watermark** (`last_processed_at` or `pipeline_runs` checkpoint) — not full-table scans every run.
 - Dedup/upsert happens **after** staging, **before** reporting merge.
-- Load phase is a single transactional upsert keyed on business identifiers from CONTEXT.
+- Load phase is a single transactional upsert keyed on business identifiers from the company domain.
 
 ---
 
@@ -146,7 +146,7 @@ Tasks should align with ETL stages in the data flow diagram — not arbitrary mi
 
 ## Common mistakes (incomplete submissions)
 
-- Generic table names (`events`, `metrics`) instead of CONTEXT entity names.
+- Generic table names (`events`, `metrics`) instead of company-specific entity names.
 - Data flow diagram with only two stages or missing real source/destination names.
 - Idempotency described as a wish ("should be idempotent") without second-run behavior.
 - Execution log listing field names without types or audit justification.
@@ -162,12 +162,12 @@ Tasks should align with ETL stages in the data flow diagram — not arbitrary mi
 - [ ] Current State documents captured events, storage, existing Pandas reports, and limitations.
 - [ ] Purpose is one sentence mentioning company business value.
 - [ ] Extraction format names real source, format, and refresh cadence.
-- [ ] Diagram shows extract → transform → load with CONTEXT table/entity names.
+- [ ] Diagram shows extract → transform → load with real table/entity names from the company.
 - [ ] Update/dedup strategy uses a concrete mechanism, not generic DISTINCT.
 - [ ] Idempotency describes second run after load failure.
 - [ ] Execution log has ≥5 fields with name, type, and justification.
 - [ ] Prefect mapping: ≥2 flows, ≥3 tasks, states, and ≥1 block.
-- [ ] Design consistent with telemetry events and KPIs from CONTEXT-company.md.
+- [ ] Design consistent with telemetry events and KPIs already captured in the monorepo.
 - [ ] Commit message `feat: add pipeline design document`.
 
 ---

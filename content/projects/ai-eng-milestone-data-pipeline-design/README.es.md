@@ -11,10 +11,6 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de comenzar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir cualquier cosa — define los datos específicos de tu empresa, los eventos de telemetría que has capturado y los KPIs que ya has calculado.
-
----
-
 ## 🎯 El Reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
@@ -46,7 +42,7 @@ Estos tres atributos son los que tu documento de diseño debe demostrar que has 
 1. Haz un `git pull` en tu fork del monorepo para asegurarte de tener el estado más reciente.
 2. Explora la carpeta [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) del monorepo — contiene las subcarpetas `raw/`, `process/`, `pipelines/` y `eval/` que usarás a lo largo de este módulo.
 3. Crea el archivo `data/pipelines/PIPELINE_DESIGN.md` — ahí va tu documento de diseño.
-4. Lee tu `CONTEXT-empresa.md` para identificar qué eventos de telemetría tienes disponibles, qué KPIs ya calculas y cuáles son los requisitos específicos de tu empresa.
+4. Revisa los eventos de telemetría, KPIs y entidades de dominio que ya tienes en el monorepo para identificar qué datos debe procesar tu pipeline.
 
 > **Nota sobre las herramientas:** Hoy introduces **Prefect** como framework de orquestación — flows, tasks, estados y bloques de configuración. Tu documento de diseño debe reflejar cómo organizarías tu pipeline usando estos conceptos, aunque la implementación en código llega en los próximos días.
 
@@ -76,7 +72,7 @@ Estos tres atributos son los que tu documento de diseño debe demostrar que has 
 - [ ] Mapea tu diseño a los conceptos de Prefect: identifica cuáles serían tus **flows**, cuáles serían tus **tasks** y qué **estados** (Running, Completed, Failed) son relevantes para tu pipeline.
 - [ ] Indica qué configuración o credenciales gestionarías como **bloques de Prefect** (por ejemplo, la conexión a Supabase).
 
-⚠️ **IMPORTANTE:** El diseño debe ser específico para los datos de tu empresa. Los nombres de eventos, KPIs, tablas y entidades deben coincidir con lo especificado en tu `CONTEXT-empresa.md`. Un diseño genérico que ignore el contexto de tu empresa no será aceptado.
+⚠️ **IMPORTANTE:** El diseño debe ser específico para los datos de tu empresa. Los nombres de eventos, KPIs, tablas y entidades deben coincidir con el vocabulario de dominio de tu monorepo. Un diseño genérico que ignore el modelo de datos de tu empresa no será aceptado.
 
 ---
 
@@ -89,7 +85,7 @@ Estos tres atributos son los que tu documento de diseño debe demostrar que has 
 - [ ] La estrategia de idempotencia es explícita: describe qué ocurre en la segunda ejecución tras un fallo en la carga, no solo qué sería deseable.
 - [ ] El log de ejecución especifica al menos cinco campos con el nombre del campo, el tipo de dato y la justificación de por qué ese campo es necesario para auditoría.
 - [ ] El mapa a Prefect identifica al menos dos flows y tres tasks con nombres concretos alineados con las etapas del pipeline.
-- [ ] El diseño es coherente con los eventos de telemetría y KPIs definidos en el `CONTEXT-empresa.md`.
+- [ ] El diseño es coherente con los eventos de telemetría y KPIs ya capturados en tu monorepo.
 
 ---
 

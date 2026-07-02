@@ -11,10 +11,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing anything — it defines the telemetry events you have already captured, the KPIs you already calculate, and the company-specific constraints for your design.
-
----
-
 ## 🎯 The Challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
@@ -46,7 +42,7 @@ These three attributes are what your design document must demonstrate you have t
 1. Run `git pull` on your monorepo fork to make sure you have the latest state.
 2. Explore the [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) folder in the monorepo — it contains the subfolders `raw/`, `process/`, `pipelines/`, and `eval/` that you will use throughout this module.
 3. Create the file `data/pipelines/PIPELINE_DESIGN.md` — that is where your design document goes.
-4. Read your `CONTEXT-company.md` to identify which telemetry events you have available, which KPIs you already calculate, and what the specific requirements of your company are.
+4. Review the telemetry events, KPIs, and domain entities already in your monorepo to identify what data your pipeline must process.
 
 > **Note on tooling:** Today you are introduced to **Prefect** as an orchestration framework — flows, tasks, states, and configuration blocks. Your design document should reflect how you would organize your pipeline using these concepts, even though the code implementation comes over the next days.
 
@@ -76,7 +72,7 @@ These three attributes are what your design document must demonstrate you have t
 - [ ] Map your design to Prefect concepts: identify which parts would be **flows**, which would be **tasks**, and which **states** (Running, Completed, Failed) are relevant for your pipeline.
 - [ ] Indicate which configuration or credentials you would manage as **Prefect blocks** (for example, the connection to Supabase).
 
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your design must match what is specified in your `CONTEXT-company.md`. A generic design that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your design must match your company's domain vocabulary in the monorepo. A generic design that ignores your company's data model will not be accepted.
 
 ---
 
@@ -89,7 +85,7 @@ These three attributes are what your design document must demonstrate you have t
 - [ ] The idempotency strategy is explicit: it describes what happens on the second run after a load-phase failure, not just what would be desirable.
 - [ ] The execution log specifies at least five fields with the field name, data type, and justification for why that field is necessary for auditing.
 - [ ] The Prefect mapping identifies at least two flows and three tasks with concrete names aligned with the pipeline stages.
-- [ ] The design is consistent with the telemetry events and KPIs defined in the `CONTEXT-company.md`.
+- [ ] The design is consistent with the telemetry events and KPIs already captured in your monorepo.
 
 ---
 

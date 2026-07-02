@@ -70,7 +70,7 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 - [ ] Verify the deployment from the CLI: `prefect deployment run <flow-name>/<deployment-name>` must start the flow without errors.
 - [ ] Document in a comment or in `data/pipelines/PIPELINE_DESIGN.md` how to pause and resume the schedule: `prefect deployment pause-schedule` / `prefect deployment resume-schedule`.
 
-⚠️ **IMPORTANT:** Subflow names, task names, and test names must follow the same domain vocabulary defined in your `CONTEXT-company.md`. A subflow named `extract_data` is not acceptable if your company has concrete entities — name it `extract_sales_events` or whatever fits your domain.
+⚠️ **IMPORTANT:** Subflow names, task names, and test names must follow the same domain vocabulary defined in `data/pipelines/PIPELINE_DESIGN.md`. A subflow named `extract_data` is not acceptable if your company has concrete entities — name it `extract_sales_events` or whatever fits your domain.
 
 ---
 
@@ -83,7 +83,7 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes without errors.
 - [ ] The Prefect deployment has Docker configured as the work pool infrastructure and a defined schedule.
 - [ ] `prefect deployment run <flow-name>/<deployment-name>` starts the flow without errors.
-- [ ] Subflow names, task names, and test names reflect the domain vocabulary from `CONTEXT-company.md`.
+- [ ] Subflow names, task names, and test names reflect the domain vocabulary from `data/pipelines/PIPELINE_DESIGN.md`.
 
 ---
 
