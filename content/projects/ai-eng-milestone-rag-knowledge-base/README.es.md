@@ -65,6 +65,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 | Endpoint HTTP             | `services/routers/` o `services/api/` |
 | UI de consulta            | `uis/`                                |
 | Pruebas unitarias         | `tests/pipelines/test_rag.py`         |
+| Documento de diseño RAG   | `docs/rag/rag-design.md`              |
 
 ---
 
@@ -106,6 +107,13 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Las pruebas de `query()` deben simular `retrieve()` y el LLM de generación. Verificar: la función devuelve la salida del modelo; no devuelve texto crudo de chunks sin pasar por generación.
 - [ ] Las pruebas pasan con `python -m pytest tests/pipelines/test_rag.py`.
 
+### Fase 6 — Documento de diseño RAG (`docs/rag/`)
+
+- [ ] Crear `docs/rag/rag-design.md` en tu monorepo. Otro desarrollador debe poder leerlo y entender tu stack RAG sin revisar el código.
+- [ ] **Proceso RAG:** describe el flujo de extremo a extremo en tu implementación — desde los documentos fuente pasando por `setup()` → indexación en Qdrant → `retrieve()` al consultar → armado del prompt → LLM de generación → respuesta final. Incluye un diagrama simple o un flujo numerado si ayuda.
+- [ ] **Estrategia de chunking:** documenta cómo fragmentaste los documentos fuente de tu empresa (p. ej. por nivel de encabezado, sección semántica, tamaño fijo con solapamiento o híbrido). Explica _por qué_ esa estrategia encaja con tu corpus — qué unidades semánticas preservaste, cómo evitaste cortar reglas o condiciones por la mitad, y tamaño aproximado o conteo de chunks por documento.
+- [ ] **Prácticas de embeddings:** indica el modelo de embeddings elegido, por qué es distinto del LLM de generación, y cómo usas `embed()` de forma consistente al indexar y al consultar. Anota la dimensión del vector, la métrica de distancia en Qdrant, tu umbral `min_score` y cómo lo afinaste, y cualquier normalización o preprocesado del texto antes de embeber.
+
 ---
 
 ## ✅ Lo Que Evaluaremos
@@ -119,6 +127,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] La interfaz permite ingresar una consulta y muestra la respuesta obtenida del endpoint.
 - [ ] Las pruebas unitarias cubren `retrieve()` y `query()` con mocks; pasan en local.
 - [ ] Los valores específicos de la empresa usados en la implementación coinciden con el `CONTEXT-company.md` asignado.
+- [ ] `docs/rag/rag-design.md` explica el proceso RAG, la estrategia de chunking y las prácticas de embeddings aplicadas — con decisiones justificadas para los documentos de tu empresa.
 
 ---
 
@@ -131,6 +140,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
    - La respuesta que generó tu sistema
    - Una captura de la UI de consulta mostrando el mismo intercambio
    - El nombre de la colección Qdrant y el conteo de chunks tras `setup()`
+   - Un enlace a `docs/rag/rag-design.md` y un resumen de una línea de tu estrategia de chunking
 4. Espera el **sign-off** de tu tech lead antes de considerar el hito cerrado.
 
 ---

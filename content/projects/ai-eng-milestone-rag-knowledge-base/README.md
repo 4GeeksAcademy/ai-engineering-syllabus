@@ -65,6 +65,7 @@ Suggested file layout (names may vary; responsibilities must not):
 | HTTP endpoint          | `services/routers/` or `services/api/` |
 | Query UI               | `uis/`                                 |
 | Unit tests             | `tests/pipelines/test_rag.py`          |
+| RAG design document    | `docs/rag/rag-design.md`               |
 
 ---
 
@@ -106,6 +107,13 @@ Suggested file layout (names may vary; responsibilities must not):
 - [ ] `query()` tests must mock `retrieve()` and the generation LLM. Verify: the function returns the model output; it does not return raw chunk text without passing through generation.
 - [ ] Tests pass with `python -m pytest tests/pipelines/test_rag.py`.
 
+### Phase 6 — RAG design document (`docs/rag/`)
+
+- [ ] Create `docs/rag/rag-design.md` in your monorepo. Another developer should be able to read it and understand your RAG stack without digging through the code.
+- [ ] **RAG process:** describe the end-to-end flow in your implementation — from source documents through `setup()` → indexing in Qdrant → `retrieve()` at query time → prompt assembly → generation LLM → final answer. Include a simple diagram or numbered flow if it helps.
+- [ ] **Chunking strategy:** document how you split your company's source documents (e.g. by heading level, semantic section, fixed size with overlap, or a hybrid). Explain _why_ that strategy fits your corpus — what semantic units you preserved, how you avoided cutting rules or conditions in half, and approximate chunk size or count per document.
+- [ ] **Embedding practices:** name the embedding model you chose, why it is separate from the generation LLM, and how you use `embed()` consistently at index time and query time. Note vector dimension, distance metric in Qdrant, your `min_score` threshold and how you tuned it, and any normalization or preprocessing applied to text before embedding.
+
 ---
 
 ## ✅ What We Will Evaluate
@@ -119,6 +127,7 @@ Suggested file layout (names may vary; responsibilities must not):
 - [ ] The interface allows a user to enter a query and displays the answer obtained from the endpoint.
 - [ ] Unit tests cover `retrieve()` and `query()` with mocks; they pass locally.
 - [ ] Company-specific values used in the implementation match the assigned `CONTEXT-company.md`.
+- [ ] `docs/rag/rag-design.md` explains the RAG process, chunking strategy, and embedding practices applied — with choices justified for your company's documents.
 
 ---
 
@@ -131,6 +140,7 @@ Suggested file layout (names may vary; responsibilities must not):
    - The answer your system generated
    - A screenshot of the query UI showing the same exchange
    - The Qdrant collection name and chunk count after `setup()`
+   - A link to `docs/rag/rag-design.md` and a one-line summary of your chunking strategy
 4. Wait for your tech lead's **sign-off** before considering the milestone closed.
 
 ---
