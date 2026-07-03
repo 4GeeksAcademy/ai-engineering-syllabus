@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 7 — RAG & Knowledge Base",
+    "es": "Hito 7 — RAG y Base de Conocimiento"
+  },
+  "description": {
+    "en": "Build a modular RAG knowledge base in your company monorepo: chunk and index CONTEXT documents in Qdrant with setup() and embed(), implement retrieve() with similarity threshold and query() with a generation LLM (no LangChain), expose POST /knowledge/query via FastAPI, add a minimal query UI, and unit-test retrieve() and query() — answers always model-generated from retrieved context, never raw vector hits.",
+    "es": "Construye una base de conocimiento RAG modular en el monorepo de tu empresa: fragmenta e indexa documentos del CONTEXT en Qdrant con setup() y embed(), implementa retrieve() con umbral de similitud y query() con un LLM de generación (sin LangChain), expón POST /knowledge/query vía FastAPI, añade una UI mínima de consulta y prueba unitariamente retrieve() y query() — respuestas siempre generadas por modelo desde contexto recuperado, nunca hits vectoriales crudos."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-rag-knowledge-base",
+  "coverImage": "ai-communication.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "fastapi",
+    "qdrant",
+    "rag",
+    "embeddings",
+    "llm",
+    "vector-database",
+    "backend-design"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3779"
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-rag-knowledge-base/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-rag-knowledge-base/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 7 — RAG & Knowledge Base with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-rag-knowledge-base #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #qdrant",
+      "es": "Acabo de completar Hito 7 — RAG y Base de Conocimiento con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-rag-knowledge-base #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #qdrant"
+    },
+    {
+      "en": "Built and shipped: Milestone 7 — RAG & Knowledge Base. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-rag-knowledge-base #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #qdrant",
+      "es": "Construido y publicado: Hito 7 — RAG y Base de Conocimiento. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-rag-knowledge-base #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #qdrant"
+    }
+  ]
+}

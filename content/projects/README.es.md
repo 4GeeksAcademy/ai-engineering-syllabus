@@ -2,7 +2,7 @@
 
 Repositorio de proyectos prácticos del programa de **Ingeniería de IA** de 4Geeks Academy. Cada carpeta es un proyecto independiente con su propio README, criterios de evaluación y, cuando aplica, `learn.json` para la plataforma.
 
-Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO, accesibilidad) y Tailwind, pasando por hitos de empresa y colaboración, **configuración e integraciones de agentes OpenClaw**, luego TypeScript y diseño de sistemas, React/Next.js y entrega asistida por IA, APIs, autenticación, agentes, rendimiento, telemetría, pipelines de datos, jobs en segundo plano y colas de mensajes.
+Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO, accesibilidad) y Tailwind, pasando por hitos de empresa y colaboración, **configuración e integraciones de agentes OpenClaw**, luego TypeScript y diseño de sistemas, React/Next.js y entrega asistida por IA, APIs, autenticación, agentes, rendimiento, telemetría, pipelines de datos, jobs en segundo plano, colas de mensajes y bases de conocimiento RAG.
 
 ---
 
@@ -176,8 +176,14 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 55. **[Colas de mensajes y tareas asíncronas](./ai-eng-message-queue)**  
     Desacopla trabajo pesado de la API con Redis y Celery en el monorepo: `202` + `task_id`, `GET /tasks/{task_id}`, reintentos con backoff, Dead Letter Queue, worker como proceso separado y monitoreo con Flower.
 
-56. **[Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews](./ai-eng-sentiment-analysis-reviews)**  
+56. **[Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews](./existing-model-sentiment-analysis-reviews)**  
     Integra `prajjwal1/bert-mini` de Hugging Face para clasificar 500 reseñas, compara la distribución de sentimiento con un promedio de 4.5 estrellas, valida predicciones manualmente y entrega un reporte listo para el cliente.
+
+57. **[StreamLoop — Ajuste del modelo de churn](./streamloop-churn-model-tuning)**  
+    Ajusta un clasificador de churn en el dataset estilo telecom de StreamLoop: Pipeline sklearn con preprocesado interno, baseline por defecto, RandomizedSearchCV → GridSearchCV solo en train, métrica alineada al negocio, revisión de estabilidad en `cv_results_` y `tuning_report.md`.
+
+58. **[Hito 7 — RAG y Base de Conocimiento](./ai-eng-milestone-rag-knowledge-base)**  
+    `Hito 7` — RAG modular en el monorepo: fragmenta e indexa documentos del CONTEXT en Qdrant (`setup`, `embed`), recupera con umbral de similitud, genera respuestas con voz comercial (`query`), expone `POST /knowledge/query` vía FastAPI, UI mínima de consulta y tests unitarios — sin LangChain; nunca devolver hits vectoriales crudos.
 
 ---
 

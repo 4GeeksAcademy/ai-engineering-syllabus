@@ -35,7 +35,7 @@ _These instructions are [available in English](./README.md)_.
 4. **[Ingeniería impulsada por IA](./04-ai-driven-engineering)** — Setup del monorepo (`Milestone 4`; placeholder; el contexto puede ir en el brief del proyecto).
 5. **[Desarrollo backend](./05-backend-development)** — Entidades y reglas de seed del API de inventario (`Milestone 5`).
 6. **[Pipelines de datos de telemetría](./06-telemetry-data-pipelines)** — Reservado para contextos de telemetría (placeholder).
-7. **[Entrenamiento y RAG](./07-trainning-rag)** — Reservado para módulos LLM/RAG (placeholder).
+7. **[Entrenamiento y RAG](./07-trainning-rag)** — Corpus Markdown fuente por compañía (políticas, catálogos, procedimientos).
 8. **[Ingeniería de agentes](./08-agent-engineering)** — Reservado para módulos de agentes (placeholder).
 9. **[Workflows y automatización](./09-workflows-automation)** — Reservado para módulos de workflows (placeholder).
 10. **[Tiempo real](./10-realtime)** — Reservado para módulos realtime (placeholder).
@@ -50,6 +50,7 @@ _These instructions are [available in English](./README.md)_.
 16. **[Captura de telemetría](./telemetry-capture)** — Event envelope y restricciones de captura en frontend.
 17. **[Almacenamiento de telemetría](./telemetry-storage)** — Reglas de almacenamiento y validación de eventos en batch.
 18. **[Reporte de telemetría](./telemetry-report)** — Métricas y dimensiones agrupadas para el endpoint de analytics.
+19. **[Base de conocimiento RAG](./rag-knowledge-base)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 

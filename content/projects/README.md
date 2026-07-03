@@ -2,7 +2,7 @@
 
 Repository of hands-on projects for the **AI Engineering** program at 4Geeks Academy. Each folder is a standalone project with its own README, evaluation criteria, and (when applicable) `learn.json` for the platform.
 
-Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, accessibility) and Tailwind, through company milestones and collaboration, **OpenClaw agent setup and integrations**, then TypeScript and system design, React/Next.js and AI-assisted delivery, APIs, authentication, agents, performance, telemetry, data pipelines, background jobs, and message queues.
+Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, accessibility) and Tailwind, through company milestones and collaboration, **OpenClaw agent setup and integrations**, then TypeScript and system design, React/Next.js and AI-assisted delivery, APIs, authentication, agents, performance, telemetry, data pipelines, background jobs, message queues, and RAG knowledge bases.
 
 ---
 
@@ -181,6 +181,9 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 
 57. **[StreamLoop — Tuning the Churn Model](./streamloop-churn-model-tuning)**  
     Tune a churn classifier on StreamLoop's telecom-style dataset: sklearn Pipeline with internal preprocessing, default baseline, RandomizedSearchCV → GridSearchCV on train only, business-aligned scoring, `cv_results_` stability review, and `tuning_report.md`.
+
+58. **[Milestone 7 — RAG & Knowledge Base](./ai-eng-milestone-rag-knowledge-base)**  
+    `Milestone 7` — Modular RAG in the company monorepo: chunk and index CONTEXT documents in Qdrant (`setup`, `embed`), retrieve with similarity threshold, generate salesperson-voice answers (`query`), expose `POST /knowledge/query` via FastAPI, minimal query UI, and unit tests — no LangChain; never return raw vector hits.
 
 ---
 
