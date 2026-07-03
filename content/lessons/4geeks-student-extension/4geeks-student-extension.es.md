@@ -1,4 +1,4 @@
-# 4Geeks Student + Copilot Chat — Usa tus modelos de IA de la academia en Codespaces
+# Tus modelos de IA de la academia en Codespaces — 4Geeks Student + Copilot Chat
 
 _These instructions are also available in [English](./4geeks-student-extension.md)._
 
@@ -10,7 +10,9 @@ Si llegas al límite de uso de **Copilot Business**, puedes seguir programando c
 
 ## Qué vas a lograr
 
-- Instalar **4Geeks Student** dentro de tu Codespace.
+Habilitar modelos de IA adicionales proporcionados por 4Geeks Academy siguiendo estos pasos:
+
+- Instalar la extensión **4Geeks Student** dentro de tu Codespace.
 - Iniciar sesión con tu cuenta 4Geeks (OAuth).
 - Registrar los modelos LLM asignados a tu academia.
 - Seleccionar un modelo 4Geeks en Copilot Chat y chatear con normalidad.
@@ -112,12 +114,12 @@ Cuando pases a un nuevo ejercicio o repositorio:
 
 ## Referencia de comandos
 
-| Comando | Descripción |
-|---------|-------------|
-| **4Geeks: Login** | Iniciar sesión con tu cuenta 4Geeks |
-| **4Geeks: Add Models** | Provisionar y registrar tus modelos LLM de la academia |
-| **4Geeks: Connect to VPS** | Conectar a tu VPS de 4Geeks vía Remote SSH |
-| **4Geeks: Logout** | Cerrar sesión y eliminar los modelos registrados |
+| Comando                    | Descripción                                            |
+| -------------------------- | ------------------------------------------------------ |
+| **4Geeks: Login**          | Iniciar sesión con tu cuenta 4Geeks                    |
+| **4Geeks: Add Models**     | Provisionar y registrar tus modelos LLM de la academia |
+| **4Geeks: Connect to VPS** | Conectar a tu VPS de 4Geeks vía Remote SSH             |
+| **4Geeks: Logout**         | Cerrar sesión y eliminar los modelos registrados       |
 
 ---
 
