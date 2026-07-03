@@ -89,7 +89,7 @@ Same shape as inbound; represents units consumed during a shift.
 
 ### Database setup
 
-- [ ] Add `DATABASE_URL` to `.env` (Supabase connection string). Keep existing TinyDB vars.
+- [ ] Add `DATABASE_URL` to `.env` using the Supabase **Transaction pooler** URI (**Connect → Direct** → Transaction pooler → URI). Keep existing TinyDB vars.
 - [ ] In `database.py`, expose both TinyDB client and SQLModel `engine`.
 - [ ] Implement `get_db()` generator; inject with `Depends()` — no global session.
 

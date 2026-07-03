@@ -42,6 +42,12 @@ Optional but recommended: `tests/test_inventory.py` for stock calculation and ou
 
 ## Database configuration
 
+### Supabase connection
+
+In the Supabase dashboard (**Connect → Direct**), choose **Transaction pooler** as the connection method and **URI** as the type — then copy that string into `DATABASE_URL`. Do not use the direct connection string (port `5432`); the pooler URI uses port `6543` and a `*.pooler.supabase.com` host.
+
+See the student-facing screenshots in the project root `.learn/` folder (`supabase-transaction-pooler-uri.png`, `supabase-transaction-pooler-connection-string.png`).
+
 ### Environment variables (`.env`)
 
 ```env
@@ -50,8 +56,8 @@ TINYDB_PATH=...
 JWT_SECRET=...
 ACCESS_TOKEN_EXPIRE_MINUTES=...
 
-# New for this milestone
-DATABASE_URL=postgresql://user:password@host:5432/dbname
+# New for this milestone — Transaction pooler URI from Supabase
+DATABASE_URL=postgresql://postgres.[project-ref]:password@aws-0-region.pooler.supabase.com:6543/postgres
 ```
 
 Never hardcode credentials. Confirm `.env` is listed in `.gitignore`.

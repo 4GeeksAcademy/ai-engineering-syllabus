@@ -89,7 +89,7 @@ Misma forma que inbound; representa unidades consumidas en un turno.
 
 ### Configuración de bases de datos
 
-- [ ] Añadir `DATABASE_URL` a `.env` (cadena de conexión Supabase). Mantener variables TinyDB existentes.
+- [ ] Añadir `DATABASE_URL` a `.env` con el URI de **Transaction pooler** de Supabase (**Connect → Direct** → Transaction pooler → URI). Mantener variables TinyDB existentes.
 - [ ] En `database.py`, exponer cliente TinyDB y `engine` SQLModel.
 - [ ] Implementar generador `get_db()`; inyectar con `Depends()` — sin sesión global.
 
