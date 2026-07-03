@@ -1,6 +1,10 @@
 # Cursor + GitHub Codespaces — General Guide
 
+<!-- hide -->
+
 _Estas instrucciones tambien estan disponibles en [espanol](./cursor-github-codespaces.es.md)._
+
+<!-- endhide -->
 
 Connect **Cursor** to a **GitHub Codespace** to edit code and use the agent in the cloud—the same experience as in the browser, but from your local editor.
 
@@ -40,11 +44,11 @@ flowchart LR
 
 ### 1. Install GitHub CLI
 
-| OS      | How to install |
-|---------|----------------|
+| OS      | How to install                                                                                                       |
+| ------- | -------------------------------------------------------------------------------------------------------------------- |
 | Windows | Installer from [cli.github.com](https://cli.github.com/). Use **Git Bash** or PowerShell where `gh` is on your PATH. |
-| macOS   | `brew install gh` or the web installer. |
-| Linux   | Your distro package or [official instructions](https://github.com/cli/cli#installation). |
+| macOS   | `brew install gh` or the web installer.                                                                              |
+| Linux   | Your distro package or [official instructions](https://github.com/cli/cli#installation).                             |
 
 Verify in a terminal:
 
@@ -79,10 +83,10 @@ gh --version
 
 Install both extensions from the Cursor marketplace:
 
-| Extension | Author | Link |
-|-----------|--------|------|
-| **Remote - SSH** | Microsoft / Cursor | Search for `Remote - SSH` in extensions |
-| **GitHub Codespaces Connector** | **SmartManoj** | [Marketplace](https://marketplace.visualstudio.com/items?itemName=SmartManoj.github-codespaces-connector) |
+| Extension                       | Author             | Link                                                                                                      |
+| ------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
+| **Remote - SSH**                | Microsoft / Cursor | Search for `Remote - SSH` in extensions                                                                   |
+| **GitHub Codespaces Connector** | **SmartManoj**     | [Marketplace](https://marketplace.visualstudio.com/items?itemName=SmartManoj.github-codespaces-connector) |
 
 #### Trust the extension author
 
@@ -115,10 +119,10 @@ When Cursor asks you to pick a folder, open:
 
 `REPOSITORY-NAME` is the GitHub repo name **without** the `organization/` prefix.
 
-| GitHub repository           | Open Folder path                |
-|-----------------------------|---------------------------------|
-| `my-org/javascript-course`  | `/workspaces/javascript-course` |
-| `user/final-project`        | `/workspaces/final-project`     |
+| GitHub repository          | Open Folder path                |
+| -------------------------- | ------------------------------- |
+| `my-org/javascript-course` | `/workspaces/javascript-course` |
+| `user/final-project`       | `/workspaces/final-project`     |
 
 Do not use local PC paths (`C:\...`, `/Users/...`) or `/workspace` (singular) unless your Codespace explicitly uses that layout.
 
@@ -140,13 +144,13 @@ The **agent** runs inside the Codespace in this window.
 
 ## Tips and troubleshooting
 
-| Problem | Solution |
-|---------|----------|
+| Problem                                          | Solution                                                                                                    |
+| ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
 | **Connect to GitHub Codespaces** does not appear | Install **GitHub Codespaces Connector** (author: **SmartManoj**) and trust the author if Cursor prompts you |
-| Empty Codespace list | Run `gh auth login -s codespace` and check with `gh codespace list` |
-| `gh: command not found` | Install the CLI or use a terminal where it is on PATH (on Windows, Git Bash often works better than CMD) |
-| Window opens but folder is empty | **Open Folder** → `/workspaces/repository-name` |
-| Extension will not install | Accept the **trust the author** prompt (**SmartManoj**) |
+| Empty Codespace list                             | Run `gh auth login -s codespace` and check with `gh codespace list`                                         |
+| `gh: command not found`                          | Install the CLI or use a terminal where it is on PATH (on Windows, Git Bash often works better than CMD)    |
+| Window opens but folder is empty                 | **Open Folder** → `/workspaces/repository-name`                                                             |
+| Extension will not install                       | Accept the **trust the author** prompt (**SmartManoj**)                                                     |
 
 ---
 

@@ -1,6 +1,10 @@
 # Tus modelos de IA de la academia en Codespaces — 4Geeks Student + Copilot Chat
 
+<!-- hide -->
+
 _These instructions are also available in [English](./4geeks-student-extension.md)._
+
+<!-- endhide -->
 
 Usa tus modelos de IA incluidos en la academia dentro de **Copilot Chat** mientras trabajas en un **GitHub Codespace** — no necesitas una suscripción aparte de Copilot.
 

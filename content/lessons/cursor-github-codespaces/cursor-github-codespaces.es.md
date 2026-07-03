@@ -1,6 +1,10 @@
 # Cursor + GitHub Codespaces — Guía general
 
+<!-- hide -->
+
 _These instructions are also available in [English](./cursor-github-codespaces.md)._
+
+<!-- endhide -->
 
 Conecta **Cursor** a un **GitHub Codespace** para editar código y usar el agente en la nube, igual que en el navegador pero desde tu editor local.
 
