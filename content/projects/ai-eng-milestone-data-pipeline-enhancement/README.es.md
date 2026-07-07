@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Esta es la **Parte 3 del Hito 6 — Telemetría y Data Pipelines**. El pipeline base ya funciona. Hoy lo llevas al nivel de producción: refactorizas el flow principal en subflows reutilizables, añades tests unitarios que validan el comportamiento de las tasks de transformación, y completas el deployment en Docker con schedule.
+Esta es la **Parte 3 del Hito 6 — Telemetría y Data Pipelines**. El pipeline base ya funciona. Hoy lo llevas al nivel de producción: refactorizas el flow principal en subflows reutilizables, añades tests unitarios que validan el comportamiento de las tasks de transformación, y garantizas que el pipeline se ejecute directamente desde la línea de comandos.
 
 Tu CTO ha actualizado el ticket:
 
@@ -29,7 +29,7 @@ Tu CTO ha actualizado el ticket:
 > >
 > > 1. El flow principal está creciendo — refactorízalo en subflows para que cada fase sea independiente, testeable y reutilizable.
 > > 2. Necesito tests unitarios para las tasks de transformación. Si un test falla, quiero saberlo antes de que el pipeline llegue a producción, no después.
-> > 3. El pipeline debe tener un deployment funcional en Docker con su schedule. Cuando yo ejecute `prefect deployment run`, quiero ver el resultado en Prefect Cloud.
+> > 3. El pipeline debe poder ejecutarse como script. Cuando yo ejecute `python data/pipelines/pipeline.py`, el flow ETL completo debe terminar sin errores.
 > >
 > > Punto de partida: `data/pipelines/pipeline.py` de la sesión anterior.
 
@@ -63,12 +63,11 @@ Un flow que crece sin estructura acaba siendo tan difícil de mantener como el s
 - [ ] Incluye al menos un test que verifique el comportamiento defensivo de una task ante entrada inválida o malformada (por ejemplo, un campo nulo donde no se espera, un tipo incorrecto).
 - [ ] Los tests deben poder ejecutarse con `python -m pytest tests/pipelines/test_pipeline.py` sin errores.
 
-### Fase 3 — Scheduling y deployment en Docker
+### Fase 3 — Ejecución mediante script
 
-- [ ] Revisa el schedule definido en la sesión anterior y confirma que sigue siendo el más adecuado para el ciclo de datos de tu empresa. Si lo cambias, justifícalo en un comentario.
-- [ ] Genera o actualiza el deployment de Prefect con infraestructura Docker como work pool. El deployment debe incluir nombre, schedule, work pool y las variables de entorno necesarias.
-- [ ] Verifica el deployment desde la CLI: `prefect deployment run <nombre-del-flow>/<nombre-del-deployment>` debe arrancar el flow sin errores.
-- [ ] Documenta en un comentario o en el propio `data/pipelines/PIPELINE_DESIGN.md` cómo pausar y reanudar el schedule: `prefect deployment pause-schedule` / `prefect deployment resume-schedule`.
+- [ ] Asegúrate de que `data/pipelines/pipeline.py` puede ejecutarse directamente como script CLI (por ejemplo, con un bloque `if __name__ == "__main__"` que invoque el flow principal).
+- [ ] Verifica que el pipeline completo se ejecuta sin errores: `python data/pipelines/pipeline.py`.
+- [ ] Documenta el comando de ejecución en un comentario o en `data/pipelines/PIPELINE_DESIGN.md`.
 
 ⚠️ **IMPORTANTE:** Los nombres de subflows, tasks y tests deben seguir el mismo vocabulario de dominio definido en `data/pipelines/PIPELINE_DESIGN.md`. Un subflow llamado `extract_data` no es aceptable si tu empresa tiene entidades concretas — llámalo `extract_sales_events` o el nombre que corresponda.
 
@@ -81,8 +80,8 @@ Un flow que crece sin estructura acaba siendo tan difícil de mantener como el s
 - [ ] El archivo `tests/pipelines/test_pipeline.py` existe y contiene al menos tres tests unitarios para tasks de transformación.
 - [ ] Al menos un test verifica el comportamiento defensivo de una task ante entrada inválida.
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` pasa sin errores.
-- [ ] El deployment de Prefect tiene infraestructura Docker configurada como work pool y un schedule definido.
-- [ ] `prefect deployment run <nombre-del-flow>/<nombre-del-deployment>` arranca el flow sin errores.
+- [ ] `python data/pipelines/pipeline.py` ejecuta el flow ETL completo sin errores.
+- [ ] El comando de ejecución está documentado en `data/pipelines/PIPELINE_DESIGN.md` o en comentarios inline.
 - [ ] Los nombres de subflows, tasks y tests reflejan el vocabulario de dominio de `data/pipelines/PIPELINE_DESIGN.md`.
 
 ---

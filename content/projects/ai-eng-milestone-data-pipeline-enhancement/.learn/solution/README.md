@@ -4,8 +4,8 @@ This reference solution defines the expected quality bar for deliverables in the
 
 - `data/pipelines/pipeline.py` — main flow orchestrating extract, transform, and load subflows
 - `tests/pipelines/test_pipeline.py` — isolated unit tests for transformation tasks
-- Prefect deployment with Docker work pool and schedule
-- Schedule pause/resume documented in `PIPELINE_DESIGN.md` or inline comments
+- CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
+- Run command documented in `PIPELINE_DESIGN.md` or inline comments
 
 The deliverable is **production-ready orchestration** built on the Part 2 pipeline. Generic subflow or test names that ignore company domain vocabulary should be treated as incomplete.
 
@@ -32,10 +32,8 @@ flowchart TD
     T3[test_dedupe_by_business_key]
     T4[test_rejects_malformed_timestamp]
   end
-  subgraph deploy [Prefect deployment]
-    POOL[docker-pool]
-    CRON[CronSchedule]
-    CLI[prefect deployment run]
+  subgraph cli [Script execution]
+    RUN[python data/pipelines/pipeline.py]
   end
   MAIN --> EXT --> TRF --> LOD
   MAIN --> OPT
@@ -43,9 +41,7 @@ flowchart TD
   TRF -.-> T2
   TRF -.-> T3
   TRF -.-> T4
-  MAIN --> POOL
-  POOL --> CRON
-  CLI --> MAIN
+  RUN --> MAIN
 ```
 
 **Component boundaries:**
@@ -56,7 +52,7 @@ flowchart TD
 | Subflows (`@flow`)           | One per pipeline phase — explicit inputs/outputs, independently runnable    |
 | `data/process/`              | Pure transform helpers imported by tasks (testable without Prefect runtime) |
 | `tests/pipelines/`           | Unit tests call task functions or helpers directly with in-memory fixtures  |
-| Prefect deployment           | Docker work pool, named schedule, env vars for DB/API credentials           |
+| CLI entry point              | `if __name__ == "__main__"` invokes main flow; no Prefect Cloud deployment  |
 
 ---
 
@@ -66,7 +62,7 @@ flowchart TD
 data/
   pipelines/
     pipeline.py              # Main flow + ≥3 subflows
-    PIPELINE_DESIGN.md       # Schedule pause/resume notes added in Part 3
+    PIPELINE_DESIGN.md       # Run command documented in Part 3
   process/                   # Transform helpers (imported by tasks)
 tests/
   pipelines/
@@ -154,32 +150,27 @@ python -m pytest tests/pipelines/test_pipeline.py -v
 
 ---
 
-## Deployment and schedule
+## Script-based execution
+
+Add a CLI entry point at the bottom of `data/pipelines/pipeline.py`:
 
 ```python
-from prefect.deployments import Deployment
-from prefect.server.schemas.schedules import CronSchedule
-
-deployment = Deployment.build_from_flow(
-    flow=telemetry_etl_flow,
-    name="nightly-telemetry-etl",
-    schedule=CronSchedule(cron="0 2 * * *", timezone="UTC"),
-    work_pool_name="docker-pool",
-    # env: DATABASE_URL, PREFECT_API_KEY, etc.
-)
+if __name__ == "__main__":
+    telemetry_etl_flow()
 ```
 
-Verify CLI trigger:
+Run the full pipeline:
 
 ```bash
-prefect deployment run telemetry-etl-flow/nightly-telemetry-etl
+python data/pipelines/pipeline.py
 ```
 
-Document schedule control in `PIPELINE_DESIGN.md`:
+Document the command in `PIPELINE_DESIGN.md`:
 
-```bash
-prefect deployment pause-schedule telemetry-etl-flow/nightly-telemetry-etl
-prefect deployment resume-schedule telemetry-etl-flow/nightly-telemetry-etl
+```markdown
+## Running the pipeline
+
+python data/pipelines/pipeline.py
 ```
 
 ---
@@ -190,8 +181,8 @@ prefect deployment resume-schedule telemetry-etl-flow/nightly-telemetry-etl
 - Subflows share state through global variables instead of explicit parameters
 - Tests hit production DB or external APIs instead of in-memory fixtures
 - Fewer than three transformation tests, or no defensive test for malformed input
-- Deployment missing Docker work pool or schedule
-- `prefect deployment run` fails due to missing env vars in work pool template
+- Missing `if __name__ == "__main__"` block — pipeline cannot run as a script
+- `python data/pipelines/pipeline.py` fails due to missing env vars or import errors
 - Generic names (`extract_data`, `test_transform`) instead of company domain vocabulary
 - Optional notification subflow failure aborts the entire main flow
 
@@ -204,8 +195,7 @@ prefect deployment resume-schedule telemetry-etl-flow/nightly-telemetry-etl
 - [ ] `tests/pipelines/test_pipeline.py` exists with ≥3 transform unit tests
 - [ ] ≥1 test verifies defensive behaviour against invalid/malformed input
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes
-- [ ] Prefect deployment uses Docker work pool with defined schedule
-- [ ] `prefect deployment run <flow>/<deployment>` succeeds
-- [ ] Schedule pause/resume documented
+- [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors
+- [ ] Run command documented in `PIPELINE_DESIGN.md` or inline comments
 - [ ] Subflow, task, and test names match `PIPELINE_DESIGN.md` vocabulary
 - [ ] Commit message `feat: refactor pipeline into subflows and add unit tests`

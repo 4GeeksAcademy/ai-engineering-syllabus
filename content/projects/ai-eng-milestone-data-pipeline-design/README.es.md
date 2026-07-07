@@ -40,7 +40,7 @@ Estos tres atributos son los que tu documento de diseño debe demostrar que has 
 ## 🌱 Cómo Empezar
 
 1. Haz un `git pull` en tu fork del monorepo para asegurarte de tener el estado más reciente.
-2. Explora la carpeta [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) del monorepo — contiene las subcarpetas `raw/`, `process/`, `pipelines/` y `eval/` que usarás a lo largo de este módulo.
+2. Explora la carpeta [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) del monorepo — contiene las subcarpetas `raw/`, `process/`, `pipelines/` y `eval/` que usarás a lo largo de este módulo. El código de orquestación vivirá en `data/pipelines/`; los scripts de transformación reutilizables en `data/process/`; los endpoints HTTP que consulten o disparen el pipeline vivirán en `services/` e importarán desde `data/pipelines/` — no al revés.
 3. Crea el archivo `data/pipelines/PIPELINE_DESIGN.md` — ahí va tu documento de diseño.
 4. Revisa los eventos de telemetría, KPIs y entidades de dominio que ya tienes en el monorepo para identificar qué datos debe procesar tu pipeline.
 
@@ -72,6 +72,11 @@ Estos tres atributos son los que tu documento de diseño debe demostrar que has 
 - [ ] Mapea tu diseño a los conceptos de Prefect: identifica cuáles serían tus **flows**, cuáles serían tus **tasks** y qué **estados** (Running, Completed, Failed) son relevantes para tu pipeline.
 - [ ] Indica qué configuración o credenciales gestionarías como **bloques de Prefect** (por ejemplo, la conexión a Supabase).
 
+### Fase 5 — Integración con la aplicación (solo diseño)
+
+- [ ] Esboza qué **endpoints en `services/`** usará el equipo de operaciones para consultar el estado/metadatos de la última ejecución y para disparar una ejecución manual del flow.
+- [ ] Para cada endpoint, indica qué **función o flow de `data/pipelines/`** llamará — la lógica ETL no pertenece a `services/`.
+
 ⚠️ **IMPORTANTE:** El diseño debe ser específico para los datos de tu empresa. Los nombres de eventos, KPIs, tablas y entidades deben coincidir con el vocabulario de dominio de tu monorepo. Un diseño genérico que ignore el modelo de datos de tu empresa no será aceptado.
 
 ---
@@ -85,6 +90,7 @@ Estos tres atributos son los que tu documento de diseño debe demostrar que has 
 - [ ] La estrategia de idempotencia es explícita: describe qué ocurre en la segunda ejecución tras un fallo en la carga, no solo qué sería deseable.
 - [ ] El log de ejecución especifica al menos cinco campos con el nombre del campo, el tipo de dato y la justificación de por qué ese campo es necesario para auditoría.
 - [ ] El mapa a Prefect identifica al menos dos flows y tres tasks con nombres concretos alineados con las etapas del pipeline.
+- [ ] El diseño documenta al menos dos endpoints planificados en `services/` (consulta de estado y disparo manual) y nombra las funciones de `data/pipelines/` que cada uno importará.
 - [ ] El diseño es coherente con los eventos de telemetría y KPIs ya capturados en tu monorepo.
 
 ---

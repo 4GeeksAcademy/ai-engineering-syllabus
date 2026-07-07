@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-This is **Part 3 of Milestone 6 — Telemetry and Data Pipelines**. The base pipeline already works. Today you bring it to production level: you refactor the main flow into reusable subflows, add unit tests that validate the behaviour of transformation tasks, and complete the Docker deployment with a schedule.
+This is **Part 3 of Milestone 6 — Telemetry and Data Pipelines**. The base pipeline already works. Today you bring it to production level: you refactor the main flow into reusable subflows, add unit tests that validate the behaviour of transformation tasks, and ensure the pipeline runs directly from the command line.
 
 Your CTO has updated the ticket:
 
@@ -29,7 +29,7 @@ Your CTO has updated the ticket:
 > >
 > > 1. The main flow is growing — refactor it into subflows so that each phase is independent, testable, and reusable.
 > > 2. I need unit tests for the transformation tasks. If a test fails, I want to know before the pipeline reaches production, not after.
-> > 3. The pipeline must have a working Docker deployment with its schedule. When I run `prefect deployment run`, I want to see the result in Prefect Cloud.
+> > 3. The pipeline must be runnable as a script. When I execute `python data/pipelines/pipeline.py`, the full ETL flow must complete without errors.
 > >
 > > Starting point: `data/pipelines/pipeline.py` from the previous session.
 
@@ -63,12 +63,11 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 - [ ] Include at least one test that verifies the defensive behaviour of a task against invalid or malformed input (for example, a null field where none is expected, or an incorrect type).
 - [ ] The tests must pass with `python -m pytest tests/pipelines/test_pipeline.py` without errors.
 
-### Phase 3 — Scheduling and Docker deployment
+### Phase 3 — Script-based execution
 
-- [ ] Review the schedule defined in the previous session and confirm it is still the most appropriate for your company's data cycle. If you change it, justify it in a comment.
-- [ ] Generate or update the Prefect deployment with Docker as the work pool infrastructure. The deployment must include a name, schedule, work pool, and the required environment variables.
-- [ ] Verify the deployment from the CLI: `prefect deployment run <flow-name>/<deployment-name>` must start the flow without errors.
-- [ ] Document in a comment or in `data/pipelines/PIPELINE_DESIGN.md` how to pause and resume the schedule: `prefect deployment pause-schedule` / `prefect deployment resume-schedule`.
+- [ ] Ensure `data/pipelines/pipeline.py` can be executed directly as a CLI script (for example, with an `if __name__ == "__main__"` block that invokes the main flow).
+- [ ] Verify the full pipeline runs without errors: `python data/pipelines/pipeline.py`.
+- [ ] Document the run command in a comment or in `data/pipelines/PIPELINE_DESIGN.md`.
 
 ⚠️ **IMPORTANT:** Subflow names, task names, and test names must follow the same domain vocabulary defined in `data/pipelines/PIPELINE_DESIGN.md`. A subflow named `extract_data` is not acceptable if your company has concrete entities — name it `extract_sales_events` or whatever fits your domain.
 
@@ -81,8 +80,8 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 - [ ] The file `tests/pipelines/test_pipeline.py` exists and contains at least three unit tests for transformation tasks.
 - [ ] At least one test verifies the defensive behaviour of a task against invalid input.
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes without errors.
-- [ ] The Prefect deployment has Docker configured as the work pool infrastructure and a defined schedule.
-- [ ] `prefect deployment run <flow-name>/<deployment-name>` starts the flow without errors.
+- [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors.
+- [ ] The run command is documented in `data/pipelines/PIPELINE_DESIGN.md` or inline comments.
 - [ ] Subflow names, task names, and test names reflect the domain vocabulary from `data/pipelines/PIPELINE_DESIGN.md`.
 
 ---

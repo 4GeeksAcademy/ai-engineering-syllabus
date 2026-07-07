@@ -40,7 +40,7 @@ These three attributes are what your design document must demonstrate you have t
 ## 🌱 How to Start
 
 1. Run `git pull` on your monorepo fork to make sure you have the latest state.
-2. Explore the [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) folder in the monorepo — it contains the subfolders `raw/`, `process/`, `pipelines/`, and `eval/` that you will use throughout this module.
+2. Explore the [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) folder in the monorepo — it contains the subfolders `raw/`, `process/`, `pipelines/`, and `eval/` that you will use throughout this module. Orchestration code will live in `data/pipelines/`; reusable transformation scripts in `data/process/`; HTTP endpoints that query or trigger the pipeline will live in `services/` and import from `data/pipelines/` — not the other way around.
 3. Create the file `data/pipelines/PIPELINE_DESIGN.md` — that is where your design document goes.
 4. Review the telemetry events, KPIs, and domain entities already in your monorepo to identify what data your pipeline must process.
 
@@ -72,6 +72,11 @@ These three attributes are what your design document must demonstrate you have t
 - [ ] Map your design to Prefect concepts: identify which parts would be **flows**, which would be **tasks**, and which **states** (Running, Completed, Failed) are relevant for your pipeline.
 - [ ] Indicate which configuration or credentials you would manage as **Prefect blocks** (for example, the connection to Supabase).
 
+### Phase 5 — Application integration (design only)
+
+- [ ] Sketch which **endpoints in `services/`** the operations team will use to query the last run's status/metadata and to trigger a manual flow run.
+- [ ] For each endpoint, state which **function or flow in `data/pipelines/`** it will call — no ETL logic belongs in `services/`.
+
 ⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your design must match your company's domain vocabulary in the monorepo. A generic design that ignores your company's data model will not be accepted.
 
 ---
@@ -85,6 +90,7 @@ These three attributes are what your design document must demonstrate you have t
 - [ ] The idempotency strategy is explicit: it describes what happens on the second run after a load-phase failure, not just what would be desirable.
 - [ ] The execution log specifies at least five fields with the field name, data type, and justification for why that field is necessary for auditing.
 - [ ] The Prefect mapping identifies at least two flows and three tasks with concrete names aligned with the pipeline stages.
+- [ ] The design documents at least two planned `services/` endpoints (status query and manual trigger) and names the `data/pipelines/` functions each will import.
 - [ ] The design is consistent with the telemetry events and KPIs already captured in your monorepo.
 
 ---

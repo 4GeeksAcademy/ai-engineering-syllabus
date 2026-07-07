@@ -5,8 +5,8 @@
     "es": "Hito 6 — Mejora del pipeline de datos de la compañía: Subflows y tests (3/3)"
   },
   "description": {
-    "en": "Bring your company Prefect data pipeline to production level in the monorepo: refactor the main flow into reusable extract-transform-load subflows with explicit inputs and outputs, add isolated unit tests for transformation tasks including defensive cases against malformed input, and complete the Docker deployment with schedule — verifying runs via Prefect Cloud CLI.",
-    "es": "Lleva el pipeline de datos Prefect de tu empresa a nivel de producción en el monorepo: refactoriza el flow principal en subflows reutilizables de extracción-transformación-carga con entradas y salidas explícitas, añade tests unitarios aislados para tasks de transformación incluyendo casos defensivos ante entrada malformada, y completa el deployment en Docker con schedule — verificando ejecuciones vía CLI de Prefect Cloud."
+    "en": "Bring your company Prefect data pipeline to production level in the monorepo: refactor the main flow into reusable extract-transform-load subflows with explicit inputs and outputs, add isolated unit tests for transformation tasks including defensive cases against malformed input, and ensure the pipeline runs directly via `python data/pipelines/pipeline.py`.",
+    "es": "Lleva el pipeline de datos Prefect de tu empresa a nivel de producción en el monorepo: refactoriza el flow principal en subflows reutilizables de extracción-transformación-carga con entradas y salidas explícitas, añade tests unitarios aislados para tasks de transformación incluyendo casos defensivos ante entrada malformada, y garantiza que el pipeline se ejecute directamente con `python data/pipelines/pipeline.py`."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -23,10 +23,7 @@
     "pytest",
     "backend-design"
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "telemetry": {
     "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3693"
