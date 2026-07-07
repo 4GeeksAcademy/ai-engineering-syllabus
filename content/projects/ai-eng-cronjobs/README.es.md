@@ -51,9 +51,32 @@ Cada transición importa:
 - **`completed`** — se actualiza solo si todo terminó bien.
 - **`failed`** — se actualiza si se captura cualquier excepción. Nunca debe quedarse en `processing`.
 
-El patrón **Distributed Lock** complementa a la máquina de estados: al iniciar, el script escribe un "candado" en base de datos. Si la siguiente ejecución detecta el candado, aborta silenciosamente. Al terminar —bien o mal— el candado se libera.
+El **distributed lock es el estado `processing` mismo** — no una tabla, columna o flag aparte. Al iniciar, el script pasa un registro de `job_runs` a `processing`. Si otra instancia encuentra una fila `processing` para `nightly_export`, aborta silenciosamente. Al terminar —bien o mal— el registro pasa a `completed` o `failed`, lo que libera el lock. No implementes un segundo mecanismo de bloqueo.
 
-Un script que implementa estos dos patrones puede fallar, reiniciarse, o ejecutarse fuera de horario y siempre dejará el sistema en un estado conocido y recuperable.
+Un script que implementa esta máquina de estados puede fallar, reiniciarse o ejecutarse fuera de horario y siempre dejará el sistema en un estado conocido y recuperable.
+
+### 📚 Conocimiento complementario — Cómo encaja en el monorepo
+
+**`job_runs` ≠ `pipeline_runs`** — no son duplicados:
+
+| Tabla           | Capa                                  | Qué registra                                                                    |
+| --------------- | ------------------------------------- | ------------------------------------------------------------------------------- |
+| `job_runs`      | Orquestación nocturna (este proyecto) | Export CSV, trigger del subprocess del pipeline, lock e idempotencia del script |
+| `pipeline_runs` | ETL interno (Hito 6)                  | Fases extract/transform/load, watermark, filas procesadas                       |
+
+El script nocturno escribe en `job_runs`. El subprocess del pipeline escribe en `pipeline_runs` durante su propia ejecución.
+
+**El CSV es backup, no input del pipeline.** El script exporta `telemetry_events` desde la base de datos a `data/raw/telemetry_YYYY-MM-DD.csv` para auditoría y recuperación. El pipeline que construiste en el Hito 6 lee desde `telemetry_events` en BD (vía SQL/watermark) — **no** lee el archivo CSV. No conectes el pipeline para consumir el archivo de exportación.
+
+**Convenciones de fecha y subprocess:**
+
+- **"Ayer"** = día calendario anterior en **UTC** (`datetime.now(timezone.utc).date() - timedelta(days=1)`).
+- **`TARGET_DATE=YYYY-MM-DD`** sobrescribe la fecha objetivo para pruebas sin cambiar código.
+- **Subprocess del pipeline** (referencia — ajusta al entry point de tu Hito 6 si difiere):
+
+```bash
+python -m data.pipelines.telemetry_kpi_daily.run --no-prefect
+```
 
 ---
 
@@ -70,32 +93,36 @@ Un script que implementa estos dos patrones puede fallar, reiniciarse, o ejecuta
 
 ### Modelo de datos
 
-- [ ] Crear una tabla `job_runs` con al menos los campos: `id`, `job_name`, `status` (`pending` | `processing` | `completed` | `failed`), `started_at`, `finished_at`, `error_message`, `created_at`.
+- [ ] Crear una tabla `job_runs` con al menos los campos: `id`, `job_name`, `target_date` (fecha — **obligatorio** para idempotencia por día), `status` (`pending` | `processing` | `completed` | `failed`), `started_at`, `finished_at`, `error_message`, `created_at`.
+- [ ] Añadir un índice en `(job_name, target_date)` para consultas de idempotencia eficientes.
 - [ ] Añadir la migración o instrucción SQL necesaria para crear la tabla en el esquema del monorepo.
+- [ ] **No** fusionar `job_runs` con `pipeline_runs` del Hito 6 — capas distintas (ver nota de arquitectura arriba).
 
 ### Script principal (`scripts/nightly_export.py`)
 
-- [ ] El script exporta los registros de telemetría del día anterior a un archivo CSV en `data/raw/`, con nombre que incluya la fecha (p. ej. `telemetry_2025-01-15.csv`), **si ese archivo no existe todavía**.
-- [ ] El script lanza el pipeline de datos como subproceso una vez completada la exportación.
-- [ ] El script escribe en `job_runs` el resultado de la ejecución (estado final + timestamp + error si lo hay).
-- [ ] El script es ejecutable directamente desde línea de comandos: `python scripts/nightly_export.py`.
+- [ ] Resolver `target_date` desde env `TARGET_DATE` o por defecto **ayer en UTC**.
+- [ ] El script exporta filas de `telemetry_events` para `target_date` a un CSV en `data/raw/` (p. ej. `telemetry_2025-01-15.csv`), **solo si el archivo no existe**. El CSV es snapshot de backup/auditoría — el pipeline lee desde BD, no este archivo.
+- [ ] El script lanza el pipeline de datos como subproceso tras la exportación (comando de referencia: `python -m data.pipelines.telemetry_kpi_daily.run --no-prefect`, o tu entry point CLI del Hito 6).
+- [ ] El script escribe en `job_runs` el resultado (estado final + `target_date` + timestamp + error si lo hay).
+- [ ] El script es ejecutable desde línea de comandos: `python scripts/nightly_export.py`.
 
 ### Idempotencia y bloqueo
 
-- [ ] Implementar un **Distributed Lock**: si ya existe un registro `job_runs` con `status = 'processing'` para el job `nightly_export`, el script aborta silenciosamente y registra la cancelación en el log.
-- [ ] Implementar **idempotencia**: si ya existe un registro `completed` para la fecha de ayer, el script no vuelve a exportar el CSV ni relanza el pipeline. Registra en el log que la ejecución fue omitida por ser duplicada.
+- [ ] **Lock vía `processing`:** si ya existe un registro `job_runs` con `status = 'processing'` para `nightly_export`, el script aborta silenciosamente y registra la cancelación. Sin tabla o columna lock aparte.
+- [ ] **Idempotencia vía `target_date`:** si ya existe un registro `completed` para `(job_name='nightly_export', target_date)`, el script no vuelve a exportar el CSV ni relanza el pipeline. Registra omisión por duplicado. Solo `job_name` sin `target_date` no basta.
 
 ### Control de estado (`services/`)
 
-- [ ] Implementar un módulo `job_runner` en `services/` con funciones para crear, actualizar y consultar registros de `job_runs`.
-- [ ] Cualquier excepción no controlada debe capturarse, actualizar el estado a `failed` con el mensaje de error, liberar el lock y propagar el error al log.
+- [ ] Implementar módulo `job_runner` en `services/` con funciones para crear, actualizar y consultar `job_runs` (incl. `has_processing_lock` y `has_completed_for_date`).
+- [ ] Cualquier excepción no controlada debe capturarse, actualizar el estado a `failed` con el mensaje de error, y propagar el error al log.
 - [ ] Ningún registro puede quedar en estado `processing` tras una ejecución fallida.
 
 ### Disparador
 
-- [ ] Configurar el cronjob mediante `crontab` del sistema operativo **o** mediante el scheduler de tu framework (p. ej. `fastapi-utils`, `APScheduler`).
+- [ ] Configurar el cronjob con `crontab` del SO o un **contenedor scheduler dedicado** — recomendado en producción.
+- [ ] **No** ejecutar el script nocturno dentro del proceso FastAPI (sin `APScheduler`, `@repeat_every` ni hooks lifespan en el servidor API). Un worker separado solo es aceptable si no comparte el hilo principal de la API.
 - [ ] Documentar la expresión cron y la decisión de implementación en el cuerpo del PR.
-- [ ] Añadir una variable de entorno `TARGET_DATE` opcional para sobrescribir la fecha objetivo y poder probar el script en cualquier momento sin modificar el código.
+- [ ] Añadir variable de entorno `TARGET_DATE` opcional (`YYYY-MM-DD`) para sobrescribir la fecha objetivo en pruebas sin modificar código.
 
 ### Observabilidad
 
@@ -107,11 +134,12 @@ Un script que implementa estos dos patrones puede fallar, reiniciarse, o ejecuta
 ## ✅ Qué Evaluaremos
 
 - [ ] El script es un proceso independiente: no importa ni ejecuta código de FastAPI en el hilo principal de la aplicación.
-- [ ] La máquina de estados `pending → processing → completed | failed` está implementada y los registros en `job_runs` reflejan el estado real de cada ejecución.
-- [ ] El Distributed Lock impide ejecuciones paralelas: demostrable lanzando dos instancias del script al mismo tiempo.
-- [ ] El script es idempotente: ejecutarlo dos veces sobre el mismo día produce el mismo resultado que ejecutarlo una vez, sin duplicar registros CSV ni ejecuciones del pipeline.
-- [ ] Ningún registro queda en estado `processing` tras un fallo: el bloque `try/except/finally` garantiza la transición a `failed` y la liberación del lock.
-- [ ] El CSV de salida existe en `data/raw/` con nombre correcto y contiene los datos de telemetría del día anterior.
+- [ ] La máquina de estados `pending → processing → completed | failed` está implementada y los registros en `job_runs` reflejan el estado real de cada ejecución, incluyendo `target_date`.
+- [ ] El estado `processing` actúa como distributed lock (sin mecanismo lock aparte): demostrable lanzando dos instancias del script al mismo tiempo.
+- [ ] El script es idempotente por `target_date`: ejecutarlo dos veces el mismo día produce el mismo resultado que una vez, sin duplicar CSV ni ejecuciones del pipeline.
+- [ ] Ningún registro queda en estado `processing` tras un fallo: el bloque `try/except/finally` garantiza la transición a `failed`.
+- [ ] El CSV existe en `data/raw/` con nombre correcto y datos exportados desde `telemetry_events` para la fecha objetivo (solo backup — el pipeline lee desde BD).
+- [ ] `job_runs` y `pipeline_runs` coexisten sin duplicar responsabilidades.
 - [ ] Los logs incluyen timestamp, nombre del job y estado en cada evento relevante.
 - [ ] El disparador está configurado y la expresión cron documentada en el PR.
 - [ ] `TARGET_DATE` permite ejecutar el script sobre fechas arbitrarias sin modificar el código.

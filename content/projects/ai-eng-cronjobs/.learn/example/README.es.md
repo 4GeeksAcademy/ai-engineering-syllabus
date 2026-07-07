@@ -44,8 +44,7 @@ data/raw/              Directorio de salida CSV
 
 ### Modelo de datos
 
-- [ ] Crear tabla `job_runs` (mismos campos que el proyecto del estudiante: `id`, `job_name`, `status`, `started_at`, `finished_at`, `error_message`, `created_at`).
-- [ ] Añadir columna opcional `target_date` para comprobaciones de idempotencia.
+- [ ] Crear tabla `job_runs` (mismos campos que el proyecto del estudiante: `id`, `job_name`, `target_date`, `status`, `started_at`, `finished_at`, `error_message`, `created_at`). `target_date` es obligatorio para idempotencia por día.
 
 ### `services/job_runner.py`
 
@@ -55,7 +54,7 @@ data/raw/              Directorio de salida CSV
 ### `scripts/nightly_sync.py`
 
 - [ ] Leer env `TARGET_DATE` o usar ayer por defecto.
-- [ ] Distributed lock: abortar en silencio si existe otra fila `processing`.
+- [ ] Distributed lock vía fila `processing`: abortar en silencio si existe otra fila `processing` (sin mecanismo lock aparte).
 - [ ] Idempotencia: omitir si ya hay `completed` para `target_date`.
 - [ ] Exportar filas de `volunteer_shift` de `target_date` a `data/raw/shifts_YYYY-MM-DD.csv` **solo si el archivo no existe**.
 - [ ] Ejecutar `python scripts/aggregate_shifts.py data/raw/shifts_YYYY-MM-DD.csv` como subproceso.

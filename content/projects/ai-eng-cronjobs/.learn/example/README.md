@@ -44,8 +44,7 @@ data/raw/              CSV output directory
 
 ### Data model
 
-- [ ] Create `job_runs` table (same fields as the student project: `id`, `job_name`, `status`, `started_at`, `finished_at`, `error_message`, `created_at`).
-- [ ] Add optional `target_date` column for idempotency checks.
+- [ ] Create `job_runs` table (same fields as the student project: `id`, `job_name`, `target_date`, `status`, `started_at`, `finished_at`, `error_message`, `created_at`). `target_date` is required for per-day idempotency.
 
 ### `services/job_runner.py`
 
@@ -55,7 +54,7 @@ data/raw/              CSV output directory
 ### `scripts/nightly_sync.py`
 
 - [ ] Read `TARGET_DATE` env or default to yesterday.
-- [ ] Distributed lock: abort silently if another `processing` row exists.
+- [ ] Distributed lock via `processing` row: abort silently if another `processing` row exists (no separate lock mechanism).
 - [ ] Idempotency: skip if `completed` exists for `target_date`.
 - [ ] Export `volunteer_shift` rows for `target_date` to `data/raw/shifts_YYYY-MM-DD.csv` **only if file missing**.
 - [ ] Run `python scripts/aggregate_shifts.py data/raw/shifts_YYYY-MM-DD.csv` as subprocess.
@@ -87,5 +86,5 @@ data/raw/              CSV output directory
 ## Discussion questions
 
 1. Why must the nightly script be a separate process instead of a Flask background thread started on first request?
-2. The distributed lock uses a `processing` row in the database. What happens if the server crashes mid-run before `failed` or `completed` is written? How would you recover in production?
+2. The distributed lock **is** the `processing` row in `job_runs` — not a separate table or column. What happens if the server crashes mid-run before `failed` or `completed` is written? How would you recover in production?
 3. Idempotency checks both the `job_runs` table and the CSV file existence. Why are both layers useful instead of relying on only one?

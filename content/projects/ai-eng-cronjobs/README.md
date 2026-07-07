@@ -51,9 +51,32 @@ Each transition matters:
 - **`completed`** — updated only if everything finished successfully.
 - **`failed`** — updated if any exception is caught. Must never remain as `processing`.
 
-The **Distributed Lock** pattern complements the state machine: on startup, the script writes a "lock" to the database. If the next execution detects the lock, it aborts silently. When the script finishes — successfully or not — the lock is released.
+The **distributed lock is the `processing` status itself** — not a separate table, column, or flag. When the script starts, it transitions a `job_runs` row to `processing`. If another instance finds an existing `processing` row for `nightly_export`, it aborts silently. When the script finishes — successfully or not — the row moves to `completed` or `failed`, which releases the lock. Do not implement a second locking mechanism.
 
-A script that implements both patterns can fail, restart, or run out of schedule and will always leave the system in a known, recoverable state.
+A script that implements this state machine can fail, restart, or run out of schedule and will always leave the system in a known, recoverable state.
+
+### 📚 Complementary Knowledge — How This Fits the Monorepo
+
+**`job_runs` ≠ `pipeline_runs`** — they are not duplicates:
+
+| Table           | Layer                                | What it records                                                               |
+| --------------- | ------------------------------------ | ----------------------------------------------------------------------------- |
+| `job_runs`      | Nightly orchestration (this project) | CSV export, pipeline subprocess trigger, lock, and idempotency for the script |
+| `pipeline_runs` | Internal ETL (Milestone 6)           | Extract/transform/load phases, watermark, rows processed                      |
+
+The nightly script writes to `job_runs`. The pipeline subprocess writes to `pipeline_runs` during its own execution.
+
+**CSV is a backup, not the pipeline input.** The script exports `telemetry_events` from the database to `data/raw/telemetry_YYYY-MM-DD.csv` for audit and recovery. The data pipeline you built in Milestone 6 reads from `telemetry_events` in the database (via SQL/watermark) — it does **not** read the CSV file. Do not wire the pipeline to consume the export file.
+
+**Date and subprocess conventions:**
+
+- **"Yesterday"** means the previous calendar day in **UTC** (`datetime.now(timezone.utc).date() - timedelta(days=1)`).
+- **`TARGET_DATE=YYYY-MM-DD`** overrides the target date for testing without code changes.
+- **Pipeline subprocess** (reference — adjust to your Milestone 6 entry point if different):
+
+```bash
+python -m data.pipelines.telemetry_kpi_daily.run --no-prefect
+```
 
 ---
 
@@ -62,7 +85,7 @@ A script that implements both patterns can fail, restart, or run out of schedule
 1. Review your monorepo: identify the existing telemetry tables and the naming conventions you have already used for paths and fields.
 2. Create the job control table in the database (you can add it to the existing schema or create a new migration).
 3. Implement the script in `scripts/nightly_export.py` and the status control service in `services/`.
-4. Configure the trigger in crontab or your framework's scheduler and document the cron expression in the PR.
+4. Configure the trigger via OS `crontab` (recommended) or a dedicated scheduler container — not inside the FastAPI process. Document the cron expression in the PR.
 
 ---
 
@@ -70,32 +93,36 @@ A script that implements both patterns can fail, restart, or run out of schedule
 
 ### Data model
 
-- [ ] Create a `job_runs` table with at least the following fields: `id`, `job_name`, `status` (`pending` | `processing` | `completed` | `failed`), `started_at`, `finished_at`, `error_message`, `created_at`.
+- [ ] Create a `job_runs` table with at least the following fields: `id`, `job_name`, `target_date` (date — **required** for per-day idempotency), `status` (`pending` | `processing` | `completed` | `failed`), `started_at`, `finished_at`, `error_message`, `created_at`.
+- [ ] Add an index on `(job_name, target_date)` so idempotency checks are efficient.
 - [ ] Add the migration or SQL statement needed to create the table in the monorepo schema.
+- [ ] Do **not** merge `job_runs` with `pipeline_runs` from Milestone 6 — they serve different layers (see architecture note above).
 
 ### Main script (`scripts/nightly_export.py`)
 
-- [ ] The script exports the previous day's telemetry records to a CSV file in `data/raw/`, with a name that includes the date (e.g. `telemetry_2025-01-15.csv`), **only if that file does not already exist**.
-- [ ] The script triggers the data pipeline as a subprocess once the export is complete.
-- [ ] The script writes to `job_runs` the result of the execution (final status + timestamp + error if any).
+- [ ] Resolve `target_date` from `TARGET_DATE` env or default to **yesterday in UTC**.
+- [ ] The script exports rows from `telemetry_events` for `target_date` to a CSV file in `data/raw/` (e.g. `telemetry_2025-01-15.csv`), **only if that file does not already exist**. The CSV is a backup/audit snapshot — the pipeline reads from the database, not this file.
+- [ ] The script triggers the data pipeline as a subprocess once the export is complete (reference command: `python -m data.pipelines.telemetry_kpi_daily.run --no-prefect`, or your Milestone 6 CLI entry point).
+- [ ] The script writes to `job_runs` the result of the execution (final status + `target_date` + timestamp + error if any).
 - [ ] The script is executable directly from the command line: `python scripts/nightly_export.py`.
 
 ### Idempotency and locking
 
-- [ ] Implement a **Distributed Lock**: if a `job_runs` record already exists with `status = 'processing'` for the `nightly_export` job, the script aborts silently and logs the cancellation.
-- [ ] Implement **idempotency**: if a `completed` record already exists for yesterday's date, the script does not re-export the CSV or re-trigger the pipeline. It logs that the execution was skipped as a duplicate.
+- [ ] **Lock via `processing`:** if a `job_runs` record already exists with `status = 'processing'` for `nightly_export`, the script aborts silently and logs the cancellation. No separate lock table or column.
+- [ ] **Idempotency via `target_date`:** if a `completed` record already exists for `(job_name='nightly_export', target_date)`, the script does not re-export the CSV or re-trigger the pipeline. It logs that the execution was skipped as a duplicate. Checking only `job_name` without `target_date` is not sufficient.
 
 ### Status control (`services/`)
 
-- [ ] Implement a `job_runner` module in `services/` with functions to create, update, and query `job_runs` records.
-- [ ] Any unhandled exception must be caught, update the status to `failed` with the error message, release the lock, and propagate the error to the log.
+- [ ] Implement a `job_runner` module in `services/` with functions to create, update, and query `job_runs` records (including `has_processing_lock` and `has_completed_for_date`).
+- [ ] Any unhandled exception must be caught, update the status to `failed` with the error message, and propagate the error to the log.
 - [ ] No record may remain in `processing` status after a failed execution.
 
 ### Trigger
 
-- [ ] Configure the cronjob via the OS `crontab` **or** via your framework's scheduler (e.g. `fastapi-utils`, `APScheduler`).
+- [ ] Configure the cronjob via OS `crontab` or a **dedicated scheduler container** — recommended for production.
+- [ ] **Do not** run the nightly script inside the FastAPI process (no `APScheduler`, `@repeat_every`, or lifespan hooks on the API server). A separate worker process is acceptable only if it does not share the API's main thread.
 - [ ] Document the cron expression and implementation decision in the PR body.
-- [ ] Add an optional `TARGET_DATE` environment variable to override the target date, so the script can be tested at any time without modifying the code.
+- [ ] Add an optional `TARGET_DATE` environment variable (`YYYY-MM-DD`) to override the target date for testing without modifying the code.
 
 ### Observability
 
@@ -107,11 +134,12 @@ A script that implements both patterns can fail, restart, or run out of schedule
 ## ✅ What We Will Evaluate
 
 - [ ] The script is an independent process: it does not import or execute FastAPI code on the application's main thread.
-- [ ] The `pending → processing → completed | failed` state machine is implemented and `job_runs` records reflect the actual status of each execution.
-- [ ] The Distributed Lock prevents parallel executions: demonstrable by launching two instances of the script simultaneously.
-- [ ] The script is idempotent: running it twice on the same day produces the same result as running it once, without duplicating CSV files or pipeline executions.
-- [ ] No record remains in `processing` status after a failure: the `try/except/finally` block guarantees the transition to `failed` and the release of the lock.
-- [ ] The CSV output exists in `data/raw/` with the correct name and contains the previous day's telemetry data.
+- [ ] The `pending → processing → completed | failed` state machine is implemented and `job_runs` records reflect the actual status of each execution, including `target_date`.
+- [ ] The `processing` status acts as the distributed lock (no separate lock mechanism): demonstrable by launching two instances of the script simultaneously.
+- [ ] The script is idempotent per `target_date`: running it twice for the same day produces the same result as running it once, without duplicating CSV files or pipeline executions.
+- [ ] No record remains in `processing` status after a failure: the `try/except/finally` block guarantees the transition to `failed`.
+- [ ] The CSV output exists in `data/raw/` with the correct name and contains telemetry data exported from `telemetry_events` for the target date (backup only — pipeline reads from DB).
+- [ ] `job_runs` and `pipeline_runs` coexist without duplication of responsibilities.
 - [ ] Logs include timestamp, job name, and status on every relevant event.
 - [ ] The trigger is configured and the cron expression documented in the PR.
 - [ ] `TARGET_DATE` allows the script to run on arbitrary dates without modifying the code.

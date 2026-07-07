@@ -6,13 +6,13 @@ This reference solution defines the expected quality bar for the nightly telemet
 
 ## Expected file layout
 
-| Area               | Path (indicative)                                                   | Purpose                                                    |
-| ------------------ | ------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Nightly script     | `scripts/nightly_export.py`                                         | CLI entry point: export, pipeline trigger, job lifecycle   |
-| Job runner service | `services/job_runner.py` (or `services/app/services/job_runner.py`) | Create, update, query `job_runs`; distributed lock helpers |
-| Migration          | `migrations/` or `db/` SQL                                          | `job_runs` table schema                                    |
-| Raw export output  | `data/raw/telemetry_YYYY-MM-DD.csv`                                 | Previous-day telemetry CSV (idempotent)                    |
-| Cron / scheduler   | `crontab`, `docker-compose`, or framework scheduler config          | Nightly trigger (documented in PR)                         |
+| Area               | Path (indicative)                                                   | Purpose                                                            |
+| ------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Nightly script     | `scripts/nightly_export.py`                                         | CLI entry point: export, pipeline trigger, job lifecycle           |
+| Job runner service | `services/job_runner.py` (or `services/app/services/job_runner.py`) | Create, update, query `job_runs`; distributed lock helpers         |
+| Migration          | `migrations/` or `db/` SQL                                          | `job_runs` table schema                                            |
+| Raw export output  | `data/raw/telemetry_YYYY-MM-DD.csv`                                 | Backup/audit snapshot from `telemetry_events` (not pipeline input) |
+| Cron / scheduler   | `crontab`, `docker-compose`, or framework scheduler config          | Nightly trigger (documented in PR)                                 |
 
 ---
 
@@ -21,28 +21,34 @@ This reference solution defines the expected quality bar for the nightly telemet
 ```mermaid
 flowchart TD
   subgraph trigger [Trigger layer]
-    CRON[crontab or APScheduler]
+    CRON[crontab recommended]
   end
   subgraph script [Independent process]
     NE[scripts/nightly_export.py]
     JR[services/job_runner.py]
     NE --> JR
-    NE --> EXP[Export telemetry to CSV]
-    NE --> PIPE[subprocess: data pipeline]
+    NE --> EXP[Export telemetry_events to CSV backup]
+    NE --> PIPE[subprocess: pipeline CLI]
   end
   subgraph storage [Persistence]
-    DB[(job_runs table)]
+    JRUN[(job_runs)]
+    PRUN[(pipeline_runs)]
     CSV[data/raw/telemetry_DATE.csv]
-    TEL[(telemetry tables)]
+    TEL[(telemetry_events)]
   end
-  CRON -->|nightly| NE
-  JR --> DB
+  CRON -->|nightly UTC| NE
+  JR --> JRUN
   EXP --> TEL
   EXP --> CSV
-  PIPE --> CSV
+  PIPE --> TEL
+  PIPE --> PRUN
 ```
 
-**Separation rule:** `nightly_export.py` must run as its own process (`python scripts/nightly_export.py`). It must not import FastAPI app startup or block API request handlers.
+**Separation rules:**
+
+- `nightly_export.py` must run as its own process (`python scripts/nightly_export.py`). It must not import FastAPI app startup or block API request handlers.
+- **`job_runs` ≠ `pipeline_runs`:** `job_runs` records nightly orchestration (export + trigger + lock/idempotency). `pipeline_runs` records internal ETL execution from Milestone 6. They are complementary, not duplicates.
+- **CSV is backup only:** export writes `telemetry_events` → `data/raw/`. The pipeline subprocess reads `telemetry_events` from the database — not the CSV file.
 
 ---
 
@@ -60,7 +66,9 @@ pending → processing → completed
 | `completed`  | All steps succeeded for the target date               |
 | `failed`     | Any uncaught exception; `error_message` populated     |
 
-**Zombie prevention:** `try/except/finally` must guarantee `processing` never remains after failure. Lock is released on both success and failure paths.
+**Zombie prevention:** `try/except/finally` must guarantee `processing` never remains after failure. Transition to `completed` or `failed` releases the lock — there is no separate lock column or table.
+
+**Lock = `processing`:** `has_processing_lock(job_name)` checks for any row with `status = 'processing'`. Do not add a second locking mechanism.
 
 ---
 
@@ -68,17 +76,25 @@ pending → processing → completed
 
 Minimum columns:
 
-| Column          | Type        | Notes                                                |
-| --------------- | ----------- | ---------------------------------------------------- |
-| `id`            | PK          | Auto-increment or UUID                               |
-| `job_name`      | string      | e.g. `nightly_export`                                |
-| `status`        | enum/string | `pending` \| `processing` \| `completed` \| `failed` |
-| `started_at`    | timestamp   | Set when entering `processing`                       |
-| `finished_at`   | timestamp   | Set on terminal states                               |
-| `error_message` | text/null   | Populated on `failed`                                |
-| `created_at`    | timestamp   | Record creation time                                 |
+| Column          | Type        | Notes                                                          |
+| --------------- | ----------- | -------------------------------------------------------------- |
+| `id`            | PK          | Auto-increment or UUID                                         |
+| `job_name`      | string      | e.g. `nightly_export`                                          |
+| `target_date`   | date        | **Required** — calendar day processed; idempotency key per day |
+| `status`        | enum/string | `pending` \| `processing` \| `completed` \| `failed`           |
+| `started_at`    | timestamp   | Set when entering `processing`                                 |
+| `finished_at`   | timestamp   | Set on terminal states                                         |
+| `error_message` | text/null   | Populated on `failed`                                          |
+| `created_at`    | timestamp   | Record creation time                                           |
 
-Optional but useful: `target_date` (date column) to support idempotency checks per calendar day.
+Idempotency requires `(job_name, target_date)` — `job_name` alone is not sufficient.
+
+### `job_runs` vs `pipeline_runs`
+
+| Table           | Owner                | Scope                                              |
+| --------------- | -------------------- | -------------------------------------------------- |
+| `job_runs`      | `nightly_export.py`  | Nightly script lifecycle: export, trigger, lock    |
+| `pipeline_runs` | Milestone 6 pipeline | ETL phases, watermark, rows processed, checkpoints |
 
 ### Indicative migration (PostgreSQL)
 
@@ -86,8 +102,8 @@ Optional but useful: `target_date` (date column) to support idempotency checks p
 CREATE TABLE job_runs (
   id SERIAL PRIMARY KEY,
   job_name VARCHAR(64) NOT NULL,
+  target_date DATE NOT NULL,
   status VARCHAR(16) NOT NULL CHECK (status IN ('pending', 'processing', 'completed', 'failed')),
-  target_date DATE,
   started_at TIMESTAMPTZ,
   finished_at TIMESTAMPTZ,
   error_message TEXT,
@@ -118,16 +134,20 @@ All DB access lives here — the script orchestrates; the service owns persisten
 ## `scripts/nightly_export.py` — execution flow
 
 ```text
-1. Resolve target_date from TARGET_DATE env or default to yesterday (UTC or project TZ — document choice)
+1. Resolve target_date:
+     TARGET_DATE env (YYYY-MM-DD) if set, else yesterday in UTC
+     (datetime.now(timezone.utc).date() - timedelta(days=1))
 2. If has_processing_lock('nightly_export'):
      → log INFO cancellation, exit 0 silently
 3. If has_completed_for_date('nightly_export', target_date):
      → log INFO skipped duplicate, exit 0
-4. create_run → mark_processing
+4. create_run(job_name, target_date) → mark_processing
 5. try:
      a. If data/raw/telemetry_{target_date}.csv missing:
-          export telemetry rows for target_date to CSV
-     b. subprocess.run pipeline command (e.g. python data/pipelines/pipeline.py)
+          export telemetry_events rows for target_date to CSV (backup only)
+     b. subprocess.run pipeline CLI, e.g.:
+          python -m data.pipelines.telemetry_kpi_daily.run --no-prefect
+        (use student's Milestone 6 entry point if different)
      c. mark_completed
    except Exception as e:
      mark_failed with str(e)
@@ -135,7 +155,7 @@ All DB access lives here — the script orchestrates; the service owns persisten
      re-raise or sys.exit(1) per team convention
    finally:
      ensure no zombie processing state remains
-6. log INFO completion with job name, timestamp, status
+6. log INFO completion with job name, timestamp, status, target_date
 ```
 
 ### `TARGET_DATE` override
@@ -158,15 +178,15 @@ Allows testing arbitrary dates without code changes.
 
 ---
 
-## Trigger options (student chooses one — document in PR)
+## Trigger options (document in PR)
 
-| Method                             | Example                                                 | When to prefer                                                                                                            |
-| ---------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| OS crontab                         | `0 2 * * * cd /app && python scripts/nightly_export.py` | Production servers, Docker sidecar, clear separation from API                                                             |
-| APScheduler in separate worker     | Dedicated worker process                                | Already running worker infrastructure                                                                                     |
-| Framework scheduler inside FastAPI | `@repeat_every` / lifespan hook                         | **Discouraged** if it shares the API process — violates independence criterion unless run in a dedicated worker container |
+| Method                             | Example                                                 | When to prefer                                                                  |
+| ---------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| OS crontab                         | `0 2 * * * cd /app && python scripts/nightly_export.py` | **Recommended** — production servers, Docker sidecar, clear separation from API |
+| APScheduler in separate worker     | Dedicated worker process                                | Acceptable if worker is not the FastAPI API process                             |
+| Framework scheduler inside FastAPI | `@repeat_every` / lifespan hook                         | **Not acceptable** — violates independence criterion                            |
 
-**Recommended:** system `crontab` or a dedicated scheduler container — keeps the script fully independent from FastAPI's main thread.
+**Recommended:** system `crontab` or a dedicated scheduler container at 02:00 UTC — keeps the script fully independent from FastAPI's main thread.
 
 Example cron expression for 02:00 daily:
 
@@ -179,7 +199,8 @@ Example cron expression for 02:00 daily:
 ## CSV export contract
 
 - Path: `data/raw/telemetry_YYYY-MM-DD.csv`
-- Content: telemetry rows whose timestamp falls on `target_date` (timezone documented in PR)
+- Source: `telemetry_events` rows whose timestamp falls on `target_date` (**UTC**)
+- Purpose: **backup/audit snapshot** — the pipeline reads from `telemetry_events` in the database, not this file
 - **Skip export** if file already exists (idempotent file layer)
 - Header row + one row per event (column names align with student's telemetry schema)
 
@@ -209,32 +230,40 @@ A complete submission should demonstrate:
 ## Common mistakes (incomplete submissions)
 
 - Running export inside FastAPI `@app.on_event("startup")` or request handler
+- APScheduler or `@repeat_every` inside the FastAPI API process
+- Separate lock table/column instead of using `status = 'processing'`
+- Missing `target_date` — idempotency breaks (only `job_name` checked)
+- Merging or replacing `pipeline_runs` with `job_runs`
+- Wiring pipeline to read CSV instead of `telemetry_events` in the database
 - No distributed lock — parallel runs corrupt pipeline or duplicate loads
 - `processing` zombie after exception (missing `except`/`finally`)
-- Re-exporting CSV or re-running pipeline when `completed` exists for date
+- Re-exporting CSV or re-running pipeline when `completed` exists for `(job_name, target_date)`
 - Hardcoded yesterday date with no `TARGET_DATE` env override
+- Using local timezone instead of UTC for "yesterday"
 - Pipeline triggered before export completes
-- Logs missing timestamp, job name, or status on relevant events
+- Logs missing timestamp, job name, status, or `target_date` on relevant events
 
 ---
 
 ## Evaluation checklist
 
 - [ ] Independent CLI process — no FastAPI main-thread execution
+- [ ] `job_runs` includes required `target_date` with index on `(job_name, target_date)`
 - [ ] `job_runs` state machine: `pending → processing → completed | failed`
-- [ ] Distributed lock prevents parallel executions (demonstrable)
-- [ ] Idempotent: duplicate same-day run skips export + pipeline
+- [ ] `processing` status prevents parallel executions (no separate lock mechanism)
+- [ ] Idempotent per `target_date`: duplicate same-day run skips export + pipeline
 - [ ] No zombie `processing` after failure
-- [ ] CSV in `data/raw/` with correct date naming and prior-day data
+- [ ] CSV in `data/raw/` exported from `telemetry_events` (backup only)
+- [ ] Pipeline subprocess reads DB, not CSV; `pipeline_runs` separate from `job_runs`
 - [ ] `services/job_runner` module with create/update/query functions
-- [ ] `TARGET_DATE` env override for testing
-- [ ] INFO/ERROR logs with timestamp, job name, status
-- [ ] Cron/scheduler configured and documented in PR with `cronjob` label
+- [ ] `TARGET_DATE` env override for testing; default yesterday = UTC
+- [ ] INFO/ERROR logs with timestamp, job name, status, `target_date`
+- [ ] OS crontab or dedicated scheduler (not FastAPI-embedded) documented in PR with `cronjob` label
 
 ---
 
 ## Reviewer notes
 
 - Telemetry table/column names vary per company CONTEXT — grade against the student's existing schema, not this document verbatim.
-- Pipeline subprocess command should match the student's Prefect/CLI entry from Milestone 6 — do not penalize different invoke strings if documented.
-- `crontab` vs framework scheduler is a design choice; grade the justification and independence criterion, not the specific tool if requirements are met.
+- Pipeline subprocess command should match the student's Milestone 6 CLI entry — reference: `python -m data.pipelines.telemetry_kpi_daily.run --no-prefect`. Do not penalize different invoke strings if documented.
+- `crontab` is preferred over framework schedulers embedded in FastAPI; grade independence criterion strictly.
