@@ -4,7 +4,7 @@ This reference solution defines the expected quality bar for deliverables in the
 
 - `data/pipelines/pipeline.py` — Prefect flows and tasks
 - `services/` — API endpoints that query or trigger the pipeline
-- Prefect deployment with schedule and Docker work pool
+- CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
 - Execution metadata persisted per run
 
 The deliverable is **runnable orchestration code** that implements the student's approved `data/pipelines/PIPELINE_DESIGN.md`. Generic pipelines that ignore CONTEXT entity names should be treated as incomplete.
@@ -36,6 +36,9 @@ flowchart TD
     RPT[reporting.*]
     LOG[pipeline_runs]
   end
+  subgraph cli [Script execution]
+    RUN[python data/pipelines/pipeline.py]
+  end
   POST --> FLOW
   GET --> LOG
   FLOW --> EXT --> TRF --> LOD
@@ -44,6 +47,7 @@ flowchart TD
   TRF --> STG
   LOD --> RPT
   FLOW --> LOG
+  RUN --> FLOW
 ```
 
 **Component boundaries:**
@@ -86,28 +90,31 @@ def extract_telemetry_events(watermark_from: datetime) -> list[dict]:
 ### Optional task with partial failure tolerance
 
 ```python
-@task(allow_failure=True)
+@task
 def notify_ops_optional(summary: dict) -> None:
   ...
 
 @flow
 def telemetry_etl_flow():
     ...
-    notify_ops_optional(summary)  # flow continues if Slack/webhook fails
+    notify_ops_optional(summary, return_state=True)  # flow continues if Slack/webhook fails
 ```
 
 ### Explicit failure handling
 
 ```python
-@task(raise_on_failure=False)
+@task
 def export_csv_optional(rows: list[dict]) -> str | None:
     ...
 
 @flow
 def telemetry_etl_flow():
-    path = export_csv_optional(rows)
-    if path is None:
+    state = export_csv_optional(rows, return_state=True)
+    if state.is_failed():
         logger.warning("CSV export skipped — non-critical")
+        path = None
+    else:
+        path = state.result()
 ```
 
 ### Caching expensive transform
@@ -149,25 +156,31 @@ Persist in `pipeline_runs` table or structured JSON log under `data/eval/`.
 
 ---
 
-## Deployment and schedule
+## Script-based execution
+
+Add a CLI entry point at the bottom of `data/pipelines/pipeline.py`:
 
 ```python
-# Example: nightly at 02:00 UTC — aligns with design doc refresh cadence
-from prefect.deployments import Deployment
-from prefect.server.schemas.schedules import CronSchedule
-
-deployment = Deployment.build_from_flow(
-    flow=telemetry_etl_flow,
-    name="nightly-telemetry-etl",
-    schedule=CronSchedule(cron="0 2 * * *", timezone="UTC"),
-    work_pool_name="docker-pool",
-)
+if __name__ == "__main__":
+    telemetry_etl_flow()
 ```
 
-Verify CLI trigger:
+Run the full pipeline:
 
 ```bash
-prefect deployment run telemetry-etl-flow/nightly-telemetry-etl
+python data/pipelines/pipeline.py
+```
+
+Document the intended schedule and run command in `PIPELINE_DESIGN.md`:
+
+```markdown
+## Running the pipeline
+
+python data/pipelines/pipeline.py
+
+## Intended schedule
+
+Nightly at 02:00 UTC (`0 2 * * *`) — aligns with design doc refresh cadence.
 ```
 
 ---
@@ -206,11 +219,11 @@ Implementation must call the flow from `data/pipelines/pipeline.py` — not re-i
 
 - Single script without `@flow` / `@task` decorators
 - Retries missing on DB/API tasks, or no comment justifying retry count
-- Optional step fails and stops entire flow (missing `allow_failure=True`)
+- Optional step fails and stops entire flow (missing `return_state=True` on optional task)
 - No cache on any transform task
 - Load appends rows on re-run → duplicates in reporting tables
 - Fewer than five metadata fields logged per execution
-- Deployment missing schedule or Docker work pool
+- Missing `if __name__ == "__main__"` block — pipeline cannot run as a script
 - Endpoints duplicate pipeline logic instead of importing from `data/pipelines/`
 - Generic table/event names that do not match CONTEXT or design doc
 
@@ -220,12 +233,12 @@ Implementation must call the flow from `data/pipelines/pipeline.py` — not re-i
 
 - [ ] `data/pipelines/pipeline.py` exists with ≥1 flow and ≥3 tasks
 - [ ] ≥1 task has `retries > 0` with justification comment
-- [ ] ≥1 optional task uses `allow_failure=True`; flow continues on its failure
+- [ ] ≥1 optional task invoked with `return_state=True`; flow continues on its failure
 - [ ] ≥1 transform task has `cache_key_fn` + `cache_expiration` with comment
 - [ ] Load is idempotent — second run on same data produces no duplicates
 - [ ] Each run logs ≥5 metadata fields (start, end, records, status, errors)
-- [ ] Prefect deployment with schedule + Docker infrastructure
-- [ ] CLI `prefect deployment run` succeeds
+- [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors
+- [ ] Run command documented in `PIPELINE_DESIGN.md` or inline comments
 - [ ] `GET` endpoint returns last run metadata
 - [ ] `POST` endpoint triggers manual run via import from `data/pipelines/`
 - [ ] Implementation matches `PIPELINE_DESIGN.md` stages and resilience choices

@@ -45,6 +45,7 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 2. Open `data/pipelines/pipeline.py` — that is your starting point.
 3. Keep the existing folder structure: `data/pipelines/` for flows and subflows, `data/process/` for transformation logic, `data/raw/` for input data, `data/eval/` for validation outputs.
 4. Unit tests go in `tests/pipelines/` at the root of the monorepo.
+5. Ensure Prefect 3 is installed from Part 2: `uv add "prefect>=3"`.
 
 ---
 
@@ -54,7 +55,7 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 
 - [ ] Split the main flow into at least three subflows (`@flow`) that correspond to the stages from your design: one for extraction, one for transformation, and one for load. The main flow invokes them in sequence.
 - [ ] Each subflow must have explicit inputs and outputs — do not rely on global variables between subflows.
-- [ ] If you have optional steps (notifications, secondary exports), extract them as subflows too and invoke them with `allow_failure=True` from the main flow.
+- [ ] If you have optional steps (notifications, secondary exports), extract them as subflows too and invoke them with `return_state=True` from the main flow.
 
 ### Phase 2 — Unit tests
 

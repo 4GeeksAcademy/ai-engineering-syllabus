@@ -1,6 +1,6 @@
 # GreenPatch Co-op — Pipeline de telemetría resiliente (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-milestone-data-pipeline-build`. Misma columna vertebral (flows/tasks Prefect, reintentos, caché, idempotencia, deployment, endpoints API), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-milestone-data-pipeline-build`. Misma columna vertebral (flows/tasks Prefect, reintentos, caché, idempotencia, ejecución por script, endpoints API), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -17,7 +17,7 @@ Especificación de partida: el mini diseño de abajo sustituye a `PIPELINE_DESIG
 | Proyecto evaluable (`ai-eng-milestone-data-pipeline-build`) | Este ejemplo de clase               |
 | ----------------------------------------------------------- | ----------------------------------- |
 | CONTEXT de empresa + monorepo de inventario                 | CONTEXT ficticio GreenPatch (abajo) |
-| Ticket completo del CTO + deployment Docker                 | Mismas fases, dataset más pequeño   |
+| Ticket completo del CTO + ejecución por script              | Mismas fases, dataset más pequeño   |
 | Commit al fork del monorepo del estudiante                  | Solo demo local                     |
 
 ---
@@ -43,12 +43,12 @@ Crear `data/pipelines/pipeline.py` con:
 ### Fase 1 — Flows y tasks
 
 - [ ] `@flow` `greenpatch_telemetry_etl_flow` con tasks: extract → transform → load.
-- [ ] `@task(allow_failure=True)` opcional `export_eval_snapshot`.
+- [ ] `@task` opcional `export_eval_snapshot` invocada con `return_state=True`.
 
 ### Fase 2 — Resiliencia
 
 - [ ] `retries=2` en extract (BD) con comentario.
-- [ ] Una task con `raise_on_failure=False` manejada en el flow.
+- [ ] Un fallo de task manejado explícitamente en el flow con `return_state=True`.
 - [ ] Transform con caché `cache_expiration=timedelta(hours=1)` y comentario sobre la clave.
 
 ### Fase 3 — Idempotencia
@@ -56,9 +56,10 @@ Crear `data/pipelines/pipeline.py` con:
 - [ ] Load hace upsert — segunda ejecución mismo rango = mismo conteo de filas.
 - [ ] Registrar metadatos de ejecución (inicio, fin, registros, estado, errores) en `data/eval/pipeline_runs.jsonl`.
 
-### Fase 4 — Deployment (demo)
+### Fase 4 — Ejecución por script
 
-- [ ] Documentar comando de deployment en comentario o stub `prefect.yaml` — Docker completo opcional en clase.
+- [ ] Añadir bloque `if __name__ == "__main__"` que invoque el flow principal.
+- [ ] Verificar que `python data/pipelines/pipeline.py` se ejecuta sin errores.
 
 ### Fase 5 — Stub API (opcional en clase)
 

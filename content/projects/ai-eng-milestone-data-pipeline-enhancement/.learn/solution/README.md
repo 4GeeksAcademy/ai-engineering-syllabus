@@ -52,7 +52,7 @@ flowchart TD
 | Subflows (`@flow`)           | One per pipeline phase — explicit inputs/outputs, independently runnable    |
 | `data/process/`              | Pure transform helpers imported by tasks (testable without Prefect runtime) |
 | `tests/pipelines/`           | Unit tests call task functions or helpers directly with in-memory fixtures  |
-| CLI entry point              | `if __name__ == "__main__"` invokes main flow; no Prefect Cloud deployment  |
+| CLI entry point              | `if __name__ == "__main__"` invokes main flow; local script execution only  |
 
 ---
 
@@ -94,11 +94,11 @@ def telemetry_etl_flow():
     rows = extract_telemetry_subflow(watermark_from)
     aggregates = transform_kpi_subflow(rows, watermark_to=datetime.now(UTC))
     records = load_reporting_subflow(aggregates, run_id=str(uuid4()))
-    notify_ops_subflow(records, allow_failure=True)
+    notify_ops_subflow(records, return_state=True)
     return records
 ```
 
-### Optional subflow with `allow_failure=True`
+### Optional subflow with `return_state=True`
 
 ```python
 @flow
@@ -106,7 +106,7 @@ def notify_ops_subflow(summary: int) -> None:
     notify_ops_optional(summary)
 
 # In main flow:
-notify_ops_subflow(summary, return_state=True)  # or invoke as subflow with allow_failure
+notify_ops_subflow(summary, return_state=True)
 ```
 
 Subflows must pass data through return values — not module-level globals.

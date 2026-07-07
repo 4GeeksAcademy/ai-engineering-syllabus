@@ -1,6 +1,6 @@
 # GreenPatch Co-op — Resilient Telemetry Pipeline (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-data-pipeline-build`. Same spine (Prefect flows/tasks, retries, caching, idempotency, deployment, API endpoints), different domain. Students still follow the full monorepo brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-data-pipeline-build`. Same spine (Prefect flows/tasks, retries, caching, idempotency, script execution, API endpoints), different domain. Students still follow the full monorepo brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -17,7 +17,7 @@ Starting spec: the mini design below replaces `PIPELINE_DESIGN.md`.
 | Graded project (`ai-eng-milestone-data-pipeline-build`) | This class example                   |
 | ------------------------------------------------------- | ------------------------------------ |
 | Company CONTEXT + inventory monorepo                    | Fictional GreenPatch CONTEXT (below) |
-| Full CTO ticket + Docker deployment                     | Same phases, smaller dataset         |
+| Full CTO ticket + script execution                      | Same phases, smaller dataset         |
 | Commit to student monorepo fork                         | Local demo only                      |
 
 ---
@@ -43,12 +43,12 @@ Create `data/pipelines/pipeline.py` with:
 ### Phase 1 — Flows and tasks
 
 - [ ] `@flow` `greenpatch_telemetry_etl_flow` with tasks: extract → transform → load.
-- [ ] Optional `@task(allow_failure=True)` `export_eval_snapshot`.
+- [ ] Optional `@task` `export_eval_snapshot` invoked with `return_state=True`.
 
 ### Phase 2 — Resilience
 
 - [ ] `retries=2` on extract (DB) with comment.
-- [ ] One task with `raise_on_failure=False` handled in flow.
+- [ ] One task failure handled explicitly in the flow with `return_state=True`.
 - [ ] Cached transform with `cache_expiration=timedelta(hours=1)` and comment on cache key.
 
 ### Phase 3 — Idempotency
@@ -56,9 +56,10 @@ Create `data/pipelines/pipeline.py` with:
 - [ ] Load upserts — second run same date range = same row count.
 - [ ] Log run metadata (start, end, records, status, errors) to `data/eval/pipeline_runs.jsonl`.
 
-### Phase 4 — Deployment (demo)
+### Phase 4 — Script execution
 
-- [ ] Document deployment command in a comment or `prefect.yaml` stub — full Docker optional in class.
+- [ ] Add `if __name__ == "__main__"` block that invokes the main flow.
+- [ ] Verify `python data/pipelines/pipeline.py` runs without errors.
 
 ### Phase 5 — API stub (optional in class)
 

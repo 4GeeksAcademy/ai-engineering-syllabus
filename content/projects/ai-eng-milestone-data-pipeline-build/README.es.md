@@ -29,7 +29,7 @@ Tu CTO ha cerrado el ticket de diseño y ha abierto el de implementación:
 > >
 > > — El pipeline debe tolerar fallos parciales sin interrumpir toda la ejecución.  
 > > — Las tareas con datos externos deben tener reintentos configurados.  
-> > — El pipeline debe poder ejecutarse en un contenedor Docker con un schedule definido.  
+> > — El pipeline debe poder ejecutarse como script desde la línea de comandos.  
 > > — Si una tarea ya fue ejecutada con éxito en la última hora, no debe repetirse innecesariamente.
 > >
 > > Punto de partida: tu `data/pipelines/PIPELINE_DESIGN.md` del día anterior. Implementa lo que diseñaste.
@@ -50,9 +50,7 @@ Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso si
 2. Abre tu `data/pipelines/PIPELINE_DESIGN.md` — ese documento es tu especificación. Implementa lo que diseñaste.
 3. Escribe el código del pipeline en `data/pipelines/`. El entry point principal debe llamarse `data/pipelines/pipeline.py`. Usa `data/raw/` para datos de entrada y archivos intermedios, `data/process/` para scripts de transformación reutilizables, y `data/eval/` para los resultados de validación del pipeline.
 4. Cualquier endpoint que exponga o dispare el pipeline (por ejemplo, para consultar el estado de la última ejecución o lanzar una ejecución manualmente) debe implementarse en `services/`, importando las funciones y flows desde `data/pipelines/` según sea necesario.
-5. Instala Prefect en tu entorno: `uv add prefect`.
-
-> **Sobre Docker:** El deployment final empaqueta el pipeline en un contenedor. Asegúrate de que tu monorepo ya tiene un `Dockerfile` o `docker-compose.yml` funcional desde el módulo de contenedores — lo usarás como base.
+5. Instala Prefect 3 en tu entorno: `uv add "prefect>=3"`.
 
 ---
 
@@ -62,12 +60,12 @@ Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso si
 
 - [ ] Implementa el pipeline como uno o más **flows** de Prefect (`@flow`) siguiendo la estructura de etapas de tu diseño: extracción, transformación y carga como mínimo.
 - [ ] Cada etapa debe ser una **task** (`@task`) independiente con entradas y salidas explícitas.
-- [ ] Si tu pipeline tiene pasos opcionales (por ejemplo, notificaciones o exportaciones secundarias), impleméntalos con `allow_failure=True` para que un fallo en ellos no interrumpa la ejecución principal.
+- [ ] Si tu pipeline tiene pasos opcionales (por ejemplo, notificaciones o exportaciones secundarias), invócalos con `return_state=True` para que un fallo en ellos no interrumpa la ejecución principal.
 
 ### Fase 2 — Resiliencia
 
 - [ ] Añade `retries` y `retry_delay_seconds` a todas las tasks que interactúan con servicios externos (base de datos, APIs). Justifica en un comentario el número de reintentos elegido.
-- [ ] Implementa al menos una task con `raise_on_failure=False` para manejar el fallo de forma explícita en el flow en lugar de dejarlo propagar automáticamente.
+- [ ] Maneja al menos un fallo de task de forma explícita en el flow usando `return_state=True` en lugar de dejarlo propagar automáticamente.
 - [ ] Añade caché (`cache_key_fn`, `cache_expiration`) a al menos una task de transformación costosa. Explica en un comentario qué define la clave de caché y durante cuánto tiempo es válida.
 
 ### Fase 3 — Idempotencia
@@ -75,11 +73,11 @@ Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso si
 - [ ] La fase de carga debe ser idempotente: si el pipeline se ejecuta dos veces sobre el mismo rango de datos, el resultado en base de datos debe ser idéntico tras ambas ejecuciones. Implementa la estrategia que documentaste en tu diseño (upsert, tabla de control, marca de tiempo, u otra).
 - [ ] Registra en base de datos o en un archivo de log los metadatos mínimos de cada ejecución: inicio, fin, registros procesados, estado final y cualquier error capturado.
 
-### Fase 4 — Schedule y deployment
+### Fase 4 — Ejecución mediante script
 
-- [ ] Define un **schedule** para el pipeline (interval o cron) que tenga sentido para el ciclo de datos de tu empresa. Justifícalo en un comentario.
-- [ ] Crea un **deployment** de Prefect usando `prefect deploy` o la API de Python, con infraestructura Docker como trabajo de ejecución.
-- [ ] Verifica que el pipeline puede iniciarse desde la CLI de Prefect: `prefect deployment run <nombre-del-flow>/<nombre-del-deployment>`.
+- [ ] Asegúrate de que `data/pipelines/pipeline.py` puede ejecutarse directamente como script CLI (por ejemplo, con un bloque `if __name__ == "__main__"` que invoque el flow principal).
+- [ ] Verifica que el pipeline completo se ejecuta sin errores: `python data/pipelines/pipeline.py`.
+- [ ] Documenta el schedule previsto para el ciclo de datos de tu empresa en `data/pipelines/PIPELINE_DESIGN.md` y el comando de ejecución en un comentario o en el mismo documento de diseño.
 
 ### Fase 5 — Endpoints en el backend
 
@@ -95,12 +93,12 @@ Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso si
 
 - [ ] El archivo `data/pipelines/pipeline.py` existe y define al menos un flow con tres o más tasks.
 - [ ] Al menos una task tiene `retries` configurado con un valor mayor que cero y un comentario que justifica el número elegido.
-- [ ] Al menos una task opcional usa `allow_failure=True` y el flow continúa su ejecución cuando esa task falla.
+- [ ] Al menos una task opcional se invoca con `return_state=True` y el flow continúa su ejecución cuando esa task falla.
 - [ ] Al menos una task de transformación tiene caché configurado con `cache_key_fn` y `cache_expiration`.
 - [ ] La fase de carga es idempotente: ejecutar el pipeline dos veces sobre los mismos datos no produce duplicados en base de datos.
 - [ ] Cada ejecución del pipeline registra al menos cinco metadatos (inicio, fin, registros procesados, estado, errores) en base de datos o en un archivo de log estructurado.
-- [ ] Existe un deployment de Prefect funcional con un schedule definido e infraestructura Docker.
-- [ ] El pipeline puede iniciarse desde la CLI de Prefect sin errores.
+- [ ] `python data/pipelines/pipeline.py` ejecuta el flow ETL completo sin errores.
+- [ ] El comando de ejecución está documentado en `data/pipelines/PIPELINE_DESIGN.md` o en comentarios inline.
 - [ ] Existe al menos un endpoint en `services/` que devuelve los metadatos de la última ejecución del pipeline (estado, inicio, fin, registros procesados).
 - [ ] Existe al menos un endpoint en `services/` que dispara una ejecución manual del flow, importando la función desde `data/pipelines/` sin duplicar la lógica.
 - [ ] El diseño implementado es coherente con `data/pipelines/PIPELINE_DESIGN.md` — las etapas, entidades y estrategias de resiliencia descritas allí están reflejadas en el código.

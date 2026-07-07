@@ -159,10 +159,10 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     `Hito 6` (diseño) — Documenta un pipeline de telemetría listo para producción en el monorepo: estado actual, diagrama ETL, idempotencia, log de ejecución y mapeo Prefect antes de escribir código.
 
 50. **[Hito 6 — Implementación de un Data Pipeline Resiliente (2/3)](./ai-eng-milestone-data-pipeline-build)**  
-    `Hito 6` (build) — Implementa flows Prefect extract-transform-load en el monorepo con reintentos, cargas idempotentes, deployment Docker programado y endpoints de estado/disparo del pipeline.
+    `Hito 6` (build) — Implementa flows Prefect extract-transform-load en el monorepo con reintentos, cargas idempotentes, ejecución por script y endpoints de estado/disparo del pipeline.
 
 51. **[Hito 6 — Mejora del pipeline de datos: Subflows y tests (3/3)](./ai-eng-milestone-data-pipeline-enhancement)**  
-    `Hito 6` (mejora) — Refactoriza el pipeline en subflows reutilizables, añade tests unitarios aislados para tasks de transformación y completa el deployment Docker de producción con verificación en Prefect Cloud.
+    `Hito 6` (mejora) — Refactoriza el pipeline en subflows reutilizables, añade tests unitarios aislados para tasks de transformación y garantiza la ejecución por script con `python data/pipelines/pipeline.py`.
 
 52. **[Procesos en segundo plano](./ai-eng-cronjobs)**  
     Cronjob nocturno de exportación de telemetría en el monorepo: script CLI independiente, máquina de estados `job_runs`, distributed lock, exportación CSV idempotente, disparo del pipeline por subproceso y override `TARGET_DATE` para pruebas.

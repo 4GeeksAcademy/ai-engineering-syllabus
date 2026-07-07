@@ -29,7 +29,7 @@ Your CTO has closed the design ticket and opened the implementation one:
 > >
 > > — The pipeline must tolerate partial failures without interrupting the entire execution.  
 > > — Tasks that touch external services must have retries configured.  
-> > — The pipeline must be runnable in a Docker container with a defined schedule.  
+> > — The pipeline must be runnable as a script from the command line.  
 > > — If a task has already run successfully in the last hour, it must not repeat unnecessarily.
 > >
 > > Starting point: your `data/pipelines/PIPELINE_DESIGN.md` from the previous day. Implement what you designed.
@@ -50,9 +50,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 2. Open your `data/pipelines/PIPELINE_DESIGN.md` — that document is your specification. Implement what you designed.
 3. Write your pipeline code in `data/pipelines/`. The main entry point must be named `data/pipelines/pipeline.py`. Use `data/raw/` for input data and intermediate files, `data/process/` for reusable transformation scripts, and `data/eval/` for pipeline validation outputs.
 4. Any endpoint that exposes or triggers the pipeline (for example, to query the status of the last run or launch a run manually) must be implemented in `services/`, importing functions and flows from `data/pipelines/` as needed.
-5. Install Prefect in your environment: `uv add prefect`.
-
-> **On Docker:** The final deployment packages the pipeline into a container. Make sure your monorepo already has a working `Dockerfile` or `docker-compose.yml` from the containerisation module — you will use it as a base.
+5. Install Prefect 3 in your environment: `uv add "prefect>=3"`.
 
 ---
 
@@ -62,12 +60,12 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 
 - [ ] Implement the pipeline as one or more Prefect **flows** (`@flow`) following the stage structure from your design: extraction, transformation, and load as a minimum.
 - [ ] Each stage must be an independent **task** (`@task`) with explicit inputs and outputs.
-- [ ] If your pipeline has optional steps (for example, notifications or secondary exports), implement them with `allow_failure=True` so that a failure in them does not interrupt the main execution.
+- [ ] If your pipeline has optional steps (for example, notifications or secondary exports), invoke them with `return_state=True` so that a failure in them does not interrupt the main execution.
 
 ### Phase 2 — Resilience
 
 - [ ] Add `retries` and `retry_delay_seconds` to every task that interacts with external services (database, APIs). Justify the number of retries chosen in a comment.
-- [ ] Implement at least one task with `raise_on_failure=False` to handle failure explicitly in the flow rather than letting it propagate automatically.
+- [ ] Handle at least one task failure explicitly in the flow using `return_state=True` rather than letting it propagate automatically.
 - [ ] Add caching (`cache_key_fn`, `cache_expiration`) to at least one expensive transformation task. Explain in a comment what defines the cache key and how long it is valid.
 
 ### Phase 3 — Idempotency
@@ -75,11 +73,11 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 - [ ] The load phase must be idempotent: if the pipeline runs twice over the same data range, the result in the database must be identical after both runs. Implement the strategy you documented in your design (upsert, control table, timestamp, or another).
 - [ ] Record in the database or in a log file the minimum execution metadata for each run: start time, end time, records processed, final status, and any captured errors.
 
-### Phase 4 — Schedule and deployment
+### Phase 4 — Script-based execution
 
-- [ ] Define a **schedule** for the pipeline (interval or cron) that makes sense for your company's data cycle. Justify it in a comment.
-- [ ] Create a Prefect **deployment** using `prefect deploy` or the Python API, with Docker as the execution infrastructure.
-- [ ] Verify that the pipeline can be triggered from the Prefect CLI: `prefect deployment run <flow-name>/<deployment-name>`.
+- [ ] Ensure `data/pipelines/pipeline.py` can be executed directly as a CLI script (for example, with an `if __name__ == "__main__"` block that invokes the main flow).
+- [ ] Verify the full pipeline runs without errors: `python data/pipelines/pipeline.py`.
+- [ ] Document the intended schedule for your company's data cycle in `data/pipelines/PIPELINE_DESIGN.md` and the run command in a comment or the same design doc.
 
 ### Phase 5 — Backend endpoints
 
@@ -95,12 +93,12 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 
 - [ ] The file `data/pipelines/pipeline.py` exists and defines at least one flow with three or more tasks.
 - [ ] At least one task has `retries` configured with a value greater than zero and a comment justifying the number chosen.
-- [ ] At least one optional task uses `allow_failure=True` and the flow continues executing when that task fails.
+- [ ] At least one optional task is invoked with `return_state=True` and the flow continues executing when that task fails.
 - [ ] At least one transformation task has caching configured with `cache_key_fn` and `cache_expiration`.
 - [ ] The load phase is idempotent: running the pipeline twice over the same data does not produce duplicates in the database.
 - [ ] Each pipeline run records at least five metadata fields (start time, end time, records processed, status, errors) in the database or in a structured log file.
-- [ ] A working Prefect deployment exists with a defined schedule and Docker infrastructure.
-- [ ] The pipeline can be triggered from the Prefect CLI without errors.
+- [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors.
+- [ ] The run command is documented in `data/pipelines/PIPELINE_DESIGN.md` or inline comments.
 - [ ] At least one endpoint exists in `services/` that returns the metadata of the last pipeline run (status, start time, end time, records processed).
 - [ ] At least one endpoint exists in `services/` that triggers a manual flow run, importing the function from `data/pipelines/` without duplicating the logic.
 - [ ] The implemented design is consistent with `data/pipelines/PIPELINE_DESIGN.md` — the stages, entities, and resilience strategies described there are reflected in the code.

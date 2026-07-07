@@ -45,6 +45,7 @@ Un flow que crece sin estructura acaba siendo tan difícil de mantener como el s
 2. Abre `data/pipelines/pipeline.py` — es tu punto de partida.
 3. Mantén la estructura de carpetas existente: `data/pipelines/` para flows y subflows, `data/process/` para lógica de transformación, `data/raw/` para datos de entrada, `data/eval/` para outputs de validación.
 4. Los tests unitarios van en `tests/pipelines/` en la raíz del monorepo.
+5. Asegúrate de tener Prefect 3 instalado desde la Parte 2: `uv add "prefect>=3"`.
 
 ---
 
@@ -54,7 +55,7 @@ Un flow que crece sin estructura acaba siendo tan difícil de mantener como el s
 
 - [ ] Divide el flow principal en al menos tres subflows (`@flow`) que se correspondan con las etapas de tu diseño: uno para extracción, uno para transformación y uno para carga. El flow principal los invoca en secuencia.
 - [ ] Cada subflow debe tener entradas y salidas explícitas — no dependas de variables globales entre subflows.
-- [ ] Si tienes pasos opcionales (notificaciones, exportaciones secundarias), extráelos también como subflows con `allow_failure=True` en la invocación desde el flow principal.
+- [ ] Si tienes pasos opcionales (notificaciones, exportaciones secundarias), extráelos también como subflows e invócalos con `return_state=True` desde el flow principal.
 
 ### Fase 2 — Tests unitarios
 

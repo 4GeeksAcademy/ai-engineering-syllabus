@@ -19,7 +19,6 @@
     "data-engineering",
     "etl",
     "prefect",
-    "docker",
     "pytest",
     "backend-design"
   ],

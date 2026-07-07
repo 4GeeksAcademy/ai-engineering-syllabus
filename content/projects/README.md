@@ -159,10 +159,10 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     `Milestone 6` (design) — Document a production-ready telemetry pipeline in the company monorepo: current state, ETL flow diagram, idempotency, execution log, and Prefect mapping before writing code.
 
 50. **[Milestone 6 — Implementing a Resilient Data Pipeline (2/3)](./ai-eng-milestone-data-pipeline-build)**  
-    `Milestone 6` (build) — Implement Prefect extract-transform-load flows in the monorepo with retries, idempotent loads, scheduled Docker deployment, and pipeline status/trigger API endpoints.
+    `Milestone 6` (build) — Implement Prefect extract-transform-load flows in the monorepo with retries, idempotent loads, script-based execution, and pipeline status/trigger API endpoints.
 
 51. **[Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3)](./ai-eng-milestone-data-pipeline-enhancement)**  
-    `Milestone 6` (enhancement) — Refactor the pipeline into reusable subflows, add isolated unit tests for transformation tasks, and complete the production Docker deployment with Prefect Cloud verification.
+    `Milestone 6` (enhancement) — Refactor the pipeline into reusable subflows, add isolated unit tests for transformation tasks, and ensure script-based execution via `python data/pipelines/pipeline.py`.
 
 52. **[Background Processes](./ai-eng-cronjobs)**  
     Nightly telemetry export cronjob in the company monorepo: independent CLI script, `job_runs` state machine, distributed lock, idempotent CSV export, pipeline subprocess trigger, and `TARGET_DATE` override for testing.

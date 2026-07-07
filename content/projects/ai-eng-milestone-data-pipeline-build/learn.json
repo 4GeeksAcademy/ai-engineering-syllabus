@@ -5,8 +5,8 @@
     "es": "Hito 6 — Implementación de un Data Pipeline Resiliente (2/3)"
   },
   "description": {
-    "en": "Build a resilient Prefect data pipeline in your company monorepo: implement extract-transform-load flows and tasks, configure retries caching and partial-failure tolerance, ensure idempotent loads with execution metadata, create a scheduled Docker deployment, and expose pipeline status and manual trigger endpoints in the backend — implementing your approved PIPELINE_DESIGN.md.",
-    "es": "Construye un pipeline de datos resiliente con Prefect en el monorepo de tu empresa: implementa flows y tasks de extracción-transformación-carga, configura reintentos, caché y tolerancia a fallos parciales, garantiza cargas idempotentes con metadatos de ejecución, crea un deployment programado en Docker y expone endpoints de estado y disparo manual en el backend — implementando tu PIPELINE_DESIGN.md aprobado."
+    "en": "Build a resilient Prefect data pipeline in your company monorepo: implement extract-transform-load flows and tasks, configure retries caching and partial-failure tolerance, ensure idempotent loads with execution metadata, make the pipeline runnable via `python data/pipelines/pipeline.py`, and expose pipeline status and manual trigger endpoints in the backend — implementing your approved PIPELINE_DESIGN.md.",
+    "es": "Construye un pipeline de datos resiliente con Prefect en el monorepo de tu empresa: implementa flows y tasks de extracción-transformación-carga, configura reintentos, caché y tolerancia a fallos parciales, garantiza cargas idempotentes con metadatos de ejecución, haz que el pipeline se ejecute con `python data/pipelines/pipeline.py` y expone endpoints de estado y disparo manual en el backend — implementando tu PIPELINE_DESIGN.md aprobado."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -19,7 +19,6 @@
     "data-engineering",
     "etl",
     "prefect",
-    "docker",
     "fastapi",
     "backend-design"
   ],
