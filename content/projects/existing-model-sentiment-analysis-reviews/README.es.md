@@ -39,9 +39,9 @@ Antes de confiar en cualquier resultado, toma una muestra de reseñas y léelas 
 
 ## 🌱 Cómo Iniciar el Proyecto
 
-> Haz fork o clona el siguiente repositorio antes de comenzar: [github.com/4GeeksAcademy/python-hello](https://github.com/4GeeksAcademy/python-hello)
+> Haz fork del siguiente repositorio antes de comenzar: [github.com/4GeeksAcademy/python-hello](https://github.com/4GeeksAcademy/python-hello)
 
-1. Crea tu propio repositorio a partir de la plantilla (no hagas fork directo — usa "Use this template" o clona y sube a un repo nuevo en tu propia cuenta).
+1. Haz fork del repositorio `python-hello` y, si tienes la opción, selecciona la cuenta de 4GeeksAcademy.
 2. Ábrelo en GitHub Codespaces, o clónalo localmente si prefieres trabajar en tu propia máquina.
 3. Descarga el archivo [reviews.csv](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-sentiment-analysis-reviews/reviews.csv) desde la plataforma y colócalo en una carpeta `data/` dentro de tu repositorio.
 4. Lee las [instrucciones completas sobre cómo iniciar un proyecto de código](https://4geeks.com/lesson/how-to-start-a-project) si esto es nuevo para ti.

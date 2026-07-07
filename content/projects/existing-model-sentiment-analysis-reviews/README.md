@@ -7,7 +7,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
 
-_Estas instrucciones están [disponibles en español](./README.es.md)._
+_These instructions are [available in Spanish](./README.es.md)._
 
 **Before you start**: 📗 [Read the instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
@@ -39,9 +39,9 @@ Before you trust any output, sample a handful of reviews yourself and read them.
 
 ## 🌱 How to Start the Project
 
-> Fork or clone the following repository before you start: [github.com/4GeeksAcademy/python-hello](https://github.com/4GeeksAcademy/python-hello)
+> Fork the following repository before you start: [github.com/4GeeksAcademy/python-hello](https://github.com/4GeeksAcademy/python-hello)
 
-1. Create your own repository from the template (don't fork directly — use "Use this template" or clone + push to a new repo under your own account).
+1. Fork the `python-hello` repository and, if available, select the 4GeeksAcademy account.
 2. Open it in GitHub Codespaces, or clone it locally if you prefer to work on your own machine.
 3. Download the provided [reviews.csv](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-sentiment-analysis-reviews/reviews.csv) file from the platform and place it in a `data/` folder in your repository.
 4. Read the full [instructions on how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project) if this is new to you.
@@ -81,4 +81,4 @@ Push your code to your own GitHub repository, make sure your sentiment report is
 
 ---
 
-This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/repo-name/graphs/contributors). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).
+This and many other projects are built by students as part of the [Coding Bootcamps](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity), and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).
