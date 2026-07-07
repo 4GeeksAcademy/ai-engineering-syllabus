@@ -13,6 +13,8 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the approved `telemetry-plan.md` and `event-schemas.json` from Phase 1 — they are the contract you will implement today. If they are not approved, resolve that before writing any code.
 
+Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** at hand: `event_type` names, entity identifiers in `properties`, and instrumentation points must use your company's domain vocabulary from that document (via the approved plan), not generic labels from this README.
+
 ---
 
 ## 🎯 The Challenge
@@ -52,7 +54,7 @@ The frontend capture service does not fire an HTTP call for every event — that
 ## 🌱 How to Start the Project
 
 1. Open your fork of the monorepo and locate `uis/backoffice/` (frontend) and `services/` (FastAPI backend).
-2. Retrieve your `docs/telemetry/event-schemas.json` — it is the contract that will guide the entire implementation.
+2. Retrieve your `docs/telemetry/event-schemas.json` and cross-check it against your `CONTEXT-company.md` — entity names and property keys must match your company's domain vocabulary.
 3. Add `NEXT_PUBLIC_TELEMETRY_ENDPOINT` to your `.env.local` pointing to the stub endpoint you will create: `http://localhost:8000/telemetry/events`.
 4. Follow the phase order: stub → service → instrumentation. Do not instrument before you have the service.
 
@@ -91,6 +93,8 @@ The frontend capture service does not fire an HTTP call for every event — that
 - [ ] Every call to `track()` must include only the properties from the **allowlist** defined for that event in your `event-schemas.json`. Do not add extra properties "just in case".
 - [ ] Verify in the browser DevTools (Network tab) that batches are reaching the stub endpoint with the correct format and that the backend responds 200.
 
+⚠️ **IMPORTANT:** `event_type` values and `properties` keys must match your approved Phase 1 schemas, which were grounded in `CONTEXT-company.md`. Copying generic event names from this README instead of your plan will not be accepted.
+
 ### 🔵 Additional Activity — Authentication Flow Instrumentation
 
 - [ ] Instrument the authentication events defined in your plan: successful login, failed login, and session expired. Capture them in the authentication hooks or components — not in each page individually.
@@ -107,6 +111,7 @@ The frontend capture service does not fire an HTTP call for every event — that
 - [ ] The `TelemetryService` implements local queue, batch+debounce (10s / 20 events), flush with `sendBeacon`, and retry with backoff
 - [ ] The service generates `eventId`, `sessionId`, `userId`, `timestamp`, `schemaVersion`, and `requestId` automatically — the component calling `track()` does not pass them manually
 - [ ] There are no direct `fetch`/`axios` calls for telemetry outside the `TelemetryService`
+- [ ] Instrumented events use `event_type` and property allowlists from the student's Phase 1 plan, grounded in `CONTEXT-company.md` — not generic placeholders from this README
 - [ ] Inventory flow events are instrumented respecting the allowlist of properties for each event
 - [ ] Failed order attempts (validation error or insufficient stock) are tracked from the catch blocks
 - [ ] Product/stock list viewed is tracked when the products page loads

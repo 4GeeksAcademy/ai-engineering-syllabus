@@ -14,12 +14,12 @@ En una sesión: receptor stub + servicio de captura en frontend + instrumentar *
 
 ### Nota de alcance
 
-| Proyecto evaluable (`ai-eng-telemetry-capture`) | Este ejemplo de clase              |
-| ----------------------------------------------- | ---------------------------------- |
-| Monorepo completo + esquemas Fase 1             | Mini `desk-app` + `library-api`    |
-| Instrumentación completa inventario + auth      | 2 eventos de préstamo + 1 de auth  |
-| Batch 10s / 20 eventos                          | Batch 5s / 10 eventos (ritmo demo) |
-| PR al fork del estudiante                       | Solo demo local                    |
+| Proyecto evaluable (`ai-eng-telemetry-capture`) | Este ejemplo de clase               |
+| ----------------------------------------------- | ----------------------------------- |
+| CONTEXT de empresa + esquemas Fase 1            | Contrato mini de biblioteca (abajo) |
+| Instrumentación completa inventario + auth      | 2 eventos de préstamo + 1 de auth   |
+| Batch 10s / 20 eventos                          | Batch 5s / 10 eventos (ritmo demo)  |
+| PR al fork del estudiante                       | Solo demo local                     |
 
 **Contrato mini de eventos (usar como `event-schemas.json` en clase):**
 

@@ -14,7 +14,7 @@ _These instructions are also available in [English](./README.md)._
 
 | Proyecto evaluable (`ai-eng-telemetry-report`) | Este ejemplo de clase          |
 | ---------------------------------------------- | ------------------------------ |
-| Métricas desde KPIs Fase 1 del estudiante      | 2 métricas fijas de biblioteca |
+| KPIs del CONTEXT de empresa vía plan Fase 1    | 2 métricas fijas de biblioteca |
 | Monorepo completo `services/telemetry/`        | Módulo mini `library-api`      |
 | auth_failure_rate opcional                     | Omitir métrica de auth         |
 | ≥20 filas reales                               | 10+ filas seed OK para demo    |

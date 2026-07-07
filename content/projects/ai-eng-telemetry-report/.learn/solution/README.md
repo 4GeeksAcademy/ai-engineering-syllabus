@@ -4,6 +4,10 @@ This reference solution defines the expected quality bar for Phase 4 in the stud
 
 Metric definitions must align with the student's Phase 1 `telemetry-plan.md` KPIs — examples below are indicative.
 
+## Alignment with company context
+
+Each metric function must answer a KPI from the student's `telemetry-plan.md`, which was derived from **CONTEXT-company.md**. Grade metric names, `event_type` filters, and `tags` grouping dimensions against that plan — not the indicative examples in this document.
+
 ---
 
 ## Architecture overview
@@ -199,6 +203,7 @@ Bounds passed to SQL: **inclusive start, exclusive end**. Endpoint resolves defa
 - [ ] Response `{ period, metrics }` structure
 - [ ] 60-second in-memory cache
 - [ ] Grouped metrics with temporal (or other) dimension
+- [ ] Metrics map to KPIs from CONTEXT-company.md via student's telemetry-plan.md
 
 ---
 

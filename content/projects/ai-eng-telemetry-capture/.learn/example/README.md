@@ -14,12 +14,12 @@ In one session: stub receiver + frontend capture service + instrument **two** bo
 
 ### Scope note
 
-| Graded project (`ai-eng-telemetry-capture`) | This class example                |
-| ------------------------------------------- | --------------------------------- |
-| Full company monorepo + Phase 1 schemas     | Mini `desk-app` + `library-api`   |
-| Full inventory + auth instrumentation       | 2 checkout events + 1 auth event  |
-| Batch 10s / 20 events                       | Batch 5s / 10 events (demo speed) |
-| PR to student fork                          | Local demo only                   |
+| Graded project (`ai-eng-telemetry-capture`) | This class example                  |
+| ------------------------------------------- | ----------------------------------- |
+| Company CONTEXT + Phase 1 schemas           | Mini library event contract (below) |
+| Full inventory + auth instrumentation       | 2 checkout events + 1 auth event    |
+| Batch 10s / 20 events                       | Batch 5s / 10 events (demo speed)   |
+| PR to student fork                          | Local demo only                     |
 
 **Mini event contract (use as `event-schemas.json` for class):**
 

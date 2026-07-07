@@ -5,8 +5,8 @@
     "es": "Telemetría de la compañía – Reporte"
   },
   "description": {
-    "en": "Build a Pandas analysis pipeline over telemetry_events in Supabase: at least two KPI metric functions (load SQL → refine Pandas → datetime → groupby → aggregate), GET /telemetry/report with period and metrics JSON, 60-second in-memory cache, optional auth_failure_rate — metrics grouped by time, not global counts.",
-    "es": "Construye un pipeline de análisis con Pandas sobre telemetry_events en Supabase: al menos dos funciones de métrica KPI (cargar SQL → refinar Pandas → datetime → groupby → agregar), GET /telemetry/report con JSON de period y metrics, caché en memoria 60s, auth_failure_rate opcional — métricas agrupadas en el tiempo, no recuentos globales."
+    "en": "Build a Pandas analysis pipeline over telemetry_events in Supabase: at least two KPI metric functions grounded in CONTEXT-company.md via telemetry-plan.md (load SQL → refine Pandas → datetime → groupby → aggregate), GET /telemetry/report with period and metrics JSON, 60-second in-memory cache, optional auth_failure_rate — metrics grouped by time, not global counts.",
+    "es": "Construye un pipeline de análisis con Pandas sobre telemetry_events en Supabase: al menos dos funciones de métrica KPI basadas en CONTEXT-company.md vía telemetry-plan.md (cargar SQL → refinar Pandas → datetime → groupby → agregar), GET /telemetry/report con JSON de period y metrics, caché en memoria 60s, auth_failure_rate opcional — métricas agrupadas en el tiempo, no recuentos globales."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",

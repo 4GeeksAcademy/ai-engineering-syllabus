@@ -13,6 +13,8 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the `TelemetryService` working in the frontend and sending batches to the stub from the previous project. If events are not reaching the stub with a 200 response, resolve that before continuing — today you build the real destination for those events.
 
+Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** explains which envelope fields and `tags` dimensions matter for your company's analytics — confirm any optional fields stored in `tags` match what you documented in `telemetry-plan.md`.
+
 ---
 
 ## 🎯 The Challenge
@@ -72,7 +74,7 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 ## 🌱 How to Start the Project
 
 1. Open your fork of the monorepo and locate `services/` (FastAPI backend).
-2. Have your `docs/telemetry/event-schemas.json` at hand — the stub's Pydantic model already follows it; today you use it to validate before persisting.
+2. Have your `docs/telemetry/event-schemas.json` and `telemetry-plan.md` at hand — confirm the `tags` mapping preserves CONTEXT-specific dimensions (warehouse, office, etc.) defined in your plan.
 3. The frontend is not touched. Verify that `NEXT_PUBLIC_TELEMETRY_ENDPOINT` still points to the same endpoint — only what happens inside the backend changes.
 4. Follow the order: table in Supabase → real endpoint → end-to-end verification.
 
@@ -138,6 +140,7 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 - [ ] The `TelemetryEvent` Pydantic model has not been modified from the previous project — it is reused as-is
 - [ ] The frontend has not changed a single line — the stub → real substitution is completely transparent
 - [ ] Events appear in `telemetry_events` with `event_type`, `timestamp`, and `tags` correctly populated
+- [ ] Stored `tags` JSON preserves the property allowlists and CONTEXT-specific dimensions documented in the student's `telemetry-plan.md`
 - [ ] The insert is a single operation per batch, not one INSERT per event
 
 ---

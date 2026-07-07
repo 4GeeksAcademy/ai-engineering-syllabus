@@ -4,6 +4,10 @@ This reference solution defines the expected quality bar for Phase 2 implementat
 
 `event_type` values and property allowlists must match the student's approved `docs/telemetry/event-schemas.json` from Phase 1 — this document uses indicative examples only.
 
+## Alignment with company context
+
+Instrumentation must implement the student's approved `docs/telemetry/event-schemas.json`, which was derived from **CONTEXT-company.md**. Grade `event_type` values, property keys, and hook placement against that contract — not the indicative examples in this document.
+
 ---
 
 ## Expected file layout
@@ -213,6 +217,7 @@ A complete submission should demonstrate:
 - [ ] Queue + 10s/20 batch + `sendBeacon` + retry with backoff
 - [ ] Single `track()` entry point; auto `eventId`, `sessionId`, `userId`, `timestamp`, `schemaVersion`, `requestId`
 - [ ] Inventory events instrumented with allowlist-only properties
+- [ ] Instrumented events align with Phase 1 schemas grounded in CONTEXT-company.md
 - [ ] No PII in emitted events
 - [ ] Network evidence of batched payloads with 200 responses
 - [ ] PR title `[W16D47] Telemetry Frontend` with required description content

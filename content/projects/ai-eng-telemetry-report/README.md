@@ -13,6 +13,8 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the `telemetry_events` table in Supabase with at least 20 rows of real events generated from the backoffice. Without real data there is nothing to analyse — generate activity in the inventory module before continuing.
 
+Re-read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** alongside `docs/telemetry/telemetry-plan.md` — each metric must answer one of the three KPIs defined there for your assigned company, not a generic inventory dashboard.
+
 ---
 
 ## 🎯 The Challenge
@@ -86,7 +88,7 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 
 1. Open your fork of the monorepo and locate `services/` (FastAPI backend).
 2. Check `telemetry_events` in Supabase and confirm you have at least 20 rows with a variety of `event_type` values — if not, generate activity in the backoffice first.
-3. Review your `docs/telemetry/telemetry-plan.md` — the KPIs defined there are exactly the metrics you will calculate today.
+3. Review your `CONTEXT-company.md` and `docs/telemetry/telemetry-plan.md` — the KPIs from your company context are exactly the metrics you will calculate today.
 4. Follow the order: analysis functions → report endpoint → cache.
 
 ---
@@ -105,6 +107,8 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
   - Return the result as a list of dicts serialisable to JSON with `.reset_index().to_dict(orient='records')`
 - [ ] Each function must be **independent and side-effect free** — calling it twice with the same parameters must produce the same result.
 - [ ] Do not use loops to calculate metrics — only Pandas operations (`.groupby()`, `.agg()`, `.count()`, `.sum()`, `.mean()`).
+
+⚠️ **IMPORTANT:** Metric names and business questions must map to KPIs grounded in `CONTEXT-company.md` via your Phase 1 plan. A generic "events per day" count without your company's grouping dimensions will not be accepted.
 
 ### Phase 2 — Report Endpoint
 
@@ -140,6 +144,7 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 - [ ] The `GET /telemetry/report` endpoint accepts optional `start_date` and `end_date` and defaults to 7 days
 - [ ] The endpoint returns JSON with the structure `{ "period": {...}, "metrics": {...} }`
 - [ ] The endpoint has an in-memory cache with a 60-second TTL — it does not recalculate on every request
+- [ ] Each metric answers a KPI from the student's `telemetry-plan.md`, justified with data from `CONTEXT-company.md`
 - [ ] The returned metrics have a grouping dimension — they are not global numbers without context
 
 ---

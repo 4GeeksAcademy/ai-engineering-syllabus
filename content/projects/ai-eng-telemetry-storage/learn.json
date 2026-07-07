@@ -5,8 +5,8 @@
     "es": "Telemetría de la compañía – Almacenamiento"
   },
   "description": {
-    "en": "Replace the telemetry stub with persistent storage: create telemetry_events in Supabase (indexes, immutable write-only), validate each batch event with the existing TelemetryEvent Pydantic model, bulk-insert valid rows in one transaction, return received/stored/rejected counts — frontend unchanged, same endpoint URL.",
-    "es": "Sustituye el stub de telemetría por almacenamiento persistente: crea telemetry_events en Supabase (índices, solo escritura inmutable), valida cada evento del batch con el modelo Pydantic TelemetryEvent existente, inserta filas válidas en bulk en una transacción, devuelve conteos received/stored/rejected — frontend sin cambios, misma URL de endpoint."
+    "en": "Replace the telemetry stub with persistent storage: create telemetry_events in Supabase (indexes, immutable write-only), validate each batch event with the existing TelemetryEvent Pydantic model, bulk-insert valid rows in one transaction, preserve CONTEXT-specific tags from telemetry-plan.md, return received/stored/rejected counts — frontend unchanged, same endpoint URL.",
+    "es": "Sustituye el stub de telemetría por almacenamiento persistente: crea telemetry_events en Supabase (índices, solo escritura inmutable), valida cada evento del batch con el modelo Pydantic TelemetryEvent existente, inserta filas válidas en bulk en una transacción, preserva tags específicos del CONTEXT según telemetry-plan.md, devuelve conteos received/stored/rejected — frontend sin cambios, misma URL de endpoint."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -20,10 +20,7 @@
     "telemetry",
     "backend-design"
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "telemetry": {
     "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3670"

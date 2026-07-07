@@ -13,6 +13,8 @@ _These instructions are [available in English](./README.md)._
 
 **Antes de empezar**: Necesitas el `TelemetryService` del frontend funcionando y enviando batches al stub del proyecto anterior. Si los eventos no llegan al stub con respuesta 200, resuélvelo antes de continuar — hoy construyes el destino real de esos eventos.
 
+Tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** explica qué campos del envelope y dimensiones de `tags` importan para el análisis de tu empresa — confirma que los campos opcionales guardados en `tags` coinciden con lo documentado en `telemetry-plan.md`.
+
 ---
 
 ## 🎯 El Reto
@@ -72,7 +74,7 @@ El modelo se reutiliza sin cambios respecto a la Fase 2 — lo usas como **valid
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Abre tu fork del monorepo y localiza `services/` (backend FastAPI).
-2. Ten a mano tu `docs/telemetry/event-schemas.json` — el modelo Pydantic del stub ya lo sigue; hoy lo usas para validar antes de persistir.
+2. Ten a mano tu `docs/telemetry/event-schemas.json` y `telemetry-plan.md` — confirma que el mapeo a `tags` preserva las dimensiones específicas del CONTEXT (almacén, oficina, etc.) definidas en tu plan.
 3. El frontend no se toca. Verifica que `NEXT_PUBLIC_TELEMETRY_ENDPOINT` sigue apuntando al mismo endpoint — solo cambia lo que pasa dentro del backend.
 4. Sigue el orden: tabla en Supabase → endpoint real → verificación end-to-end.
 
@@ -138,6 +140,7 @@ El modelo se reutiliza sin cambios respecto a la Fase 2 — lo usas como **valid
 - [ ] El modelo Pydantic `TelemetryEvent` no ha sido modificado respecto al proyecto anterior — se reutiliza tal cual
 - [ ] El frontend no ha cambiado ninguna línea — la sustitución stub → real es completamente transparente
 - [ ] Los eventos aparecen en `telemetry_events` con `event_type`, `timestamp` y `tags` correctamente poblados
+- [ ] El JSON de `tags` guardado preserva las allowlists de propiedades y dimensiones específicas del CONTEXT documentadas en el `telemetry-plan.md` del estudiante
 - [ ] El insert es una sola operación por batch, no un INSERT por evento
 
 ---

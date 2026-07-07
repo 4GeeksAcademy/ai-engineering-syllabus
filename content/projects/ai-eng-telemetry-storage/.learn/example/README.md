@@ -14,6 +14,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 | Graded project (`ai-eng-telemetry-storage`) | This class example                            |
 | ------------------------------------------- | --------------------------------------------- |
+| Company CONTEXT + Phase 1 `tags` mapping    | Mini library event contract from capture demo |
 | Full monorepo + Phase 2 `TelemetryEvent`    | Mini `library-api` + existing capture service |
 | 8-column table + 3 indexes                  | Same schema, smaller dataset                  |
 | Inventory E2E test                          | 2 book-checkout events in demo                |

@@ -14,7 +14,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 | Graded project (`ai-eng-telemetry-report`) | This class example          |
 | ------------------------------------------ | --------------------------- |
-| Metrics from student Phase 1 KPIs          | 2 fixed library metrics     |
+| Company CONTEXT KPIs via Phase 1 plan      | 2 fixed library metrics     |
 | Full monorepo `services/telemetry/`        | Mini `library-api` module   |
 | Optional auth_failure_rate                 | Skip auth metric            |
 | ≥20 real rows required                     | 10+ seeded rows OK for demo |
