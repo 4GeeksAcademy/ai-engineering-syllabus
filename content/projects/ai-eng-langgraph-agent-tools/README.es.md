@@ -11,8 +11,6 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — no cambia respecto a proyectos anteriores, pero define las categorías y campos que tus tools deben respetar al leer datos de otros sistemas.
-
 ---
 
 ## 🎯 El Reto

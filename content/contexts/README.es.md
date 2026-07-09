@@ -50,7 +50,7 @@ _These instructions are [available in English](./README.md)_.
 16. **[Captura de telemetría](./telemetry-capture)** — Event envelope y restricciones de captura en frontend.
 17. **[Almacenamiento de telemetría](./telemetry-storage)** — Reglas de almacenamiento y validación de eventos en batch.
 18. **[Reporte de telemetría](./telemetry-report)** — Métricas y dimensiones agrupadas para el endpoint de analytics.
-19. **[Base de conocimiento RAG](./rag-knowledge-base)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
+19. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 

@@ -50,7 +50,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 16. **[Telemetry capture](./telemetry-capture)** — Event envelope and capture constraints for the frontend module.
 17. **[Telemetry storage](./telemetry-storage)** — Storage and validation rules for batched events.
 18. **[Telemetry report](./telemetry-report)** — Reporting metrics and grouped dimensions for the analytics endpoint.
-19. **[RAG knowledge base](./rag-knowledge-base)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
+19. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
 
 ## Contributors
 

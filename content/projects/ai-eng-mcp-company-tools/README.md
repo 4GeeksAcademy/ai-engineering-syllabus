@@ -11,8 +11,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — the same one you already know from previous milestones — before touching any code. This project doesn't introduce new domain data: it exposes, through a standard protocol, capabilities your backend already has.
-
 ---
 
 ## 🎯 The Challenge
@@ -68,7 +66,7 @@ As part of the challenge, your implementation must resolve — without being tol
 - [ ] Expose at least one **read-only** tool over the inventory — any modification attempt must be explicitly rejected by the server, not simply omitted.
 - [ ] Document each tool with a name, description, and input/output schema sufficient for an external agent to discover it without additional human context (an MCP-discovery equivalent of `--help`).
 
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match the incident and inventory APIs you already built. A generic implementation that ignores your existing services will not be accepted.
 
 **Authentication and security**
 

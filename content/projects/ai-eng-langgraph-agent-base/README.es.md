@@ -11,8 +11,6 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — el mismo que usaste en el Hito 7 — antes de tocar el código. No cambia, pero define el vocabulario y los datos que tu agente debe manejar.
-
 ---
 
 ## 🎯 El Reto
@@ -40,7 +38,6 @@ LangGraph formaliza ese mismo loop como una máquina de estados: cada paso es un
 1. Sigue trabajando sobre tu fork existente del [**monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). Si por algún motivo aún no lo tienes, haz un fork y ábrelo en **GitHub Codespaces** o clónalo localmente.
 2. Instala la dependencia con `uv add langgraph` (nunca uses `pip install` ni `pipenv`).
 3. Ubica el código del Hito 7: tus funciones `setup`, `embed`, `retrieve` y `query` en `data/pipelines/`, y el endpoint que las expone en `services/`.
-4. Revisa tu `CONTEXT-empresa.md` — no cambia respecto al Hito 7, pero lo necesitarás para verificar que las respuestas del agente sigan siendo correctas después de la migración.
 
 ---
 
@@ -65,7 +62,7 @@ LangGraph formaliza ese mismo loop como una máquina de estados: cada paso es un
 - [ ] Expón el grafo compilado a través de un endpoint (por ejemplo `POST /agent/query`) que reemplace o conviva con el endpoint del Hito 7. El endpoint no debe contener lógica de negocio propia — solo invoca el grafo.
 - [ ] Si el grafo falla en cualquier nodo, el endpoint responde con un mensaje de error claro, nunca con un stack trace crudo.
 
-⚠️ **IMPORTANTE:** El comportamiento del agente (qué documentos recupera, qué responde) debe seguir siendo correcto según tu `CONTEXT-empresa.md`. Migrar a LangGraph no es una excusa para que las respuestas dejen de estar ancladas en los datos de tu empresa.
+⚠️ **IMPORTANTE:** El comportamiento del agente (qué documentos recupera, qué responde) debe seguir siendo correcto según tu base de conocimiento del Hito 7. Migrar a LangGraph no es una excusa para que las respuestas dejen de estar ancladas en los datos de tu empresa.
 
 ---
 

@@ -11,8 +11,6 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de comenzar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir cualquier código — define los eventos de telemetría, KPIs y entidades de tu empresa que el pipeline debe procesar.
-
 ---
 
 ## 🎯 El Reto
@@ -85,7 +83,7 @@ Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso si
 - [ ] Los endpoints deben importar los flows o funciones desde `data/pipelines/` — no dupliques la lógica del pipeline en `services/`.
 - [ ] Los endpoints siguen las mismas convenciones de autenticación y estructura de respuesta que el resto de tu API.
 
-⚠️ **IMPORTANTE:** Los nombres de flows, tasks, tablas y campos deben coincidir con los definidos en tu `CONTEXT-empresa.md` y con el diseño de `data/pipelines/PIPELINE_DESIGN.md`. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de flows, tasks, tablas y campos deben coincidir con los definidos en `data/pipelines/PIPELINE_DESIGN.md` y el esquema de telemetría ya existente en tu monorepo. Una implementación genérica que ignore el modelo de datos de tu empresa no será aceptada.
 
 ---
 

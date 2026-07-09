@@ -11,8 +11,6 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the specific company data, naming conventions, KPIs, and constraints for your implementation.
-
 ---
 
 ## 🎯 The Challenge
@@ -74,7 +72,7 @@ An **agent skill** is a structured, reusable instruction: more concrete than a g
 
 ## 🌱 How to Start the Project
 
-Read your `CONTEXT-company.md` before doing anything else. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
+Read the `CONTEXT.md` in your monorepo before doing anything else. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
 
 1. Fork the template repository: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Open your fork in **GitHub Codespaces** or clone it locally, then review the existing structure before creating new folders
@@ -101,7 +99,7 @@ Read your `CONTEXT-company.md` before doing anything else. The memory bank you a
   - [ ] Documented inputs
   - [ ] Explicit and verifiable acceptance criteria
 
-⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints defined in your `CONTEXT.md`. A generic infrastructure that ignores the company context will not be accepted.
+⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints documented in your monorepo's `CONTEXT.md`. A generic infrastructure that ignores the company scenario will not be accepted.
 
 ### Next.js + TypeScript Application
 

@@ -11,8 +11,6 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir ningún código — define los datos específicos de la empresa, las convenciones de nomenclatura, los KPIs y las restricciones para tu implementación.
-
 ---
 
 ## 🎯 El Desafío
@@ -74,7 +72,7 @@ Una **skill de agente** es una instrucción estructurada y reutilizable: más co
 
 ## 🌱 Cómo iniciar el proyecto
 
-Lee tu `CONTEXT-company.md` antes de hacer nada más. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
+Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
 
 1. Haz fork del repositorio de plantilla: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Ábrelo en **GitHub Codespaces** o clónalo localmente y revisa la estructura existente antes de crear carpetas nuevas
@@ -101,7 +99,7 @@ Lee tu `CONTEXT-company.md` antes de hacer nada más. El banco de memoria que va
   - [ ] Inputs documentados
   - [ ] Criterios de aceptación explícitos y verificables
 
-⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones definidos en tu `CONTEXT.md`. Una infraestructura genérica que ignore el contexto de la empresa no será aceptada.
+⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones documentados en el `CONTEXT.md` de tu monorepo. Una infraestructura genérica que ignore el escenario de la empresa no será aceptada.
 
 ### Aplicación Next.js + TypeScript
 

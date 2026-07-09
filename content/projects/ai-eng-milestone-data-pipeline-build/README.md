@@ -11,8 +11,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the telemetry events, KPIs, and entities your pipeline must process.
-
 ---
 
 ## 🎯 The Challenge
@@ -85,7 +83,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 - [ ] The endpoints must import flows or functions from `data/pipelines/` — do not duplicate pipeline logic in `services/`.
 - [ ] The endpoints follow the same authentication conventions and response structure as the rest of your API.
 
-⚠️ **IMPORTANT:** Flow names, task names, table names, and field names must match what is defined in your `CONTEXT-company.md` and in `data/pipelines/PIPELINE_DESIGN.md`. A generic implementation that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** Flow names, task names, table names, and field names must match what is defined in `data/pipelines/PIPELINE_DESIGN.md` and your monorepo's existing telemetry schema. A generic implementation that ignores your company's data model will not be accepted.
 
 ---
 

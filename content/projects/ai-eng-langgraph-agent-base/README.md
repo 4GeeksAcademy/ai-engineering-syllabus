@@ -11,8 +11,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — the same one you used in Milestone 7 — before touching any code. It hasn't changed, but it defines the vocabulary and data your agent needs to handle correctly.
-
 ---
 
 ## 🎯 The Challenge
@@ -40,7 +38,6 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 1. Keep working on your existing fork of the [**monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). If for some reason you don't have one yet, fork it and open it in **GitHub Codespaces** or clone it locally.
 2. Install the dependency with `uv add langgraph` (never use `pip install` or `pipenv`).
 3. Locate your Milestone 7 code: your `setup`, `embed`, `retrieve`, and `query` functions in `data/pipelines/`, and the endpoint that exposes them in `services/`.
-4. Review your `CONTEXT-company.md` — it hasn't changed since Milestone 7, but you'll need it to verify the agent's answers are still correct after the migration.
 
 ---
 
@@ -65,7 +62,7 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 - [ ] Expose the compiled graph through an endpoint (e.g., `POST /agent/query`) that replaces or coexists with the Milestone 7 endpoint. The endpoint must not contain its own business logic — it only invokes the graph.
 - [ ] If the graph fails at any node, the endpoint responds with a clear error message, never a raw stack trace.
 
-⚠️ **IMPORTANT:** The agent's behavior (which documents it retrieves, what it answers) must remain correct according to your `CONTEXT-company.md`. Migrating to LangGraph is not an excuse for answers to stop being grounded in your company's data.
+⚠️ **IMPORTANT:** The agent's behavior (which documents it retrieves, what it answers) must remain correct according to your Milestone 7 knowledge base. Migrating to LangGraph is not an excuse for answers to stop being grounded in your company's data.
 
 ---
 
