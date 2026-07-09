@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 **Antes de empezar**: Necesitas el `TelemetryService` del frontend funcionando y enviando batches al stub del proyecto anterior. Si los eventos no llegan al stub con respuesta 200, resuélvelo antes de continuar — hoy construyes el destino real de esos eventos.
 
-Tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** explica qué campos del envelope y dimensiones de `tags` importan para el análisis de tu empresa — confirma que los campos opcionales guardados en `tags` coinciden con lo documentado en `telemetry-plan.md`.
+Tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-storage)** explica qué campos del envelope y dimensiones de `tags` importan para el análisis de tu empresa — confirma que los campos opcionales guardados en `tags` coinciden con lo documentado en `telemetry-plan.md`.
 
 ---
 

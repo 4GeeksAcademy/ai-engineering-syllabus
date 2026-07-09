@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your here: **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the specific company data, field names, domain values, and constraints for your implementation. Also read the [instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
+**Before you start**: Read your **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** before writing any code — it defines the specific company data, field names, domain values, and constraints for your implementation. Also read the [instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
 ---
 

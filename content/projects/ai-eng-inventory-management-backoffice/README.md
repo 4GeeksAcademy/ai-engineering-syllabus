@@ -11,7 +11,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any component — it defines the entity names, field labels, business constraints, and domain vocabulary that must appear in the UI.
+**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** before writing any component — it defines the entity names, field labels, business constraints, and domain vocabulary that must appear in the UI.
 
 ---
 

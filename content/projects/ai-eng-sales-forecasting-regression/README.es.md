@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir cualquier línea de código — ahí se documenta el significado de cada columna y el patrón de estacionalidad del histórico de ventas de tu empresa, que ya viene incluido como CSV en `data/raw/` de tu monorepo.
+**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** antes de escribir cualquier línea de código — ahí se documenta el significado de cada columna y el patrón de estacionalidad del histórico de ventas de tu empresa, que ya viene incluido como CSV en `data/raw/` de tu monorepo.
 
 ---
 

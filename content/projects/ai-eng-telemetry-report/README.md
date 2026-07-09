@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the `telemetry_events` table in Supabase with at least 20 rows of real events generated from the backoffice. Without real data there is nothing to analyse — generate activity in the inventory module before continuing.
 
-Re-read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** alongside `docs/telemetry/telemetry-plan.md` — each metric must answer one of the three KPIs defined there for your assigned company, not a generic inventory dashboard.
+Re-read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-report)** alongside `docs/telemetry/telemetry-plan.md` — each metric must answer one of the three KPIs defined there for your assigned company, not a generic inventory dashboard.
 
 ---
 

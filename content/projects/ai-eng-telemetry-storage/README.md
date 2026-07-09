@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the `TelemetryService` working in the frontend and sending batches to the stub from the previous project. If events are not reaching the stub with a 200 response, resolve that before continuing — today you build the real destination for those events.
 
-Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** explains which envelope fields and `tags` dimensions matter for your company's analytics — confirm any optional fields stored in `tags` match what you documented in `telemetry-plan.md`.
+Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-storage)** explains which envelope fields and `tags` dimensions matter for your company's analytics — confirm any optional fields stored in `tags` match what you documented in `telemetry-plan.md`.
 
 ---
 

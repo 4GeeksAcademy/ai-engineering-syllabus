@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en inglés](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir ningún código — define los datos específicos de tu empresa, los nombres de campos, valores del dominio y restricciones que debes respetar en tu implementación.
+**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/03-frontend-development)** antes de escribir ningún código — define los datos específicos de tu empresa, los nombres de campos, valores del dominio y restricciones que debes respetar en tu implementación.
 
 ---
 

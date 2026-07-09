@@ -91,7 +91,7 @@ Como mínimo, tu proyecto debe incluir un comando claro para validar o ejecutar 
 
 2. Una vez tengas tu propio repositorio, ábrelo en **GitHub Codespaces** o clónalo localmente.
 
-3. Lee completamente tu archivo **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir código. Allí encontrarás:
+3. Lee completamente tu archivo **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/02-coding-fundamentals)** antes de escribir código. Allí encontrarás:
    - Las entidades específicas que debes modelar (productos, clientes, pedidos, etc.)
    - Los nombres exactos de los campos y sus tipos
    - Las reglas de validación específicas de tu empresa

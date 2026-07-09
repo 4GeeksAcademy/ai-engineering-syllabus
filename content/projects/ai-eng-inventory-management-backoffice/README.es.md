@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir ningún componente — define los nombres de entidades, etiquetas de campos, restricciones de negocio y vocabulario de dominio que deben aparecer en la interfaz.
+**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** antes de escribir ningún componente — define los nombres de entidades, etiquetas de campos, restricciones de negocio y vocabulario de dominio que deben aparecer en la interfaz.
 
 ---
 

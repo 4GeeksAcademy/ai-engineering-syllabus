@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it documents what each column means and the seasonality pattern of your company's historical sales, which is already included as a CSV in `data/raw/`.
+**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** before writing any code — it documents what each column means and the seasonality pattern of your company's historical sales, which is already included as a CSV in `data/raw/`.
 
 ---
 

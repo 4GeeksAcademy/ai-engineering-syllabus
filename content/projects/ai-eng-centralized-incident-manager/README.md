@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start:** Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incidents-manager)** before writing any code — it defines the field names, valid categories, branch locations, and expected seed values your implementation must use.
+**Before you start:** Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager)** before writing any code — it defines the field names, valid categories, branch locations, and expected seed values your implementation must use.
 
 ---
 

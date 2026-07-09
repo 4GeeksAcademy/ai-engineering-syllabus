@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/rag-knowledge-base)** antes de escribir código — define los datos específicos de tu empresa, los campos, los documentos fuente y las restricciones de tu implementación.
+**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/07-trainning-rag)** antes de escribir código — define los datos específicos de tu empresa, los campos, los documentos fuente y las restricciones de tu implementación.
 
 ---
 

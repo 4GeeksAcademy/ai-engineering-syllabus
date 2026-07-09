@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 **Antes de empezar**: Necesitas el `telemetry-plan.md` y el `event-schemas.json` aprobados de la Fase 1 — son el contrato que implementarás hoy. Si no están aprobados, resuélvelo antes de escribir código.
 
-Ten a mano tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**: los nombres de `event_type`, identificadores de entidad en `properties` y puntos de instrumentación deben usar el vocabulario de dominio de tu empresa según ese documento (a través del plan aprobado), no etiquetas genéricas de este README.
+Ten a mano tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-capture)**: los nombres de `event_type`, identificadores de entidad en `properties` y puntos de instrumentación deben usar el vocabulario de dominio de tu empresa según ese documento (a través del plan aprobado), no etiquetas genéricas de este README.
 
 ---
 

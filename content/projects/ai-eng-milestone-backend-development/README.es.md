@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir ningún código — define las entidades específicas, los nombres de campos y las restricciones de negocio para tu implementación.
+**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** antes de escribir ningún código — define las entidades específicas, los nombres de campos y las restricciones de negocio para tu implementación.
 
 ---
 

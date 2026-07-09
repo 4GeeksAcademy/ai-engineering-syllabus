@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de comenzar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir una sola línea de código — define los campos exactos del proveedor, las categorías válidas, los estados permitidos y los datos iniciales que debe cargar tu seeder.
+**Antes de comenzar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/supplier-directory)** antes de escribir una sola línea de código — define los campos exactos del proveedor, las categorías válidas, los estados permitidos y los datos iniciales que debe cargar tu seeder.
 
 ---
 

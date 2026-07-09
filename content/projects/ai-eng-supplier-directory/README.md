@@ -11,7 +11,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start:** Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the exact supplier fields, valid categories, allowed statuses, and the initial data your seeder must load.
+**Before you start:** Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/supplier-directory)** before writing any code — it defines the exact supplier fields, valid categories, allowed statuses, and the initial data your seeder must load.
 
 ---
 

@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — necesitas los datos de ventas de tu empresa para poder interpretar el costo real de los errores de tu modelo.
+**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** — necesitas los datos de ventas de tu empresa para poder interpretar el costo real de los errores de tu modelo.
 
 ---
 

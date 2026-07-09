@@ -96,7 +96,7 @@ At minimum, your project must include a clear command to validate or execute the
    cd transversal-project
    ```
 
-3. Read your **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** file completely before writing code. There you will find:
+3. Read your **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/02-coding-fundamentals)** file completely before writing code. There you will find:
    - The specific entities you must model (products, customers, orders, etc.)
    - The exact field names and their types
    - Your company's specific validation rules

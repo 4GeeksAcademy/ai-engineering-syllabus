@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incidents-manager)** antes de escribir código — define los nombres de campos, categorías válidas, sedes de tu empresa y los valores semilla esperados para tu implementación.
+**Antes de empezar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager)** antes de escribir código — define los nombres de campos, categorías válidas, sedes de tu empresa y los valores semilla esperados para tu implementación.
 
 ---
 

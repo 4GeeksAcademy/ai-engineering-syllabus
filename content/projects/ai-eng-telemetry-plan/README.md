@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing a single line — it defines the KPIs, entities, and key processes of your company, which are the foundation on which you will build this plan.
+**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-plan)** before writing a single line — it defines the KPIs, entities, and key processes of your company, which are the foundation on which you will build this plan.
 
 ---
 
