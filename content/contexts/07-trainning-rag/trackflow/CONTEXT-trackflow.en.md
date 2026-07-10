@@ -20,10 +20,10 @@ Use the following source documents as the base for your knowledge base. Each has
 
 | File | Content |
 |---|---|
-| [`trackflow-sla-delivery.md`](trackflow-sla-delivery.md) | Delivery SLA |
-| [`trackflow-returns-policy.md`](trackflow-returns-policy.md) | Returns Policy |
-| [`trackflow-carrier-coverage.md`](trackflow-carrier-coverage.md) | Carrier Coverage |
-| [`trackflow-storage-pricing.md`](trackflow-storage-pricing.md) | Storage Pricing |
+| [`trackflow-sla-delivery.en.md`](trackflow-sla-delivery.en.md) | Delivery SLA |
+| [`trackflow-returns-policy.en.md`](trackflow-returns-policy.en.md) | Returns Policy |
+| [`trackflow-carrier-coverage.en.md`](trackflow-carrier-coverage.en.md) | Carrier Coverage |
+| [`trackflow-storage-pricing.en.md`](trackflow-storage-pricing.en.md) | Storage Pricing |
 
 ---
 
@@ -70,7 +70,7 @@ Use the following source documents as the base for your knowledge base. Each has
 ## 6. Business Constraints
 
 - A delivery SLA must never be promised during declared high-demand dates —
-  the warning in `trackflow-sla-delivery.md` must be followed.
+  the warning in `trackflow-sla-delivery.en.md` must be followed.
 - International returns must never be described as "automatic" — they must
   always be referred to manual handling.
 - No storage discount can be offered without mentioning it requires Miguel

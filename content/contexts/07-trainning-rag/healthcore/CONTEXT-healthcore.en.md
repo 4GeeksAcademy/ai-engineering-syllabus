@@ -22,10 +22,10 @@ Use the following source documents as the base for your knowledge base. Each has
 
 | File | Content |
 |---|---|
-| [`healthcore-insurance-coverage.md`](healthcore-insurance-coverage.md) | Accepted Insurance Coverage |
-| [`healthcore-appointment-policy.md`](healthcore-appointment-policy.md) | Appointment and Cancellation Policy |
-| [`healthcore-referral-process.md`](healthcore-referral-process.md) | Internal Referral Process |
-| [`healthcore-new-patient-checklist.md`](healthcore-new-patient-checklist.md) | New Patient Checklist |
+| [`healthcore-insurance-coverage.en.md`](healthcore-insurance-coverage.en.md) | Accepted Insurance Coverage |
+| [`healthcore-appointment-policy.en.md`](healthcore-appointment-policy.en.md) | Appointment and Cancellation Policy |
+| [`healthcore-referral-process.en.md`](healthcore-referral-process.en.md) | Internal Referral Process |
+| [`healthcore-new-patient-checklist.en.md`](healthcore-new-patient-checklist.en.md) | New Patient Checklist |
 
 ---
 
@@ -80,7 +80,7 @@ Use the following source documents as the base for your knowledge base. Each has
   United States and the United Kingdom when the question doesn't specify
   the country.
 - No-show fees must never be applied to Medicare or Medicaid patients in a
-  generated answer — `healthcore-appointment-policy.md` must be followed literally.
+  generated answer — `healthcore-appointment-policy.en.md` must be followed literally.
 
 ---
 
