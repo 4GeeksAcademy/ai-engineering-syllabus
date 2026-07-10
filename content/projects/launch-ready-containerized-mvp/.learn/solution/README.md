@@ -44,30 +44,30 @@ my-mvp/
 
 ### Docker Compose
 
-| Service   | Build context | Depends on | Host port (example) |
-| --------- | ------------- | ---------- | ------------------- |
-| `db`      | image only    | —          | (internal only)     |
-| `backend` | `./backend`   | `db`       | `8000:8000`         |
-| `frontend`| `./frontend`  | `backend`  | `3000:3000`         |
+| Service    | Build context | Depends on | Host port (example) |
+| ---------- | ------------- | ---------- | ------------------- |
+| `db`       | image only    | —          | (internal only)     |
+| `backend`  | `./backend`   | `db`       | `8000:8000`         |
+| `frontend` | `./frontend`  | `backend`  | `3000:3000`         |
 
 - Backend connects to PostgreSQL with hostname `db` (Docker network DNS).
 - Frontend calls backend via `NEXT_PUBLIC_API_URL` pointing at the published backend port or internal URL as configured.
 
 ## Dockerfiles (high level)
 
-**Backend:** `python:3.13-slim`, copy `requirements.txt`, `pip install`, expose `8000`, `CMD` runs `uvicorn main:app --host 0.0.0.0 --port 8000`.
+**Backend:** `python:3.13-slim`, install `uv` (`COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/`), copy `requirements.txt`, `uv pip install -r requirements.txt`, expose `8000`, `CMD` runs `uvicorn main:app --host 0.0.0.0 --port 8000`.
 
 **Frontend:** multi-stage `node:24-alpine` — build stage runs `npm ci` + `next build`; production stage copies `.next` output and runs `next start` on port `3000`.
 
 ## Environment Variables (`.env.example`)
 
-| Variable | Used by | Purpose |
-| -------- | ------- | ------- |
-| `POSTGRES_USER` | db, backend | DB credentials |
-| `POSTGRES_PASSWORD` | db, backend | DB credentials |
-| `POSTGRES_DB` | db, backend | Database name |
-| `DATABASE_URL` | backend | SQLAlchemy/asyncpg or psycopg connection string (`postgresql://...@db:5432/...`) |
-| `NEXT_PUBLIC_API_URL` | frontend | Backend base URL for browser fetch |
+| Variable              | Used by     | Purpose                                                                          |
+| --------------------- | ----------- | -------------------------------------------------------------------------------- |
+| `POSTGRES_USER`       | db, backend | DB credentials                                                                   |
+| `POSTGRES_PASSWORD`   | db, backend | DB credentials                                                                   |
+| `POSTGRES_DB`         | db, backend | Database name                                                                    |
+| `DATABASE_URL`        | backend     | SQLAlchemy/asyncpg or psycopg connection string (`postgresql://...@db:5432/...`) |
+| `NEXT_PUBLIC_API_URL` | frontend    | Backend base URL for browser fetch                                               |
 
 Only `.env.example` is committed; `.env` is listed in `.gitignore`.
 

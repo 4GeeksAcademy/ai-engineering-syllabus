@@ -12,25 +12,24 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
 
-
 A small community has a FastAPI backend for listing and claiming plants that members want to swap. Right now any request — including creating, editing, and deleting listings — is fully public. Before the next version goes live, the maintainer needs the API secured: only authenticated members can post or manage listings.
 
 ---
 
 ## Tech Stack
 
-| Layer | Tool |
-|---|---|
-| Framework | FastAPI |
-| Auth | JWT (`python-jose`) + bcrypt (`passlib`) |
-| Token scheme | `OAuth2PasswordBearer` |
-| Database | SQLAlchemy (SQLite is fine for class) |
-| Config | `.env` + `python-dotenv` |
+| Layer        | Tool                                     |
+| ------------ | ---------------------------------------- |
+| Framework    | FastAPI                                  |
+| Auth         | JWT (`python-jose`) + bcrypt (`passlib`) |
+| Token scheme | `OAuth2PasswordBearer`                   |
+| Database     | SQLAlchemy (SQLite is fine for class)    |
+| Config       | `.env` + `python-dotenv`                 |
 
 Install the auth dependencies:
 
 ```bash
-pip install python-jose[cryptography] passlib[bcrypt]
+uv add "python-jose[cryptography]" "passlib[bcrypt]"
 ```
 
 ---
@@ -39,13 +38,13 @@ pip install python-jose[cryptography] passlib[bcrypt]
 
 ### User table
 
-| Column | Type | Notes |
-|---|---|---|
-| `id` | int (PK) | auto-increment |
-| `email` | str | unique, required |
-| `hashed_password` | str | never store plain text |
-| `is_active` | bool | default `True` |
-| `created_at` | datetime | auto |
+| Column            | Type     | Notes                  |
+| ----------------- | -------- | ---------------------- |
+| `id`              | int (PK) | auto-increment         |
+| `email`           | str      | unique, required       |
+| `hashed_password` | str      | never store plain text |
+| `is_active`       | bool     | default `True`         |
+| `created_at`      | datetime | auto                   |
 
 ---
 
@@ -115,14 +114,14 @@ Work through these steps in the FastAPI `/docs` UI:
 
 ## Key Concepts to Discuss in Class
 
-| Concept | Where it appears |
-|---|---|
-| Password hashing | `passlib.hash.bcrypt.hash()` on registration |
-| JWT structure (header.payload.signature) | `python-jose` token creation |
-| `OAuth2PasswordBearer` | Token extraction from `Authorization` header |
-| FastAPI `Depends()` | `get_current_user` injected into routes |
-| Environment variables for secrets | `SECRET_KEY` in `.env` |
-| `401` vs `403` | Missing token vs. wrong user |
+| Concept                                  | Where it appears                             |
+| ---------------------------------------- | -------------------------------------------- |
+| Password hashing                         | `passlib.hash.bcrypt.hash()` on registration |
+| JWT structure (header.payload.signature) | `python-jose` token creation                 |
+| `OAuth2PasswordBearer`                   | Token extraction from `Authorization` header |
+| FastAPI `Depends()`                      | `get_current_user` injected into routes      |
+| Environment variables for secrets        | `SECRET_KEY` in `.env`                       |
+| `401` vs `403`                           | Missing token vs. wrong user                 |
 
 ---
 

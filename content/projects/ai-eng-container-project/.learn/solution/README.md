@@ -71,7 +71,8 @@ At minimum: `node_modules`, `.next`, `.env*`, `*.log`.
 ### `Dockerfile` (high level)
 
 - Base: `python:3.13-slim`.
-- `COPY requirements.txt` + `pip install -r requirements.txt`.
+- Install `uv` by copying the binary from the official image: `COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/`.
+- `COPY requirements.txt` + `uv pip install -r requirements.txt`.
 - `CMD` runs Uvicorn with reload, e.g. `uvicorn main:app --host 0.0.0.0 --port 8000 --reload`.
 
 ### `.dockerignore`

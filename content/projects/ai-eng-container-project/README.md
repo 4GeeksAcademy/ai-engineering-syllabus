@@ -59,7 +59,7 @@ Your tech lead has assigned the ticket to the squad. The brief is direct: docker
 
 ### Backend Dockerfile (`/services/Dockerfile`)
 
-- [ ] Create a `Dockerfile` in `/services/` based on an official Python image. It must install dependencies from `requirements.txt` and start the Uvicorn server with `--reload` enabled.
+- [ ] Create a `Dockerfile` in `/services/` based on an official Python image. It must install `uv`, install dependencies from `requirements.txt` with `uv pip install -r requirements.txt`, and start the Uvicorn server with `--reload` enabled.
 - [ ] Create a `.dockerignore` in `/services/` that excludes at minimum: `__pycache__`, `*.pyc`, `.env*`, `tests/`, and `*.log`.
 
 ### Docker Compose (`docker-compose.yml`)

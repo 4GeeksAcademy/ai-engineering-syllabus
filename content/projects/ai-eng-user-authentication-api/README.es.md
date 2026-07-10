@@ -54,11 +54,10 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 
 1. Abre tu proyecto existente en Codespaces o clónalo en local.
 2. Crea una nueva rama para esta feature: `git checkout -b feature/auth`.
-3. Instala los paquetes necesarios:
+3. Instala los paquetes necesarios con `uv` (nunca uses `pip install` ni `pipenv`):
    ```bash
-   pip install python-jose[cryptography] passlib[bcrypt]
+   uv add "python-jose[cryptography]" "passlib[bcrypt]"
    ```
-4. Añádelos a tu `requirements.txt`.
 
 ---
 

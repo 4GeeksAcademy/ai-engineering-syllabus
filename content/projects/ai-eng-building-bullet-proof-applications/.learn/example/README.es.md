@@ -12,12 +12,11 @@ _These instructions are also available in [English](./README.md)._
 
 Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
 
-
 Tu equipo construyó una pequeña **API de Gestión de Tareas** con FastAPI. Funcionaba bien en desarrollo, pero la semana pasada un compañero añadió una funcionalidad de "completar tarea" que ignoraba silenciosamente las tareas que no existían. Nadie lo notó hasta que un usuario lo reportó.
 
 Tu tech lead abrió un ticket:
 
-> *"Necesitamos una suite de tests. Cada endpoint debe tener al menos un test de camino feliz, un test de caso límite y un test de modo de fallo. Usa pytest. Apunta a un 70% de cobertura en el módulo de tareas."*
+> _"Necesitamos una suite de tests. Cada endpoint debe tener al menos un test de camino feliz, un test de caso límite y un test de modo de fallo. Usa pytest. Apunta a un 70% de cobertura en el módulo de tareas."_
 
 ---
 
@@ -25,12 +24,12 @@ Tu tech lead abrió un ticket:
 
 La API de Gestión de Tareas tiene estos endpoints:
 
-| Método | Ruta | Descripción |
-|--------|------|-------------|
-| `GET` | `/tasks` | Devuelve todas las tareas |
-| `POST` | `/tasks` | Crea una tarea (`title`, `description` opcional) |
-| `PATCH` | `/tasks/{task_id}/complete` | Marca una tarea como completada |
-| `DELETE` | `/tasks/{task_id}` | Elimina una tarea |
+| Método   | Ruta                        | Descripción                                      |
+| -------- | --------------------------- | ------------------------------------------------ |
+| `GET`    | `/tasks`                    | Devuelve todas las tareas                        |
+| `POST`   | `/tasks`                    | Crea una tarea (`title`, `description` opcional) |
+| `PATCH`  | `/tasks/{task_id}/complete` | Marca una tarea como completada                  |
+| `DELETE` | `/tasks/{task_id}`          | Elimina una tarea                                |
 
 Cada tarea tiene: `id` (autogenerado), `title` (cadena, obligatorio), `description` (cadena, opcional), `completed` (bool, por defecto `False`).
 
@@ -45,11 +44,11 @@ Cada tarea tiene: `id` (autogenerado), `title` (cadena, obligatorio), `descripti
 
 Ejemplo para `POST /tasks`:
 
-| Test | Tipo | Entrada | Resultado esperado |
-|------|------|---------|-------------------|
-| Crear tarea con título válido | Camino feliz | `{"title": "Comprar leche"}` | 201, tarea devuelta con `completed: false` |
-| Crear tarea sin título | Caso límite | `{}` | 422, error de validación |
-| Crear tarea con título vacío | Modo de fallo | `{"title": ""}` | 422 o 400, mensaje de error |
+| Test                          | Tipo          | Entrada                      | Resultado esperado                         |
+| ----------------------------- | ------------- | ---------------------------- | ------------------------------------------ |
+| Crear tarea con título válido | Camino feliz  | `{"title": "Comprar leche"}` | 201, tarea devuelta con `completed: false` |
+| Crear tarea sin título        | Caso límite   | `{}`                         | 422, error de validación                   |
+| Crear tarea con título vacío  | Modo de fallo | `{"title": ""}`              | 422 o 400, mensaje de error                |
 
 ### Paso 2 — Escribe los tests
 
@@ -73,7 +72,7 @@ tests/
 
 ```bash
 # Instalar dependencias
-pip install pytest pytest-cov httpx
+uv add pytest pytest-cov httpx
 
 # Ejecutar todos los tests
 pytest
@@ -115,7 +114,7 @@ def test_create_task_empty_title():
     assert response.status_code in (400, 422)
 ```
 
-> **Importante:** No testees la serialización HTTP ni los internos del framework. Cada test debe verificar algo sobre la **lógica de negocio** — lo que el endpoint *decide*, no cómo FastAPI formatea la respuesta.
+> **Importante:** No testees la serialización HTTP ni los internos del framework. Cada test debe verificar algo sobre la **lógica de negocio** — lo que el endpoint _decide_, no cómo FastAPI formatea la respuesta.
 
 ---
 
@@ -123,18 +122,18 @@ def test_create_task_empty_title():
 
 Usa esto como punto de partida. Añade más casos a medida que se te ocurran.
 
-| Endpoint | Camino feliz | Caso límite | Modo de fallo |
-|----------|-------------|-------------|---------------|
-| `GET /tasks` | Devuelve lista (puede estar vacía) | Devuelve lista con varias tareas | — |
-| `POST /tasks` | Crea tarea con título + descripción | Crea tarea solo con título (sin descripción) | Título vacío |
-| `PATCH /tasks/{id}/complete` | Marca tarea existente como completada | Tarea ya marcada como completada | ID de tarea inexistente |
-| `DELETE /tasks/{id}` | Elimina tarea existente | — | ID de tarea inexistente |
+| Endpoint                     | Camino feliz                          | Caso límite                                  | Modo de fallo           |
+| ---------------------------- | ------------------------------------- | -------------------------------------------- | ----------------------- |
+| `GET /tasks`                 | Devuelve lista (puede estar vacía)    | Devuelve lista con varias tareas             | —                       |
+| `POST /tasks`                | Crea tarea con título + descripción   | Crea tarea solo con título (sin descripción) | Título vacío            |
+| `PATCH /tasks/{id}/complete` | Marca tarea existente como completada | Tarea ya marcada como completada             | ID de tarea inexistente |
+| `DELETE /tasks/{id}`         | Elimina tarea existente               | —                                            | ID de tarea inexistente |
 
 ---
 
 ## Flujo de Trabajo con Ayuda de IA
 
-- [ ] Pega la lógica de tu endpoint en tu agente de código IA y pregunta: *"¿Qué casos límite me estoy perdiendo para este endpoint?"*
+- [ ] Pega la lógica de tu endpoint en tu agente de código IA y pregunta: _"¿Qué casos límite me estoy perdiendo para este endpoint?"_
 - [ ] Revisa cada caso de test sugerido antes de añadirlo — tú eres quien toma las decisiones sobre qué testear.
 - [ ] Si un test revela un bug en el código existente, corrige el bug y anótalo en `TESTING.md` en una sección "Bugs Encontrados".
 

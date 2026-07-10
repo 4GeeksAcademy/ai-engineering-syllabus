@@ -12,12 +12,11 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
 
-
 Your team built a small **Task Manager API** with FastAPI. It has been working fine in development, but last week a teammate added a "complete task" feature that silently ignored tasks that didn't exist. No one noticed until a user reported it.
 
 Your tech lead filed a ticket:
 
-> *"We need a test suite. Each endpoint must have at least one happy-path test, one edge-case test, and one failure-mode test. Use pytest. Aim for 70% coverage on the task module."*
+> _"We need a test suite. Each endpoint must have at least one happy-path test, one edge-case test, and one failure-mode test. Use pytest. Aim for 70% coverage on the task module."_
 
 ---
 
@@ -25,12 +24,12 @@ Your tech lead filed a ticket:
 
 The Task Manager API has these endpoints:
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/tasks` | Return all tasks |
-| `POST` | `/tasks` | Create a task (`title`, optional `description`) |
-| `PATCH` | `/tasks/{task_id}/complete` | Mark a task as complete |
-| `DELETE` | `/tasks/{task_id}` | Delete a task |
+| Method   | Path                        | Description                                     |
+| -------- | --------------------------- | ----------------------------------------------- |
+| `GET`    | `/tasks`                    | Return all tasks                                |
+| `POST`   | `/tasks`                    | Create a task (`title`, optional `description`) |
+| `PATCH`  | `/tasks/{task_id}/complete` | Mark a task as complete                         |
+| `DELETE` | `/tasks/{task_id}`          | Delete a task                                   |
 
 Each task has: `id` (auto-generated), `title` (string, required), `description` (string, optional), `completed` (bool, default `False`).
 
@@ -45,11 +44,11 @@ Each task has: `id` (auto-generated), `title` (string, required), `description` 
 
 Example for `POST /tasks`:
 
-| Test | Type | Input | Expected result |
-|------|------|-------|-----------------|
-| Create task with valid title | Happy path | `{"title": "Buy milk"}` | 201, task returned with `completed: false` |
-| Create task without title | Edge case | `{}` | 422, validation error |
-| Create task with empty string title | Failure mode | `{"title": ""}` | 422 or 400, error message |
+| Test                                | Type         | Input                   | Expected result                            |
+| ----------------------------------- | ------------ | ----------------------- | ------------------------------------------ |
+| Create task with valid title        | Happy path   | `{"title": "Buy milk"}` | 201, task returned with `completed: false` |
+| Create task without title           | Edge case    | `{}`                    | 422, validation error                      |
+| Create task with empty string title | Failure mode | `{"title": ""}`         | 422 or 400, error message                  |
 
 ### Step 2 — Write the tests
 
@@ -73,7 +72,7 @@ tests/
 
 ```bash
 # Install dependencies
-pip install pytest pytest-cov httpx
+uv add pytest pytest-cov httpx
 
 # Run all tests
 pytest
@@ -115,7 +114,7 @@ def test_create_task_empty_title():
     assert response.status_code in (400, 422)
 ```
 
-> **Important:** Do not test HTTP serialization or framework internals. Every test must assert something about the **business logic** — what the endpoint *decides*, not how FastAPI formats the response.
+> **Important:** Do not test HTTP serialization or framework internals. Every test must assert something about the **business logic** — what the endpoint _decides_, not how FastAPI formats the response.
 
 ---
 
@@ -123,18 +122,18 @@ def test_create_task_empty_title():
 
 Use this as a starting point. Add more cases as you think of them.
 
-| Endpoint | Happy path | Edge case | Failure mode |
-|----------|-----------|-----------|--------------|
-| `GET /tasks` | Returns list (can be empty) | Returns list with multiple tasks | — |
-| `POST /tasks` | Creates task with title + description | Creates task with title only (no description) | Empty title |
-| `PATCH /tasks/{id}/complete` | Marks existing task as complete | Task already marked complete | Non-existent task ID |
-| `DELETE /tasks/{id}` | Deletes existing task | — | Non-existent task ID |
+| Endpoint                     | Happy path                            | Edge case                                     | Failure mode         |
+| ---------------------------- | ------------------------------------- | --------------------------------------------- | -------------------- |
+| `GET /tasks`                 | Returns list (can be empty)           | Returns list with multiple tasks              | —                    |
+| `POST /tasks`                | Creates task with title + description | Creates task with title only (no description) | Empty title          |
+| `PATCH /tasks/{id}/complete` | Marks existing task as complete       | Task already marked complete                  | Non-existent task ID |
+| `DELETE /tasks/{id}`         | Deletes existing task                 | —                                             | Non-existent task ID |
 
 ---
 
 ## AI-Assisted Workflow
 
-- [ ] Paste your endpoint logic into your AI coding agent and ask: *"What edge cases am I missing for this endpoint?"*
+- [ ] Paste your endpoint logic into your AI coding agent and ask: _"What edge cases am I missing for this endpoint?"_
 - [ ] Review every suggested test case before adding it — you own the decisions about what to test.
 - [ ] If a test reveals a bug in the existing code, fix the bug and note it in `TESTING.md` under a "Bugs Found" section.
 

@@ -61,7 +61,7 @@ Este hito extiende el servicio FastAPI ya presente en tu monorepo. No crearás u
 2. Navega a `services/` — aquí vive tu aplicación FastAPI.
 3. Instala las nuevas dependencias:
    ```bash
-   pip install sqlmodel psycopg2-binary
+   uv add sqlmodel psycopg2-binary
    ```
 4. Añade tu cadena de conexión de Supabase a `.env`. Tu configuración de TinyDB ya está ahí — no la modifiques.
 5. Lee tu **CONTEXT-company.md** antes de definir cualquier modelo — los nombres de entidades y las restricciones de campos están especificados allí.

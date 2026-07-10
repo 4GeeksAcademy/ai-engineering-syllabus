@@ -160,7 +160,7 @@ A complete submission should demonstrate:
 - Using a single FIFO `deque` — ignores triage priority.
 - Logic dumped entirely in `main()` with no `TriageQueue` class.
 - `peek()` mutates the queue (uses `popleft` instead of indexing `[0]`).
-- External packages (`pip install`) when rubric requires stdlib only.
+- External packages (`uv add` / third-party deps) when rubric requires stdlib only.
 - No error handling for empty queue or invalid CLI input.
 
 ---

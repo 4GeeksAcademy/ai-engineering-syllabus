@@ -101,7 +101,7 @@ Ejecuta `python agent.py` de nuevo en el Terminal 2. No es necesario reiniciar l
 Con el entorno listo, instala las dependencias:
 
 ```bash
-pip install fastapi uvicorn openai python-dotenv
+uv add fastapi uvicorn openai python-dotenv
 ```
 
 Crea un fichero `.env` en la raíz con tu clave de API del LLM:

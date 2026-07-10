@@ -59,7 +59,7 @@ Tu tech lead ha asignado el ticket al squad. El brief es directo: dockerizar el 
 
 ### Dockerfile del backend (`/services/Dockerfile`)
 
-- [ ] Crea un `Dockerfile` en `/services/` basado en una imagen oficial de Python. Debe instalar las dependencias desde `requirements.txt` y arrancar el servidor Uvicorn con `--reload` habilitado.
+- [ ] Crea un `Dockerfile` en `/services/` basado en una imagen oficial de Python. Debe instalar `uv`, instalar las dependencias desde `requirements.txt` con `uv pip install -r requirements.txt` y arrancar el servidor Uvicorn con `--reload` habilitado.
 - [ ] Crea un `.dockerignore` en `/services/` que excluya al menos: `__pycache__`, `*.pyc`, `.env*`, `tests/` y `*.log`.
 
 ### Docker Compose (`docker-compose.yml`)

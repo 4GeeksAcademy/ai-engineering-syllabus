@@ -70,7 +70,7 @@ Inicializa cada servicio dentro de su carpeta (`npx create-next-app` para el fro
 ### Dockerfile del backend
 
 - [ ] Crea `backend/Dockerfile` usando una imagen base oficial de Python (`python:3.13-slim` recomendada)
-- [ ] Define un directorio de trabajo, copia `requirements.txt`, instala dependencias, expone el puerto correcto y define un `CMD` para iniciar `uvicorn`
+- [ ] Define un directorio de trabajo, instala `uv`, copia `requirements.txt`, instala dependencias con `uv pip install -r requirements.txt`, expone el puerto correcto y define un `CMD` para iniciar `uvicorn`
 - [ ] Añade `backend/.dockerignore` excluyendo `__pycache__`, `.env` y carpetas de entornos virtuales
 
 ### Dockerfile del frontend

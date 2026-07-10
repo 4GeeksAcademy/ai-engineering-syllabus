@@ -70,7 +70,7 @@ Initialize each service inside its folder (`npx create-next-app` for the fronten
 ### Backend Dockerfile
 
 - [ ] Create `backend/Dockerfile` using an official Python base image (`python:3.13-slim` recommended)
-- [ ] Set a working directory, copy `requirements.txt`, install dependencies, expose the correct port, and define a `CMD` to start `uvicorn`
+- [ ] Set a working directory, install `uv`, copy `requirements.txt`, install dependencies with `uv pip install -r requirements.txt`, expose the correct port, and define a `CMD` to start `uvicorn`
 - [ ] Add `backend/.dockerignore` excluding `__pycache__`, `.env`, and virtual environment folders
 
 ### Frontend Dockerfile
