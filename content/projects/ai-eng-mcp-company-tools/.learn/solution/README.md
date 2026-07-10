@@ -54,14 +54,14 @@ Students must justify their choice in the PR description.
 
 - **Name:** `manage_incident_ticket`
 - **Description:** Create, update, or query status of an incident ticket in the company Incidents Manager. Requires valid API Key.
-- **Input schema:** `ticket_id`, `action` (`create` \| `update` \| `get_status`), payload fields aligned with `CONTEXT-company.md`.
+- **Input schema:** `ticket_id`, `action` (`create` \| `update` \| `get_status`), payload fields aligned with `CONTEXT-company.md`. For `update`, send only the target `status` — the Incidents Manager validates lifecycle transitions.
 - **Output schema:** Structured ticket fields or explicit error with code.
 
 ### HTTP integration
 
 - `POST /api/incidents` for create.
-- `PATCH /api/incidents/{id}` for update.
-- `GET /api/incidents/{id}` for status.
+- `PATCH /api/incidents/{id}/status` for status updates — body carries the new `status` only; invalid lifecycle transitions return `400`.
+- `GET /api/incidents/{id}` for status lookup.
 - Base URL from environment; explicit timeouts on every call.
 
 ---
@@ -148,7 +148,7 @@ Provide a small client script (TypeScript or Python) that:
 ## Submission checklist
 
 - [ ] FastMCP server under `services/` with API Key auth on discovery + invoke.
-- [ ] Incident ticket tool: create, update, status against real Incidents Manager.
+- [ ] Incident ticket tool: create, status update via `/status`, lookup against real Incidents Manager.
 - [ ] Inventory tool: read queries work; writes return `INVENTORY_WRITE_FORBIDDEN`.
 - [ ] Tool descriptions and schemas self-explanatory via MCP discovery.
 - [ ] Distinct error codes for auth, authorization, and validation.

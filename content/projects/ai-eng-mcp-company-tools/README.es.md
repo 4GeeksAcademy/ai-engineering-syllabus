@@ -66,7 +66,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 - [ ] Exponer al menos una tool de **solo consulta** sobre el inventario — cualquier intento de modificación debe ser rechazado explícitamente por el servidor, no simplemente omitido.
 - [ ] Documentar cada tool con nombre, descripción y esquema de entrada/salida suficientes para que un agente externo la descubra sin contexto humano adicional (`--help`-equivalente vía discovery de MCP).
 
-⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores de dominio en tu implementación deben coincidir con las APIs de incidencias e inventario que ya construiste. Una implementación genérica que ignore tus servicios existentes no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores de dominio en tu implementación deben coincidir con las APIs de incidencias e inventario que ya construiste. Una implementación genérica que ignore tus servicios existentes no será aceptada. Los cambios de estado deben pasar por el endpoint de ciclo de vida del Incidents Manager (`PATCH /api/incidents/{id}/status`), no por un `PATCH` genérico sobre el recurso de incidencia.
 
 **Autenticación y seguridad**
 
@@ -92,7 +92,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 - [ ] El servidor MCP levanta correctamente y expone sus tools mediante el mecanismo de discovery estándar de MCP.
 - [ ] Un cliente sin API Key válida no puede listar ni ejecutar ninguna tool.
-- [ ] La tool de gestión de tickets crea, actualiza y consulta contra el Incidents Manager real de la compañía.
+- [ ] La tool de gestión de tickets crea, actualiza el estado vía `PATCH /api/incidents/{id}/status` y consulta contra el Incidents Manager real de la compañía.
 - [ ] La tool de inventario responde correctamente a consultas y rechaza explícitamente cualquier operación de escritura.
 - [ ] Cada tool tiene una descripción y un esquema claros, verificables desde el propio discovery del servidor sin leer el código fuente.
 - [ ] Los errores de autenticación, autorización y validación devuelven códigos y mensajes distintos entre sí.

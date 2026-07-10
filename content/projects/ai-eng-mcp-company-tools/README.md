@@ -66,7 +66,7 @@ As part of the challenge, your implementation must resolve — without being tol
 - [ ] Expose at least one **read-only** tool over the inventory — any modification attempt must be explicitly rejected by the server, not simply omitted.
 - [ ] Document each tool with a name, description, and input/output schema sufficient for an external agent to discover it without additional human context (an MCP-discovery equivalent of `--help`).
 
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match the incident and inventory APIs you already built. A generic implementation that ignores your existing services will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match the incident and inventory APIs you already built. A generic implementation that ignores your existing services will not be accepted. Status changes must go through the Incidents Manager lifecycle endpoint (`PATCH /api/incidents/{id}/status`), not a generic `PATCH` on the incident resource.
 
 **Authentication and security**
 
@@ -92,7 +92,7 @@ As part of the challenge, your implementation must resolve — without being tol
 
 - [ ] The MCP server starts correctly and exposes its tools through the standard MCP discovery mechanism.
 - [ ] A client without a valid API Key cannot list or execute any tool.
-- [ ] The ticket management tool creates, updates, and queries against the company's real Incidents Manager.
+- [ ] The ticket management tool creates, updates status via `PATCH /api/incidents/{id}/status`, and queries against the company's real Incidents Manager.
 - [ ] The inventory tool responds correctly to queries and explicitly rejects any write operation.
 - [ ] Each tool has a clear description and schema, verifiable from the server's own discovery without reading the source code.
 - [ ] Authentication, authorization, and validation errors return distinct codes and messages from one another.
