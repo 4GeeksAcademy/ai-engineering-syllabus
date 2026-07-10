@@ -28,7 +28,7 @@ Tu tech lead ha abierto el siguiente ticket:
 > La API ya exige un token JWT en las rutas protegidas. Esta tarea cubre el lado frontend de ese contrato:
 >
 > - **Vistas de login y registro** — formularios que llaman a la API, reciben el token y lo almacenan correctamente.
-> - **Vistas de gestión de cuenta** — página de perfil y formulario para cambiar la contraseña.
+> - **Vistas de gestión de cuenta** — página de perfil.
 > - **Protección de rutas** — cualquier vista que requiera sesión debe redirigir a los usuarios no autenticados al login. Esto aplica a todas las aplicaciones del monorepo **excepto el website público (Hito 1)**, que permanece completamente público.
 >
 > El token debe almacenarse en `localStorage` y adjuntarse a cada llamada protegida a la API mediante la cabecera `Authorization: Bearer`. Al cerrar sesión, el token se elimina y el usuario es redirigido al login.
@@ -61,12 +61,11 @@ Asegúrate de que tu API de la entrega anterior está corriendo y es accesible d
 ### Vistas de autenticación
 
 - [ ] `/login` — formulario de email y contraseña. Si tiene éxito: almacena el token en `localStorage`, redirige a la vista autenticada principal. Si falla: muestra un mensaje de error claro.
-- [ ] `/register` — formulario de registro. Si tiene éxito: almacena el token, redirige. Si falla: muestra errores de validación a nivel de campo.
+- [ ] `/register` — formulario de registro. Si tiene éxito: llama a `POST /users` (incluye campos opcionales de perfil), luego a `POST /auth/login` con las mismas credenciales, almacena el token y redirige. Si falla: muestra errores de validación a nivel de campo.
 
 ### Vistas de gestión de cuenta
 
-- [ ] `/account/profile` — muestra los datos del usuario actual (nombre, email). Permite editar el nombre. Llama a `PUT /users/{id}` con el token en la cabecera.
-- [ ] `/account/change-password` — formulario con la contraseña actual, la nueva contraseña y la confirmación. Valida que la nueva contraseña y la confirmación coinciden antes de llamar a la API.
+- [ ] `/account/profile` — muestra el email del usuario actual más los datos de perfil (`name`, `phone`, `address`) desde `GET /auth/me`. Permite editar nombre y contacto mediante `PUT /profiles/me` con el token en la cabecera.
 
 ### Protección de rutas
 
@@ -88,7 +87,7 @@ Asegúrate de que tu API de la entrega anterior está corriendo y es accesible d
 - [ ] Los formularios de login y registro funcionan de extremo a extremo: el token se almacena tras una llamada exitosa.
 - [ ] Las vistas protegidas redirigen a `/login` cuando no hay un token válido en el almacenamiento.
 - [ ] El website público (Hito 1) continúa funcionando sin ninguna comprobación de autenticación.
-- [ ] La vista de perfil muestra y actualiza los datos del usuario actual usando el token.
+- [ ] La vista de perfil muestra el email de `User` y los datos de nombre/contacto del `Profile` vinculado, y actualiza el perfil mediante `PUT /profiles/me`.
 - [ ] El logout elimina el token y redirige correctamente.
 - [ ] Una respuesta `401` de cualquier llamada protegida a la API limpia la sesión y redirige a `/login`.
 

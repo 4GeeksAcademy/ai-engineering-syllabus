@@ -26,7 +26,7 @@ Cada proveedor en el directorio de TrackFlow tiene la siguiente estructura:
 | `categories`        | lista de strings, requerido, mínimo 1 | Tipo de servicio o producto que provee (ver lista válida)               |
 | `rate_per_shipment` | float, requerido, > 0                 | Tarifa vigente por envío o unidad de servicio en la moneda del contrato |
 | `currency`          | string, requerido                     | `"USD"` para USA, `"EUR"` para Spain                                    |
-| `rate_updated_at`   | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa                          |
+| `updated_at`        | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa                          |
 | `status`            | string, requerido                     | `"active"` o `"suspended"`                                              |
 | `service_zone`      | string, opcional                      | Zona de cobertura del proveedor (ej. `"West Coast"`, `"Aragón"`)        |
 | `contact_email`     | string, opcional                      | Email de contacto del proveedor                                         |
@@ -226,7 +226,7 @@ SUPPLIERS_SEED = [
 ## Restricciones de negocio
 
 - **Moneda por país:** Un proveedor de `"USA"` debe tener `currency = "USD"`. Un proveedor de `"Spain"` debe tener `currency = "EUR"`. La API rechaza combinaciones inconsistentes.
-- **Trazabilidad de tarifas:** Cada actualización de `rate_per_shipment` debe registrar `rate_updated_at` automáticamente. Carlos usa este histórico para revisar la evolución de costes por carrier.
+- **Trazabilidad de tarifas:** Cada actualización de `rate_per_shipment` debe registrar `updated_at` automáticamente. Carlos usa este histórico para revisar la evolución de costes por carrier.
 - **Suspensión por incidencias:** El flujo habitual en TrackFlow es suspender proveedores con alta tasa de incidencias, no eliminarlos. El historial de suspensiones es información operativa relevante.
 - **Carriers con doble categoría:** Es válido que un carrier opere tanto en última milla como en internacional (como DHL). El campo `categories` admite múltiples valores simultáneamente.
 

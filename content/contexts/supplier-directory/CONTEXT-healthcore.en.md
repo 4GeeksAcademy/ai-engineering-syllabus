@@ -26,7 +26,7 @@ Each supplier in the HealthCore directory has the following structure:
 | `categories`            | list of strings, required, minimum 1 | Type of service or product supplied (see valid list)                                      |
 | `monthly_rate`          | float, required, > 0                 | Current monthly cost in the contract currency                                             |
 | `currency`              | string, required                     | `"USD"` for USA, `"GBP"` for UK                                                           |
-| `rate_updated_at`       | datetime, system-generated           | Timestamp of the last rate update                                                         |
+| `updated_at`            | datetime, system-generated           | Timestamp of the last rate update                                                         |
 | `status`                | string, required                     | `"active"` or `"suspended"`                                                               |
 | `compliance_agreement`  | string, optional                     | Signed compliance agreement type: `"BAA"`, `"DPA"`, `"both"`, or `null` if not applicable |
 | `contract_renewal_date` | string, optional                     | Contract renewal date (format `YYYY-MM-DD`)                                               |
@@ -239,7 +239,7 @@ SUPPLIERS_SEED = [
 
 - **Currency by country:** A supplier from `"USA"` must have `currency = "USD"`. A supplier from `"UK"` must have `currency = "GBP"`. The API rejects inconsistent combinations.
 - **Compliance agreement:** The `compliance_agreement` field is optional, but suppliers with categories `clinical_software`, `it_infrastructure`, `patient_communication`, or `billing_and_coding_software` should have it recorded. This is not automatic API validation — it is the responsibility of whoever registers the supplier.
-- **Rate traceability:** Every update to `monthly_rate` must record `rate_updated_at`. Claire uses this data in audits to verify that cost changes are traceable.
+- **Rate traceability:** Every update to `monthly_rate` must record `updated_at`. Claire uses this data in audits to verify that cost changes are traceable.
 - **Suspension, not deletion:** Suppliers are not removed from the directory — they are suspended. Preserving history is especially relevant at HealthCore due to the regulatory environment: an audit may ask which suppliers were used in a given period.
 
 ---

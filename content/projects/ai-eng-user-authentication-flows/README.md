@@ -28,7 +28,7 @@ Your tech lead has opened the next ticket:
 > The API now requires a JWT token on protected routes. This task covers the frontend side of that contract:
 >
 > - **Login and registration views** — forms that call the API, receive the token, and store it correctly.
-> - **Account management views** — profile page and password change form.
+> - **Account management views** — profile page.
 > - **Route protection** — any view that requires a session must redirect unauthenticated users to login. This applies to all applications in the monorepo **except the public website (Milestone 1)**, which remains fully public.
 >
 > The token must be stored in `localStorage` and attached to every protected API call via the `Authorization: Bearer` header. On logout, the token is removed and the user is redirected to login.
@@ -61,12 +61,11 @@ Make sure your API from the previous delivery is running and reachable from the 
 ### Authentication views
 
 - [ ] `/login` — email and password form. On success: store the token in `localStorage`, redirect to the main authenticated view. On failure: show a clear error message.
-- [ ] `/register` — registration form. On success: store the token, redirect. On failure: show field-level validation errors.
+- [ ] `/register` — registration form. On success: call `POST /users` (include optional profile fields), then `POST /auth/login` with the same credentials, store the token, and redirect. On failure: show field-level validation errors.
 
 ### Account management views
 
-- [ ] `/account/profile` — displays the current user's data (name, email). Allows editing name. Calls `PUT /users/{id}` with the token in the header.
-- [ ] `/account/change-password` — form with current password, new password, and confirmation. Validates that the new password and confirmation match before calling the API.
+- [ ] `/account/profile` — displays the current user's email plus profile data (`name`, `phone`, `address`) from `GET /auth/me`. Allows editing name and contact fields via `PUT /profiles/me` with the token in the header.
 
 ### Route protection
 
@@ -88,7 +87,7 @@ Make sure your API from the previous delivery is running and reachable from the 
 - [ ] Login and registration forms work end-to-end: the token is stored after a successful call.
 - [ ] Protected views redirect to `/login` when there is no valid token in storage.
 - [ ] The public website (Milestone 1) continues to work without any authentication check.
-- [ ] The profile view displays and updates the current user's data using the token.
+- [ ] The profile view displays email from `User` and name/contact data from the linked `Profile`, and updates profile fields via `PUT /profiles/me`.
 - [ ] Logout removes the token and redirects correctly.
 - [ ] A `401` response from any protected API call clears the session and redirects to `/login`.
 

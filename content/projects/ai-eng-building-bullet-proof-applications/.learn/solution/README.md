@@ -1,70 +1,135 @@
-# Building Bullet-Proof Applications - Reference Solution
+# Building Bullet-Proof Applications — Reference Solution
 
 ## Purpose
 
-This reference solution describes the expected architecture, implementation scope, and validation evidence for a complete submission.
+Reference quality bar for the authentication API **test suite** — not for re-implementing auth. Students extend their existing monorepo API with `tests/`, `TESTING.md`, and optional Jest coverage for TypeScript helpers.
 
-## Solution Structure
+## Expected Repository Layout
 
-- `app/models/` for persistence models and schema contracts.
-- `app/services/` for business logic and route-independent operations.
-- `app/routes/` (or equivalent) for API endpoint definitions.
-- `app/core/security.py` (or equivalent) for JWT, password hashing, and auth dependencies.
-- `tests/` for route, service, and auth behavior tests.
+```text
+services/
+  api/
+    app/
+      routes/
+        auth.py
+        users.py
+        profiles.py
+      core/
+        security.py
+      services/
+        user_service.py
+    tests/
+      conftest.py
+      test_register.py
+      test_login.py
+      test_token.py
+      test_profiles.py
+    TESTING.md
+    pyproject.toml
+```
+
+Adjust paths to match the student's monorepo, but `tests/` and `TESTING.md` must live alongside the FastAPI app they are testing.
 
 ## Required Coverage (From README)
 
-- Create a `TESTING.md` file at the root of your project documenting: how to run the tests, what each test suite covers, and which cases you decided to include and why.
-- Before writing any test, list in `TESTING.md` the cases you plan to cover: happy path, edge cases, and failure modes for each endpoint.
-- Create a `tests/` directory at the root of your FastAPI project.
-- Write a test module for each authentication endpoint (e.g., `test_register.py`, `test_login.py`, `test_token.py`).
-- For each endpoint, implement at minimum:
-- One happy-path test (valid input, expected response)
-- One edge-case test (boundary input: empty field, duplicate user, etc.)
-- One failure-mode test (invalid credentials, expired token, malformed request)
+- `TESTING.md` at project root documenting: how to run tests, planned cases per endpoint, coverage results, and at least one AI-assisted discovery or bug caught by tests.
+- `tests/` directory with one module per auth concern (`register`, `login`, `token`, `profiles`, etc.).
+- Per endpoint: **happy path**, **edge case**, **failure mode** — asserting business logic, not HTTP serialization.
+- `uv run pytest` passes from project root.
+- `uv run pytest --cov` shows **≥ 70%** coverage on the authentication module.
+- Optional: Jest tests for TypeScript auth utilities if present in the monorepo.
 
-## Expected API Surface
+## TESTING.md Outline
 
-- Implement and validate the required routes from the README.
+A strong submission includes:
 
-## Key Implementation Decisions
+1. **How to run**
+   - `uv run pytest`
+   - `uv run pytest --cov=app --cov-report=term-missing`
+   - `jest --coverage` (if applicable)
+2. **Test plan table** — endpoint × happy / edge / failure cases planned before coding.
+3. **Coverage snapshot** — paste terminal output after `--cov`.
+4. **AI workflow note** — one case suggested by an agent or one bug fixed after a failing test.
 
-- Passwords are never stored in plain text; use `passlib` with `bcrypt`.
-- JWT creation/validation is centralized in one security module.
-- `get_current_user` is used as a reusable dependency on protected routes.
-- Secret keys and token TTL come from environment variables.
-- Unauthorized access returns `401`; forbidden ownership actions return `403`.
+## Indicative Test Cases
 
-## Indicative Examples
+### `POST /users` (register)
 
-### Example: Login success response
+| Tier    | Example case                                          | Assert                                   |
+| ------- | ----------------------------------------------------- | ---------------------------------------- |
+| Happy   | Valid email + password creates user with `role: user` | User persisted; linked `Profile` created |
+| Edge    | Duplicate email                                       | Rejected before second insert            |
+| Failure | Empty password or invalid email format                | Validation error before DB write         |
 
-```json
-{
-  "access_token": "<jwt-token>",
-  "token_type": "bearer"
-}
+### `POST /auth/login`
+
+| Tier    | Example case                          | Assert                           |
+| ------- | ------------------------------------- | -------------------------------- |
+| Happy   | Correct credentials return signed JWT | Token decodes to correct user id |
+| Edge    | User exists but `is_active` is false  | Login rejected                   |
+| Failure | Wrong password                        | No token issued                  |
+
+### Token / `get_current_user`
+
+| Tier    | Example case                  | Assert                                 |
+| ------- | ----------------------------- | -------------------------------------- |
+| Happy   | Valid token identifies user   | `GET /auth/me` returns email + profile |
+| Edge    | Token near expiry still valid | Request succeeds before expiry         |
+| Failure | Expired or malformed token    | `401`; no user returned                |
+
+### `PUT /profiles/me`
+
+| Tier    | Example case           | Assert                                  |
+| ------- | ---------------------- | --------------------------------------- |
+| Happy   | Owner updates `name`   | Profile field changes; `User` unchanged |
+| Edge    | Empty optional `phone` | Accepted or normalized per schema       |
+| Failure | Request without token  | `401`                                   |
+
+## pytest Patterns (Indicative)
+
+Use `httpx.AsyncClient` or FastAPI `TestClient` — but assert **outcomes**, not framework plumbing:
+
+```python
+def test_login_rejects_wrong_password(client, seeded_user):
+    response = client.post("/auth/login", json={
+        "email": seeded_user["email"],
+        "password": "wrong-password",
+    })
+    assert response.status_code == 401
+    assert "access_token" not in response.json()
 ```
 
-### Example: Accessing a protected route without token
-
-```json
-{
-  "detail": "Not authenticated"
-}
+```python
+def test_register_defaults_role_to_user(client):
+    response = client.post("/users", json={
+        "email": "new@example.com",
+        "password": "securepass123",
+        "name": "Test User",
+    })
+    assert response.status_code == 201
+    user = response.json()
+    assert user["role"] == "user"
 ```
 
-### Example: Ownership violation
+Prefer fixtures in `conftest.py` for TinyDB test DB isolation — wipe or use a temp file per test session.
 
-```json
-{
-  "detail": "Forbidden"
-}
-```
+## What Not to Test
 
-## Validation Notes
+- FastAPI/OpenAPI response schema generation internals
+- Generic 404/422 framework messages with no business meaning
+- Third-party library behaviour (`passlib`, `python-jose`) — mock only when necessary
 
-- Verify register -> login -> authenticated request flow in `/docs`.
-- Validate invalid, malformed, and expired token scenarios.
-- Confirm protected and public routes behavior matches the rubric.
-- Ensure the final output remains aligned with all project evaluation criteria.
+## Evaluation Checklist
+
+- [ ] `TESTING.md` present with plan, run commands, and coverage evidence.
+- [ ] `uv run pytest` passes with happy / edge / failure cases per auth endpoint.
+- [ ] Authentication module coverage ≥ 70%.
+- [ ] Tests target business decisions (credentials, tokens, ownership), not serializers.
+- [ ] Optional Jest suite passes if TypeScript helpers exist.
+- [ ] AI-assisted workflow documented in `TESTING.md`.
+
+## Reviewer Notes
+
+- Quality of case selection matters more than hitting 100% coverage.
+- Accept different file names if test tiers are clearly present per endpoint.
+- Extra backoffice/frontend suites (API-042, FE-019) are bonus only.

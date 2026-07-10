@@ -15,9 +15,8 @@ This reference solution describes the expected architecture, implementation scop
 ## Required Coverage (From README)
 
 - `/login` — email and password form. On success: store the token in `localStorage`, redirect to the main authenticated view. On failure: show a clear error message.
-- `/register` — registration form. On success: store the token, redirect. On failure: show field-level validation errors.
-- `/account/profile` — displays the current user's data (name, email). Allows editing name. Calls `PUT /users/{id}` with the token in the header.
-- `/account/change-password` — form with current password, new password, and confirmation. Validates that the new password and confirmation match before calling the API.
+- `/register` — registration form. On success: call `POST /users` then `POST /auth/login`, store the token, redirect. On failure: show field-level validation errors.
+- `/account/profile` — displays email plus profile data from `GET /auth/me`. Allows editing name and contact via `PUT /profiles/me` with the token in the header.
 - Identify every view in your Next.js applications (excluding the public website) that requires an authenticated session.
 - Implement a protection mechanism — middleware, layout guard, or a custom hook — that checks for the token in `localStorage` and redirects to `/login` if it is absent or invalid.
 - Ensure the public website (Milestone 1) is entirely unaffected — no token check, no redirect.
@@ -25,7 +24,7 @@ This reference solution describes the expected architecture, implementation scop
 
 ## Expected API Surface
 
-- `PUT /users/{id}`
+- `PUT /profiles/me`
 
 ## Key Implementation Decisions
 

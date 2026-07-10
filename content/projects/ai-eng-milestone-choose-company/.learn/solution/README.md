@@ -6,7 +6,7 @@ This README describes what a correct reference submission should include for the
 
 No code is required in this milestone.
 
-The student must create (and commit) a `company-choice.md` file in the root of their repository, based on the three company profiles available in `CONTEXT-*.md` within the template repository.
+The student must create (and commit) a `company-choice.md` file in the root of their repository, based on the four company profiles available in `CONTEXT-*.md` within the template repository.
 
 ## What a correct `company-choice.md` must contain
 

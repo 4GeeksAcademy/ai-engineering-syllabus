@@ -26,7 +26,7 @@ Each supplier in the TrackFlow directory has the following structure:
 | `categories`        | list of strings, required, minimum 1 | Type of service or product supplied (see valid list)               |
 | `rate_per_shipment` | float, required, > 0                 | Current rate per shipment or service unit in the contract currency |
 | `currency`          | string, required                     | `"USD"` for USA, `"EUR"` for Spain                                 |
-| `rate_updated_at`   | datetime, system-generated           | Timestamp of the last rate update                                  |
+| `updated_at`        | datetime, system-generated           | Timestamp of the last rate update                                  |
 | `status`            | string, required                     | `"active"` or `"suspended"`                                        |
 | `service_zone`      | string, optional                     | Supplier coverage zone (e.g. `"West Coast"`, `"Aragón"`)           |
 | `contact_email`     | string, optional                     | Supplier contact email                                             |
@@ -226,7 +226,7 @@ SUPPLIERS_SEED = [
 ## Business constraints
 
 - **Currency by country:** A supplier from `"USA"` must have `currency = "USD"`. A supplier from `"Spain"` must have `currency = "EUR"`. The API rejects inconsistent combinations.
-- **Rate traceability:** Every update to `rate_per_shipment` must automatically record `rate_updated_at`. Carlos uses this history to review cost evolution by carrier.
+- **Rate traceability:** Every update to `rate_per_shipment` must automatically record `updated_at`. Carlos uses this history to review cost evolution by carrier.
 - **Suspension for incidents:** The usual TrackFlow workflow is to suspend suppliers with a high incident rate, not delete them. Suspension history is operationally relevant information.
 - **Dual-category carriers:** It is valid for a carrier to operate in both last mile and international (like DHL). The `categories` field accepts multiple values simultaneously.
 

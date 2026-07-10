@@ -143,6 +143,16 @@ Map CSV `clinic_id` to model `branch`. If `clinic_id` is missing or unmapped, us
 | `UK-LON-02`     | `london_west`        |
 | `UK-MAN-01`     | `manchester_central` |
 
+**Clinic vs branch rollup:** Model `branch` values are operational reporting units — they are not always 1:1 with clinic marketing names in the Phase 1 CSV. When several CSV `clinic_id` codes share one branch, keep the mapping above and treat the difference as intentional regional rollup:
+
+| CSV `clinic_id` | Clinic name (Phase 1 CSV) | Model `branch`    | Branch display label |
+| --------------- | ------------------------- | ----------------- | -------------------- |
+| `US-GA-01`      | Atlanta, GA — Midtown     | `atlanta_midtown` | Atlanta Midtown      |
+| `US-GA-02`      | Atlanta, GA — Buckhead    | `atlanta_midtown` | Atlanta Midtown      |
+| `UK-LON-02`     | London — Kensington       | `london_west`     | London West End      |
+
+For example, Buckhead (`US-GA-02`) rolls up to the Midtown-led Atlanta region (`atlanta_midtown`). Kensington (`UK-LON-02`) rolls up to `london_west` even though the branch display label says "London West End".
+
 Records that fail validation or cannot be mapped are discarded and reported to the console.
 
 ---

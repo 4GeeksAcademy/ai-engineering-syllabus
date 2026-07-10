@@ -19,17 +19,17 @@ Brasaland trabaja con alrededor de **20 proveedores activos** distribuidos entre
 
 Cada proveedor en el directorio de Brasaland tiene la siguiente estructura:
 
-| Campo             | Tipo                                  | Descripción                                              |
-| ----------------- | ------------------------------------- | -------------------------------------------------------- |
-| `name`            | string, requerido                     | Nombre comercial del proveedor                           |
-| `country`         | string, requerido                     | País de operación: `"Colombia"` o `"USA"`                |
-| `categories`      | lista de strings, requerido, mínimo 1 | Categorías de producto que suministra (ver lista válida) |
-| `rate_per_unit`   | float, requerido, > 0                 | Tarifa vigente por unidad en la moneda del país          |
-| `currency`        | string, requerido                     | `"COP"` para Colombia, `"USD"` para USA                  |
-| `rate_updated_at` | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa           |
-| `status`          | string, requerido                     | `"active"` o `"suspended"`                               |
-| `contact_email`   | string, opcional                      | Email de contacto del proveedor                          |
-| `notes`           | string, opcional                      | Observaciones internas del equipo de compras             |
+| Campo           | Tipo                                  | Descripción                                              |
+| --------------- | ------------------------------------- | -------------------------------------------------------- |
+| `name`          | string, requerido                     | Nombre comercial del proveedor                           |
+| `country`       | string, requerido                     | País de operación: `"Colombia"` o `"USA"`                |
+| `categories`    | lista de strings, requerido, mínimo 1 | Categorías de producto que suministra (ver lista válida) |
+| `rate_per_unit` | float, requerido, > 0                 | Tarifa vigente por unidad en la moneda del país          |
+| `currency`      | string, requerido                     | `"COP"` para Colombia, `"USD"` para USA                  |
+| `updated_at`    | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa           |
+| `status`        | string, requerido                     | `"active"` o `"suspended"`                               |
+| `contact_email` | string, opcional                      | Email de contacto del proveedor                          |
+| `notes`         | string, opcional                      | Observaciones internas del equipo de compras             |
 
 ### Categorías válidas
 
@@ -214,7 +214,7 @@ SUPPLIERS_SEED = [
 
 - **Moneda por país:** Un proveedor de `"Colombia"` debe tener `currency = "COP"`. Un proveedor de `"USA"` debe tener `currency = "USD"`. La API debe rechazar combinaciones inconsistentes.
 - **Categorías múltiples:** Un proveedor puede suministrar más de una categoría (por ejemplo, bebidas y lácteos). La lista `categories` debe tener al menos un elemento válido.
-- **Trazabilidad de tarifas:** Cada vez que se actualiza `rate_per_unit`, el campo `rate_updated_at` debe registrar el timestamp exacto del cambio. Este dato es requerido por Lucía para auditorías de precios.
+- **Trazabilidad de tarifas:** Cada vez que se actualiza `rate_per_unit`, el campo `updated_at` debe registrar el timestamp exacto del cambio. Este dato es requerido por Lucía para auditorías de precios.
 - **Suspensión, no borrado:** En la operativa real de Brasaland, los proveedores no se eliminan del sistema — se suspenden. El endpoint `DELETE` existe para correcciones de datos erróneos, no como flujo habitual.
 
 ---
