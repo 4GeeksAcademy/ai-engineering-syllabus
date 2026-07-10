@@ -1,70 +1,140 @@
-# Error Handling Audit — Your Company Codebase - Reference Solution
+# Error Handling Audit — Reference Solution
 
 ## Purpose
 
-This reference solution describes the expected architecture, implementation scope, and validation evidence for a complete submission.
+Reference quality bar for the **cross-cutting error-handling audit** on the company monorepo. No new features — only resilience and user-facing error communication across frontend, backend, and scripts.
 
-## Solution Structure
+## Scope of Work
 
-- `app/models/` for persistence models and schema contracts.
-- `app/services/` for business logic and route-independent operations.
-- `app/routes/` (or equivalent) for API endpoint definitions.
-- `app/core/security.py` (or equivalent) for JWT, password hashing, and auth dependencies.
-- `tests/` for route, service, and auth behavior tests.
+Students work on branch `error-handling-audit` and fix existing code in:
+
+- `uis/` — Next.js / TypeScript frontends
+- `services/api/` — FastAPI backend
+- `scripts/` or `packages/` — Python data/analysis scripts
 
 ## Required Coverage (From README)
 
-- Identify all `fetch` or API calls in the frontend and verify each one has a `try/catch` block scoped specifically to that call.
-- For every async data-fetching operation, implement the **three-state UI pattern**: loading (spinner or skeleton), fulfilled (data renders), rejected (error message with a call to action).
-- Replace any raw error messages (`Error 500`, `Unexpected token`, etc.) with human-readable explanations.
-- Ensure every error state includes a meaningful **call to action**: a retry button, a link to the home page, or a contact support prompt.
-- Use `optional chaining` (`?.`) where accessing potentially undefined nested properties.
-- Add safe `defaults` or `fallbacks` for values that could be `null` or `undefined` when rendering.
-- Use `finally` blocks to ensure loading states are always cleared, regardless of outcome.
-- Review every route handler and ensure exceptions are caught at the correct scope — avoid single large `try/except` blocks that swallow all errors.
+### Frontend
 
-## Expected API Surface
+- Scoped `try/catch` around each `fetch`/API call — not one catch around entire component.
+- **Three-state UI**: loading → success → error on every async data fetch.
+- Human-readable error copy — no raw status codes or `Unexpected token` messages.
+- Every error state has a **call to action**: retry, go home, or contact support.
+- `optional chaining` and fallbacks for nullable nested fields.
+- `finally` clears loading flags.
 
-- Implement and validate the required routes from the README.
+### Backend
 
-## Key Implementation Decisions
+- Exceptions caught at operation scope inside route handlers.
+- Structured JSON errors with correct status (`400`, `404`, `422`, `500`).
+- No tracebacks, secrets, or internal paths in client responses.
+- External API calls (LLM, third-party) wrapped with timeout/failure handling.
 
-- Passwords are never stored in plain text; use `passlib` with `bcrypt`.
-- JWT creation/validation is centralized in one security module.
-- `get_current_user` is used as a reusable dependency on protected routes.
-- Secret keys and token TTL come from environment variables.
-- Unauthorized access returns `401`; forbidden ownership actions return `403`.
+### Scripts
 
-## Indicative Examples
+- `try/except` on file I/O and CSV parsing with messages to `stderr`.
+- `sys.exit(1)` on critical failure.
+- Defensive checks before processing malformed input.
 
-### Example: Login success response
+### General
 
-```json
-{
-  "access_token": "<jwt-token>",
-  "token_type": "bearer"
+- Remove or redact `console.error` / `print` that leak sensitive data.
+
+## Indicative Frontend Pattern
+
+```tsx
+const [state, setState] = useState<"idle" | "loading" | "success" | "error">(
+  "idle",
+);
+const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+async function loadSuppliers() {
+  setState("loading");
+  setErrorMessage(null);
+  try {
+    const res = await fetch(`${API_URL}/suppliers`, { headers: authHeader() });
+    if (!res.ok) {
+      throw new Error("We could not load the supplier list. Please try again.");
+    }
+    const data = await res.json();
+    setSuppliers(data);
+    setState("success");
+  } catch (err) {
+    setErrorMessage(
+      err instanceof Error
+        ? err.message
+        : "Something went wrong. Please try again.",
+    );
+    setState("error");
+  } finally {
+    // loading cleared via state transition above
+  }
 }
 ```
 
-### Example: Accessing a protected route without token
+Error UI must include retry or navigation — not a dead end.
 
-```json
-{
-  "detail": "Not authenticated"
-}
+## Indicative Backend Pattern
+
+```python
+@router.get("/suppliers/{supplier_id}")
+def get_supplier(supplier_id: str, db: Session = Depends(get_db)):
+    try:
+        supplier = supplier_service.get_by_id(db, supplier_id)
+    except DatabaseUnavailable as exc:
+        logger.exception("supplier_lookup_failed")
+        raise HTTPException(
+            status_code=503,
+            detail="The supplier directory is temporarily unavailable. Try again shortly.",
+        ) from exc
+
+    if supplier is None:
+        raise HTTPException(status_code=404, detail="Supplier not found.")
+
+    return SupplierPublic.model_validate(supplier)
 ```
 
-### Example: Ownership violation
+Never return `str(exc)` from uncaught exceptions to the client.
 
-```json
-{
-  "detail": "Forbidden"
-}
+## Indicative Script Pattern
+
+```python
+import sys
+
+def main() -> None:
+    try:
+        rows = load_csv(path)
+    except FileNotFoundError:
+        print(f"Error: file not found: {path}", file=sys.stderr)
+        sys.exit(1)
+    except csv.Error as exc:
+        print(f"Error: invalid CSV format — {exc}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
 ```
 
-## Validation Notes
+## Agent Audit Workflow
 
-- Verify register -> login -> authenticated request flow in `/docs`.
-- Validate invalid, malformed, and expired token scenarios.
-- Confirm protected and public routes behavior matches the rubric.
-- Ensure the final output remains aligned with all project evaluation criteria.
+Before manual fixes, students may run the detection prompt from the project README. A strong submission often includes:
+
+- Prioritised findings list (CRITICAL → LOW)
+- Commits grouped by layer (`fix(web): …`, `fix(api): …`, `fix(scripts): …`)
+- PR description summarising patterns applied
+
+## Evaluation Checklist
+
+- [ ] All audited async frontend fetches use loading / success / error states.
+- [ ] User-facing errors are readable and include a call to action.
+- [ ] `try/catch` and `try/except` blocks are narrowly scoped.
+- [ ] `finally` (or equivalent) clears loading state.
+- [ ] Backend returns structured errors without sensitive leaks.
+- [ ] Scripts exit non-zero on critical failures.
+- [ ] No unrelated feature work mixed into the audit branch.
+
+## Reviewer Notes
+
+- Evaluate consistency of patterns across layers, not perfection on every file.
+- Accept different wording for user messages if intent is clear.
+- Do not require new tests unless the student's cohort adds them separately.

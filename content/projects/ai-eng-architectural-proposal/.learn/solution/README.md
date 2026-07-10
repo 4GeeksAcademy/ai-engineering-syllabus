@@ -8,7 +8,7 @@ The deliverable is not executable code. It is a technical proposal that explains
 
 A complete submission includes:
 
-- `ARCHITECTURE_PROPOSAL.md` at the repository root.
+- `docs/ARCHITECTURE_PROPOSAL.md` inside the transversal monorepo `/docs` directory.
 - A chosen architecture pattern (for example layered architecture) with business-specific justification.
 - A proposed backend folder/module structure with clear responsibility boundaries.
 - A FastAPI router strategy grouped by domain.
