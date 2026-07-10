@@ -143,6 +143,16 @@ Mapea `clinic_id` del CSV a `branch` del modelo. Si falta o no hay mapeo, usa `c
 | `UK-LON-02`     | `london_west`        |
 | `UK-MAN-01`     | `manchester_central` |
 
+**Clínica vs sede (rollup):** Los valores de `branch` del modelo son unidades operativas de reporting — no siempre coinciden 1:1 con los nombres comerciales de clínica del CSV de la Fase 1. Cuando varios `clinic_id` del CSV comparten una misma sede, mantén el mapeo anterior y trata la diferencia como rollup regional intencional:
+
+| CSV `clinic_id` | Nombre de clínica (CSV Fase 1) | Modelo `branch`   | Etiqueta de sede |
+| --------------- | ------------------------------ | ----------------- | ---------------- |
+| `US-GA-01`      | Atlanta, GA — Midtown          | `atlanta_midtown` | Atlanta Midtown  |
+| `US-GA-02`      | Atlanta, GA — Buckhead         | `atlanta_midtown` | Atlanta Midtown  |
+| `UK-LON-02`     | Londres — Kensington           | `london_west`     | London West End  |
+
+Por ejemplo, Buckhead (`US-GA-02`) hace rollup a la región de Atlanta liderada por Midtown (`atlanta_midtown`). Kensington (`UK-LON-02`) hace rollup a `london_west` aunque la etiqueta de sede diga "London West End".
+
 Los registros que fallen la validación o no se puedan mapear se descartan y se reportan en consola.
 
 ---
