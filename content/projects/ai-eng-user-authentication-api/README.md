@@ -77,7 +77,6 @@ This project is an extension of your existing transversal project API. **Do not 
 ### Authentication endpoints
 
 - [ ] Implement `POST /auth/login` — accepts `email` and `password`, validates credentials, returns a JWT access token.
-- [ ] Implement `POST /auth/register` — creates a new user and returns a token so the caller is logged in immediately.
 - [ ] Implement `GET /auth/me` (protected) — returns the profile of the currently authenticated user.
 
 ### Token and dependency
@@ -87,12 +86,12 @@ This project is an extension of your existing transversal project API. **Do not 
 
 ### Route protection
 
-- [ ] Apply `get_current_user` as a dependency to every route that should not be publicly accessible. At minimum: all `/users` endpoints except `POST /users`, and `/auth/me`.
+- [ ] Apply `get_current_user` as a dependency to every route that should not be publicly accessible. At minimum: all `/users` endpoints except `POST /users`, `/auth/me`, **and at least 5 other existing routes** from your monorepo API (outside `/users` and `/auth`) that expose or modify sensitive data.
 - [ ] Return `401 Unauthorized` for unauthenticated requests and `403 Forbidden` when a user tries to access a resource they don't own.
 
 ### Testing
 
-- [ ] Verify the full flow manually using the FastAPI interactive docs (`/docs`): register → login → copy token → use token on a protected route.
+- [ ] Verify the full flow manually using the FastAPI interactive docs (`/docs`): register via `POST /users` → login → copy token → use token on a protected route.
 - [ ] Confirm that calling a protected route without a token returns `401`.
 - [ ] Confirm that calling a protected route with an expired or malformed token returns `401`.
 
@@ -111,7 +110,8 @@ This project is an extension of your existing transversal project API. **Do not 
 - [ ] Protected routes return `401` when called without a valid token.
 - [ ] Token expiry and signing secret are read from environment variables, not hardcoded.
 - [ ] Auth routes are under `/auth` and user routes are under `/users` — clean, consistent structure.
-- [ ] The existing routes of the project continue to work (no regressions).
+- [ ] At least **5 existing routes outside `/users` and `/auth`** require a valid token (in addition to the protected user/auth routes themselves).
+- [ ] Protected monorepo routes still behave correctly when called with a valid token (no regressions).
 
 > Note: Role-based access control (admin vs. regular user) is not required for this delivery, though it is a valid extension if time allows.
 

@@ -61,7 +61,6 @@ uv add "python-jose[cryptography]" "passlib[bcrypt]"
 ### Endpoints de auth (`/auth`)
 
 - [ ] `POST /auth/login` — acepta `email` + `password`. Valida credenciales; si son correctas, devuelve un token JWT de acceso firmado.
-- [ ] `POST /auth/register` — crea un usuario y devuelve inmediatamente un token (el usuario queda logueado al registrarse).
 - [ ] `GET /auth/me` — devuelve el perfil del usuario actualmente autenticado. **Protegida**.
 
 ### Token y dependencia

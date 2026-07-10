@@ -18,8 +18,8 @@ This reference solution describes the expected architecture, implementation scop
 - Implement a service layer with functions for: create user, get user by ID, get user by email, update user, delete user.
 - Expose those services as REST endpoints under `/users`:
 - Implement `POST /auth/login` — accepts `email` and `password`, validates credentials, returns a JWT access token.
-- Implement `POST /auth/register` — creates a new user and returns a token so the caller is logged in immediately.
 - Implement `GET /auth/me` (protected) — returns the profile of the currently authenticated user.
+- Apply `get_current_user` to all `/users` endpoints except `POST /users`, to `/auth/me`, and to at least 5 other existing monorepo routes outside `/users` and `/auth`.
 - Create a `get_current_user` dependency that: extracts the `Authorization: Bearer <token>` header, decodes and validates the JWT, retrieves the user from the database, and raises `HTTPException(401)` if anything fails.
 - Set token expiry via an environment variable (e.g. `ACCESS_TOKEN_EXPIRE_MINUTES`). Store the signing secret in `.env` — never hardcode it.
 
@@ -31,7 +31,6 @@ This reference solution describes the expected architecture, implementation scop
 - `PUT /users/{id}`
 - `DELETE /users/{id}`
 - `POST /auth/login`
-- `POST /auth/register`
 - `GET /auth/me`
 
 ## Key Implementation Decisions
@@ -71,7 +70,7 @@ This reference solution describes the expected architecture, implementation scop
 
 ## Validation Notes
 
-- Verify register -> login -> authenticated request flow in `/docs`.
+- Verify register via `POST /users` → login → authenticated request flow in `/docs`.
 - Validate invalid, malformed, and expired token scenarios.
 - Confirm protected and public routes behavior matches the rubric.
 - Ensure the final output remains aligned with all project evaluation criteria.

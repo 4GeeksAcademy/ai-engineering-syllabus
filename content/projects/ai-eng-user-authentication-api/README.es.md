@@ -77,7 +77,6 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 ### Endpoints de autenticación
 
 - [ ] Implementa `POST /auth/login` — acepta `email` y `password`, valida credenciales y devuelve un token JWT de acceso.
-- [ ] Implementa `POST /auth/register` — crea un nuevo usuario y devuelve un token para que el caller quede logueado inmediatamente.
 - [ ] Implementa `GET /auth/me` (protegida) — devuelve el perfil del usuario actualmente autenticado.
 
 ### Token y dependencia
@@ -87,12 +86,12 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 
 ### Protección de rutas
 
-- [ ] Aplica `get_current_user` como dependencia a cada ruta que no deba ser pública. Como mínimo: todos los endpoints de `/users` excepto `POST /users`, y `/auth/me`.
+- [ ] Aplica `get_current_user` como dependencia a cada ruta que no deba ser pública. Como mínimo: todos los endpoints de `/users` excepto `POST /users`, `/auth/me`, **y al menos otras 5 rutas existentes** de la API de tu monorepo (fuera de `/users` y `/auth`) que expongan o modifiquen datos sensibles.
 - [ ] Devuelve `401 Unauthorized` para solicitudes no autenticadas y `403 Forbidden` cuando un usuario intenta acceder a un recurso que no le pertenece.
 
 ### Verificación
 
-- [ ] Verifica el flujo completo manualmente usando los docs interactivos de FastAPI (`/docs`): registro → login → copiar token → usar el token en una ruta protegida.
+- [ ] Verifica el flujo completo manualmente usando los docs interactivos de FastAPI (`/docs`): registro con `POST /users` → login → copiar token → usar el token en una ruta protegida.
 - [ ] Confirma que llamar a una ruta protegida sin token devuelve `401`.
 - [ ] Confirma que llamar a una ruta protegida con un token expirado o mal formado devuelve `401`.
 
@@ -111,7 +110,8 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 - [ ] Las rutas protegidas devuelven `401` al ser llamadas sin un token válido.
 - [ ] La expiración del token y la clave de firma se leen desde variables de entorno, no están hardcodeadas.
 - [ ] Las rutas de auth están bajo `/auth` y las de usuarios bajo `/users` — estructura limpia y coherente.
-- [ ] Las rutas existentes del proyecto continúan funcionando (sin regresiones).
+- [ ] Al menos **5 rutas existentes fuera de `/users` y `/auth`** requieren un token válido (además de las rutas protegidas de usuario/auth).
+- [ ] Las rutas protegidas del monorepo siguen funcionando correctamente cuando se llaman con un token válido (sin regresiones).
 
 > Nota: El control de acceso basado en roles (admin vs. usuario regular) no es requerido para esta entrega, aunque es una extensión válida si el tiempo lo permite.
 
