@@ -22,15 +22,14 @@ Como parte del equipo de **AI Engineering de Nexova**, llevas hitos construyendo
 
 El campo `branch` debe contener exactamente uno de estos valores:
 
-| Valor en base de datos  | Nombre para mostrar             |
-| ----------------------- | ------------------------------- |
-| `central`               | Central (Valencia / Miami)      |
-| `valencia_headquarters` | Valencia — Sede Central         |
-| `valencia_operations`   | Valencia — Operaciones          |
-| `miami_office`          | Miami Office                    |
-| `remote`                | Remoto (empleado sin sede fija) |
+| Valor en base de datos | Nombre para mostrar             |
+| ---------------------- | ------------------------------- |
+| `central`              | Central — Sede Valencia         |
+| `valencia_operations`  | Valencia — Operaciones          |
+| `miami_office`         | Miami Office                    |
+| `remote`               | Remoto (empleado sin sede fija) |
 
-Cuando el origen sea `internal` o `customer` y no corresponda a una oficina específica, se usará `central`.
+Usa `central` cuando la incidencia no corresponda a una oficina concreta — por ejemplo, reportes `internal` de dirección o quejas `customer` sin sede asociada. `central` es la sede central de Nexova en Valencia; no uses un valor aparte para headquarters.
 
 ---
 
@@ -143,4 +142,4 @@ Contrasta con la salida del script analizador: el CSV crudo usa `OPEN`/`CLOSED`/
 
 - Nexova opera en dos idiomas: los empleados de Valencia trabajan en español y los de Miami en inglés. Si has implementado soporte bilingüe en hitos anteriores, el formulario y los mensajes de error deben respetarlo.
 - Las incidencias de tipo `sla_breach` son críticas para Roberto y para Laura: aunque la alerta automática no es parte de este proyecto, diseña el modelo pensando en que ese filtro debe ser trivial de añadir.
-- El campo `remote` en `branch` es frecuente en Nexova: muchos empleados trabajan sin sede fija. Asegúrate de que aparece visible en el desplegable y que no genera ambigüedad con `central`.
+- El campo `remote` en `branch` es frecuente en Nexova: muchos empleados trabajan sin sede fija. Asegúrate de que aparece visible en el desplegable y que no genera ambigüedad con `central` (sede) ni con `valencia_operations` (oficina operativa).

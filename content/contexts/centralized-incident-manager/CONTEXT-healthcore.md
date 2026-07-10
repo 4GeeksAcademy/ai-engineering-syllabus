@@ -26,23 +26,24 @@ Como parte del equipo de **HealthCore Digital**, llevas hitos construyendo la pl
 
 El campo `branch` debe contener exactamente uno de estos valores:
 
-| Valor en base de datos | Nombre para mostrar       |
-| ---------------------- | ------------------------- |
-| `central`              | Central (Austin / London) |
-| `austin_main`          | Austin — Main Clinic      |
-| `austin_north`         | Austin — North            |
-| `dallas_uptown`        | Dallas Uptown             |
-| `houston_med_center`   | Houston Medical Center    |
-| `san_antonio_west`     | San Antonio West          |
-| `miami_brickell`       | Miami Brickell            |
-| `miami_doral`          | Miami Doral               |
-| `orlando_east`         | Orlando East              |
-| `atlanta_midtown`      | Atlanta Midtown           |
-| `london_city`          | London City               |
-| `london_west`          | London West End           |
-| `manchester_central`   | Manchester Central        |
+| Valor en base de datos | Nombre para mostrar          |
+| ---------------------- | ---------------------------- |
+| `central`              | Central — Austin Main Clinic |
+| `austin_north`         | Austin — North               |
+| `dallas_uptown`        | Dallas Uptown                |
+| `houston_med_center`   | Houston Medical Center       |
+| `san_antonio_west`     | San Antonio West             |
+| `miami_brickell`       | Miami Brickell               |
+| `miami_doral`          | Miami Doral                  |
+| `orlando_east`         | Orlando East                 |
+| `tampa_bay`            | Tampa Bay                    |
+| `atlanta_midtown`      | Atlanta Midtown              |
+| `savannah`             | Savannah                     |
+| `london_city`          | London City                  |
+| `london_west`          | London West End              |
+| `manchester_central`   | Manchester Central           |
 
-Cuando el origen sea `internal` o `customer` y no corresponda a una clínica específica, se usará `central`.
+Usa `central` cuando la incidencia no corresponda a una clínica concreta — por ejemplo, reportes `internal` de dirección corporativa o quejas `customer` que no se puedan asociar a una clínica. `central` es la sede central de HealthCore en Austin (Main Clinic); también es la sede del código de clínica `US-TX-01`.
 
 ---
 
@@ -129,15 +130,15 @@ Mapea `clinic_id` del CSV a `branch` del modelo. Si falta o no hay mapeo, usa `c
 
 | CSV `clinic_id` | Modelo `branch`      |
 | --------------- | -------------------- |
-| `US-TX-01`      | `austin_main`        |
+| `US-TX-01`      | `central`            |
 | `US-TX-02`      | `austin_north`       |
 | `US-TX-03`      | `houston_med_center` |
 | `US-FL-01`      | `miami_brickell`     |
 | `US-FL-02`      | `orlando_east`       |
-| `US-FL-03`      | `central`            |
+| `US-FL-03`      | `tampa_bay`          |
 | `US-GA-01`      | `atlanta_midtown`    |
 | `US-GA-02`      | `atlanta_midtown`    |
-| `US-GA-03`      | `central`            |
+| `US-GA-03`      | `savannah`           |
 | `UK-LON-01`     | `london_city`        |
 | `UK-LON-02`     | `london_west`        |
 | `UK-MAN-01`     | `manchester_central` |
@@ -165,6 +166,22 @@ Tras cargar el CSV, `/api/incidents/summary` debe devolver totales por `status` 
 | `patient_experience` | 61     |
 | `billing_error`      | 20     |
 | `other`              | 13     |
+
+**Por `branch` del modelo:**
+
+| Modelo `branch`      | Conteo |
+| -------------------- | ------ |
+| `manchester_central` | 15     |
+| `atlanta_midtown`    | 12     |
+| `savannah`           | 10     |
+| `austin_north`       | 9      |
+| `london_west`        | 9      |
+| `london_city`        | 9      |
+| `miami_brickell`     | 8      |
+| `tampa_bay`          | 7      |
+| `central`            | 7      |
+| `houston_med_center` | 4      |
+| `orlando_east`       | 4      |
 
 Contrasta con la salida del script analizador: el CSV crudo usa `OPEN`/`CLOSED`/`DISCARDED` y códigos como `APPOINTMENT`/`BILLING`. Los totales anteriores son los valores **post-transformación** que debe producir tu gestor.
 

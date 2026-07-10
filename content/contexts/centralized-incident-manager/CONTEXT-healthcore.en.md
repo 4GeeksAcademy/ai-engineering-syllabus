@@ -26,23 +26,24 @@ As part of the **HealthCore Digital** team, you have been building the internal 
 
 The `branch` field must contain exactly one of the following values:
 
-| Database value       | Display name              |
-| -------------------- | ------------------------- |
-| `central`            | Central (Austin / London) |
-| `austin_main`        | Austin — Main Clinic      |
-| `austin_north`       | Austin — North            |
-| `dallas_uptown`      | Dallas Uptown             |
-| `houston_med_center` | Houston Medical Center    |
-| `san_antonio_west`   | San Antonio West          |
-| `miami_brickell`     | Miami Brickell            |
-| `miami_doral`        | Miami Doral               |
-| `orlando_east`       | Orlando East              |
-| `atlanta_midtown`    | Atlanta Midtown           |
-| `london_city`        | London City               |
-| `london_west`        | London West End           |
-| `manchester_central` | Manchester Central        |
+| Database value       | Display name                 |
+| -------------------- | ---------------------------- |
+| `central`            | Central — Austin Main Clinic |
+| `austin_north`       | Austin — North               |
+| `dallas_uptown`      | Dallas Uptown                |
+| `houston_med_center` | Houston Medical Center       |
+| `san_antonio_west`   | San Antonio West             |
+| `miami_brickell`     | Miami Brickell               |
+| `miami_doral`        | Miami Doral                  |
+| `orlando_east`       | Orlando East                 |
+| `tampa_bay`          | Tampa Bay                    |
+| `atlanta_midtown`    | Atlanta Midtown              |
+| `savannah`           | Savannah                     |
+| `london_city`        | London City                  |
+| `london_west`        | London West End              |
+| `manchester_central` | Manchester Central           |
 
-When the origin is `internal` or `customer` and does not correspond to a specific clinic, use `central`.
+Use `central` when the incident has no specific clinic — for example, `internal` reports from corporate leadership or `customer` complaints that cannot be tied to a clinic. `central` is HealthCore's headquarters in Austin (Main Clinic); it is also the branch for clinic code `US-TX-01`.
 
 ---
 
@@ -129,15 +130,15 @@ Map CSV `clinic_id` to model `branch`. If `clinic_id` is missing or unmapped, us
 
 | CSV `clinic_id` | Model `branch`       |
 | --------------- | -------------------- |
-| `US-TX-01`      | `austin_main`        |
+| `US-TX-01`      | `central`            |
 | `US-TX-02`      | `austin_north`       |
 | `US-TX-03`      | `houston_med_center` |
 | `US-FL-01`      | `miami_brickell`     |
 | `US-FL-02`      | `orlando_east`       |
-| `US-FL-03`      | `central`            |
+| `US-FL-03`      | `tampa_bay`          |
 | `US-GA-01`      | `atlanta_midtown`    |
 | `US-GA-02`      | `atlanta_midtown`    |
-| `US-GA-03`      | `central`            |
+| `US-GA-03`      | `savannah`           |
 | `UK-LON-01`     | `london_city`        |
 | `UK-LON-02`     | `london_west`        |
 | `UK-MAN-01`     | `manchester_central` |
@@ -165,6 +166,22 @@ Once the CSV is correctly loaded, `/api/incidents/summary` must return totals by
 | `patient_experience` | 61    |
 | `billing_error`      | 20    |
 | `other`              | 13    |
+
+**By model `branch`:**
+
+| Model `branch`       | Count |
+| -------------------- | ----- |
+| `manchester_central` | 15    |
+| `atlanta_midtown`    | 12    |
+| `savannah`           | 10    |
+| `austin_north`       | 9     |
+| `london_west`        | 9     |
+| `london_city`        | 9     |
+| `miami_brickell`     | 8     |
+| `tampa_bay`          | 7     |
+| `central`            | 7     |
+| `houston_med_center` | 4     |
+| `orlando_east`       | 4     |
 
 Cross-check these against your analyzer script output: the raw CSV breakdown uses `OPEN`/`CLOSED`/`DISCARDED` and `APPOINTMENT`/`BILLING`/etc. — the seed totals above are the **post-transformation** values your manager must produce.
 

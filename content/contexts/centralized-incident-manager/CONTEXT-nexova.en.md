@@ -22,15 +22,14 @@ As part of the **Nexova AI Engineering** team, you have been building the intern
 
 The `branch` field must contain exactly one of the following values:
 
-| Database value          | Display name               |
-| ----------------------- | -------------------------- |
-| `central`               | Central (Valencia / Miami) |
-| `valencia_headquarters` | Valencia — Headquarters    |
-| `valencia_operations`   | Valencia — Operations      |
-| `miami_office`          | Miami Office               |
-| `remote`                | Remote (no fixed office)   |
+| Database value        | Display name             |
+| --------------------- | ------------------------ |
+| `central`             | Central — Valencia HQ    |
+| `valencia_operations` | Valencia — Operations    |
+| `miami_office`        | Miami Office             |
+| `remote`              | Remote (no fixed office) |
 
-When the origin is `internal` or `customer` and does not correspond to a specific office, use `central`.
+Use `central` when the incident has no specific office — for example, `internal` leadership reports or `customer` complaints with no associated office. `central` is Nexova's headquarters in Valencia; do not use a separate headquarters value.
 
 ---
 
@@ -143,4 +142,4 @@ Cross-check these against your analyzer script output: the raw CSV breakdown use
 
 - Nexova operates in two languages: Valencia staff work in Spanish and Miami staff in English. If you implemented bilingual support in previous milestones, the form and error messages must respect that here too.
 - Incidents of type `sla_breach` are critical for Roberto and Laura: although the automatic alert is not part of this project, design the data model so that filter is trivial to add later.
-- The `remote` value in `branch` is common at Nexova — many employees have no fixed office. Make sure it appears clearly in the dropdown and does not create ambiguity with `central`.
+- The `remote` value in `branch` is common at Nexova — many employees have no fixed office. Make sure it appears clearly in the dropdown and does not create ambiguity with `central` (headquarters) or `valencia_operations` (operations office).
