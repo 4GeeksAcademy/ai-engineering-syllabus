@@ -1,6 +1,6 @@
 # CONTEXT — Directorio de Proveedores · Brasaland
 
-_These instructions are also available in [English](./CONTEXT-brasaland.md)._
+_These instructions are also available in [English](./CONTEXT-brasaland.en.md)._
 
 > **Milestone:** 09 — Lightweight Storage API  
 > **Ruta en el repositorio:** `09-lightweight-storage/CONTEXT-brasaland.md`

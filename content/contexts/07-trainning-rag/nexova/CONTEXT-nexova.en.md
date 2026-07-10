@@ -18,12 +18,12 @@ Your knowledge base must be built from the source documents in section 2.
 
 Use the following source documents as the base for your knowledge base. Each has been split into its own file so you can load it directly into your chunking pipeline.
 
-| File | Content |
-|---|---|
-| [`nexova-service-lines.md`](nexova-service-lines.md) | Service Lines |
-| [`nexova-pricing-model.md`](nexova-pricing-model.md) | Pricing Model |
-| [`nexova-hiring-process-sla.md`](nexova-hiring-process-sla.md) | Hiring Process SLA |
-| [`nexova-objection-handling.md`](nexova-objection-handling.md) | Handling Common Prospect Objections |
+| File                                                                 | Content                             |
+| -------------------------------------------------------------------- | ----------------------------------- |
+| [`nexova-service-lines.en.md`](nexova-service-lines.en.md)           | Service Lines                       |
+| [`nexova-pricing-model.en.md`](nexova-pricing-model.en.md)           | Pricing Model                       |
+| [`nexova-hiring-process-sla.en.md`](nexova-hiring-process-sla.en.md) | Hiring Process SLA                  |
+| [`nexova-objection-handling.en.md`](nexova-objection-handling.en.md) | Handling Common Prospect Objections |
 
 ---
 
@@ -32,7 +32,9 @@ Use the following source documents as the base for your knowledge base. Each has
 ```json
 {
   "id": "chunk-uuid",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "nexova",
     "source_document": "service-lines | pricing-model | hiring-process-sla | objection-handling",
@@ -62,7 +64,7 @@ Use the following source documents as the base for your knowledge base. Each has
 - Index all four complete source documents listed in section 2.
 - Each document must produce at least 3 chunks.
 - Create `data/eval/test-queries.json` with at least 8 questions, including
-  at least two real sales objections taken from `nexova-objection-handling.md`.
+  at least two real sales objections taken from `nexova-objection-handling.en.md`.
 
 ---
 
@@ -73,7 +75,7 @@ Use the following source documents as the base for your knowledge base. Each has
 - Delivery times must always be presented as averages, not guarantees,
   except for the 6-month replacement guarantee, which is contractual.
 - Answers about competitor clients must maintain the transparency indicated
-  in `objection-handling.md`.
+  in `nexova-objection-handling.en.md`.
 
 ---
 

@@ -1,6 +1,6 @@
 # CONTEXT — Brasaland · Fase 1 de Telemetría: Diseño del plan de telemetría de la compañía
 
-_These instructions are also available in [English](./CONTEXT-brasaland.md)._
+_These instructions are also available in [English](./CONTEXT-brasaland.en.md)._
 
 ## Tu empresa
 

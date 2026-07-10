@@ -20,10 +20,10 @@ Use the following source documents as the base for your knowledge base. Each has
 
 | File | Content |
 |---|---|
-| [`brasaland-loyalty-program.md`](brasaland-loyalty-program.md) | "Brasa Points" Loyalty Program |
-| [`brasaland-waste-protocol.md`](brasaland-waste-protocol.md) | Waste Control Protocol |
-| [`brasaland-menu-allergens.md`](brasaland-menu-allergens.md) | Menu Allergen Guide |
-| [`brasaland-supplier-ordering.md`](brasaland-supplier-ordering.md) | Supplier Ordering Procedure |
+| [`brasaland-loyalty-program.en.md`](brasaland-loyalty-program.en.md) | "Brasa Points" Loyalty Program |
+| [`brasaland-waste-protocol.en.md`](brasaland-waste-protocol.en.md) | Waste Control Protocol |
+| [`brasaland-menu-allergens.en.md`](brasaland-menu-allergens.en.md) | Menu Allergen Guide |
+| [`brasaland-supplier-ordering.en.md`](brasaland-supplier-ordering.en.md) | Supplier Ordering Procedure |
 
 ---
 
@@ -76,7 +76,7 @@ payload:
 - Answers must stay in the base language chosen for the project; if you
   implement bilingual support, the answer must match the language of the
   question.
-- Never answer "zero risk" to allergen questions — the wording of `brasaland-menu-allergens.md`
+- Never answer "zero risk" to allergen questions — the wording of `brasaland-menu-allergens.en.md`
   must be followed literally.
 - Dollar and Colombian peso amounts must be kept exactly as they appear in
   the source document; do not auto-convert currency unless a later

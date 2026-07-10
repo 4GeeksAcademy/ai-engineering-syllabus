@@ -1,6 +1,6 @@
 # CONTEXT — Directorio de Proveedores · Nexova
 
-_These instructions are also available in [English](./CONTEXT-nexova.md)._
+_These instructions are also available in [English](./CONTEXT-nexova.en.md)._
 
 > **Milestone:** 09 — Lightweight Storage API  
 > **Ruta en el repositorio:** `09-lightweight-storage/CONTEXT-nexova.md`

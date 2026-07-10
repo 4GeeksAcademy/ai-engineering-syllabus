@@ -1,6 +1,6 @@
 # CONTEXT — Directorio de Proveedores · HealthCore
 
-_These instructions are also available in [English](./CONTEXT-healthcore.md)._
+_These instructions are also available in [English](./CONTEXT-healthcore.en.md)._
 
 > **Milestone:** 09 — Lightweight Storage API  
 > **Ruta en el repositorio:** `09-lightweight-storage/CONTEXT-healthcore.md`
