@@ -19,7 +19,7 @@ Before the course starts, you need to make one decision that will shape every pr
 
 Throughout the course, you will work on a single transversal project divided into milestones. Each milestone builds directly on the previous one. The company you choose today will be the organisation you research, design for, build systems for, and deploy real tools for — from a static website in Week 1 to a multi-agent automation system in Week 15.
 
-**This decision cannot be changed once the course begins.** That said, all three companies present the same technical challenges — every student will build the same things, learn the same skills, and complete the same activities regardless of which company they choose. What differs is the context: the industry, the data, the characters, and the specific values you will work with. Choose the scenario that motivates you most.
+**This decision cannot be changed once the course begins.** That said, all four companies present the same technical challenges — every student will build the same things, learn the same skills, and complete the same activities regardless of which company they choose. What differs is the context: the industry, the data, the characters, and the specific values you will work with. Choose the scenario that motivates you most.
 
 You have been presented with a set of companies, each operating in a different industry and facing a different set of automation challenges. Each company has departments with real operational problems, a real leadership team, a real tech stack gap, and a clear roadmap of what needs to be built. Your job, across this course, will be to build a significant part of that roadmap.
 
@@ -35,14 +35,14 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 1. Create your copy of the [template repository](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo): click **Use this template** on GitHub (recommended) or fork it to your account.
 2. Open your repository in GitHub Codespaces (recommended) or clone it to your local machine.
-3. Read the three company profiles available in the [general context files `CONTEXT-company.md` in this repository](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts). Each one describes a real company scenario with department problems, data structures, characters, and a milestone map.
+3. Read the four company profiles available in the [general context files `CONTEXT-company.md` in this repository](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova, and TrackFlow. Each one describes a real company scenario with department problems, data structures, characters, and a milestone map.
 4. Complete the deliverable described below.
 
 ---
 
 ## 💻 What You Need to Do
 
-- [ ] **Read all three company profiles** in full. Do not skim — the details matter.
+- [ ] **Read all four company profiles** in full. Do not skim — the details matter.
 - [ ] **Choose one company** and record your decision in the `company-choice.md` file in the root of your repository.
   - If the file doesn't exist yet, create it using the **Add file > Create new file** button on GitHub.
   - State clearly: which company you chose and why (3–5 sentences minimum).

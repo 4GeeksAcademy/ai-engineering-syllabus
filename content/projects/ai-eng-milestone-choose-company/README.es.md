@@ -19,7 +19,7 @@ Antes de que comience el curso, tienes que tomar una decisión que marcará todo
 
 A lo largo del curso trabajarás en un único proyecto transversal dividido en milestones. Cada milestone construye directamente sobre el anterior. La empresa que eliges hoy será la organización que investigarás, para la que diseñarás, construirás sistemas y desplegarás herramientas reales — desde una web estática en la Semana 1 hasta un sistema de automatización multi-agente en la Semana 15.
 
-**Esta decisión no puede cambiarse una vez que empiece el curso.** Dicho esto, las tres empresas presentan exactamente los mismos retos técnicos — todos los estudiantes construirán las mismas cosas, aprenderán las mismas habilidades y completarán las mismas actividades independientemente de la empresa que elijan. Lo que cambia es el contexto: el sector, los datos, los personajes y los valores concretos con los que trabajarás. Elige el escenario que más te motive.
+**Esta decisión no puede cambiarse una vez que empiece el curso.** Dicho esto, las cuatro empresas presentan exactamente los mismos retos técnicos — todos los estudiantes construirán las mismas cosas, aprenderán las mismas habilidades y completarán las mismas actividades independientemente de la empresa que elijan. Lo que cambia es el contexto: el sector, los datos, los personajes y los valores concretos con los que trabajarás. Elige el escenario que más te motive.
 
 Se te presentan varias empresas, cada una operando en un sector diferente y enfrentando un conjunto distinto de retos de automatización. Cada empresa tiene departamentos con problemas operativos reales, un equipo directivo real, una brecha real en su stack tecnológico y un roadmap claro de lo que hay que construir. Tu trabajo, a lo largo del curso, será construir una parte significativa de ese roadmap.
 
@@ -35,14 +35,14 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 1. Crea tu copia del [repositorio plantilla](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo): haz clic en **Use this template** en GitHub (recomendado) o haz fork a tu cuenta.
 2. Abre tu repositorio en GitHub Codespaces (recomendado) o clónalo en tu máquina local.
-3. Lee los tres perfiles de empresa disponibles en los [archivos de contexto general `CONTEXT-company.md` de este repositorio](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts). Cada uno describe un escenario de empresa real con problemas por departamento, estructuras de datos, personajes y un milestone map.
+3. Lee los cuatro perfiles de empresa disponibles en los [archivos de contexto general `CONTEXT-company.md` de este repositorio](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova y TrackFlow. Cada uno describe un escenario de empresa real con problemas por departamento, estructuras de datos, personajes y un milestone map.
 4. Completa el entregable que se describe a continuación.
 
 ---
 
 ## 💻 Qué tienes que hacer
 
-- [ ] **Lee los tres perfiles de empresa** completos. No hagas una lectura rápida — los detalles importan.
+- [ ] **Lee los cuatro perfiles de empresa** completos. No hagas una lectura rápida — los detalles importan.
 - [ ] **Elige una empresa** y registra tu decisión en el archivo `company-choice.md` en la raíz de tu repositorio.
   - Si el archivo aún no existe, créalo usando el botón **Add file > Create new file** en GitHub.
   - Indica claramente: qué empresa elegiste y por qué (mínimo 3-5 frases).

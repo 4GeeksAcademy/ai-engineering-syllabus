@@ -102,6 +102,8 @@ The `incidents-trackflow.csv` file has been sent as an attachment (ver ficheros 
 | `CLOSED`    | 52    |
 | `DISCARDED` | 14    |
 
+**Recommended metric (not required for grading):**
+
 | Country | Count |
 | ------- | ----- |
 | `US`    | 50    |
@@ -130,7 +132,7 @@ Average: **3.06**
 
 ## Expected Output
 
-When the student runs `python analyze.py incidents-trackflow.csv` against the provided file, the console output must show the following values:
+When the student runs `python analyze.py incidents-trackflow.csv` against the provided file, the console output must show the values below for all **required** sections (totals, invalid breakdown, category, status, and satisfaction). The `BREAKDOWN BY COUNTRY` block is **recommended** for TrackFlow — useful context for stakeholders, but not required for a passing submission.
 
 ```
 ============================================================
@@ -161,7 +163,7 @@ BREAKDOWN BY STATUS (valid records)
   ├─ CLOSED ....................... 52  (54.7%)
   └─ DISCARDED .................... 14  (14.7%)
 
-BREAKDOWN BY COUNTRY (valid records)
+BREAKDOWN BY COUNTRY (valid records) — recommended, not required
   ├─ US ........................... 50  (52.6%)
   └─ ES ........................... 45  (47.4%)
 
@@ -178,14 +180,14 @@ SATISFACTION INDEX (closed incidents)
 Export results to CSV? [y / n]:
 ```
 
-> **Note:** Minor formatting differences (spacing, box-drawing characters) are acceptable, but all numeric values must match exactly. The country breakdown is specific to TrackFlow — include it even though it is not required in the generic README.
+> **Note:** Minor formatting differences (spacing, box-drawing characters) are acceptable, but all numeric values in **required** sections must match exactly. The country breakdown is a **recommended** TrackFlow extension — include it if you want stakeholder-ready output, but it is not evaluated against the project README rubric.
 
 ---
 
 ## Stakeholder Note
 
 > **From Valentina Cruz (CX Manager):**
-> _"The satisfaction scores for logistics are always lower than average — that's normal in our sector. What I need to understand is whether the problem is more severe in the US or Spain, and whether it's concentrated in specific categories like_ `DELAYED_DELIVERY` _or_ `LOST_PARCEL`_. The breakdown by country is important to me: include it in the console output even if it's not in the main spec. The CSV export should have one row per metric — I'll use it in the client report. And same as always — no customer emails in any output, ever."_
+> _"The satisfaction scores for logistics are always lower than average — that's normal in our sector. What I need to understand is whether the problem is more severe in the US or Spain, and whether it's concentrated in specific categories like_ `DELAYED_DELIVERY` _or_ `LOST_PARCEL`_. A breakdown by country in the console output would help me — include it if you can. The CSV export should have one row per metric — I'll use it in the client report. And same as always — no customer emails in any output, ever."_
 
 ---
 

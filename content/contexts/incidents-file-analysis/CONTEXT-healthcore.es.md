@@ -111,6 +111,8 @@ El archivo `incidents-healthcore.csv` se envió como adjunto (ver ficheros `inci
 | `CLOSED`    | 52       |
 | `DISCARDED` | 14       |
 
+**Métrica recomendada (no obligatoria para aprobar):**
+
 | País | Cantidad |
 | ---- | -------- |
 | `US` | 61       |
@@ -140,7 +142,7 @@ Promedio: **3.58**
 
 ## Salida esperada
 
-Cuando el estudiante ejecute `python analyze.py incidents-healthcore.csv` con el archivo provisto, la salida en consola debe mostrar los siguientes valores:
+Cuando el estudiante ejecute `python analyze.py incidents-healthcore.csv` con el archivo provisto, la salida en consola debe mostrar los valores siguientes en todas las secciones **obligatorias** (totales, desglose de inválidos, categoría, estado y satisfacción). El bloque `BREAKDOWN BY COUNTRY` es **recomendado** para HealthCore — contexto útil para stakeholders, pero no obligatorio para aprobar.
 
 ```
 ============================================================
@@ -172,7 +174,7 @@ BREAKDOWN BY STATUS (valid records)
   ├─ CLOSED ....................... 52  (55.3%)
   └─ DISCARDED .................... 14  (14.9%)
 
-BREAKDOWN BY COUNTRY (valid records)
+BREAKDOWN BY COUNTRY (valid records) — recomendado, no obligatorio
   ├─ US ........................... 61  (64.9%)
   └─ UK ........................... 33  (35.1%)
 
@@ -189,17 +191,17 @@ SATISFACTION INDEX (closed cases)
 Export results to CSV? [y / n]:
 ```
 
-> **Nota:** Se aceptan diferencias menores de formato (espaciado, caracteres de caja), pero todos los valores numéricos deben coincidir exactamente. El desglose por país es específico de HealthCore; inclúyelo aunque no sea obligatorio en el README genérico.
+> **Nota:** Se aceptan diferencias menores de formato (espaciado, caracteres de caja), pero todos los valores numéricos de las secciones **obligatorias** deben coincidir exactamente. El desglose por país es una extensión **recomendada** de HealthCore — inclúyelo si quieres salida lista para stakeholders, pero no se evalúa contra la rúbrica del README del proyecto.
 
 ---
 
 ## Nota de stakeholders
 
 > **De Priya Nair (Head of Patient Experience):**
-> _"La categoría ACCESSIBILITY es especialmente importante para mí. Si esos números son altos en las clínicas de Florida, necesito escalarlo con Sandra hoy, no la semana que viene. Asegúrense de que el desglose por país sea visible en la consola. Y quiero dejarlo explícito: ningún identificador de paciente puede aparecer en ninguna salida. James ya lo revisó con Claire: es un requisito de cumplimiento, no una preferencia. Si el script imprime un_ `patient_id` _por cualquier motivo, la salida no se puede usar."_
+> _"La categoría ACCESSIBILITY es especialmente importante para mí. Si esos números son altos en las clínicas de Florida, necesito escalarlo con Sandra hoy, no la semana que viene. Un desglose por país en consola sería valioso para mi revisión. Y quiero dejarlo explícito: ningún identificador de paciente puede aparecer en ninguna salida. James ya lo revisó con Claire: es un requisito de cumplimiento, no una preferencia. Si el script imprime un_ `patient_id` _por cualquier motivo, la salida no se puede usar."_
 
 > **De James Osei (CTO):**
-> _"La exportación CSV debe ser consistente y simple: una fila por métrica, con columnas_ `metric`, `value` _y opcionalmente_ `percentage`_. El equipo de facturación de Tom la usará directamente en su hoja de reporte. Añadan una sección_ `by_country` _en la salida de consola específica para HealthCore."_
+> _"La exportación CSV debe ser consistente y simple: una fila por métrica, con columnas_ `metric`, `value` _y opcionalmente_ `percentage`_. El equipo de facturación de Tom la usará directamente en su hoja de reporte. Una sección_ `by_country` _en consola sería un buen detalle específico de HealthCore si tienes tiempo."_
 
 ---
 

@@ -102,6 +102,8 @@ El archivo `incidents-trackflow.csv` se envió como adjunto (ver ficheros `incid
 | `CLOSED`    | 52       |
 | `DISCARDED` | 14       |
 
+**Métrica recomendada (no obligatoria para aprobar):**
+
 | País | Cantidad |
 | ---- | -------- |
 | `US` | 50       |
@@ -130,7 +132,7 @@ Promedio: **3.06**
 
 ## Salida esperada
 
-Cuando el estudiante ejecute `python analyze.py incidents-trackflow.csv` con el archivo provisto, la salida en consola debe mostrar los siguientes valores:
+Cuando el estudiante ejecute `python analyze.py incidents-trackflow.csv` con el archivo provisto, la salida en consola debe mostrar los valores siguientes en todas las secciones **obligatorias** (totales, desglose de inválidos, categoría, estado y satisfacción). El bloque `BREAKDOWN BY COUNTRY` es **recomendado** para TrackFlow — contexto útil para stakeholders, pero no obligatorio para aprobar.
 
 ```
 ============================================================
@@ -161,7 +163,7 @@ BREAKDOWN BY STATUS (valid records)
   ├─ CLOSED ....................... 52  (54.7%)
   └─ DISCARDED .................... 14  (14.7%)
 
-BREAKDOWN BY COUNTRY (valid records)
+BREAKDOWN BY COUNTRY (valid records) — recomendado, no obligatorio
   ├─ US ........................... 50  (52.6%)
   └─ ES ........................... 45  (47.4%)
 
@@ -178,14 +180,14 @@ SATISFACTION INDEX (closed incidents)
 Export results to CSV? [y / n]:
 ```
 
-> **Nota:** Se aceptan diferencias menores de formato (espaciado, caracteres de caja), pero todos los valores numéricos deben coincidir exactamente. El desglose por país es específico de TrackFlow; inclúyelo aunque no sea obligatorio en el README genérico.
+> **Nota:** Se aceptan diferencias menores de formato (espaciado, caracteres de caja), pero todos los valores numéricos de las secciones **obligatorias** deben coincidir exactamente. El desglose por país es una extensión **recomendada** de TrackFlow — inclúyelo si quieres salida lista para stakeholders, pero no se evalúa contra la rúbrica del README del proyecto.
 
 ---
 
 ## Nota de stakeholders
 
 > **De Valentina Cruz (CX Manager):**
-> _"Los puntajes de satisfacción en logística suelen ser más bajos que el promedio, eso es normal en nuestro sector. Lo que necesito entender es si el problema es más grave en EE. UU. o en España, y si está concentrado en categorías como_ `DELAYED_DELIVERY` _o_ `LOST_PARCEL`_. El desglose por país es importante para mí: inclúyanlo en consola aunque no esté en la especificación principal. La exportación CSV debe tener una fila por métrica; la usaré en el reporte para clientes. Y como siempre: ningún correo de cliente en la salida, nunca."_
+> _"Los puntajes de satisfacción en logística suelen ser más bajos que el promedio, eso es normal en nuestro sector. Lo que necesito entender es si el problema es más grave en EE. UU. o en España, y si está concentrado en categorías como_ `DELAYED_DELIVERY` _o_ `LOST_PARCEL`_. Un desglose por país en consola me ayudaría — inclúyelo si puedes. La exportación CSV debe tener una fila por métrica; la usaré en el reporte para clientes. Y como siempre: ningún correo de cliente en la salida, nunca."_
 
 ---
 

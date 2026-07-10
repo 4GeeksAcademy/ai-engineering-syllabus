@@ -111,6 +111,8 @@ The `incidents-healthcore.csv` file has been sent as an attachment (ver ficheros
 | `CLOSED`    | 52    |
 | `DISCARDED` | 14    |
 
+**Recommended metric (not required for grading):**
+
 | Country | Count |
 | ------- | ----- |
 | `US`    | 61    |
@@ -140,7 +142,7 @@ Average: **3.58**
 
 ## Expected Output
 
-When the student runs `python analyze.py incidents-healthcore.csv` against the provided file, the console output must show the following values:
+When the student runs `python analyze.py incidents-healthcore.csv` against the provided file, the console output must show the values below for all **required** sections (totals, invalid breakdown, category, status, and satisfaction). The `BREAKDOWN BY COUNTRY` block is **recommended** for HealthCore — useful context for stakeholders, but not required for a passing submission.
 
 ```
 ============================================================
@@ -172,7 +174,7 @@ BREAKDOWN BY STATUS (valid records)
   ├─ CLOSED ....................... 52  (55.3%)
   └─ DISCARDED .................... 14  (14.9%)
 
-BREAKDOWN BY COUNTRY (valid records)
+BREAKDOWN BY COUNTRY (valid records) — recommended, not required
   ├─ US ........................... 61  (64.9%)
   └─ UK ........................... 33  (35.1%)
 
@@ -189,17 +191,17 @@ SATISFACTION INDEX (closed cases)
 Export results to CSV? [y / n]:
 ```
 
-> **Note:** Minor formatting differences (spacing, box-drawing characters) are acceptable, but all numeric values must match exactly. The country breakdown is specific to HealthCore — include it even though it is not required in the generic README.
+> **Note:** Minor formatting differences (spacing, box-drawing characters) are acceptable, but all numeric values in **required** sections must match exactly. The country breakdown is a **recommended** HealthCore extension — include it if you want stakeholder-ready output, but it is not evaluated against the project README rubric.
 
 ---
 
 ## Stakeholder Note
 
 > **From Priya Nair (Head of Patient Experience):**
-> _"The ACCESSIBILITY category is particularly important to me — if those numbers are high in the Florida clinics, I need to escalate to Sandra today, not next week. Make sure the country breakdown is visible in the console output. And I want to be explicit: no patient identifier of any kind may appear anywhere in your output. James already flagged it with Claire — this is a compliance requirement, not a preference. If your script prints a_ `patient_id` _for any reason, the output cannot be used."_
+> _"The ACCESSIBILITY category is particularly important to me — if those numbers are high in the Florida clinics, I need to escalate to Sandra today, not next week. A country breakdown in the console output would be valuable for my review. And I want to be explicit: no patient identifier of any kind may appear anywhere in your output. James already flagged it with Claire — this is a compliance requirement, not a preference. If your script prints a_ `patient_id` _for any reason, the output cannot be used."_
 
 > **From James Osei (CTO):**
-> _"The CSV export should be consistent and simple: one row per metric, with columns for_ `metric`, `value`_, and optionally_ `percentage`_. Tom's billing team will use it directly in their reporting spreadsheet. Add a_ `by_country` _section in the console output specific to HealthCore."_
+> _"The CSV export should be consistent and simple: one row per metric, with columns for_ `metric`, `value`_, and optionally_ `percentage`_. Tom's billing team will use it directly in their reporting spreadsheet. A_ `by_country` _section in the console output would be a nice HealthCore-specific touch if you have time."_
 
 ---
 
