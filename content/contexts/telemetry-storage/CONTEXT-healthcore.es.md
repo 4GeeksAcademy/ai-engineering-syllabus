@@ -39,7 +39,7 @@ Las 12 clínicas de HealthCore en dos jurisdicciones implican que los eventos ll
 Después de reemplazar el stub, verifica en el editor de tablas de Supabase:
 
 - [ ] Todos los eventos tienen `country` en `tags` (`"US"` o `"UK"`) — Claire Whitfield (CCO) lo exige para cada informe de cumplimiento
-- [ ] Todos los eventos de órdenes tienen `clinic_id` en `tags` (entero 1–12) — el Dr. Reid (Director de Operaciones Clínicas) necesita visibilidad por clínica
+- [ ] Todos los eventos de entregas/consumos de suministros tienen `clinic_id` en `tags` (entero 1–12) — el Dr. Reid (Director de Operaciones Clínicas) necesita visibilidad por clínica
 - [ ] Las filas `supply_consumption_created` tienen `consumption_type` en `tags` — necesario para el análisis clínico vs. merma
 - [ ] **Ninguna fila contiene nombres de pacientes, IDs de pacientes, fechas de nacimiento, diagnósticos ni ningún dato vinculado a un paciente en `tags` ni en ninguna otra columna** — este es un límite infranqueable bajo HIPAA y UK GDPR; si existe algún dato de este tipo, la tabla debe considerarse comprometida y los datos purgados
 - [ ] Los valores de `userId` almacenados mediante el envelope son UUIDs opacos de TinyDB — nunca nombres, emails ni títulos de rol clínico del personal
