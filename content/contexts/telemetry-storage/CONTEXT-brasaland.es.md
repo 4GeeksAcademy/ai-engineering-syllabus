@@ -21,7 +21,7 @@ La columna `tags` JSONB almacena las propiedades específicas del evento de tu a
 | `user_login_failed` | `{ "reason": "invalid_credentials" }` |
 | `session_expired` | `{}` |
 
-Las columnas fijas (`event_type`, `timestamp`, `service`, `level`) se populan desde los campos del envelope. La capa de almacenamiento establece `service` en `backoffice` al persistir — no se envía en el envelope de captura. La columna `value` puede usarse para `quantity` en eventos de órdenes si quieres que sea consultable sin parsear JSONB — documenta tu decisión.
+Las columnas fijas (`event_type`, `timestamp`, `service`, `level`) se populan desde los campos del envelope. La capa de almacenamiento establece `service` en `backoffice` al persistir — no se envía en el envelope de captura. La columna `value` puede usarse para `quantity` en eventos de entradas/salidas de ingredientes si quieres que sea consultable sin parsear JSONB — documenta tu decisión.
 
 ---
 
