@@ -55,9 +55,9 @@ No hay código de inicio. El proyecto parte desde cero.
 
 ### Modelo de datos
 
-- [ ] Define el modelo Pydantic `Supplier` con los campos requeridos según tu CONTEXT: nombre, país, categorías de producto, tarifa, fecha de última actualización de tarifa y estado.
+- [ ] Define el modelo Pydantic `Supplier` con los campos requeridos según tu CONTEXT: nombre, país, categorías de producto, el campo de tarifa definido en tu CONTEXT, `updated_at` y estado.
 - [ ] El campo `status` debe aceptar únicamente los valores definidos en tu CONTEXT (activo / suspendido o sus equivalentes). Usa un `Enum` o un validador de campo para rechazar cualquier otro valor.
-- [ ] La tarifa debe ser un número positivo. Pydantic debe rechazar valores cero o negativos antes de que el dato llegue a TinyDB.
+- [ ] El campo de tarifa definido en tu CONTEXT debe ser un número positivo. Pydantic debe rechazar valores cero o negativos antes de que el dato llegue a TinyDB.
 - [ ] Crea modelos de entrada y de respuesta separados cuando sea necesario (por ejemplo: el campo `updated_at` lo genera el sistema, no lo envía el cliente).
 
 ### Seeder
@@ -81,10 +81,10 @@ No hay código de inicio. El proyecto parte desde cero.
 ### Frontend (`/uis/backoffice`)
 
 - [ ] Crea una página de directorio de proveedores accesible desde el menú de la aplicación.
-- [ ] Muestra el listado completo de proveedores en una tabla o lista con sus campos principales: nombre, país, categorías, tarifa vigente y estado.
+- [ ] Muestra el listado completo de proveedores en una tabla o lista con sus campos principales: nombre, país, categorías, el campo de tarifa de tu CONTEXT y estado.
 - [ ] Incluye controles de filtrado por país y por categoría que actualicen el listado sin recargar la página.
 - [ ] Implementa un formulario para registrar un proveedor nuevo que consuma el endpoint `POST /suppliers`. Muestra un mensaje de error si la API rechaza la entrada.
-- [ ] Permite actualizar la tarifa de un proveedor desde la interfaz y refleja el cambio en el listado inmediatamente.
+- [ ] Permite actualizar el campo de tarifa definido en tu CONTEXT desde la interfaz y refleja el cambio en el listado inmediatamente.
 - [ ] Permite cambiar el estado de un proveedor (activar / suspender) desde la interfaz con un control visible en cada fila o en la vista de detalle.
 - [ ] Diferencia visualmente los proveedores activos de los suspendidos (por ejemplo, con un badge de color o estilo diferenciado).
 
@@ -96,7 +96,7 @@ No hay código de inicio. El proyecto parte desde cero.
 
 - [ ] El modelo Pydantic refleja exactamente los campos definidos en el CONTEXT.
 - [ ] Valores de `status` fuera del conjunto permitido son rechazados con `422` antes de llegar a TinyDB.
-- [ ] Tarifas con valor cero o negativo son rechazadas con `422`.
+- [ ] El campo de tarifa definido en tu CONTEXT: valores cero o negativos son rechazados con `422`.
 - [ ] El campo `updated_at` es generado por el sistema, no enviado por el cliente.
 
 ### Seeder

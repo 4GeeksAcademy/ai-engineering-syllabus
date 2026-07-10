@@ -26,7 +26,7 @@ Each supplier in the Nexova directory has the following structure:
 | `categories`            | list of strings, required, minimum 1 | Type of service provided (see valid list)     |
 | `monthly_rate`          | float, required, > 0                 | Current monthly cost in the contract currency |
 | `currency`              | string, required                     | `"EUR"` for Spain, `"USD"` for USA            |
-| `rate_updated_at`       | datetime, system-generated           | Timestamp of the last rate update             |
+| `updated_at`            | datetime, system-generated           | Timestamp of the last rate update             |
 | `status`                | string, required                     | `"active"` or `"suspended"`                   |
 | `contract_renewal_date` | string, optional                     | Contract renewal date (format `YYYY-MM-DD`)   |
 | `contact_email`         | string, optional                     | Supplier account manager email                |
@@ -226,7 +226,7 @@ SUPPLIERS_SEED = [
 ## Business constraints
 
 - **Currency by country:** A supplier from `"Spain"` must have `currency = "EUR"`. A supplier from `"USA"` must have `currency = "USD"`. The API must reject inconsistent combinations.
-- **Rate traceability:** Every update to `monthly_rate` must automatically record `rate_updated_at`. Patricia uses this data to justify budget variations to management.
+- **Rate traceability:** Every update to `monthly_rate` must automatically record `updated_at`. Patricia uses this data to justify budget variations to management.
 - **Upcoming renewals:** The `contract_renewal_date` field is optional but relevant — suppliers with renewal within the next 60 days must be visually highlighted in the frontend.
 - **Controlled suspension:** Suspended suppliers are not deleted. They remain in the directory with `"suspended"` status to preserve commercial relationship history.
 

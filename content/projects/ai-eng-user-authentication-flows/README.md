@@ -28,7 +28,7 @@ Your tech lead has opened the next ticket:
 > The API now requires a JWT token on protected routes. This task covers the frontend side of that contract:
 >
 > - **Login and registration views** — forms that call the API, receive the token, and store it correctly.
-> - **Account management views** — profile page and password change form.
+> - **Account management views** — profile page.
 > - **Route protection** — any view that requires a session must redirect unauthenticated users to login. This applies to all applications in the monorepo **except the public website (Milestone 1)**, which remains fully public.
 >
 > The token must be stored in `localStorage` and attached to every protected API call via the `Authorization: Bearer` header. On logout, the token is removed and the user is redirected to login.
@@ -66,7 +66,6 @@ Make sure your API from the previous delivery is running and reachable from the 
 ### Account management views
 
 - [ ] `/account/profile` — displays the current user's data (name, email). Allows editing name. Calls `PUT /users/{id}` with the token in the header.
-- [ ] `/account/change-password` — form with current password, new password, and confirmation. Validates that the new password and confirmation match before calling the API.
 
 ### Route protection
 

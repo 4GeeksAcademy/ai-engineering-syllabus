@@ -19,17 +19,17 @@ Brasaland works with around **20 active suppliers** split between Colombia and F
 
 Each supplier in the Brasaland directory has the following structure:
 
-| Field             | Type                                 | Description                                   |
-| ----------------- | ------------------------------------ | --------------------------------------------- |
-| `name`            | string, required                     | Supplier trade name                           |
-| `country`         | string, required                     | Operating country: `"Colombia"` or `"USA"`    |
-| `categories`      | list of strings, required, minimum 1 | Product categories supplied (see valid list)  |
-| `rate_per_unit`   | float, required, > 0                 | Current rate per unit in the country currency |
-| `currency`        | string, required                     | `"COP"` for Colombia, `"USD"` for USA         |
-| `rate_updated_at` | datetime, system-generated           | Timestamp of the last rate update             |
-| `status`          | string, required                     | `"active"` or `"suspended"`                   |
-| `contact_email`   | string, optional                     | Supplier contact email                        |
-| `notes`           | string, optional                     | Internal procurement team notes               |
+| Field           | Type                                 | Description                                   |
+| --------------- | ------------------------------------ | --------------------------------------------- |
+| `name`          | string, required                     | Supplier trade name                           |
+| `country`       | string, required                     | Operating country: `"Colombia"` or `"USA"`    |
+| `categories`    | list of strings, required, minimum 1 | Product categories supplied (see valid list)  |
+| `rate_per_unit` | float, required, > 0                 | Current rate per unit in the country currency |
+| `currency`      | string, required                     | `"COP"` for Colombia, `"USD"` for USA         |
+| `updated_at`    | datetime, system-generated           | Timestamp of the last rate update             |
+| `status`        | string, required                     | `"active"` or `"suspended"`                   |
+| `contact_email` | string, optional                     | Supplier contact email                        |
+| `notes`         | string, optional                     | Internal procurement team notes               |
 
 ### Valid categories
 
@@ -214,7 +214,7 @@ SUPPLIERS_SEED = [
 
 - **Currency by country:** A supplier from `"Colombia"` must have `currency = "COP"`. A supplier from `"USA"` must have `currency = "USD"`. The API must reject inconsistent combinations.
 - **Multiple categories:** A supplier can supply more than one category (for example, beverages and dairy). The `categories` list must have at least one valid element.
-- **Rate traceability:** Every time `rate_per_unit` is updated, the `rate_updated_at` field must record the exact timestamp of the change. Lucía requires this data for price audits.
+- **Rate traceability:** Every time `rate_per_unit` is updated, the `updated_at` field must record the exact timestamp of the change. Lucía requires this data for price audits.
 - **Suspension, not deletion:** In Brasaland's real operations, suppliers are not removed from the system — they are suspended. The `DELETE` endpoint exists for correcting erroneous data, not as the usual workflow.
 
 ---

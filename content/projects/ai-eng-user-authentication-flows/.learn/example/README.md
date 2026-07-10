@@ -12,7 +12,6 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
 
-
 **Recipe Box** is a Next.js app where users save and organize their favorite recipes. The API already requires a JWT token on protected routes (implemented in the previous class). Now students need to wire up the frontend: login, registration, profile page, and route protection so that only signed-in users can access their recipe collection.
 
 ---
@@ -52,12 +51,6 @@ This example is scoped for one live classroom session. It keeps the same stack a
 - [ ] Allow editing the name. Call `PUT /users/{id}` with the token.
 - [ ] Show a success message after saving.
 
-**`/account/change-password`**
-
-- [ ] Form with: current password, new password, confirmation.
-- [ ] Validate that new password and confirmation match **before** calling the API.
-- [ ] On success: show confirmation. On failure: show the API error.
-
 ---
 
 ### Route protection
@@ -67,7 +60,7 @@ This example is scoped for one live classroom session. It keeps the same stack a
 - [ ] The home page (`/`) and `/login` and `/register` must remain fully public — no token check.
 
 ```
-Protected routes: /recipes, /account/profile, /account/change-password
+Protected routes: /recipes, /account/profile
 Public routes:    /, /login, /register
 ```
 
@@ -75,12 +68,12 @@ Public routes:    /, /login, /register
 
 ### Token lifecycle
 
-| Event | Action |
-|---|---|
-| Successful login / register | Store token → `localStorage.setItem('access_token', token)` |
-| Every protected API call | Read token → set `Authorization: Bearer <token>` header |
-| Logout | Remove token → `localStorage.removeItem('access_token')` → redirect to `/login` |
-| API responds with `401` | Clear token → redirect to `/login` |
+| Event                       | Action                                                                          |
+| --------------------------- | ------------------------------------------------------------------------------- |
+| Successful login / register | Store token → `localStorage.setItem('access_token', token)`                     |
+| Every protected API call    | Read token → set `Authorization: Bearer <token>` header                         |
+| Logout                      | Remove token → `localStorage.removeItem('access_token')` → redirect to `/login` |
+| API responds with `401`     | Clear token → redirect to `/login`                                              |
 
 ---
 
@@ -89,7 +82,7 @@ Public routes:    /, /login, /register
 ```ts
 // lib/api.ts
 export function authHeader(): HeadersInit {
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem("access_token");
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 ```
@@ -98,14 +91,14 @@ export function authHeader(): HeadersInit {
 
 ## Key Concepts to Discuss in Class
 
-| Concept | Where it appears |
-|---|---|
-| `localStorage` for token storage | `setItem` / `getItem` / `removeItem` |
-| Attaching `Authorization` header | Every protected `fetch` call |
+| Concept                           | Where it appears                      |
+| --------------------------------- | ------------------------------------- |
+| `localStorage` for token storage  | `setItem` / `getItem` / `removeItem`  |
+| Attaching `Authorization` header  | Every protected `fetch` call          |
 | Next.js middleware / layout guard | `middleware.ts` or layout-level check |
-| Redirect on missing token | `useRouter().push('/login')` |
-| Handling `401` from the API | Clear session and redirect |
-| Password confirmation validation | Client-side before API call |
+| Redirect on missing token         | `useRouter().push('/login')`          |
+| Handling `401` from the API       | Clear session and redirect            |
+| Password confirmation validation  | Client-side before API call           |
 
 ---
 

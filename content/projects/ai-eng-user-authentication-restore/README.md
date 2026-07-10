@@ -19,27 +19,29 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-The authentication system is working. Users can register, log in, manage their profile, and change their password — as long as they remember it.
+The authentication system is working. Users can register, log in, and manage their profile.
 
-But what happens when they don't?
+But what happens when they forget their password — or need to change it while logged in?
 
-Right now, a user who forgets their password has no way to recover their account. And beyond that: in any production system, periodically changing passwords is a basic security practice. Your platform has no mechanism for either.
+Right now, a user who forgets their password has no way to recover their account. Logged-in users have no form to update their password either. In any production system, both flows are basic security requirements. Your platform has no mechanism for either.
 
 Your tech lead has opened the ticket:
 
-> #### AUTH-03 — Password reset flow
+> #### AUTH-03 — Password recovery and change
 >
-> The platform needs a full password reset mechanism. This covers both the API and the frontend:
+> The platform needs two password mechanisms — reset when the user forgot it, and change while logged in. This covers both the API and the frontend:
 >
 > **Backend:**
 >
 > - `POST /auth/forgot-password` — receives an email, validates the user exists, generates a signed short-lived reset token, and sends a reset link to the user's email address.
 > - `POST /auth/reset-password` — receives the reset token and a new password, validates the token (signature + expiry), hashes the new password, and updates the user record. The token must be invalidated after use.
+> - `POST /auth/change-password` — authenticated endpoint. Receives the current password and a new password, verifies the current one, hashes the new password, and updates the user record.
 >
 > **Frontend:**
 >
 > - `/forgot-password` — form where the user enters their email. Always shows a confirmation message after submission, regardless of whether the address exists, to prevent user enumeration.
 > - `/reset-password` — form where the user sets a new password. Reads the reset token from the URL query string and submits it to the API alongside the new password. On success, redirects to `/login`.
+> - `/account/change-password` — form with current password, new password, and confirmation. Validates that the new password and confirmation match before calling the API.
 >
 > For email delivery, choose one of the following services and integrate it:
 >
@@ -80,6 +82,7 @@ Before you start, sign up for one of the email services listed above and obtain 
 
 - [ ] `POST /auth/forgot-password` — accepts `{ email }`. If the user exists, generate a reset token with a short expiry (15–60 minutes) and send an email containing the reset link. Always return a `200` response regardless of whether the email was found.
 - [ ] `POST /auth/reset-password` — accepts `{ token, new_password }`. Validate the token (signature and expiry). If valid, hash the new password, update the user record, and invalidate the token. Return `400` for invalid or expired tokens.
+- [ ] `POST /auth/change-password` — accepts `{ current_password, new_password }`. Requires a valid session token in the `Authorization` header. Verify the current password before updating. Return `400` if the current password is wrong.
 - [ ] Integrate one transactional email service (Resend or SendGrid) to send the reset email. The email must include the reset link and be readable on mobile.
 - [ ] Store the email service API key in an environment variable. Document which variable name to set in your `README` or `.env.example`.
 
@@ -87,6 +90,7 @@ Before you start, sign up for one of the email services listed above and obtain 
 
 - [ ] `/forgot-password` — email input form. On submit, call `POST /auth/forgot-password` and display a confirmation message ("If that address is registered, you'll receive a link shortly"). The form should be disabled after submission to prevent duplicate requests.
 - [ ] `/reset-password` — new password form with a confirmation field. Read the `token` from the URL query string. On submit, call `POST /auth/reset-password`. On success, redirect to `/login` with a success message. On failure (expired or invalid token), show a clear error and a link back to `/forgot-password`.
+- [ ] `/account/change-password` — form with current password, new password, and confirmation. Validates that the new password and confirmation match before calling the API.
 - [ ] Add a "Forgot your password?" link on the `/login` page pointing to `/forgot-password`.
 
 ### Security
@@ -118,6 +122,8 @@ These are not evaluated but are valid extensions if time allows:
 - [ ] `/reset-password` reads the token from the URL, submits the form, and redirects to `/login` on success.
 - [ ] `/reset-password` shows a clear error with a link back to `/forgot-password` when the token is invalid or expired.
 - [ ] The `/login` page has a visible "Forgot your password?" link.
+- [ ] `/account/change-password` validates matching new password and confirmation, calls the API, and shows success or error feedback.
+- [ ] `POST /auth/change-password` rejects wrong current passwords with `400`.
 - [ ] No API keys are hardcoded — all secrets are loaded from environment variables.
 
 ---

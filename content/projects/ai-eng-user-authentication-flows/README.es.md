@@ -28,7 +28,7 @@ Tu tech lead ha abierto el siguiente ticket:
 > La API ya exige un token JWT en las rutas protegidas. Esta tarea cubre el lado frontend de ese contrato:
 >
 > - **Vistas de login y registro** — formularios que llaman a la API, reciben el token y lo almacenan correctamente.
-> - **Vistas de gestión de cuenta** — página de perfil y formulario para cambiar la contraseña.
+> - **Vistas de gestión de cuenta** — página de perfil.
 > - **Protección de rutas** — cualquier vista que requiera sesión debe redirigir a los usuarios no autenticados al login. Esto aplica a todas las aplicaciones del monorepo **excepto el website público (Hito 1)**, que permanece completamente público.
 >
 > El token debe almacenarse en `localStorage` y adjuntarse a cada llamada protegida a la API mediante la cabecera `Authorization: Bearer`. Al cerrar sesión, el token se elimina y el usuario es redirigido al login.
@@ -66,7 +66,6 @@ Asegúrate de que tu API de la entrega anterior está corriendo y es accesible d
 ### Vistas de gestión de cuenta
 
 - [ ] `/account/profile` — muestra los datos del usuario actual (nombre, email). Permite editar el nombre. Llama a `PUT /users/{id}` con el token en la cabecera.
-- [ ] `/account/change-password` — formulario con la contraseña actual, la nueva contraseña y la confirmación. Valida que la nueva contraseña y la confirmación coinciden antes de llamar a la API.
 
 ### Protección de rutas
 

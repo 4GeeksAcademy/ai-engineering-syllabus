@@ -26,7 +26,7 @@ Cada proveedor en el directorio de Nexova tiene la siguiente estructura:
 | `categories`            | lista de strings, requerido, mínimo 1 | Tipo de servicio que provee (ver lista válida)          |
 | `monthly_rate`          | float, requerido, > 0                 | Coste mensual vigente en la moneda del contrato         |
 | `currency`              | string, requerido                     | `"EUR"` para Spain, `"USD"` para USA                    |
-| `rate_updated_at`       | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa          |
+| `updated_at`            | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa          |
 | `status`                | string, requerido                     | `"active"` o `"suspended"`                              |
 | `contract_renewal_date` | string, opcional                      | Fecha de renovación del contrato (formato `YYYY-MM-DD`) |
 | `contact_email`         | string, opcional                      | Email del account manager del proveedor                 |
@@ -226,7 +226,7 @@ SUPPLIERS_SEED = [
 ## Restricciones de negocio
 
 - **Moneda por país:** Un proveedor de `"Spain"` debe tener `currency = "EUR"`. Un proveedor de `"USA"` debe tener `currency = "USD"`. La API debe rechazar combinaciones inconsistentes.
-- **Trazabilidad de tarifas:** Cada actualización de `monthly_rate` debe registrar el `rate_updated_at` automáticamente. Patricia usa este dato para justificar variaciones de presupuesto ante dirección.
+- **Trazabilidad de tarifas:** Cada actualización de `monthly_rate` debe registrar el `updated_at` automáticamente. Patricia usa este dato para justificar variaciones de presupuesto ante dirección.
 - **Renovaciones próximas:** El campo `contract_renewal_date` es opcional pero relevante — los proveedores con renovación en los próximos 60 días deben destacarse visualmente en el frontend.
 - **Suspensión controlada:** Los proveedores suspendidos no se eliminan. Permanecen en el directorio con estado `"suspended"` para mantener el historial de relaciones comerciales.
 

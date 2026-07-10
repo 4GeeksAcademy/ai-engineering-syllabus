@@ -12,7 +12,6 @@ _These instructions are also available in [English](./README.md)._
 
 Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
 
-
 **Recipe Box** es una app Next.js donde los usuarios guardan y organizan sus recetas favoritas. La API ya requiere un token JWT en las rutas protegidas (implementado en la clase anterior). Ahora los estudiantes necesitan conectar el frontend: login, registro, página de perfil y protección de rutas para que solo los usuarios autenticados puedan acceder a su colección de recetas.
 
 ---
@@ -52,12 +51,6 @@ Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mism
 - [ ] Permitir editar el nombre. Llamar a `PUT /users/{id}` con el token.
 - [ ] Mostrar un mensaje de éxito después de guardar.
 
-**`/account/change-password`**
-
-- [ ] Formulario con: contraseña actual, nueva contraseña, confirmación.
-- [ ] Validar que la nueva contraseña y la confirmación coinciden **antes** de llamar a la API.
-- [ ] Si tiene éxito: mostrar confirmación. Si falla: mostrar el error de la API.
-
 ---
 
 ### Protección de rutas
@@ -67,7 +60,7 @@ Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mism
 - [ ] La página de inicio (`/`) y `/login` y `/register` deben permanecer completamente públicas — sin comprobación de token.
 
 ```
-Rutas protegidas: /recipes, /account/profile, /account/change-password
+Rutas protegidas: /recipes, /account/profile
 Rutas públicas:   /, /login, /register
 ```
 
@@ -75,12 +68,12 @@ Rutas públicas:   /, /login, /register
 
 ### Ciclo de vida del token
 
-| Evento | Acción |
-|---|---|
-| Login / registro exitoso | Guardar token → `localStorage.setItem('access_token', token)` |
-| Cada llamada protegida a la API | Leer token → establecer cabecera `Authorization: Bearer <token>` |
-| Cierre de sesión | Eliminar token → `localStorage.removeItem('access_token')` → redirigir a `/login` |
-| La API responde con `401` | Limpiar token → redirigir a `/login` |
+| Evento                          | Acción                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------- |
+| Login / registro exitoso        | Guardar token → `localStorage.setItem('access_token', token)`                     |
+| Cada llamada protegida a la API | Leer token → establecer cabecera `Authorization: Bearer <token>`                  |
+| Cierre de sesión                | Eliminar token → `localStorage.removeItem('access_token')` → redirigir a `/login` |
+| La API responde con `401`       | Limpiar token → redirigir a `/login`                                              |
 
 ---
 
@@ -89,7 +82,7 @@ Rutas públicas:   /, /login, /register
 ```ts
 // lib/api.ts
 export function authHeader(): HeadersInit {
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem("access_token");
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 ```
@@ -98,14 +91,14 @@ export function authHeader(): HeadersInit {
 
 ## Conceptos Clave a Trabajar en Clase
 
-| Concepto | Dónde aparece |
-|---|---|
-| `localStorage` para almacenamiento del token | `setItem` / `getItem` / `removeItem` |
-| Adjuntar cabecera `Authorization` | Cada llamada protegida a `fetch` |
-| Middleware / guard de layout en Next.js | `middleware.ts` o comprobación a nivel de layout |
-| Redirección por token ausente | `useRouter().push('/login')` |
-| Gestión de `401` de la API | Limpiar sesión y redirigir |
-| Validación de confirmación de contraseña | En el cliente antes de la llamada a la API |
+| Concepto                                     | Dónde aparece                                    |
+| -------------------------------------------- | ------------------------------------------------ |
+| `localStorage` para almacenamiento del token | `setItem` / `getItem` / `removeItem`             |
+| Adjuntar cabecera `Authorization`            | Cada llamada protegida a `fetch`                 |
+| Middleware / guard de layout en Next.js      | `middleware.ts` o comprobación a nivel de layout |
+| Redirección por token ausente                | `useRouter().push('/login')`                     |
+| Gestión de `401` de la API                   | Limpiar sesión y redirigir                       |
+| Validación de confirmación de contraseña     | En el cliente antes de la llamada a la API       |
 
 ---
 

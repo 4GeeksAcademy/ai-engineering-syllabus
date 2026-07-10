@@ -26,7 +26,7 @@ Cada proveedor en el directorio de HealthCore tiene la siguiente estructura:
 | `categories`            | lista de strings, requerido, mínimo 1 | Tipo de servicio o producto que provee (ver lista válida)                                  |
 | `monthly_rate`          | float, requerido, > 0                 | Coste mensual vigente en la moneda del contrato                                            |
 | `currency`              | string, requerido                     | `"USD"` para USA, `"GBP"` para UK                                                          |
-| `rate_updated_at`       | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa                                             |
+| `updated_at`            | datetime, generado por el sistema     | Timestamp de la última actualización de tarifa                                             |
 | `status`                | string, requerido                     | `"active"` o `"suspended"`                                                                 |
 | `compliance_agreement`  | string, opcional                      | Tipo de acuerdo de cumplimiento firmado: `"BAA"`, `"DPA"`, `"both"`, o `null` si no aplica |
 | `contract_renewal_date` | string, opcional                      | Fecha de renovación del contrato (formato `YYYY-MM-DD`)                                    |
@@ -239,7 +239,7 @@ SUPPLIERS_SEED = [
 
 - **Moneda por país:** Un proveedor de `"USA"` debe tener `currency = "USD"`. Un proveedor de `"UK"` debe tener `currency = "GBP"`. La API rechaza combinaciones inconsistentes.
 - **Acuerdo de cumplimiento:** El campo `compliance_agreement` es opcional, pero los proveedores con categorías `clinical_software`, `it_infrastructure`, `patient_communication` o `billing_and_coding_software` deberían tenerlo registrado. No es una validación automática de la API, sino una responsabilidad de quien registra el proveedor.
-- **Trazabilidad de tarifas:** Cada actualización de `monthly_rate` debe registrar `rate_updated_at`. Claire usa este dato en auditorías para verificar que los cambios de coste tienen trazabilidad.
+- **Trazabilidad de tarifas:** Cada actualización de `monthly_rate` debe registrar `updated_at`. Claire usa este dato en auditorías para verificar que los cambios de coste tienen trazabilidad.
 - **Suspensión, no borrado:** Los proveedores no se eliminan del directorio. Se suspenden. Mantener el historial es especialmente relevante en HealthCore por el entorno regulatorio: una auditoría puede preguntar con qué proveedores se trabajó en un período determinado.
 
 ---
