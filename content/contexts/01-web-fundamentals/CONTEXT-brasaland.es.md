@@ -2,7 +2,7 @@
 
 ## Hito 1: Sitio Web Público de tu Empresa
 
-_These instructions are [available in English](./CONTEXT-brasaland.md)._
+_These instructions are [available in English](./CONTEXT-brasaland.en.md)._
 
 > Este documento describe tu empresa y la situación concreta para la que estás construyendo este hito. Léelo completo antes de escribir ningún código. Todo lo que construyas debe reflejar este contexto.
 

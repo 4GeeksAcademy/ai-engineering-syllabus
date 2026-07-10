@@ -1,6 +1,6 @@
 # CONTEXT — TrackFlow · Fase 1 de Telemetría: Diseño del plan de telemetría de la compañía
 
-_These instructions are also available in [English](./CONTEXT-trackflow.md)._
+_These instructions are also available in [English](./CONTEXT-trackflow.en.md)._
 
 ## Tu empresa
 
