@@ -33,7 +33,7 @@ Your tech lead has just dropped a ticket in your queue:
 > - A reusable `get_current_user` dependency that decodes the token and identifies the caller.
 > - Application of that dependency to all routes that should not be publicly accessible.
 >
-> Store `User` and `Profile` in **TinyDB only** — not in Supabase. The JWT must carry the TinyDB user `id`; inventory and other modules reference it as `user_uuid`.
+> Store `User` and `Profile` in **TinyDB only** — The JWT must carry the TinyDB user `id`; inventory and other modules reference it as `user_uuid`.
 >
 > Use `OAuth2PasswordBearer` from FastAPI and `python-jose` for token signing. Passwords must be hashed — never stored or compared in plain text. The token should carry the user's ID at minimum and expire after a configurable window.
 >
@@ -106,7 +106,7 @@ This project is an extension of your existing transversal project API. **Do not 
 - [ ] Confirm that calling a protected route without a token returns `401`.
 - [ ] Confirm that calling a protected route with an expired or malformed token returns `401`.
 
-⚠️ **IMPORTANT:** Store `User` and `Profile` in **TinyDB only**. Do not create user tables in Supabase — other modules reference the TinyDB user `id` as `user_uuid`.
+⚠️ **IMPORTANT:** Store `User` and `Profile` in **TinyDB only** — now and after Supabase is added. Do not create user or profile tables in Supabase/SQLModel. Inventory and other PostgreSQL tables store only the TinyDB user `id` as `user_uuid`.
 
 ⚠️ **IMPORTANT:** Do not use session-based or cookie-based authentication. This project implements stateless JWT auth only.
 
@@ -126,6 +126,7 @@ This project is an extension of your existing transversal project API. **Do not 
 - [ ] Token expiry and signing secret are read from environment variables, not hardcoded.
 - [ ] Auth routes are under `/auth`, user routes under `/users`, and profile routes under `/profiles` — clean, consistent structure.
 - [ ] At least **5 existing routes outside `/users` and `/auth`** require a valid token (in addition to the protected user/auth routes themselves).
+- [ ] `User` and `Profile` remain in TinyDB after Supabase is introduced — no user tables in PostgreSQL.
 - [ ] Protected monorepo routes still behave correctly when called with a valid token (no regressions).
 
 > Note: Enforcing different permissions per role on every route is not required for this delivery, though it is a valid extension if time allows.

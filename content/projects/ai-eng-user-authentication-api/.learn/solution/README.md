@@ -41,7 +41,7 @@ This reference solution describes the expected architecture, implementation scop
 
 ## Key Implementation Decisions
 
-- `User` and `Profile` live in **TinyDB only** — not Supabase. JWT carries TinyDB user `id` for `user_uuid` references elsewhere.
+- `User` and `Profile` live in **TinyDB only** — not Supabase. This does not change when Supabase is added for inventory (Milestone 5): never migrate auth models to PostgreSQL or create a SQLModel user table. JWT carries TinyDB user `id` for `user_uuid` references elsewhere.
 - Passwords are never stored in plain text; use `passlib` with `bcrypt`.
 - JWT creation/validation is centralized in one security module.
 - `get_current_user` is used as a reusable dependency on protected routes.
