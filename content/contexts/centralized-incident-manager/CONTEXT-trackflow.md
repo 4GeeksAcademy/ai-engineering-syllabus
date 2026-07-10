@@ -79,30 +79,75 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Datos históricos — seed desde CSV
 
-El fichero CSV del proyecto anterior contiene incidencias exportadas del sistema de atención al cliente de TrackFlow. Todas corresponden a incidencias comunicadas por clientes o consumidores finales (`origin: "customer"`).
+El fichero CSV del proyecto **incidents-file-analyzer** (`incidents-trackflow.csv` en `content/contexts/incidents-file-analysis/`) contiene incidencias exportadas del sistema de atención al cliente de TrackFlow. Todas corresponden a incidencias comunicadas por clientes o consumidores finales (`origin: "customer"`).
 
-**Campo identificador para idempotencia:** usa el campo `incident_id` del CSV para evitar duplicados. Si ese campo no existe en tu CSV, usa la combinación `title + created_at`.
+El esquema del CSV del analizador usa nombres de campo, estados y categorías distintos a los de este gestor. **No insertes filas del CSV directamente.** Reutiliza la lógica de validación compartida del analizador y aplica las transformaciones siguientes antes del insert.
 
-**Mapeo de campos CSV → modelo:**
+**Campo identificador para idempotencia:** usa `incident_id` del CSV. Si no existe, usa la combinación `title + created_at`.
 
-| Campo CSV     | Campo del modelo | Notas                                                  |
-| ------------- | ---------------- | ------------------------------------------------------ |
-| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
-| `title`       | `title`          |                                                        |
-| `description` | `description`    |                                                        |
-| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
-| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
-| `created_at`  | `created_at`     | Respetar la fecha original                             |
-| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
-| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
+### Mapeo directo de campos
 
-Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
+| Campo CSV     | Campo del modelo | Transformación                                                                 |
+| ------------- | ---------------- | ------------------------------------------------------------------------------ |
+| `incident_id` | —                | Solo control de duplicados — no se almacena                                    |
+| `description` | `title`          | Primeros 120 caracteres de `description`, recortados. Descartar si queda vacío |
+| `description` | `description`    | Copiar literalmente                                                            |
+| `date`        | `created_at`     | Parsear `YYYY-MM-DD` como medianoche UTC. `updated_at` igual al insertar       |
+| —             | `origin`         | Siempre `"customer"` en todos los registros del seed                           |
+
+### Mapeo de estados
+
+| CSV `status` | Modelo `status` |
+| ------------ | --------------- |
+| `OPEN`       | `open`          |
+| `CLOSED`     | `resolved`      |
+| `DISCARDED`  | `discarded`     |
+
+### Mapeo de categorías (TrackFlow)
+
+| CSV `category`     | Modelo `category`  |
+| ------------------ | ------------------ |
+| `LOST_PARCEL`      | `lost_parcel`      |
+| `DELAYED_DELIVERY` | `carrier_issue`    |
+| `WRONG_ADDRESS`    | `delivery_failure` |
+| `RETURN_REQUEST`   | `returns_issue`    |
+| `DAMAGE`           | `carrier_issue`    |
+
+### Mapeo de sede (TrackFlow)
+
+Mapea `country` del CSV a `branch` del modelo:
+
+| CSV `country` | Modelo `branch`   |
+| ------------- | ----------------- |
+| `US`          | `la_office`       |
+| `ES`          | `zaragoza_office` |
+
+Los registros que fallen la validación o no se puedan mapear se descartan y se reportan en consola.
 
 ---
 
 ## Valores esperados tras el seed
 
-Una vez cargado el CSV correctamente, el endpoint `/api/incidents/summary` debe devolver valores coherentes con los del fichero CSV validado en el proyecto anterior. Contrasta los totales por categoría y por estado con los resultados obtenidos en el script de análisis — deben coincidir (descontando los registros inválidos descartados por el seed).
+Tras cargar el CSV, `/api/incidents/summary` debe devolver totales por `status` y `category` del **modelo** que coincidan con los siguientes conteos transformados. Corresponden a los **95 registros válidos** de `incidents-trackflow.csv` del proyecto analizador (excluidas filas inválidas).
+
+**Por `status` del modelo:**
+
+| Modelo `status` | Conteo |
+| --------------- | ------ |
+| `open`          | 29     |
+| `resolved`      | 52     |
+| `discarded`     | 14     |
+
+**Por `category` del modelo:**
+
+| Modelo `category`  | Conteo |
+| ------------------ | ------ |
+| `lost_parcel`      | 14     |
+| `carrier_issue`    | 45     |
+| `delivery_failure` | 19     |
+| `returns_issue`    | 17     |
+
+Contrasta con la salida del script analizador: el CSV crudo usa `OPEN`/`CLOSED`/`DISCARDED` y códigos como `LOST_PARCEL`/`DELAYED_DELIVERY`. Los totales anteriores son los valores **post-transformación** que debe producir tu gestor.
 
 ---
 

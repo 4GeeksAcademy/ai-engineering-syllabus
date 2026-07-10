@@ -70,6 +70,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 - [ ] The written justification is at least 3 sentences and references specific details from the company's context file — not just the company name or sector.
 - [ ] Two or more departments have been identified with a brief explanation of why they are interesting.
 - [ ] At least one specific milestone or automation challenge has been named.
+- [ ] `company-choice.md` includes a `## My AI Agent Idea` section describing what the agent would do, what information it needs, and what it would produce or trigger.
 - [ ] The GitHub Codespaces environment opens correctly with no errors.
 - [ ] The repository URL is submitted through the platform before the deadline.
 

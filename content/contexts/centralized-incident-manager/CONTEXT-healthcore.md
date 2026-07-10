@@ -89,30 +89,84 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Datos históricos — seed desde CSV
 
-El fichero CSV del proyecto anterior contiene incidencias exportadas del sistema legacy de atención al paciente de HealthCore. Todas corresponden a incidencias comunicadas por pacientes o sus representantes (`origin: "customer"`). El CSV no contiene datos identificativos de pacientes — fue anonimizado antes de la extracción.
+El fichero CSV del proyecto **incidents-file-analyzer** (`incidents-<empresa>.csv` en `content/contexts/incidents-file-analysis/`) contiene incidencias exportadas del sistema legacy de atención al paciente de HealthCore. Todas corresponden a incidencias comunicadas por pacientes o sus representantes (`origin: "customer"`). El CSV no contiene datos identificativos de pacientes — fue anonimizado antes de la extracción.
 
-**Campo identificador para idempotencia:** usa el campo `incident_id` del CSV para evitar duplicados. Si ese campo no existe en tu CSV, usa la combinación `title + created_at`.
+El esquema del CSV del analizador usa nombres de campo, estados y categorías distintos a los de este gestor. **No insertes filas del CSV directamente.** Reutiliza la lógica de validación compartida del analizador y aplica las transformaciones siguientes antes del insert.
 
-**Mapeo de campos CSV → modelo:**
+**Campo identificador para idempotencia:** usa `incident_id` del CSV. Si no existe, usa la combinación `title + created_at`.
 
-| Campo CSV     | Campo del modelo | Notas                                                  |
-| ------------- | ---------------- | ------------------------------------------------------ |
-| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
-| `title`       | `title`          |                                                        |
-| `description` | `description`    |                                                        |
-| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
-| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
-| `created_at`  | `created_at`     | Respetar la fecha original                             |
-| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
-| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
+### Mapeo directo de campos
 
-Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
+| Campo CSV     | Campo del modelo | Transformación                                                                 |
+| ------------- | ---------------- | ------------------------------------------------------------------------------ |
+| `incident_id` | —                | Solo control de duplicados — no se almacena                                    |
+| `description` | `title`          | Primeros 120 caracteres de `description`, recortados. Descartar si queda vacío |
+| `description` | `description`    | Copiar literalmente                                                            |
+| `date`        | `created_at`     | Parsear `YYYY-MM-DD` como medianoche UTC. `updated_at` igual al insertar       |
+| —             | `origin`         | Siempre `"customer"` en todos los registros del seed                           |
+
+### Mapeo de estados
+
+| CSV `status` | Modelo `status` |
+| ------------ | --------------- |
+| `OPEN`       | `open`          |
+| `CLOSED`     | `resolved`      |
+| `DISCARDED`  | `discarded`     |
+
+### Mapeo de categorías (HealthCore)
+
+| CSV `category`   | Modelo `category`    |
+| ---------------- | -------------------- |
+| `APPOINTMENT`    | `patient_experience` |
+| `BILLING`        | `billing_error`      |
+| `CLINICAL_CARE`  | `patient_experience` |
+| `ACCESSIBILITY`  | `patient_experience` |
+| `ADMINISTRATIVE` | `other`              |
+
+### Mapeo de sede (HealthCore)
+
+Mapea `clinic_id` del CSV a `branch` del modelo. Si falta o no hay mapeo, usa `central`.
+
+| CSV `clinic_id` | Modelo `branch`      |
+| --------------- | -------------------- |
+| `US-TX-01`      | `austin_main`        |
+| `US-TX-02`      | `austin_north`       |
+| `US-TX-03`      | `houston_med_center` |
+| `US-FL-01`      | `miami_brickell`     |
+| `US-FL-02`      | `orlando_east`       |
+| `US-FL-03`      | `central`            |
+| `US-GA-01`      | `atlanta_midtown`    |
+| `US-GA-02`      | `atlanta_midtown`    |
+| `US-GA-03`      | `central`            |
+| `UK-LON-01`     | `london_city`        |
+| `UK-LON-02`     | `london_west`        |
+| `UK-MAN-01`     | `manchester_central` |
+
+Los registros que fallen la validación o no se puedan mapear se descartan y se reportan en consola.
 
 ---
 
 ## Valores esperados tras el seed
 
-Una vez cargado el CSV correctamente, el endpoint `/api/incidents/summary` debe devolver valores coherentes con los del fichero CSV validado en el proyecto anterior. Contrasta los totales por categoría y por estado con los resultados obtenidos en el script de análisis — deben coincidir (descontando los registros inválidos descartados por el seed).
+Tras cargar el CSV, `/api/incidents/summary` debe devolver totales por `status` y `category` del **modelo** que coincidan con los siguientes conteos transformados. Corresponden a los **94 registros válidos** de `incidents-healthcore.csv` del proyecto analizador (excluidas filas inválidas).
+
+**Por `status` del modelo:**
+
+| Modelo `status` | Conteo |
+| --------------- | ------ |
+| `open`          | 28     |
+| `resolved`      | 52     |
+| `discarded`     | 14     |
+
+**Por `category` del modelo:**
+
+| Modelo `category`    | Conteo |
+| -------------------- | ------ |
+| `patient_experience` | 61     |
+| `billing_error`      | 20     |
+| `other`              | 13     |
+
+Contrasta con la salida del script analizador: el CSV crudo usa `OPEN`/`CLOSED`/`DISCARDED` y códigos como `APPOINTMENT`/`BILLING`. Los totales anteriores son los valores **post-transformación** que debe producir tu gestor.
 
 ---
 

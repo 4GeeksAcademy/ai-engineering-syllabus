@@ -70,6 +70,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 - [ ] La justificación escrita tiene al menos 3 frases y hace referencia a detalles específicos del archivo de contexto de la empresa — no solo el nombre del sector.
 - [ ] Se han identificado dos o más departamentos con una breve explicación de por qué resultan interesantes.
 - [ ] Se ha nombrado al menos un milestone o reto de automatización concreto.
+- [ ] `company-choice.md` incluye una sección `## My AI Agent Idea` que describe qué haría el agente, qué información necesita y qué produciría o activaría.
 - [ ] El entorno de GitHub Codespaces se abre correctamente sin errores.
 - [ ] La URL del repositorio se ha entregado a través de la plataforma antes del plazo.
 

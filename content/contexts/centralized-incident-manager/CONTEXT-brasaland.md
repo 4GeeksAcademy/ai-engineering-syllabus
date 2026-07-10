@@ -86,30 +86,87 @@ Transiciones válidas: `open → in_progress`, `open → discarded`, `in_progres
 
 ## Datos históricos — seed desde CSV
 
-El fichero CSV del proyecto anterior contiene incidencias exportadas del sistema legacy de atención al cliente. Todas son de origen cliente (`origin: "customer"`).
+El fichero CSV del proyecto **incidents-file-analyzer** (`incidents-<empresa>.csv` en `content/contexts/incidents-file-analysis/`) contiene incidencias exportadas del sistema legacy de atención al cliente. Todas son de origen cliente (`origin: "customer"`).
 
-**Campo identificador para idempotencia:** usa el campo `incident_id` del CSV para evitar duplicados. Si ese campo no existe en tu CSV, usa la combinación `title + created_at`.
+El esquema del CSV del analizador usa nombres de campo, estados y categorías distintos a los de este gestor. **No insertes filas del CSV directamente.** Reutiliza la lógica de validación compartida del analizador y aplica las transformaciones siguientes antes del insert.
 
-**Mapeo de campos CSV → modelo:**
+**Campo identificador para idempotencia:** usa `incident_id` del CSV Brasaland. Si no existe, usa la combinación `title + created_at`.
 
-| Campo CSV     | Campo del modelo | Notas                                                  |
-| ------------- | ---------------- | ------------------------------------------------------ |
-| `incident_id` | —                | Solo para control de duplicados, no se almacena        |
-| `title`       | `title`          |                                                        |
-| `description` | `description`    |                                                        |
-| `category`    | `category`       | Verificar que el valor esté en la lista permitida      |
-| `status`      | `status`         | Verificar que el valor esté en la lista permitida      |
-| `created_at`  | `created_at`     | Respetar la fecha original                             |
-| —             | `origin`         | Siempre `"customer"` para todos los registros del seed |
-| —             | `branch`         | Siempre `"central"` para todos los registros del seed  |
+### Mapeo directo de campos
 
-Los registros con `category` o `status` fuera de los valores permitidos se descartan y se reportan en consola.
+| Campo CSV                   | Campo del modelo | Transformación                                                                 |
+| --------------------------- | ---------------- | ------------------------------------------------------------------------------ |
+| `incident_id` / `ticket_id` | —                | Solo control de duplicados — no se almacena                                    |
+| `description`               | `title`          | Primeros 120 caracteres de `description`, recortados. Descartar si queda vacío |
+| `description`               | `description`    | Copiar literalmente                                                            |
+| `date`                      | `created_at`     | Parsear `YYYY-MM-DD` como medianoche UTC. `updated_at` igual al insertar       |
+| —                           | `origin`         | Siempre `"customer"` en todos los registros del seed                           |
+
+### Mapeo de estados (todas las empresas)
+
+| CSV `status` | Modelo `status` |
+| ------------ | --------------- |
+| `OPEN`       | `open`          |
+| `CLOSED`     | `resolved`      |
+| `DISCARDED`  | `discarded`     |
+
+### Mapeo de categorías (Brasaland)
+
+| CSV `category`       | Modelo `category`    |
+| -------------------- | -------------------- |
+| `CUSTOMER_COMPLAINT` | `customer_complaint` |
+| `EQUIPMENT`          | `equipment_failure`  |
+| `SUPPLY`             | `supply_issue`       |
+| `FOOD_QUALITY`       | `customer_complaint` |
+| `STAFF`              | `staff_issue`        |
+
+### Mapeo de sede (Brasaland)
+
+Mapea `location_id` del CSV a `branch` del modelo. Si falta o no hay mapeo, usa `central`.
+
+| CSV `location_id` | Modelo `branch`         |
+| ----------------- | ----------------------- |
+| `COL-01`          | `medellin_centro`       |
+| `COL-02`          | `medellin_laureles`     |
+| `COL-03`          | `medellin_envigado`     |
+| `COL-04`          | `medellin_bello`        |
+| `COL-05`          | `medellin_itagui`       |
+| `COL-06`          | `bogota_chapinero`      |
+| `COL-07`          | `bogota_usaquen`        |
+| `COL-08`          | `cali_granada`          |
+| `COL-09`          | `barranquilla_norte`    |
+| `COL-10`          | `central`               |
+| `FLA-01`          | `miami_doral`           |
+| `FLA-02`          | `miami_hialeah`         |
+| `FLA-03`          | `miami_kendall`         |
+| `FLA-04`          | `orlando_international` |
+
+Los registros que fallen la validación o no se puedan mapear se descartan y se reportan en consola.
 
 ---
 
 ## Valores esperados tras el seed
 
-Una vez cargado el CSV correctamente, el endpoint `/api/incidents/summary` debe devolver valores coherentes con los del fichero CSV validado en el proyecto anterior. Contrasta los totales por categoría y por estado con los resultados que obtuviste en el script de análisis — deben coincidir (descontando los registros inválidos que el seed descarta).
+Tras cargar el CSV, `/api/incidents/summary` debe devolver totales por `status` y `category` del **modelo** que coincidan con los siguientes conteos transformados. Corresponden a los **96 registros válidos** de `incidents-brasaland.csv` del proyecto analizador (excluidas filas inválidas).
+
+**Por `status` del modelo:**
+
+| Modelo `status` | Conteo |
+| --------------- | ------ |
+| `open`          | 32     |
+| `resolved`      | 50     |
+| `discarded`     | 14     |
+
+**Por `category` del modelo:**
+
+| Modelo `category`    | Conteo |
+| -------------------- | ------ |
+| `customer_complaint` | 48     |
+| `equipment_failure`  | 17     |
+| `supply_issue`       | 22     |
+| `staff_issue`        | 9      |
+
+Contrasta con la salida del script analizador: el CSV crudo usa `OPEN`/`CLOSED`/`DISCARDED` y códigos como `CUSTOMER_COMPLAINT`/`FOOD_QUALITY`. Los totales anteriores son los valores **post-transformación** que debe producir tu gestor.
 
 ---
 

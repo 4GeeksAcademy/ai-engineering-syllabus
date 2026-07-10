@@ -63,7 +63,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
   - `category` — categoría según las definidas en tu CONTEXT.
   - `status` — estado del ciclo de vida: `open`, `in_progress`, `resolved`, `discarded`.
   - `origin` — origen del reporte: `customer`, `branch`, `internal`.
-  - `branch` — sede que gestiona o reporta la incidencia (obligatorio para todos los orígenes; usar `"Central"` cuando no corresponda a una sede específica).
+  - `branch` — sede que gestiona o reporta la incidencia (obligatorio para todos los orígenes; usar `central` cuando no corresponda a una sede específica).
   - `created_at` — fecha y hora de creación, generada automáticamente.
   - `updated_at` — fecha y hora de última modificación, actualizada automáticamente.
 - [ ] Aplica las restricciones de integridad necesarias: campos obligatorios, valores permitidos en `status`, `origin` y `category`.
@@ -71,6 +71,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 ### Seed de datos históricos (`/scripts`)
 
 - [ ] Crea el script `seed_incidents.py` que lee el fichero CSV del proyecto anterior y carga todas sus filas en la base de datos asignando `origin: "customer"` a todos los registros.
+- [ ] El script debe aplicar las **transformaciones CSV → modelo** especificadas en tu CONTEXT (mapa de estados, mapa de categorías, `description` → `title`, `date` → `created_at`, ubicación → `branch`) antes del insert — el esquema del CSV del analizador no es idéntico al de este gestor.
 - [ ] El script debe reutilizar la lógica de validación ya existente — extrae las funciones comunes a `packages/shared/` si aún no lo has hecho: los registros inválidos del CSV no se insertan y se reportan en consola al final de la ejecución.
 - [ ] El script es idempotente: si se ejecuta dos veces no duplica registros (comprueba por un campo identificador del CSV antes de insertar).
 
@@ -95,7 +96,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 **Formulario de registro:**
 
 - [ ] Crea una página de registro de incidencias accesible desde el menú de la aplicación.
-- [ ] El formulario incluye todos los campos del modelo. El campo `branch` es siempre visible y obligatorio, con las opciones de sede definidas en tu CONTEXT más la opción `"Central"`.
+- [ ] El formulario incluye todos los campos del modelo. El campo `branch` es siempre visible y obligatorio, con todas las opciones de sede de tu CONTEXT (incluido `central`, mostrado como la etiqueta que indique tu CONTEXT).
 - [ ] Cuando `origin` sea `branch`, el campo `branch` se destaca visualmente para recordar al usuario que está reportando desde una sede específica.
 - [ ] Al enviar, el formulario muestra un indicador de carga mientras la petición está en curso — el botón de envío queda deshabilitado durante ese tiempo.
 - [ ] Si la API devuelve un error, el formulario muestra un mensaje comprensible para el usuario, nunca el mensaje técnico del servidor. Si el error identifica un campo concreto, el mensaje aparece junto a ese campo.
@@ -124,8 +125,10 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 
 - [ ] El modelo incluye todos los campos requeridos con sus restricciones de integridad.
 - [ ] El script de seed carga correctamente las incidencias históricas asignando `origin: "customer"`.
+- [ ] El script de seed aplica las transformaciones CSV → modelo definidas en tu CONTEXT (estado, categoría, título, fechas y sede) antes del insert.
 - [ ] Los registros inválidos del CSV no se insertan y se reportan en consola.
 - [ ] El script es idempotente: ejecutarlo dos veces no duplica datos.
+- [ ] Tras el seed, los totales por `status` y `category` del modelo en `/api/incidents/summary` coinciden con los valores transformados esperados en tu CONTEXT (mismo conjunto de registros válidos que en el proyecto incidents-file-analyzer).
 
 ### Backend
 
