@@ -61,11 +61,11 @@ Make sure your API from the previous delivery is running and reachable from the 
 ### Authentication views
 
 - [ ] `/login` — email and password form. On success: store the token in `localStorage`, redirect to the main authenticated view. On failure: show a clear error message.
-- [ ] `/register` — registration form. On success: store the token, redirect. On failure: show field-level validation errors.
+- [ ] `/register` — registration form. On success: call `POST /users` (include optional profile fields), then `POST /auth/login` with the same credentials, store the token, and redirect. On failure: show field-level validation errors.
 
 ### Account management views
 
-- [ ] `/account/profile` — displays the current user's data (name, email). Allows editing name. Calls `PUT /users/{id}` with the token in the header.
+- [ ] `/account/profile` — displays the current user's email plus profile data (`name`, `phone`, `address`) from `GET /auth/me`. Allows editing name and contact fields via `PUT /profiles/me` with the token in the header.
 
 ### Route protection
 
@@ -87,7 +87,7 @@ Make sure your API from the previous delivery is running and reachable from the 
 - [ ] Login and registration forms work end-to-end: the token is stored after a successful call.
 - [ ] Protected views redirect to `/login` when there is no valid token in storage.
 - [ ] The public website (Milestone 1) continues to work without any authentication check.
-- [ ] The profile view displays and updates the current user's data using the token.
+- [ ] The profile view displays email from `User` and name/contact data from the linked `Profile`, and updates profile fields via `PUT /profiles/me`.
 - [ ] Logout removes the token and redirects correctly.
 - [ ] A `401` response from any protected API call clears the session and redirects to `/login`.
 

@@ -18,13 +18,13 @@ Una pequeña comunidad tiene un backend FastAPI para listar y reclamar plantas q
 
 ## Stack Tecnológico
 
-| Capa             | Herramienta                                  |
-| ---------------- | -------------------------------------------- |
-| Framework        | FastAPI                                      |
-| Auth             | JWT (`python-jose`) + bcrypt (`passlib`)     |
-| Esquema de token | `OAuth2PasswordBearer`                       |
-| Base de datos    | SQLAlchemy (SQLite es suficiente para clase) |
-| Configuración    | `.env` + `python-dotenv`                     |
+| Capa             | Herramienta                              |
+| ---------------- | ---------------------------------------- |
+| Framework        | FastAPI                                  |
+| Auth             | JWT (`python-jose`) + bcrypt (`passlib`) |
+| Esquema de token | `OAuth2PasswordBearer`                   |
+| Base de datos    | TinyDB (solo modelos de auth)            |
+| Configuración    | `.env` + `python-dotenv`                 |
 
 Instalar las dependencias de auth:
 
@@ -36,15 +36,26 @@ uv add "python-jose[cryptography]" "passlib[bcrypt]"
 
 ## Modelo de Datos
 
-### Tabla de usuarios
+### Tabla de usuarios (TinyDB)
 
-| Columna           | Tipo     | Notas                     |
-| ----------------- | -------- | ------------------------- |
-| `id`              | int (PK) | autoincremento            |
-| `email`           | str      | único, requerido          |
-| `hashed_password` | str      | nunca guardar texto plano |
-| `is_active`       | bool     | por defecto `True`        |
-| `created_at`      | datetime | automático                |
+| Columna           | Tipo     | Notas                                           |
+| ----------------- | -------- | ----------------------------------------------- |
+| `id`              | str/uuid | clave primaria                                  |
+| `email`           | str      | único, requerido                                |
+| `hashed_password` | str      | nunca guardar texto plano                       |
+| `is_active`       | bool     | por defecto `True`                              |
+| `role`            | str      | `admin`, `manager` o `user`; por defecto `user` |
+| `created_at`      | datetime | automático                                      |
+
+### Tabla de perfiles (TinyDB)
+
+| Columna   | Tipo | Notas                                |
+| --------- | ---- | ------------------------------------ |
+| `id`      | str  | clave primaria                       |
+| `user_id` | str  | enlace uno a uno con `User.id`       |
+| `name`    | str  | nombre visible — **no** va en `User` |
+| `phone`   | str  | dato de contacto                     |
+| `address` | str  | dato de contacto                     |
 
 ---
 
@@ -52,16 +63,21 @@ uv add "python-jose[cryptography]" "passlib[bcrypt]"
 
 ### CRUD de usuarios (`/users`)
 
-- [ ] `POST /users` — registrar un nuevo usuario. Hashear la contraseña con `bcrypt` antes de guardar. **Pública** (no requiere token).
+- [ ] `POST /users` — registrar un nuevo usuario y crear el perfil vinculado. Hashear la contraseña con `bcrypt` antes de guardar. **Pública** (no requiere token).
 - [ ] `GET /users` — listar todos los usuarios. **Protegida**.
 - [ ] `GET /users/{id}` — obtener un usuario. **Protegida**.
-- [ ] `PUT /users/{id}` — actualizar un usuario (nombre o email). **Protegida** — solo el propio usuario.
-- [ ] `DELETE /users/{id}` — eliminar un usuario. **Protegida** — solo el propio usuario.
+- [ ] `PUT /users/{id}` — actualizar campos de credenciales como el email. **Protegida** — solo el propio usuario.
+- [ ] `DELETE /users/{id}` — eliminar un usuario y su perfil vinculado. **Protegida** — solo el propio usuario.
+
+### Endpoints de perfil (`/profiles`)
+
+- [ ] `GET /profiles/me` — devuelve el perfil del miembro autenticado. **Protegida**.
+- [ ] `PUT /profiles/me` — actualiza `name`, `phone` y `address`. **Protegida**.
 
 ### Endpoints de auth (`/auth`)
 
 - [ ] `POST /auth/login` — acepta `email` + `password`. Valida credenciales; si son correctas, devuelve un token JWT de acceso firmado.
-- [ ] `GET /auth/me` — devuelve el perfil del usuario actualmente autenticado. **Protegida**.
+- [ ] `GET /auth/me` — devuelve el email más los datos del perfil vinculado. **Protegida**.
 
 ### Token y dependencia
 

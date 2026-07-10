@@ -38,7 +38,7 @@ This example is scoped for one live classroom session. It keeps the same stack a
 
 - [ ] Name, email, and password form with a password confirmation field.
 - [ ] Validate that password and confirmation match before calling the API.
-- [ ] On success: store the token, redirect to `/recipes`.
+- [ ] On success: call `POST /users`, then `POST /auth/login`, store the token, redirect to `/recipes`.
 - [ ] On failure: show specific validation errors per field.
 
 ---
@@ -47,8 +47,8 @@ This example is scoped for one live classroom session. It keeps the same stack a
 
 **`/account/profile`**
 
-- [ ] Fetch `GET /auth/me` (with the token in the `Authorization` header) and display the user's name and email.
-- [ ] Allow editing the name. Call `PUT /users/{id}` with the token.
+- [ ] Fetch `GET /auth/me` (with the token in the `Authorization` header) and display email plus profile fields (`name`, `phone`, `address`).
+- [ ] Allow editing name and contact fields. Call `PUT /profiles/me` with the token.
 - [ ] Show a success message after saving.
 
 ---

@@ -61,11 +61,11 @@ Asegúrate de que tu API de la entrega anterior está corriendo y es accesible d
 ### Vistas de autenticación
 
 - [ ] `/login` — formulario de email y contraseña. Si tiene éxito: almacena el token en `localStorage`, redirige a la vista autenticada principal. Si falla: muestra un mensaje de error claro.
-- [ ] `/register` — formulario de registro. Si tiene éxito: almacena el token, redirige. Si falla: muestra errores de validación a nivel de campo.
+- [ ] `/register` — formulario de registro. Si tiene éxito: llama a `POST /users` (incluye campos opcionales de perfil), luego a `POST /auth/login` con las mismas credenciales, almacena el token y redirige. Si falla: muestra errores de validación a nivel de campo.
 
 ### Vistas de gestión de cuenta
 
-- [ ] `/account/profile` — muestra los datos del usuario actual (nombre, email). Permite editar el nombre. Llama a `PUT /users/{id}` con el token en la cabecera.
+- [ ] `/account/profile` — muestra el email del usuario actual más los datos de perfil (`name`, `phone`, `address`) desde `GET /auth/me`. Permite editar nombre y contacto mediante `PUT /profiles/me` con el token en la cabecera.
 
 ### Protección de rutas
 
@@ -87,7 +87,7 @@ Asegúrate de que tu API de la entrega anterior está corriendo y es accesible d
 - [ ] Los formularios de login y registro funcionan de extremo a extremo: el token se almacena tras una llamada exitosa.
 - [ ] Las vistas protegidas redirigen a `/login` cuando no hay un token válido en el almacenamiento.
 - [ ] El website público (Hito 1) continúa funcionando sin ninguna comprobación de autenticación.
-- [ ] La vista de perfil muestra y actualiza los datos del usuario actual usando el token.
+- [ ] La vista de perfil muestra el email de `User` y los datos de nombre/contacto del `Profile` vinculado, y actualiza el perfil mediante `PUT /profiles/me`.
 - [ ] El logout elimina el token y redirige correctamente.
 - [ ] Una respuesta `401` de cualquier llamada protegida a la API limpia la sesión y redirige a `/login`.
 

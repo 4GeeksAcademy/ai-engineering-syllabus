@@ -23,7 +23,7 @@ A small community has a FastAPI backend for listing and claiming plants that mem
 | Framework    | FastAPI                                  |
 | Auth         | JWT (`python-jose`) + bcrypt (`passlib`) |
 | Token scheme | `OAuth2PasswordBearer`                   |
-| Database     | SQLAlchemy (SQLite is fine for class)    |
+| Database     | TinyDB (auth models only)                |
 | Config       | `.env` + `python-dotenv`                 |
 
 Install the auth dependencies:
@@ -36,15 +36,26 @@ uv add "python-jose[cryptography]" "passlib[bcrypt]"
 
 ## Data Model
 
-### User table
+### User table (TinyDB)
 
-| Column            | Type     | Notes                  |
-| ----------------- | -------- | ---------------------- |
-| `id`              | int (PK) | auto-increment         |
-| `email`           | str      | unique, required       |
-| `hashed_password` | str      | never store plain text |
-| `is_active`       | bool     | default `True`         |
-| `created_at`      | datetime | auto                   |
+| Column            | Type     | Notes                                         |
+| ----------------- | -------- | --------------------------------------------- |
+| `id`              | str/uuid | primary key                                   |
+| `email`           | str      | unique, required                              |
+| `hashed_password` | str      | never store plain text                        |
+| `is_active`       | bool     | default `True`                                |
+| `role`            | str      | `admin`, `manager`, or `user`; default `user` |
+| `created_at`      | datetime | auto                                          |
+
+### Profile table (TinyDB)
+
+| Column    | Type | Notes                            |
+| --------- | ---- | -------------------------------- |
+| `id`      | str  | primary key                      |
+| `user_id` | str  | one-to-one link to `User.id`     |
+| `name`    | str  | display name — **not** on `User` |
+| `phone`   | str  | contact data                     |
+| `address` | str  | contact data                     |
 
 ---
 
@@ -52,16 +63,21 @@ uv add "python-jose[cryptography]" "passlib[bcrypt]"
 
 ### User CRUD (`/users`)
 
-- [ ] `POST /users` — register a new user. Hash the password with `bcrypt` before saving. **Public** (no token required).
+- [ ] `POST /users` — register a new user and create the linked profile. Hash the password with `bcrypt` before saving. **Public** (no token required).
 - [ ] `GET /users` — list all users. **Protected**.
 - [ ] `GET /users/{id}` — get one user. **Protected**.
-- [ ] `PUT /users/{id}` — update a user (name or email). **Protected** — only the user themselves.
-- [ ] `DELETE /users/{id}` — delete a user. **Protected** — only the user themselves.
+- [ ] `PUT /users/{id}` — update credential fields such as email. **Protected** — only the user themselves.
+- [ ] `DELETE /users/{id}` — delete a user and linked profile. **Protected** — only the user themselves.
+
+### Profile endpoints (`/profiles`)
+
+- [ ] `GET /profiles/me` — return the authenticated member's profile. **Protected**.
+- [ ] `PUT /profiles/me` — update `name`, `phone`, and `address`. **Protected**.
 
 ### Auth endpoints (`/auth`)
 
 - [ ] `POST /auth/login` — accepts `email` + `password`. Validate credentials; if correct, return a signed JWT access token.
-- [ ] `GET /auth/me` — returns the profile of the currently authenticated user. **Protected**.
+- [ ] `GET /auth/me` — returns email plus linked profile data. **Protected**.
 
 ### Token and dependency
 

@@ -38,7 +38,7 @@ Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mism
 
 - [ ] Formulario de nombre, email y contraseña con un campo de confirmación de contraseña.
 - [ ] Validar que la contraseña y la confirmación coinciden antes de llamar a la API.
-- [ ] Si tiene éxito: guardar el token, redirigir a `/recipes`.
+- [ ] Si tiene éxito: llamar a `POST /users`, luego a `POST /auth/login`, guardar el token, redirigir a `/recipes`.
 - [ ] Si falla: mostrar errores de validación específicos por campo.
 
 ---
@@ -47,8 +47,8 @@ Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mism
 
 **`/account/profile`**
 
-- [ ] Obtener `GET /auth/me` (con el token en la cabecera `Authorization`) y mostrar el nombre y email del usuario.
-- [ ] Permitir editar el nombre. Llamar a `PUT /users/{id}` con el token.
+- [ ] Obtener `GET /auth/me` (con el token en la cabecera `Authorization`) y mostrar email más campos de perfil (`name`, `phone`, `address`).
+- [ ] Permitir editar nombre y contacto. Llamar a `PUT /profiles/me` con el token.
 - [ ] Mostrar un mensaje de éxito después de guardar.
 
 ---
