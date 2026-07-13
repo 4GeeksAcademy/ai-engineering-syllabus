@@ -2,11 +2,11 @@
   "gitpod": true,
   "title": {
     "en": "Company's Telemetry – Frontend capture",
-    "es": "Telemetría de la compañía – Captura en el frontend"
+    "es": "Telemetría de tu compañía – Captura en el frontend"
   },
   "description": {
-    "en": "Implement frontend telemetry capture in the company backoffice: FastAPI stub POST /telemetry/events, TelemetryService with local queue, batch debounce (10s / 20 events), sendBeacon flush, retry with backoff, single track() API, and inventory plus auth instrumentation aligned with Phase 1 event-schemas.json grounded in CONTEXT-company.md — env-driven endpoint, no PII.",
-    "es": "Implementa la captura de telemetría en el backoffice de la empresa: stub FastAPI POST /telemetry/events, TelemetryService con cola local, batch debounce (10s / 20 eventos), flush con sendBeacon, retry con backoff, API única track() e instrumentación de inventario y auth alineada con event-schemas.json de la Fase 1 basada en CONTEXT-company.md — endpoint por variable de entorno, sin PII."
+    "en": "Implement frontend telemetry capture in the company backoffice: FastAPI stub POST /telemetry/events, TelemetryService with local queue, batch debounce (10s / 20 events), sendBeacon flush, retry with backoff, single track() API, instrument every CONTEXT mandatory metric plus a cross-cutting technical baseline (errors, performance, navigation) and prioritised catalogue events — env-driven endpoint, no PII.",
+    "es": "Implementa la captura de telemetría en el backoffice: stub FastAPI POST /telemetry/events, TelemetryService con cola local, batch debounce (10s / 20 eventos), flush con sendBeacon, retry con backoff, API única track(), instrumenta todas las métricas obligatorias del CONTEXT más un piso técnico transversal (errores, rendimiento, navegación) y eventos priorizados del catálogo — endpoint por variable de entorno, sin PII."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -31,11 +31,11 @@
   "sharing": [
     {
       "en": "I just completed Company's Telemetry – Frontend capture with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-capture #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #telemetry #fastapi",
-      "es": "Acabo de completar Telemetría de la compañía – Captura en el frontend con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-capture #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #telemetry #fastapi"
+      "es": "Acabo de completar Telemetría de tu compañía – Captura en el frontend con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-capture #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #telemetry #fastapi"
     },
     {
       "en": "Built and shipped: Company's Telemetry – Frontend capture. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-capture #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #telemetry #fastapi",
-      "es": "Construido y publicado: Telemetría de la Compañía – Captura en el frontend. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-capture #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #telemetry #fastapi"
+      "es": "Construido y publicado: Telemetría de tu compañía – Captura en el frontend. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-capture #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #telemetry #fastapi"
     }
   ]
 }

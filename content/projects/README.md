@@ -143,8 +143,8 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 44. **[Designing your company's telemetry plan](./ai-eng-telemetry-plan)**  
     Design `telemetry-plan.md` and `event-schemas.json` from CONTEXT mandatory metrics plus a broad opportunity catalogue before any instrumentation code.
 
-45. **[Company's Telemetry — Frontend capture](./ai-eng-telemetry-capture)**  
-    Next.js `TelemetryService`: queue, batch/debounce, `sendBeacon`, retries, and a single `track()` API posting to `POST /telemetry/events`.
+45. **[Company's Telemetry – Frontend capture](./ai-eng-telemetry-capture)**  
+    Stub `POST /telemetry/events` + `TelemetryService` (queue, batch/debounce, `sendBeacon`, retry) instrumenting CONTEXT mandatory metrics and a technical baseline via single `track()`.
 
 46. **[Company's Telemetry — Storage](./ai-eng-telemetry-storage)**  
     Persist batched telemetry in Supabase/PostgreSQL with per-event validation, partial batch acceptance, and unchanged frontend contract.

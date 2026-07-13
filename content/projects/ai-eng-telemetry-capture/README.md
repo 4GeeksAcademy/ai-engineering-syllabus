@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the approved `telemetry-plan.md` and `event-schemas.json` from Phase 1 — they are the contract you will implement today. If they are not approved, resolve that before writing any code.
 
-Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-capture)** at hand: `event_type` names, entity identifiers in `properties`, and instrumentation points must use your company's domain vocabulary from that document (via the approved plan), not generic labels from this README.
+Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** at hand: `event_type` names, entity identifiers in `properties`, and instrumentation points must use your company's domain vocabulary from that document (via the approved plan), not generic labels from this README.
 
 ---
 
@@ -23,11 +23,13 @@ Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering
 
 The telemetry plan is approved. Today you implement the half the user never sees but that makes everything possible: the capture system in the frontend.
 
-Every event you designed in Phase 1 must be captured at the exact moment it occurs in the backoffice, accumulated in a local queue, and sent to the backend in batches — never one by one. To verify that events are arriving correctly, you will also create a minimal receiver endpoint in FastAPI: it does not persist anything yet, it only validates the format and responds 200. Real database persistence is the work of Phase 3.
+Every event in your catalogue — mandatory or identified by you — must be captured at the exact moment it occurs in the backoffice, accumulated in a local queue, and sent to the backend in batches — never one by one. To verify that events are arriving correctly, you will also create a minimal receiver endpoint in FastAPI: it does not persist anything yet, it only validates the format and responds 200. Real database persistence is the work of Phase 3.
 
 > Your tech lead sent you this message:
 >
-> > "I want to see events flowing before we build the storage layer. Create the `TelemetryService` in the backoffice and instrument the inventory flow with the events from the plan. So you can verify the payload is arriving correctly, add a stub endpoint in the backend — validate the format and return 200, without writing to the database yet.
+> > "I want to see events flowing before we build the storage layer. Create the `TelemetryService` in the backoffice and instrument, at a minimum, every mandatory metric from your CONTEXT — plus as much of the rest of your catalogue as you can get to today, prioritising coverage across different categories (technical and business) over depth in a single one.
+> >
+> > So you can verify the payload is arriving correctly, add a stub endpoint in the backend — validate the format and return 200, without writing to the database yet.
 > >
 > > One important thing: configure the endpoint URL as an environment variable from the start. In the next phase we will replace the stub with the real implementation and the frontend should not need to change anything.
 > >
@@ -83,22 +85,22 @@ The frontend capture service does not fire an HTTP call for every event — that
 - [ ] The service must automatically add to each event: `eventId` (UUID generated at capture time), `sessionId` (generated at login and stored in session memory), `userId` (from the authenticated session), `timestamp` in ISO 8601 at the moment of capture, `schemaVersion` from a shared constant, and `requestId` for correlation. Components calling `track()` must not pass these fields manually.
 - [ ] Expose a single public function `track(eventType: string, properties: Record<string, unknown>): void`. The `eventType` argument becomes the envelope field `event_type`. All backoffice tracking goes through this function — never through direct `fetch` or `axios`.
 
-### Phase 3 — Inventory Flow Instrumentation
+### Phase 3 — Broad Instrumentation: Technical and Business
 
-- [ ] Instrument in the backoffice the events defined in your plan for the inventory module. At a minimum these must be covered:
-  - Inbound order creation completed successfully
-  - Outbound order creation completed successfully
-  - Failed order attempt (validation error or insufficient stock)
-  - Product/stock list viewed
-- [ ] Every call to `track()` must include only the properties from the **allowlist** defined for that event in your `event-schemas.json`. Do not add extra properties "just in case".
+- [ ] Instrument, without exception, **every mandatory metric** from your `CONTEXT-company.md` (through your approved plan).
+- [ ] Instrument a **cross-cutting technical baseline**, one that applies to any part of the application and not just the inventory module:
+  - Uncaught frontend errors (`window.onerror`, `unhandledrejection`, or Error Boundaries)
+  - At least one performance metric (page load time or the latency of a relevant API call)
+  - Page view / navigation tracking on at least the main sections of the backoffice
+- [ ] Instrument the rest of the business events from your plan that you prioritised (inventory or other flows in your company), respecting the property allowlist defined for each event in your `event-schemas.json`. Do not add extra properties "just in case".
 - [ ] Verify in the browser DevTools (Network tab) that batches are reaching the stub endpoint with the correct format and that the backend responds 200.
 
 ⚠️ **IMPORTANT:** `event_type` values and `properties` keys must match your approved Phase 1 schemas, which were grounded in `CONTEXT-company.md`. Copying generic event names from this README instead of your plan will not be accepted.
 
-### 🔵 Additional Activity — Authentication Flow Instrumentation
+### 🔵 Additional Activity — Performance and Web Vitals
 
-- [ ] Instrument the authentication events defined in your plan: successful login, failed login, and session expired. Capture them in the authentication hooks or components — not in each page individually.
-- [ ] The failed login event must include in `properties` the reason for the failure (`invalid_credentials`, `session_expired`, `network_error`) but **never** the value entered by the user as password or email.
+- [ ] Instrument Web Vitals (`reportWebVitals` in Next.js or equivalent) and send them as telemetry events, adding the route or page as part of `properties`.
+- [ ] If you instrumented authentication events in your plan (failed login, session expired), capture them in the authentication hooks or components — not in each page individually. The failed login event must include in `properties` the reason for the failure (`invalid_credentials`, `session_expired`, `network_error`) but **never** the value entered by the user as password or email.
 
 ---
 
@@ -111,10 +113,9 @@ The frontend capture service does not fire an HTTP call for every event — that
 - [ ] The `TelemetryService` implements local queue, batch+debounce (10s / 20 events), flush with `sendBeacon`, and retry with backoff
 - [ ] The service generates `eventId`, `sessionId`, `userId`, `timestamp`, `schemaVersion`, and `requestId` automatically — the component calling `track()` does not pass them manually
 - [ ] There are no direct `fetch`/`axios` calls for telemetry outside the `TelemetryService`
+- [ ] Every mandatory metric from the CONTEXT is instrumented
+- [ ] The cross-cutting technical baseline (errors, performance, navigation) is instrumented, not just the inventory flow
 - [ ] Instrumented events use `event_type` and property allowlists from the student's Phase 1 plan, grounded in `CONTEXT-company.md` — not generic placeholders from this README
-- [ ] Inventory flow events are instrumented respecting the allowlist of properties for each event
-- [ ] Failed order attempts (validation error or insufficient stock) are tracked from the catch blocks
-- [ ] Product/stock list viewed is tracked when the products page loads
 - [ ] There is no PII (email, name, password) in any event sent
 - [ ] The DevTools Network tab shows batches arriving at the endpoint with the correct format and a 200 response
 
@@ -125,9 +126,9 @@ The frontend capture service does not fire an HTTP call for every event — that
 1. Make sure the changes are in your fork: stub endpoint in `services/` and `TelemetryService` + instrumentation in `uis/backoffice/`.
 2. Create a Pull Request against the main branch of the monorepo with the title: `[W16D47] Telemetry Frontend`.
 3. In the PR description, include:
-   - The list of instrumented events and which component or hook captures each one
+   - The list of instrumented events, marking which are mandatory and which you identified yourself, and which component or hook captures each one
    - A DevTools screenshot showing a batch of events arriving at the stub with a 200 response
-   - Whether you implemented the additional authentication activity
+   - Whether you implemented the additional activity (Web Vitals / authentication)
 
 ---
 
