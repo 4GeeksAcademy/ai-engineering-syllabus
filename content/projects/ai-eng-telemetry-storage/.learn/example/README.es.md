@@ -1,6 +1,6 @@
 # Biblioteca Maple Street — Almacenamiento de telemetría (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-telemetry-storage`. Misma columna vertebral (Supabase `telemetry_events`, bulk insert, validación por evento, batch parcial, frontend sin cambios), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-telemetry-storage`. Misma columna vertebral (Supabase `telemetry_events`, bulk insert, `model_validate` por evento, batch parcial, frontend sin cambios), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -17,7 +17,7 @@ _These instructions are also available in [English](./README.md)._
 | CONTEXT de empresa + mapeo `tags` Fase 1        | Contrato mini de biblioteca del demo de captura    |
 | Monorepo completo + `TelemetryEvent` Fase 2     | Mini `library-api` + servicio de captura existente |
 | Tabla 8 columnas + 3 índices                    | Mismo esquema, dataset pequeño                     |
-| Prueba E2E inventario                           | 2 eventos de préstamo en demo                      |
+| E2E inventario + técnico                        | 1 préstamo + 1 `login_failed` / `page_viewed`      |
 | PR al fork del estudiante                       | Proyecto Supabase local                            |
 
 ---
@@ -32,15 +32,16 @@ _These instructions are also available in [English](./README.md)._
 
 ### 2. Sustituir endpoint stub
 
-- [ ] `POST /telemetry/events` — misma ruta y body que el stub
-- [ ] Validar cada evento con el modelo `TelemetryEvent` existente (sin modificar)
+- [ ] `POST /telemetry/events` — misma ruta; aceptar `{ "events": [...] }` de forma laxa (**no** tipar `events: list[TelemetryEvent]` en el body)
+- [ ] `TelemetryEvent.model_validate(...)` por evento en un loop (sin modificar el modelo)
 - [ ] Bulk insert de filas válidas en **una** transacción
 - [ ] Devolver `{ "received", "stored", "rejected" }`
 - [ ] Eventos inválidos rechazados individualmente; válidos del mismo lote se guardan
 
 ### 3. Verificar
 
-- [ ] Préstamo en `desk-app` → filas en Supabase
+- [ ] Préstamo en `desk-app` → fila de negocio en Supabase
+- [ ] Login fallido o page view → fila técnica/auth
 - [ ] `curl` con batch mixto válido/inválido → conteos correctos
 - [ ] Confirmar cero cambios bajo `desk-app/`
 
@@ -50,6 +51,7 @@ _These instructions are also available in [English](./README.md)._
 
 - [ ] `SELECT count(*) FROM telemetry_events` sube tras actividad en mostrador
 - [ ] JSONB `tags` contiene `properties` del envelope desde la allowlist (`loanId`, `bookId`)
+- [ ] Al menos un `event_type` de negocio y uno técnico/auth
 - [ ] Batch mixto: `stored + rejected === received`
 - [ ] `git diff` del frontend vacío
 

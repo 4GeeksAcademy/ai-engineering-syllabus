@@ -46,9 +46,8 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 12. **[Supplier directory](./supplier-directory)** — Supplier seed data and validation rules for the TinyDB API.
 13. **[Incidents file analysis](./incidents-file-analysis)** — CSV schemas, categories, and expected analyzer output.
 14. **[Centralized incident manager](./centralized-incident-manager)** — Live incident manager fields, branches, and seed values.
-15. **[Telemetry storage](./telemetry-storage)** — Storage and validation rules for batched events.
-16. **[Telemetry report](./telemetry-report)** — Reporting metrics and grouped dimensions for the analytics endpoint.
-17. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
+15. **[Telemetry report](./telemetry-report)** — Reporting metrics and grouped dimensions for the analytics endpoint.
+16. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
 
 ## Contributors
 

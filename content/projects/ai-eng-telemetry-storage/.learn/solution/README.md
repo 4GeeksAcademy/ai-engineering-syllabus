@@ -4,7 +4,9 @@ This reference solution defines the expected quality bar for Phase 3 in the stud
 
 ## Alignment with company context
 
-The `tags` mapping and any optional envelope fields persisted for analytics must match what the student documented in `telemetry-plan.md`, which was grounded in **CONTEXT-company.md**. Grade property keys and segment dimensions against that plan — not hardcoded examples in this document.
+The `tags` mapping and any optional envelope fields persisted for analytics must match what the student documented in `telemetry-plan.md`, grounded in **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Grade property keys and segment dimensions against that plan — not hardcoded examples in this document.
+
+Stored rows must include both **business** and **technical** events from the student's catalogue (errors, failed login, etc.) — not inventory-only.
 
 ---
 
@@ -128,17 +130,17 @@ return {"received": len(payload.events), "stored": stored, "rejected": rejected}
 ### Live backoffice test
 
 1. Start backend with real endpoint + Supabase connection
-2. In backoffice: create one inbound order and one outbound order
+2. In backoffice: create one inbound order and one outbound order, **and** generate at least one technical event (frontend error, failed login, etc.)
 3. Query Supabase:
 
 ```sql
-SELECT event_type, timestamp, tags
+SELECT event_type, timestamp, tags, level
 FROM telemetry_events
 ORDER BY timestamp DESC
 LIMIT 20;
 ```
 
-Expect ≥5 rows with populated `event_type`, `timestamp`, `tags`.
+Expect ≥5 rows with populated `event_type`, `timestamp`, `tags`, including **at least one business and one technical** event.
 
 ### Mixed batch curl test
 
@@ -177,7 +179,7 @@ Expected: `{ "received": 2, "stored": 1, "rejected": 1 }` and one new row in `te
 
 ## PR deliverables
 
-- Screenshot: Supabase table with ≥5 real event rows
+- Screenshot: Supabase table with ≥5 real event rows (**≥1 technical + ≥1 business**)
 - JSON response from mixed valid/invalid batch
 - Explicit statement: **no frontend file changes**
 
@@ -203,9 +205,9 @@ Expected: `{ "received": 2, "stored": 1, "rejected": 1 }` and one new row in `te
 - [ ] Per-event validation; partial batch persistence
 - [ ] `TelemetryEvent` model reused unchanged from Phase 2
 - [ ] Zero frontend diffs
-- [ ] Supabase rows show `event_type`, `timestamp`, `tags`
+- [ ] Supabase rows show `event_type`, `timestamp`, `tags` for technical **and** business events
 - [ ] `tags` mapping preserves CONTEXT-specific dimensions from student's telemetry-plan.md
-- [ ] PR title `[W16D48] Telemetry Storage` with required evidence
+- [ ] PR title `[W16D48] Telemetry Storage` with required evidence (mixed batch JSON + screenshot including tech + business)
 
 ---
 

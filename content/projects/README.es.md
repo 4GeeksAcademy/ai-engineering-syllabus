@@ -146,8 +146,8 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 45. **[Telemetría de tu compañía – Captura en el frontend](./ai-eng-telemetry-capture)**  
     Stub `POST /telemetry/events` + `TelemetryService` (cola, batch/debounce, `sendBeacon`, reintentos) instrumentando métricas obligatorias del CONTEXT y un piso técnico vía `track()` única.
 
-46. **[Telemetría de la empresa — Almacenamiento](./ai-eng-telemetry-storage)**  
-    Persiste telemetría por lotes en Supabase/PostgreSQL con validación por evento, aceptación parcial de lotes y contrato frontend sin cambios.
+46. **[Telemetría de tu compañía – Almacenamiento](./ai-eng-telemetry-storage)**  
+    Sustituye stub por Supabase `telemetry_events`: validación por evento, bulk insert, `{ received, stored, rejected }`, frontend intacto.
 
 47. **[Telemetría de la empresa — Informe](./ai-eng-telemetry-report)**  
     Pipeline Pandas más `GET /telemetry/report` con métricas agrupadas, caché de respuesta 60s e informes accionables de inventario/uso.
