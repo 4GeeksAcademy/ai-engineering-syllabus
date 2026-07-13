@@ -149,8 +149,8 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 46. **[Company's Telemetry – Storage](./ai-eng-telemetry-storage)**  
     Replace stub with Supabase `telemetry_events`: per-event validation, bulk insert, `{ received, stored, rejected }`, frontend untouched.
 
-47. **[Company's Telemetry — Report](./ai-eng-telemetry-report)**  
-    Pandas pipeline plus `GET /telemetry/report` with grouped metrics, 60s response cache, and actionable inventory/usage summaries.
+47. **[Company's Telemetry – Technical Report](./ai-eng-telemetry-report)**  
+    Pandas technical/operational pipeline plus `GET /telemetry/report` (≥3 metrics, 60s cache) — not a business dashboard.
 
 48. **[Designing a Data Pipeline: From Raw Data to Reliable Insights](./designing-data-pipeline)**  
     Standalone ETL design exercise for Veridian Logistics: analyze nightly CSV exports with updates-as-inserts, document deduplication and idempotency, and produce `PIPELINE_DESIGN.md` — no orchestration code.

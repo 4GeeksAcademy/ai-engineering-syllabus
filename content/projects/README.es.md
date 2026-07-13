@@ -149,8 +149,8 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 46. **[Telemetría de tu compañía – Almacenamiento](./ai-eng-telemetry-storage)**  
     Sustituye stub por Supabase `telemetry_events`: validación por evento, bulk insert, `{ received, stored, rejected }`, frontend intacto.
 
-47. **[Telemetría de la empresa — Informe](./ai-eng-telemetry-report)**  
-    Pipeline Pandas más `GET /telemetry/report` con métricas agrupadas, caché de respuesta 60s e informes accionables de inventario/uso.
+47. **[Telemetría de tu compañía – Reporte técnico](./ai-eng-telemetry-report)**  
+    Pipeline Pandas técnico/operacional más `GET /telemetry/report` (≥3 métricas, caché 60s) — no es un dashboard de negocio.
 
 48. **[Diseñando un Data Pipeline: del dato crudo a los reportes confiables](./designing-data-pipeline)**  
     Ejercicio standalone de diseño ETL para Veridian Logistics: analiza exportaciones CSV nocturnas con updates-as-inserts, documenta deduplicación e idempotencia y produce `PIPELINE_DESIGN.md` — sin código de orquestación.

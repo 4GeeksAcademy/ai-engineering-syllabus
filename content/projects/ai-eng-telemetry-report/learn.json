@@ -1,12 +1,12 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Company's Telemetry – Report",
-    "es": "Telemetría de la compañía – Reporte"
+    "en": "Company's Telemetry – Technical Report",
+    "es": "Telemetría de tu compañía – Reporte técnico"
   },
   "description": {
-    "en": "Build a Pandas analysis pipeline over telemetry_events in Supabase: at least two KPI metric functions grounded in CONTEXT-company.md via telemetry-plan.md (load SQL → refine Pandas → datetime → groupby → aggregate), GET /telemetry/report with period and metrics JSON, 60-second in-memory cache, optional auth_failure_rate — metrics grouped by time, not global counts.",
-    "es": "Construye un pipeline de análisis con Pandas sobre telemetry_events en Supabase: al menos dos funciones de métrica KPI basadas en CONTEXT-company.md vía telemetry-plan.md (cargar SQL → refinar Pandas → datetime → groupby → agregar), GET /telemetry/report con JSON de period y metrics, caché en memoria 60s, auth_failure_rate opcional — métricas agrupadas en el tiempo, no recuentos globales."
+    "en": "Build a technical/operational Pandas pipeline over telemetry_events: at least three metric functions (volume, errors, latency — not business KPIs), load SQL → refine Pandas → datetime → groupby → aggregate, GET /telemetry/report with period and metrics JSON, 60-second in-memory cache, optional auth_failure_rate and minimal visual dashboard.",
+    "es": "Construye un pipeline técnico/operacional con Pandas sobre telemetry_events: al menos tres funciones de métrica (volumen, errores, latencia — no KPIs de negocio), cargar SQL → refinar Pandas → datetime → groupby → agregar, GET /telemetry/report con JSON de period y metrics, caché en memoria 60s, auth_failure_rate y dashboard visual opcional."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -30,12 +30,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-telemetry-report/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Company's Telemetry – Report with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry",
-      "es": "Acabo de completar Telemetría de la compañía – Reporte con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry"
+      "en": "I just completed Company's Telemetry – Technical Report with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry",
+      "es": "Acabo de completar Telemetría de tu compañía – Reporte técnico con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry"
     },
     {
-      "en": "Built and shipped: Company's Telemetry – Report. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry",
-      "es": "Construido y publicado: Telemetría de la compañía – Reporte. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry"
+      "en": "Built and shipped: Company's Telemetry – Technical Report. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry",
+      "es": "Construido y publicado: Telemetría de tu compañía – Reporte técnico. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-telemetry-report #AIEngineering #LearnPack #4GeeksAcademy #fastapi #pandas #supabase #telemetry"
     }
   ]
 }
