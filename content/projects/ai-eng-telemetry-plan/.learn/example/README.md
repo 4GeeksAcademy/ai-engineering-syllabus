@@ -1,6 +1,6 @@
 # Riverside Community Garden — Telemetry Plan (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-telemetry-plan`. Same spine (KPIs from context, event envelope, `entity_action` events, property allowlists, stream/batch, `telemetry-plan.md` + `event-schemas.json`), different domain. Students still follow the full monorepo brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-telemetry-plan`. Same spine (CONTEXT mandatory metrics as floor, broad opportunity catalogue, event envelope, `entity_action` events, property allowlists, stream/batch, `telemetry-plan.md` + `event-schemas.json`), different domain. Students still follow the full monorepo brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -14,23 +14,26 @@ In one session, draft a **mini telemetry plan** before any instrumentation code.
 
 ### Scope note
 
-| Graded project (`ai-eng-telemetry-plan`) | This class example                            |
-| ---------------------------------------- | --------------------------------------------- |
-| Company CONTEXT + inventory monorepo     | Fictional GreenPatch CONTEXT (provided below) |
-| ≥5 inventory-flow points + ≥2 backoffice | 3 checkout-flow points + 1 auth point         |
-| ≥5 fully designed events                 | 4 events with envelopes                       |
-| Full risks/exclusions rubric             | Short exclusions paragraph                    |
-| PR to student monorepo                   | Local `docs/telemetry/` only                  |
+| Graded project (`ai-eng-telemetry-plan`)                                              | This class example                            |
+| ------------------------------------------------------------------------------------- | --------------------------------------------- |
+| Company CONTEXT + inventory monorepo                                                  | Fictional GreenPatch CONTEXT (provided below) |
+| All CONTEXT mandatory metrics + broad catalogue (≥5 inventory + auth/perf/errors/nav) | 2 mandatory + 2 identified opportunities      |
+| All mandatory events + ≥8 additional (≥3 categories)                                  | 4 events with envelopes                       |
+| Full risks/exclusions rubric                                                          | Short exclusions paragraph                    |
+| PR to student monorepo                                                                | Local `docs/telemetry/` only                  |
 
 ---
 
 ## Mini context (use instead of CONTEXT-company.md)
 
-**KPIs to instrument:**
+**Mandatory metrics (floor):**
 
-1. **Tool utilization rate** — % of tools checked out at least once per week.
-2. **Reservation abandonment rate** — reservations started but never checked out within 24h.
-3. **Return compliance** — returns completed within the allowed window vs. overdue.
+| `event_type`         | Fires when...                   | Hypothesis                                     | Decision it enables                |
+| -------------------- | ------------------------------- | ---------------------------------------------- | ---------------------------------- |
+| `checkout_completed` | Member confirms a tool checkout | Peak hours and tool demand are invisible today | Staffing + tool purchase planning  |
+| `tool_threshold_low` | Available count hits minimum    | Stockouts happen without early warning         | Trigger refill / recall from peers |
+
+**Identified opportunities (ceiling):** students should still explore auth failures, reservation abandonment, and navigation — mark each as **mandatory** vs **identified opportunity**.
 
 **Entities:** `Tool`, `Reservation`, `Checkout`, `Member`.  
 **Rule:** `Tool.availableCount` changes only via `Checkout` / `Return`, never direct edits.
@@ -44,10 +47,12 @@ Create in a throwaway folder or shared demo repo:
 - `docs/telemetry/telemetry-plan.md`
 - `docs/telemetry/event-schemas.json`
 
-### 1. KPI → data mapping
+### 1. Exhaustive (mini) catalogue
 
-- [ ] For each KPI above: what data composes it? Which API action generates it?
+- [ ] List both **mandatory** metrics from the mini context above.
 - [ ] Map the **checkout flow**: login → browse tools → create reservation → confirm checkout → return. Mark **3 instrumentation points** (e.g. reservation abandoned, checkout validation failed, overdue return flagged).
+- [ ] Add **1 auth or navigation** opportunity outside checkout.
+- [ ] For each opportunity: golden-rule sentence + label **mandatory** or **identified opportunity**.
 
 ### 2. Event Envelope
 
@@ -56,12 +61,12 @@ Create in a throwaway folder or shared demo repo:
 
 ### 3. Design four events
 
-| Event                        | Suggested processing | Notes                             |
-| ---------------------------- | -------------------- | --------------------------------- |
-| `reservation_created`        | batch                | Volume trends                     |
-| `checkout_validation_failed` | batch                | Error patterns by tool            |
-| `tool_threshold_low`         | stream               | Ops alert when availableCount low |
-| `login_failed`               | stream               | Security / friction signal        |
+| Event                        | Class      | Suggested processing | Notes                             |
+| ---------------------------- | ---------- | -------------------- | --------------------------------- |
+| `checkout_completed`         | mandatory  | batch                | Volume trends                     |
+| `tool_threshold_low`         | mandatory  | stream               | Ops alert when availableCount low |
+| `checkout_validation_failed` | identified | batch                | Error patterns by tool            |
+| `login_failed`               | identified | stream               | Security / friction signal        |
 
 For each event:
 
@@ -83,6 +88,7 @@ For each event:
 
 ## Verify together
 
+- [ ] Both mandatory metrics from the mini context appear and are labeled mandatory.
 - [ ] Every event has hypothesis + decision; none are "just in case".
 - [ ] Envelope fields consistent across all four events.
 - [ ] JSON validates and matches Markdown names/properties.
@@ -93,6 +99,6 @@ For each event:
 
 ## Discussion questions
 
-1. Why is `tool_threshold_low` a better stream candidate than `reservation_created`?
+1. Why is `tool_threshold_low` a better stream candidate than `checkout_completed`?
 2. What goes wrong if `userId` is duplicated inside `properties` instead of only in the envelope?
 3. How would you extend this plan to navigation events without exploding event volume?

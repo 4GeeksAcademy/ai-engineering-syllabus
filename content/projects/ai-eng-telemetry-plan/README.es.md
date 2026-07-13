@@ -1,8 +1,8 @@
-# Diseño del plan de telemetría de la compañía
+# Diseño del plan de telemetría de tu compañía
 
 <!-- hide -->
 
-Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuyentes](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-plan)** antes de escribir una sola línea — define los KPIs, entidades y procesos clave de tu empresa, que son la base sobre la que construirás este plan.
+**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** antes de escribir una sola línea — ahí encontrarás las métricas obligatorias, las entidades y los procesos clave de tu compañía sobre los que vas a construir este plan.
 
 ---
 
@@ -19,96 +19,100 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Tu empresa ya tiene un sistema de gestión de inventario en producción: un backend FastAPI con autenticación, un modelo de datos relacional en Supabase y una regla de negocio no negociable — el stock no se modifica directamente, solo a través de órdenes de entrada y salida trazables a un usuario. El sistema funciona. Pero el equipo de operaciones no sabe qué está pasando dentro de él.
+Tu compañía ya tiene un sistema de gestión de inventario en producción: un backend en FastAPI con autenticación, un modelo relacional en Supabase, y una regla de negocio innegociable — el stock no se modifica directamente, solo a través de órdenes de entrada y salida trazables a un usuario. El sistema funciona. Pero el equipo de operaciones no tiene idea de qué está pasando dentro de él.
 
-El equipo de dirección ha enviado una RFI al equipo de tecnología: quieren saber si el sistema de inventario puede generar información accionable sobre el negocio — tendencias de consumo, alertas tempranas de stock, patrones de error — o si necesitan herramientas externas para eso. Tu tech lead te ha asignado la tarea de responder esa RFI con un **Plan de Telemetría**: un documento técnico que identifica qué datos valen la pena capturar del sistema de inventario, por qué, y cómo estructurarlos antes de escribir una sola línea de instrumentación.
+El equipo de gestión ha presentado un **RFI** al equipo de tecnología: quieren saber si el sistema puede generar información de negocio accionable — y no solo sobre el inventario, sino sobre cualquier parte de la aplicación que un usuario o un proceso interno toque. Tu tech lead te asignó la tarea de responder ese RFI con un **Plan de Telemetría**: un documento técnico que identifique, de la forma más exhaustiva posible, qué datos vale la pena capturar hoy — y cuáles podrían ser valiosos mañana, aunque hoy no tengas la pregunta de negocio exacta que resuelven — antes de escribir una sola línea de instrumentación.
 
-### 📚 Conocimiento complementario — Qué hace valioso un evento de telemetría
+### 📚 Conocimiento complementario — Qué hace valioso a un evento de telemetría
 
-La telemetría no se genera por tener datos: se genera para responder preguntas de negocio que hoy no se pueden responder. La diferencia entre un sistema de telemetría útil y uno que nadie mantiene es si cada evento existe por una razón.
+La telemetría no se genera solo por tenerla: se genera para responder preguntas que hoy no se pueden responder — o que probablemente se necesiten responder mañana. La diferencia entre un sistema de telemetría útil y uno que nadie mantiene es si cada evento existe por una razón.
 
-**La regla de oro:** si no puedes completar esta frase, el evento no existe — _"Captamos `[event_type]` porque necesitamos saber `[hipótesis]`, lo que nos permite tomar la decisión `[decisión concreta]`."_
+**La regla de oro:** si no puedes completar esta frase, el evento no existe — _"Capturamos `[event_type]` porque necesitamos saber `[hipótesis]`, lo que nos permite tomar la decisión `[decisión concreta]`."_
+
+Tu `CONTEXT-empresa.md` incluye un conjunto de **métricas obligatorias** — indicadores puntuales que tu compañía necesita medir desde ya. Estas se integran a tu plan como piso, no como techo: alrededor de ellas debes seguir identificando todas las oportunidades adicionales, técnicas y de negocio, que consideres valiosas.
 
 Dos conceptos que necesitarás aplicar hoy:
 
-- **Batch vs. stream:** ¿Necesita la empresa ver este dato en segundos (stream) o es suficiente procesarlo en lotes periódicos (batch)? La respuesta determina el diseño técnico del pipeline que construirás en los siguientes días.
-- **Event Envelope:** estructura estándar que todo evento debe respetar — identificador único (`eventId`), marca de tiempo en ISO 8601 (`timestamp`), identificadores de sesión/usuario (`sessionId`, `userId`), tipo de evento con taxonomía consistente (`event_type` en formato `entidad_acción`, ej: `order_submitted`), versión del esquema (`schemaVersion`), identificador de correlación (`requestId` para unir frontend–backend–logs), y payload específico del evento (`properties`). Un sobre bien diseñado hoy previene duplicados, facilita el debug y hace el pipeline robusto.
+- **Batch vs. stream:** ¿el negocio necesita ver este dato en segundos (stream), o basta con procesarlo en lotes periódicos (batch)? La respuesta determina el diseño técnico del pipeline que construirás en los próximos días.
+- **Event Envelope:** la estructura estándar que todo evento debe seguir — un identificador único (`eventId`), timestamp ISO 8601 (`timestamp`), identificadores de sesión/usuario (`sessionId`, `userId`), tipo de evento con taxonomía consistente (`event_type` en formato `entidad_acción`, ej. `order_submitted`), versión de esquema (`schemaVersion`), un identificador de correlación (`requestId` para unir frontend–backend–logs), y el payload específico del evento (`properties`).
 
 ---
 
-> Tu tech lead te ha enviado este mensaje:
+> Tu tech lead te envió este mensaje:
 >
-> > "Llevamos semanas con el sistema de inventario funcionando y el equipo de operaciones empieza a preguntar cosas que no sabemos responder: ¿cuántas órdenes de salida se registran por día? ¿Qué productos acumulan más errores de validación? ¿Hay usuarios que intentan modificar stock directamente y el sistema les rechaza? ¿Cuándo se activan más las alertas de stock mínimo?
+> > "Llevamos semanas con el sistema de inventario corriendo y el equipo de operaciones empieza a preguntar cosas que no podemos responder: ¿cuántas órdenes de salida se registran por día? ¿Qué productos acumulan más errores de validación? ¿Hay usuarios intentando modificar el stock directamente y siendo rechazados por el sistema? ¿Cuándo se disparan más las alertas de stock mínimo?
 > >
-> > Y no es solo el inventario. El backoffice tiene otras secciones que hoy son cajas negras: ¿cuántos intentos de login fallidos hay por día? ¿Qué secciones visitan más los operadores? ¿Hay flujos que se abandonan a mitad? Cualquier parte de la aplicación que toque un usuario es una oportunidad de datos.
+> > Y no es solo el inventario. El backoffice tiene otras secciones que hoy son cajas negras: ¿cuántos intentos de login fallidos hay por día? ¿Qué secciones visitan más los operadores? ¿Hay flujos que se abandonan a la mitad? Cualquier parte de la aplicación que alguien —humano o proceso— toque es una oportunidad de dato.
 > >
-> > Antes de instrumentar nada, necesito un documento de diseño. Parte del modelo que ya tenemos — `Product`, `InboundOrder`, `OutboundOrder`, el router `/inventory` — pero no te limites a él. Identifica los tres KPIs principales del negocio, traza los eventos que los alimentan, define su envelope completo y justifica si debe procesarse en stream o en batch. No escribas código todavía — escribe el plan que el equipo va a implementar mañana.
+> > Antes de instrumentar nada, necesito un documento de diseño. No te limites a un puñado de métricas de negocio: quiero el catálogo más completo que puedas construir, cubriendo tanto la salud técnica del sistema como las preguntas de negocio, incluso si hoy no sabemos exactamente para qué las vamos a usar. Ya te dejé en tu CONTEXT las métricas que necesitamos sí o sí desde ya — impleméntalas sin falta, y a partir de ahí, sigue explorando. No escribas código todavía — escribe el plan que el equipo va a implementar mañana."
 > >
-> > El entregable es un **Plan de Telemetría** en Markdown más un fichero de esquemas JSON. Revisamos el viernes."
+> > El entregable es un **Plan de Telemetría** en Markdown más un archivo de esquema JSON. Lo revisamos el viernes."
 
 ---
 
 ## 🌱 Cómo Empezar el Proyecto
 
-1. Abre tu fork del monorepo de tu empresa asignada.
-2. Lee tu `CONTEXT-company.md` completo y localiza los KPIs, las entidades del sistema de inventario (productos, órdenes) y las restricciones de negocio definidas para tu empresa.
+1. Abre tu copia del monorepo de la compañía asignada.
+2. Lee completo tu `CONTEXT-empresa.md` y localiza las **métricas obligatorias**, las entidades del sistema de inventario (productos, órdenes) y las restricciones de negocio definidas para tu compañía.
 3. Crea la carpeta `docs/telemetry/` dentro del monorepo.
-4. Trabaja en los dos entregables dentro de esa carpeta: `telemetry-plan.md` y `event-schemas.json`.
+4. Trabaja ambos entregables dentro de esa carpeta: `telemetry-plan.md` y `event-schemas.json`.
 
-No hay servidor nuevo que levantar hoy. El entregable es documentación de diseño — pero documentación que tiene que ser lo suficientemente precisa como para que otro desarrollador la instrumente en el sistema de inventario existente sin hacerte preguntas.
+No hay servidor nuevo que levantar hoy. El entregable es documentación de diseño — pero lo suficientemente precisa como para que otro desarrollador la instrumente sin tener que preguntarte nada.
 
 ---
 
-## 💻 Lo Que Debes Hacer
+## 💻 Qué Necesitas Hacer
 
-### Fase 1 — Análisis de KPIs y oportunidades de datos
+### Fase 1 — Catálogo exhaustivo de oportunidades de datos
 
-- [ ] Identifica los **3 KPIs principales** de tu empresa a partir de tu `CONTEXT-company.md`. Para cada KPI, responde: ¿qué dato lo compone? ¿dónde se genera ese dato en el sistema?
-- [ ] Mapea el **flujo de gestión de inventario** en tu aplicación: desde que un usuario autenticado accede al sistema hasta que completa una orden de entrada o salida. Identifica al menos **5 puntos de instrumentación** en ese flujo — incluyendo intentos de modificación directa de stock (que el sistema rechaza), validaciones fallidas, y activaciones de umbral mínimo.
-- [ ] Explora otras secciones del backoffice que también pueden aportar datos valiosos: autenticación (intentos de login, sesiones expiradas, fallos de credenciales), navegación (qué secciones visitan los operadores y con qué frecuencia), y cualquier flujo que un usuario pueda abandonar antes de completarlo. Documenta al menos **2 oportunidades adicionales** fuera del módulo de inventario.
-- [ ] Para cada punto de instrumentación, completa la frase: _"Captamos `[event_type]` porque necesitamos saber `[hipótesis]`, lo que nos permite tomar la decisión `[decisión]`."_ Si no puedes completarla, descarta el punto.
+- [ ] Revisa tu `CONTEXT-empresa.md` e identifica las **métricas obligatorias** que tu compañía requiere desde ya. Estas son un piso, no un techo — deben estar en tu plan sí o sí.
+- [ ] Mapea el **flujo de gestión de inventario** de tu aplicación: desde que un usuario autenticado accede al sistema hasta que completa una orden de entrada o salida. Identifica al menos **5 puntos de instrumentación** en ese flujo — incluyendo intentos directos de modificar stock (que el sistema rechaza), validaciones fallidas y activaciones de umbral mínimo.
+- [ ] Explora, sin limitarte a un número mínimo, otras secciones del backoffice que también puedan aportar datos valiosos: autenticación (intentos de login, sesiones expiradas, fallos de credenciales), rendimiento (tiempos de respuesta de API, tiempos de carga), errores de frontend no capturados, y navegación (qué secciones visitan más los operadores, qué flujos se abandonan). El objetivo es un catálogo amplio, no una lista mínima cumplida por trámite.
+- [ ] Para cada oportunidad identificada, completa la frase: _"Capturamos `[event_type]` porque necesitamos saber `[hipótesis]`, lo que nos permite tomar la decisión `[decisión]`."_ Si no puedes completarla, descarta el punto.
+- [ ] Clasifica cada evento de tu catálogo en dos grupos: **obligatorio** (viene de tu CONTEXT) u **oportunidad identificada** (la propusiste tú). Esto le da al equipo visibilidad de qué es mínimo y qué es exploración.
 
-⚠️ **IMPORTANTE:** Los KPIs, entidades e identificadores en tu plan deben corresponder exactamente a lo que define tu CONTEXT.md. Un plan genérico que ignore el contexto de tu empresa no será aceptado.
+⚠️ **IMPORTANTE:** las métricas obligatorias, entidades e identificadores de tu plan deben coincidir exactamente con lo que especifica tu `CONTEXT-empresa.md`. Además, se espera que el catálogo de oportunidades adicionales sea amplio y esté fundamentado — un plan que solo cubra el mínimo obligatorio, sin explorar el resto de la aplicación, no será aceptado.
 
 ### Fase 2 — Diseño del Event Envelope
 
-- [ ] Define el **Event Envelope estándar** que usará tu empresa: los campos obligatorios que todo evento debe incluir (`eventId`, `timestamp` en ISO 8601, `sessionId`, `userId`, `event_type`, `schemaVersion`, `requestId` para correlación, y `properties` como payload específico del evento).
-- [ ] Diseña el esquema completo de **al menos 5 eventos** derivados del flujo mapeado en la Fase 1. Cada `event_type` debe seguir la taxonomía `entidad_acción` con verbos consistentes (ej: `inbound_order_created`, `stock_threshold_triggered`, `direct_stock_edit_rejected`, `session_expired`).
-- [ ] Para cada evento, define una **allowlist de propiedades**: lista explícita de las claves permitidas en ese evento. Nada fuera de la allowlist debe incluirse — esto previene fugas accidentales de datos.
-- [ ] Para cada evento, especifica: `event_type`, descripción, `properties` (nombre, tipo, obligatorio/opcional, descripción), y si contiene datos sensibles o PII — en cuyo caso documenta cómo se anonimiza o sanitiza antes de emitir el evento.
-- [ ] Exporta los esquemas al fichero `event-schemas.json` con estructura validable (puedes usar JSON Schema draft-07 o una estructura propia documentada).
+- [ ] Define el **Event Envelope** estándar que usará tu compañía: los campos obligatorios que todo evento debe incluir (`eventId`, `timestamp` en ISO 8601, `sessionId`, `userId`, `event_type`, `schemaVersion`, `requestId` para correlación, y `properties` para el payload específico).
+- [ ] Diseña el esquema completo de **todas las métricas obligatorias de tu CONTEXT**, más **al menos 8 eventos adicionales** de tu catálogo, cubriendo al menos 3 categorías distintas (por ejemplo: negocio/inventario, autenticación, rendimiento, errores, navegación). Cada `event_type` debe seguir la taxonomía `entidad_acción` con verbos consistentes (ej. `inbound_order_created`, `stock_threshold_triggered`, `direct_stock_edit_rejected`, `session_expired`, `api_latency_recorded`).
+- [ ] Para cada evento, define un **allowlist de propiedades**: una lista explícita de las claves permitidas. Nada fuera del allowlist debe incluirse — esto previene fugas accidentales de datos.
+- [ ] Para cada evento, especifica: `event_type`, descripción, `properties` (nombre, tipo, obligatorio/opcional, descripción), y si contiene datos sensibles o PII — en cuyo caso documenta cómo se anonimiza o sanitiza antes de emitirse.
+- [ ] Exporta los esquemas al archivo `event-schemas.json` con una estructura validable (puedes usar JSON Schema draft-07 o una estructura personalizada documentada).
 
-### Fase 3 — Estrategia de envío
+### Fase 3 — Estrategia de entrega
 
-- [ ] Para cada evento diseñado, decide y justifica si debe procesarse en **stream** (tiempo real) o **batch** (lotes periódicos). La justificación debe basarse en la urgencia de la decisión de negocio que alimenta, no en preferencias técnicas.
-- [ ] Documenta la estrategia de **throttle/debounce** para eventos de alta frecuencia (si los hay en tu diseño).
-- [ ] Escribe una sección de **riesgos y exclusiones** en el plan: eventos que se descartaron y por qué, datos que no se capturarán por razones de privacidad o coste.
+- [ ] Para cada evento diseñado, decide y justifica si debe procesarse como **stream** (tiempo real) o **batch** (lotes periódicos). La justificación debe basarse en la urgencia de la decisión que alimenta o en la necesidad operativa de detectarlo rápido — no en preferencia técnica.
+- [ ] Documenta la estrategia de **throttle/debounce** para eventos de alta frecuencia (si existen en tu diseño).
+- [ ] Escribe una sección de **riesgos y exclusiones** en el plan: eventos que consideraste y descartaste, y por qué; datos que no se van a capturar por razones de privacidad o costo.
 
 ---
 
-## ✅ Qué Evaluaremos
+## ✅ Qué Vamos a Evaluar
 
-- [ ] Los 3 KPIs identificados son representativos del negocio de la empresa asignada y están justificados con datos de `CONTEXT-company.md`
-- [ ] Cada evento tiene una hipótesis y una decisión de negocio que lo justifica — no hay eventos "por si acaso"
+- [ ] Todas las métricas obligatorias de `CONTEXT-empresa.md` están presentes y correctamente identificadas en el plan
+- [ ] El plan cubre tanto oportunidades **técnicas** (errores, rendimiento, autenticación, navegación) como de **negocio**, de forma amplia — no limitada a un número mínimo cumplido por trámite
+- [ ] Cada evento tiene una hipótesis y una decisión de negocio u operativa que lo justifica — nada de eventos "por si acaso"
 - [ ] El Event Envelope es consistente en todos los eventos y contiene al menos: `eventId`, `timestamp` (ISO 8601), `sessionId`, `userId`, `event_type` en formato `entidad_acción`, `schemaVersion`, `requestId`, y `properties`
-- [ ] Cada evento tiene una **allowlist de propiedades** documentada — solo las claves explícitamente permitidas
-- [ ] El fichero `event-schemas.json` es válido y los esquemas son coherentes con el plan en Markdown
-- [ ] La decisión stream/batch está justificada por urgencia de negocio, no por preferencia técnica
+- [ ] Cada evento tiene un **allowlist de propiedades** documentado — solo claves explícitamente permitidas
+- [ ] El archivo `event-schemas.json` es válido y consistente con el plan en Markdown
+- [ ] La decisión stream/batch está justificada por urgencia de negocio u operación, no por preferencia técnica
 - [ ] Los datos sensibles o PII están identificados y documentados con su estrategia de anonimización o sanitización
-- [ ] La sección de riesgos y exclusiones demuestra pensamiento crítico: hay eventos que se descartaron con razón
-- [ ] El plan es suficientemente preciso para que otro desarrollador lo instrumente sin necesitar aclaraciones
+- [ ] La sección de riesgos y exclusiones demuestra pensamiento crítico: los eventos descartados tienen una razón
+- [ ] El plan es lo suficientemente preciso como para que otro desarrollador lo instrumente sin necesitar aclaraciones
 
 ---
 
 ## 📦 Cómo Entregar
 
-1. Asegúrate de que los ficheros `docs/telemetry/telemetry-plan.md` y `docs/telemetry/event-schemas.json` están en tu fork.
+1. Asegúrate de que los archivos `docs/telemetry/telemetry-plan.md` y `docs/telemetry/event-schemas.json` estén en tu copia.
 2. Crea un Pull Request contra la rama principal del monorepo con el título: `[W16D46] Telemetry Design Plan`.
 3. En la descripción del PR, incluye:
-   - Los 3 KPIs identificados (una línea cada uno)
-   - El número de eventos diseñados
-   - Una frase explicando la decisión de diseño más difícil que tomaste
+   - El número total de eventos diseñados, y cuántos son obligatorios (del CONTEXT) vs. identificados por ti
+   - Las categorías cubiertas (negocio, autenticación, rendimiento, errores, navegación, etc.)
+   - Una oración explicando la decisión de diseño más difícil que tomaste
 
 ---
 
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Full-Stack Software Developer](https://4geeksacademy.com/es/programas-de-carrera/desarrollo-full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/es/programas-de-carrera/ciencia-de-datos-ml), [Ciberseguridad](https://4geeksacademy.com/es/programas-de-carrera/ciberseguridad) e [Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia).
+Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuyentes](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors). Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Full-Stack Software Developer](https://4geeksacademy.com/es/programas-de-carrera/desarrollo-full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/es/programas-de-carrera/ciencia-de-datos-ml), [Ciberseguridad](https://4geeksacademy.com/es/programas-de-carrera/ciberseguridad) e [Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia).

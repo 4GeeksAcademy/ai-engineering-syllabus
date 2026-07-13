@@ -140,8 +140,8 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 43. **[Performance Optimisation: Caching](./ai-eng-performance-caching)**  
     Profile frontend and API hot paths, implement justified caching (TTL, `useMemo`, FastAPI cache), and document trade-offs in a technical report.
 
-44. **[Company's Telemetry plan design](./ai-eng-telemetry-plan)**  
-    Design `telemetry-plan.md` and `event-schemas.json` from inventory KPIs in `CONTEXT-company.md` before any instrumentation code.
+44. **[Designing your company's telemetry plan](./ai-eng-telemetry-plan)**  
+    Design `telemetry-plan.md` and `event-schemas.json` from CONTEXT mandatory metrics plus a broad opportunity catalogue before any instrumentation code.
 
 45. **[Company's Telemetry — Frontend capture](./ai-eng-telemetry-capture)**  
     Next.js `TelemetryService`: queue, batch/debounce, `sendBeacon`, retries, and a single `track()` API posting to `POST /telemetry/events`.

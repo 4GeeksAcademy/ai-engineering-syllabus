@@ -1,4 +1,4 @@
-# Telemetry — Phase 1: Company's Telemetry plan design — Reference Solution
+# Telemetry — Phase 1: Designing your company's telemetry plan — Reference Solution
 
 This reference solution defines the expected quality bar for deliverables in the student's company monorepo fork:
 
@@ -9,7 +9,7 @@ The deliverable is **design documentation**, not executable instrumentation. Ano
 
 ## Alignment with company context
 
-All KPIs, entity names, identifiers, and business constraints must come from the student's assigned **CONTEXT-company.md**. Generic placeholders that ignore sector-specific KPIs or naming should be treated as incomplete.
+All **mandatory metrics**, entity names, identifiers, and business constraints must come from the student's assigned **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Generic placeholders that ignore sector-specific metrics or naming should be treated as incomplete. Mandatory metrics are a **floor**, not a ceiling — a plan that only covers the CONTEXT table without exploring the rest of the application will not pass.
 
 ---
 
@@ -20,11 +20,11 @@ All KPIs, entity names, identifiers, and business constraints must come from the
 A complete plan should include at least:
 
 1. **Executive summary** — why telemetry is needed now (operations questions the system cannot answer today).
-2. **KPI analysis** — three company KPIs with data sources and system touchpoints.
+2. **Mandatory metrics** — every CONTEXT metric listed and labeled as **mandatory**, with data sources and system touchpoints.
 3. **Flow mapping** — inventory path from authenticated access through inbound/outbound order completion, with ≥5 instrumentation points (including rejected direct stock edits, validation failures, and threshold triggers).
-4. **Backoffice opportunities** — ≥2 instrumentation points outside inventory (auth, navigation, abandoned flows).
+4. **Broad opportunity catalogue** — authentication, performance, frontend errors, navigation / abandoned flows, and other backoffice sections. Events labeled **mandatory** vs **identified opportunity**.
 5. **Event Envelope** — mandatory fields for every event.
-6. **Event catalog** — ≥5 events with hypothesis → decision justification, property allowlists, PII notes, and stream/batch rationale.
+6. **Event catalog** — schemas for **all CONTEXT mandatory metrics** plus **≥8 additional events** covering **≥3 distinct categories**, each with hypothesis → decision, property allowlists, PII notes, and stream/batch rationale.
 7. **High-frequency strategy** — throttle/debounce notes where applicable.
 8. **Risks and exclusions** — discarded events and data not captured (privacy, cost, low signal).
 
@@ -56,18 +56,19 @@ Every event in the plan should share this envelope:
 
 ---
 
-## Indicative example — strong KPI block
+## Indicative example — mandatory metric block
 
 ```markdown
-### KPI 1: Outbound order fulfillment rate
+### Mandatory: `stock_threshold_triggered`
 
-- **Definition:** % of outbound orders completed without validation errors in the last 7 days.
-- **Data components:** `OutboundOrder` status transitions, validation error counts per order.
-- **System touchpoints:** `POST /inventory/outbound-orders`, order validation service, product stock checks.
-- **Telemetry need:** distinguish user errors (bad quantity) from system errors (race on stock).
+- **Class:** mandatory (from CONTEXT)
+- **Definition:** fires when product stock reaches the configured minimum threshold.
+- **Data components:** product id, current stock, threshold, location/warehouse.
+- **System touchpoints:** outbound order completion, stock recalculation service.
+- **Hypothesis → decision:** We capture `stock_threshold_triggered` because we need to know **when replenishment risk appears by location**, which allows us to decide **whether to reorder or redistribute stock that day**.
 ```
 
-Each KPI should follow the same pattern: definition → components → where generated → why telemetry helps.
+Every CONTEXT row should follow the same pattern and appear in both the Markdown plan and `event-schemas.json`.
 
 ---
 
@@ -81,7 +82,7 @@ If the hypothesis or decision is missing, the event should not appear in the pla
 
 ## Indicative example — event definition
 
-### `outbound_order_created` (batch)
+### `outbound_order_created` (batch) — identified opportunity or mandatory if in CONTEXT
 
 | Property      | Type    | Required | Allowlist | PII |
 | ------------- | ------- | -------- | --------- | --- |
@@ -93,7 +94,7 @@ If the hypothesis or decision is missing, the event should not appear in the pla
 - **Stream vs batch:** batch — used for daily ops dashboards; sub-minute latency not required.
 - **Sanitization:** none; no user-identifying fields in properties (user in envelope only).
 
-### `stock_threshold_triggered` (stream)
+### `stock_threshold_triggered` (stream) — typically mandatory
 
 | Property       | Type    | Required | Allowlist | PII |
 | -------------- | ------- | -------- | --------- | --- |
@@ -165,19 +166,21 @@ If the hypothesis or decision is missing, the event should not appear in the pla
 
 ## Minimum event coverage (inventory + beyond)
 
-A passing plan typically designs at least:
+A passing plan typically designs:
 
-| Event                        | Domain     | Why it matters            |
-| ---------------------------- | ---------- | ------------------------- |
-| `inbound_order_created`      | Inventory  | Inbound volume KPI        |
-| `outbound_order_created`     | Inventory  | Consumption trends        |
-| `direct_stock_edit_rejected` | Inventory  | Policy enforcement signal |
-| `order_validation_failed`    | Inventory  | Error pattern analysis    |
-| `stock_threshold_triggered`  | Inventory  | Alert timing              |
-| `login_failed`               | Auth       | Security / UX friction    |
-| `section_viewed`             | Navigation | Backoffice usage          |
+| Event                           | Domain      | Class typically         |
+| ------------------------------- | ----------- | ----------------------- |
+| CONTEXT mandatory `event_type`s | Business    | **mandatory** (all)     |
+| `inbound_order_created`         | Inventory   | mandatory or identified |
+| `outbound_order_created`        | Inventory   | mandatory or identified |
+| `direct_stock_edit_rejected`    | Inventory   | identified              |
+| `order_validation_failed`       | Inventory   | identified              |
+| `login_failed`                  | Auth        | identified              |
+| `api_latency_recorded`          | Performance | identified              |
+| `frontend_error_caught`         | Errors      | identified              |
+| `section_viewed`                | Navigation  | identified              |
 
-Names and `properties` must match the student's CONTEXT entities, not this table verbatim.
+Names and `properties` must match the student's CONTEXT entities, not this table verbatim. Count requirement: **all CONTEXT mandatory events** + **≥8 additional** across **≥3 categories**.
 
 ---
 
@@ -189,7 +192,7 @@ Names and `properties` must match the student's CONTEXT entities, not this table
 | Daily/weekly reporting      | batch      | order volume aggregates, navigation heatmaps |
 | Analytics only              | batch      | section popularity trends                    |
 
-Justifications must cite **business decision timing**, not developer preference.
+Justifications must cite **business or operational decision timing**, not developer preference.
 
 ---
 
@@ -197,7 +200,8 @@ Justifications must cite **business decision timing**, not developer preference.
 
 - Events without the golden-rule sentence (hypothesis + decision).
 - Properties not restricted to an explicit allowlist.
-- KPIs copied from generic inventory tutorials instead of CONTEXT-company.md.
+- Only covering CONTEXT mandatory metrics with no broader catalogue.
+- Mandatory metrics renamed or omitted relative to CONTEXT-company.md.
 - `event-schemas.json` out of sync with Markdown (missing events, different field names).
 - Stream chosen for all events without urgency rationale.
 - Capturing raw passwords, tokens, or full PII in `properties`.
@@ -206,20 +210,21 @@ Justifications must cite **business decision timing**, not developer preference.
 
 ## Evaluation checklist
 
-- [ ] Three KPIs grounded in CONTEXT-company.md with data sources identified.
+- [ ] Every mandatory metric from CONTEXT-company.md present and labeled mandatory.
+- [ ] Broad catalogue covering technical and business opportunities (not minimum-only).
 - [ ] ≥5 inventory-flow instrumentation points including rejections and thresholds.
-- [ ] ≥2 non-inventory opportunities documented.
+- [ ] Every event has hypothesis + decision; none are "just in case".
 - [ ] Consistent Event Envelope across all events.
-- [ ] ≥5 fully specified events with allowlists and PII handling.
+- [ ] All mandatory events + ≥8 additional across ≥3 categories, with allowlists and PII handling.
 - [ ] Valid `event-schemas.json` aligned with the plan.
-- [ ] Stream/batch choices justified by business urgency.
+- [ ] Stream/batch choices justified by business or operational urgency.
 - [ ] Risks and exclusions section shows deliberate scope cuts.
-- [ ] PR title `[W16D46] Telemetry Design Plan` with KPI summary in description.
+- [ ] PR title `[W16D46] Telemetry Design Plan` with mandatory vs identified counts in description.
 
 ---
 
 ## Reviewer notes
 
 - Grade reasoning and precision, not code.
-- Accept different valid event sets if justification and CONTEXT alignment are strong.
+- Accept different valid opportunity sets if justification and CONTEXT alignment are strong — mandatory CONTEXT events are non-negotiable.
 - Treat property allowlists and PII documentation as security requirements, not optional detail.
