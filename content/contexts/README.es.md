@@ -42,11 +42,11 @@ _These instructions are [available in English](./README.md)_.
 
 **Contextos de proyectos independientes**
 
-11. **[Agente de onboarding OpenClaw](./openclaw-onboarding-agent)** — Campos HR y plantillas de correo por compañía.
-12. **[Directorio de proveedores](./supplier-directory)** — Datos semilla y reglas de validación para la API TinyDB.
-13. **[Análisis de archivos de incidentes](./incidents-file-analysis)** — Esquemas CSV, categorías y salida esperada del analizador.
-14. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
-15. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
+1. **[Agente de onboarding OpenClaw](./openclaw-onboarding-agent)** — Campos HR y plantillas de correo por compañía.
+2. **[Directorio de proveedores](./supplier-directory)** — Datos semilla y reglas de validación para la API TinyDB.
+3. **[Análisis de archivos de incidentes](./incidents-file-analysis)** — Esquemas CSV, categorías y salida esperada del analizador.
+4. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
+5. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 
