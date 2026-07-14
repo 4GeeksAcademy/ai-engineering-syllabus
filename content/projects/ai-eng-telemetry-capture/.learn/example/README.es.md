@@ -1,6 +1,6 @@
 # Biblioteca Maple Street — Captura de telemetría en frontend (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-telemetry-capture`. Misma columna vertebral (stub FastAPI, `TelemetryService`, cola/batch/sendBeacon/retry, `track()` única, endpoint por env), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-telemetry-capture`. Misma columna vertebral (stub FastAPI, `TelemetryService`, cola/batch/sendBeacon/retry, `track()` única, endpoint por env, métricas obligatorias + piso técnico), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -10,24 +10,25 @@ _These instructions are also available in [English](./README.md)._
 
 **Biblioteca Maple Street** tiene una app de mostrador (`desk-app`, Next.js) y una API pequeña (`library-api`, FastAPI). Los bibliotecarios registran préstamos y devoluciones; el CTO quiere eventos de uso **antes** de construir el almacenamiento analítico.
 
-En una sesión: receptor stub + servicio de captura en frontend + instrumentar **dos** flujos del mostrador.
+En una sesión: receptor stub + servicio de captura en frontend + instrumentar métricas **obligatorias** del mostrador más un piso técnico mínimo.
 
 ### Nota de alcance
 
-| Proyecto evaluable (`ai-eng-telemetry-capture`) | Este ejemplo de clase               |
-| ----------------------------------------------- | ----------------------------------- |
-| CONTEXT de empresa + esquemas Fase 1            | Contrato mini de biblioteca (abajo) |
-| Instrumentación completa inventario + auth      | 2 eventos de préstamo + 1 de auth   |
-| Batch 10s / 20 eventos                          | Batch 5s / 10 eventos (ritmo demo)  |
-| PR al fork del estudiante                       | Solo demo local                     |
+| Proyecto evaluable (`ai-eng-telemetry-capture`)                                  | Este ejemplo de clase                       |
+| -------------------------------------------------------------------------------- | ------------------------------------------- |
+| CONTEXT de empresa + esquemas Fase 1                                             | Contrato mini de biblioteca (abajo)         |
+| Todas las métricas obligatorias del CONTEXT + piso técnico + catálogo priorizado | 2 eventos obligatorios + 1 técnico + 1 auth |
+| Batch 10s / 20 eventos                                                           | Batch 5s / 10 eventos (ritmo demo)          |
+| PR al fork del estudiante                                                        | Solo demo local                             |
 
 **Contrato mini de eventos (usar como `event-schemas.json` en clase):**
 
-| Evento                    | Allowlist de propiedades                            |
-| ------------------------- | --------------------------------------------------- |
-| `book_checkout_completed` | `loanId`, `bookId`                                  |
-| `book_checkout_failed`    | `reason`, `bookId`                                  |
-| `login_failed`            | `reason` (`invalid_credentials` \| `network_error`) |
+| Evento                    | Clase                    | Allowlist de propiedades                            |
+| ------------------------- | ------------------------ | --------------------------------------------------- |
+| `book_checkout_completed` | obligatorio              | `loanId`, `bookId`                                  |
+| `book_checkout_failed`    | obligatorio              | `reason`, `bookId`                                  |
+| `page_viewed`             | piso técnico             | `route`                                             |
+| `login_failed`            | identificado / adicional | `reason` (`invalid_credentials` \| `network_error`) |
 
 ---
 
@@ -53,6 +54,7 @@ En una sesión: receptor stub + servicio de captura en frontend + instrumentar *
 
 - [ ] Préstamo exitoso → `track("book_checkout_completed", { loanId, bookId })`
 - [ ] Error de validación/API → `track("book_checkout_failed", { reason, bookId })`
+- [ ] Entrada a ruta principal → `track("page_viewed", { route })`
 - [ ] En hook de auth → `track("login_failed", { reason })` — nunca email/contraseña
 
 ---
@@ -61,6 +63,7 @@ En una sesión: receptor stub + servicio de captura en frontend + instrumentar *
 
 - [ ] Pestaña Network muestra **un batch** con varios eventos tras ráfaga de actividad
 - [ ] Stub devuelve `200` y `{ "received": N }`
+- [ ] Ambas métricas obligatorias instrumentadas
 - [ ] Sin `fetch` de telemetría fuera de `telemetry.ts`
 - [ ] `properties` de login fallido solo con `reason` — sin credenciales
 

@@ -1,17 +1,16 @@
-# Milestone 6 — Implementing a Resilient Data Pipeline (2/3) — Reference Solution
+# Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3) — Reference Solution
 
 This reference solution defines the expected quality bar for deliverables in the student's company monorepo fork:
 
 - `data/pipelines/pipeline.py` — Prefect flows and tasks
-- `services/` — API endpoints that query or trigger the pipeline
+- `services/reporting/` — API endpoints that query or trigger the pipeline
 - CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
 - Execution metadata persisted per run
+- Idempotent writes into `reporting.business_metrics`
 
-The deliverable is **runnable orchestration code** that implements the student's approved `data/pipelines/PIPELINE_DESIGN.md`. Generic pipelines that ignore CONTEXT entity names should be treated as incomplete.
+The deliverable is **runnable orchestration code** that implements the student's approved `data/pipelines/PIPELINE_DESIGN.md` and the company **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
 
-## Alignment with company context
-
-All flow names, task names, table names, event names, and KPI grains must come from the student's assigned **CONTEXT-company.md** and their design doc. The examples below use inventory telemetry naming — students must substitute their company-specific names.
+**Hard constraint:** do not modify `telemetry_events` write paths, `services/telemetry/analysis.py`, or `GET /telemetry/report`.
 
 ---
 
@@ -19,28 +18,33 @@ All flow names, task names, table names, event names, and KPI grains must come f
 
 ```mermaid
 flowchart TD
-  subgraph api [services/]
-    GET[GET /pipelines/runs/latest]
-    POST[POST /pipelines/runs/trigger]
+  subgraph api [services/reporting/]
+    GET[GET /reporting/... last run]
+    POST[POST /reporting/... trigger]
+    KPI[GET KPIs from business_metrics]
   end
   subgraph prefect [data/pipelines/pipeline.py]
-    FLOW[telemetry_etl_flow]
+    FLOW[business_performance_etl_flow]
     EXT[extract_telemetry_events]
-    TRF[transform_kpi_aggregates]
-    LOD[load_reporting_tables]
+    TRF[transform_business_kpis]
+    LOD[load_business_metrics]
     OPT[notify_ops_optional]
   end
   subgraph data [Data layer]
-    SRC[(telemetry_events)]
+    SRC[(telemetry_events — read-only)]
     STG[staging.*]
-    RPT[reporting.*]
+    RPT[(reporting.business_metrics)]
     LOG[pipeline_runs]
+  end
+  subgraph untouched [Unchanged]
+    TECH[GET /telemetry/report]
   end
   subgraph cli [Script execution]
     RUN[python data/pipelines/pipeline.py]
   end
   POST --> FLOW
   GET --> LOG
+  KPI --> RPT
   FLOW --> EXT --> TRF --> LOD
   FLOW --> OPT
   EXT --> SRC
@@ -48,15 +52,16 @@ flowchart TD
   LOD --> RPT
   FLOW --> LOG
   RUN --> FLOW
+  SRC --> TECH
 ```
 
 **Component boundaries:**
 
-| Layer                               | Responsibility                                                                         |
-| ----------------------------------- | -------------------------------------------------------------------------------------- |
-| `data/pipelines/pipeline.py`        | Prefect `@flow` / `@task` definitions, resilience config, idempotent load logic        |
-| `services/`                         | HTTP surface — imports flows/functions from `data/pipelines/`; no duplicated ETL logic |
-| `pipeline_runs` (or structured log) | Per-run metadata: start, end, rows processed, status, errors                           |
+| Layer                               | Responsibility                                                                                  |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `data/pipelines/pipeline.py`        | Prefect `@flow` / `@task`, resilience config, idempotent load into `reporting.business_metrics` |
+| `services/reporting/`               | HTTP surface — imports flows/functions from `data/pipelines/`; no duplicated ETL logic          |
+| `pipeline_runs` (or structured log) | Per-run metadata: start, end, rows processed, status, errors                                    |
 
 ---
 
@@ -71,7 +76,8 @@ data/
   process/               # Reusable transform helpers
   eval/                  # Pipeline validation outputs
 services/
-  routes/pipelines.py    # (example) status + trigger endpoints
+  reporting/             # status + trigger (+ KPI query) endpoints
+  telemetry/             # untouched — technical report stays here
 ```
 
 ---
@@ -95,7 +101,7 @@ def notify_ops_optional(summary: dict) -> None:
   ...
 
 @flow
-def telemetry_etl_flow():
+def business_performance_etl_flow():
     ...
     notify_ops_optional(summary, return_state=True)  # flow continues if Slack/webhook fails
 ```
@@ -108,7 +114,7 @@ def export_csv_optional(rows: list[dict]) -> str | None:
     ...
 
 @flow
-def telemetry_etl_flow():
+def business_performance_etl_flow():
     state = export_csv_optional(rows, return_state=True)
     if state.is_failed():
         logger.warning("CSV export skipped — non-critical")
@@ -127,8 +133,8 @@ def transform_cache_key(ctx, parameters):
     cache_key_fn=transform_cache_key,
     cache_expiration=timedelta(hours=1),
 )
-def transform_kpi_aggregates(rows: list[dict], ...) -> list[dict]:
-    # Cache key = processed window; valid 1h per CTO ticket (skip repeat within hour).
+def transform_business_kpis(rows: list[dict], ...) -> list[dict]:
+    # Cache key = processed window; valid 1h per ticket (skip repeat within hour).
     ...
 ```
 
@@ -136,10 +142,10 @@ def transform_kpi_aggregates(rows: list[dict], ...) -> list[dict]:
 
 ## Idempotency and execution log
 
-**Load phase** must use the strategy from `PIPELINE_DESIGN.md` — typical patterns:
+**Load phase** must use the strategy from `PIPELINE_DESIGN.md` + CONTEXT unique constraint — typical pattern:
 
-- Upsert on business grain `(report_date, warehouse_id, product_id)`
-- `ON CONFLICT DO UPDATE` for aggregate tables
+- Upsert on business grain into `reporting.business_metrics` (e.g. `(report_date, location_id)`)
+- `ON CONFLICT DO UPDATE` for KPI columns
 - Watermark advanced only after successful load commit
 
 **Minimum metadata per run** (≥5 fields):
@@ -150,7 +156,7 @@ def transform_kpi_aggregates(rows: list[dict], ...) -> list[dict]:
 | `finished_at`       | `2026-06-24T02:03:12Z`                                |
 | `records_processed` | `1842`                                                |
 | `status`            | `success` / `failed` / `partial`                      |
-| `error_summary`     | `null` or `"load_reporting_tables: connection reset"` |
+| `error_summary`     | `null` or `"load_business_metrics: connection reset"` |
 
 Persist in `pipeline_runs` table or structured JSON log under `data/eval/`.
 
@@ -158,38 +164,24 @@ Persist in `pipeline_runs` table or structured JSON log under `data/eval/`.
 
 ## Script-based execution
 
-Add a CLI entry point at the bottom of `data/pipelines/pipeline.py`:
-
 ```python
 if __name__ == "__main__":
-    telemetry_etl_flow()
+    business_performance_etl_flow()
 ```
-
-Run the full pipeline:
 
 ```bash
 python data/pipelines/pipeline.py
 ```
 
-Document the intended schedule and run command in `PIPELINE_DESIGN.md`:
-
-```markdown
-## Running the pipeline
-
-python data/pipelines/pipeline.py
-
-## Intended schedule
-
-Nightly at 02:00 UTC (`0 2 * * *`) — aligns with design doc refresh cadence.
-```
+Document schedule + run command in `PIPELINE_DESIGN.md` (aligned with CONTEXT reporting cadence).
 
 ---
 
-## Expected API surface
+## Expected API surface (`services/reporting/`)
 
-Endpoints follow existing monorepo auth and response conventions.
+Endpoints follow existing monorepo auth and RESPONSE shape from CONTEXT.
 
-### `GET /pipelines/runs/latest` — last run metadata
+### Last run metadata
 
 ```json
 {
@@ -202,7 +194,7 @@ Endpoints follow existing monorepo auth and response conventions.
 }
 ```
 
-### `POST /pipelines/runs/trigger` — manual execution
+### Manual trigger
 
 ```json
 {
@@ -211,21 +203,23 @@ Endpoints follow existing monorepo auth and response conventions.
 }
 ```
 
-Implementation must call the flow from `data/pipelines/pipeline.py` — not re-implement extract/transform/load in `services/`.
+Must call the flow from `data/pipelines/pipeline.py` — not re-implement ETL in `services/`.
 
 ---
 
 ## Common mistakes (incomplete submissions)
 
-- Single script without `@flow` / `@task` decorators
-- Retries missing on DB/API tasks, or no comment justifying retry count
-- Optional step fails and stops entire flow (missing `return_state=True` on optional task)
+- Writing into `telemetry_events` or changing `GET /telemetry/report`
+- Endpoints under `services/telemetry/` instead of `services/reporting/`
+- KPI names that diverge from CONTEXT "KPIs to Measure"
+- Single script without `@flow` / `@task`
+- Retries missing on DB/API tasks, or no justification comment
+- Optional step fails and stops entire flow
 - No cache on any transform task
-- Load appends rows on re-run → duplicates in reporting tables
+- Load appends rows on re-run → duplicates in `reporting.business_metrics`
 - Fewer than five metadata fields logged per execution
-- Missing `if __name__ == "__main__"` block — pipeline cannot run as a script
+- Missing `if __name__ == "__main__"` block
 - Endpoints duplicate pipeline logic instead of importing from `data/pipelines/`
-- Generic table/event names that do not match CONTEXT or design doc
 
 ---
 
@@ -235,14 +229,16 @@ Implementation must call the flow from `data/pipelines/pipeline.py` — not re-i
 - [ ] ≥1 task has `retries > 0` with justification comment
 - [ ] ≥1 optional task invoked with `return_state=True`; flow continues on its failure
 - [ ] ≥1 transform task has `cache_key_fn` + `cache_expiration` with comment
-- [ ] Load is idempotent — second run on same data produces no duplicates
+- [ ] Load is idempotent into `reporting.business_metrics` — no duplicates on second run
 - [ ] Each run logs ≥5 metadata fields (start, end, records, status, errors)
 - [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors
 - [ ] Run command documented in `PIPELINE_DESIGN.md` or inline comments
-- [ ] `GET` endpoint returns last run metadata
-- [ ] `POST` endpoint triggers manual run via import from `data/pipelines/`
-- [ ] Implementation matches `PIPELINE_DESIGN.md` stages and resilience choices
-- [ ] Commit message `feat: implement resilient prefect pipeline`
+- [ ] `telemetry_events` and `services/telemetry/analysis.py` untouched
+- [ ] `services/reporting/` endpoint returns last run metadata
+- [ ] `services/reporting/` endpoint triggers manual run via import from `data/pipelines/`
+- [ ] KPI values match CONTEXT "KPIs to Measure"
+- [ ] Implementation matches `PIPELINE_DESIGN.md`
+- [ ] Commit message `feat: implement resilient business performance pipeline`
 
 ---
 

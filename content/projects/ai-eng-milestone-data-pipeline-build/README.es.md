@@ -1,8 +1,8 @@
-# Hito 6 — Implementación de un Data Pipeline Resiliente (2/3)
+# Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3)
 
 <!-- hide -->
 
-Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuyentes](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -11,104 +11,110 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
+**Antes de empezar**: Mantén abierto tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** mientras programas — es la fuente de verdad para nombres de KPIs, esquema de la tabla de destino y el contrato del endpoint que implementas. Ten también a mano tu `data/pipelines/PIPELINE_DESIGN.md` aprobado de la Parte 1.
+
 ---
 
 ## 🎯 El Reto
 
-> 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
+> 📌 Estás construyendo sobre **tu propia copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la compañía seleccionada al inicio del curso — no en un repositorio nuevo.
 
-El documento de diseño del pipeline está aprobado. Ahora toca construirlo. Pero hay una diferencia fundamental entre un script que funciona en tu máquina y un pipeline que puede ejecutarse en producción de forma desatendida: la resiliencia.
+El documento de diseño está aprobado. Ahora toca construirlo — un pipeline que lee de `telemetry_events` y produce los KPIs de negocio que acotaste en la Parte 1, exactamente como se nombran en tu `CONTEXT-company.md`. Tu sistema técnico de telemetría existente (`telemetry_events`, `services/telemetry/analysis.py`, `GET /telemetry/report`) no es parte de este trabajo — se queda intacto, sirviendo a ingeniería.
 
-Tu CTO ha cerrado el ticket de diseño y ha abierto el de implementación:
+Hay una diferencia fundamental entre un script que funciona en tu máquina y un pipeline que puede correr desatendido en producción: la resiliencia.
 
-> > **Ticket de implementación — Pipeline de datos resiliente**
+> > **Ticket de Implementación — Pipeline de Desempeño de Negocio Resiliente**
 > >
-> > El diseño está aprobado. El equipo de operaciones quiere ver el pipeline corriendo, no solo documentado. Requisitos no negociables antes del handoff a producción:
+> > El diseño está aprobado. El liderazgo quiere ver este pipeline corriendo, no solo documentado. Requisitos no negociables antes de entregarlo a producción:
 > >
-> > — El pipeline debe tolerar fallos parciales sin interrumpir toda la ejecución.  
-> > — Las tareas con datos externos deben tener reintentos configurados.  
-> > — El pipeline debe poder ejecutarse como script desde la línea de comandos.  
-> > — Si una tarea ya fue ejecutada con éxito en la última hora, no debe repetirse innecesariamente.
+> > — El pipeline debe tolerar fallos parciales sin interrumpir toda la ejecución.
+> > — Las tasks que tocan servicios externos deben tener reintentos configurados.
+> > — El pipeline debe poder correrse como script desde la línea de comandos.
+> > — Si una task ya corrió exitosamente en la última hora, no debe repetirse innecesariamente.
 > >
-> > Punto de partida: tu `data/pipelines/PIPELINE_DESIGN.md` del día anterior. Implementa lo que diseñaste.
+> > Punto de partida: tu `data/pipelines/PIPELINE_DESIGN.md` del día anterior. Implementa lo que diseñaste — leyendo de telemetría, escribiendo en la nueva tabla de reporting de negocio que acotaste, sin que nada del reporte técnico existente cambie.
 
 ### ¿Qué hace resiliente a un pipeline?
 
-Un pipeline resiliente no es el que nunca falla — es el que falla bien. Eso significa tres cosas concretas en Prefect:
+Un pipeline resiliente no es uno que nunca falla — es uno que falla bien. En Prefect, eso significa tres cosas concretas:
 
-- **Tolerancia a fallos parciales**: una tarea que falla no tumba el flow completo. Prefect distingue entre tareas críticas (cuyo fallo debe detener todo) y tareas opcionales (cuyo fallo debe registrarse y continuar).
-- **Reintentos inteligentes**: las tareas que interactúan con servicios externos (bases de datos, APIs) se configuran con `retries` y `retry_delay_seconds` para absorber fallos transitorios sin intervención humana.
-- **Caché de resultados**: si una tarea ya produjo un resultado válido recientemente, Prefect puede reutilizarlo en lugar de repetir el cómputo. Esto es especialmente útil en transformaciones costosas.
+- **Tolerancia a fallos parciales**: una task que falla no tumba todo el flow. Prefect distingue entre tasks críticas (cuyo fallo debe detener todo) y tasks opcionales (cuyo fallo debe registrarse y permitir que el flow continúe).
+- **Reintentos inteligentes**: las tasks que interactúan con servicios externos (bases de datos, APIs) se configuran con `retries` y `retry_delay_seconds` para absorber fallos transitorios sin intervención humana.
+- **Caché de resultados**: si una task ya produjo un resultado válido recientemente, Prefect puede reutilizarlo en lugar de repetir el cómputo. Esto es especialmente útil para transformaciones costosas.
 
 ---
 
 ## 🌱 Cómo Empezar
 
-1. Haz un `git pull` en tu fork del monorepo.
+1. Corre `git pull` en tu copia del monorepo para asegurarte de tener el estado más reciente.
 2. Abre tu `data/pipelines/PIPELINE_DESIGN.md` — ese documento es tu especificación. Implementa lo que diseñaste.
-3. Escribe el código del pipeline en `data/pipelines/`. El entry point principal debe llamarse `data/pipelines/pipeline.py`. Usa `data/raw/` para datos de entrada y archivos intermedios, `data/process/` para scripts de transformación reutilizables, y `data/eval/` para los resultados de validación del pipeline.
-4. Cualquier endpoint que exponga o dispare el pipeline (por ejemplo, para consultar el estado de la última ejecución o lanzar una ejecución manualmente) debe implementarse en `services/`, importando las funciones y flows desde `data/pipelines/` según sea necesario.
-5. Instala Prefect 3 en tu entorno: `uv add "prefect>=3"`.
+3. Mantén abierto tu `CONTEXT-company.md` del contexto de data pipelines mientras programas: es la fuente de verdad para los nombres exactos de los KPIs (su sección "KPIs a medir"), el esquema de la tabla de destino, y el contrato del endpoint que estás implementando. (Los campos de evento de los que estás extrayendo son los que tu `CONTEXT-company.md` de telemetría ya definió como obligatorios.)
+4. Escribe el código de tu pipeline en `data/pipelines/`. El punto de entrada principal debe llamarse `data/pipelines/pipeline.py`. Usa `data/raw/` para datos de entrada y archivos intermedios, `data/process/` para scripts de transformación reutilizables, y `data/eval/` para salidas de validación del pipeline.
+5. La task de extracción lee de `telemetry_events` (y cualquier otra tabla de dominio que necesites) — en modo solo lectura. La task de carga escribe en la tabla **nueva** `reporting.business_metrics` que diseñaste en la Parte 1. No escribas de vuelta en `telemetry_events` ni modifiques `services/telemetry/analysis.py`.
+6. Cualquier endpoint que exponga o dispare el pipeline (por ejemplo, para consultar el estado de la última corrida o lanzar una corrida manual) debe implementarse en `services/reporting/`, un módulo separado de `services/telemetry/`, importando funciones y flows desde `data/pipelines/` según se necesite.
+7. Instala Prefect 3 en tu entorno: `uv add "prefect>=3"`.
 
 ---
 
-## 💻 Qué Debes Hacer
+## 💻 Qué Necesitas Hacer
 
 ### Fase 1 — Flows y tasks
 
-- [ ] Implementa el pipeline como uno o más **flows** de Prefect (`@flow`) siguiendo la estructura de etapas de tu diseño: extracción, transformación y carga como mínimo.
-- [ ] Cada etapa debe ser una **task** (`@task`) independiente con entradas y salidas explícitas.
+- [ ] Implementa el pipeline como uno o más **flows** de Prefect (`@flow`) siguiendo la estructura de etapas de tu diseño: extracción, transformación, y carga como mínimo.
+- [ ] Cada etapa debe ser una **task** (`@task`) independiente con inputs y outputs explícitos.
 - [ ] Si tu pipeline tiene pasos opcionales (por ejemplo, notificaciones o exportaciones secundarias), invócalos con `return_state=True` para que un fallo en ellos no interrumpa la ejecución principal.
 
 ### Fase 2 — Resiliencia
 
-- [ ] Añade `retries` y `retry_delay_seconds` a todas las tasks que interactúan con servicios externos (base de datos, APIs). Justifica en un comentario el número de reintentos elegido.
-- [ ] Maneja al menos un fallo de task de forma explícita en el flow usando `return_state=True` en lugar de dejarlo propagar automáticamente.
-- [ ] Añade caché (`cache_key_fn`, `cache_expiration`) a al menos una task de transformación costosa. Explica en un comentario qué define la clave de caché y durante cuánto tiempo es válida.
+- [ ] Agrega `retries` y `retry_delay_seconds` a cada task que interactúe con servicios externos (base de datos, APIs). Justifica el número de reintentos elegido en un comentario.
+- [ ] Maneja al menos un fallo de task explícitamente en el flow usando `return_state=True` en lugar de dejar que se propague automáticamente.
+- [ ] Agrega caché (`cache_key_fn`, `cache_expiration`) a al menos una task de transformación costosa. Explica en un comentario qué define la clave de caché y cuánto tiempo es válida.
 
 ### Fase 3 — Idempotencia
 
-- [ ] La fase de carga debe ser idempotente: si el pipeline se ejecuta dos veces sobre el mismo rango de datos, el resultado en base de datos debe ser idéntico tras ambas ejecuciones. Implementa la estrategia que documentaste en tu diseño (upsert, tabla de control, marca de tiempo, u otra).
-- [ ] Registra en base de datos o en un archivo de log los metadatos mínimos de cada ejecución: inicio, fin, registros procesados, estado final y cualquier error capturado.
+- [ ] La fase de carga debe ser idempotente: si el pipeline corre dos veces sobre el mismo rango de datos, el resultado en tu tabla `reporting.business_metrics` debe ser idéntico después de ambas corridas. Implementa la estrategia que documentaste en tu diseño (upsert, tabla de control, timestamp, u otra) — el constraint único del esquema de tu `CONTEXT-company.md` es en el que debe apoyarse tu upsert.
+- [ ] Registra en la base de datos o en un archivo de log la metadata mínima de ejecución de cada corrida: hora de inicio, hora de fin, registros procesados, estado final, y cualquier error capturado.
 
-### Fase 4 — Ejecución mediante script
+### Fase 4 — Ejecución basada en script
 
-- [ ] Asegúrate de que `data/pipelines/pipeline.py` puede ejecutarse directamente como script CLI (por ejemplo, con un bloque `if __name__ == "__main__"` que invoque el flow principal).
-- [ ] Verifica que el pipeline completo se ejecuta sin errores: `python data/pipelines/pipeline.py`.
-- [ ] Documenta el schedule previsto para el ciclo de datos de tu empresa en `data/pipelines/PIPELINE_DESIGN.md` y el comando de ejecución en un comentario o en el mismo documento de diseño.
+- [ ] Asegúrate de que `data/pipelines/pipeline.py` pueda ejecutarse directamente como script de CLI (por ejemplo, con un bloque `if __name__ == "__main__"` que invoque el flow principal).
+- [ ] Verifica que el pipeline completo corre sin errores: `python data/pipelines/pipeline.py`.
+- [ ] Documenta la frecuencia prevista para el ciclo de reporting de tu compañía en `data/pipelines/PIPELINE_DESIGN.md` y el comando de ejecución en un comentario o en el mismo documento de diseño.
 
-### Fase 5 — Endpoints en el backend
+### Fase 5 — Endpoints del backend
 
-- [ ] En `services/`, implementa al menos dos endpoints relacionados con el pipeline: uno para consultar el estado y los metadatos de la última ejecución, y otro para lanzar una ejecución manual del flow.
-- [ ] Los endpoints deben importar los flows o funciones desde `data/pipelines/` — no dupliques la lógica del pipeline en `services/`.
-- [ ] Los endpoints siguen las mismas convenciones de autenticación y estructura de respuesta que el resto de tu API.
+- [ ] En `services/reporting/`, implementa al menos dos endpoints relacionados con este pipeline: uno para consultar el estado y metadata de la última corrida, y otro para disparar una corrida manual del flow. Mantenlos en su propio módulo, separado de `services/telemetry/`.
+- [ ] Los endpoints deben importar flows o funciones desde `data/pipelines/` — no dupliques la lógica del pipeline en `services/`.
+- [ ] Los endpoints siguen las mismas convenciones de autenticación y estructura de respuesta que el resto de tu API, y la forma de la respuesta del endpoint de consulta de KPIs coincide con el contrato de tu `CONTEXT-company.md`.
 
-⚠️ **IMPORTANTE:** Los nombres de flows, tasks, tablas y campos deben coincidir con los definidos en `data/pipelines/PIPELINE_DESIGN.md` y el esquema de telemetría ya existente en tu monorepo. Una implementación genérica que ignore el modelo de datos de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de flows, tasks, tablas, y campos deben coincidir con lo definido en `data/pipelines/PIPELINE_DESIGN.md` y tu `CONTEXT-company.md` del contexto de data pipelines (KPIs y esquema) — consistentes, a su vez, con los campos de evento ya definidos en tu `CONTEXT-company.md` de telemetría. Una implementación genérica que ignore el modelo de datos de tu compañía no será aceptada.
 
 ---
 
-## ✅ Qué Evaluaremos
+## ✅ Qué Vamos a Evaluar
 
 - [ ] El archivo `data/pipelines/pipeline.py` existe y define al menos un flow con tres o más tasks.
-- [ ] Al menos una task tiene `retries` configurado con un valor mayor que cero y un comentario que justifica el número elegido.
-- [ ] Al menos una task opcional se invoca con `return_state=True` y el flow continúa su ejecución cuando esa task falla.
+- [ ] Al menos una task tiene `retries` configurado con un valor mayor a cero y un comentario que justifica el número elegido.
+- [ ] Al menos una task opcional se invoca con `return_state=True` y el flow continúa ejecutándose cuando esa task falla.
 - [ ] Al menos una task de transformación tiene caché configurado con `cache_key_fn` y `cache_expiration`.
-- [ ] La fase de carga es idempotente: ejecutar el pipeline dos veces sobre los mismos datos no produce duplicados en base de datos.
-- [ ] Cada ejecución del pipeline registra al menos cinco metadatos (inicio, fin, registros procesados, estado, errores) en base de datos o en un archivo de log estructurado.
-- [ ] `python data/pipelines/pipeline.py` ejecuta el flow ETL completo sin errores.
+- [ ] La fase de carga es idempotente: correr el pipeline dos veces sobre los mismos datos no produce duplicados en la tabla `reporting.business_metrics`.
+- [ ] Cada corrida del pipeline registra al menos cinco campos de metadata (hora de inicio, hora de fin, registros procesados, estado, errores) en la base de datos o en un archivo de log estructurado.
+- [ ] `python data/pipelines/pipeline.py` corre el flujo ETL completo sin errores.
 - [ ] El comando de ejecución está documentado en `data/pipelines/PIPELINE_DESIGN.md` o en comentarios inline.
-- [ ] Existe al menos un endpoint en `services/` que devuelve los metadatos de la última ejecución del pipeline (estado, inicio, fin, registros procesados).
-- [ ] Existe al menos un endpoint en `services/` que dispara una ejecución manual del flow, importando la función desde `data/pipelines/` sin duplicar la lógica.
-- [ ] El diseño implementado es coherente con `data/pipelines/PIPELINE_DESIGN.md` — las etapas, entidades y estrategias de resiliencia descritas allí están reflejadas en el código.
+- [ ] El pipeline escribe en la nueva tabla `reporting.business_metrics` de tu `CONTEXT-company.md` — `telemetry_events` y `services/telemetry/analysis.py` quedan intactos.
+- [ ] Existe al menos un endpoint en `services/reporting/` que devuelve la metadata de la última corrida del pipeline (estado, hora de inicio, hora de fin, registros procesados).
+- [ ] Existe al menos un endpoint en `services/reporting/` que dispara una corrida manual del flow, importando la función desde `data/pipelines/` sin duplicar la lógica.
+- [ ] Los valores de los KPIs producidos coinciden con las definiciones de la sección "KPIs a medir" de tu `CONTEXT-company.md` — no con una reinterpretación de ellos.
+- [ ] El diseño implementado es consistente con `data/pipelines/PIPELINE_DESIGN.md` — las etapas, entidades, y estrategias de resiliencia descritas ahí se reflejan en el código.
 
 ---
 
 ## 📦 Cómo Entregar
 
-1. Asegúrate de que `data/pipelines/pipeline.py`, los endpoints en `services/` y cualquier archivo de soporte están en tu fork del monorepo.
-2. Haz commit con el mensaje: `feat: implement resilient prefect pipeline`.
-3. Sube los cambios a tu repositorio en GitHub y comparte la URL con tu tech lead.
+1. Asegúrate de que `data/pipelines/pipeline.py`, los endpoints en `services/reporting/`, y cualquier archivo de soporte estén commiteados en tu copia del monorepo.
+2. Haz commit con el mensaje: `feat: implement resilient business performance pipeline`.
+3. Sube tus cambios a tu repositorio de GitHub y comparte la URL con tu tech lead.
 
 ---
 
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Full-Stack Software Developer](https://4geeksacademy.com/es/programas-de-carrera/desarrollo-full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/es/programas-de-carrera/ciencia-de-datos-ml), [Ciberseguridad](https://4geeksacademy.com/es/programas-de-carrera/ciberseguridad) e [Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia).
+Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuyentes](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors). Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Full-Stack Software Developer](https://4geeksacademy.com/es/programas-de-carrera/desarrollo-full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/es/programas-de-carrera/ciencia-de-datos-ml), [Ciberseguridad](https://4geeksacademy.com/es/programas-de-carrera/ciberseguridad) e [Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia).

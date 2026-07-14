@@ -6,7 +6,9 @@ This reference solution defines the expected quality bar for Phase 2 implementat
 
 ## Alignment with company context
 
-Instrumentation must implement the student's approved `docs/telemetry/event-schemas.json`, which was derived from **CONTEXT-company.md**. Grade `event_type` values, property keys, and hook placement against that contract — not the indicative examples in this document.
+Instrumentation must implement the student's approved `docs/telemetry/event-schemas.json`, grounded in **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Grade `event_type` values, property keys, and hook placement against that contract — not the indicative examples in this document.
+
+**Non-negotiable:** every **mandatory metric** from CONTEXT must be instrumented. A cross-cutting **technical baseline** (errors, performance, navigation) is also required — inventory-only capture is incomplete.
 
 ---
 
@@ -17,7 +19,7 @@ Instrumentation must implement the student's approved `docs/telemetry/event-sche
 | Backend router   | `services/app/routers/telemetry.py` (or project equivalent) | `POST /telemetry/events` stub                          |
 | Backend schemas  | `services/app/schemas/telemetry.py`                         | `TelemetryEvent`, `TelemetryBatch` Pydantic models     |
 | Frontend service | `uis/backoffice/src/services/telemetry.ts`                  | Queue, batch, flush, retry, `track()`                  |
-| Frontend hooks   | auth / inventory hooks or components                        | Call `track()` at business events                      |
+| Frontend hooks   | auth / inventory / layout / error handlers                  | Call `track()` at business and technical events        |
 | Config           | `.env.local`, backend `.env`                                | `NEXT_PUBLIC_TELEMETRY_ENDPOINT`, `TELEMETRY_ENDPOINT` |
 
 ---
@@ -27,10 +29,12 @@ Instrumentation must implement the student's approved `docs/telemetry/event-sche
 ```mermaid
 flowchart LR
   subgraph backoffice [Backoffice UI]
-    INV[Inventory components]
+    INV[Inventory / business]
+    TECH[Errors / perf / nav]
     AUTH[Auth hooks]
     TS[TelemetryService]
     INV -->|track| TS
+    TECH -->|track| TS
     AUTH -->|track| TS
   end
   subgraph browser [Browser]
@@ -158,22 +162,42 @@ export function track(
 
 ---
 
-## Phase 3 — Inventory instrumentation
+## Phase 3 — Broad instrumentation
 
-Minimum events (names must match student plan):
+### Mandatory metrics (required)
 
-| Event                  | Trigger location                    | Properties (allowlist only)                      |
-| ---------------------- | ----------------------------------- | ------------------------------------------------ |
-| Inbound order success  | Order submit handler on 2xx         | `orderId`, `productId`, `quantity`, … per schema |
-| Outbound order success | Order submit handler on 2xx         | same pattern                                     |
-| Order failed           | Validation / API error handler      | `reason`, `productId`, … — no PII                |
-| Product list viewed    | Inventory list mount or route enter | `section`, `productCount`, … per schema          |
+Wire **every** CONTEXT mandatory `event_type` through the approved plan — no exceptions. Typical inventory triggers (names must match student plan):
+
+| Event                    | Trigger location               | Properties (allowlist only)                      |
+| ------------------------ | ------------------------------ | ------------------------------------------------ |
+| Inbound order success    | Order submit handler on 2xx    | `orderId`, `productId`, `quantity`, … per schema |
+| Outbound order success   | Order submit handler on 2xx    | same pattern                                     |
+| Threshold / stock alerts | Stock recalculation path       | per CONTEXT mandatory row                        |
+| Order failed             | Validation / API error handler | `reason`, `productId`, … — no PII                |
+
+### Cross-cutting technical baseline (required)
+
+| Category    | Suggested capture point                                   | Notes                                   |
+| ----------- | --------------------------------------------------------- | --------------------------------------- |
+| Errors      | `window.onerror`, `unhandledrejection`, or Error Boundary | No stack traces with secrets/PII        |
+| Performance | Page load timing or relevant API latency                  | Add route / endpoint in properties      |
+| Navigation  | Main backoffice section page views                        | Cover primary sections, not every click |
+
+### Prioritised catalogue events
+
+Instrument additional business events from the Phase 1 plan as time allows. Prefer **category breadth** (business + technical) over deep coverage of a single flow. Respect each event's property allowlist — no extras "just in case".
 
 **Rule:** grep the backoffice — zero `fetch`/`axios` calls for telemetry outside `telemetry.ts`.
 
 ---
 
-## Additional activity — Auth instrumentation
+## Additional activity — Web Vitals and Auth
+
+### Web Vitals
+
+Instrument Web Vitals (`reportWebVitals` or equivalent) and send as telemetry events with route/page in `properties`.
+
+### Auth
 
 Capture in **auth hooks/components** (not per-page):
 
@@ -193,7 +217,7 @@ A complete submission should demonstrate:
 2. Response `200` with `{ "received": N }`
 3. Backend logs showing event types in batch
 4. `sendBeacon` request on tab close (optional screenshot)
-5. PR description listing event → component/hook mapping
+5. PR description listing events as **mandatory** vs **identified**, with component/hook mapping
 6. DevTools screenshot attached to PR
 
 ---
@@ -203,6 +227,8 @@ A complete submission should demonstrate:
 - Hardcoded telemetry URL instead of `NEXT_PUBLIC_TELEMETRY_ENDPOINT`
 - Per-event HTTP calls instead of queue + batch
 - Components passing `timestamp`, `sessionId`, `eventId`, `userId`, or `requestId` manually
+- Missing CONTEXT mandatory metrics
+- Inventory-only capture with no technical baseline
 - Extra properties outside `event-schemas.json` allowlist
 - PII in `properties` (email, name, password)
 - Direct `fetch` in inventory components bypassing `track()`
@@ -216,11 +242,12 @@ A complete submission should demonstrate:
 - [ ] `TELEMETRY_ENDPOINT` / `NEXT_PUBLIC_TELEMETRY_ENDPOINT` env pattern established
 - [ ] Queue + 10s/20 batch + `sendBeacon` + retry with backoff
 - [ ] Single `track()` entry point; auto `eventId`, `sessionId`, `userId`, `timestamp`, `schemaVersion`, `requestId`
-- [ ] Inventory events instrumented with allowlist-only properties
+- [ ] Every CONTEXT mandatory metric instrumented
+- [ ] Technical baseline (errors, performance, navigation) instrumented
 - [ ] Instrumented events align with Phase 1 schemas grounded in CONTEXT-company.md
 - [ ] No PII in emitted events
 - [ ] Network evidence of batched payloads with 200 responses
-- [ ] PR title `[W16D47] Telemetry Frontend` with required description content
+- [ ] PR title `[W16D47] Telemetry Frontend` with mandatory vs identified event list
 
 ---
 
@@ -228,4 +255,5 @@ A complete submission should demonstrate:
 
 - `event_type` values may differ per company CONTEXT — grade against the student's Phase 1 schemas, not this table verbatim.
 - Stub intentionally skips persistence; do not penalize missing Supabase writes.
-- Auth instrumentation is bonus unless cohort rubric marks it required.
+- Web Vitals / auth instrumentation is bonus unless cohort rubric marks it required.
+- Category breadth matters: prefer covering errors + perf + nav + business over stacking inventory-only events.

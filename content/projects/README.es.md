@@ -140,17 +140,17 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 43. **[Optimización de rendimiento: caché](./ai-eng-performance-caching)**  
     Perfila hot paths frontend y API, implementa caché justificada (TTL, `useMemo`, caché FastAPI) y documenta trade-offs en informe técnico.
 
-44. **[Diseño del plan de telemetría de la empresa](./ai-eng-telemetry-plan)**  
-    Diseña `telemetry-plan.md` y `event-schemas.json` desde KPIs de inventario en `CONTEXT-empresa.md` antes de instrumentar código.
+44. **[Diseño del plan de telemetría de tu compañía](./ai-eng-telemetry-plan)**  
+    Diseña `telemetry-plan.md` y `event-schemas.json` desde métricas obligatorias del CONTEXT más un catálogo amplio de oportunidades antes de instrumentar código.
 
-45. **[Telemetría de la empresa — Captura frontend](./ai-eng-telemetry-capture)**  
-    `TelemetryService` en Next.js: cola, batch/debounce, `sendBeacon`, reintentos y API `track()` única hacia `POST /telemetry/events`.
+45. **[Telemetría de tu compañía – Captura en el frontend](./ai-eng-telemetry-capture)**  
+    Stub `POST /telemetry/events` + `TelemetryService` (cola, batch/debounce, `sendBeacon`, reintentos) instrumentando métricas obligatorias del CONTEXT y un piso técnico vía `track()` única.
 
-46. **[Telemetría de la empresa — Almacenamiento](./ai-eng-telemetry-storage)**  
-    Persiste telemetría por lotes en Supabase/PostgreSQL con validación por evento, aceptación parcial de lotes y contrato frontend sin cambios.
+46. **[Telemetría de tu compañía – Almacenamiento](./ai-eng-telemetry-storage)**  
+    Sustituye stub por Supabase `telemetry_events`: validación por evento, bulk insert, `{ received, stored, rejected }`, frontend intacto.
 
-47. **[Telemetría de la empresa — Informe](./ai-eng-telemetry-report)**  
-    Pipeline Pandas más `GET /telemetry/report` con métricas agrupadas, caché de respuesta 60s e informes accionables de inventario/uso.
+47. **[Telemetría de tu compañía – Reporte técnico](./ai-eng-telemetry-report)**  
+    Pipeline Pandas técnico/operacional más `GET /telemetry/report` (≥3 métricas, caché 60s) — no es un dashboard de negocio.
 
 48. **[Diseñando un Data Pipeline: del dato crudo a los reportes confiables](./designing-data-pipeline)**  
     Ejercicio standalone de diseño ETL para Veridian Logistics: analiza exportaciones CSV nocturnas con updates-as-inserts, documenta deduplicación e idempotencia y produce `PIPELINE_DESIGN.md` — sin código de orquestación.

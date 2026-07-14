@@ -1,12 +1,12 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 6 — Company's Data Pipeline Design (1/3)",
-    "es": "Hito 6 — Diseño del pipeline de datos de la compañía (1/3)"
+    "en": "Milestone 6 — Designing a Business Performance Data Pipeline (1/3)",
+    "es": "Hito 6 — Diseño de un Pipeline de Desempeño de Negocio (1/3)"
   },
   "description": {
-    "en": "Design a production-ready data pipeline for your company monorepo: document current telemetry state and Pandas report limitations, define ETL purpose and extraction format, diagram extract-transform-load with real entity names, specify idempotency and update-handling strategies, design an auditable execution log, and map flows, tasks, states, and Prefect blocks — before writing orchestration code.",
-    "es": "Diseña un pipeline de datos listo para producción en el monorepo de tu empresa: documenta el estado actual de telemetría y las limitaciones de los informes con Pandas, define propósito ETL y formato de extracción, diagrama extracción-transformación-carga con nombres reales de entidades, especifica estrategias de idempotencia y manejo de actualizaciones, diseña un log de ejecución auditable y mapea flows, tasks, estados y bloques de Prefect — antes de escribir código de orquestación."
+    "en": "Design a new business-performance data pipeline on top of existing telemetry: document current technical-report gap, define purpose from CONTEXT KPIs, diagram extract-transform-load into reporting.business_metrics, specify idempotency and execution log, map Prefect flows/tasks/blocks, and sketch services/reporting endpoints — without changing telemetry_events or GET /telemetry/report.",
+    "es": "Diseña un pipeline nuevo de desempeño de negocio sobre la telemetría existente: documenta la brecha del reporte técnico, define el propósito desde los KPIs del CONTEXT, diagrama extracción-transformación-carga hacia reporting.business_metrics, especifica idempotencia y log de ejecución, mapea flows/tasks/bloques de Prefect, y esboza endpoints en services/reporting/ — sin modificar telemetry_events ni GET /telemetry/report."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -31,12 +31,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-data-pipeline-design/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 6 — Company's Data Pipeline Design (1/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Acabo de completar Hito 6 — Diseño del pipeline de datos de la compañía (1/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "I just completed Milestone 6 — Designing a Business Performance Data Pipeline (1/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Acabo de completar Hito 6 — Diseño de un Pipeline de Desempeño de Negocio (1/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     },
     {
-      "en": "Built and shipped: Milestone 6 — Company's Data Pipeline Design (1/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Construido y publicado: Hito 6 — Diseño del pipeline de datos de la compañía (1/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "Built and shipped: Milestone 6 — Designing a Business Performance Data Pipeline (1/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Construido y publicado: Hito 6 — Diseño de un Pipeline de Desempeño de Negocio (1/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-design #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     }
   ]
 }

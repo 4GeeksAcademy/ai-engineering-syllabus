@@ -34,7 +34,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 3. **[Frontend development](./03-frontend-development)** — `Milestone 3` talent pipeline tracker UI.
 4. **[AI-driven engineering](./04-ai-driven-engineering)** — `Milestone 4` monorepo setup (placeholder; contexts may ship with the project brief).
 5. **[Backend development](./05-backend-development)** — `Milestone 5` inventory API entities and seed rules.
-6. **[Telemetry data pipelines](./06-telemetry-data-pipelines)** — Reserved for telemetry milestone contexts (placeholder).
+6. **[Telemetry plan design](./06-telemetry-data-pipelines/telemetry)** — Mandatory metrics, inventory entities, and telemetry opportunities per company (Plan · Capture · Storage · Report).
 7. **[Training & RAG](./07-trainning-rag)** — Source Markdown corpora per company (policies, catalogs, procedures).
 8. **[Agent engineering](./08-agent-engineering)** — Reserved for agent modules (placeholder).
 9. **[Workflows & automation](./09-workflows-automation)** — Reserved for workflow modules (placeholder).
@@ -46,11 +46,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 12. **[Supplier directory](./supplier-directory)** — Supplier seed data and validation rules for the TinyDB API.
 13. **[Incidents file analysis](./incidents-file-analysis)** — CSV schemas, categories, and expected analyzer output.
 14. **[Centralized incident manager](./centralized-incident-manager)** — Live incident manager fields, branches, and seed values.
-15. **[Telemetry plan](./telemetry-plan)** — Inventory KPIs and telemetry opportunities per company.
-16. **[Telemetry capture](./telemetry-capture)** — Event envelope and capture constraints for the frontend module.
-17. **[Telemetry storage](./telemetry-storage)** — Storage and validation rules for batched events.
-18. **[Telemetry report](./telemetry-report)** — Reporting metrics and grouped dimensions for the analytics endpoint.
-19. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
+15. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
 
 ## Contributors
 

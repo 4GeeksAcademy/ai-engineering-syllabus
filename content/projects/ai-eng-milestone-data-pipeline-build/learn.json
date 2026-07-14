@@ -1,12 +1,12 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 6 — Implementing a Resilient Data Pipeline (2/3)",
-    "es": "Hito 6 — Implementación de un Data Pipeline Resiliente (2/3)"
+    "en": "Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3)",
+    "es": "Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3)"
   },
   "description": {
-    "en": "Build a resilient Prefect data pipeline in your company monorepo: implement extract-transform-load flows and tasks, configure retries caching and partial-failure tolerance, ensure idempotent loads with execution metadata, make the pipeline runnable via `python data/pipelines/pipeline.py`, and expose pipeline status and manual trigger endpoints in the backend — implementing your approved PIPELINE_DESIGN.md.",
-    "es": "Construye un pipeline de datos resiliente con Prefect en el monorepo de tu empresa: implementa flows y tasks de extracción-transformación-carga, configura reintentos, caché y tolerancia a fallos parciales, garantiza cargas idempotentes con metadatos de ejecución, haz que el pipeline se ejecute con `python data/pipelines/pipeline.py` y expone endpoints de estado y disparo manual en el backend — implementando tu PIPELINE_DESIGN.md aprobado."
+    "en": "Build a resilient Prefect business-performance pipeline: implement extract-transform-load from telemetry_events into reporting.business_metrics, configure retries caching and partial-failure tolerance, ensure idempotent loads with run metadata, run via python data/pipelines/pipeline.py, and expose status + trigger endpoints in services/reporting/ — without touching GET /telemetry/report.",
+    "es": "Construye un pipeline Prefect de desempeño de negocio resiliente: implementa extracción-transformación-carga desde telemetry_events hacia reporting.business_metrics, configura reintentos, caché y tolerancia a fallos parciales, garantiza cargas idempotentes con metadata de corrida, ejecuta con python data/pipelines/pipeline.py y expone endpoints de estado y disparo en services/reporting/ — sin tocar GET /telemetry/report."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -31,12 +31,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-data-pipeline-build/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 6 — Implementing a Resilient Data Pipeline (2/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Acabo de completar Hito 6 — Implementación de un Data Pipeline Resiliente (2/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "I just completed Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Acabo de completar Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     },
     {
-      "en": "Built and shipped: Milestone 6 — Implementing a Resilient Data Pipeline (2/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Construido y publicado: Hito 6 — Implementación de un Data Pipeline Resiliente (2/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "Built and shipped: Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Construido y publicado: Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     }
   ]
 }

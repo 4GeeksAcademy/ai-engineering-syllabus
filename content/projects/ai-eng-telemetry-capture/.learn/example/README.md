@@ -1,6 +1,6 @@
 # Maple Street Library — Frontend Telemetry Capture (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-telemetry-capture`. Same spine (FastAPI stub, `TelemetryService`, queue/batch/sendBeacon/retry, single `track()`, env endpoint), different domain. Students still follow the full monorepo brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-telemetry-capture`. Same spine (FastAPI stub, `TelemetryService`, queue/batch/sendBeacon/retry, single `track()`, env endpoint, mandatory metrics + technical baseline), different domain. Students still follow the full monorepo brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -10,24 +10,25 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 **Maple Street Library** has a desk app (`desk-app`, Next.js) and a small API (`library-api`, FastAPI). Librarians check books in/out; the CTO wants usage events flowing **before** building analytics storage.
 
-In one session: stub receiver + frontend capture service + instrument **two** book-desk flows.
+In one session: stub receiver + frontend capture service + instrument **mandatory** desk metrics plus a tiny technical baseline.
 
 ### Scope note
 
-| Graded project (`ai-eng-telemetry-capture`) | This class example                  |
-| ------------------------------------------- | ----------------------------------- |
-| Company CONTEXT + Phase 1 schemas           | Mini library event contract (below) |
-| Full inventory + auth instrumentation       | 2 checkout events + 1 auth event    |
-| Batch 10s / 20 events                       | Batch 5s / 10 events (demo speed)   |
-| PR to student fork                          | Local demo only                     |
+| Graded project (`ai-eng-telemetry-capture`)                                | This class example                             |
+| -------------------------------------------------------------------------- | ---------------------------------------------- |
+| Company CONTEXT + Phase 1 schemas                                          | Mini library event contract (below)            |
+| All CONTEXT mandatory metrics + technical baseline + prioritised catalogue | 2 mandatory desk events + 1 technical + 1 auth |
+| Batch 10s / 20 events                                                      | Batch 5s / 10 events (demo speed)              |
+| PR to student fork                                                         | Local demo only                                |
 
 **Mini event contract (use as `event-schemas.json` for class):**
 
-| Event                     | Properties allowlist                                |
-| ------------------------- | --------------------------------------------------- |
-| `book_checkout_completed` | `loanId`, `bookId`                                  |
-| `book_checkout_failed`    | `reason`, `bookId`                                  |
-| `login_failed`            | `reason` (`invalid_credentials` \| `network_error`) |
+| Event                     | Class                   | Properties allowlist                                |
+| ------------------------- | ----------------------- | --------------------------------------------------- |
+| `book_checkout_completed` | mandatory               | `loanId`, `bookId`                                  |
+| `book_checkout_failed`    | mandatory               | `reason`, `bookId`                                  |
+| `page_viewed`             | technical baseline      | `route`                                             |
+| `login_failed`            | identified / additional | `reason` (`invalid_credentials` \| `network_error`) |
 
 ---
 
@@ -53,6 +54,7 @@ In one session: stub receiver + frontend capture service + instrument **two** bo
 
 - [ ] On successful book checkout → `track("book_checkout_completed", { loanId, bookId })`
 - [ ] On validation/API error → `track("book_checkout_failed", { reason, bookId })`
+- [ ] On main desk route enter → `track("page_viewed", { route })`
 - [ ] In auth hook → `track("login_failed", { reason })` — never email/password
 
 ---
@@ -61,6 +63,7 @@ In one session: stub receiver + frontend capture service + instrument **two** bo
 
 - [ ] Network tab shows **one batch** with multiple events after activity burst
 - [ ] Stub returns `200` and `{ "received": N }`
+- [ ] Both mandatory metrics instrumented
 - [ ] No `fetch` for telemetry outside `telemetry.ts`
 - [ ] Failed login `properties` contain `reason` only — no credentials
 

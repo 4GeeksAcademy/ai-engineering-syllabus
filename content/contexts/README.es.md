@@ -34,7 +34,7 @@ _These instructions are [available in English](./README.md)_.
 3. **[Desarrollo frontend](./03-frontend-development)** — UI del talent pipeline tracker (`Milestone 3`).
 4. **[Ingeniería impulsada por IA](./04-ai-driven-engineering)** — Setup del monorepo (`Milestone 4`; placeholder; el contexto puede ir en el brief del proyecto).
 5. **[Desarrollo backend](./05-backend-development)** — Entidades y reglas de seed del API de inventario (`Milestone 5`).
-6. **[Pipelines de datos de telemetría](./06-telemetry-data-pipelines)** — Reservado para contextos de telemetría (placeholder).
+6. **[Pipelines de datos de telemetría](./06-telemetry-data-pipelines/telemetry)** — Métricas obligatorias, entidades de inventario y oportunidades de telemetría por compañía (Plan · Captura · Almacenamiento · Reporte).
 7. **[Entrenamiento y RAG](./07-trainning-rag)** — Corpus Markdown fuente por compañía (políticas, catálogos, procedimientos).
 8. **[Ingeniería de agentes](./08-agent-engineering)** — Reservado para módulos de agentes (placeholder).
 9. **[Workflows y automatización](./09-workflows-automation)** — Reservado para módulos de workflows (placeholder).
@@ -42,15 +42,11 @@ _These instructions are [available in English](./README.md)_.
 
 **Contextos de proyectos independientes**
 
-11. **[Agente de onboarding OpenClaw](./openclaw-onboarding-agent)** — Campos HR y plantillas de correo por compañía.
-12. **[Directorio de proveedores](./supplier-directory)** — Datos semilla y reglas de validación para la API TinyDB.
-13. **[Análisis de archivos de incidentes](./incidents-file-analysis)** — Esquemas CSV, categorías y salida esperada del analizador.
-14. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
-15. **[Plan de telemetría](./telemetry-plan)** — KPIs de inventario y oportunidades de telemetría por compañía.
-16. **[Captura de telemetría](./telemetry-capture)** — Event envelope y restricciones de captura en frontend.
-17. **[Almacenamiento de telemetría](./telemetry-storage)** — Reglas de almacenamiento y validación de eventos en batch.
-18. **[Reporte de telemetría](./telemetry-report)** — Métricas y dimensiones agrupadas para el endpoint de analytics.
-19. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
+1. **[Agente de onboarding OpenClaw](./openclaw-onboarding-agent)** — Campos HR y plantillas de correo por compañía.
+2. **[Directorio de proveedores](./supplier-directory)** — Datos semilla y reglas de validación para la API TinyDB.
+3. **[Análisis de archivos de incidentes](./incidents-file-analysis)** — Esquemas CSV, categorías y salida esperada del analizador.
+4. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
+5. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 

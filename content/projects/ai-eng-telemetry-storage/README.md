@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: You need the `TelemetryService` working in the frontend and sending batches to the stub from the previous project. If events are not reaching the stub with a 200 response, resolve that before continuing — today you build the real destination for those events.
 
-Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/telemetry-storage)** explains which envelope fields and `tags` dimensions matter for your company's analytics — confirm any optional fields stored in `tags` match what you documented in `telemetry-plan.md`.
+Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** explains which envelope fields and `tags` dimensions matter for your company's analytics — confirm any optional fields stored in `tags` match what you documented in `telemetry-plan.md`.
 
 ---
 
@@ -21,7 +21,7 @@ Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syll
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Events are flowing from the frontend. The stub receives them and throws them away. Today you build what the stub promised: the system that actually saves them.
+Events are flowing from the frontend — mandatory ones and the ones from your own catalogue, technical and business. The stub receives them and throws them away. Today you build what the stub promised: the system that actually saves them.
 
 The deliverable is a single change in the backend — but a change that transforms everything: the stub becomes a real endpoint that validates each event against the Phase 1 schema contract, persists the valid ones in Supabase in a single operation, and reports exactly what was stored and what was rejected. The frontend does not change a single line.
 
@@ -74,7 +74,7 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 ## 🌱 How to Start the Project
 
 1. Open your fork of the monorepo and locate `services/` (FastAPI backend).
-2. Have your `docs/telemetry/event-schemas.json` and `telemetry-plan.md` at hand — confirm the `tags` mapping preserves CONTEXT-specific dimensions (warehouse, office, etc.) defined in your plan.
+2. Have your `docs/telemetry/event-schemas.json` and `telemetry-plan.md` at hand — confirm the `tags` mapping preserves the CONTEXT-specific dimensions (warehouse, office, etc.) defined in your plan.
 3. The frontend is not touched. Verify that `NEXT_PUBLIC_TELEMETRY_ENDPOINT` still points to the same endpoint — only what happens inside the backend changes.
 4. Follow the order: table in Supabase → real endpoint → end-to-end verification.
 
@@ -99,15 +99,15 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 
 - [ ] Map each `TelemetryEvent` from the API to a table row using this contract:
 
-  | DB column    | Source                                           |
-  | ------------ | ------------------------------------------------ |
-  | `timestamp`  | `event.timestamp`                                |
-  | `service`    | constant `backoffice` (or derived from envelope) |
-  | `event_type` | `event.event_type`                               |
-  | `level`      | derive from event type or default `info`         |
-  | `value`      | optional numeric from `properties` if defined    |
-  | `message`    | optional human-readable summary                  |
-  | `tags`       | `event.properties` (allowlist keys only)         |
+  | DB column    | Source                                                                                          |
+  | ------------ | ----------------------------------------------------------------------------------------------- |
+  | `timestamp`  | `event.timestamp`                                                                               |
+  | `service`    | constant `backoffice` (or derived from envelope)                                                |
+  | `event_type` | `event.event_type`                                                                              |
+  | `level`      | derive from event type or default `info` (technical error events usually map to `warn`/`error`) |
+  | `value`      | optional numeric from `properties` if defined                                                   |
+  | `message`    | optional human-readable summary                                                                 |
+  | `tags`       | `event.properties` (allowlist keys only)                                                        |
 
   Envelope fields `eventId`, `sessionId`, `userId`, `schemaVersion`, and `requestId` may also be stored inside `tags` if your plan requires them for analytics — document the mapping in `telemetry-plan.md` and apply it consistently.
 
@@ -126,7 +126,7 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 
 ### Phase 3 — End-to-End Verification
 
-- [ ] With the real endpoint active, use the backoffice to generate real events: register at least one inbound order and one outbound order in the inventory module.
+- [ ] With the real endpoint active, use the backoffice to generate real events: register at least one inbound order and one outbound order in the inventory module, and generate at least one technical event (an error, a failed login, etc.).
 - [ ] Query the `telemetry_events` table directly in Supabase and confirm that events appear with the correct fields — especially `event_type`, `timestamp`, and `tags`.
 - [ ] Test the rejection behaviour: send manually (with curl or your preferred HTTP client) a batch that mixes valid and invalid events and verify that the response correctly reflects `stored` and `rejected`.
 
@@ -139,8 +139,8 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 - [ ] Invalid events are rejected individually without cancelling the batch — valid ones are persisted (per-event `model_validate`, not a typed `list[TelemetryEvent]` body that would return `422` for the whole batch)
 - [ ] The `TelemetryEvent` Pydantic model has not been modified from the previous project — it is reused as-is
 - [ ] The frontend has not changed a single line — the stub → real substitution is completely transparent
-- [ ] Events appear in `telemetry_events` with `event_type`, `timestamp`, and `tags` correctly populated
-- [ ] Stored `tags` JSON preserves the property allowlists and CONTEXT-specific dimensions documented in the student's `telemetry-plan.md`
+- [ ] Events appear in `telemetry_events` with `event_type`, `timestamp`, and `tags` correctly populated, both for technical and business events
+- [ ] Stored `tags` JSON preserves the property allowlists and CONTEXT-specific dimensions documented in `telemetry-plan.md`
 - [ ] The insert is a single operation per batch, not one INSERT per event
 
 ---
@@ -150,7 +150,7 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 1. Make sure the changes are in your fork: table created in Supabase and real endpoint in `services/`.
 2. Create a Pull Request against the main branch of the monorepo with the title: `[W16D48] Telemetry Storage`.
 3. In the PR description, include:
-   - A screenshot of the `telemetry_events` table in Supabase with at least 5 rows of real events
+   - A screenshot of the `telemetry_events` table in Supabase with at least 5 rows of real events, including at least one technical and one business event
    - The JSON response of a batch mixing valid and invalid events (showing `received`, `stored`, and `rejected`)
    - Explicit confirmation that the frontend did not change
 
