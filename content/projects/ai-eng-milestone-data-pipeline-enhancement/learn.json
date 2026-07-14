@@ -1,12 +1,12 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3)",
-    "es": "Hito 6 — Mejora del pipeline de datos de la compañía: Subflows y tests (3/3)"
+    "en": "Milestone 6 — Business Performance Pipeline Enhancement: Subflows and Tests (3/3)",
+    "es": "Hito 6 — Mejora del Pipeline de Desempeño de Negocio: Subflows y Tests (3/3)"
   },
   "description": {
-    "en": "Bring your company Prefect data pipeline to production level in the monorepo: refactor the main flow into reusable extract-transform-load subflows with explicit inputs and outputs, add isolated unit tests for transformation tasks including defensive cases against malformed input, and ensure the pipeline runs directly via `python data/pipelines/pipeline.py`.",
-    "es": "Lleva el pipeline de datos Prefect de tu empresa a nivel de producción en el monorepo: refactoriza el flow principal en subflows reutilizables de extracción-transformación-carga con entradas y salidas explícitas, añade tests unitarios aislados para tasks de transformación incluyendo casos defensivos ante entrada malformada, y garantiza que el pipeline se ejecute directamente con `python data/pipelines/pipeline.py`."
+    "en": "Bring the business performance Prefect pipeline to production: refactor into extract-transform-load subflows, add isolated KPI unit tests including defensive and hand-calculated cases, keep CLI execution working, and build a leadership-facing reporting dashboard in uis/backoffice/ from services/reporting/ — without touching telemetry_events or GET /telemetry/report.",
+    "es": "Lleva el pipeline Prefect de desempeño de negocio a producción: refactoriza en subflows de extracción-transformación-carga, añade tests unitarios de KPIs aislados incluyendo casos defensivos y cálculos a mano, mantén la ejecución CLI, y construye un dashboard de reporting orientado a liderazgo en uis/backoffice/ desde services/reporting/ — sin tocar telemetry_events ni GET /telemetry/report."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -31,12 +31,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-data-pipeline-enhancement/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Acabo de completar Hito 6 — Mejora del pipeline de datos de la compañía: Subflows y tests (3/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "I just completed Milestone 6 — Business Performance Pipeline Enhancement: Subflows and Tests (3/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Acabo de completar Hito 6 — Mejora del Pipeline de Desempeño de Negocio: Subflows y Tests (3/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     },
     {
-      "en": "Built and shipped: Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Construido y publicado: Hito 6 — Mejora del pipeline de datos de la compañía: Subflows y tests (3/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "Built and shipped: Milestone 6 — Business Performance Pipeline Enhancement: Subflows and Tests (3/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Construido y publicado: Hito 6 — Mejora del Pipeline de Desempeño de Negocio: Subflows y Tests (3/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-enhancement #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     }
   ]
 }

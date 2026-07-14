@@ -1,17 +1,15 @@
-# Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3) — Reference Solution
+# Milestone 6 — Business Performance Pipeline Enhancement: Subflows and Tests (3/3) — Reference Solution
 
 This reference solution defines the expected quality bar for deliverables in the student's company monorepo fork:
 
 - `data/pipelines/pipeline.py` — main flow orchestrating extract, transform, and load subflows
-- `tests/pipelines/test_pipeline.py` — isolated unit tests for transformation tasks
+- `tests/pipelines/test_pipeline.py` — isolated unit tests for KPI transformation tasks
+- `uis/backoffice/` reporting dashboard — every CONTEXT KPI, labeled for a non-technical stakeholder
 - CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
-- Run command documented in `PIPELINE_DESIGN.md` or inline comments
 
-The deliverable is **production-ready orchestration** built on the Part 2 pipeline. Generic subflow or test names that ignore company domain vocabulary should be treated as incomplete.
+The deliverable is **production-ready orchestration + leadership-facing UI** built on the Part 2 pipeline and the company **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
 
-## Alignment with company domain
-
-All subflow names, task names, and test names must come from the student's `PIPELINE_DESIGN.md` and monorepo domain vocabulary. The examples below use inventory telemetry naming — students must substitute their company-specific names.
+**Hard constraint:** `telemetry_events` and `services/telemetry/analysis.py` remain unmodified. Dashboard reads from `services/reporting/`, not the technical telemetry report.
 
 ---
 
@@ -20,39 +18,53 @@ All subflow names, task names, and test names must come from the student's `PIPE
 ```mermaid
 flowchart TD
   subgraph main [data/pipelines/pipeline.py]
-    MAIN[telemetry_etl_flow]
+    MAIN[business_performance_etl_flow]
     EXT[extract_telemetry_subflow]
-    TRF[transform_kpi_subflow]
-    LOD[load_reporting_subflow]
+    TRF[transform_business_kpis_subflow]
+    LOD[load_business_metrics_subflow]
     OPT[notify_ops_subflow]
   end
   subgraph tests [tests/pipelines/test_pipeline.py]
-    T1[test_normalize_event_payload]
-    T2[test_aggregate_daily_metrics]
-    T3[test_dedupe_by_business_key]
-    T4[test_rejects_malformed_timestamp]
+    T1[test_transform_kpi_A]
+    T2[test_transform_kpi_B]
+    T3[test_transform_kpi_C]
+    T4[test_rejects_malformed_input]
+    T5[test_kpi_matches_hand_calc]
+  end
+  subgraph ui [uis/backoffice/]
+    DASH["/reporting dashboard"]
+  end
+  subgraph api [services/reporting/]
+    KPI[GET business metrics]
+  end
+  subgraph dest [Destination]
+    RPT[(reporting.business_metrics)]
   end
   subgraph cli [Script execution]
     RUN[python data/pipelines/pipeline.py]
   end
   MAIN --> EXT --> TRF --> LOD
   MAIN --> OPT
+  LOD --> RPT
   TRF -.-> T1
   TRF -.-> T2
   TRF -.-> T3
   TRF -.-> T4
+  TRF -.-> T5
+  DASH --> KPI --> RPT
   RUN --> MAIN
 ```
 
 **Component boundaries:**
 
-| Layer                        | Responsibility                                                              |
-| ---------------------------- | --------------------------------------------------------------------------- |
-| `data/pipelines/pipeline.py` | Main `@flow` coordinates subflows; no inline ETL logic in main flow body    |
-| Subflows (`@flow`)           | One per pipeline phase — explicit inputs/outputs, independently runnable    |
-| `data/process/`              | Pure transform helpers imported by tasks (testable without Prefect runtime) |
-| `tests/pipelines/`           | Unit tests call task functions or helpers directly with in-memory fixtures  |
-| CLI entry point              | `if __name__ == "__main__"` invokes main flow; local script execution only  |
+| Layer                        | Responsibility                                                   |
+| ---------------------------- | ---------------------------------------------------------------- |
+| `data/pipelines/pipeline.py` | Main `@flow` coordinates subflows; no inline ETL in main body    |
+| Subflows (`@flow`)           | One per phase — explicit I/O, independently runnable             |
+| `data/process/`              | Pure transform helpers (testable without Prefect runtime)        |
+| `tests/pipelines/`           | Unit tests with in-memory fixtures shaped like company telemetry |
+| `uis/backoffice/`            | Business dashboard labeling every CONTEXT KPI                    |
+| `services/reporting/`        | Already built in Part 2 — dashboard consumer                     |
 
 ---
 
@@ -62,140 +74,134 @@ flowchart TD
 data/
   pipelines/
     pipeline.py              # Main flow + ≥3 subflows
-    PIPELINE_DESIGN.md       # Run command documented in Part 3
+    PIPELINE_DESIGN.md       # Run command + optional design-question enhancements
   process/                   # Transform helpers (imported by tasks)
 tests/
   pipelines/
-    test_pipeline.py         # ≥3 transform tests + ≥1 defensive test
+    test_pipeline.py         # ≥3 KPI transform tests + defensive + hand-calc
+uis/
+  backoffice/
+    .../reporting            # Dashboard page (route name may vary)
+services/
+  reporting/                 # Unchanged from Part 2 (consumer of metrics)
+  telemetry/                 # Untouched
 ```
 
 ---
 
 ## Subflow refactoring patterns (reference)
 
-### Main flow delegates to subflows
-
 ```python
 @flow(name="extract-telemetry-events")
 def extract_telemetry_subflow(watermark_from: datetime) -> list[dict]:
     return extract_telemetry_events(watermark_from)
 
-@flow(name="transform-kpi-aggregates")
-def transform_kpi_subflow(rows: list[dict], watermark_to: datetime) -> list[dict]:
-    return transform_kpi_aggregates(rows, watermark_to=watermark_to)
+@flow(name="transform-business-kpis")
+def transform_business_kpis_subflow(rows: list[dict], watermark_to: datetime) -> list[dict]:
+    return transform_business_kpis(rows, watermark_to=watermark_to)
 
-@flow(name="load-reporting-tables")
-def load_reporting_subflow(aggregates: list[dict], run_id: str) -> int:
-    return load_reporting_tables(aggregates, run_id=run_id)
+@flow(name="load-business-metrics")
+def load_business_metrics_subflow(aggregates: list[dict], run_id: str) -> int:
+    return load_business_metrics(aggregates, run_id=run_id)
 
 @flow
-def telemetry_etl_flow():
+def business_performance_etl_flow():
     watermark_from = resolve_watermark()
     rows = extract_telemetry_subflow(watermark_from)
-    aggregates = transform_kpi_subflow(rows, watermark_to=datetime.now(UTC))
-    records = load_reporting_subflow(aggregates, run_id=str(uuid4()))
+    aggregates = transform_business_kpis_subflow(rows, watermark_to=datetime.now(UTC))
+    records = load_business_metrics_subflow(aggregates, run_id=str(uuid4()))
     notify_ops_subflow(records, return_state=True)
     return records
 ```
 
-### Optional subflow with `return_state=True`
-
-```python
-@flow
-def notify_ops_subflow(summary: int) -> None:
-    notify_ops_optional(summary)
-
-# In main flow:
-notify_ops_subflow(summary, return_state=True)
-```
-
-Subflows must pass data through return values — not module-level globals.
+Subflows must pass data through return values — not module-level globals. Name subflows after company KPIs / stages from CONTEXT, not `extract_data`.
 
 ---
 
 ## Unit test patterns (reference)
 
-Tests target **transformation tasks or pure helpers** in `data/process/`, not live DB connections.
+Tests target **transformation tasks or pure helpers** — no live DB.
 
 ```python
 import pytest
-from data.process.transforms import normalize_event_payload, aggregate_daily_metrics
+from data.process.transforms import compute_waste_ratio, normalize_event_payload
 
-def test_normalize_event_payload_maps_inventory_fields():
-    raw = {"event_type": "stock_threshold_low", "warehouse_id": "wh-1", "qty": 3}
-    result = normalize_event_payload(raw)
-    assert result["warehouse_id"] == "wh-1"
-    assert result["event_type"] == "stock_threshold_low"
+def test_compute_waste_ratio_for_known_inputs():
+    # Hand-calculated: waste 20 / purchase 100 = 0.20 (CONTEXT Waste Ratio definition)
+    assert compute_waste_ratio(purchase_cost=100, waste_cost=20) == 0.20
 
-def test_aggregate_daily_metrics_groups_by_report_date_and_product():
+def test_compute_purchase_cost_aggregates_location_week():
     rows = [
-        {"report_date": "2026-06-01", "product_id": "p-1", "units": 2},
-        {"report_date": "2026-06-01", "product_id": "p-1", "units": 3},
+        {"location_id": "loc-1", "purchase_cost": 40},
+        {"location_id": "loc-1", "purchase_cost": 60},
     ]
-    result = aggregate_daily_metrics(rows)
-    assert len(result) == 1
-    assert result[0]["units"] == 5
+    assert compute_purchase_cost(rows, location_id="loc-1") == 100
 
 def test_rejects_malformed_timestamp_raises_or_returns_none():
-    raw = {"event_type": "login_failed", "occurred_at": None}
+    raw = {"event_type": "stock_waste_registered", "timestamp": None}
     with pytest.raises(ValueError):
         normalize_event_payload(raw)
 ```
-
-Run:
 
 ```bash
 python -m pytest tests/pipelines/test_pipeline.py -v
 ```
 
+Must include: ≥3 transform tests, ≥1 defensive/malformed input test, ≥1 hand-calculated KPI vs CONTEXT definition.
+
+---
+
+## Business dashboard (mandatory)
+
+- Page under `uis/backoffice/` (e.g. `/reporting`)
+- Fetches `services/reporting/` — real data from `reporting.business_metrics`
+- Renders **every** KPI from CONTEXT "KPIs to Measure", labeled with exact CONTEXT names
+- Shows period (week/month per CONTEXT cadence)
+- Legible to the stakeholder named in CONTEXT (CEO / ops lead) — not a raw JSON dump
+
 ---
 
 ## Script-based execution
 
-Add a CLI entry point at the bottom of `data/pipelines/pipeline.py`:
-
 ```python
 if __name__ == "__main__":
-    telemetry_etl_flow()
+    business_performance_etl_flow()
 ```
-
-Run the full pipeline:
 
 ```bash
 python data/pipelines/pipeline.py
 ```
 
-Document the command in `PIPELINE_DESIGN.md`:
-
-```markdown
-## Running the pipeline
-
-python data/pipelines/pipeline.py
-```
+Document in `PIPELINE_DESIGN.md`. Optional: note any design-question enhancements (heartbeat, concurrency lock, etc.) and which Part 1 question they answer.
 
 ---
 
 ## Common mistakes (incomplete submissions)
 
-- Main flow still contains all extract/transform/load logic inline — no subflows
-- Subflows share state through global variables instead of explicit parameters
-- Tests hit production DB or external APIs instead of in-memory fixtures
-- Fewer than three transformation tests, or no defensive test for malformed input
-- Missing `if __name__ == "__main__"` block — pipeline cannot run as a script
-- `python data/pipelines/pipeline.py` fails due to missing env vars or import errors
-- Generic names (`extract_data`, `test_transform`) instead of company domain vocabulary
-- Optional notification subflow failure aborts the entire main flow
+- Main flow still contains all ETL inline — no subflows
+- Subflows share globals instead of explicit parameters
+- Tests hit production DB instead of in-memory fixtures
+- No hand-calculated KPI assertion against CONTEXT definition
+- Missing dashboard, or dashboard shows technical metrics (volume/error/latency)
+- Dashboard queries `GET /telemetry/report` instead of `services/reporting/`
+- Generic names (`extract_data`, `test_transform`)
+- Optional notification failure aborts main flow
+- Mutating telemetry pipeline code during the refactor
 
 ---
 
 ## Evaluation checklist
 
-- [ ] `data/pipelines/pipeline.py` main flow invokes ≥3 subflows (`@flow`)
+- [ ] Main flow invokes ≥3 subflows (`@flow`)
 - [ ] Each subflow has explicit inputs/outputs and can run independently
-- [ ] `tests/pipelines/test_pipeline.py` exists with ≥3 transform unit tests
-- [ ] ≥1 test verifies defensive behaviour against invalid/malformed input
+- [ ] `tests/pipelines/test_pipeline.py` has ≥3 transform unit tests
+- [ ] ≥1 defensive test against invalid/malformed input
+- [ ] ≥1 test validates KPI vs CONTEXT definition with hand-calculated input
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes
-- [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors
-- [ ] Run command documented in `PIPELINE_DESIGN.md` or inline comments
-- [ ] Subflow, task, and test names match `PIPELINE_DESIGN.md` vocabulary
-- [ ] Commit message `feat: refactor pipeline into subflows and add unit tests`
+- [ ] `python data/pipelines/pipeline.py` runs full ETL without errors
+- [ ] Run command documented
+- [ ] Names reflect CONTEXT KPI / domain vocabulary
+- [ ] `telemetry_events` and `services/telemetry/analysis.py` unmodified
+- [ ] Backoffice dashboard shows every CONTEXT KPI, correctly labeled, from `services/reporting/`
+- [ ] Dashboard legible to non-technical stakeholder
+- [ ] Commit message `feat: refactor business performance pipeline into subflows, add unit tests, and add reporting dashboard`
