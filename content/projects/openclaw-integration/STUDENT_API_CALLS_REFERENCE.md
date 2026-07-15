@@ -1,6 +1,6 @@
 # 📡 Student API calls reference (BreatheCode)
 
-_Spanish version: [español](./STUDENT_API_CALLS_REFERENCE.es.md)._
+_Spanish version: [español](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.es.md)._
 
 This document summarizes student-oriented endpoints for **4Geeks Academy**: HTTP method, path, parameters, and response shape. It does not include code samples or example bodies; for detailed schemas, use the linked OpenAPI at the end.
 

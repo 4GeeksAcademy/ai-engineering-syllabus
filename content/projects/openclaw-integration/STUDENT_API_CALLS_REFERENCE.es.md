@@ -1,6 +1,6 @@
 # 📡 Referencia de llamadas API para estudiantes (BreatheCode)
 
-_Estas notas también están en [inglés](./STUDENT_API_CALLS_REFERENCE.md)._
+_Estas notas también están en [inglés](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.md)._
 
 Este documento resume los endpoints orientados a estudiantes de **4Geeks Academy**: método, ruta, parámetros y forma de las respuestas. No incluye ejemplos de código ni cuerpos de ejemplo; para esquemas detallados, consulta la documentación OpenAPI enlazada al final.
 
