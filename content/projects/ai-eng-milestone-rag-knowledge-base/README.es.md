@@ -41,7 +41,9 @@ El **chunking** determina qué puede encontrar el recuperador. Un fragmento que 
 
 El **umbral de similitud** es la barrera contra contexto irrelevante. `top-k` solo siempre devuelve k fragmentos aunque ninguno encaje bien. Aplica una puntuación mínima (similitud coseno o la métrica de tu modelo de embeddings) y devuelve **menos de k** — o cero — cuando nada la supera. Forzar contexto malo al prompt es peor que admitir que no encontraste nada.
 
-**Dos modelos, dos trabajos:** el modelo de embeddings convierte texto en vectores para buscar; el LLM de generación convierte contexto recuperado + pregunta en una respuesta natural. No uses la misma llamada para ambos salvo que tu stack lo exija explícitamente — tienen latencia, coste y modos de fallo distintos.
+**Dos modelos, dos trabajos:** el modelo de embeddings convierte texto en vectores para buscar; el LLM de generación convierte contexto recuperado + pregunta en una respuesta natural. **Debes** usar un **modelo de embeddings** dedicado en `embed()` — nunca el mismo modelo que llamas para generación en `query()`. Tienen APIs, formas de salida, latencia, coste y modos de fallo distintos.
+
+Como estudiante de AI Engineering, usa los **modelos que proporciona 4Geeks** (incluidos en tu acceso LLM de estudiante) tanto para embeddings como para generación — no necesitas claves de API personales de pago para este hito.
 
 </details>
 
@@ -52,14 +54,15 @@ El **umbral de similitud** es la barrera contra contexto irrelevante. `top-k` so
 1. Asegúrate de tener actualizado tu fork del monorepo de tu empresa con el trabajo de los hitos anteriores.
 2. Crea una rama nueva para este hito.
 3. Añade Qdrant a `docker-compose.yml` (o usa Qdrant Cloud) y confirma la conectividad desde tu entorno Python.
-4. Instala las dependencias con `uv add` — cliente de Qdrant, librería de embeddings, SDK del LLM de generación, `fastapi`, etc. Nunca uses `pip install` ni `pipenv`.
-5. Revisa `CONTEXT-company.md` y localiza los documentos fuente que debes indexar (políticas, catálogos, procedimientos — rutas y nombres son específicos de cada empresa).
+4. Instala las dependencias con `uv add` — cliente de Qdrant, librería de embeddings, SDK del LLM de generación, `fastapi`, etc. Nunca uses `pip install` ni `pipenv`. Configura el modelo de embeddings y el de generación **proporcionados por 4Geeks** como IDs de modelo separados (y claves / URLs base en `.env` si aplica) — nunca reutilices el modelo de generación para embeddings.
+5. Revisa `CONTEXT-company.md`, copia los documentos fuente de la empresa que debes indexar (políticas, catálogos, procedimientos — los nombres de archivo son específicos de cada empresa) en `docs/company-knowledge-base/` de tu monorepo, y apunta `setup()` a esa carpeta.
 6. Implementa las cuatro funciones en este orden: `setup` → `embed` → `retrieve` → `query` → API → UI → tests.
 
 Distribución de archivos sugerida (los nombres pueden variar; las responsabilidades no):
 
 | Responsabilidad           | Ubicación (indicativa)                |
 | ------------------------- | ------------------------------------- |
+| Corpus de conocimiento    | `docs/company-knowledge-base/`        |
 | Chunking + indexación     | `data/process/rag.py`                 |
 | Recuperación + generación | `data/pipelines/rag.py`               |
 | Endpoint HTTP             | `services/routers/` o `services/api/` |
@@ -73,8 +76,8 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 
 ### Fase 1 — Preparación de datos e indexación (`data/process/`)
 
-- [ ] Implementar `setup()`: lee los documentos fuente definidos en tu `CONTEXT-company.md`, los parsea (Markdown, texto plano o el formato indicado en el contexto) y los divide en chunks semánticos coherentes. Cada chunk debe ser una unidad autocontenida — sin cortar frases ni reglas por la mitad.
-- [ ] Implementar `embed(text: str) -> list[float]`: genera un vector para un texto usando un **modelo de embeddings** (distinto del LLM de generación). La misma función se usa para los chunks al indexar y para la pregunta del usuario al consultar.
+- [ ] Implementar `setup()`: lee los documentos fuente desde `docs/company-knowledge-base/` (el corpus listado en tu `CONTEXT-company.md`), los parsea (Markdown, texto plano o el formato indicado en el contexto) y los divide en chunks semánticos coherentes. Cada chunk debe ser una unidad autocontenida — sin cortar frases ni reglas por la mitad.
+- [ ] Implementar `embed(text: str) -> list[float]`: genera un vector para un texto usando un **modelo de embeddings** dedicado — **no** el mismo modelo usado para generación en `query()`. Prefiere el modelo de embeddings gratuito proporcionado por 4Geeks para estudiantes de AI Engineering. La misma función `embed()` se usa para los chunks al indexar y para la pregunta del usuario al consultar.
 - [ ] Crear o recrear la colección de Qdrant de tu empresa (nombre de colección desde `CONTEXT-company.md`). Inserta todos los chunks con:
   - `vector`: salida de `embed(chunk_text)`
   - `payload`: como mínimo `source_document`, `section`, `company`, `language`, `chunk_index` y `text` (cuerpo del chunk para el prompt) — nombres de campo desde `CONTEXT-company.md`
@@ -83,7 +86,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 ### Fase 2 — Pipeline de recuperación y generación (`data/pipelines/`)
 
 - [ ] Implementar `retrieve(query: str, *, k: int = 5, min_score: float) -> list[dict]`: embebe la consulta, busca en Qdrant los k vecinos más cercanos, **filtra** los que queden por debajo de `min_score`, y devuelve los payloads supervivientes (no objetos crudos del SDK de Qdrant).
-- [ ] Implementar `query(question: str) -> str`: la **única** función que deben llamar consumidores externos. Orquesta `retrieve()` → armado del prompt → llamada al LLM de generación → devuelve la respuesta final como string. Si `retrieve()` no devuelve nada por encima del umbral, el modelo debe responder con honestidad (p. ej. que la base de conocimiento no tiene información relevante) — nunca inventar datos de la empresa.
+- [ ] Implementar `query(question: str) -> str`: la **única** función que deben llamar consumidores externos. Orquesta `retrieve()` → armado del prompt → llamada al LLM de **generación** (modelo de chat/completion — no el de embeddings) → devuelve la respuesta final como string. Prefiere el modelo de generación gratuito proporcionado por 4Geeks para estudiantes de AI Engineering. Si `retrieve()` no devuelve nada por encima del umbral, el modelo debe responder con honestidad (p. ej. que la base de conocimiento no tiene información relevante) — nunca inventar datos de la empresa.
 - [ ] El prompt de generación debe instruir al modelo a responder desde la **perspectiva de un vendedor** usando solo el contexto recuperado, según el brief comercial del ticket.
 
 ⚠️ **IMPORTANTE:** Los nombres de campos, nombres de colección, rutas de documentos, IDs de entidad y valores específicos del dominio deben coincidir con `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
@@ -110,17 +113,19 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 ### Fase 6 — Documento de diseño RAG (`docs/rag/`)
 
 - [ ] Crear `docs/rag/rag-design.md` en tu monorepo. Otro desarrollador debe poder leerlo y entender tu stack RAG sin revisar el código.
-- [ ] **Proceso RAG:** describe el flujo de extremo a extremo en tu implementación — desde los documentos fuente pasando por `setup()` → indexación en Qdrant → `retrieve()` al consultar → armado del prompt → LLM de generación → respuesta final. Incluye un diagrama simple o un flujo numerado si ayuda.
+- [ ] **Proceso RAG:** describe el flujo de extremo a extremo en tu implementación — desde los documentos fuente en `docs/company-knowledge-base/` pasando por `setup()` → indexación en Qdrant → `retrieve()` al consultar → armado del prompt → LLM de generación → respuesta final. Incluye un diagrama simple o un flujo numerado si ayuda.
 - [ ] **Estrategia de chunking:** documenta cómo fragmentaste los documentos fuente de tu empresa (p. ej. por nivel de encabezado, sección semántica, tamaño fijo con solapamiento o híbrido). Explica _por qué_ esa estrategia encaja con tu corpus — qué unidades semánticas preservaste, cómo evitaste cortar reglas o condiciones por la mitad, y tamaño aproximado o conteo de chunks por documento.
-- [ ] **Prácticas de embeddings:** indica el modelo de embeddings elegido, por qué es distinto del LLM de generación, y cómo usas `embed()` de forma consistente al indexar y al consultar. Anota la dimensión del vector, la métrica de distancia en Qdrant, tu umbral `min_score` y cómo lo afinaste, y cualquier normalización o preprocesado del texto antes de embeber.
+- [ ] **Prácticas de embeddings:** indica el **modelo de embeddings** y el **modelo de generación** que usaste (deben ser IDs de modelo distintos), confirma que usaste modelos proporcionados por 4Geeks cuando aplique, y explica cómo usas `embed()` de forma consistente al indexar y al consultar. Anota la dimensión del vector, la métrica de distancia en Qdrant, tu umbral `min_score` y cómo lo afinaste, y cualquier normalización o preprocesado del texto antes de embeber.
 
 ---
 
 ## ✅ Lo Que Evaluaremos
 
 - [ ] Las cuatro funciones mínimas (`setup`, `embed`, `retrieve`, `query`) existen, están separadas y cada una tiene una única responsabilidad.
+- [ ] Los documentos fuente viven en `docs/company-knowledge-base/` y son lo que `setup()` indexa.
 - [ ] El chunking respeta unidades semánticas del contenido (no corta a mitad de una idea).
 - [ ] Cada chunk almacenado en Qdrant conserva metadatos de origen recuperables (`source_document`, `section` como mínimo).
+- [ ] `embed()` usa un modelo de embeddings dedicado distinto del modelo de generación usado en `query()`.
 - [ ] `retrieve()` aplica un umbral mínimo de similitud y no siempre fuerza k resultados.
 - [ ] La respuesta final del endpoint es generada por un modelo a partir del contexto recuperado — no es el resultado crudo de la base vectorial.
 - [ ] El endpoint reutiliza la lógica de `data/pipelines/` sin duplicarla.
@@ -138,7 +143,6 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 3. En la descripción del PR, incluye:
    - Una pregunta de ejemplo que haría un vendedor
    - La respuesta que generó tu sistema
-   - Una captura de la UI de consulta mostrando el mismo intercambio
    - El nombre de la colección Qdrant y el conteo de chunks tras `setup()`
    - Un enlace a `docs/rag/rag-design.md` y un resumen de una línea de tu estrategia de chunking
 4. Espera el **sign-off** de tu tech lead antes de considerar el hito cerrado.

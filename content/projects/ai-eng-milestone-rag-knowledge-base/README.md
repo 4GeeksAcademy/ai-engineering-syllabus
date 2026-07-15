@@ -41,7 +41,9 @@ For this milestone you'll work directly with the Qdrant SDK and FastAPI — no o
 
 **Similarity threshold** is the guardrail against irrelevant context. `top-k` alone always returns k chunks even when none are a good match. Apply a minimum score (cosine similarity or the metric your embedding model uses) and return **fewer than k** — or zero — when nothing clears the bar. Forcing bad context into the prompt is worse than admitting you found nothing.
 
-**Two models, two jobs:** the embedding model turns text into vectors for search; the generation LLM turns retrieved context + question into a natural-language answer. Never use the same call for both unless your stack explicitly requires it — they have different latency, cost, and failure modes.
+**Two models, two jobs:** the embedding model turns text into vectors for search; the generation LLM turns retrieved context + question into a natural-language answer. You **must** use a dedicated **embeddings model** for `embed()` — never the same model you call for generation in `query()`. They have different APIs, output shapes, latency, cost, and failure modes.
+
+As an AI Engineering student, use the **models provided by 4Geeks** (included with your student LLM access) for both embeddings and generation — you do not need paid personal API keys for this milestone.
 
 </details>
 
@@ -52,20 +54,21 @@ For this milestone you'll work directly with the Qdrant SDK and FastAPI — no o
 1. Make sure your fork of your company's monorepo is up to date with your work from previous milestones.
 2. Create a new branch for this milestone.
 3. Add Qdrant to `docker-compose.yml` (or use Qdrant Cloud) and confirm connectivity from your Python environment.
-4. Install dependencies with `uv add` — Qdrant client, an embeddings library, your generation LLM SDK, `fastapi`, etc. Never use `pip install` or `pipenv`.
-5. Review `CONTEXT-company.md` and locate the source documents you must index (policies, catalogs, procedures — paths and filenames are company-specific).
+4. Install dependencies with `uv add` — Qdrant client, an embeddings library, your generation LLM SDK, `fastapi`, etc. Never use `pip install` or `pipenv`. Configure the **4Geeks-provided** embedding model and generation model as separate model IDs (and API keys / base URLs in `.env` if required) — never reuse the generation model for embeddings.
+5. Review `CONTEXT-company.md`, copy the company source documents you must index (policies, catalogs, procedures — filenames are company-specific) into `docs/company-knowledge-base/` in your monorepo, and point `setup()` at that folder.
 6. Implement the four functions in the order below: `setup` → `embed` → `retrieve` → `query` → API → UI → tests.
 
 Suggested file layout (names may vary; responsibilities must not):
 
-| Responsibility         | Location (indicative)                  |
-| ---------------------- | -------------------------------------- |
-| Chunking + indexing    | `data/process/rag.py`                  |
-| Retrieval + generation | `data/pipelines/rag.py`                |
-| HTTP endpoint          | `services/routers/` or `services/api/` |
-| Query UI               | `uis/`                                 |
-| Unit tests             | `tests/pipelines/test_rag.py`          |
-| RAG design document    | `docs/rag/rag-design.md`               |
+| Responsibility          | Location (indicative)                  |
+| ----------------------- | -------------------------------------- |
+| Source knowledge corpus | `docs/company-knowledge-base/`         |
+| Chunking + indexing     | `data/process/rag.py`                  |
+| Retrieval + generation  | `data/pipelines/rag.py`                |
+| HTTP endpoint           | `services/routers/` or `services/api/` |
+| Query UI                | `uis/`                                 |
+| Unit tests              | `tests/pipelines/test_rag.py`          |
+| RAG design document     | `docs/rag/rag-design.md`               |
 
 ---
 
@@ -73,8 +76,8 @@ Suggested file layout (names may vary; responsibilities must not):
 
 ### Phase 1 — Data preparation and indexing (`data/process/`)
 
-- [ ] Implement `setup()`: reads the source documents defined in your `CONTEXT-company.md`, parses them (Markdown, plain text, or the format specified in context), and splits them into coherent semantic chunks. Each chunk must be a self-contained unit — no sentence or rule cut in half.
-- [ ] Implement `embed(text: str) -> list[float]`: generates a vector for a single text using an **embedding model** (distinct from the generation LLM). The same function is used for chunks at index time and for the user question at query time.
+- [ ] Implement `setup()`: reads the source documents from `docs/company-knowledge-base/` (the corpus listed in your `CONTEXT-company.md`), parses them (Markdown, plain text, or the format specified in context), and splits them into coherent semantic chunks. Each chunk must be a self-contained unit — no sentence or rule cut in half.
+- [ ] Implement `embed(text: str) -> list[float]`: generates a vector for a single text using a dedicated **embeddings model** — **not** the same model used for generation in `query()`. Prefer the free embeddings model provided by 4Geeks for AI Engineering students. The same `embed()` function is used for chunks at index time and for the user question at query time.
 - [ ] Create or recreate the Qdrant collection for your company (collection name from `CONTEXT-company.md`). Upsert all chunks with:
   - `vector`: output of `embed(chunk_text)`
   - `payload`: at minimum `source_document`, `section`, `company`, `language`, `chunk_index`, and `text` (chunk body for prompt assembly) — field names from `CONTEXT-company.md`
@@ -83,7 +86,7 @@ Suggested file layout (names may vary; responsibilities must not):
 ### Phase 2 — Retrieval and generation pipeline (`data/pipelines/`)
 
 - [ ] Implement `retrieve(query: str, *, k: int = 5, min_score: float) -> list[dict]`: embeds the query, searches Qdrant for the top-k nearest neighbors, **filters out** any hit below `min_score`, and returns the surviving payloads (not raw Qdrant SDK objects).
-- [ ] Implement `query(question: str) -> str`: the **only** function external consumers should call. It orchestrates `retrieve()` → prompt assembly → generation LLM call → returns the final answer string. If `retrieve()` returns nothing above the threshold, the model must still respond honestly (e.g. that the knowledge base has no relevant information) — never invent company facts.
+- [ ] Implement `query(question: str) -> str`: the **only** function external consumers should call. It orchestrates `retrieve()` → prompt assembly → **generation** LLM call (a chat/completion model — not the embeddings model) → returns the final answer string. Prefer the free generation model provided by 4Geeks for AI Engineering students. If `retrieve()` returns nothing above the threshold, the model must still respond honestly (e.g. that the knowledge base has no relevant information) — never invent company facts.
 - [ ] The generation prompt must instruct the model to answer from a **salesperson's perspective** using only the retrieved context, matching the commercial brief in the ticket.
 
 ⚠️ **IMPORTANT:** Field names, collection names, document paths, entity IDs, and domain-specific values must match `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
@@ -110,17 +113,19 @@ Suggested file layout (names may vary; responsibilities must not):
 ### Phase 6 — RAG design document (`docs/rag/`)
 
 - [ ] Create `docs/rag/rag-design.md` in your monorepo. Another developer should be able to read it and understand your RAG stack without digging through the code.
-- [ ] **RAG process:** describe the end-to-end flow in your implementation — from source documents through `setup()` → indexing in Qdrant → `retrieve()` at query time → prompt assembly → generation LLM → final answer. Include a simple diagram or numbered flow if it helps.
+- [ ] **RAG process:** describe the end-to-end flow in your implementation — from source documents in `docs/company-knowledge-base/` through `setup()` → indexing in Qdrant → `retrieve()` at query time → prompt assembly → generation LLM → final answer. Include a simple diagram or numbered flow if it helps.
 - [ ] **Chunking strategy:** document how you split your company's source documents (e.g. by heading level, semantic section, fixed size with overlap, or a hybrid). Explain _why_ that strategy fits your corpus — what semantic units you preserved, how you avoided cutting rules or conditions in half, and approximate chunk size or count per document.
-- [ ] **Embedding practices:** name the embedding model you chose, why it is separate from the generation LLM, and how you use `embed()` consistently at index time and query time. Note vector dimension, distance metric in Qdrant, your `min_score` threshold and how you tuned it, and any normalization or preprocessing applied to text before embedding.
+- [ ] **Embedding practices:** name the **embeddings model** and the **generation model** you used (they must be different model IDs), confirm you used 4Geeks-provided models where applicable, and explain how you use `embed()` consistently at index time and query time. Note vector dimension, distance metric in Qdrant, your `min_score` threshold and how you tuned it, and any normalization or preprocessing applied to text before embedding.
 
 ---
 
 ## ✅ What We Will Evaluate
 
 - [ ] The four minimum functions (`setup`, `embed`, `retrieve`, `query`) exist, are separated, and each has a single responsibility.
+- [ ] Source documents live under `docs/company-knowledge-base/` and are what `setup()` indexes.
 - [ ] Chunking respects semantic units of the content (no chunk cuts an idea in half).
 - [ ] Every chunk stored in Qdrant retains retrievable source metadata (`source_document`, `section` at minimum).
+- [ ] `embed()` uses a dedicated embeddings model different from the generation model used in `query()`.
 - [ ] `retrieve()` applies a minimum similarity threshold and does not always force k results.
 - [ ] The endpoint's final answer is generated by a model from the retrieved context — not the raw vector database result.
 - [ ] The endpoint reuses the logic in `data/pipelines/` without duplicating it.
@@ -138,7 +143,6 @@ Suggested file layout (names may vary; responsibilities must not):
 3. In the PR description, include:
    - One example question a salesperson would ask
    - The answer your system generated
-   - A screenshot of the query UI showing the same exchange
    - The Qdrant collection name and chunk count after `setup()`
    - A link to `docs/rag/rag-design.md` and a one-line summary of your chunking strategy
 4. Wait for your tech lead's **sign-off** before considering the milestone closed.
