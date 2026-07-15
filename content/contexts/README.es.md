@@ -51,5 +51,3 @@ _These instructions are [available in English](./README.md)_.
 ## Colaboradores
 
 Este contenido forma parte del [Programa de Carrera de Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia) de 4Geeks Academy. Este trabajo ha sido creado por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors). Para más información, visite [4GeeksAcademy.com](https://4geeksacademy.com).
-
-Traducción realizada con la versión gratuita del traductor DeepL.com
