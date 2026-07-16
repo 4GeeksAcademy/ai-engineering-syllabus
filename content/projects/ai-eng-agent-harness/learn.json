@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Securing Agents: Harness and Guardrails",
+    "es": "Aseguramiento de Agentes: Harness y Guardrails"
+  },
+  "description": {
+    "en": "Harden your company knowledge-base agent with a multi-layer harness: secure system prompt aligned to CONTEXT, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, structured guardrail logs, and automated jailbreak tests that fail the build if the agent obeys.",
+    "es": "Blindá tu agente de base de conocimientos con un harness multicapa: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, logs estructurados de guardrails y tests automatizados de jailbreak que fallen el build si el agente obedece."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-agent-harness",
+  "coverImage": "ai-coding.svg",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "python",
+    "langgraph",
+    "agents",
+    "rag",
+    "mcp",
+    "prompt-engineering",
+    "security",
+    "testing"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-agent-harness/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-agent-harness/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Securing Agents: Harness and Guardrails with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-agent-harness #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #security",
+      "es": "Acabo de completar Aseguramiento de Agentes: Harness y Guardrails con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-agent-harness #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #security"
+    },
+    {
+      "en": "Built and shipped: Securing Agents: Harness and Guardrails. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-agent-harness #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #security",
+      "es": "Construido y publicado: Aseguramiento de Agentes: Harness y Guardrails. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-agent-harness #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #security"
+    }
+  ]
+}

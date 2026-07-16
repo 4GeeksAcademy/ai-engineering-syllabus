@@ -194,6 +194,9 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 61. **[Servidor MCP: Conectando tu Agente con las Herramientas de la Empresa](./ai-eng-mcp-company-tools)**  
     Expón el Incidents Manager y el inventario de solo lectura como un servidor FastMCP autenticado (API Key, mínimo privilegio, esquemas de discovery, logs de invocación), valídalo con un cliente MCP y migra el agente LangGraph para consumir incidentes vía MCP en lugar de tools HTTP directas.
 
+62. **[Aseguramiento de Agentes: Harness y Guardrails](./ai-eng-agent-harness)**  
+    Cierra el agente de la empresa antes de usuarios reales: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests automatizados de jailbreak — defensas en capas, no un único filtro.
+
 ---
 
 Cada proyecto tiene instrucciones detalladas en su carpeta (`README.md` y, si existe, `README.es.md`). Para empezar, abre la carpeta del proyecto y sigue el README.
