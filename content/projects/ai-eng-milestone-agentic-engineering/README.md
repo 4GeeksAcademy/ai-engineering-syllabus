@@ -39,6 +39,8 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 >
 > I won't accept a memory that grows without limit, that self-edits without the user knowing, or a memory write with no trace of who authorized it.
 
+⚠️ **Disclaimer — Core memory in production:** In a real company, **core memory** is not edited freely by any agent or developer. Changes go through **modification request tickets** and are reviewed/applied by a dedicated team that owns that control chain. **For this project**, that governance path is **omitted on purpose** so the milestone stays viable and achievable — you implement proposal → user confirmation → write/consolidate directly in your agent flow.
+
 ---
 
 ## 🌱 How to Start the Project
