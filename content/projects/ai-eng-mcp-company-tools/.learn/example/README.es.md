@@ -1,6 +1,6 @@
 # Biblioteca Maple Street — Servidor MCP (Ejemplo de Clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-mcp-company-tools`. Misma columna vertebral (servidor FastMCP, auth con API Key, esquemas de discovery, tool de lectura-escritura + tool de solo lectura, rechazo explícito de escritura, logs de invocación, validación con cliente MCP), distinto alcance que el monorepo de la compañía. Continúa la narrativa de Biblioteca Maple Street de ejemplos previos. Los estudiantes siguen el enunciado completo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-mcp-company-tools`. Misma columna vertebral (servidor FastMCP, auth OAuth, esquemas de discovery, tool de lectura-escritura + tool de solo lectura, rechazo explícito de escritura, logs de invocación, validación en MCP Playground), distinto alcance que el monorepo de la compañía. Continúa la narrativa de Biblioteca Maple Street de ejemplos previos. Los estudiantes siguen el enunciado completo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -10,7 +10,7 @@ _These instructions are also available in [English](./README.md)._
 
 El personal de mostrador de **Biblioteca Maple Street** ya consulta préstamos y catálogo desde un agente pequeño. Cualquier otra integración tendría que reimplementar esas mismas llamadas HTTP.
 
-Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **solo lectura** como un **Servidor MCP** independiente (protegido con API Key) y validarlo con un cliente MCP mínimo — sin tocar el monorepo completo de la compañía.
+Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **solo lectura** como un **Servidor MCP** independiente (protegido con OAuth) y validarlo — sin tocar el monorepo completo de la compañía.
 
 ### Nota de alcance
 
@@ -65,7 +65,7 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 ### 1. Servidor MCP (`mcp_server/server.py`)
 
 - [ ] App FastMCP con transporte **stdio**
-- [ ] API Key desde env `MCP_API_KEY` — rechazar listado + invocación sin key válida
+- [ ] Access token OAuth desde env / header Authorization — rechazar listado + invocación sin token válido
 
 ### 2. Tool: `manage_book_loan`
 
@@ -96,8 +96,8 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 
 | Escenario                        | Código                    |
 | -------------------------------- | ------------------------- |
-| Key ausente                      | `AUTH_MISSING_KEY`        |
-| Key inválida                     | `AUTH_INVALID_KEY`        |
+| Token ausente                    | `AUTH_MISSING_TOKEN`      |
+| Token inválido / expirado        | `AUTH_INVALID_TOKEN`      |
 | Intento de escritura en catálogo | `CATALOG_WRITE_FORBIDDEN` |
 | Input inválido                   | `VALIDATION_ERROR`        |
 
@@ -107,7 +107,7 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 
 ### 6. Cliente MCP (`scripts/mcp_client_demo.py`)
 
-- [ ] Conectar con API Key válida
+- [ ] Conectar con access token OAuth válido
 - [ ] Listar tools — comprobar nombres + descripciones
 - [ ] Ejecutar: crear préstamo → consultar estado → consulta catálogo → intento de escritura en catálogo (esperar `CATALOG_WRITE_FORBIDDEN`)
 
@@ -116,7 +116,7 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 ## Verificar juntos
 
 - [ ] Servidor arranca; cliente lista dos tools vía discovery
-- [ ] Cliente sin key no puede listar tools
+- [ ] Cliente sin token no puede listar tools
 - [ ] `manage_book_loan` create + `get_status` devuelve campos esperados
 - [ ] `query_catalog` devuelve `copies_available` para ISBN conocido
 - [ ] Intento de escritura en catálogo falla con `CATALOG_WRITE_FORBIDDEN` (no error genérico)

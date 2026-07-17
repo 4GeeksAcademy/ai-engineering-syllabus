@@ -8,8 +8,8 @@ Reference quality bar for the student's company monorepo fork. Values below are 
 
 ```mermaid
 flowchart TD
-  EXT[External MCP client] -->|API Key| MCP[MCP Server — FastMCP]
-  AGENT[LangGraph support agent] -->|MCP client| MCP
+  EXT[External MCP client] -->|OAuth access token| MCP[MCP Server — FastMCP]
+  AGENT[LangGraph support agent] -->|langchain-mcp-adapters| MCP
   MCP -->|create / update / status| INC[Incidents Manager API]
   MCP -->|read-only queries| INV[Inventory API]
   MCP -->|write attempt| DENY[Explicit rejection — inventory]
@@ -20,29 +20,29 @@ flowchart TD
 
 1. MCP tools call **live HTTP endpoints** on services the student already built — never mocked operational data inside the MCP service.
 2. Inventory exposure is **read-only by design** — write attempts return a distinct authorization error, not a missing tool.
-3. API Key auth gates **discovery and invocation** — unauthenticated clients cannot list tools.
-4. The support agent has **one path** to incidents: through the MCP client node, not a parallel direct HTTP tool.
+3. OAuth auth gates **discovery and invocation** — unauthenticated clients cannot list tools.
+4. The support agent has **one path** to incidents: through the MCP client node (`langchain-mcp-adapters`), not a parallel direct HTTP tool.
 
 ---
 
 ## Recommended service layout
 
-| Path (indicative)                        | Responsibility                                                      |
-| ---------------------------------------- | ------------------------------------------------------------------- |
-| `services/mcp-server/`                   | FastMCP app, tool definitions, auth middleware, invocation logging  |
-| `services/mcp-server/tools/incidents.py` | Ticket create, update, status lookup                                |
-| `services/mcp-server/tools/inventory.py` | Read-only inventory queries + explicit write rejection              |
-| `services/mcp-server/auth.py`            | API Key validation, client identity for logs                        |
-| `services/agent/` (existing)             | LangGraph graph with MCP client node replacing direct incident tool |
+| Path (indicative)                        | Responsibility                                                     |
+| ---------------------------------------- | ------------------------------------------------------------------ |
+| `services/mcp-server/`                   | FastMCP app, tool definitions, auth middleware, invocation logging |
+| `services/mcp-server/tools/incidents.py` | Ticket create, update, status lookup                               |
+| `services/mcp-server/tools/inventory.py` | Read-only inventory queries + explicit write rejection             |
+| `services/mcp-server/auth.py`            | OAuth token validation, client identity for logs                   |
+| `services/agent/` (existing)             | LangGraph graph with MCP tools via `langchain-mcp-adapters`        |
 
 ---
 
 ## Transport decision (document in PR)
 
-| Transport           | When to choose                                               | Auth implication                                                 |
-| ------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------- |
-| **stdio**           | Local dev, single process, agent spawns server as subprocess | Key via env var / header in wrapper                              |
-| **Streamable HTTP** | Remote clients, multiple teams, external partners            | API Key on every HTTP request; server runs as standalone service |
+| Transport           | When to choose                                               | Auth implication                                                            |
+| ------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| **stdio**           | Local dev, single process, agent spawns server as subprocess | Token via env / Authorization header in wrapper                             |
+| **Streamable HTTP** | Remote clients, multiple teams, external partners            | OAuth bearer token on every HTTP request; server runs as standalone service |
 
 Students must justify their choice in the PR description.
 
@@ -53,7 +53,7 @@ Students must justify their choice in the PR description.
 ### Discovery contract (indicative)
 
 - **Name:** `manage_incident_ticket`
-- **Description:** Create, update, or query status of an incident ticket in the company Incidents Manager. Requires valid API Key.
+- **Description:** Create, update, or query status of an incident ticket in the company Incidents Manager. Requires a valid OAuth access token.
 - **Input schema:** `ticket_id`, `action` (`create` \| `update` \| `get_status`), payload fields aligned with `CONTEXT-company.md`. For `update`, send only the target `status` — the Incidents Manager validates lifecycle transitions.
 - **Output schema:** Structured ticket fields or explicit error with code.
 
@@ -95,8 +95,8 @@ This must be a **distinct** error from auth failures and validation errors.
 
 | Scenario                | Code (indicative)           | HTTP / MCP behavior               |
 | ----------------------- | --------------------------- | --------------------------------- |
-| Missing API Key         | `AUTH_MISSING_KEY`          | Reject before tool list or invoke |
-| Invalid API Key         | `AUTH_INVALID_KEY`          | Reject with 401-equivalent        |
+| Missing OAuth token     | `AUTH_MISSING_TOKEN`        | Reject before tool list or invoke |
+| Invalid / expired token | `AUTH_INVALID_TOKEN`        | Reject with 401-equivalent        |
 | Inventory write attempt | `INVENTORY_WRITE_FORBIDDEN` | Reject with 403-equivalent        |
 | Invalid tool input      | `VALIDATION_ERROR`          | Reject with field-level detail    |
 
@@ -125,10 +125,10 @@ Every tool call should emit a structured log entry:
 
 Expected graph change:
 
-| Before                                                     | After                                                    |
-| ---------------------------------------------------------- | -------------------------------------------------------- |
-| `lookup_ticket` node calls Incidents Manager HTTP directly | `mcp_incidents` node calls MCP Server via MCP client SDK |
-| Direct incident tool in tool registry                      | Removed or deprecated — single path only                 |
+| Before                                                     | After                                                     |
+| ---------------------------------------------------------- | --------------------------------------------------------- |
+| `lookup_ticket` node calls Incidents Manager HTTP directly | `mcp_incidents` tools loaded via `langchain-mcp-adapters` |
+| Direct incident tool in tool registry                      | Removed or deprecated — single path only                  |
 
 Conditional routing between RAG and tools must remain unchanged in behavior.
 
@@ -136,22 +136,21 @@ Conditional routing between RAG and tools must remain unchanged in behavior.
 
 ## MCP client validation
 
-Provide a small client script (TypeScript or Python) that:
+First validate in [MCP Playground](https://www.mcpplayground.tech/playground), then ensure the LangGraph agent connects with a valid OAuth access token and:
 
-1. Connects with a valid API Key.
-2. Lists tools via MCP discovery and asserts schemas are present.
-3. Runs one full flow per tool (ticket create/update/status, inventory query).
-4. Demonstrates inventory write rejection with the expected error code.
+1. Lists tools via MCP discovery and asserts schemas are present.
+2. Runs one full flow per tool (ticket create/update/status, inventory query).
+3. Demonstrates inventory write rejection with the expected error code.
 
 ---
 
 ## Submission checklist
 
-- [ ] FastMCP server under `services/` with API Key auth on discovery + invoke.
+- [ ] FastMCP server under `services/` with OAuth auth on discovery + invoke.
 - [ ] Incident ticket tool: create, status update via `/status`, lookup against real Incidents Manager.
 - [ ] Inventory tool: read queries work; writes return `INVENTORY_WRITE_FORBIDDEN`.
 - [ ] Tool descriptions and schemas self-explanatory via MCP discovery.
 - [ ] Distinct error codes for auth, authorization, and validation.
 - [ ] Structured log per tool invocation (client, tool, result).
-- [ ] Agent graph migrated: MCP client replaces direct incident tool.
-- [ ] PR documents transport choice and includes client validation evidence.
+- [ ] Agent graph migrated: `langchain-mcp-adapters` replaces direct incident tool.
+- [ ] PR documents transport choice and includes Playground + agent validation evidence.

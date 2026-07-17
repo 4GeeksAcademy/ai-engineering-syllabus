@@ -17,13 +17,13 @@ _These instructions are [available in English](./README.md)._
 
 Un MCP Server expone las capacidades de un sistema (herramientas, recursos, prompts) mediante un protocolo estándar que cualquier agente compatible puede descubrir y consumir, sin acoplarse al código interno de tu backend. A diferencia de las tools que ya conectaste directamente al grafo de tu agente, un MCP Server puede ser reutilizado por múltiples clientes — otros agentes, otros equipos, otras compañías del ecosistema — siempre que se autentiquen correctamente. Por eso la autenticación y el principio de mínimo privilegio no son un detalle: un servidor MCP sin auth es una vulnerabilidad real desde el primer día.
 
-Tu agente ya sabe llamar herramientas directamente. Ahora tu tech lead ha abierto un **ticket** pidiendo que esas capacidades dejen de estar hardcodeadas dentro del grafo y se expongan como un servicio independiente, reutilizable y protegido por API Key — y que el propio agente deje de llamar al Incidents Manager de forma directa para consumirlo a través del servidor MCP.
+Tu agente ya sabe llamar herramientas directamente. Ahora tu tech lead ha abierto un **ticket** pidiendo que esas capacidades dejen de estar hardcodeadas dentro del grafo y se expongan como un servicio independiente, reutilizable y protegido por **OAuth** — y que el propio agente deje de llamar al Incidents Manager de forma directa para consumirlo a través del servidor MCP.
 
 > **De:** Tu tech lead
 > **Para:** Tu squad
 > **Asunto:** RFP — Servidor MCP para herramientas de la compañía
 >
-> El agente que construimos ya consulta el Incidents Manager desde dentro del grafo, pero cualquier integración futura (otro agente, otro equipo, un partner externo) tendría que reimplementar esas mismas llamadas. Necesitamos exponerlas como un **MCP Server** independiente, autenticado con API Key, para que cualquier cliente MCP autorizado pueda:
+> El agente que construimos ya consulta el Incidents Manager desde dentro del grafo, pero cualquier integración futura (otro agente, otro equipo, un partner externo) tendría que reimplementar esas mismas llamadas. Necesitamos exponerlas como un **MCP Server** independiente, autenticado con **OAuth**, para que cualquier cliente MCP autorizado pueda:
 >
 > - Gestionar tickets del Incidents Manager (crear, actualizar, consultar estado).
 > - Consultar —**nunca editar**— los datos del inventario.
@@ -58,15 +58,16 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 **Servidor MCP**
 
 - [ ] Implementar el MCP Server en Python usando FastMCP (u otro SDK MCP equivalente).
+- [ ] **Implementar autenticación OAuth** para asegurar el MCP Server — el acceso sin autenticar debe rechazarse.
 - [ ] Exponer al menos una tool para gestionar tickets del Incidents Manager (crear, actualizar y consultar estado).
 - [ ] Exponer al menos una tool de **solo consulta** sobre el inventario — cualquier intento de modificación debe ser rechazado explícitamente por el servidor, no simplemente omitido.
 - [ ] Documentar cada tool con nombre, descripción y esquema de entrada/salida suficientes para que un agente externo la descubra sin contexto humano adicional (`--help`-equivalente vía discovery de MCP).
 
-⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores de dominio en tu implementación deben coincidir con las APIs de incidencias e inventario que ya construiste. Una implementación genérica que ignore tus servicios existentes no será aceptada. Los cambios de estado deben pasar por el endpoint de ciclo de vida del Incidents Manager (`PATCH /api/incidents/{id}/status`), no por un `PATCH` genérico sobre el recurso de incidencia.
+⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores de dominio en tu implementación deben coincidir con las APIs de incidencias e inventario que ya construiste. Una implementación genérica que ignore tus servicios existentes no será aceptada. Los cambios de estado deben pasar por el endpoint de ciclo de vida del Incidents Manager (`PATCH /api/incidents/{id}/status`), no por un `PATCH` genérico sobre el recurso de incidencia. Un MCP Server sin autenticación OAuth no será aceptado.
 
 **Autenticación y seguridad**
 
-- [ ] Proteger el servidor con autenticación mediante API Key — ningún cliente sin key válida puede listar ni invocar tools.
+- [ ] Proteger el servidor con autenticación **OAuth** — ningún cliente sin access token válido puede listar ni invocar tools. Esto es obligatorio: el MCP Server no debe exponer herramientas de la compañía sin auth.
 - [ ] Aplicar el principio de mínimo privilegio: cada tool solo tiene acceso a los datos y operaciones que necesita para cumplir su función.
 - [ ] Definir y documentar los códigos de error y de salida esperados ante fallos de autenticación, autorización o validación (no un genérico "error").
 - [ ] Registrar en logs cada invocación de tool (qué tool, qué cliente, qué resultado) para trazabilidad.
@@ -87,7 +88,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 ## ✅ Qué Vamos a Evaluar
 
 - [ ] El servidor MCP levanta correctamente y expone sus tools mediante el mecanismo de discovery estándar de MCP.
-- [ ] Un cliente sin API Key válida no puede listar ni ejecutar ninguna tool.
+- [ ] Un cliente sin access token OAuth válido no puede listar ni ejecutar ninguna tool.
 - [ ] La tool de gestión de tickets crea, actualiza el estado vía `PATCH /api/incidents/{id}/status` y consulta contra el Incidents Manager real de la compañía.
 - [ ] La tool de inventario responde correctamente a consultas y rechaza explícitamente cualquier operación de escritura.
 - [ ] Cada tool tiene una descripción y un esquema claros, verificables desde el propio discovery del servidor sin leer el código fuente.

@@ -1,6 +1,6 @@
 # Maple Street Library — MCP Server (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-mcp-company-tools`. Same spine (FastMCP server, API Key auth, discovery schemas, read-write + read-only tools, explicit write rejection, invocation logs, MCP client validation), different scope than the company monorepo. Builds on the Maple Street Library narrative from prior class examples. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-mcp-company-tools`. Same spine (FastMCP server, OAuth auth, discovery schemas, read-write + read-only tools, explicit write rejection, invocation logs, MCP Playground validation), different scope than the company monorepo. Builds on the Maple Street Library narrative from prior class examples. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -10,7 +10,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 **Maple Street Library** desk staff already query loans and the catalog from inside a small agent. Any other integration would have to reimplement those same HTTP calls.
 
-Your live demo goal: expose loan management and **read-only** catalog lookup as an independent **MCP Server** (API Key protected) and validate it with a tiny MCP client — without touching the full company monorepo.
+Your live demo goal: expose loan management and **read-only** catalog lookup as an independent **MCP Server** (OAuth protected) and validate it — without touching the full company monorepo.
 
 ### Scope note
 
@@ -65,7 +65,7 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 ### 1. MCP Server (`mcp_server/server.py`)
 
 - [ ] FastMCP app with **stdio** transport
-- [ ] API Key from env `MCP_API_KEY` — reject list + invoke without valid key
+- [ ] OAuth access token from env / Authorization header — reject list + invoke without valid token
 
 ### 2. Tool: `manage_book_loan`
 
@@ -96,8 +96,8 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 
 | Scenario              | Code                      |
 | --------------------- | ------------------------- |
-| Missing key           | `AUTH_MISSING_KEY`        |
-| Invalid key           | `AUTH_INVALID_KEY`        |
+| Missing token         | `AUTH_MISSING_TOKEN`      |
+| Invalid / expired     | `AUTH_INVALID_TOKEN`      |
 | Catalog write attempt | `CATALOG_WRITE_FORBIDDEN` |
 | Bad input             | `VALIDATION_ERROR`        |
 
@@ -107,7 +107,7 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 
 ### 6. MCP client (`scripts/mcp_client_demo.py`)
 
-- [ ] Connect with valid API Key
+- [ ] Connect with valid OAuth access token
 - [ ] List tools — assert names + descriptions present
 - [ ] Run: create loan → get status → catalog query → catalog write attempt (expect `CATALOG_WRITE_FORBIDDEN`)
 
@@ -116,7 +116,7 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 ## Verify together
 
 - [ ] Server starts; client lists two tools via discovery
-- [ ] Client without key cannot list tools
+- [ ] Client without token cannot list tools
 - [ ] `manage_book_loan` create + `get_status` returns expected fields
 - [ ] `query_catalog` returns `copies_available` for known ISBN
 - [ ] Catalog write attempt fails with `CATALOG_WRITE_FORBIDDEN` (not generic error)
