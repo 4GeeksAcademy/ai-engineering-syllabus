@@ -28,7 +28,7 @@
   "translations": ["es", "en"],
   "projectType": "project",
   "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3836"
   },
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-agentic-engineering/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-engineering/.learn/preview.png",
