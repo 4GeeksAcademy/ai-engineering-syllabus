@@ -1,0 +1,45 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 8 — Agent Memory and Self-Improvement",
+    "es": "Hito 8 — Memoria y Auto-mejora de Agentes"
+  },
+  "description": {
+    "en": "Extend your guarded LangGraph company agent with persistent memory: choose a backend, expose an explicit read/write interface, self-evaluate with structured memory_proposal output, require classified user confirmation before writes, keep one pending proposal at a time, audit every decision, and consolidate/cleanup so memory cannot grow without control — aligned to CONTEXT forbidden/memorable facts.",
+    "es": "Extiende tu agente LangGraph de empresa (ya con guardrails) con memoria persistente: elige un backend, expón una interfaz explícita de lectura/escritura, auto-evalúa con salida estructurada memory_proposal, exige confirmación clasificada del usuario antes de escribir, mantén una sola propuesta pendiente, audita cada decisión y consolida/limpia para que la memoria no crezca sin control — alineado a los hechos prohibidos/memorables del CONTEXT."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-agentic-engineering",
+  "coverImage": "ai-coding.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "langgraph",
+    "agents",
+    "memory",
+    "rag",
+    "mcp",
+    "structured-output",
+    "redis",
+    "testing"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-agentic-engineering/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-engineering/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 8 — Agent Memory and Self-Improvement with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-engineering #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #memory",
+      "es": "Acabo de completar Hito 8 — Memoria y Auto-mejora de Agentes con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-engineering #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #memory"
+    },
+    {
+      "en": "Built and shipped: Milestone 8 — Agent Memory and Self-Improvement. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-engineering #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #memory",
+      "es": "Construido y publicado: Hito 8 — Memoria y Auto-mejora de Agentes. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-engineering #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #memory"
+    }
+  ]
+}

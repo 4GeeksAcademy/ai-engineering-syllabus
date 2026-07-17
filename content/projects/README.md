@@ -197,6 +197,9 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 62. **[Securing Agents: Harness and Guardrails](./ai-eng-agent-harness)**  
     Lock down the company agent before real users: CONTEXT-aligned secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and automated jailbreak tests — layered defenses, not a single filter.
 
+63. **[Milestone 8 — Agent Memory and Self-Improvement](./ai-eng-milestone-agentic-engineering)**  
+    Extend the guarded LangGraph company agent with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes.
+
 ---
 
 Each project has detailed instructions in its folder (`README.md` and, if present, `README.es.md`). To get started, open the project folder and follow the README.
