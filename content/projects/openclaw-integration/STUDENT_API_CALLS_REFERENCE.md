@@ -25,7 +25,7 @@ Use in-file search (**Ctrl+F** / **Cmd+F**) on the left-column keyword to jump q
 | 📚 Registry             | Lessons, exercises, technologies  |
 | 📅 Events               | Events                            |
 | 📋 Enumerations         | Statuses and types                |
-| 🔗 Docs and resources   | Swagger, OpenAPI, and more        |
+| 📖 Mini glossary        | Endpoint, query, slug, asset      |
 
 ---
 
@@ -232,23 +232,7 @@ Prefer caching stable responses and avoiding bursts of identical requests; exact
 
 ---
 
-## 🔗 Documentation and extra resources
-
-### Live exploration
-
-| Resource                        | Link                                                                                             |
-| ------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 📖 **Swagger (interactive)**    | [https://breathecode.herokuapp.com/swagger/](https://breathecode.herokuapp.com/swagger/)         |
-| 🔧 **OpenAPI (machine schema)** | [https://breathecode.herokuapp.com/openapi.json](https://breathecode.herokuapp.com/openapi.json) |
-
-For JSON field details, error codes, and request/response bodies, use those links. If your cohort shares a **STUDENT_API_REFERENCE.md** with runnable examples, use it as a companion.
-
-### More material
-
-- 📄 **Extended reference** — Ask your instructor for course material **STUDENT_API_REFERENCE.md** if it is available.
-- 🤖 **Agent integration** — In the AI Engineering syllabus repository you can search for `OPENCLAW_BREATHECODE_*` guides as inspiration for working with OpenClaw.
-
-### Mini glossary
+## 📖 Mini glossary
 
 | Term         | Quick meaning                                                     |
 | ------------ | ----------------------------------------------------------------- |

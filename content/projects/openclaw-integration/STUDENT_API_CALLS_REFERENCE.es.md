@@ -13,19 +13,19 @@ Este documento resume los endpoints orientados a estudiantes de **4Geeks Academy
 
 Usa búsqueda en el archivo (**Ctrl+F** / **Cmd+F**) con la palabra clave de la columna izquierda si quieres saltar rápido.
 
-| Sección                     | De qué va                          |
-| --------------------------- | ---------------------------------- |
-| 🔐 Autenticación            | Token y rutas públicas             |
-| 🌐 Base URL                 | Dónde vive la API                  |
-| 🎯 Parámetros esenciales    | `academy_id`, `cohort_id`, slug    |
-| 🎓 Admissions               | Tú, cohortes, syllabus             |
-| ✅ Assignments              | Tareas y entregas                  |
-| 🏆 Certificates             | Certificados                       |
-| 📊 Activity                 | Tu actividad y la del cohorte      |
-| 📚 Registry                 | Lecciones, ejercicios, tecnologías |
-| 📅 Events                   | Eventos                            |
-| 📋 Enumeraciones            | Estados y tipos                    |
-| 🔗 Documentación y recursos | Swagger, OpenAPI y más             |
+| Sección                  | De qué va                          |
+| ------------------------ | ---------------------------------- |
+| 🔐 Autenticación         | Token y rutas públicas             |
+| 🌐 Base URL              | Dónde vive la API                  |
+| 🎯 Parámetros esenciales | `academy_id`, `cohort_id`, slug    |
+| 🎓 Admissions            | Tú, cohortes, syllabus             |
+| ✅ Assignments           | Tareas y entregas                  |
+| 🏆 Certificates          | Certificados                       |
+| 📊 Activity              | Tu actividad y la del cohorte      |
+| 📚 Registry              | Lecciones, ejercicios, tecnologías |
+| 📅 Events                | Eventos                            |
+| 📋 Enumeraciones         | Estados y tipos                    |
+| 📖 Glosario mini         | Endpoint, query, slug, asset       |
 
 ---
 
@@ -232,23 +232,7 @@ Conviene cachear respuestas estables y evitar ráfagas de peticiones idénticas;
 
 ---
 
-## 🔗 Documentación y recursos extra
-
-### Exploración en vivo
-
-| Recurso                             | Enlace                                                                                           |
-| ----------------------------------- | ------------------------------------------------------------------------------------------------ |
-| 📖 **Swagger (prueba interactiva)** | [https://breathecode.herokuapp.com/swagger/](https://breathecode.herokuapp.com/swagger/)         |
-| 🔧 **OpenAPI (esquema máquina)**    | [https://breathecode.herokuapp.com/openapi.json](https://breathecode.herokuapp.com/openapi.json) |
-
-Para el detalle de cada propiedad del JSON, códigos de error y cuerpos de petición/respuesta, usa esos enlaces. Si tu cohorte comparte un **STUDENT_API_REFERENCE.md** con ejemplos ejecutables, úsalo como complemento.
-
-### Más material
-
-- 📄 **Referencia extendida** — Pide a tu instructor el material **STUDENT_API_REFERENCE.md** del curso si está disponible.
-- 🤖 **Integración con agentes** — En el repositorio del syllabus de Ingeniería de IA puedes buscar guías `OPENCLAW_BREATHECODE_*` como inspiración para conversar con OpenClaw.
-
-### Glosario mini
+## 📖 Glosario mini
 
 | Término      | Significado rápido                                                                |
 | ------------ | --------------------------------------------------------------------------------- |
