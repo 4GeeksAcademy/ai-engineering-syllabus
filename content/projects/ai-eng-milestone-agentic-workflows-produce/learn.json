@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 9 — Agentic Workflow Generation (Part 3 of 3): Approval & Document Completion",
+    "es": "Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 3 de 3): Aprobación y Cierre del Documento"
+  },
+  "description": {
+    "en": "Close the agentic RFP workflow: human-in-the-loop interrupt/resume per department with checkpointer, scoped pauses so departments do not block each other, arbitration + iteration limits, full node traceability, and automatic final-document synthesis once all approvals land — end-to-end continuity from Parts 1–2.",
+    "es": "Cierra el flujo agéntico de RFPs: interrupt/resume human-in-the-loop por departamento con checkpointer, pausas acotadas para no bloquear otras ramas, arbitraje + límite de iteraciones, trazabilidad por nodo, y síntesis automática del documento final cuando todas las aprobaciones llegan — continuidad extremo a extremo desde las Partes 1–2."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-agentic-workflows-produce",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "langgraph",
+    "agents",
+    "human-in-the-loop",
+    "checkpointer",
+    "interrupt",
+    "tracing",
+    "testing"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=0"
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-agentic-workflows-produce/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-produce/.learn/approval-document-completion.jpg",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 9 Part 3 — Approval & Document Completion with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-produce #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
+      "es": "Acabo de completar Hito 9 Parte 3 — Aprobación y Cierre del Documento con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-produce #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
+    },
+    {
+      "en": "Built and shipped: Milestone 9 Part 3 — Agentic Workflow Produce. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-produce #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
+      "es": "Construido y publicado: Hito 9 Parte 3 — Producción del documento agéntico. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-produce #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 9 — Agentic Workflow Generation (Part 2 of 3): RFP Response Generation",
+    "es": "Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 2 de 3): Generación de Respuestas a RFPs"
+  },
+  "description": {
+    "en": "Build Part 2 of the agentic RFP workflow: per-department generator agents from Part 1 summaries, parallel evaluators for readability/relevance/CONTEXT guidelines, a bounded generator-evaluator loop, and ticket status updates through drafting and under_evaluation — handoff to Part 3 with content + evaluation results.",
+    "es": "Construye la Parte 2 del flujo agéntico de RFPs: generadores por departamento desde los resúmenes de la Parte 1, evaluadores en paralelo (legibilidad/pertinencia/lineamientos del CONTEXT), ciclo generador-evaluador con límite de iteraciones, y estados de ticket drafting/under_evaluation — handoff a la Parte 3 con contenido + resultados de evaluación."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-agentic-workflows-evaluate",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "langgraph",
+    "agents",
+    "generator-evaluator",
+    "readability",
+    "evaluation",
+    "testing"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=0"
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate/.learn/departmental-mapping-deliverable-finalization.jpg",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 9 Part 2 — RFP Response Generation with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
+      "es": "Acabo de completar Hito 9 Parte 2 — Generación de Respuestas a RFPs con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
+    },
+    {
+      "en": "Built and shipped: Milestone 9 Part 2 — Agentic Workflow RFP Evaluation. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
+      "es": "Construido y publicado: Hito 9 Parte 2 — Evaluación agéntica de respuestas RFP. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
+    }
+  ]
+}
