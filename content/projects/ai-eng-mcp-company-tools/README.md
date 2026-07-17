@@ -1,15 +1,11 @@
 # MCP Server: Connecting Your Agent to the Company's Tools
 
-<!-- hide -->
-
 By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
 
-[![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
-[![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
+[build by developers](https://4geeks.com)
+[4Geeks Academy](https://x.com/4geeksacademy)
 
 _Estas instrucciones están [disponibles en español](./README.es.md)._
-
-<!-- endhide -->
 
 ---
 
@@ -43,7 +39,7 @@ As part of the challenge, your implementation must resolve — without being tol
 - Which transport to use (stdio vs. Streamable HTTP) depending on whether the server is consumed locally or by multiple remote clients, and what that choice implies for authentication.
 - How to structure the permission system so the inventory tool is, by design, read-only — it's not enough to simply "not implement" the write endpoint; the server must explicitly reject any attempt.
 - What information to expose in discovery (tool names, descriptions, and schemas) so an external agent, with no prior human context, understands what it can and cannot do.
-- How to replace, inside the agent's graph, the node that called the Incidents Manager directly with a node that acts as an MCP client — without breaking the existing routing between RAG and tools.
+- How to replace, inside the agent's graph, the node that called the Incidents Manager directly with tools from the MCP Server via `langchain-mcp-adapters` — without breaking the existing routing between RAG and tools.
 
 ---
 
@@ -51,7 +47,7 @@ As part of the challenge, your implementation must resolve — without being tol
 
 1. Go to your copy of the [company monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (if you don't have your own fork yet, create one before continuing).
 2. Work on top of the Incidents Manager backend and the inventory module you already built in previous milestones — the MCP Server relies on those services, it doesn't replace them.
-3. Install the dependencies you need with `uv add` (e.g., `fastmcp`) — never use `pip install` directly in this monorepo.
+3. Install the dependencies you need with `uv add` (e.g., `fastmcp`, `langchain-mcp-adapters`) — never use `pip install` directly in this monorepo.
 4. Create the MCP server inside `services/`, following the structure of the rest of the backend services.
 5. Locate the agent node that currently calls the Incidents Manager directly — that's the point you'll migrate so it consumes the new MCP Server as a client instead of calling the API outside of it.
 
@@ -75,14 +71,14 @@ As part of the challenge, your implementation must resolve — without being tol
 - [ ] Define and document the expected error and exit codes for authentication, authorization, or validation failures (not a generic "error").
 - [ ] Log every tool invocation (which tool, which client, what result) for traceability.
 
-**Client and validation**
+**Validation (MCP Playground)**
 
-- [ ] Build or configure an MCP client (TypeScript or the corresponding language) that connects to the server and runs at least one complete flow per exposed tool.
+- [ ] First, test your MCP server in [MCP Playground](https://www.mcpplayground.tech/playground): enter the server URL, connect, and run at least one complete flow per exposed tool.
 - [ ] Test and document the server's behavior when a write attempt is made on the inventory tool (it must fail in a controlled, explainable way).
 
 **Agent migration**
 
-- [ ] Replace, inside the graph of the agent you already built, the node that called the Incidents Manager directly with an MCP client that consumes the new server.
+- [ ] Connect the LangGraph agent you already built to the MCP Server using [`langchain-mcp-adapters`](https://github.com/langchain-ai/langchain-mcp-adapters): replace the node that called the Incidents Manager directly with tools loaded from the MCP Server.
 - [ ] Remove (or explicitly deprecate and stop using) the previous direct tool implementation — the agent must not have two possible paths to the Incidents Manager.
 - [ ] Confirm that the existing routing between RAG and tools still works the same as before, now with the new MCP client node in place of the previous one.
 

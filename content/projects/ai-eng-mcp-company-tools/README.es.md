@@ -1,15 +1,11 @@
 # Servidor MCP: Conectando tu Agente con las Herramientas de la Empresa
 
-<!-- hide -->
-
 Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
 
-[![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
-[![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
+[build by developers](https://4geeks.com)
+[4Geeks Academy](https://x.com/4geeksacademy)
 
 _These instructions are [available in English](./README.md)._
-
-<!-- endhide -->
 
 ---
 
@@ -43,7 +39,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 - Qué transporte usar (stdio vs. Streamable HTTP) según si el servidor se consume localmente o por múltiples clientes remotos, y qué implica esa elección para la autenticación.
 - Cómo estructurar el sistema de permisos para que la tool de inventario sea, por diseño, de solo lectura — no basta con "no implementar" el endpoint de escritura, el servidor debe rechazar explícitamente cualquier intento.
 - Qué información exponer en el discovery (nombres, descripciones y esquemas de las tools) para que un agente externo, sin contexto humano previo, entienda qué puede y qué no puede hacer.
-- Cómo reemplazar, dentro del grafo del agente, el nodo que llamaba directamente al Incidents Manager por un nodo que actúa como cliente MCP — sin romper el enrutamiento entre RAG y tools que ya tenías funcionando.
+- Cómo reemplazar, dentro del grafo del agente, el nodo que llamaba directamente al Incidents Manager por tools del MCP Server vía `langchain-mcp-adapters` — sin romper el enrutamiento entre RAG y tools que ya tenías funcionando.
 
 ---
 
@@ -51,7 +47,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 1. Ubícate en tu copia del [monorepo de la compañía](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (si aún no tienes tu propio fork, créalo antes de continuar).
 2. Trabaja sobre el backend del Incidents Manager y del módulo de inventario que ya construiste en hitos anteriores — el MCP Server se apoya en esos servicios, no los reemplaza.
-3. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`) — nunca uses `pip install` directamente en este monorepo.
+3. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`, `langchain-mcp-adapters`) — nunca uses `pip install` directamente en este monorepo.
 4. Crea el servidor MCP dentro de `services/`, siguiendo la estructura del resto de servicios del backend.
 5. Ubica el nodo del agente que hoy llama directamente al Incidents Manager — es el punto que vas a migrar para que consuma el nuevo MCP Server como cliente en lugar de llamar la API por fuera de él.
 
@@ -75,14 +71,14 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 - [ ] Definir y documentar los códigos de error y de salida esperados ante fallos de autenticación, autorización o validación (no un genérico "error").
 - [ ] Registrar en logs cada invocación de tool (qué tool, qué cliente, qué resultado) para trazabilidad.
 
-**Cliente y validación**
+**Validación (MCP Playground)**
 
-- [ ] Construir o configurar un cliente MCP (TypeScript o el lenguaje que corresponda) que se conecte al servidor y ejecute al menos un flujo completo por cada tool expuesta.
+- [ ] Primero, prueba tu servidor MCP en [MCP Playground](https://www.mcpplayground.tech/playground): introduce la URL del servidor, conéctate y ejecuta al menos un flujo completo por cada tool expuesta.
 - [ ] Probar y documentar el comportamiento del servidor ante un intento de escritura sobre la tool de inventario (debe fallar de forma controlada y explicable).
 
 **Migración del agente**
 
-- [ ] Reemplazar, dentro del grafo del agente ya construido, el nodo que llamaba directamente al Incidents Manager por un cliente MCP que consume el nuevo servidor.
+- [ ] Conectar el agente LangGraph que ya construiste al MCP Server usando [`langchain-mcp-adapters`](https://github.com/langchain-ai/langchain-mcp-adapters): reemplaza el nodo que llamaba directamente al Incidents Manager por tools cargadas desde el MCP Server.
 - [ ] Eliminar (o dejar explícitamente deprecada y sin uso) la implementación anterior de la tool directa — el agente no debe tener dos caminos posibles hacia el Incidents Manager.
 - [ ] Confirmar que el enrutamiento existente entre RAG y tools sigue funcionando igual que antes, ahora con el nuevo nodo cliente MCP en el lugar del anterior.
 
