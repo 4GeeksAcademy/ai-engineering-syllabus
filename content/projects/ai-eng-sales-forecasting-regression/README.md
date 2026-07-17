@@ -7,11 +7,11 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
 
-_Estas instrucciones están [disponibles en español](./README.es.md)._
+_These instructions are [available in Spanish](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** before writing any code — it documents what each column means and the seasonality pattern of your company's historical sales, which is already included as a CSV in `data/raw/`.
+**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** before writing any code — it documents what each column means and the seasonality pattern of your company's historical sales, which is already included as a CSV in `content/contexts/sales-forecasting/<company>/<company>_sales.csv` in this repository.
 
 ---
 
@@ -41,11 +41,11 @@ Your tech lead has opened a **ticket** based on an **RFI** that came in from Fin
 
 ## 🌱 How to Start the Project
 
-1. Fork and clone your copy of your company's [monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (if you don't already have it locally).
-2. Create a new branch off `main` for this project.
-3. Install the required dependencies with `uv add` (e.g. `scikit-learn`, `xgboost`, `pandas`, `matplotlib`) — never use `pip install` or `pipenv`.
-4. Your company's historical sales dataset is already included in `data/raw/` in your monorepo (e.g. `data/raw/<company>_sales.csv`) — you don't need to generate or simulate it.
-5. Read your `CONTEXT-company.md` in full before writing any code: it explains what each column means, the date range, and the seasonality pattern the dataset already reflects.
+1. If you still don't have a fork of your company's [monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo), create it on GitHub. We recommend opening and working on that fork in **GitHub Codespaces**; if you prefer to work locally, clone it to your machine.
+2. From `main` in your fork, create a new branch for this project (in Codespaces or in your local environment).
+3. Verify that `uv` is installed with `uv --version`; if you don't have it, install it with `curl -LsSf https://astral.sh/uv/install.sh | sh` and, at the project root, initialize the environment with `uv init` (only if `pyproject.toml` does not already exist). Then add dependencies with `uv add` (for example `scikit-learn`, `xgboost`, `pandas`, `matplotlib`) — never use `pip install` or `pipenv`.
+4. Use your company's historical sales dataset already provided: in the monorepo it is located at `data/raw/<company>_sales.csv`, and in this reference repository at `content/contexts/sales-forecasting/<company>/<company>_sales.csv`; do not generate or simulate it.
+5. Read your full `CONTEXT-company.md` before writing code: it contains each column's meaning, the date range, and the seasonality pattern the dataset already reflects.
 
 ---
 
@@ -53,7 +53,7 @@ Your tech lead has opened a **ticket** based on an **RFI** that came in from Fin
 
 **Data preparation**
 
-- [ ] Load your company's historical sales dataset from `data/raw/<company>_sales.csv` (already included in your monorepo) and verify the columns match what's described in your `CONTEXT-company.md`.
+- [ ] Load your company's historical sales dataset from the path that matches your working environment: `data/raw/<company>_sales.csv` in your monorepo or `content/contexts/sales-forecasting/<company>/<company>_sales.csv` in this reference repository, and verify the columns match those described in your `CONTEXT-company.md`.
 - [ ] Handle null or empty values before training.
 - [ ] Split the dataset into **training** (the first 8 years) and **checking/test** (the 2 most recent years), so the model never sees the test years during training.
 - [ ] Scale the variables that need it to avoid faulty comparisons between different magnitudes.
@@ -72,7 +72,7 @@ Your tech lead has opened a **ticket** based on an **RFI** that came in from Fin
 
 - [ ] Generate a visualization showing the model's prediction along with the variability area of the result, compared against the real data from the 2 test years.
 
-⚠️ **IMPORTANT:** Column names, dataset format, and domain-specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** Column names, dataset format, and specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores your company's context will not be accepted.
 
 **Testing**
 

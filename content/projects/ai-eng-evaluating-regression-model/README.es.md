@@ -44,7 +44,7 @@ No existe una curva "correcta" universal — lo que importa es el patrón relati
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Continúa en tu copia existente del [monorepo de la empresa](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) que te fue asignada al inicio del curso (si aún no tienes una, haz fork del repositorio).
-2. Clona tu fork y crea una rama para este trabajo.
+2. Trabaja este proyecto en tu fork usando GitHub Codespaces y crea una rama para este trabajo; en caso de trabajar en local, puedes clonar el repositorio en tu computadora.
 3. Confirma que el modelo entrenado y el split temporal (8 años entrenamiento / 2 años prueba) de tu proyecto anterior siguen disponibles y son reproducibles.
 4. Instala cualquier dependencia adicional con `uv add` — nunca uses `pip install` ni `pipenv`.
 5. Lee tu `CONTEXT-empresa.md` para entender qué error es más costoso para tu negocio: sobreestimar ventas o subestimarlas.
