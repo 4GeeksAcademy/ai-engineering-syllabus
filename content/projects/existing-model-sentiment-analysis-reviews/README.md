@@ -19,13 +19,23 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 You're working as a freelance AI engineer for a small data consultancy. Your latest client, **WeLoveReviews**, helps companies understand what their customers really think. They've just onboarded a new account: a business with an average rating of **4.5 / 5**, but the account manager has a nagging doubt — _does the sentiment expressed in the written reviews actually match that score?_ Before they hand a report to their client, they want a second opinion built on data, not gut feeling.
 
-You don't have time (or the data) to train a model from scratch — and you don't need to. Plenty of pretrained models on Hugging Face already know how to read sentiment in text. Your job is to pick the right one, integrate it correctly, and turn raw text into something the account manager can actually use.
+You don't have time (or the data) to train a model from scratch — and you don't need to. Plenty of pretrained models on Hugging Face already know how to read sentiment in text. Your job is to integrate one correctly, validate its output against reality, and turn raw text into something the account manager can actually use.
 
 > The account manager shared this with you over email:
 >
 > "We're handing this client 500 written reviews next week. I need to know, in plain terms, how many of these reviews read as positive, neutral, or negative — and whether that breakdown lines up with their 4.5-star average. If there's a gap, I want to understand where it's coming from before we put it in front of the client."
 
-**Model to use:** [`prajjwal1/bert-mini`](https://huggingface.co/prajjwal1/bert-mini) from Hugging Face.
+**Model to use:** [`nlptown/bert-base-multilingual-uncased-sentiment`](https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment) from Hugging Face.
+
+> ⚠️ **Caveat — domain mismatch:** This model was fine-tuned on **product reviews** (e.g. Amazon-style ratings about items people bought). The dataset you received is **service reviews** — a café where customers talk about staff, wait times, and ambiance, not product specs. That mismatch can produce **false negatives**: reviews that read positive to a human (or carry a high star rating) but get classified as low sentiment by the model. You must use this model first anyway — finding and explaining those false negatives is part of the assignment.
+
+This model predicts sentiment as a **star rating from 1 to 5** (not a simple POSITIVE/NEGATIVE label). Map the output to sentiment bands for your report:
+
+| Model prediction | Sentiment band |
+| ---------------- | -------------- |
+| 1–2 stars        | Negative       |
+| 3 stars          | Neutral        |
+| 4–5 stars        | Positive       |
 
 #### A note on how to integrate the model
 
@@ -52,12 +62,13 @@ Before you trust any output, sample a handful of reviews yourself and read them.
 
 - [ ] Set up your environment and install the libraries you need (e.g. `transformers`, a backend like `torch`) — pin versions in your dependency file.
 - [ ] Load the 500 reviews from the provided dataset.
-- [ ] Load `prajjwal1/bert-mini` via `pipeline()` or `from_pretrained()` — load it once, not inside a loop that re-downloads or re-instantiates it per review.
-- [ ] Run sentiment inference on every review and store the predicted label alongside each review.
-- [ ] Calculate the overall sentiment breakdown (e.g. % positive / neutral / negative).
+- [ ] Load `nlptown/bert-base-multilingual-uncased-sentiment` via `pipeline()` or `from_pretrained()` — load it once, not inside a loop that re-downloads or re-instantiates it per review.
+- [ ] Run sentiment inference on every review and store the predicted star rating (1–5) alongside each review.
+- [ ] Map predicted stars to sentiment bands (negative / neutral / positive) and calculate the overall breakdown (e.g. % positive / neutral / negative).
 - [ ] Compare that breakdown against the business's 4.5-star average rating. Does it line up? Where doesn't it?
+- [ ] **Find false negatives:** identify reviews where the model predicts 1–2 stars but the human star rating is 4–5, or where you read the text as positive/neutral but the model disagrees. Document the examples you find with a short note on each — what pattern do they share?
 - [ ] Manually inspect a sample of predictions (at least 15–20 reviews) and note any cases where the model's label looks wrong to you. Don't skip this — this is how you catch a model that's silently failing.
-- [ ] Write a short report in a markdown file that the account manager could actually hand to a client: total reviews analyzed, sentiment breakdown, comparison to the star rating, and any discrepancies you found and why you think they're happening.
+- [ ] Write a short report in a markdown file that the account manager could actually hand to a client: total reviews analyzed, sentiment breakdown, comparison to the star rating, false negatives you found, and why you think the product-review model struggles on service-review text.
 
 ---
 
@@ -69,6 +80,7 @@ Before you trust any output, sample a handful of reviews yourself and read them.
 - [ ] The model is loaded once and reused, not reloaded on every review.
 - [ ] A sentiment breakdown is calculated and explicitly compared against the 4.5-star average.
 - [ ] There's evidence of manual sanity-checking — specific examples of predictions reviewed by hand, with notes on whether they made sense.
+- [ ] False negatives are identified and analyzed — documented examples with a hypothesis about why the product-review model misclassified service-review text.
 - [ ] The final report is clear enough that a non-technical account manager could understand the conclusion and the reasoning behind it.
 
 > **Note:** We are not evaluating model architecture, training, or fine-tuning — you're integrating an existing model, not building one.
@@ -78,6 +90,18 @@ Before you trust any output, sample a handful of reviews yourself and read them.
 ## 📦 How to Submit
 
 Push your code to your own GitHub repository, make sure your sentiment report is included in the repo (not just printed to your terminal and discarded), and submit your repository link following your instructor's submission process.
+
+---
+
+## 🔍 Optional Extension: Find a Better Model
+
+Once you've completed the analysis above, try this on your own:
+
+1. Search [Hugging Face Models](https://huggingface.co/models?pipeline_tag=text-classification&sort=downloads) for a sentiment model trained on **service**, **hospitality**, or **restaurant** reviews — or at least one not limited to product reviews.
+2. Run it on the same 500 reviews and compare: does the false-negative rate drop? Which reviews still fail?
+3. Write a short addendum to your report recommending whether WeLoveReviews should switch models for this client — and why.
+
+This step is not graded, but it's the kind of work that separates a model integrator from an AI engineer who understands **model selection**.
 
 ---
 

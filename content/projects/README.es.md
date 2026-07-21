@@ -177,7 +177,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Desacopla trabajo pesado de la API con Redis y Celery en el monorepo: `202` + `task_id`, `GET /tasks/{task_id}`, reintentos con backoff, Dead Letter Queue, worker como proceso separado y monitoreo con Flower.
 
 56. **[Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews](./existing-model-sentiment-analysis-reviews)**  
-    Integra `prajjwal1/bert-mini` de Hugging Face para clasificar 500 reseñas, compara la distribución de sentimiento con un promedio de 4.5 estrellas, valida predicciones manualmente y entrega un reporte listo para el cliente.
+    Integra `nlptown/bert-base-multilingual-uncased-sentiment` de Hugging Face para clasificar 500 reseñas de servicios, encuentra falsos negativos por desajuste de dominio de reseñas de productos, valida predicciones manualmente y entrega un reporte listo para el cliente.
 
 57. **[StreamLoop — Ajuste del modelo de churn](./streamloop-churn-model-tuning)**  
     Ajusta un clasificador de churn en el dataset estilo telecom de StreamLoop: Pipeline sklearn con preprocesado interno, baseline por defecto, RandomizedSearchCV → GridSearchCV solo en train, métrica alineada al negocio, revisión de estabilidad en `cv_results_` y `tuning_report.md`.

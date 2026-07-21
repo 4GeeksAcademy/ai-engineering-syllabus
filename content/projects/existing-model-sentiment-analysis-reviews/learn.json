@@ -5,8 +5,8 @@
     "es": "Análisis de Sentimiento en Reseñas de Clientes — WeLoveReviews"
   },
   "description": {
-    "en": "Integrate a pretrained Hugging Face model (`prajjwal1/bert-mini`) to classify 500 customer reviews, compare sentiment breakdown against a 4.5-star average, manually validate predictions, and deliver a client-ready markdown report.",
-    "es": "Integra un modelo preentrenado de Hugging Face (`prajjwal1/bert-mini`) para clasificar 500 reseñas de clientes, compara la distribución de sentimiento con un promedio de 4.5 estrellas, valida predicciones manualmente y entrega un reporte en markdown listo para el cliente."
+    "en": "Integrate `nlptown/bert-base-multilingual-uncased-sentiment` from Hugging Face to classify 500 service reviews, find false negatives caused by product-review domain mismatch, compare sentiment breakdown against a 4.5-star average, and deliver a client-ready markdown report.",
+    "es": "Integra `nlptown/bert-base-multilingual-uncased-sentiment` de Hugging Face para clasificar 500 reseñas de servicios, encuentra falsos negativos causados por el desajuste de dominio de reseñas de productos, compara la distribución de sentimiento con un promedio de 4.5 estrellas y entrega un reporte en markdown listo para el cliente."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/python-hello",

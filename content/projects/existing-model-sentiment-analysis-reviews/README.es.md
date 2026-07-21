@@ -19,13 +19,23 @@ _These instructions are [available in English](./README.md)._
 
 Trabajas como ingeniero/a de IA freelance para una pequeña consultora de datos. Tu último cliente, **WeLoveReviews**, ayuda a empresas a entender lo que realmente piensan sus clientes. Acaban de incorporar una nueva cuenta: un negocio con una puntuación promedio de **4.5 / 5**, pero la account manager tiene una duda que no la deja tranquila — _¿el sentimiento expresado en las reseñas escritas realmente coincide con esa puntuación?_ Antes de entregarle un reporte a su cliente, quieren una segunda opinión basada en datos, no en intuición.
 
-No tienes tiempo (ni los datos) para entrenar un modelo desde cero — y no lo necesitas. Hay muchos modelos preentrenados en Hugging Face que ya saben leer sentimiento en texto. Tu trabajo es elegir el correcto, integrarlo bien, y convertir texto crudo en algo que la account manager pueda realmente usar.
+No tienes tiempo (ni los datos) para entrenar un modelo desde cero — y no lo necesitas. Hay muchos modelos preentrenados en Hugging Face que ya saben leer sentimiento en texto. Tu trabajo es integrar uno correctamente, validar su resultado contra la realidad, y convertir texto crudo en algo que la account manager pueda realmente usar.
 
 > La account manager te compartió esto por correo:
 >
 > "Le vamos a entregar a este cliente 500 reseñas escritas la próxima semana. Necesito saber, en términos simples, cuántas de estas reseñas se leen como positivas, neutrales o negativas — y si esa distribución coincide con su promedio de 4.5 estrellas. Si hay una diferencia, quiero entender de dónde viene antes de ponerlo frente al cliente."
 
-**Modelo a utilizar:** [`prajjwal1/bert-mini`](https://huggingface.co/prajjwal1/bert-mini) de Hugging Face.
+**Modelo a utilizar:** [`nlptown/bert-base-multilingual-uncased-sentiment`](https://huggingface.co/nlptown/bert-base-multilingual-uncased-sentiment) de Hugging Face.
+
+> ⚠️ **Advertencia — desajuste de dominio:** Este modelo fue fine-tuneado sobre **reseñas de productos** (estilo Amazon, sobre artículos comprados). El dataset que recibiste contiene **reseñas de servicios** — un café donde los clientes hablan del personal, tiempos de espera y ambiente, no de especificaciones de producto. Ese desajuste puede producir **falsos negativos**: reseñas que a un humano leen como positivas (o tienen alta puntuación en estrellas) pero el modelo las clasifica con bajo sentimiento. Debes usar este modelo primero de todos modos — encontrar y explicar esos falsos negativos es parte del ejercicio.
+
+Este modelo predice el sentimiento como una **puntuación de 1 a 5 estrellas** (no una etiqueta simple POSITIVO/NEGATIVO). Mapea la salida a bandas de sentimiento para tu reporte:
+
+| Predicción del modelo | Banda de sentimiento |
+| --------------------- | -------------------- |
+| 1–2 estrellas         | Negativo             |
+| 3 estrellas           | Neutral              |
+| 4–5 estrellas         | Positivo             |
 
 #### Una nota sobre cómo integrar el modelo
 
@@ -52,12 +62,13 @@ Antes de confiar en cualquier resultado, toma una muestra de reseñas y léelas 
 
 - [ ] Configura tu entorno e instala las librerías necesarias (por ejemplo, `transformers` y un backend como `torch`) — fija las versiones en tu archivo de dependencias.
 - [ ] Carga las 500 reseñas del dataset proporcionado.
-- [ ] Carga `prajjwal1/bert-mini` con `pipeline()` o `from_pretrained()` — cárgalo una sola vez, no dentro de un loop que lo re-descargue o re-instancie por cada reseña.
-- [ ] Ejecuta la inferencia de sentimiento sobre cada reseña y guarda la etiqueta predicha junto a cada reseña.
-- [ ] Calcula la distribución general de sentimiento (por ejemplo, % positivo / neutral / negativo).
+- [ ] Carga `nlptown/bert-base-multilingual-uncased-sentiment` con `pipeline()` o `from_pretrained()` — cárgalo una sola vez, no dentro de un loop que lo re-descargue o re-instancie por cada reseña.
+- [ ] Ejecuta la inferencia de sentimiento sobre cada reseña y guarda la puntuación predicha (1–5 estrellas) junto a cada reseña.
+- [ ] Mapea las estrellas predichas a bandas de sentimiento (negativo / neutral / positivo) y calcula la distribución general (por ejemplo, % positivo / neutral / negativo).
 - [ ] Compara esa distribución con el promedio de 4.5 estrellas del negocio. ¿Coincide? ¿Dónde no coincide?
+- [ ] **Encuentra falsos negativos:** identifica reseñas donde el modelo predice 1–2 estrellas pero la puntuación humana es 4–5, o donde tú lees el texto como positivo/neutral pero el modelo no está de acuerdo. Documenta los ejemplos que encuentres con una nota breve en cada uno — ¿qué patrón comparten?
 - [ ] Inspecciona manualmente una muestra de predicciones (al menos 15–20 reseñas) y anota los casos donde la etiqueta del modelo te parezca incorrecta. No te saltees esto — así es como detectas un modelo que está fallando silenciosamente.
-- [ ] Escribe un reporte breve en un archivo markdown que la account manager pueda realmente entregarle a un cliente: total de reseñas analizadas, distribución de sentimiento, comparación con la puntuación en estrellas, y cualquier discrepancia encontrada junto con tu hipótesis de por qué ocurre.
+- [ ] Escribe un reporte breve en un archivo markdown que la account manager pueda realmente entregarle a un cliente: total de reseñas analizadas, distribución de sentimiento, comparación con la puntuación en estrellas, falsos negativos encontrados, y por qué crees que el modelo de reseñas de productos tiene dificultades con texto de reseñas de servicios.
 
 ---
 
@@ -69,6 +80,7 @@ Antes de confiar en cualquier resultado, toma una muestra de reseñas y léelas 
 - [ ] El modelo se carga una sola vez y se reutiliza, no se recarga en cada reseña.
 - [ ] Se calcula la distribución de sentimiento y se compara explícitamente con el promedio de 4.5 estrellas.
 - [ ] Hay evidencia de verificación manual — ejemplos específicos de predicciones revisadas a mano, con notas sobre si tenían sentido.
+- [ ] Los falsos negativos están identificados y analizados — ejemplos documentados con una hipótesis sobre por qué el modelo de reseñas de productos clasificó mal texto de reseñas de servicios.
 - [ ] El reporte final es lo suficientemente claro como para que una account manager no técnica pueda entender la conclusión y el razonamiento detrás de ella.
 
 > **Nota:** No estamos evaluando arquitectura, entrenamiento ni fine-tuning del modelo — estás integrando un modelo existente, no construyendo uno.
@@ -78,6 +90,18 @@ Antes de confiar en cualquier resultado, toma una muestra de reseñas y léelas 
 ## 📦 Cómo Entregar
 
 Sube tu código a tu propio repositorio de GitHub, asegúrate de que tu reporte de sentimiento esté incluido en el repo (no solo impreso en tu terminal y descartado), y entrega el link de tu repositorio siguiendo el proceso de entrega de tu instructor.
+
+---
+
+## 🔍 Extensión Opcional: Encuentra un Mejor Modelo
+
+Una vez completado el análisis, prueba esto por tu cuenta:
+
+1. Busca en [Hugging Face Models](https://huggingface.co/models?pipeline_tag=text-classification&sort=downloads) un modelo de sentimiento entrenado en reseñas de **servicios**, **hostelería** o **restaurantes** — o al menos uno que no esté limitado a reseñas de productos.
+2. Ejecútalo sobre las mismas 500 reseñas y compara: ¿baja la tasa de falsos negativos? ¿Qué reseñas siguen fallando?
+3. Escribe un breve addendum a tu reporte recomendando si WeLoveReviews debería cambiar de modelo para este cliente — y por qué.
+
+Este paso no se evalúa, pero es el tipo de trabajo que separa a quien integra modelos de un/a ingeniero/a de IA que entiende la **selección de modelos**.
 
 ---
 
