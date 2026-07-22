@@ -1,4 +1,4 @@
-# Enhacing development with agent skills - Financial dashboard
+# Enhancing development with agent skills - Financial dashboard
 
 <!-- hide -->
 
