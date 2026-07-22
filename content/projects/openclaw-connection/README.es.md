@@ -23,7 +23,7 @@ Quieres más. Quieres poder hablarle desde cualquier lugar — desde tu teléfon
 
 Tu siguiente paso: conectar el asistente a **Telegram**, **Google Docs** y **Google Calendar**. Así podrás mandarle un mensaje desde el móvil y que él cree un documento, bloquee tiempo en tu calendario y te confirme que ya está hecho. Sin abrir el portátil. Sin dashboards. Solo un mensaje y el resultado.
 
-Para integrar Google Docs y Google Calendar rápidamente sin construir conectores propios, usarás el **MCP de Composio** — una plataforma que expone cientos de integraciones preconstruidas como skills que tu agente puede invocar directamente. Gestiona OAuth, renovación de tokens y permisos de forma automática, así que te concentras en conectar las herramientas y no en gestionar la autenticación. No es la única forma de conectar estos servicios, pero es uno de los caminos más rápidos hacia un prototipo funcional.
+Para integrar Google Docs y Google Calendar rápidamente sin construir conectores propios, usarás el **MCP de Zapier** — una plataforma que expone cientos de integraciones preconstruidas como skills que tu agente puede invocar directamente. Gestiona OAuth, renovación de tokens y permisos de forma automática, así que te concentras en conectar las herramientas y no en gestionar la autenticación. No es la única forma de conectar estos servicios, pero es uno de los caminos más rápidos hacia un prototipo funcional.
 
 Este proyecto es de **configuración, no de código**. Estás ensamblando un agente funcional a partir de servicios y conectores ya existentes. Piensa en cómo cada integración convierte una API de terceros en una habilidad que tu agente puede usar — porque eso es exactamente lo que estás haciendo.
 
@@ -35,8 +35,8 @@ Este proyecto no requiere hacer fork de un repositorio de código. En su lugar, 
 
 1. Asegúrate de tener una instancia activa de **OpenClaw** en funcionamiento (configurada en el [proyecto openclaw-setup](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-setup)).
 2. Crea un **bot de Telegram** con BotFather si aún no lo tienes.
-3. Crea una cuenta en **Composio** en [composio.dev](https://composio.dev) (el plan gratuito es suficiente) y configura la conexión MCP.
-4. Conecta **Google Docs** y **Google Calendar** mediante las integraciones preconstruidas de Composio.
+3. Crea una cuenta en **Zapier** en [zapier.com](https://zapier.com) (el plan gratuito es suficiente) y configura la conexión MCP.
+4. Conecta **Google Docs** y **Google Calendar** mediante las integraciones preconstruidas de Zapier.
 5. Documenta los pasos de tu configuración y toma capturas de pantalla como evidencia de cada conexión.
 
 > ⚠️ **IMPORTANTE:** No conectes cuentas personales con información sensible o privada a OpenClaw en este ejercicio. Usa una cuenta de prueba para Google Docs y Google Calendar. Nunca expongas tokens o claves de API en capturas de pantalla ni en archivos enviados.
@@ -51,13 +51,13 @@ Este proyecto no requiere hacer fork de un repositorio de código. En su lugar, 
 - [ ] Configurar OpenClaw para usar Telegram como canal de mensajería
 - [ ] Validar la conexión: enviar un mensaje de prueba y confirmar que el agente responde
 
-### Configuración del MCP de Composio
+### Configuración del MCP de Zapier
 
-- [ ] Crear una cuenta en Composio en [composio.dev](https://composio.dev) y generar tu API key
-- [ ] Localizar la URL del servidor MCP en la configuración de tu cuenta
-- [ ] Agregar el MCP al agente en OpenClaw usando la URL del servidor MCP
-- [ ] Conectar Google Docs a través del y verificar que el agente puede crear documentos
-- [ ] Conectar Google Calendar a través del y verificar que el agente puede crear eventos
+- [ ] Crear una cuenta gratuita en Zapier en [zapier.com](https://zapier.com)
+- [ ] Navegar a la configuración de MCP de Zapier y generar una URL de endpoint MCP
+- [ ] Agregar el MCP al agente en OpenClaw usando esa URL de endpoint
+- [ ] Conectar Google Docs mediante Zapier y verificar que el agente puede crear documentos
+- [ ] Conectar Google Calendar mediante Zapier y verificar que el agente puede crear eventos
 
 ### Flujo completo de punta a punta
 
@@ -81,7 +81,7 @@ Este proyecto no requiere hacer fork de un repositorio de código. En su lugar, 
 ## ✅ Qué vamos a evaluar
 
 - [ ] El bot de Telegram está correctamente creado y conectado a OpenClaw
-- [ ] El MCP de Composio está agregado y activo en la configuración del agente
+- [ ] El MCP de Zapier está agregado y activo en la configuración del agente
 - [ ] La integración con Google Docs funciona: el agente crea un documento en respuesta a la solicitud del usuario
 - [ ] La integración con Google Calendar funciona: el agente crea un evento vinculado a la revisión del documento
 - [ ] El agente confirma la finalización de la tarea por Telegram
@@ -97,7 +97,7 @@ Este proyecto no requiere hacer fork de un repositorio de código. En su lugar, 
 
 Crea una carpeta llamada `openclaw-connection` que contenga:
 
-- Todas las capturas de pantalla (nombradas con claridad, p.ej. `01-telegram-conectado.png`, `02-composio-mcp.png`, etc.)
+- Todas las capturas de pantalla (nombradas con claridad, p.ej. `01-telegram-conectado.png`, `02-zapier-mcp.png`, etc.)
 - Un archivo corto `notes.md` (5–10 líneas) describiendo las decisiones de configuración que tomaste o los problemas que encontraste
 
 Comparte la carpeta como archivo ZIP o enlace a un repositorio de GitHub según las instrucciones de tu instructor.

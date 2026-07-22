@@ -23,7 +23,7 @@ You want more. You want to be able to talk to it from anywhere — from your pho
 
 Your next step: connect the assistant to **Telegram**, **Google Docs**, and **Google Calendar**. That way you can send it a message from your phone, and it will create a document, block time in your calendar, and confirm it's done — no laptop required. No dashboards. Just a message and a result.
 
-To integrate Google Docs and Google Calendar quickly without building custom connectors, you'll use the **Composio MCP** — a platform that exposes hundreds of pre-built integrations as skills your agent can call directly. It handles OAuth, token refresh, and scopes automatically, so you focus on wiring the tools, not managing auth. It's not the only way to connect these services, but it's one of the fastest paths to a working prototype.
+To integrate Google Docs and Google Calendar quickly without building custom connectors, you'll use the **Zapier MCP** — a platform that exposes hundreds of pre-built integrations as skills your agent can call directly. It handles OAuth, token refresh, and scopes automatically, so you focus on wiring the tools, not managing auth. It's not the only way to connect these services, but it's one of the fastest paths to a working prototype.
 
 This project is about **configuration, not code**. You are assembling a working agent from existing services and connectors. Think about how each integration transforms a third-party API into a skill your agent can use — because that's exactly what you're doing.
 
@@ -35,8 +35,8 @@ This project does not require forking a code repository. Instead, you will confi
 
 1. Make sure you have an active **OpenClaw** instance running (set up in the [openclaw-setup project](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-setup)).
 2. Create a **Telegram bot** via BotFather if you haven't already.
-3. Create a **Composio account** at [composio.dev](https://composio.dev) (free tier is sufficient) and set up the MCP connection.
-4. Access **Google Docs** and **Google Calendar** through Composio's pre-built integrations.
+3. Create a **Zapier account** at [zapier.com](https://zapier.com) (free tier is sufficient) and set up the MCP connection.
+4. Access **Google Docs** and **Google Calendar** through Zapier's pre-built integrations.
 5. Document your setup steps and capture screenshots as evidence of each connection.
 
 > ⚠️ **IMPORTANT:** Do not connect personal accounts holding sensitive or private information to OpenClaw during this exercise. Use a dedicated test account for Google Docs and Google Calendar. Never expose API keys or tokens in screenshots or submitted files.
@@ -51,13 +51,13 @@ This project does not require forking a code repository. Instead, you will confi
 - [ ] Configure OpenClaw to use Telegram as its messaging channel
 - [ ] Validate the connection: send a test message and confirm the agent responds
 
-### Composio MCP Setup
+### Zapier MCP Setup
 
-- [ ] Create a Composio account at [composio.dev](https://composio.dev) and generate your API key
-- [ ] Locate the Composio MCP server URL in your account settings
-- [ ] Add the MCP to your OpenClaw agent using the MCP server URL
-- [ ] Connect Google Docs via the MCP and verify the agent has create-document access
-- [ ] Connect Google Calendar via the MCP and verify the agent has create-event access
+- [ ] Create a free Zapier account at [zapier.com](https://zapier.com)
+- [ ] Navigate to Zapier's MCP configuration and generate an MCP endpoint URL
+- [ ] Add the MCP to your OpenClaw agent using that endpoint URL
+- [ ] Connect Google Docs via Zapier and verify the agent has create-document access
+- [ ] Connect Google Calendar via Zapier and verify the agent has create-event access
 
 ### End-to-End Workflow
 
@@ -81,7 +81,7 @@ This project does not require forking a code repository. Instead, you will confi
 ## ✅ What We Will Evaluate
 
 - [ ] Telegram bot is correctly created and connected to OpenClaw
-- [ ] Composio MCP is added and active in the agent's configuration
+- [ ] Zapier MCP is added and active in the agent's configuration
 - [ ] Google Docs integration works: agent can create a document in response to a user request
 - [ ] Google Calendar integration works: agent creates an event associated with the document review
 - [ ] Agent confirms task completion via Telegram
@@ -97,7 +97,7 @@ This project does not require forking a code repository. Instead, you will confi
 
 Create a folder named `openclaw-connection` containing:
 
-- All screenshots (named clearly, e.g., `01-telegram-connected.png`, `02-composio-mcp.png`, etc.)
+- All screenshots (named clearly, e.g., `01-telegram-connected.png`, `02-zapier-mcp.png`, etc.)
 - A short `notes.md` file (5–10 lines) describing any configuration decisions you made or issues you ran into
 
 Share the folder as a ZIP file or GitHub repo link according to your instructor's instructions.
