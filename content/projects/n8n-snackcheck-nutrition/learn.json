@@ -1,0 +1,41 @@
+{
+  "gitpod": false,
+  "title": {
+    "en": "Is This Snack Healthy? — A Nutrition-Check Automation",
+    "es": "¿Es Saludable Este Snack? — Una Automatización que Verifica Nutrición"
+  },
+  "description": {
+    "en": "Capstone n8n automation for SnackCheck: POST a barcode, fetch Open Food Facts, apply traffic-light + Nutri-Score rules, and return a tone-adaptive AI health verdict with professional docs and tests.",
+    "es": "Proyecto final en n8n para SnackCheck: recibe un código de barras por POST, consulta Open Food Facts, aplica reglas de semáforo y Nutri-Score, y devuelve un veredicto de salud con IA de tono adaptable, más documentación y pruebas profesionales."
+  },
+  "status": "draft",
+  "slug": "n8n-snackcheck-nutrition",
+  "difficulty": "intermediate",
+  "duration": 5,
+  "technologies": [
+    "n8n",
+    "webhooks",
+    "open-food-facts",
+    "groq",
+    "llm",
+    "automation",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/n8n-snackcheck-nutrition/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/n8n-snackcheck-nutrition/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Is This Snack Healthy? — A Nutrition-Check Automation with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/n8n-snackcheck-nutrition #AIEngineering #LearnPack #4GeeksAcademy #n8n #automation #groq",
+      "es": "Acabo de completar ¿Es Saludable Este Snack? — Una Automatización que Verifica Nutrición con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/n8n-snackcheck-nutrition #AIEngineering #LearnPack #4GeeksAcademy #n8n #automation #groq"
+    },
+    {
+      "en": "Built and shipped: Is This Snack Healthy? — A Nutrition-Check Automation. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/n8n-snackcheck-nutrition #AIEngineering #LearnPack #4GeeksAcademy #n8n #automation #groq",
+      "es": "Construido y publicado: ¿Es Saludable Este Snack? — Una Automatización que Verifica Nutrición. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/n8n-snackcheck-nutrition #AIEngineering #LearnPack #4GeeksAcademy #n8n #automation #groq"
+    }
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  }
+}
