@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo), [@WaficMikati](https://github.com/WaficMikati) and [other contributors](https://github.com/4GeeksAcademy) at [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -58,7 +58,7 @@ The rules the founder attached become your specification. Read them carefully �
 >    - `c` → **moderate**
 >    - `d` or `e` → **unhealthy**
 >
-> The **overall verdict level is whichever of the two is worse** — a product only counts as `healthy` if *both* readings agree it's fine. This matters: a sugary soda can look "safe" on the traffic-light count alone (its numbers per 100 ml don't cross the `high` thresholds), but its Nutri-Score already tells the real story, and that must win.
+> The **overall verdict level is whichever of the two is worse** — a product only counts as `healthy` if _both_ readings agree it's fine. This matters: a sugary soda can look "safe" on the traffic-light count alone (its numbers per 100 ml don't cross the `high` thresholds), but its Nutri-Score already tells the real story, and that must win.
 >
 > If `nutriscore_grade` is **`unknown` or missing**, fall back to the **traffic-light count alone**. And if the **nutrient fields are also missing or empty**, **don't classify at all**: respond that the product **doesn't have enough data**. A product with no data should never come out as "healthy" just because the fields are blank.
 >
@@ -175,7 +175,7 @@ Build a single n8n workflow that takes a barcode and returns a health verdict, f
 
 ## 📦 How to Submit
 
-1. **Export your finished workflow** from n8n as a JSON file (workflow menu → *Download*).
+1. **Export your finished workflow** from n8n as a JSON file (workflow menu → _Download_).
 2. Gather the full set of deliverables: the **workflow JSON**, your **Excalidraw diagram**, the **workflow README**, the **test log**, and the **CHANGELOG**.
 3. Submit them together the way your instructor indicates.
 
@@ -183,4 +183,4 @@ Make sure your automation is proven end to end: an unhealthy product returns a c
 
 ---
 
-This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).
+This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@marcogonzalo](https://github.com/marcogonzalo), [@WaficMikati](https://github.com/WaficMikati) and [other contributors](https://github.com/4GeeksAcademy). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).

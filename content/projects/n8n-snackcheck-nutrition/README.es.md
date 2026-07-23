@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@marcogonzalo](https://github.com/marcogonzalo), [@WaficMikati](https://github.com/WaficMikati) y [otros colaboradores](https://github.com/4GeeksAcademy) en [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -58,7 +58,7 @@ Las reglas que adjuntó el fundador se convierten en tu especificación. Léelas
 >    - `c` → **moderado**
 >    - `d` o `e` → **no saludable**
 >
-> El **nivel de veredicto general es el peor de los dos** — un producto solo cuenta como `saludable` si *ambas* lecturas coinciden en que está bien. Esto importa: una bebida azucarada puede parecer "segura" solo con el conteo de semáforo (sus números por 100 ml no llegan a `alto`), pero su Nutri-Score ya cuenta la historia real, y ese debe ganar.
+> El **nivel de veredicto general es el peor de los dos** — un producto solo cuenta como `saludable` si _ambas_ lecturas coinciden en que está bien. Esto importa: una bebida azucarada puede parecer "segura" solo con el conteo de semáforo (sus números por 100 ml no llegan a `alto`), pero su Nutri-Score ya cuenta la historia real, y ese debe ganar.
 >
 > Si `nutriscore_grade` es **`unknown` o falta**, usa **solo el conteo de semáforo**. Y si los **campos de nutrientes tampoco existen o vienen vacíos**, **no clasifiques**: responde que el producto **no tiene datos suficientes**. Un producto sin datos nunca debe salir como "saludable" solo porque los campos están en blanco.
 >
@@ -175,7 +175,7 @@ Construye un único flujo de n8n que reciba un código de barras y devuelva un v
 
 ## 📦 Cómo entregar
 
-1. **Exporta tu flujo terminado** desde n8n como un archivo JSON (menú del flujo → *Download*).
+1. **Exporta tu flujo terminado** desde n8n como un archivo JSON (menú del flujo → _Download_).
 2. Reúne el conjunto completo de entregables: el **JSON del flujo**, tu **diagrama de Excalidraw**, el **README del flujo**, el **registro de pruebas** y el **CHANGELOG**.
 3. Entrégalos juntos de la forma que indique tu instructor.
 
