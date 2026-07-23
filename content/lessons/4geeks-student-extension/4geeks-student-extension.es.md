@@ -1,14 +1,13 @@
 # Tus modelos de IA de la academia en Codespaces — 4Geeks Student + Copilot Chat
 
-<!-- hide -->
-
 _These instructions are also available in [English](./4geeks-student-extension.md)._
 
-<!-- endhide -->
+Gracias a **4Geeks**, tienes **dos conjuntos de modelos** en **Copilot Chat** mientras trabajas en **GitHub Codespaces** — no necesitas una suscripción aparte de Copilot:
 
-Usa tus modelos de IA incluidos en la academia dentro de **Copilot Chat** mientras trabajas en un **GitHub Codespace** — no necesitas una suscripción aparte de Copilot.
+- **Modelos de Copilot** — versiones de GPT y Codex
+- **Modelos de 4Geeks** — reconocidos modelos Open Source que te ayudan a **ahorrar tokens** sin renunciar al rendimiento
 
-Si llegas al límite de uso de **Copilot Business**, puedes seguir programando con IA cambiando a un modelo **4Geeks Student** desde el selector de modelos del chat.
+**Elige con criterio**: usa el conjunto que encaje con la tarea — trabajo exigente o de frontera con Copilot cuando lo necesites, y modelos 4Geeks en el día a día cuando estés programando o realizando tareas más automáticas o repetitivas, así extenderás tu presupuesto de tokens.
 
 ---
 
@@ -47,7 +46,7 @@ Es normal. Reserva uno o dos minutos al inicio de cada sesión.
 
 ## Requisitos
 
-- Un **GitHub Codespace** en ejecución (navegador o VS Code conectado al Codespace)
+- Un entorno **GitHub Codespaces** en ejecución (navegador o VS Code conectado al Codespace)
 - [VS Code](https://code.visualstudio.com/) **1.109** o más reciente (incluido en el Codespace)
 - Una **cuenta de estudiante 4Geeks** con derecho a **LLM budget**
 - **Copilot Chat** disponible en el editor (no se requiere suscripción de pago a Copilot)
@@ -67,12 +66,12 @@ Ejecuta estos pasos **cada vez** que abras un Codespace que aún no tenga la ext
 ### 2. Iniciar sesión
 
 1. Haz clic en **Sign in** en la invitación de conexión, **o**
-2. Abre la paleta de comandos (`Ctrl+Shift+P` / `Cmd+Shift+P`) y ejecuta **`4Geeks: Login`**.
+2. Abre la paleta de comandos (`Ctrl+Shift+P` / `Cmd+Shift+P`) y ejecuta `4Geeks: Login`.
 3. Completa el flujo OAuth en el navegador con tu cuenta de **4geeks.com**.
 
 ### 3. Registrar tus modelos
 
-1. Ejecuta **`4Geeks: Add Models`** desde la paleta de comandos.
+1. Ejecuta `4Geeks: Add Models` desde la paleta de comandos.
 2. La extensión provisiona y registra los modelos asignados a tu academia. Los nombres **no son fijos** — dependen de tu cohorte y de tu entitlement.
 
 ---
@@ -84,14 +83,15 @@ Ejecuta estos pasos **cada vez** que abras un Codespace que aún no tenga la ext
 3. Selecciona un modelo **4Geeks Student**. Si no lo ves en la lista principal, revisa **Other Models**.
 4. Empieza a chatear — el modelo seleccionado usa tu **LLM budget** de la academia.
 
-### Ampliar tu uso de IA
+### Elegir qué modelos usar
 
-Tu academia incluye su propio presupuesto LLM. Úsalo cuando:
+Tienes dos presupuestos en la misma interfaz de chat. Decide con intención:
 
-- Quieras un modelo configurado para tu cohorte, o
-- Hayas consumido la cuota de tokens de **Copilot Business** y necesites seguir trabajando con IA en la misma interfaz de chat.
+- Prioriza los **modelos 4Geeks** para coding rutinario, exploración y práctica — buen rendimiento a menor coste de tokens.
+- Usa **Copilot** (GPT / Codex) cuando la tarea pida esos modelos concretos o quieras una segunda opinión de ese stack.
+- Si un cupo se agota, cambia al otro conjunto y sigue trabajando.
 
-Si no hay ningún modelo disponible para tu cuenta, la extensión mostrará un error — contacta con tu academia si ocurre.
+Si no hay ningún modelo 4Geeks disponible para tu cuenta, la extensión mostrará un error — contacta con tu academia si ocurre.
 
 ---
 
@@ -99,10 +99,10 @@ Si no hay ningún modelo disponible para tu cuenta, la extensión mostrará un e
 
 Si tu cuenta incluye **créditos VPS** y trabajas fuera de Codespaces:
 
-1. Ejecuta **`4Geeks: Connect to VPS`** desde la paleta de comandos.
+1. Ejecuta `4Geeks: Connect to VPS` desde la paleta de comandos.
 2. La extensión se conecta vía **Remote SSH** (instala **Remote - SSH** si hace falta).
 
-Para cerrar sesión y eliminar los modelos registrados, ejecuta **`4Geeks: Logout`**.
+Para cerrar sesión y eliminar los modelos registrados, ejecuta `4Geeks: Logout`.
 
 ---
 
@@ -144,7 +144,7 @@ Cuando pases a un nuevo ejercicio o repositorio:
 
 ## Resumen en una frase
 
-En **cada Codespace nuevo**, instala **4Geeks Student**, ejecuta **`4Geeks: Login`** y **`4Geeks: Add Models`**, y elige un modelo **4Geeks Student** en **Copilot Chat** para usar tu presupuesto de IA de la academia.
+En **cada Codespace nuevo**, instala **4Geeks Student**, ejecuta `4Geeks: Login` y `4Geeks: Add Models`, y elige un modelo **4Geeks Student** en **Copilot Chat** para usar tu presupuesto de IA de la academia.
 
 ---
 

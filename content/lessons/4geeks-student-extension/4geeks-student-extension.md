@@ -1,14 +1,13 @@
 # Your academy AI models in Codespaces — 4Geeks Student + Copilot Chat
 
-<!-- hide -->
-
 _Estas instrucciones también están disponibles en [español](./4geeks-student-extension.es.md)._
 
-<!-- endhide -->
+Thanks to **4Geeks**, you get **two model sets** in **Copilot Chat** while working inside **GitHub Codespaces** — no separate Copilot subscription required:
 
-Use your included academy AI models in **Copilot Chat** while working inside a **GitHub Codespace** — no separate Copilot subscription required.
+- **Copilot models** — GPT and Codex versions
+- **4Geeks models** — recognized open-source models that help you **save tokens** without giving up performance
 
-If you reach the limit of your **Copilot Business** usage, you can continue coding with AI by switching to a **4Geeks Student** model from the chat model picker.
+**Choose smart**: pick the set that fits the task — frontier / heavy work with Copilot when you need it, and 4Geeks models for everyday coding or more automatic / repetitive tasks, so you stretch your token budget.
 
 ---
 
@@ -47,7 +46,7 @@ This is normal. Budget a minute or two at the start of each session.
 
 ## Requirements
 
-- A running **GitHub Codespace** (browser or VS Code connected to the Codespace)
+- A running **GitHub Codespaces** environment (browser or VS Code connected to the Codespace)
 - [VS Code](https://code.visualstudio.com/) **1.109** or newer (included in the Codespace)
 - A **4Geeks student account** with **LLM budget** entitlement
 - **Copilot Chat** available in the editor (no paid Copilot subscription required)
@@ -67,12 +66,12 @@ Run these steps **every time** you open a Codespace that does not already have t
 ### 2. Sign in
 
 1. Click **Sign in** on the connect invite, **or**
-2. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run **`4Geeks: Login`**.
+2. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and run `4Geeks: Login`.
 3. Complete the OAuth flow in your browser with your **4geeks.com** account.
 
 ### 3. Register your models
 
-1. Run **`4Geeks: Add Models`** from the Command Palette.
+1. Run `4Geeks: Add Models` from the Command Palette.
 2. The extension provisions and registers the models assigned to your academy. Model names are **not fixed** — they depend on your cohort and entitlement.
 
 ---
@@ -84,14 +83,15 @@ Run these steps **every time** you open a Codespace that does not already have t
 3. Select a **4Geeks Student** model. If you do not see it in the main list, check **Other Models**.
 4. Start chatting — the selected model uses your academy **LLM budget**.
 
-### Extending your AI usage
+### Choosing which models to use
 
-Your academy includes its own LLM budget. Use it when:
+You have two budgets in the same chat interface. Decide deliberately:
 
-- You want a model configured for your cohort, or
-- You have consumed your **Copilot Business** token allowance and need to keep working with AI in the same chat interface.
+- Prefer **4Geeks models** for routine coding, exploration, and practice — strong performance at lower token cost.
+- Reach for **Copilot** (GPT / Codex) when the task needs those specific models or you want a second opinion from that stack.
+- If one allowance runs low, switch to the other set and keep working.
 
-If no model is available for your account, the extension will show an error — contact your academy if that happens.
+If no 4Geeks model is available for your account, the extension will show an error — contact your academy if that happens.
 
 ---
 
@@ -99,10 +99,10 @@ If no model is available for your account, the extension will show an error — 
 
 If your account includes **VPS credits** and you work outside Codespaces:
 
-1. Run **`4Geeks: Connect to VPS`** from the Command Palette.
+1. Run `4Geeks: Connect to VPS` from the Command Palette.
 2. The extension connects via **Remote SSH** (it installs **Remote - SSH** if needed).
 
-To sign out and remove registered models, run **`4Geeks: Logout`**.
+To sign out and remove registered models, run `4Geeks: Logout`.
 
 ---
 
@@ -144,7 +144,7 @@ When you move to a new exercise or repository:
 
 ## One-sentence summary
 
-On **every new Codespace**, install **4Geeks Student**, run **`4Geeks: Login`** and **`4Geeks: Add Models`**, then pick a **4Geeks Student** model in **Copilot Chat** to use your academy AI budget.
+On **every new Codespace**, install **4Geeks Student**, run `4Geeks: Login` and `4Geeks: Add Models`, then pick a **4Geeks Student** model in **Copilot Chat** to use your academy AI budget.
 
 ---
 
