@@ -48,7 +48,7 @@ As part of the challenge, your implementation must resolve — without being tol
 1. Go to your copy of the [company monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (if you don't have your own fork yet, create one before continuing).
 2. Work on top of the Incidents Manager backend and the inventory module you already built in previous milestones — the MCP Server relies on those services, it doesn't replace them.
 3. Install the dependencies you need with `uv add` (e.g., `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — never use `pip install` directly in this monorepo.
-4. Create the MCP server inside `services/`, following the structure of the rest of the backend services.
+4. Create the MCP server inside the monorepo's `mcps/` folder (not under `services/`).
 5. Wire OAuth with [MCP Auth](https://mcp-auth.dev/) (Python package `mcpauth`) — plug-and-play OAuth 2.1 / OIDC for MCP resource servers. Do **not** rely on FastMCP's built-in auth helpers; use MCP Auth for Protected Resource Metadata, bearer JWT validation, and scopes.
 6. Locate the agent node that currently calls the Incidents Manager directly — that's the point you'll migrate so it consumes the new MCP Server as a client instead of calling the API outside of it.
 
@@ -58,7 +58,7 @@ As part of the challenge, your implementation must resolve — without being tol
 
 **MCP Server**
 
-- [ ] Implement the MCP Server in Python using FastMCP (or an equivalent MCP SDK).
+- [ ] Implement the MCP Server in Python under `mcps/` using FastMCP (or an equivalent MCP SDK).
 - [ ] **Implement OAuth authentication with [MCP Auth](https://mcp-auth.dev/)** (`mcpauth`) — mount Protected Resource Metadata, validate bearer JWTs against a compliant OAuth 2.1 / OIDC provider, and reject unauthenticated access. Do **not** use FastMCP's built-in OAuth/auth layer for this project.
 - [ ] Expose at least one tool to manage Incidents Manager tickets (create, update, and check status).
 - [ ] Expose at least one **read-only** tool over the inventory — any modification attempt must be explicitly rejected by the server, not simply omitted.
@@ -75,7 +75,7 @@ As part of the challenge, your implementation must resolve — without being tol
 
 **Validation (MCP Playground)**
 
-- [ ] First, test your MCP server in [MCP Playground](https://www.mcpplayground.tech/playground): enter the server URL, connect, and run at least one complete flow per exposed tool.
+- [ ] First, test your MCP server in [MCP Playground](https://www.mcpplayground.tech/playground). From **GitHub Codespaces**, expose/forward the MCP server port (public visibility) and paste the **Codespaces forwarded URL** into Playground — localhost alone will not work from that site. Connect, then run at least one complete flow per exposed tool.
 - [ ] Test and document the server's behavior when a write attempt is made on the inventory tool (it must fail in a controlled, explainable way).
 
 **Agent migration**
@@ -88,7 +88,7 @@ As part of the challenge, your implementation must resolve — without being tol
 
 ## ✅ What We Will Evaluate
 
-- [ ] The MCP server starts correctly and exposes its tools through the standard MCP discovery mechanism.
+- [ ] The MCP server lives under `mcps/`, starts correctly, and exposes its tools through the standard MCP discovery mechanism.
 - [ ] A client without a valid OAuth access token cannot list or execute any tool.
 - [ ] The ticket management tool creates, updates status via `PATCH /api/incidents/{id}/status`, and queries against the company's real Incidents Manager.
 - [ ] The inventory tool responds correctly to queries and explicitly rejects any write operation.
@@ -96,6 +96,7 @@ As part of the challenge, your implementation must resolve — without being tol
 - [ ] Authentication, authorization, and validation errors return distinct codes and messages from one another.
 - [ ] There is at least one log entry per tool invocation with client, tool, and result.
 - [ ] The agent no longer calls the Incidents Manager directly: every interaction goes through the MCP Server as a client.
+- [ ] MCP Playground was exercised using the **public Codespaces forwarded URL** (not localhost).
 
 ---
 

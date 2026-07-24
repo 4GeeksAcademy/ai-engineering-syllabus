@@ -62,9 +62,9 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 
 ## Qué construir
 
-### 1. Servidor MCP (`mcp_server/server.py`)
+### 1. Servidor MCP (`mcps/library-tools/server.py` o equivalente bajo `mcps/`)
 
-- [ ] App FastMCP con transporte **stdio** (el proyecto evaluable prefiere Streamable HTTP + MCP Auth; en clase puedes stubear checks de token)
+- [ ] App FastMCP con transporte **stdio** (el proyecto evaluable prefiere Streamable HTTP + MCP Auth bajo `mcps/` del monorepo; en clase puedes stubear checks de token)
 - [ ] OAuth vía [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) — validar JWT bearer / rechazar listado + invocación sin token válido. **No** uses la auth integrada de FastMCP.
 
 ### 2. Tool: `manage_book_loan`

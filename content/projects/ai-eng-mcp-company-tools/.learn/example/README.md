@@ -62,9 +62,9 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 
 ## What to build
 
-### 1. MCP Server (`mcp_server/server.py`)
+### 1. MCP Server (`mcps/library-tools/server.py` or equivalent under `mcps/`)
 
-- [ ] FastMCP app with **stdio** transport (graded project prefers Streamable HTTP + MCP Auth; class demo may stub token checks)
+- [ ] FastMCP app with **stdio** transport (graded project prefers Streamable HTTP + MCP Auth under monorepo `mcps/`; class demo may stub token checks)
 - [ ] OAuth via [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) — validate bearer JWT / reject list + invoke without valid token. Do **not** use FastMCP built-in auth.
 
 ### 2. Tool: `manage_book_loan`

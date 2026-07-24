@@ -26,15 +26,16 @@ flowchart TD
 
 ---
 
-## Recommended service layout
+## Recommended layout
 
-| Path (indicative)                        | Responsibility                                                                     |
-| ---------------------------------------- | ---------------------------------------------------------------------------------- |
-| `services/mcp-server/`                   | FastMCP app, tool definitions, MCP Auth middleware, invocation logging             |
-| `services/mcp-server/tools/incidents.py` | Ticket create, update, status lookup                                               |
-| `services/mcp-server/tools/inventory.py` | Read-only inventory queries + explicit write rejection                             |
-| `services/mcp-server/auth.py`            | MCP Auth (`mcpauth`) setup: resource metadata, bearer JWT, scopes, client for logs |
-| `services/agent/` (existing)             | LangGraph graph with MCP tools via `langchain-mcp-adapters`                        |
+| Path (indicative)                       | Responsibility                                                                     |
+| --------------------------------------- | ---------------------------------------------------------------------------------- |
+| `mcps/` (required root)                 | All MCP servers for the company live here — not under `services/`                  |
+| `mcps/company-tools/`                   | FastMCP app, tool definitions, MCP Auth middleware, invocation logging             |
+| `mcps/company-tools/tools/incidents.py` | Ticket create, update, status lookup                                               |
+| `mcps/company-tools/tools/inventory.py` | Read-only inventory queries + explicit write rejection                             |
+| `mcps/company-tools/auth.py`            | MCP Auth (`mcpauth`) setup: resource metadata, bearer JWT, scopes, client for logs |
+| `services/agent/` (existing)            | LangGraph graph with MCP tools via `langchain-mcp-adapters`                        |
 
 ---
 
@@ -144,7 +145,7 @@ Conditional routing between RAG and tools must remain unchanged in behavior.
 
 ## MCP client validation
 
-First validate in [MCP Playground](https://www.mcpplayground.tech/playground), then ensure the LangGraph agent connects with a valid OAuth access token and:
+First validate in [MCP Playground](https://www.mcpplayground.tech/playground): in **GitHub Codespaces**, forward the MCP server port with **public** visibility and paste the **Codespaces forwarded URL** into Playground (a bare `localhost` URL is unreachable from that site). Then ensure the LangGraph agent connects with a valid OAuth access token and:
 
 1. Lists tools via MCP discovery and asserts schemas are present.
 2. Runs one full flow per tool (ticket create/update/status, inventory query).
@@ -154,11 +155,11 @@ First validate in [MCP Playground](https://www.mcpplayground.tech/playground), t
 
 ## Submission checklist
 
-- [ ] FastMCP server under `services/` with [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) on discovery + invoke — not FastMCP built-in auth.
+- [ ] FastMCP server under `mcps/` with [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) on discovery + invoke — not FastMCP built-in auth.
 - [ ] Incident ticket tool: create, status update via `/status`, lookup against real Incidents Manager.
 - [ ] Inventory tool: read queries work; writes return `INVENTORY_WRITE_FORBIDDEN`.
 - [ ] Tool descriptions and schemas self-explanatory via MCP discovery.
 - [ ] Distinct error codes for auth, authorization, and validation.
 - [ ] Structured log per tool invocation (client, tool, result).
 - [ ] Agent graph migrated: `langchain-mcp-adapters` replaces direct incident tool.
-- [ ] PR documents transport choice and includes Playground + agent validation evidence.
+- [ ] PR documents transport choice and includes Playground evidence (Codespaces public URL) + agent validation.

@@ -48,7 +48,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 1. Ubícate en tu copia del [monorepo de la compañía](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (si aún no tienes tu propio fork, créalo antes de continuar).
 2. Trabaja sobre el backend del Incidents Manager y del módulo de inventario que ya construiste en hitos anteriores — el MCP Server se apoya en esos servicios, no los reemplaza.
 3. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — nunca uses `pip install` directamente en este monorepo.
-4. Crea el servidor MCP dentro de `services/`, siguiendo la estructura del resto de servicios del backend.
+4. Crea el servidor MCP dentro de la carpeta `mcps/` del monorepo (no bajo `services/`).
 5. Cablea OAuth con [MCP Auth](https://mcp-auth.dev/) (paquete Python `mcpauth`) — OAuth 2.1 / OIDC listo para usar en servidores MCP como resource server. **No** uses las helpers de auth integradas de FastMCP; usa MCP Auth para Protected Resource Metadata, validación de JWT bearer y scopes.
 6. Ubica el nodo del agente que hoy llama directamente al Incidents Manager — es el punto que vas a migrar para que consuma el nuevo MCP Server como cliente en lugar de llamar la API por fuera de él.
 
@@ -58,7 +58,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 **Servidor MCP**
 
-- [ ] Implementar el MCP Server en Python usando FastMCP (u otro SDK MCP equivalente).
+- [ ] Implementar el MCP Server en Python bajo `mcps/` usando FastMCP (u otro SDK MCP equivalente).
 - [ ] **Implementar autenticación OAuth con [MCP Auth](https://mcp-auth.dev/)** (`mcpauth`) — monta Protected Resource Metadata, valida JWTs bearer contra un proveedor OAuth 2.1 / OIDC compatible y rechaza el acceso sin autenticar. **No** uses la capa OAuth/auth integrada de FastMCP en este proyecto.
 - [ ] Exponer al menos una tool para gestionar tickets del Incidents Manager (crear, actualizar y consultar estado).
 - [ ] Exponer al menos una tool de **solo consulta** sobre el inventario — cualquier intento de modificación debe ser rechazado explícitamente por el servidor, no simplemente omitido.
@@ -75,7 +75,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 **Validación (MCP Playground)**
 
-- [ ] Primero, prueba tu servidor MCP en [MCP Playground](https://www.mcpplayground.tech/playground): introduce la URL del servidor, conéctate y ejecuta al menos un flujo completo por cada tool expuesta.
+- [ ] Primero, prueba tu servidor MCP en [MCP Playground](https://www.mcpplayground.tech/playground). Desde **GitHub Codespaces**, expón/reenvía el puerto del servidor MCP (visibilidad pública) y pega la **URL reenviada de Codespaces** en Playground — `localhost` solo no funciona desde ese sitio. Conéctate y ejecuta al menos un flujo completo por cada tool expuesta.
 - [ ] Probar y documentar el comportamiento del servidor ante un intento de escritura sobre la tool de inventario (debe fallar de forma controlada y explicable).
 
 **Migración del agente**
@@ -88,7 +88,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 ## ✅ Qué Vamos a Evaluar
 
-- [ ] El servidor MCP levanta correctamente y expone sus tools mediante el mecanismo de discovery estándar de MCP.
+- [ ] El servidor MCP vive bajo `mcps/`, levanta correctamente y expone sus tools mediante el mecanismo de discovery estándar de MCP.
 - [ ] Un cliente sin access token OAuth válido no puede listar ni ejecutar ninguna tool.
 - [ ] La tool de gestión de tickets crea, actualiza el estado vía `PATCH /api/incidents/{id}/status` y consulta contra el Incidents Manager real de la compañía.
 - [ ] La tool de inventario responde correctamente a consultas y rechaza explícitamente cualquier operación de escritura.
@@ -96,6 +96,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 - [ ] Los errores de autenticación, autorización y validación devuelven códigos y mensajes distintos entre sí.
 - [ ] Existe al menos un log por invocación de tool con cliente, tool y resultado.
 - [ ] El agente ya no llama al Incidents Manager de forma directa: toda interacción pasa por el MCP Server como cliente.
+- [ ] MCP Playground se usó con la **URL pública reenviada de Codespaces** (no localhost).
 
 ---
 
