@@ -1,18 +1,23 @@
-# Example: RAG from scratch with Python and Qdrant
+---
+title: "RAG from scratch with Python and Qdrant"
+description: "Build a Retrieval-Augmented Generation pipeline from scratch with only Python and Qdrant, no framework, to see how retrieval, prompting, and generation fit together."
+author: "marcogonzalo"
+tags: ["Python", "Qdrant", "RAG", "Vector Databases"]
+---
+
+# RAG from scratch with Python and Qdrant
 
 <!-- hide -->
 
-_These instructions are also available in [Spanish](./README.es.md)._
+_Estas instrucciones también están disponibles en [español](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/lessons/simple-rag-fastapi-qdrant-example/simple-rag-fastapi-qdrant-example.es.md)._
 
 <!-- endhide -->
 
-Building a Retrieval-Augmented Generation (RAG) system doesn't always require complex frameworks like LangChain or LlamaIndex. Sometimes, building it from scratch using only Python, a vector database like Qdrant, and direct API calls can be the best way to understand the core mechanics of RAG.
+Building a Retrieval-Augmented Generation (RAG) system doesn't always require complex frameworks like LangChain or LlamaIndex. Sometimes, building it from scratch using only Python, a vector database like Qdrant, and direct API calls is the best way to understand the core mechanics of RAG.
 
-In this lesson, you will see how a fully functional RAG pipeline is build using only **Python** and **Qdrant**.
+In this lesson, you will see how a fully functional RAG pipeline is built using only **Python** and **Qdrant** — no orchestration framework in between.
 
----
-
-## 🎯 What is RAG?
+## What is RAG?
 
 Large Language Models (LLMs) are incredibly capable, but they are frozen in time and do not know about private files, internal company documents, or real-time information.
 
@@ -45,7 +50,7 @@ For this implementation, we will use:
 
 ## 🚀 Setting Up the Environment
 
-### Environment Variables
+### Environment variables
 
 To keep our model provider flexible and avoid hardcoding secrets, we will read configuration from environment variables:
 
@@ -55,11 +60,9 @@ export LLM_API_URL="https://api.openai.com/v1" # or any compatible gateway
 export LLM_MODEL="gpt-4o-mini" # or your preferred chat model
 ```
 
----
+## Step-by-step implementation
 
-## 💻 Step-by-Step Implementation
-
-### Step 1: The Embedding Model (`embed`)
+### Step 1: the embedding model (`embed`)
 
 An embedding model converts text into a list of numbers (a vector/coordinate) where words or sentences with similar meanings live close together in a high-dimensional space.
 
@@ -90,9 +93,7 @@ def embed(text: str) -> list[float]:
     return response.json()["data"][0]["embedding"]
 ```
 
----
-
-### Step 2: Indexing Documents (`setup`)
+### Step 2: indexing documents (`setup`)
 
 We need to populate Qdrant with our knowledge base. We define a list of documents, embed them, and save them as points in a Qdrant **collection** along with the original text (payload).
 
@@ -133,9 +134,7 @@ def setup():
         print("Collection created and documents indexed.")
 ```
 
----
-
-### Step 3: Retrieval (`retrieve`)
+### Step 3: retrieval (`retrieve`)
 
 When a user asks a question, we retrieve the matching documents by embedding the question and searching Qdrant for the closest vectors using cosine similarity.
 
@@ -151,9 +150,7 @@ def retrieve(query: str, limit: int = 2) -> list[str]:
     return [r.payload["text"] for r in results.points]
 ```
 
----
-
-### Step 4: Generation (`query`)
+### Step 4: generation (`query`)
 
 This function orchestrates the whole pipeline. It takes the question, retrieves the best context from Qdrant, builds a formatted prompt instructing the model to rely only on the retrieved context, and requests an answer from the LLM.
 
@@ -329,17 +326,15 @@ if __name__ == "__main__":
     print(f"\nAnswer:\n{result['answer']}")
 ```
 
----
-
 ## 🎯 Key Takeaways & Best Practices
 
 1. **Embedding Size Match**: The collection config (`VectorParams(size=1536)`) must exactly match the vector dimensions returned by your chosen embedding API (e.g., OpenAI `text-embedding-3-small` returns 1536).
 2. **Idempotency**: If you run `setup()` multiple times, using deterministic point IDs (like our fixed `id=i`) avoids document duplication because Qdrant overwrites existing points with the same ID.
-3. **Hallucination Prevention**: Explicit prompt instructions forcing the model to rely only on the retrieved context prevent the LLM from fabricating false information or pulling obsolete facts from its general pre-training dataset.
+3. **Hallucination prevention**: Explicit prompt instructions forcing the model to rely only on the retrieved context prevent the LLM from fabricating false information or pulling obsolete facts from its general pre-training dataset.
 
 ### ⚠️ Going Beyond: Similarity Thresholds
 
-In a production-ready RAG system, simply querying the closest $k$ documents is not enough. If a user asks an unrelated question (e.g., "What is the capital of France?"), the database will still return the closest matching vectors—even if their similarity score is extremely low.
+In a production-ready RAG system, simply querying the closest $k$ documents is not enough. If a user asks an unrelated question (e.g., "What is the capital of France?"), the database will still return the closest matching vectors — even if their similarity score is extremely low.
 
 To prevent feeding irrelevant context to the LLM, you should filter search hits by score:
 
@@ -360,3 +355,15 @@ relevant_chunks = [
 ```
 
 If no document clears the threshold, the retrieve list remains empty, prompting your LLM to honestly answer: _"I don't have information about that."_
+
+## RAG pipeline checklist
+
+- `embed()` returns a vector whose length matches `VectorParams(size=...)` exactly.
+- Running `setup()` twice does not duplicate points (deterministic IDs keep it idempotent).
+- `query()` answers using only the retrieved context, not the model's general knowledge.
+- An unrelated question (e.g., off-topic from your knowledge base) scores below `MIN_SCORE` and gets filtered out before reaching the prompt.
+- When no chunk clears the threshold, the pipeline returns an honest "I don't know" instead of a fabricated answer.
+
+## Conclusion
+
+RAG is not framework magic — it is three explicit steps: retrieve, augment, generate. Building it with only Python and Qdrant makes every step (embedding, indexing, similarity search, prompt construction) inspectable and debuggable, which pays off when a production RAG built on a framework misbehaves and you need to know which stage is at fault. Match your embedding dimensions to your vector config, keep indexing idempotent, and always filter by similarity score before trusting retrieved context — measure relevance, don't assume it.

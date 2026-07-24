@@ -1,16 +1,21 @@
-# Cursor + GitHub Codespaces — General Guide
+---
+title: "Cursor + GitHub Codespaces — general guide"
+description: "Connect Cursor to a GitHub Codespace so the editor and agent run in the cloud: install gh, authenticate, install the connector, pick a Codespace, and open /workspaces/repo."
+author: "@ehiber"
+tags: ["Cursor", "GitHub Codespaces", "Remote SSH", "GitHub CLI"]
+---
+
+# Cursor + GitHub Codespaces — general guide
 
 <!-- hide -->
 
-_Estas instrucciones tambien estan disponibles en [espanol](./cursor-github-codespaces.es.md)._
+_Estas instrucciones también están disponibles en [español](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/lessons/cursor-github-codespaces/cursor-github-codespaces.es.md)._
 
 <!-- endhide -->
 
-Connect **Cursor** to a **GitHub Codespace** to edit code and use the agent in the cloud—the same experience as in the browser, but from your local editor.
+You open Cursor locally, but the course work lives in a **GitHub Codespace**. If the agent runs against an empty local folder, every command fails — wrong OS, missing tools, no project files.
 
-Works on **Windows**, **macOS**, and **Linux**.
-
----
+Connect Cursor to the Codespace over SSH and the editor plus agent run **inside** the cloud environment — same as the browser, on Windows, macOS, or Linux.
 
 ## What you will achieve
 
@@ -28,8 +33,6 @@ flowchart LR
   install --> auth --> ext --> connect --> pick --> folder
 ```
 
----
-
 ## Requirements
 
 - GitHub account with **Codespaces** access
@@ -38,9 +41,7 @@ flowchart LR
 - **Remote - SSH** extension
 - **GitHub Codespaces Connector** extension (author: **SmartManoj**)
 
----
-
-## Part A — One-time setup
+## Part A — one-time setup
 
 ### 1. Install GitHub CLI
 
@@ -94,22 +95,20 @@ Install both extensions from the Cursor marketplace:
 
 When installing, Cursor may show a prompt to **trust the author** or **accept the extension**. You must **accept / confirm that you trust the author** for the extension to install and work correctly.
 
----
+## Part B — connect to a Codespace (each session)
 
-## Part B — Connect to a Codespace (each session)
-
-### Step 1 — Open the connect command
+### Step 1 — open the connect command
 
 1. Open the command palette:
    - **Windows / Linux:** `Ctrl+Shift+P`
    - **macOS:** `Cmd+Shift+P`
 2. Type and run: **`Connect to GitHub Codespaces`**
 
-### Step 2 — Pick a Codespace
+### Step 2 — pick a Codespace
 
 A menu will list your available Codespaces. Select the one for your current exercise or repository.
 
-### Step 3 — Open the project folder
+### Step 3 — open the project folder
 
 When Cursor asks you to pick a folder, open:
 
@@ -126,14 +125,12 @@ When Cursor asks you to pick a folder, open:
 
 Do not use local PC paths (`C:\...`, `/Users/...`) or `/workspace` (singular) unless your Codespace explicitly uses that layout.
 
-### Step 4 — Verify the connection
+### Step 4 — verify the connection
 
 - The status bar should show an **SSH** connection.
 - The integrated terminal should show a Linux prompt and paths under `/workspaces/`.
 
 The **agent** runs inside the Codespace in this window.
-
----
 
 ## Switching Codespaces (courses with many repos)
 
@@ -152,9 +149,7 @@ The **agent** runs inside the Codespace in this window.
 | Window opens but folder is empty                 | **Open Folder** → `/workspaces/repository-name`                                                             |
 | Extension will not install                       | Accept the **trust the author** prompt (**SmartManoj**)                                                     |
 
----
-
-## Checklist
+## Codespaces checklist
 
 ### First time
 
@@ -174,17 +169,13 @@ The **agent** runs inside the Codespace in this window.
 □ Open Folder → /workspaces/REPOSITORY-NAME
 ```
 
----
-
-## One-sentence summary
-
-Install and authenticate `gh` with `-s codespace`, install **GitHub Codespaces Connector** by **SmartManoj** (accepting trust in the author), run **Connect to GitHub Codespaces**, pick your Codespace, and open **`/workspaces/repository-name`**.
-
----
-
 ## Useful links
 
 - [GitHub Codespaces Connector — Marketplace](https://marketplace.visualstudio.com/items?itemName=SmartManoj.github-codespaces-connector) (author: **SmartManoj**)
 - [Extension repository](https://github.com/SmartManoj/GitHub-Codespaces-Connector)
 - [GitHub CLI — codespace manual](https://cli.github.com/manual/gh_codespace)
 - [GitHub Codespaces documentation](https://docs.github.com/en/codespaces)
+
+## Conclusion
+
+Install and authenticate `gh` with `-s codespace`, install **GitHub Codespaces Connector** by **SmartManoj** (accepting trust in the author), run **Connect to GitHub Codespaces**, pick your Codespace, and open **`/workspaces/repository-name`**. The agent only works when that remote folder is open — not against an empty local path.

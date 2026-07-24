@@ -1,16 +1,21 @@
-# Cursor + GitHub Codespaces — Guía general
+---
+title: "Cursor + GitHub Codespaces — guía general"
+description: "Conecta Cursor a un GitHub Codespace para que el editor y el agente corran en la nube: instala gh, autentica, instala el conector, elige un Codespace y abre /workspaces/repo."
+author: "@ehiber"
+tags: ["Cursor", "GitHub Codespaces", "Remote SSH", "GitHub CLI"]
+---
+
+# Cursor + GitHub Codespaces — guía general
 
 <!-- hide -->
 
-_These instructions are also available in [English](./cursor-github-codespaces.md)._
+_These instructions are also available in [English](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/lessons/cursor-github-codespaces/cursor-github-codespaces.md)._
 
 <!-- endhide -->
 
-Conecta **Cursor** a un **GitHub Codespace** para editar código y usar el agente en la nube, igual que en el navegador pero desde tu editor local.
+Abres Cursor en local, pero el trabajo del curso vive en un **GitHub Codespace**. Si el agente corre contra una carpeta local vacía, cada comando falla: SO incorrecto, herramientas que faltan, sin archivos del proyecto.
 
-Válido para **Windows**, **macOS** y **Linux**.
-
----
+Conecta Cursor al Codespace por SSH y el editor más el agente corren **dentro** del entorno en la nube — igual que en el navegador, en Windows, macOS o Linux.
 
 ## Qué vas a lograr
 
@@ -28,8 +33,6 @@ flowchart LR
   install --> auth --> ext --> connect --> pick --> folder
 ```
 
----
-
 ## Requisitos
 
 - Cuenta de GitHub con acceso a **Codespaces**
@@ -38,17 +41,15 @@ flowchart LR
 - Extensión **Remote - SSH**
 - Extensión **GitHub Codespaces Connector** (autor: **SmartManoj**)
 
----
-
-## Parte A — Instalación (una sola vez)
+## Parte A — instalación (una sola vez)
 
 ### 1. Instalar GitHub CLI
 
-| Sistema   | Cómo instalar |
-|-----------|---------------|
-| Windows   | Instalador desde [cli.github.com](https://cli.github.com/). Usa **Git Bash** o PowerShell donde `gh` esté en el PATH. |
-| macOS     | `brew install gh` o el instalador de la web. |
-| Linux     | Paquete de tu distro o [instrucciones oficiales](https://github.com/cli/cli#installation). |
+| Sistema | Cómo instalar                                                                                                         |
+| ------- | --------------------------------------------------------------------------------------------------------------------- |
+| Windows | Instalador desde [cli.github.com](https://cli.github.com/). Usa **Git Bash** o PowerShell donde `gh` esté en el PATH. |
+| macOS   | `brew install gh` o el instalador de la web.                                                                          |
+| Linux   | Paquete de tu distro o [instrucciones oficiales](https://github.com/cli/cli#installation).                            |
 
 Comprueba en terminal:
 
@@ -68,7 +69,7 @@ gh --version
 
 2. Sigue el asistente interactivo en la terminal:
    - Elige **GitHub.com** como host.
-   - Selecciona el método de autenticación recomendado HTTPS y navegador web.
+   - Selecciona el método de autenticación recomendado: HTTPS y navegador web.
    - Cuando el asistente te lo indique, abre el enlace en el navegador, inicia sesión y autoriza el acceso.
 
 3. Verifica tu estado de autenticación:
@@ -83,10 +84,10 @@ gh --version
 
 Instala estas dos extensiones desde el marketplace de Cursor:
 
-| Extensión | Autor | Enlace |
-|-----------|-------|--------|
-| **Remote - SSH** | Microsoft / Cursor | Busca `Remote - SSH` en extensiones |
-| **GitHub Codespaces Connector** | **SmartManoj** | [Marketplace](https://marketplace.visualstudio.com/items?itemName=SmartManoj.github-codespaces-connector) |
+| Extensión                       | Autor              | Enlace                                                                                                    |
+| ------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
+| **Remote - SSH**                | Microsoft / Cursor | Busca `Remote - SSH` en extensiones                                                                       |
+| **GitHub Codespaces Connector** | **SmartManoj**     | [Marketplace](https://marketplace.visualstudio.com/items?itemName=SmartManoj.github-codespaces-connector) |
 
 #### Confiar en el autor de la extensión
 
@@ -94,22 +95,20 @@ Instala estas dos extensiones desde el marketplace de Cursor:
 
 Al instalarla, Cursor puede mostrar un aviso para **confiar en el autor** o **aceptar la extensión**. Debes **aceptar / confirmar que confías en el autor** para que la extensión se instale y funcione correctamente.
 
----
+## Parte B — conectar a un Codespace (cada sesión)
 
-## Parte B — Conectar a un Codespace (cada sesión)
-
-### Paso 1 — Abrir el comando de conexión
+### Paso 1 — abrir el comando de conexión
 
 1. Abre la paleta de comandos:
    - **Windows / Linux:** `Ctrl+Shift+P`
    - **macOS:** `Cmd+Shift+P`
 2. Escribe y ejecuta: **`Connect to GitHub Codespaces`**
 
-### Paso 2 — Elegir el Codespace
+### Paso 2 — elegir el Codespace
 
 Aparecerá un menú con tus Codespaces disponibles. Selecciona el que corresponda al ejercicio o repositorio del curso.
 
-### Paso 3 — Abrir la carpeta del proyecto
+### Paso 3 — abrir la carpeta del proyecto
 
 Cuando Cursor te pida elegir carpeta, abre:
 
@@ -119,21 +118,19 @@ Cuando Cursor te pida elegir carpeta, abre:
 
 `NOMBRE-DEL-REPOSITORIO` es el nombre del repo en GitHub **sin** el prefijo `organizacion/`.
 
-| Repositorio en GitHub              | Ruta en Open Folder              |
-|------------------------------------|----------------------------------|
-| `mi-org/curso-javascript`          | `/workspaces/curso-javascript`   |
-| `usuario/proyecto-final`           | `/workspaces/proyecto-final`     |
+| Repositorio en GitHub     | Ruta en Open Folder            |
+| ------------------------- | ------------------------------ |
+| `mi-org/curso-javascript` | `/workspaces/curso-javascript` |
+| `usuario/proyecto-final`  | `/workspaces/proyecto-final`   |
 
 No uses rutas de tu PC (`C:\...`, `/Users/...`) ni `/workspace` (singular) salvo que tu Codespace lo use explícitamente.
 
-### Paso 4 — Comprobar la conexión
+### Paso 4 — comprobar la conexión
 
 - La barra inferior debe indicar que estás conectado por **SSH**.
 - La terminal integrada debe mostrar un prompt Linux y rutas bajo `/workspaces/`.
 
 Ahí el **agente** trabaja dentro del Codespace.
-
----
 
 ## Cambiar de Codespace (curso con muchos repos)
 
@@ -144,17 +141,15 @@ Ahí el **agente** trabaja dentro del Codespace.
 
 ## Trucos y solución de problemas
 
-| Problema | Solución |
-|----------|----------|
-| No aparece **Connect to GitHub Codespaces** | Instala **GitHub Codespaces Connector** (autor: **SmartManoj**) y confía en el autor si Cursor lo pide |
-| Lista de Codespaces vacía | Ejecuta `gh auth login -s codespace` y comprueba con `gh codespace list` |
-| `gh: command not found` | Instala el CLI o usa la terminal donde esté en el PATH (en Windows, Git Bash suele funcionar mejor que CMD) |
-| Se abre ventana pero la carpeta está vacía | **Open Folder** → `/workspaces/nombre-del-repo` |
-| La extensión no se instala | Acepta el aviso de **confiar en el autor** (SmartManoj) |
+| Problema                                    | Solución                                                                                                    |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| No aparece **Connect to GitHub Codespaces** | Instala **GitHub Codespaces Connector** (autor: **SmartManoj**) y confía en el autor si Cursor lo pide      |
+| Lista de Codespaces vacía                   | Ejecuta `gh auth login -s codespace` y comprueba con `gh codespace list`                                    |
+| `gh: command not found`                     | Instala el CLI o usa la terminal donde esté en el PATH (en Windows, Git Bash suele funcionar mejor que CMD) |
+| Se abre ventana pero la carpeta está vacía  | **Open Folder** → `/workspaces/nombre-del-repo`                                                             |
+| La extensión no se instala                  | Acepta el aviso de **confiar en el autor** (SmartManoj)                                                     |
 
----
-
-## Checklist
+## Checklist de Codespaces
 
 ### Primera vez
 
@@ -174,17 +169,13 @@ Ahí el **agente** trabaja dentro del Codespace.
 □ Open Folder → /workspaces/NOMBRE-DEL-REPO
 ```
 
----
-
-## Resumen en una frase
-
-Instala y autentica `gh` con `-s codespace`, instala **GitHub Codespaces Connector** de **SmartManoj** (aceptando confiar en el autor), ejecuta **Connect to GitHub Codespaces**, elige tu Codespace y abre **`/workspaces/nombre-del-repositorio`**.
-
----
-
 ## Enlaces útiles
 
 - [GitHub Codespaces Connector — Marketplace](https://marketplace.visualstudio.com/items?itemName=SmartManoj.github-codespaces-connector) (autor: **SmartManoj**)
 - [Repositorio de la extensión](https://github.com/SmartManoj/GitHub-Codespaces-Connector)
 - [GitHub CLI — manual de codespace](https://cli.github.com/manual/gh_codespace)
 - [GitHub Codespaces — documentación](https://docs.github.com/en/codespaces)
+
+## Conclusión
+
+Instala y autentica `gh` con `-s codespace`, instala **GitHub Codespaces Connector** de **SmartManoj** (aceptando confiar en el autor), ejecuta **Connect to GitHub Codespaces**, elige tu Codespace y abre **`/workspaces/nombre-del-repositorio`**. El agente solo funciona con esa carpeta remota abierta — no contra una ruta local vacía.

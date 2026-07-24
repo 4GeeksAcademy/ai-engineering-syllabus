@@ -1,4 +1,11 @@
-# Tus modelos de IA de la academia en Codespaces — 4Geeks Student + Copilot Chat
+---
+title: "Tus modelos de IA de la academia en Codespaces: 4Geeks Student + Copilot Chat"
+description: "Instala 4Geeks Student en GitHub Codespaces, inicia sesión y registra los modelos LLM de tu academia para usarlos en Copilot Chat junto a GPT y Codex."
+author: "@ehiber"
+tags: ["GitHub Codespaces", "Copilot Chat", "4Geeks Student", "VS Code"]
+---
+
+# Tus modelos de IA de la academia en Codespaces: 4Geeks Student + Copilot Chat
 
 <!-- hide -->
 
@@ -45,8 +52,6 @@ En el curso trabajas sobre todo en **GitHub Codespaces**. Cada Codespace es un *
 - Cuando empiezas un **nuevo ejercicio**, abres un **nuevo repositorio** o creas un **Codespace nuevo**, debes repetir la configuración: **instalar → login → add models**.
 
 Es normal. Reserva uno o dos minutos al inicio de cada sesión.
-
----
 
 ## Requisitos
 
@@ -129,9 +134,7 @@ Cuando pases a un nuevo ejercicio o repositorio:
 | **4Geeks: Connect to VPS** | Conectar a tu VPS de 4Geeks vía Remote SSH             |
 | **4Geeks: Logout**         | Cerrar sesión y eliminar los modelos registrados       |
 
----
-
-## Checklist
+## Checklist de configuración
 
 ### Cada Codespace nuevo
 
@@ -144,16 +147,12 @@ Cuando pases a un nuevo ejercicio o repositorio:
 □ Copilot Chat → selector de modelos → modelo 4Geeks Student
 ```
 
----
-
-## Resumen en una frase
-
-En **cada Codespace nuevo**, instala **4Geeks Student**, ejecuta `4Geeks: Login` y `4Geeks: Add Models`, y elige un modelo **4Geeks Student** en **Copilot Chat** para usar tu presupuesto de IA de la academia.
-
----
-
 ## Enlaces útiles
 
 - [VS Code Marketplace](https://marketplace.visualstudio.com/) — busca **4Geeks Student** (publisher: **4Geeks**)
 - [4Geeks.com](https://4geeks.com/)
 - [GitHub Codespaces — documentación](https://docs.github.com/en/codespaces)
+
+## Conclusión
+
+En **cada Codespace nuevo**, instala **4Geeks Student**, ejecuta `4Geeks: Login` y `4Geeks: Add Models`, y elige un modelo **4Geeks Student** en **Copilot Chat**. Trata los dos conjuntos de modelos como presupuestos separados y elige con criterio — trabajo rutinario en modelos 4Geeks, trabajo de frontera en Copilot — para que ninguno se agote antes de que termine el curso.

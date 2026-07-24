@@ -1,4 +1,11 @@
-# Your academy AI models in Codespaces — 4Geeks Student + Copilot Chat
+---
+title: "Your academy AI models in Codespaces: 4Geeks Student + Copilot Chat"
+description: "Install 4Geeks Student in GitHub Codespaces, sign in, and register your academy's LLM models to use them in Copilot Chat alongside GPT and Codex."
+author: "@ehiber"
+tags: ["GitHub Codespaces", "Copilot Chat", "4Geeks Student", "VS Code"]
+---
+
+# Your academy AI models in Codespaces: 4Geeks Student + Copilot Chat
 
 <!-- hide -->
 
@@ -12,8 +19,6 @@ Thanks to **4Geeks**, you get **two model sets** in **Copilot Chat** while worki
 - **4Geeks models** — recognized open-source models that help you **save tokens** without giving up performance
 
 **Choose smart**: pick the set that fits the task — frontier / heavy work with Copilot when you need it, and 4Geeks models for everyday coding or more automatic / repetitive tasks, so you stretch your token budget.
-
----
 
 ## What you will achieve
 
@@ -45,8 +50,6 @@ In the course you work mainly in **GitHub Codespaces**. Each Codespace is a **fr
 - When you start a **new exercise**, open a **new repository**, or create a **new Codespace**, you must run the setup again: **install → login → add models**.
 
 This is normal. Budget a minute or two at the start of each session.
-
----
 
 ## Requirements
 
@@ -129,9 +132,7 @@ When you move to a new exercise or repository:
 | **4Geeks: Connect to VPS** | Connect to your 4Geeks VPS via Remote SSH      |
 | **4Geeks: Logout**         | Sign out and remove registered models          |
 
----
-
-## Checklist
+## Setup checklist
 
 ### Each new Codespace
 
@@ -144,16 +145,12 @@ When you move to a new exercise or repository:
 □ Copilot Chat → model picker → 4Geeks Student model
 ```
 
----
-
-## One-sentence summary
-
-On **every new Codespace**, install **4Geeks Student**, run `4Geeks: Login` and `4Geeks: Add Models`, then pick a **4Geeks Student** model in **Copilot Chat** to use your academy AI budget.
-
----
-
 ## Useful links
 
 - [VS Code Marketplace](https://marketplace.visualstudio.com/) — search **4Geeks Student** (publisher: **4Geeks**)
 - [4Geeks.com](https://4geeks.com/)
 - [GitHub Codespaces documentation](https://docs.github.com/en/codespaces)
+
+## Conclusion
+
+On **every new Codespace**, install **4Geeks Student**, run `4Geeks: Login` and `4Geeks: Add Models`, then pick a **4Geeks Student** model in **Copilot Chat**. Treat the two model sets as separate budgets and choose deliberately — everyday coding on 4Geeks models, frontier work on Copilot — so neither runs out before the course does.
