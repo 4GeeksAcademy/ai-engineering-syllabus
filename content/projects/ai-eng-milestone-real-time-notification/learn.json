@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications",
+    "es": "Hito 10 — Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE"
+  },
+  "description": {
+    "en": "Push RFP ticket notifications to the company dashboard over SSE: named event + structured payload from CONTEXT, keep-alive headers, fetch + ReadableStream consumption, progressive backoff reconnect without duplicates — communication layer only, no model or agent calls.",
+    "es": "Empuja notificaciones de tickets RFP al dashboard de la empresa vía SSE: evento nombrado + payload estructurado del CONTEXT, headers keep-alive, consumo con fetch + ReadableStream, reconexión con backoff progresivo sin duplicados — solo capa de comunicación, sin llamadas a modelo o agente."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-real-time-notification",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "python",
+    "fastapi",
+    "sse",
+    "javascript",
+    "fetch",
+    "readable-stream",
+    "testing"
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-notification/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-notification/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-notification #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse",
+      "es": "Acabo de completar Hito 10 — Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-notification #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse"
+    },
+    {
+      "en": "Built and shipped: Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-notification #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse",
+      "es": "Construido y publicado: Hito 10 — Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-notification #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse"
+    }
+  ]
+}
