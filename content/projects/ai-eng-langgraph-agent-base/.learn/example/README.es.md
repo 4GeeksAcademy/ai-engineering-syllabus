@@ -1,6 +1,6 @@
 # Maple Street Library — Migración a Agente LangGraph (Ejemplo de Clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-langgraph-agent-base`. Misma columna vertebral (estado LangGraph mínimo, tres nodos de responsabilidad única, aristas condicionales, compilar + checkpoint, trace consultable, evals, `POST /agent/query` delgado), alcance distinto al monorepo de empresa. Asume que los estudiantes ya tienen el RAG de Maple Street del ejemplo de clase del Hito 7 — o tú entregas `retrieve`/`query` preconstruidos en `data/pipelines/`. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-langgraph-agent-base`. Misma columna vertebral (estado LangGraph mínimo, tres nodos de responsabilidad única, aristas condicionales, compilar + checkpoint, trace consultable, evals, `POST /agent/query` delgado), alcance distinto al monorepo de empresa. Asume que los estudiantes ya tienen el RAG de Maple Street del ejemplo de clase RAG previo — o tú entregas `retrieve`/`query` preconstruidos en `data/pipelines/`. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -20,14 +20,14 @@ Objetivo del demo en vivo: envolver las funciones existentes `retrieve` y `query
 | LangSmith o tracing de producción                  | Lista de trace en memoria + export JSON opcional    |
 | Checkpointing con almacén durable                  | Solo checkpointer `MemorySaver`                     |
 | PR con captura de trace + salida de evals          | Demo local + `pytest tests/pipelines/`              |
-| Convivir con endpoint del Hito 7 en monorepo       | Reemplazar o añadir junto a `POST /knowledge/query` |
+| Convivir con endpoint RAG existente en monorepo    | Reemplazar o añadir junto a `POST /knowledge/query` |
 
 ---
 
 ## Prerrequisitos (del ejemplo de clase RAG)
 
 - [ ] Qdrant corriendo con colección `maple_knowledge` indexada
-- [ ] `data/pipelines/rag.py` expone `retrieve()` y `query()` funcionales — **impórtalos; no copies lógica en los nodos**
+- [ ] `data/pipelines/rag.py` expone `retrieve()` y `generate_answer()` (el paso de generación separado de `query()`) funcionales — **impórtalos; no copies lógica en los nodos, y no llames al `query()` monolítico dentro de un solo nodo**
 
 ---
 
@@ -40,11 +40,11 @@ Objetivo del demo en vivo: envolver las funciones existentes `retrieve` y `query
 
 ### 2. Nodos (`services/agent/nodes.py`)
 
-| Nodo               | Llama a                       | Responsabilidad                                       |
-| ------------------ | ----------------------------- | ----------------------------------------------------- |
-| `receive_question` | —                             | Validar pregunta no vacía; añadir paso al trace       |
-| `retrieve_node`    | `data.pipelines.rag.retrieve` | Obtener contexto; registrar conteo de chunks en trace |
-| `query_node`       | `data.pipelines.rag.query`    | Generar respuesta con voz de mostrador                |
+| Nodo               | Llama a                              | Responsabilidad                                                                                                    |
+| ------------------ | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `receive_question` | —                                    | Validar pregunta no vacía; añadir paso al trace                                                                    |
+| `retrieve_node`    | `data.pipelines.rag.retrieve`        | Obtener contexto; registrar conteo de chunks en trace                                                              |
+| `query_node`       | `data.pipelines.rag.generate_answer` | Generar respuesta con voz de mostrador a partir del contexto recibido — **no** `query()`, que volvería a recuperar |
 
 ### 3. Grafo + checkpoint (`services/agent/graph.py`)
 

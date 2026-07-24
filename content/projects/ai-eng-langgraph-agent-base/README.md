@@ -17,7 +17,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-In Milestone 7 you built the four functions of your RAG system (`setup`, `embed`, `retrieve`, `query`) and exposed them through a FastAPI endpoint. It works, but it's a black box: it takes in a question and returns an answer, without anyone — including you — being able to see what decisions it made along the way.
+You already built the four functions of your RAG system (`setup`, `embed`, `retrieve`, `query`) and exposed them through a FastAPI endpoint. It works, but it's a black box: it takes in a question and returns an answer, without anyone — including you — being able to see what decisions it made along the way.
 
 Your tech lead opened a **ticket** with a clear requirement: before adding any new capability to the agent (Part 2 of this same project), the reasoning flow has to become explicit as a graph, with state, nodes, and transitions that can be traced and evaluated independently.
 
@@ -37,7 +37,7 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 
 1. Keep working on your existing fork of the [**monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). If for some reason you don't have one yet, fork it and open it in **GitHub Codespaces** or clone it locally.
 2. Install the dependency with `uv add langgraph` (never use `pip install` or `pipenv`).
-3. Locate your Milestone 7 code: your `setup`, `embed`, `retrieve`, and `query` functions in `data/pipelines/`, and the endpoint that exposes them in `services/`.
+3. Locate your existing RAG code: your `setup`, `embed`, `retrieve`, and `query` functions in `data/pipelines/`, and the endpoint that exposes them in `services/`.
 
 ---
 
@@ -46,8 +46,11 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 ### Agent graph (`services/`)
 
 - [ ] Define the graph's **state**: the minimum information a node needs to decide the next step (user question, retrieval result, partial answer). Don't include the full conversation history without justifying why you need it.
-- [ ] Model at least these **nodes**: one that receives the question, one that runs `retrieve` against your knowledge base (reusing the code from `data/pipelines/`, not duplicating it), and one that generates the final answer with `query`.
-- [ ] Define the **edges** between nodes based on explicit output conditions, not as a hardcoded fixed sequence.
+- [ ] Model at least these **nodes**: one that receives the question, one that runs `retrieve` against your knowledge base (reusing the code from `data/pipelines/`, not duplicating it), and one that generates the final answer from the already-retrieved context using your generation step (`generate_answer(question, context)` — the function you factored out of `query()` in the RAG project).
+- [ ] Define the **edges** between nodes based on explicit output conditions, not as a hardcoded fixed sequence. Include at least one real condition, not just a straight line — for example: if the question is empty, route to a clear error/`END` instead of retrieving; if `retrieve` returns no context above the threshold, route to a node that answers honestly ("I don't have information about that") instead of forcing generation on empty context.
+
+> **Node contract (read carefully):** The `retrieve` node calls `retrieve()`; the generation node calls your generation function (`generate_answer(question, context)`) with the context the `retrieve` node already produced. **Do not** put the monolithic `query()` (retrieve + generate together) inside a single node — that re-runs retrieval and collapses the very flow you were asked to make explicit and traceable. If you reuse `query()` directly, it must accept already-retrieved chunks and skip its internal `retrieve()`.
+
 - [ ] **Compile the graph** before any execution — compilation must fail clearly if there's a structural error (an unconnected node, a mistyped state, etc.).
 - [ ] Implement **checkpointing** at every meaningful state transition, so a run can be inspected or resumed.
 
@@ -56,13 +59,14 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 - [ ] Instrument the graph so that **every run produces a trace**: which nodes ran, in what order, and what each one produced. You can use a tracing tool (e.g., LangSmith) or your own structured log if you don't have access to one — what matters is that the trace is queryable after the run, not just printed to the console.
 - [ ] Write at least 3 **evals**: test cases with an input question and a verifiable criterion about the answer or the trace (for example: "for this question, the `retrieve` node must run before `query`"). Evals run against the trace, not against a live execution every time.
 - [ ] Evals must live in `tests/pipelines/` and be runnable with a single command.
+- [ ] At least one eval must assert the answer stays **grounded** in your existing RAG knowledge base (e.g. a known policy question returns the expected entity/fact from `CONTEXT-company.md`). Trace/routing correctness does **not** replace answer grounding: your agent evals are **in addition to** your existing RAG tests, which must still pass. Grounding remains an acceptance gate — a run with a perfect trace but an answer that ignores CONTEXT policies is a failure.
 
 ### Endpoint (`services/`)
 
-- [ ] Expose the compiled graph through an endpoint (e.g., `POST /agent/query`) that replaces or coexists with the Milestone 7 endpoint. The endpoint must not contain its own business logic — it only invokes the graph.
+- [ ] Expose the compiled graph through an endpoint (e.g., `POST /agent/query`) that replaces or coexists with the existing RAG endpoint. The endpoint must not contain its own business logic — it only invokes the graph.
 - [ ] If the graph fails at any node, the endpoint responds with a clear error message, never a raw stack trace.
 
-⚠️ **IMPORTANT:** The agent's behavior (which documents it retrieves, what it answers) must remain correct according to your Milestone 7 knowledge base. Migrating to LangGraph is not an excuse for answers to stop being grounded in your company's data.
+⚠️ **IMPORTANT:** The agent's behavior (which documents it retrieves, what it answers) must remain correct according to your existing RAG knowledge base. Migrating to LangGraph is not an excuse for answers to stop being grounded in your company's data.
 
 ---
 
@@ -74,9 +78,11 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 - [ ] The graph is explicitly compiled before execution and fails with a clear error on a structural problem.
 - [ ] There is verifiable checkpointing on at least one state transition.
 - [ ] Every run produces a queryable trace, not just a final answer.
-- [ ] There are at least 3 runnable evals in `tests/pipelines/`, with verifiable criteria on the trace or the answer.
+- [ ] There are at least 3 runnable evals in `tests/pipelines/`, with verifiable criteria on the trace or the answer, and at least one asserts the answer stays grounded in the CONTEXT knowledge base.
+- [ ] Existing RAG tests still pass — agent evals extend, not replace, answer grounding as an acceptance gate.
 - [ ] The endpoint invokes the graph without duplicating business logic and handles errors without exposing internal details.
-- [ ] The Milestone 7 `retrieve`/`embed`/`query` functions are reused from `data/pipelines/`, not rewritten from scratch.
+- [ ] Nodes call `retrieve` and the generation step separately — no single node re-wraps the monolithic `query()` (retrieve + generate).
+- [ ] The existing `retrieve`/`embed`/`query` functions are reused from `data/pipelines/`, not rewritten from scratch.
 
 ---
 
@@ -86,7 +92,7 @@ This is **Part 1 of 2**. It is submitted via its own Pull Request, independent f
 
 ```text
 data/
-  pipelines/                    ← Milestone 7 RAG functions, reused without duplication
+  pipelines/                    ← existing RAG functions, reused without duplication
 
 services/
   <agent-service>/               ← LangGraph graph, nodes, endpoint

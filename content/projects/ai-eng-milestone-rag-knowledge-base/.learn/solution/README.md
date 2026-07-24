@@ -122,6 +122,8 @@ Question: {question}
 
 4. Return `llm.generate(prompt)` string only
 
+> **Reuse contract for the LangGraph agent (Part 1):** isolate steps 2–4 in `generate_answer(question, context)` (the solution's internal `_generate`). `query()` = `retrieve()` + `generate_answer()`. The Part 1 graph imports `retrieve` and `generate_answer` as **separate node calls** — it must not call `query()` inside a single node, which would re-run retrieval and collapse the flow the agent is meant to make explicit.
+
 ---
 
 ## Phase 3 — FastAPI endpoint

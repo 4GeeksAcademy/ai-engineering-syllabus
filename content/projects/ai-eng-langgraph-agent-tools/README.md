@@ -51,10 +51,12 @@ It's tempting to solve this by indexing tickets into the same vector store as th
 ### Required tool: support ticket lookup
 
 - [ ] Define a **typed contract** for the tool's input/output (e.g., input: `ticket_id` or search filters; output: status, category, source, dates — the same fields your incident API exposes).
-- [ ] Implement the tool so it calls your existing incident manager service (`GET /api/incidents` or `GET /api/incidents/{id}`) — never simulated or hardcoded data.
+- [ ] Implement the tool so it reads from your existing incident manager (`GET /api/incidents` or `GET /api/incidents/{id}`) — never simulated or hardcoded data. You may call it two ways, both accepted: **(a) over HTTP** to the running service, or **(b) in-process** through its service/repository layer if the incident manager lives in the same monorepo package. Pick whichever matches your architecture; what is rejected is a parallel fake dataset, not the transport.
+- [ ] If the incident service requires **authentication** (e.g. a JWT or API key), pass valid credentials the same way your other backend-to-backend calls do — read them from environment/config, never hardcode a token. If your service has no auth, state that in your PR so reviewers don't expect it.
+- [ ] The tool must be **read-only**: it only queries (`GET`) the incident data. A tool must never create, update, or delete tickets.
 - [ ] Add a **node** to the graph for this tool and a **conditional edge** that decides when the agent should use it instead of (or in addition to) the RAG.
-- [ ] Define an explicit **timeout** for the call — if the incident service doesn't respond in time, the graph must not hang.
-- [ ] Define a **fallback path**: if the tool fails or the ticket doesn't exist, the agent gives an honest answer ("I couldn't confirm that ticket's status right now"), never a made-up status.
+- [ ] Define an explicit, **numeric timeout** for the call (a concrete value, e.g. 3–5 seconds) — if the incident service doesn't respond in time, the graph must not hang.
+- [ ] Define a **fallback path**: if the tool times out, errors, or the ticket doesn't exist, the agent gives an honest answer ("I couldn't confirm that ticket's status right now"), never a made-up status.
 
 ### Stretch tool (optional): inventory lookup
 
@@ -77,8 +79,9 @@ It's tempting to solve this by indexing tickets into the same vector store as th
 
 ## ✅ What We Will Evaluate
 
-- [ ] The ticket tool has a typed input/output contract and queries the real incident manager service.
-- [ ] There is an explicit timeout on the tool call.
+- [ ] The ticket tool has a typed input/output contract and reads from the real incident manager (HTTP or in-process service layer — both accepted), with auth passed correctly if the service requires it.
+- [ ] Tools are read-only — no tool creates, updates, or deletes data in the incident/inventory services.
+- [ ] There is an explicit, numeric timeout on the tool call.
 - [ ] There is a verifiable fallback path when the tool fails or the resource doesn't exist — no made-up answers.
 - [ ] The agent routes correctly between the RAG and tool(s) based on the question's content, without explicit user instruction.
 - [ ] Each tool has a single responsibility (no tool combines tickets and inventory).

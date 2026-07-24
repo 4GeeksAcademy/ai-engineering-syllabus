@@ -51,10 +51,12 @@ Es tentador resolver esto indexando los tickets en el mismo vector store del RAG
 ### Tool obligatoria: consulta de tickets de soporte
 
 - [ ] Define un **contrato tipado** de entrada/salida para la tool (ej. entrada: `ticket_id` o filtros de búsqueda; salida: estado, categoría, origen, fechas — los mismos campos que expone tu API de incidentes).
-- [ ] Implementa la tool para que llame a tu servicio existente del gestor de incidentes (`GET /api/incidents` o `GET /api/incidents/{id}`) — nunca datos simulados ni hardcodeados.
+- [ ] Implementa la tool para que lea de tu gestor de incidentes existente (`GET /api/incidents` o `GET /api/incidents/{id}`) — nunca datos simulados ni hardcodeados. Puedes llamarlo de dos formas, ambas aceptadas: **(a) por HTTP** al servicio corriendo, o **(b) en-proceso** a través de su capa de servicio/repositorio si el gestor de incidentes vive en el mismo paquete del monorepo. Elige la que coincida con tu arquitectura; lo que se rechaza es un dataset falso paralelo, no el transporte.
+- [ ] Si el servicio de incidentes requiere **autenticación** (p. ej. un JWT o API key), pasa credenciales válidas igual que en tus otras llamadas backend-a-backend — léelas de entorno/config, nunca hardcodees un token. Si tu servicio no tiene auth, indícalo en tu PR para que el revisor no la espere.
+- [ ] La tool debe ser de **solo lectura**: únicamente consulta (`GET`) los datos de incidentes. Una tool nunca debe crear, actualizar ni eliminar tickets.
 - [ ] Agrega al grafo un **nodo** para esta tool y una **arista condicional** que decida cuándo el agente debe usarla en lugar de (o además de) el RAG.
-- [ ] Define un **timeout** explícito para la llamada — si el servicio de incidentes no responde a tiempo, el grafo no debe quedar colgado.
-- [ ] Define una **ruta de fallback**: si la tool falla o el ticket no existe, el agente responde algo honesto ("no pude confirmar el estado de ese ticket ahora mismo"), nunca inventa un estado.
+- [ ] Define un **timeout** explícito y **numérico** para la llamada (un valor concreto, p. ej. 3–5 segundos) — si el servicio de incidentes no responde a tiempo, el grafo no debe quedar colgado.
+- [ ] Define una **ruta de fallback**: si la tool agota el timeout, falla o el ticket no existe, el agente responde algo honesto ("no pude confirmar el estado de ese ticket ahora mismo"), nunca inventa un estado.
 
 ### Tool extra (opcional): consulta de inventario
 
@@ -77,8 +79,9 @@ Es tentador resolver esto indexando los tickets en el mismo vector store del RAG
 
 ## ✅ Qué Vamos a Evaluar
 
-- [ ] La tool de tickets tiene un contrato de entrada/salida tipado y consulta el servicio real del gestor de incidentes.
-- [ ] Existe un timeout explícito en la llamada a la tool.
+- [ ] La tool de tickets tiene un contrato de entrada/salida tipado y lee del gestor de incidentes real (HTTP o capa de servicio en-proceso — ambas aceptadas), pasando auth correctamente si el servicio la requiere.
+- [ ] Las tools son de solo lectura — ninguna tool crea, actualiza ni elimina datos en los servicios de incidentes/inventario.
+- [ ] Existe un timeout explícito y numérico en la llamada a la tool.
 - [ ] Existe una ruta de fallback verificable cuando la tool falla o el recurso no existe — sin respuestas inventadas.
 - [ ] El agente enruta correctamente entre RAG y tool(s) según el contenido de la pregunta, sin instrucción explícita del usuario.
 - [ ] Cada tool tiene una única responsabilidad (no hay una tool que combine tickets e inventario).

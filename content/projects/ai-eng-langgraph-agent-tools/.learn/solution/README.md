@@ -24,10 +24,11 @@ flowchart TD
 
 **Design invariants:**
 
-1. Tools call **live HTTP endpoints** on services the student already built — never mocked ticket/inventory data inside the agent service.
-2. Each tool has **one responsibility** (tickets vs inventory are separate tools).
-3. Timeouts and fallback paths are **explicit graph branches**, not uncaught exceptions.
-4. Traces must show **which source ran** (RAG, tool, or both) and **in what order**.
+1. Tools read from the **real services** the student already built (live HTTP endpoint **or** in-process service/repository layer if same monorepo package) — never mocked ticket/inventory data inside the agent service. Transport is the student's choice; a fake parallel dataset is not.
+2. Tools are **read-only** — query (`GET`) only; never create/update/delete on incident or inventory services.
+3. Each tool has **one responsibility** (tickets vs inventory are separate tools).
+4. Timeouts and fallback paths are **explicit graph branches**, not uncaught exceptions.
+5. Traces must show **which source ran** (RAG, tool, or both) and **in what order**.
 
 ---
 
@@ -56,7 +57,9 @@ class TicketLookupOutput(BaseModel):
 - `GET /api/incidents/{id}` when `ticket_id` is present.
 - `GET /api/incidents` with query params when filtering.
 - Configure base URL from environment (same pattern as other monorepo services).
-- Apply an explicit timeout (e.g. 3–5 seconds) on every request.
+- If the incident service is auth-protected, read the credential (JWT/API key) from env/config and attach it per request — never hardcode. If it has no auth, note it in the PR.
+- **In-process alternative:** when the incident manager is a package in the same monorepo, calling its service/repository layer directly (no network hop) is equally accepted — same typed contract, timeout via the underlying call, and read-only access still apply.
+- Apply an explicit numeric timeout (e.g. 3–5 seconds) on every request.
 
 ### Fallback behavior
 
@@ -132,7 +135,8 @@ Evals should inspect **stored traces** or deterministic graph outputs — not re
 ## Submission checklist
 
 - [ ] Typed ticket tool contract implemented.
-- [ ] Real incident manager HTTP calls with timeout.
+- [ ] Real incident manager access (HTTP or in-process) with numeric timeout and auth if required.
+- [ ] Tools are read-only (no writes to incident/inventory services).
 - [ ] Verifiable fallback when tool fails or resource missing.
 - [ ] Automatic routing without user specifying source.
 - [ ] Separate tools for tickets and inventory (if inventory built).

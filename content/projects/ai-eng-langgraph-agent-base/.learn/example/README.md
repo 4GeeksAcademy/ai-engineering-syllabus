@@ -1,6 +1,6 @@
 # Maple Street Library — LangGraph Agent Migration (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-langgraph-agent-base`. Same spine (minimal LangGraph state, three single-responsibility nodes, conditional edges, compile + checkpoint, queryable trace, evals, thin `POST /agent/query`), different scope than the company monorepo. Assumes students already have the Maple Street RAG from the Milestone 7 class example — or you provide a pre-built `retrieve`/`query` in `data/pipelines/`. Students still follow the full monorepo brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-langgraph-agent-base`. Same spine (minimal LangGraph state, three single-responsibility nodes, conditional edges, compile + checkpoint, queryable trace, evals, thin `POST /agent/query`), different scope than the company monorepo. Assumes students already have the Maple Street RAG from the prior RAG class example — or you provide a pre-built `retrieve`/`query` in `data/pipelines/`. Students still follow the full monorepo brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -20,14 +20,14 @@ Your live demo goal: wrap the existing `retrieve` and `query` functions in a **c
 | LangSmith or production-grade tracing             | In-memory trace list + optional JSON export   |
 | Checkpointing with durable store                  | `MemorySaver` checkpointer only               |
 | PR with trace screenshot + eval output            | Local demo + `pytest tests/pipelines/`        |
-| Coexist with Milestone 7 monorepo endpoint        | Replace or add beside `POST /knowledge/query` |
+| Coexist with existing RAG monorepo endpoint       | Replace or add beside `POST /knowledge/query` |
 
 ---
 
 ## Prerequisites (from RAG class example)
 
 - [ ] Qdrant running with collection `maple_knowledge` indexed
-- [ ] `data/pipelines/rag.py` exposes working `retrieve()` and `query()` — **import them; do not copy logic into nodes**
+- [ ] `data/pipelines/rag.py` exposes working `retrieve()` and `generate_answer()` (the generation step factored out of `query()`) — **import them; do not copy logic into nodes, and do not call the monolithic `query()` inside a single node**
 
 ---
 
@@ -40,11 +40,11 @@ Your live demo goal: wrap the existing `retrieve` and `query` functions in a **c
 
 ### 2. Nodes (`services/agent/nodes.py`)
 
-| Node               | Calls                         | Responsibility                                 |
-| ------------------ | ----------------------------- | ---------------------------------------------- |
-| `receive_question` | —                             | Validate non-empty question; append trace step |
-| `retrieve_node`    | `data.pipelines.rag.retrieve` | Fetch context; record chunk count in trace     |
-| `query_node`       | `data.pipelines.rag.query`    | Generate desk-staff answer                     |
+| Node               | Calls                                | Responsibility                                                                                     |
+| ------------------ | ------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `receive_question` | —                                    | Validate non-empty question; append trace step                                                     |
+| `retrieve_node`    | `data.pipelines.rag.retrieve`        | Fetch context; record chunk count in trace                                                         |
+| `query_node`       | `data.pipelines.rag.generate_answer` | Generate desk-staff answer from the passed context — **not** `query()`, which would retrieve again |
 
 ### 3. Graph + checkpoint (`services/agent/graph.py`)
 

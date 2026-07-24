@@ -1,6 +1,6 @@
 # Support Agent with LangGraph — Part 1 — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Paths and collection names below are **indicative** — students must align with their assigned `CONTEXT-company.md` and existing Milestone 7 pipeline layout.
+Reference quality bar for the student's company monorepo fork. Paths and collection names below are **indicative** — students must align with their assigned `CONTEXT-company.md` and existing RAG pipeline layout.
 
 ---
 
@@ -23,7 +23,7 @@ flowchart LR
 
 **Design invariants:**
 
-1. Milestone 7 functions (`retrieve`, `query`, `embed`, `setup`) stay in `data/pipelines/` — graph nodes import them, never duplicate logic.
+1. Existing RAG functions (`retrieve`, `query`, `embed`, `setup`) stay in `data/pipelines/` — graph nodes import them, never duplicate logic.
 2. Graph state is minimal: question, retrieved context, partial/final answer, trace metadata — not full chat history.
 3. Graph is compiled once at startup; structural errors fail at import/compile time.
 4. Endpoint is a thin adapter: validate input, invoke graph, map errors — no RAG business logic in the route.
@@ -64,11 +64,13 @@ Justification: nodes only need the current question, retrieval output, and accum
 
 ## Nodes and conditional edges
 
-| Node               | Responsibility                                 | Output condition                                                 |
-| ------------------ | ---------------------------------------------- | ---------------------------------------------------------------- |
-| `receive_question` | Normalize/validate input, seed trace           | Always route to retrieval when question non-empty                |
-| `retrieve_node`    | Call `data.pipelines.retrieve(question)`       | Route to `query_node` when context returned (even if empty list) |
-| `query_node`       | Call `data.pipelines.query(question, context)` | End graph with final answer                                      |
+| Node               | Responsibility                                           | Output condition                                                 |
+| ------------------ | -------------------------------------------------------- | ---------------------------------------------------------------- |
+| `receive_question` | Normalize/validate input, seed trace                     | Always route to retrieval when question non-empty                |
+| `retrieve_node`    | Call `data.pipelines.retrieve(question)`                 | Route to `query_node` when context returned (even if empty list) |
+| `query_node`       | Call `data.pipelines.generate_answer(question, context)` | End graph with final answer                                      |
+
+> **Contract:** `query_node` calls the isolated generation step (`generate_answer`), **not** the monolithic `query()`. Reusing `query()` here would re-run `retrieve()` inside the node, duplicating work and hiding the retrieval step from the trace. If a student's RAG only exposes `query(question)`, the accepted fix is to overload it as `query(question, context=None)` that skips retrieval when `context` is passed — never a single node doing retrieve + generate silently.
 
 Routing function example (not a hardcoded linear chain only):
 
@@ -158,15 +160,18 @@ Run with a single command, e.g. `uv run pytest tests/pipelines/ -q`.
 
 Evals assert against saved trace fixtures or checkpoint snapshots — not live LLM calls on every CI run when mocked.
 
+The "Grounded answer" eval is an **acceptance gate**, not optional color: the existing RAG tests must still pass alongside these agent evals. A submission with correct node order/routing but answers that drift from CONTEXT policies fails review.
+
 ---
 
 ## Validation checklist
 
 - [ ] State schema is minimal; no unjustified full history.
-- [ ] Three single-responsibility nodes; edges use conditional routing.
+- [ ] Three single-responsibility nodes; edges use conditional routing (≥1 real condition, e.g. empty question or no-context → honest/END branch).
+- [ ] Generation node calls the isolated `generate_answer`/`query(question, context)` — no single node re-runs the monolithic retrieve + generate.
 - [ ] Graph compiled before serving; broken graph fails at startup.
 - [ ] Checkpointer attached; at least one transition inspectable.
 - [ ] Queryable trace per run.
 - [ ] ≥3 evals in `tests/pipelines/`.
 - [ ] `POST /agent/query` delegates to graph only.
-- [ ] Milestone 7 pipeline functions reused from `data/pipelines/`.
+- [ ] Existing RAG pipeline functions reused from `data/pipelines/`.

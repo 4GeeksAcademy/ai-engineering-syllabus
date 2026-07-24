@@ -5,8 +5,8 @@
     "es": "Agente de Soporte con LangGraph — Parte 1 de 2: Migración y Flujo del Agente"
   },
   "description": {
-    "en": "Migrate your Milestone 7 RAG into an explicit LangGraph agent in the company monorepo: minimal typed state, single-responsibility nodes (receive, retrieve, query) reusing data/pipelines/, conditional edges, compiled graph with checkpointing, queryable traces per run, ≥3 evals in tests/pipelines/, and a thin POST /agent/query FastAPI endpoint — answers stay grounded in CONTEXT-company.md.",
-    "es": "Migra tu RAG del Hito 7 a un agente LangGraph explícito en el monorepo: estado tipado mínimo, nodos de responsabilidad única (recibir, retrieve, query) reutilizando data/pipelines/, aristas condicionales, grafo compilado con checkpointing, traces consultables por corrida, ≥3 evals en tests/pipelines/ y endpoint FastAPI delgado POST /agent/query — respuestas ancladas en CONTEXT-empresa.md."
+    "en": "Migrate your existing RAG into an explicit LangGraph agent in the company monorepo: minimal typed state, single-responsibility nodes (receive, retrieve, query) reusing data/pipelines/, conditional edges, compiled graph with checkpointing, queryable traces per run, ≥3 evals in tests/pipelines/, and a thin POST /agent/query FastAPI endpoint — answers stay grounded in CONTEXT-company.md.",
+    "es": "Migra tu RAG existente a un agente LangGraph explícito en el monorepo: estado tipado mínimo, nodos de responsabilidad única (recibir, retrieve, query) reutilizando data/pipelines/, aristas condicionales, grafo compilado con checkpointing, traces consultables por corrida, ≥3 evals en tests/pipelines/ y endpoint FastAPI delgado POST /agent/query — respuestas ancladas en CONTEXT-empresa.md."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
