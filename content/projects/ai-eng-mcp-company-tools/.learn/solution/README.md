@@ -8,41 +8,42 @@ Reference quality bar for the student's company monorepo fork. Values below are 
 
 ```mermaid
 flowchart TD
-  EXT[External MCP client] -->|OAuth access token| MCP[MCP Server — FastMCP]
+  EXT[External MCP client] -->|OAuth access token| MCP[MCP Server — FastMCP + MCP Auth]
   AGENT[LangGraph support agent] -->|langchain-mcp-adapters| MCP
   MCP -->|create / update / status| INC[Incidents Manager API]
   MCP -->|read-only queries| INV[Inventory API]
   MCP -->|write attempt| DENY[Explicit rejection — inventory]
   MCP --> LOG[Structured tool invocation logs]
+  AUTH[OIDC / OAuth 2.1 provider] -.->|JWT validation via mcpauth| MCP
 ```
 
 **Design invariants:**
 
 1. MCP tools call **live HTTP endpoints** on services the student already built — never mocked operational data inside the MCP service.
 2. Inventory exposure is **read-only by design** — write attempts return a distinct authorization error, not a missing tool.
-3. OAuth auth gates **discovery and invocation** — unauthenticated clients cannot list tools.
+3. OAuth via **[MCP Auth](https://mcp-auth.dev/)** (`mcpauth`) gates **discovery and invocation** — unauthenticated clients cannot list tools. Do **not** use FastMCP's built-in auth.
 4. The support agent has **one path** to incidents: through the MCP client node (`langchain-mcp-adapters`), not a parallel direct HTTP tool.
 
 ---
 
 ## Recommended service layout
 
-| Path (indicative)                        | Responsibility                                                     |
-| ---------------------------------------- | ------------------------------------------------------------------ |
-| `services/mcp-server/`                   | FastMCP app, tool definitions, auth middleware, invocation logging |
-| `services/mcp-server/tools/incidents.py` | Ticket create, update, status lookup                               |
-| `services/mcp-server/tools/inventory.py` | Read-only inventory queries + explicit write rejection             |
-| `services/mcp-server/auth.py`            | OAuth token validation, client identity for logs                   |
-| `services/agent/` (existing)             | LangGraph graph with MCP tools via `langchain-mcp-adapters`        |
+| Path (indicative)                        | Responsibility                                                                     |
+| ---------------------------------------- | ---------------------------------------------------------------------------------- |
+| `services/mcp-server/`                   | FastMCP app, tool definitions, MCP Auth middleware, invocation logging             |
+| `services/mcp-server/tools/incidents.py` | Ticket create, update, status lookup                                               |
+| `services/mcp-server/tools/inventory.py` | Read-only inventory queries + explicit write rejection                             |
+| `services/mcp-server/auth.py`            | MCP Auth (`mcpauth`) setup: resource metadata, bearer JWT, scopes, client for logs |
+| `services/agent/` (existing)             | LangGraph graph with MCP tools via `langchain-mcp-adapters`                        |
 
 ---
 
 ## Transport decision (document in PR)
 
-| Transport           | When to choose                                               | Auth implication                                                            |
-| ------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------- |
-| **stdio**           | Local dev, single process, agent spawns server as subprocess | Token via env / Authorization header in wrapper                             |
-| **Streamable HTTP** | Remote clients, multiple teams, external partners            | OAuth bearer token on every HTTP request; server runs as standalone service |
+| Transport           | When to choose                                               | Auth implication                                                                                     |
+| ------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
+| **stdio**           | Local dev, single process, agent spawns server as subprocess | Token via env / Authorization header in wrapper; MCP Auth still validates JWT when present           |
+| **Streamable HTTP** | Remote clients, multiple teams, external partners            | MCP Auth bearer middleware on HTTP app + `/.well-known/oauth-protected-resource`; standalone service |
 
 Students must justify their choice in the PR description.
 
@@ -93,6 +94,13 @@ This must be a **distinct** error from auth failures and validation errors.
 
 ## Authentication and error codes
 
+Use **[MCP Auth](https://mcp-auth.dev/)** (Python: `uv add mcpauth`) — not FastMCP built-in OAuth. Expected pattern:
+
+1. `fetch_server_config` against a compliant OIDC / OAuth 2.1 issuer.
+2. `MCPAuth` in resource-server mode with Protected Resource Metadata.
+3. `bearer_auth_middleware("jwt", …)` with `resource`, `audience`, and `required_scopes`.
+4. Mount metadata router + FastMCP `streamable_http_app()` (Starlette) so clients discover auth before calling tools.
+
 | Scenario                | Code (indicative)           | HTTP / MCP behavior               |
 | ----------------------- | --------------------------- | --------------------------------- |
 | Missing OAuth token     | `AUTH_MISSING_TOKEN`        | Reject before tool list or invoke |
@@ -100,7 +108,7 @@ This must be a **distinct** error from auth failures and validation errors.
 | Inventory write attempt | `INVENTORY_WRITE_FORBIDDEN` | Reject with 403-equivalent        |
 | Invalid tool input      | `VALIDATION_ERROR`          | Reject with field-level detail    |
 
-Each code must have a documented message — not a generic `"error"`.
+Each code must have a documented message — not a generic `"error"`. Map MCP Auth / RFC errors to these codes in logs and client-facing responses where you control the payload.
 
 ---
 
@@ -146,7 +154,7 @@ First validate in [MCP Playground](https://www.mcpplayground.tech/playground), t
 
 ## Submission checklist
 
-- [ ] FastMCP server under `services/` with OAuth auth on discovery + invoke.
+- [ ] FastMCP server under `services/` with [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) on discovery + invoke — not FastMCP built-in auth.
 - [ ] Incident ticket tool: create, status update via `/status`, lookup against real Incidents Manager.
 - [ ] Inventory tool: read queries work; writes return `INVENTORY_WRITE_FORBIDDEN`.
 - [ ] Tool descriptions and schemas self-explanatory via MCP discovery.

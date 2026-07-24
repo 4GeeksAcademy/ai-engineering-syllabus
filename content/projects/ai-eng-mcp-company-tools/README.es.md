@@ -47,9 +47,10 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 1. Ubícate en tu copia del [monorepo de la compañía](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (si aún no tienes tu propio fork, créalo antes de continuar).
 2. Trabaja sobre el backend del Incidents Manager y del módulo de inventario que ya construiste en hitos anteriores — el MCP Server se apoya en esos servicios, no los reemplaza.
-3. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`, `langchain-mcp-adapters`) — nunca uses `pip install` directamente en este monorepo.
+3. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — nunca uses `pip install` directamente en este monorepo.
 4. Crea el servidor MCP dentro de `services/`, siguiendo la estructura del resto de servicios del backend.
-5. Ubica el nodo del agente que hoy llama directamente al Incidents Manager — es el punto que vas a migrar para que consuma el nuevo MCP Server como cliente en lugar de llamar la API por fuera de él.
+5. Cablea OAuth con [MCP Auth](https://mcp-auth.dev/) (paquete Python `mcpauth`) — OAuth 2.1 / OIDC listo para usar en servidores MCP como resource server. **No** uses las helpers de auth integradas de FastMCP; usa MCP Auth para Protected Resource Metadata, validación de JWT bearer y scopes.
+6. Ubica el nodo del agente que hoy llama directamente al Incidents Manager — es el punto que vas a migrar para que consuma el nuevo MCP Server como cliente en lugar de llamar la API por fuera de él.
 
 ---
 
@@ -58,17 +59,17 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 **Servidor MCP**
 
 - [ ] Implementar el MCP Server en Python usando FastMCP (u otro SDK MCP equivalente).
-- [ ] **Implementar autenticación OAuth** para asegurar el MCP Server — el acceso sin autenticar debe rechazarse.
+- [ ] **Implementar autenticación OAuth con [MCP Auth](https://mcp-auth.dev/)** (`mcpauth`) — monta Protected Resource Metadata, valida JWTs bearer contra un proveedor OAuth 2.1 / OIDC compatible y rechaza el acceso sin autenticar. **No** uses la capa OAuth/auth integrada de FastMCP en este proyecto.
 - [ ] Exponer al menos una tool para gestionar tickets del Incidents Manager (crear, actualizar y consultar estado).
 - [ ] Exponer al menos una tool de **solo consulta** sobre el inventario — cualquier intento de modificación debe ser rechazado explícitamente por el servidor, no simplemente omitido.
 - [ ] Documentar cada tool con nombre, descripción y esquema de entrada/salida suficientes para que un agente externo la descubra sin contexto humano adicional (`--help`-equivalente vía discovery de MCP).
 
-⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores de dominio en tu implementación deben coincidir con las APIs de incidencias e inventario que ya construiste. Una implementación genérica que ignore tus servicios existentes no será aceptada. Los cambios de estado deben pasar por el endpoint de ciclo de vida del Incidents Manager (`PATCH /api/incidents/{id}/status`), no por un `PATCH` genérico sobre el recurso de incidencia. Un MCP Server sin autenticación OAuth no será aceptado.
+⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores de dominio en tu implementación deben coincidir con las APIs de incidencias e inventario que ya construiste. Una implementación genérica que ignore tus servicios existentes no será aceptada. Los cambios de estado deben pasar por el endpoint de ciclo de vida del Incidents Manager (`PATCH /api/incidents/{id}/status`), no por un `PATCH` genérico sobre el recurso de incidencia. Un MCP Server sin OAuth vía MCP Auth no será aceptado.
 
 **Autenticación y seguridad**
 
-- [ ] Proteger el servidor con autenticación **OAuth** — ningún cliente sin access token válido puede listar ni invocar tools. Esto es obligatorio: el MCP Server no debe exponer herramientas de la compañía sin auth.
-- [ ] Aplicar el principio de mínimo privilegio: cada tool solo tiene acceso a los datos y operaciones que necesita para cumplir su función.
+- [ ] Proteger el servidor con **OAuth** vía [MCP Auth](https://mcp-auth.dev/) — ningún cliente sin access token válido puede listar ni invocar tools. Esto es obligatorio: el MCP Server no debe exponer herramientas de la compañía sin auth. Prefiere MCP Auth frente a la auth integrada de FastMCP para alinearte con la especificación de autorización de MCP (modo resource server, scopes, OIDC agnóstico al proveedor).
+- [ ] Aplicar el principio de mínimo privilegio: cada tool solo tiene acceso a los datos y operaciones que necesita para cumplir su función (enforce scopes con `required_scopes` de MCP Auth cuando aplique).
 - [ ] Definir y documentar los códigos de error y de salida esperados ante fallos de autenticación, autorización o validación (no un genérico "error").
 - [ ] Registrar en logs cada invocación de tool (qué tool, qué cliente, qué resultado) para trazabilidad.
 

@@ -5,8 +5,8 @@
     "es": "Servidor MCP: Conectando tu Agente con las Herramientas de la Empresa"
   },
   "description": {
-    "en": "Expose your company's Incidents Manager and read-only inventory as an authenticated FastMCP server (OAuth, least privilege, discovery schemas, invocation logs), validate in MCP Playground, and migrate your LangGraph support agent via langchain-mcp-adapters to consume incidents through the MCP Server instead of direct HTTP tools.",
-    "es": "Expón el Incidents Manager y el inventario de solo lectura de tu compañía como un servidor FastMCP autenticado (OAuth, mínimo privilegio, esquemas de discovery, logs de invocación), valídalo en MCP Playground y migra tu agente LangGraph vía langchain-mcp-adapters para consumir incidentes a través del MCP Server en lugar de tools HTTP directas."
+    "en": "Expose your company's Incidents Manager and read-only inventory as a FastMCP server secured with MCP Auth (OAuth 2.1 / OIDC — not FastMCP built-in auth), least privilege, discovery schemas, and invocation logs; validate in MCP Playground; migrate your LangGraph support agent via langchain-mcp-adapters to consume incidents through the MCP Server instead of direct HTTP tools.",
+    "es": "Expón el Incidents Manager y el inventario de solo lectura de tu compañía como un servidor FastMCP asegurado con MCP Auth (OAuth 2.1 / OIDC — no la auth integrada de FastMCP), mínimo privilegio, esquemas de discovery y logs de invocación; valídalo en MCP Playground; migra tu agente LangGraph vía langchain-mcp-adapters para consumir incidentes a través del MCP Server en lugar de tools HTTP directas."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -16,6 +16,7 @@
   "technologies": [
     "python",
     "fastmcp",
+    "mcpauth",
     "mcp",
     "fastapi",
     "langgraph",

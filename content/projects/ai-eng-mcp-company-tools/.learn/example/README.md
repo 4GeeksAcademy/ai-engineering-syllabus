@@ -1,6 +1,6 @@
 # Maple Street Library — MCP Server (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-mcp-company-tools`. Same spine (FastMCP server, OAuth auth, discovery schemas, read-write + read-only tools, explicit write rejection, invocation logs, MCP Playground validation), different scope than the company monorepo. Builds on the Maple Street Library narrative from prior class examples. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-mcp-company-tools`. Same spine (FastMCP server, OAuth via [MCP Auth](https://mcp-auth.dev/) / `mcpauth` — not FastMCP built-in auth, discovery schemas, read-write + read-only tools, explicit write rejection, invocation logs, MCP Playground validation), different scope than the company monorepo. Builds on the Maple Street Library narrative from prior class examples. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -28,7 +28,7 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 ## Prerequisites
 
 - [ ] Python 3.11+ with `uv` (or venv)
-- [ ] `fastmcp` installed: `uv add fastmcp`
+- [ ] `fastmcp` + `mcpauth` installed: `uv add fastmcp mcpauth`
 - [ ] Optional: Maple Street `library-api` from earlier sessions — or use the stub data below
 
 ### Seed data (indicative)
@@ -64,8 +64,8 @@ Your live demo goal: expose loan management and **read-only** catalog lookup as 
 
 ### 1. MCP Server (`mcp_server/server.py`)
 
-- [ ] FastMCP app with **stdio** transport
-- [ ] OAuth access token from env / Authorization header — reject list + invoke without valid token
+- [ ] FastMCP app with **stdio** transport (graded project prefers Streamable HTTP + MCP Auth; class demo may stub token checks)
+- [ ] OAuth via [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) — validate bearer JWT / reject list + invoke without valid token. Do **not** use FastMCP built-in auth.
 
 ### 2. Tool: `manage_book_loan`
 

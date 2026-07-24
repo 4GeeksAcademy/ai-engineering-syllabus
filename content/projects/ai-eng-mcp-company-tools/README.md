@@ -47,9 +47,10 @@ As part of the challenge, your implementation must resolve — without being tol
 
 1. Go to your copy of the [company monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (if you don't have your own fork yet, create one before continuing).
 2. Work on top of the Incidents Manager backend and the inventory module you already built in previous milestones — the MCP Server relies on those services, it doesn't replace them.
-3. Install the dependencies you need with `uv add` (e.g., `fastmcp`, `langchain-mcp-adapters`) — never use `pip install` directly in this monorepo.
+3. Install the dependencies you need with `uv add` (e.g., `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — never use `pip install` directly in this monorepo.
 4. Create the MCP server inside `services/`, following the structure of the rest of the backend services.
-5. Locate the agent node that currently calls the Incidents Manager directly — that's the point you'll migrate so it consumes the new MCP Server as a client instead of calling the API outside of it.
+5. Wire OAuth with [MCP Auth](https://mcp-auth.dev/) (Python package `mcpauth`) — plug-and-play OAuth 2.1 / OIDC for MCP resource servers. Do **not** rely on FastMCP's built-in auth helpers; use MCP Auth for Protected Resource Metadata, bearer JWT validation, and scopes.
+6. Locate the agent node that currently calls the Incidents Manager directly — that's the point you'll migrate so it consumes the new MCP Server as a client instead of calling the API outside of it.
 
 ---
 
@@ -58,17 +59,17 @@ As part of the challenge, your implementation must resolve — without being tol
 **MCP Server**
 
 - [ ] Implement the MCP Server in Python using FastMCP (or an equivalent MCP SDK).
-- [ ] **Implement OAuth authentication** to secure the MCP Server — unauthenticated access must be rejected.
+- [ ] **Implement OAuth authentication with [MCP Auth](https://mcp-auth.dev/)** (`mcpauth`) — mount Protected Resource Metadata, validate bearer JWTs against a compliant OAuth 2.1 / OIDC provider, and reject unauthenticated access. Do **not** use FastMCP's built-in OAuth/auth layer for this project.
 - [ ] Expose at least one tool to manage Incidents Manager tickets (create, update, and check status).
 - [ ] Expose at least one **read-only** tool over the inventory — any modification attempt must be explicitly rejected by the server, not simply omitted.
 - [ ] Document each tool with a name, description, and input/output schema sufficient for an external agent to discover it without additional human context (an MCP-discovery equivalent of `--help`).
 
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match the incident and inventory APIs you already built. A generic implementation that ignores your existing services will not be accepted. Status changes must go through the Incidents Manager lifecycle endpoint (`PATCH /api/incidents/{id}/status`), not a generic `PATCH` on the incident resource. An MCP Server without OAuth authentication will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match the incident and inventory APIs you already built. A generic implementation that ignores your existing services will not be accepted. Status changes must go through the Incidents Manager lifecycle endpoint (`PATCH /api/incidents/{id}/status`), not a generic `PATCH` on the incident resource. An MCP Server without OAuth via MCP Auth will not be accepted.
 
 **Authentication and security**
 
-- [ ] Protect the server with **OAuth** authentication — no client without a valid access token can list or invoke tools. This is mandatory: the MCP Server must not expose company tools without auth.
-- [ ] Apply the principle of least privilege: each tool only has access to the data and operations it needs to do its job.
+- [ ] Protect the server with **OAuth** via [MCP Auth](https://mcp-auth.dev/) — no client without a valid access token can list or invoke tools. This is mandatory: the MCP Server must not expose company tools without auth. Prefer MCP Auth over FastMCP's built-in auth so the flow matches the MCP authorization spec (resource-server mode, scopes, provider-agnostic OIDC).
+- [ ] Apply the principle of least privilege: each tool only has access to the data and operations it needs to do its job (enforce scopes with MCP Auth `required_scopes` where applicable).
 - [ ] Define and document the expected error and exit codes for authentication, authorization, or validation failures (not a generic "error").
 - [ ] Log every tool invocation (which tool, which client, what result) for traceability.
 

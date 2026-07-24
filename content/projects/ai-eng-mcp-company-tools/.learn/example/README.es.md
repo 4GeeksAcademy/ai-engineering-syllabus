@@ -1,6 +1,6 @@
 # Biblioteca Maple Street — Servidor MCP (Ejemplo de Clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-mcp-company-tools`. Misma columna vertebral (servidor FastMCP, auth OAuth, esquemas de discovery, tool de lectura-escritura + tool de solo lectura, rechazo explícito de escritura, logs de invocación, validación en MCP Playground), distinto alcance que el monorepo de la compañía. Continúa la narrativa de Biblioteca Maple Street de ejemplos previos. Los estudiantes siguen el enunciado completo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-mcp-company-tools`. Misma columna vertebral (servidor FastMCP, OAuth vía [MCP Auth](https://mcp-auth.dev/) / `mcpauth` — no la auth integrada de FastMCP, esquemas de discovery, tool de lectura-escritura + tool de solo lectura, rechazo explícito de escritura, logs de invocación, validación en MCP Playground), distinto alcance que el monorepo de la compañía. Continúa la narrativa de Biblioteca Maple Street de ejemplos previos. Los estudiantes siguen el enunciado completo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -28,7 +28,7 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 ## Prerrequisitos
 
 - [ ] Python 3.11+ con `uv` (o venv)
-- [ ] `fastmcp` instalado: `uv add fastmcp`
+- [ ] `fastmcp` + `mcpauth` instalados: `uv add fastmcp mcpauth`
 - [ ] Opcional: `library-api` de Maple Street de sesiones anteriores — o usa los datos stub de abajo
 
 ### Datos semilla (indicativos)
@@ -64,8 +64,8 @@ Tu objetivo en vivo: exponer gestión de préstamos y consulta de catálogo **so
 
 ### 1. Servidor MCP (`mcp_server/server.py`)
 
-- [ ] App FastMCP con transporte **stdio**
-- [ ] Access token OAuth desde env / header Authorization — rechazar listado + invocación sin token válido
+- [ ] App FastMCP con transporte **stdio** (el proyecto evaluable prefiere Streamable HTTP + MCP Auth; en clase puedes stubear checks de token)
+- [ ] OAuth vía [MCP Auth](https://mcp-auth.dev/) (`mcpauth`) — validar JWT bearer / rechazar listado + invocación sin token válido. **No** uses la auth integrada de FastMCP.
 
 ### 2. Tool: `manage_book_loan`
 
