@@ -1,18 +1,21 @@
 # Sentiment Analysis on Customer Reviews — WeLoveReviews — Reference Solution
 
-This reference solution describes the expected architecture, deliverables, and validation evidence for a complete submission. Students integrate an existing Hugging Face model — they do **not** train or fine-tune one.
+This reference solution describes the expected architecture, deliverables, and validation evidence for a complete submission. Students fork the [machine-learning-python-template](https://github.com/4GeeksAcademy/machine-learning-python-template), integrate an existing Hugging Face model — they do **not** train or fine-tune one — and communicate findings in an executed notebook, not a separate client report.
 
 ---
 
 ## Expected file layout
 
-| File                                    | Purpose                                                                |
-| --------------------------------------- | ---------------------------------------------------------------------- |
-| `requirements.txt` or `pyproject.toml`  | Pinned dependencies (`transformers`, `torch`, `pandas`, etc.)          |
-| `data/reviews.csv`                      | Input dataset (500 reviews with `review_id`, `rating`, `review_text`)  |
-| `sentiment_analysis.py` (or equivalent) | Loads model once, runs inference, writes outputs                       |
-| `output/reviews_with_sentiment.csv`     | Each review with predicted stars, sentiment band, and confidence score |
-| `SENTIMENT_REPORT.md`                   | Client-ready report for the account manager                            |
+| File                                        | Purpose                                     |
+| ------------------------------------------- | ------------------------------------------- |
+| `requirements.txt`                          | Pinned deps (template + transformers/torch) |
+| `data/raw/reviews.csv`                      | Input (500 reviews: `review_id`, `rating`, `review_text`) |
+| `src/explore.ipynb`                         | Narrative analysis **with outputs**         |
+| `src/app.py`                                | Production inference                        |
+| `data/processed/reviews_with_sentiment.csv` | Enriched output                             |
+| `PROMPT.md` / `PROMPT.es.md`                | Provided EDA prompts (syllabus)             |
+
+Staff reference implementation: `.learn/solution/app.py` (same API as student `src/app.py`).
 
 ---
 
@@ -20,15 +23,15 @@ This reference solution describes the expected architecture, deliverables, and v
 
 ```mermaid
 flowchart LR
-  CSV[data/reviews.csv] --> SCRIPT[sentiment_analysis.py]
-  HF[(Hugging Face cache)] --> SCRIPT
-  SCRIPT -->|pipeline once at startup| MODEL[nlptown/bert-base-multilingual-uncased-sentiment]
-  MODEL --> SCRIPT
-  SCRIPT --> OUT[reviews_with_sentiment.csv]
-  SCRIPT --> REPORT[SENTIMENT_REPORT.md]
+  CSV[data/raw/reviews.csv] --> NB[src/explore.ipynb]
+  NB -->|migrate inference logic| APP[src/app.py]
+  HF[(Hugging Face cache)] --> APP
+  APP --> OUT[data/processed/reviews_with_sentiment.csv]
 ```
 
 **Critical rule:** Load the model **once** before the inference loop. Never call `pipeline()` or `from_pretrained()` inside the per-review loop.
+
+**Separation of concerns:** Notebook carries the story (EDA, breakdown, false negatives, manual validation, conclusions). `src/app.py` runs the production inference path only.
 
 ---
 
@@ -54,7 +57,7 @@ The model outputs labels like `1 star`, `2 stars`, … `5 stars`. Map to sentime
 
 ```python
 def stars_to_sentiment(label: str) -> str:
-    star = int(label.split()[0])
+    star = int(str(label).split()[0])
     if star <= 2:
         return "NEGATIVE"
     if star == 3:
@@ -66,21 +69,50 @@ First run downloads weights to `~/.cache/huggingface`. Do **not** commit model b
 
 ---
 
-## Processing pipeline
+## Reference `src/app.py` API
 
-1. Read `data/reviews.csv` with pandas or the stdlib `csv` module.
+The production script should expose these responsibilities (see `.learn/solution/app.py`):
+
+| Function / constant | Role |
+| ------------------- | ---- |
+| `MODEL_NAME` | Pinned Hugging Face model id (`nlptown/bert-base-multilingual-uncased-sentiment`) |
+| `stars_to_sentiment(label)` | Map model star label (1–5) → `NEGATIVE` / `NEUTRAL` / `POSITIVE` |
+| `load_reviews(path="data/raw/reviews.csv")` | Read input CSV |
+| `run_inference(df, classifier)` | Loop reviews; add `predicted_stars`, `predicted_sentiment`, `confidence` |
+| `write_output(df, path="data/processed/reviews_with_sentiment.csv")` | Persist enriched CSV |
+| `main()` | Load once → infer all → write → print breakdown |
+
+---
+
+## Notebook narrative arc (`src/explore.ipynb`)
+
+A complete submission follows this arc **with executed outputs**:
+
+1. **Objectives** — business question: written sentiment vs 4.5-star average.
+2. **EDA / insights / cleaning** — agent prompt output; short markdown between steps.
+3. **Action plan + model rationale** — commit to `nlptown` model and star-to-band mapping.
+4. **Inference on all 500 reviews** — load model once; store predictions per review.
+5. **Breakdown vs 4.5-star average** — % positive / neutral / negative; explain gaps.
+6. **False negatives** — examples and shared patterns (see below).
+7. **Manual sample (15–20 reviews)** — inspect predictions by hand.
+8. **Conclusions** — plain-language takeaway for the account manager.
+
+Short transitional markdown between major code blocks is expected. The notebook must stand alone — no separate client-facing markdown report.
+
+---
+
+## Processing pipeline (`src/app.py`)
+
+1. Read `data/raw/reviews.csv` with pandas.
 2. Load the classifier once.
 3. For each `review_text`, run inference and store:
    - `predicted_stars` (1–5, parsed from model label)
    - `predicted_sentiment` (NEGATIVE / NEUTRAL / POSITIVE via mapping above)
    - `confidence` score if available
-4. Write enriched CSV to `output/reviews_with_sentiment.csv`.
-5. Compute breakdown: count and percentage per sentiment band.
-6. Compare against the 4.5-star average:
-   - Calculate mean star rating from the `rating` column.
-   - Map star ratings to expected sentiment bands (e.g. 4–5 → mostly positive, 3 → neutral, 1–2 → negative).
-   - Identify gaps (e.g. high star average but significant negative sentiment labels).
-7. **Find false negatives:** reviews where `rating >= 4` but `predicted_stars <= 2`, or where manual reading contradicts the model. Document the cases found with pattern analysis.
+4. Write enriched CSV to `data/processed/reviews_with_sentiment.csv`.
+5. Print or log sentiment breakdown (counts / percentages).
+
+Breakdown, star-average comparison, false negatives, and manual validation belong in **`src/explore.ipynb`**, not in the production script.
 
 ---
 
@@ -103,13 +135,13 @@ Common patterns in service reviews that trip up a product-review model:
 | Backhanded compliments                | "polite but a bit slow, overall solid"            | Qualifiers ("slow", "average") dominate                             |
 | Domain vocabulary                     | "server", "brunch", "ambiance"                    | Training data focused on product attributes (battery, fit, quality) |
 
-Document false negatives in `SENTIMENT_REPORT.md` with `review_id`, human rating, predicted stars, and a one-line explanation.
+Document false negatives in **`src/explore.ipynb`** with `review_id`, human rating, predicted stars, and a one-line explanation.
 
 ---
 
 ## Manual validation (required)
 
-Students must inspect **at least 15–20 reviews** by hand and document findings in `SENTIMENT_REPORT.md`:
+Students must inspect **at least 15–20 reviews** by hand and document findings in **`src/explore.ipynb`**:
 
 | review_id | rating | review_text (truncated)                              | predicted_stars | manual_sentiment | match?  | notes                               |
 | --------- | ------ | ---------------------------------------------------- | --------------- | ---------------- | ------- | ----------------------------------- |
@@ -118,21 +150,6 @@ Students must inspect **at least 15–20 reviews** by hand and document findings
 | 22        | 5      | "waited 25 minutes... food made up for it"           | 2               | POSITIVE         | no      | Wait-time phrase triggered model    |
 
 This table is evidence the student did not blindly trust model output.
-
----
-
-## Report structure (`SENTIMENT_REPORT.md`)
-
-A complete report includes:
-
-1. **Executive summary** — one paragraph a non-technical account manager can forward.
-2. **Dataset overview** — 500 reviews, mean star rating, date/source context.
-3. **Sentiment breakdown** — table or bullet list with counts and percentages.
-4. **Comparison to star rating** — does sentiment align with 4.5 average? Where does it diverge?
-5. **False negatives analysis** — documented examples, shared patterns, link to product-vs-service domain mismatch.
-6. **Discrepancy analysis** — hypotheses (sarcasm, mixed reviews, rating inflation, model domain mismatch).
-7. **Manual validation sample** — 15–20 reviewed examples with notes.
-8. **Recommendation** — what the account manager should tell the client (including model limitations).
 
 ---
 
@@ -166,16 +183,18 @@ review_id,rating,review_text,predicted_stars,predicted_sentiment,confidence
 
 ## Validation checklist
 
+- [ ] **`src/explore.ipynb`** submitted with executed outputs and full narrative arc (objectives → EDA → plan/model → results → conclusions)
+- [ ] Short transitional markdown between major code blocks
 - [ ] Model loaded via `pipeline()` / `from_pretrained()` — no weights in repo
 - [ ] `MODEL_NAME` pinned as constant — not resolved to "latest"
 - [ ] Model instantiated once, reused for all 500 reviews
 - [ ] All 500 reviews have a star prediction and mapped sentiment band
-- [ ] Sentiment breakdown calculated with percentages
-- [ ] Explicit comparison to 4.5-star average
-- [ ] False negatives documented with pattern analysis
-- [ ] 15–20 manually reviewed examples documented
-- [ ] `SENTIMENT_REPORT.md` is client-ready (non-technical language)
-- [ ] Dependencies pinned in `requirements.txt`
+- [ ] Sentiment breakdown calculated with percentages (in notebook)
+- [ ] Explicit comparison to 4.5-star average (in notebook)
+- [ ] False negatives documented with pattern analysis (in notebook)
+- [ ] 15–20 manually reviewed examples documented (in notebook)
+- [ ] **`src/app.py`** runs production inference and writes **`data/processed/reviews_with_sentiment.csv`**
+- [ ] Dependencies pinned in **`requirements.txt`**
 
 ---
 
@@ -212,15 +231,16 @@ When comparing models, students can collapse the five labels into three bands fo
 1. Run `tabularisai/multilingual-sentiment-analysis` (or search Hugging Face for other service/hospitality/restaurant models) on the same 500 reviews.
 2. Compare false-negative rates side by side with `nlptown/bert-base-multilingual-uncased-sentiment`.
 3. Note which reviews still fail under both models — those may need human review regardless of model choice.
-4. Add a recommendation addendum to the report: should WeLoveReviews switch models for this client, and why?
+4. Add a recommendation addendum **inside `src/explore.ipynb`**: should WeLoveReviews switch models for this client, and why?
 
 ---
 
 ## Key implementation decisions
 
-- **Separation of concerns:** Keep data loading, inference, aggregation, and report generation in distinct functions for clarity and testability.
+- **Template:** [machine-learning-python-template](https://github.com/4GeeksAcademy/machine-learning-python-template) — `data/raw/`, `data/processed/`, `src/`.
+- **Separation of concerns:** Notebook for story; `src/app.py` for production inference only.
 - **Load model once:** Instantiate the classifier before the review loop — never call `pipeline()` or `from_pretrained()` inside the per-review loop.
 - **Pin model version:** Constant `MODEL_NAME = "nlptown/bert-base-multilingual-uncased-sentiment"` — not `"latest"`.
 - **Map stars to bands:** The model outputs 1–5 stars; students must define and apply a consistent mapping to negative/neutral/positive.
 - **Cache:** First run downloads to `~/.cache/huggingface`; subsequent runs reuse cache.
-- **Report in repo:** `SENTIMENT_REPORT.md` committed — not only stdout.
+- **No separate report file:** Findings live in executed **`src/explore.ipynb`**, not a standalone markdown report.
