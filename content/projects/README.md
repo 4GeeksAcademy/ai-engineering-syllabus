@@ -206,6 +206,9 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 65. **[Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-milestone-real-time-notification)**  
     `Milestone 10` Part 1 — Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent).
 
+66. **[Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-milestone-real-time-communication)**  
+    `Milestone 10` Part 2 — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic.
+
 ---
 
 Each project has detailed instructions in its folder (`README.md` and, if present, `README.es.md`). To get started, open the project folder and follow the README.
