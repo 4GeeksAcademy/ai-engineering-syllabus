@@ -53,7 +53,7 @@ Before you trust any output, sample a handful of reviews yourself and read them.
 
 1. Fork the `python-hello` repository and, if available, select the 4GeeksAcademy account.
 2. Open it in GitHub Codespaces, or clone it locally if you prefer to work on your own machine.
-3. Download the provided [reviews.csv](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-sentiment-analysis-reviews/reviews.csv) file from the platform and place it in a `data/` folder in your repository.
+3. Download the provided [reviews.csv](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/existing-model-sentiment-analysis-reviews/reviews.csv) file from the platform and place it in a `data/` folder in your repository.
 4. Read the full [instructions on how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project) if this is new to you.
 
 ---
