@@ -1,55 +1,33 @@
 {
-  "gitpod": true,
-  "title": {
-    "en": "Milestone 0 — Choose Your Company",
-    "es": "Hito 0 — Elige tu empresa"
-  },
-  "status": "published",
-  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-  "slug": "ai-eng-milestone-choose-company",
-  "description": {
-    "en": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles.",
-    "es": "Elige la empresa que automatizarás con AI Engineering y registra tu decisión en company-choice.md después de leer los perfiles proporcionados CONTEXT-company."
-  },
-  "difficulty": "beginner",
-  "duration": 1,
-  "technologies": [
-    "ai-engineering",
-    "company-research",
-    "writing"
-  ],
-  "talents": [
-    {
-      "badge": "prompt-engineer",
-      "points": 1
+    "slug": "ai-eng-milestone-choose-company",
+    "title": {
+        "us": "Milestone 0 \u2014 Choose Your Company",
+        "es": "Hito 0 \u2014 Elige tu empresa"
     },
-    {
-      "badge": "system-designer",
-      "points": 1
+    "description": {
+        "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles.",
+        "es": "Elige la empresa que automatizar\u00e1s con AI Engineering y registra tu decisi\u00f3n en company-choice.md despu\u00e9s de leer los perfiles proporcionados CONTEXT-company."
     },
-    {
-      "badge": "problem-solver",
-      "points": 1
+    "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/preview.png?raw=true",
+    "difficulty": "BEGINNER",
+    "duration": 1,
+    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+    "gitpod": true,
+    "technologies": [
+        "ai-engineering",
+        "company-research",
+        "writing"
+    ],
+    "projectType": "project",
+    "solution": {
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md",
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-mileston-choose-company/.learn/solution/README.md"
+    },
+    "delivery": {
+        "instructions": "",
+        "formats": [
+            "url"
+        ],
+        "regex": ""
     }
-  ],
-  "translations": [
-    "es",
-    "en"
-  ],
-  "projectType": "project",
-  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-mileston-choose-company/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-choose-company/.learn/preview.png",
-  "sharing": [
-    {
-      "en": "I just completed Milestone 0 — Choose Your Company with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing",
-      "es": "Acabo de completar Hito 0 — Elige tu empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing"
-    },
-    {
-      "en": "Built and shipped: Milestone 0 — Choose Your Company. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing",
-      "es": "Construido y publicado: Hito 0 — Elige tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing"
-    }
-  ],
-  "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
-  }
 }
