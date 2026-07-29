@@ -1,12 +1,12 @@
 {
-    "slug": "ai-eng-milestone-choose-company",
+    "slug": "ai-eng-milestone-choose-company-es",
     "title": {
-        "us": "Milestone 0 \u2014 Choose Your Company",
-        "es": "Hito 0 \u2014 Elige tu empresa"
+        "es": "Hito 0 \u2014 Elige tu empresa",
+        "us": "Milestone 0 \u2014 Choose Your Company"
     },
     "description": {
-        "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles.",
-        "es": "Elige la empresa que automatizar\u00e1s con AI Engineering y registra tu decisi\u00f3n en company-choice.md despu\u00e9s de leer los perfiles proporcionados CONTEXT-company."
+        "es": "Elige la empresa que automatizar\u00e1s con AI Engineering y registra tu decisi\u00f3n en company-choice.md despu\u00e9s de leer los perfiles proporcionados CONTEXT-company.",
+        "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles."
     },
     "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/preview.png?raw=true",
     "difficulty": "BEGINNER",
@@ -20,8 +20,8 @@
     ],
     "projectType": "project",
     "solution": {
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md",
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-mileston-choose-company/.learn/solution/README.md"
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md",
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md"
     },
     "delivery": {
         "instructions": "",
