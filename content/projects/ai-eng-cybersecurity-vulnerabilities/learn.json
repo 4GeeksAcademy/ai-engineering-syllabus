@@ -1,0 +1,32 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Web Vulnerability Audit and Remediation (OWASP Top 10)",
+    "es": "Auditoría y Corrección de Vulnerabilidades Web (OWASP Top 10)"
+  },
+  "description": {
+    "en": "Harden the deployment server (non-root SSH, folder permissions, firewall), run a full OWASP Top 10 audit across backend, frontend, and agentic system with evidence per category, and fix every critical vulnerability with reproducible before/after proof.",
+    "es": "Endurece el servidor de despliegue (SSH sin root, permisos de carpetas, firewall), ejecuta una auditoría completa OWASP Top 10 sobre backend, frontend y sistema agéntico con evidencia por categoría, y corrige cada vulnerabilidad crítica con prueba reproducible del antes y el después."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-cybersecurity-vulnerabilities",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": ["python", "security", "owasp", "agents", "ssh", "firewall"],
+  "coverImage": "ai-coding.svg",
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-cybersecurity-vulnerabilities/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-cybersecurity-vulnerabilities/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Web Vulnerability Audit and Remediation (OWASP Top 10) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-vulnerabilities #AIEngineering #LearnPack #4GeeksAcademy #python #security #owasp",
+      "es": "Acabo de completar Auditoría y Corrección de Vulnerabilidades Web (OWASP Top 10) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-vulnerabilities #AIEngineering #LearnPack #4GeeksAcademy #python #security #owasp"
+    },
+    {
+      "en": "Built and shipped: Web Vulnerability Audit and Remediation (OWASP Top 10). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-vulnerabilities #AIEngineering #LearnPack #4GeeksAcademy #python #security #owasp",
+      "es": "Construido y publicado: Auditoría y Corrección de Vulnerabilidades Web (OWASP Top 10). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-vulnerabilities #AIEngineering #LearnPack #4GeeksAcademy #python #security #owasp"
+    }
+  ]
+}
