@@ -12,11 +12,11 @@ At Nexova, RFPs go straight to **Marcos Ibáñez's** team, the **Sales Director*
 
 Use exactly these department identifiers:
 
-| `department_id` | Department                        | Owner            | What it contributes to the proposal                                       |
-| ---------------- | ------------------------------------ | ------------------ | ------------------------------------------------------------------------------ |
-| `seleccion`         | Talent Selection Operations           | Javier Almeida        | Roles to fill, estimated time-to-close, consulting hours needed               |
-| `capacitacion`       | Corporate Training                    | Elena Vargas           | Applicable training programs, duration, delivery format                       |
-| `soporte`            | Customer Support (outsourcing)         | Roberto Díaz           | Agent staffing, shifts, committed response SLA                                |
+| `department_id` | Department                     | Owner          | What it contributes to the proposal                             |
+| --------------- | ------------------------------ | -------------- | --------------------------------------------------------------- |
+| `seleccion`     | Talent Selection Operations    | Javier Almeida | Roles to fill, estimated time-to-close, consulting hours needed |
+| `capacitacion`  | Corporate Training             | Elena Vargas   | Applicable training programs, duration, delivery format         |
+| `soporte`       | Customer Support (outsourcing) | Roberto Díaz   | Agent staffing, shifts, committed response SLA                  |
 
 Not every RFP needs all three departments: it depends on which service(s) the client is asking for (headhunting, training, outsourced support, or a combination). Your classifier/orchestrator agent must identify which departments apply by reading the document — never activate all three by default.
 
@@ -40,11 +40,11 @@ RFPs arrive as PDFs and typically include: client name and headquarters (Spain o
 
 ## 4. Seed Data Instructions
 
-Create at least 3 test documents in `data/raw/`:
+Use the ready-made PDFs in [`rfp-requests/nexova/`](./rfp-requests/nexova/) as inputs to test the agentic workflow (copy them into `data/raw/` if your pipeline expects that path). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
-1. **Valid RFP (headhunting + training):** *Vantex Retail Group* (Madrid) requests an executive search for 5 mid-management positions plus a quarterly leadership program. Deadline: 15 days. Triggers `seleccion` and `capacitacion`. Currency: EUR.
-2. **Valid RFP (outsourced support):** *NubeSoft* (a Miami-based SaaS startup) requests a 24/7 customer support team of 12 agents. Deadline: 20 days. Triggers `soporte` (and possibly `seleccion` to recruit the agents). Currency: USD.
-3. **Document that is NOT an RFP:** an email from a software vendor pitching Nexova a new ATS tool. It has no client, scope, or expected response deadline from Nexova to a third party — it's an inbound pitch, not a request for proposal. Your classifier should discard it.
+1. **`CONTEXT-nexova-request-1.pdf` — formal RFP (accept):** _Vantex Retail Group_ (Madrid), executive search for 5 mid-management roles + quarterly leadership program. Triggers `seleccion` and `capacitacion`. Currency: EUR.
+2. **`CONTEXT-nexova-request-2.pdf` — informal RFP (accept):** _NubeSoft_ (Miami SaaS) email requesting 24/7 support team of 12 agents. Triggers `soporte` (and possibly `seleccion`). Currency: USD.
+3. **`CONTEXT-nexova-request-3.pdf` — invalid (reject):** inbound ATS vendor pitch — not a client RFP. Classifier must discard it.
 
 ## 5. Business Constraints (Guidelines for the Compliance Evaluator)
 

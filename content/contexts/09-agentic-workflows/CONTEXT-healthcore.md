@@ -16,11 +16,11 @@ Today, putting together an institutional proposal takes **3 weeks on average**, 
 
 Use exactly these department identifiers:
 
-| `department_id` | Department                          | Owner                | What it contributes to the proposal                                                     |
-| ---------------- | -------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
-| `revenue`            | Revenue Cycle                            | Tom Callahan               | Financial terms, currency, payment structure. Owns the ticket.                                |
-| `clinical`            | Clinical Operations                       | Dr. Marcus Reid             | Clinical feasibility: which clinics and staff capacity can cover the contract                |
-| `compliance`          | Compliance and Data Governance             | Claire Whitfield             | Regulatory review (HIPAA/UK GDPR), BAA or DPA clauses depending on the client's country      |
+| `department_id` | Department                     | Owner            | What it contributes to the proposal                                                     |
+| --------------- | ------------------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `revenue`       | Revenue Cycle                  | Tom Callahan     | Financial terms, currency, payment structure. Owns the ticket.                          |
+| `clinical`      | Clinical Operations            | Dr. Marcus Reid  | Clinical feasibility: which clinics and staff capacity can cover the contract           |
+| `compliance`    | Compliance and Data Governance | Claire Whitfield | Regulatory review (HIPAA/UK GDPR), BAA or DPA clauses depending on the client's country |
 
 `compliance` is **mandatory on every RFP, without exception** — no matter how simple the contract looks, no institutional proposal can close without Compliance's approval in Part 3.
 
@@ -44,12 +44,12 @@ RFPs arrive as PDFs and typically include: institutional client name and country
 
 ## 4. Seed Data Instructions
 
-Create at least 4 test documents in `data/raw/`:
+Use the ready-made PDFs in [`rfp-requests/healthcore/`](./rfp-requests/healthcore/) as inputs to test the agentic workflow (copy them into `data/raw/` if your pipeline expects that path). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
-1. **Valid RFP (US):** *Meridian Manufacturing* (Austin, 800 employees) requests an on-site occupational health and wellness program, a 12-month contract. Deadline: 20 days. Triggers `revenue`, `clinical`, and `compliance` (with a BAA clause, since it's US-based). Currency: USD.
-2. **Valid RFP (UK):** *Thames Valley University* requests a referral network partnership with a satellite clinic for its students. Deadline: 25 days. Triggers `revenue`, `clinical`, and `compliance` (with a DPA clause referencing UK GDPR, since it's UK-based). Currency: GBP.
-3. **Document that is NOT an RFP:** an email from a software vendor pitching a new electronic health record system to HealthCore. It's not a request from an institutional client. Your classifier should discard it.
-4. **RFP with improper PHI (critical case):** an "RFP" from an employer that attaches, as an example of a previous case with another provider, a clinical case summary including a patient's name and diagnosis. Your flow must **never** let that content pass through to generator agents, logs, or the ticket interface as-is — it must detect and block (or redact) it before it advances, and flag it explicitly for human review by Compliance.
+1. **`CONTEXT-healthcore-request-1.pdf` — formal RFP (accept):** _Meridian Manufacturing_ (Austin, 800 employees), on-site occupational health and wellness, 12-month contract. Triggers `revenue`, `clinical`, and `compliance` (BAA). Currency: USD.
+2. **`CONTEXT-healthcore-request-2.pdf` — informal RFP (accept):** _Thames Valley University_ email requesting a referral network partnership with a satellite clinic. Triggers `revenue`, `clinical`, and `compliance` (DPA / UK GDPR). Currency: GBP.
+3. **`CONTEXT-healthcore-request-3.pdf` — invalid (reject):** vendor pitch for an EHR system — not a client RFP. Classifier must discard it.
+4. **RFP with improper PHI (critical case — create yourself):** an "RFP" that attaches a clinical case summary with a patient's name and diagnosis. Flow must **never** pass that content as-is to generators, logs, or the ticket UI — detect, block/redact, and flag for Compliance human review.
 
 ## 5. Business Constraints (Guidelines for the Compliance Evaluator)
 

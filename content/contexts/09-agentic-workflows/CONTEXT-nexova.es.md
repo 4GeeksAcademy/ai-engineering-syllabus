@@ -12,11 +12,11 @@ En Nexova, las RFPs llegan directo al equipo de **Marcos Ibáñez, Sales Directo
 
 Usa exactamente estos identificadores de departamento:
 
-| `department_id` | Departamento                          | Responsable      | Qué aporta a la propuesta                                                        |
-| ---------------- | -------------------------------------- | ------------------ | ------------------------------------------------------------------------------------ |
-| `seleccion`        | Talent Selection Operations            | Javier Almeida      | Roles a cubrir, tiempo estimado de cierre, horas de consultoría necesarias           |
-| `capacitacion`      | Corporate Training                     | Elena Vargas        | Programas de formación aplicables, duración, modalidad                              |
-| `soporte`           | Customer Support (outsourcing)          | Roberto Díaz        | Dotación de agentes, turnos, SLA de respuesta comprometido                          |
+| `department_id` | Departamento                   | Responsable    | Qué aporta a la propuesta                                                  |
+| --------------- | ------------------------------ | -------------- | -------------------------------------------------------------------------- |
+| `seleccion`     | Talent Selection Operations    | Javier Almeida | Roles a cubrir, tiempo estimado de cierre, horas de consultoría necesarias |
+| `capacitacion`  | Corporate Training             | Elena Vargas   | Programas de formación aplicables, duración, modalidad                     |
+| `soporte`       | Customer Support (outsourcing) | Roberto Díaz   | Dotación de agentes, turnos, SLA de respuesta comprometido                 |
 
 No toda RFP necesita a los tres departamentos: depende de qué servicio(s) pide el cliente (headhunting, training, soporte outsourced, o una combinación). Tu clasificador/orquestador debe identificar qué departamentos aplican leyendo el documento — nunca actives los tres por defecto.
 
@@ -40,11 +40,11 @@ Las RFPs llegan como PDF e incluyen normalmente: nombre y sede del cliente (Espa
 
 ## 4. Instrucciones de datos semilla
 
-Crea al menos 3 documentos de prueba en `data/raw/`:
+Usa los PDF listos en [`rfp-requests/nexova/`](./rfp-requests/nexova/) como entradas para probar el flujo agéntico (cópialos a `data/raw/` si tu pipeline espera esa ruta). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
 
-1. **RFP válida (headhunting + training):** *Vantex Retail Group* (Madrid) solicita búsqueda ejecutiva para 5 posiciones de mandos medios más un programa trimestral de liderazgo. Fecha límite: 15 días. Activa `seleccion` y `capacitacion`. Moneda: EUR.
-2. **RFP válida (soporte outsourced):** *NubeSoft* (startup SaaS con sede en Miami) solicita un equipo de soporte al cliente 24/7 de 12 agentes. Fecha límite: 20 días. Activa `soporte` (y posiblemente `seleccion` para el reclutamiento de los agentes). Moneda: USD.
-3. **Documento que NO es una RFP:** un correo de un proveedor de software ofreciendo un nuevo ATS a Nexova. No tiene cliente, alcance ni fecha límite de respuesta esperada de Nexova hacia un tercero — es una oferta entrante, no una solicitud de propuesta. Tu clasificador debe descartarlo.
+1. **`CONTEXT-nexova-request-1.pdf` — RFP formal (aceptar):** _Vantex Retail Group_ (Madrid), búsqueda ejecutiva de 5 mandos medios + programa trimestral de liderazgo. Activa `seleccion` y `capacitacion`. Moneda: EUR.
+2. **`CONTEXT-nexova-request-2.pdf` — RFP informal (aceptar):** correo de _NubeSoft_ (SaaS Miami) pidiendo equipo de soporte 24/7 de 12 agentes. Activa `soporte` (y posiblemente `seleccion`). Moneda: USD.
+3. **`CONTEXT-nexova-request-3.pdf` — inválido (rechazar):** pitch entrante de proveedor de ATS — no es RFP de cliente. El clasificador debe descartarlo.
 
 ## 5. Restricciones de negocio (lineamientos para el evaluador de cumplimiento)
 

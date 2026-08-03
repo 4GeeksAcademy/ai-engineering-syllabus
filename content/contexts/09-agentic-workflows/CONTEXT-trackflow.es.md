@@ -12,11 +12,11 @@ En TrackFlow, las RFPs llegan al equipo de **Miguel Torres, Commercial Director*
 
 Usa exactamente estos identificadores de departamento:
 
-| `department_id` | Departamento                | Responsable      | Qué aporta a la propuesta                                                  |
-| ---------------- | ----------------------------- | ------------------ | -------------------------------------------------------------------------------- |
-| `warehouse`         | Warehouse Operations           | Ana Whitfield        | Capacidad de almacenamiento, costo por pallet/SKU, tiempo de onboarding          |
-| `lastmile`          | Last Mile and Carrier Management | Carlos Vega        | Costo por envío, transportistas disponibles según destino, SLA de entrega        |
-| `reverse`           | Reverse Logistics              | Sofía Ramos          | Costo y tiempo de procesamiento de devoluciones (si el cliente lo solicita)       |
+| `department_id` | Departamento                     | Responsable   | Qué aporta a la propuesta                                                   |
+| --------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------- |
+| `warehouse`     | Warehouse Operations             | Ana Whitfield | Capacidad de almacenamiento, costo por pallet/SKU, tiempo de onboarding     |
+| `lastmile`      | Last Mile and Carrier Management | Carlos Vega   | Costo por envío, transportistas disponibles según destino, SLA de entrega   |
+| `reverse`       | Reverse Logistics                | Sofía Ramos   | Costo y tiempo de procesamiento de devoluciones (si el cliente lo solicita) |
 
 No toda RFP necesita a los tres departamentos: un cliente puede pedir solo almacenamiento y devoluciones, sin última milla (porque usa su propio transportista), por ejemplo. Tu clasificador/orquestador debe decidir qué departamentos aplican según el alcance solicitado.
 
@@ -40,11 +40,11 @@ Las RFPs llegan como PDF e incluyen normalmente: nombre y país de origen del cl
 
 ## 4. Instrucciones de datos semilla
 
-Crea al menos 3 documentos de prueba en `data/raw/`:
+Usa los PDF listos en [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) como entradas para probar el flujo agéntico (cópialos a `data/raw/` si tu pipeline espera esa ruta). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
 
-1. **RFP válida (completa):** *Luna Cosmetics*, marca DTC de Los Ángeles, solicita almacenamiento y última milla para el mercado de EE. UU., ~5.000 pedidos/mes. Fecha límite: 20 días. Activa `warehouse` y `lastmile`. Moneda: USD.
-2. **RFP válida (parcial):** *Zaragoza ModaViva*, marca de moda española, solicita solo almacenamiento y gestión de devoluciones (usa su propio transportista para última milla). Fecha límite: 25 días. Activa `warehouse` y `reverse`, no `lastmile`. Moneda: EUR.
-3. **Documento que NO es una RFP:** un correo de una empresa de transporte ofreciéndole a TrackFlow nuevas tarifas de envío. Es una oferta entrante de un proveedor, no una solicitud de un cliente. Tu clasificador debe descartarlo.
+1. **`CONTEXT-trackflow-request-1.pdf` — RFP formal (aceptar):** _ModaViva_ (España), solo almacenamiento + devoluciones (transportista propio para última milla). Activa `warehouse` y `reverse`, no `lastmile`. Moneda: EUR.
+2. **`CONTEXT-trackflow-request-2.pdf` — RFP informal (aceptar):** correo de _Luna Cosmetics_ (LA) pidiendo almacenamiento + última milla EE. UU., ~5.000 pedidos/mes. Activa `warehouse` y `lastmile`. Moneda: USD.
+3. **`CONTEXT-trackflow-request-3.pdf` — inválido (rechazar):** pitch entrante de tarifas de transportista — no es RFP de cliente. El clasificador debe descartarlo.
 
 ## 5. Restricciones de negocio (lineamientos para el evaluador de cumplimiento)
 

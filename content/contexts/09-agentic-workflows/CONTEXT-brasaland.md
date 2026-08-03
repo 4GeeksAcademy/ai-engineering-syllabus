@@ -14,12 +14,12 @@ Today, when one of these requests comes in, Camila forwards the PDF over WhatsAp
 
 Use exactly these department identifiers in your code and graph state:
 
-| `department_id` | Department                     | Owner            | What it contributes to the proposal                                                        |
-| ---------------- | -------------------------------- | ------------------ | -------------------------------------------------------------------------------------------- |
-| `marketing`         | Marketing and Digital Experience  | Camila Ospina        | Brand terms, exclusivity, co-branding, offer validity period. Owns the ticket.                |
-| `operaciones`        | Restaurant Operations              | Felipe Guerrero       | Operational feasibility: kitchen/staff capacity, setup times, cost per event                  |
-| `procurement`        | Procurement and Suppliers          | Lucía Fernández       | Estimated ingredient cost based on volume, supplier lead times                                |
-| `training`           | Training and Quality Standards     | Jake Morrison         | If the request requires a new recipe or standard, the development and certification time needed |
+| `department_id` | Department                       | Owner           | What it contributes to the proposal                                                             |
+| --------------- | -------------------------------- | --------------- | ----------------------------------------------------------------------------------------------- |
+| `marketing`     | Marketing and Digital Experience | Camila Ospina   | Brand terms, exclusivity, co-branding, offer validity period. Owns the ticket.                  |
+| `operaciones`   | Restaurant Operations            | Felipe Guerrero | Operational feasibility: kitchen/staff capacity, setup times, cost per event                    |
+| `procurement`   | Procurement and Suppliers        | Lucía Fernández | Estimated ingredient cost based on volume, supplier lead times                                  |
+| `training`      | Training and Quality Standards   | Jake Morrison   | If the request requires a new recipe or standard, the development and certification time needed |
 
 Not every RFP needs all four departments: a simple catering request might not require `training` (for example, if it uses the standard menu). Your classifier/orchestrator agent must decide which departments apply based on the document's content — don't assume it's always all four.
 
@@ -43,11 +43,11 @@ RFPs arrive as PDFs and typically include: client name and location, type of ser
 
 ## 4. Seed Data Instructions
 
-Create at least 3 test documents in `data/raw/`:
+Use the ready-made PDFs in [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) as inputs to test the agentic workflow (copy them into `data/raw/` if your pipeline expects that path). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
-1. **Valid RFP (routine):** *Andes Tech Solutions*, a Bogotá-based tech company, requests weekly catering for 220 employees at its Medellín office, a 12-month contract, deadline in 15 days. Should trigger `marketing`, `operaciones`, and `procurement` (not necessarily `training`, since it uses the standard menu).
-2. **Valid RFP (complex, high value):** *Sunset Bay Resorts*, a Florida hotel chain, requests a co-branded concession in 3 of its resorts, with an exclusivity clause and a new signature menu. Estimated contract value over $60,000 USD/year, deadline in 30 days. Should trigger all four departments, including `training` because of the new menu. **Note:** since it exceeds $50,000 USD/year, this proposal requires an additional approval from Mariana Restrepo (CEO) before closing — implement this as an extra approval step in your Part 3.
-3. **Document that is NOT an RFP:** a client's email informally asking about franchising opportunities, with no scope, budget, or deadline. Your classifier agent should discard it.
+1. **`CONTEXT-brasaland-request-1.pdf` — formal RFP (accept):** _Sunset Bay Resorts_, co-branded concession across 3 Florida resorts, exclusivity + new signature menu, ~$60–75k USD/year. Triggers all four departments, including `training`. **Note:** above $50,000 USD/year → extra CEO approval (Mariana Restrepo) in Part 3.
+2. **`CONTEXT-brasaland-request-2.pdf` — informal RFP (accept):** _Andes Tech Solutions_ email requesting weekly catering for 220 employees in Medellín, 12-month contract, standard menu. Triggers `marketing`, `operaciones`, and `procurement` (not necessarily `training`).
+3. **`CONTEXT-brasaland-request-3.pdf` — invalid (reject):** franchise inquiry with no scope, budget, or deadline. Classifier must discard it.
 
 ## 5. Business Constraints (Guidelines for the Compliance Evaluator)
 

@@ -14,12 +14,12 @@ Hoy, cuando llega una de estas solicitudes, Camila reenvía el PDF por WhatsApp 
 
 Usa exactamente estos identificadores de departamento en tu código y en el estado del grafo:
 
-| `department_id` | Departamento              | Responsable      | Qué aporta a la propuesta                                                                 |
-| ---------------- | -------------------------- | ----------------- | -------------------------------------------------------------------------------------------- |
-| `marketing`       | Marketing y Experiencia Digital | Camila Ospina      | Términos de marca, exclusividad, co-branding, validez de la oferta. Dueña del ticket.        |
-| `operaciones`      | Operaciones de Restaurante | Felipe Guerrero    | Viabilidad operativa: capacidad de cocina/personal, tiempos de montaje, costo operativo/evento |
-| `procurement`      | Procurement y Proveedores  | Lucía Fernández    | Costo estimado de insumos según volumen, tiempos de entrega de proveedores                    |
-| `training`         | Training y Estándares de Calidad | Jake Morrison | Si el pedido requiere receta o estándar nuevo, tiempo de desarrollo y certificación necesario |
+| `department_id` | Departamento                     | Responsable     | Qué aporta a la propuesta                                                                      |
+| --------------- | -------------------------------- | --------------- | ---------------------------------------------------------------------------------------------- |
+| `marketing`     | Marketing y Experiencia Digital  | Camila Ospina   | Términos de marca, exclusividad, co-branding, validez de la oferta. Dueña del ticket.          |
+| `operaciones`   | Operaciones de Restaurante       | Felipe Guerrero | Viabilidad operativa: capacidad de cocina/personal, tiempos de montaje, costo operativo/evento |
+| `procurement`   | Procurement y Proveedores        | Lucía Fernández | Costo estimado de insumos según volumen, tiempos de entrega de proveedores                     |
+| `training`      | Training y Estándares de Calidad | Jake Morrison   | Si el pedido requiere receta o estándar nuevo, tiempo de desarrollo y certificación necesario  |
 
 No toda RFP necesita a los cuatro departamentos: una solicitud de catering simple puede no requerir `training` (por ejemplo, si usa el menú estándar). Tu agente clasificador/orquestador debe decidir qué departamentos aplican según el contenido del documento — no asumas que siempre son los cuatro.
 
@@ -43,11 +43,11 @@ Las RFPs llegan como PDF y normalmente incluyen: nombre del cliente y ubicación
 
 ## 4. Instrucciones de datos semilla
 
-Crea al menos 3 documentos de prueba en `data/raw/`:
+Usa los PDF listos en [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) como entradas para probar el flujo agéntico (cópialos a `data/raw/` si tu pipeline espera esa ruta). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
 
-1. **RFP válida (rutina):** *Andes Tech Solutions*, empresa tecnológica de Bogotá, solicita catering semanal para 220 empleados en su oficina de Medellín, contrato de 12 meses, fecha límite en 15 días. Debe activar `marketing`, `operaciones` y `procurement` (no necesariamente `training`, ya que usa el menú estándar).
-2. **RFP válida (compleja, alto valor):** *Sunset Bay Resorts*, cadena hotelera de Florida, solicita un concesión de marca compartida en 3 de sus resorts, con cláusula de exclusividad y un nuevo menú de autor. Contrato estimado sobre 60.000 USD/año, fecha límite en 30 días. Debe activar los cuatro departamentos, incluido `training` por el menú nuevo. **Nota:** por superar los 50.000 USD/año, esta propuesta requiere una aprobación adicional de Mariana Restrepo (CEO) antes del cierre — impleméntalo como un paso de aprobación extra en tu Parte 3.
-3. **Documento que NO es una RFP:** un correo de un cliente preguntando de forma informal sobre oportunidades de franquicia, sin alcance, presupuesto ni fecha límite. Tu agente clasificador debe descartarlo.
+1. **`CONTEXT-brasaland-request-1.pdf` — RFP formal (aceptar):** _Sunset Bay Resorts_, concesión co-branded en 3 resorts de Florida, exclusividad + menú de autor, ~60–75k USD/año. Activa los cuatro departamentos, incluido `training`. **Nota:** supera 50.000 USD/año → aprobación extra de la CEO (Mariana Restrepo) en la Parte 3.
+2. **`CONTEXT-brasaland-request-2.pdf` — RFP informal (aceptar):** correo de _Andes Tech Solutions_ pidiendo catering semanal para 220 empleados en Medellín, contrato 12 meses, menú estándar. Activa `marketing`, `operaciones` y `procurement` (no necesariamente `training`).
+3. **`CONTEXT-brasaland-request-3.pdf` — inválido (rechazar):** consulta de franquicia sin alcance, presupuesto ni fecha límite. El clasificador debe descartarlo.
 
 ## 5. Restricciones de negocio (lineamientos para el evaluador de cumplimiento)
 
