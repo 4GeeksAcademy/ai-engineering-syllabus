@@ -39,7 +39,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
    Connect OpenClaw to the 4Geeks API with your account token so the agent can report pending projects, course progress, and related LearnPack data.
 
 10. **[Give Your Agent a Memory](./openclaw-memory)**  
-   Configure OpenClaw memory types (episodic, semantic, procedural), restructure workspace files, and validate that context persists across sessions.
+    Configure OpenClaw memory types (episodic, semantic, procedural), restructure workspace files, and validate that context persists across sessions.
 
 11. **[Onboarding Agent with Memory](./openclaw-onboarding-agent)**  
     Build a company onboarding flow: an OpenClaw agent with memory that reads HR templates and sends personalized onboarding email from your assigned `CONTEXT-company.md`.
@@ -202,6 +202,12 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 
 64. **[Milestone 8 — Agent Memory and Self-Improvement](./ai-eng-milestone-agentic-engineering)**  
     Extend the guarded LangGraph company agent with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes.
+
+65. **[Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-milestone-real-time-notification)**  
+    `Milestone 10` Part 1 — Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent).
+
+66. **[Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-milestone-real-time-communication)**  
+    `Milestone 10` Part 2 — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic.
 
 ---
 
