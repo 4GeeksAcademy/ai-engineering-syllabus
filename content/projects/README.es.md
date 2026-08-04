@@ -39,7 +39,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
    Conecta OpenClaw a la API de 4Geeks con tu token para que el agente reporte proyectos pendientes, progreso del curso y datos LearnPack relacionados.
 
 10. **[Dale memoria a tu agente](./openclaw-memory)**  
-   Configura tipos de memoria OpenClaw (episódica, semántica, procedimental), reestructura archivos del workspace y valida que el contexto persiste entre sesiones.
+    Configura tipos de memoria OpenClaw (episódica, semántica, procedimental), reestructura archivos del workspace y valida que el contexto persiste entre sesiones.
 
 11. **[Agente de onboarding con memoria](./openclaw-onboarding-agent)**  
     Construye un flujo de onboarding empresarial: agente OpenClaw con memoria que lee plantillas HR y envía email de bienvenida personalizado desde tu `CONTEXT-empresa.md`.
@@ -197,8 +197,11 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 62. **[Servidor MCP: Conectando tu Agente con las Herramientas de la Empresa](./ai-eng-mcp-company-tools)**  
     Expón el Incidents Manager y el inventario de solo lectura como un servidor FastMCP autenticado (API Key, mínimo privilegio, esquemas de discovery, logs de invocación), valídalo con un cliente MCP y migra el agente LangGraph para consumir incidentes vía MCP en lugar de tools HTTP directas.
 
-63. **[Aseguramiento de Agentes: Harness y Guardrails](./ai-eng-agent-harness)**  
-    Cierra el agente de la empresa antes de usuarios reales: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests automatizados de jailbreak — defensas en capas, no un único filtro.
+63. **[Hito 8 — Memoria y Auto-mejora de Agentes (Parte 1 de 2)](./ai-eng-milestone-agentic-engineering)**  
+    `Hito 8` Parte 1 — Extiende el agente LangGraph de la empresa (RAG + MCP) con memoria persistente: interfaz explícita de lectura/escritura, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar — solo hechos permitidos por CONTEXT, nunca escrituras silenciosas. Misma identidad de agente que la Parte 2.
+
+64. **[Hito 8 — Aseguramiento de Agentes: Harness y Guardrails (Parte 2 de 2)](./ai-eng-agent-harness)**  
+    `Hito 8` Parte 2 — Cierra el **mismo** agente de la empresa después de memoria: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests **deterministas** del harness — defensas en capas, no un único filtro ni solo un LLM vivo.
 
 ---
 

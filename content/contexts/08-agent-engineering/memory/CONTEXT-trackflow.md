@@ -1,12 +1,12 @@
 # CONTEXT — TrackFlow
 
-## Milestone 8 · Agent Memory and Self-Improvement
+## Milestone 8 · Part 1 · Agent Memory and Self-Improvement
 
 ---
 
 ## Why this memory matters for TrackFlow
 
-Your agent already knows TrackFlow's operations in Los Angeles and Zaragoza, queries the Incidents Manager and inventory through the MCP Server, and stays inside its guardrail. Valentina Cruz (CX Manager) reports that her 15 support agents, split across both countries, have to correct the assistant on the same carrier rules over and over — the assistant doesn't learn from one session to the next.
+Your agent already knows TrackFlow's operations in Los Angeles and Zaragoza, queries the Incidents Manager and inventory through the MCP Server, and will get its harness in Part 2. Valentina Cruz (CX Manager) reports that her 15 support agents, split across both countries, have to correct the assistant on the same carrier rules over and over — the assistant doesn't learn from one session to the next.
 
 ## What IS worth remembering
 

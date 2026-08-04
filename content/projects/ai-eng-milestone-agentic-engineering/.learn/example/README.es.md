@@ -1,6 +1,6 @@
 # Agente de Mostrador Maple Street Library — Memoria y Auto-mejora (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-agentic-engineering`. Misma columna vertebral (interfaz explícita de memoria, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar). Dominio distinto a los agentes CONTEXT de empresa. Continúa la narrativa Maple Street Library del ejemplo de harness. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-agentic-engineering` (**Hito 8 Parte 1**). Misma columna vertebral (interfaz explícita de memoria, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar). Dominio distinto a los agentes CONTEXT de empresa. La narrativa Maple Street empieza aquí; el ejemplo de harness (**Parte 2**) envuelve este agente después. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -8,7 +8,7 @@ _These instructions are also available in [English](./README.md)._
 
 ## El reto
 
-El agente de mostrador de **Maple Street Library** ya responde FAQ (horario, préstamos, multas) y rechaza jailbreaks. Problema: cada turno empieza en frío — el personal vuelve a explicar que “las reservas de letra grande van al estante amarillo” tres veces por semana.
+El agente de mostrador de **Maple Street Library** ya responde FAQ (horario, préstamos, multas). Problema: cada turno empieza en frío — el personal vuelve a explicar que “las reservas de letra grande van al estante amarillo” tres veces por semana.
 
 En una sesión: añade un bucle mínimo **proponer–confirmar–recordar** para que los hechos corregidos del mostrador persistan solo cuando una persona dice que sí.
 
@@ -18,7 +18,7 @@ En una sesión: añade un bucle mínimo **proponer–confirmar–recordar** para
 | ---------------------------------------------------------- | ----------------------------------------------------- |
 | Monorepo de empresa + reglas de memoria del CONTEXT        | Solo mostrador Maple Street                           |
 | Redis / VectorDB / híbrido justificado desde CONTEXT       | Dict en memoria + JSON opcional                       |
-| Stack completo LangGraph + MCP + guardrails                | Agente stub: retrieve FAQ + hooks de memoria          |
+| Stack completo LangGraph + MCP (harness en Parte 2)        | Agente stub: retrieve FAQ + hooks de memoria          |
 | Lista never-store de empresa                               | Nunca guardar: teléfonos de socios, importes de multa |
 | PR completo + dos ciclos de evidencia                      | Demo en vivo + 4 tests automatizados                  |
 

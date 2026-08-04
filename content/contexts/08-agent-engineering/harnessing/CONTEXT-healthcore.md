@@ -1,12 +1,12 @@
 # CONTEXT — HealthCore
 
-## Securing Agents: Harness and Guardrails
+## Milestone 8 · Part 2 · Securing Agents: Harness and Guardrails
 
 ---
 
 ## 1. Which agent you are securing
 
-The agent you need to protect is the **compliance assistant** from **Claire Whitfield's, Chief Compliance Officer** department. This agent already answers questions from clinical and administrative staff using RAG over HealthCore's policy library, procedures, and clinical protocols, and already knows how to call tools and consume the MCP Server built in previous sprints.
+The agent you need to protect is the **compliance assistant** from **Claire Whitfield's, Chief Compliance Officer** department. This agent already answers questions from clinical and administrative staff using RAG over HealthCore's policy library, procedures, and clinical protocols, and already knows how to call tools and consume the MCP Server built in previous sprints. This is the **same** agent you extended with memory in Milestone 8 Part 1 — keep that identity; do not invent a parallel agent for this sprint.
 
 It's used by roughly 200 employees across 12 outpatient clinics in the US and UK, including clinical staff under time pressure who may phrase questions imprecisely or hastily.
 

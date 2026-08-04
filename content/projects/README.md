@@ -197,11 +197,11 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 62. **[MCP Server: Connecting Your Agent to the Company's Tools](./ai-eng-mcp-company-tools)**  
     Expose Incidents Manager and read-only inventory as an authenticated FastMCP server (API Key, least privilege, discovery schemas, invocation logs), validate with an MCP client, and migrate the LangGraph support agent to consume incidents through MCP instead of direct HTTP tools.
 
-63. **[Securing Agents: Harness and Guardrails](./ai-eng-agent-harness)**  
-    Lock down the company agent before real users: CONTEXT-aligned secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and automated jailbreak tests — layered defenses, not a single filter.
+63. **[Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)](./ai-eng-milestone-agentic-engineering)**  
+    `Milestone 8` Part 1 — Extend the LangGraph company agent (RAG + MCP) with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes. Same agent identity as Part 2.
 
-64. **[Milestone 8 — Agent Memory and Self-Improvement](./ai-eng-milestone-agentic-engineering)**  
-    Extend the guarded LangGraph company agent with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes.
+64. **[Milestone 8 — Securing Agents: Harness and Guardrails (Part 2 of 2)](./ai-eng-agent-harness)**  
+    `Milestone 8` Part 2 — Lock down the **same** company agent after memory: CONTEXT-aligned secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and **deterministic** harness tests — layered defenses, not a single filter or live-LLM-only gate.
 
 65. **[Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-milestone-real-time-notification)**  
     `Milestone 10` Part 1 — Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent).

@@ -1,4 +1,4 @@
-# Milestone 8 — Agent Memory and Self-Improvement — Reference Solution
+# Milestone 8 Part 1 — Agent Memory and Self-Improvement — Reference Solution
 
 Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align memorable facts, forbidden stores, and consolidation policy with their assigned `CONTEXT-company.md` under `content/contexts/08-agent-engineering/memory/`.
 
@@ -15,7 +15,7 @@ flowchart TD
   WRITE --> AUDIT[Audit log]
   DROP --> AUDIT
   CLS -->|continue conversation| AGENT
-  PEND -->|no| AGENT[LangGraph agent + RAG/MCP + guardrails]
+  PEND -->|no| AGENT[LangGraph agent + RAG/MCP]
   AGENT --> SO[Structured output: reply + memory_proposal?]
   SO -->|proposal| ASK[Append proposal question in reply]
   ASK --> STATE[Store single pending proposal]
@@ -99,7 +99,7 @@ When `memory_proposal` is non-null and no pending proposal exists: surface the a
 
 ## Confirmation and audit
 
-Reuse the same style of intent classifier as the guardrails sprint (structured label, not `"yes" in text`).
+Use an explicit intent classifier (structured label, not `"yes" in text`). Part 2 will add more guardrail layers on the same agent.
 
 | Classifier label         | Effect                                    |
 | ------------------------ | ----------------------------------------- |
@@ -179,4 +179,4 @@ Poisoning defense (required design decision): never write without confirmation; 
 
 - Exercise approve + reject paths in Docker/test target.
 - Spot-check CONTEXT “never enter memory” items cannot be written even after a fake approve.
-- Confirm guardrails from the previous sprint still apply (memory must not become a poison channel).
+- Design Part 1 so Part 2 (harness) can wrap it — memory must not become an unchecked poison channel; explicit confirm already limits silent writes.

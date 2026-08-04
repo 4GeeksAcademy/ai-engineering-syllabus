@@ -1,4 +1,4 @@
-# Hito 8 — Memoria y Auto-mejora de Agentes
+# Hito 8 — Memoria y Auto-mejora de Agentes (Parte 1 de 2)
 
 <!-- hide -->
 
@@ -19,9 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Tu agente ya conoce a la empresa (RAG), llama herramientas a través del MCP Server, y no se sale de su guardrail de seguridad. El problema es que cada conversación empieza de cero: no recuerda que ayer se resolvió una escalación parecida, ni que un usuario ya corrigió un dato la semana pasada. Tu tech lead abrió un **ticket** después de que dos clientes distintos tuvieron que repetir la misma corrección tres veces en la misma semana.
-
-No es casualidad que este proyecto llegue justo después del sprint de guardrails, y no antes. Sin guardrails, un intento de manipulación daña una sola conversación; con memoria persistente pero sin esa protección previa, ese mismo intento podría quedar escrito en el almacén de memoria y repetirse en cada conversación futura — el error deja de ser puntual y se vuelve acumulativo. Por eso primero se blindó al agente contra manipulación en el sprint anterior y solo ahora se le da la capacidad de recordar y auto-mejorar.
+Tu agente ya conoce a la empresa (RAG) y llama herramientas a través del MCP Server. El problema es que cada conversación empieza de cero: no recuerda que ayer se resolvió una escalación parecida, ni que un usuario ya corrigió un dato la semana pasada. Tu tech lead abrió un **ticket** después de que dos clientes distintos tuvieron que repetir la misma corrección tres veces en la misma semana.
 
 ### 🧠 Conocimiento Complementario: Arquitecturas de Memoria
 
@@ -29,7 +27,7 @@ La memoria de un agente no es un solo componente — se organiza por alcance tem
 
 > **De: Tech Lead — Ticket #MEM-092**
 >
-> El agente ya conoce a la empresa, usa las herramientas del MCP Server y no se sale de su guardrail. Pero cada conversación empieza de cero: no recuerda que ayer resolvimos una escalación parecida, ni que alguien ya corrigió un dato la semana pasada. Necesito que el agente aprenda de la interacción, sin que eso signifique que empiece a inventar cosas o a acumular basura en su memoria para siempre.
+> El agente ya conoce a la empresa y usa las herramientas del MCP Server. Pero cada conversación empieza de cero: no recuerda que ayer resolvimos una escalación parecida, ni que alguien ya corrigió un dato la semana pasada. Necesito que el agente aprenda de la interacción, sin que eso signifique que empiece a inventar cosas o a acumular basura en su memoria para siempre.
 >
 > No hace falta un grafo nuevo ni una arquitectura multi-agente para esto — es el mismo agente de siempre, con un paso extra de auto-evaluación:
 >
@@ -45,14 +43,14 @@ La memoria de un agente no es un solo componente — se organiza por alcance tem
 
 ## 🌱 Cómo Empezar el Proyecto
 
-1. Si ya tienes tu fork del monorepo de la compañía, crea una nueva rama a partir de tu último avance (milestone o día anterior).
+1. Si ya tienes tu fork del monorepo de la compañía, crea una nueva rama a partir de tu último avance (trabajo del agente LangGraph / MCP).
 2. Si por alguna razón no tienes fork aún (por ejemplo, te uniste tarde o lo perdiste), haz fork del [monorepo de referencia](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) antes de continuar.
 
 ```bash
 git checkout -b w23-d67-agent-memory
 ```
 
-3. Sigue trabajando sobre el mismo agente LangGraph que ya expone el MCP Server y aplica guardrails — este proyecto no reemplaza esa base, la extiende.
+3. Sigue trabajando sobre el **mismo** agente LangGraph que ya consume el MCP Server — este proyecto no reemplaza esa base, la extiende.
 4. Instala cualquier dependencia nueva con `uv add` (nunca `pip install` ni `pipenv`).
 
 ---
@@ -75,7 +73,7 @@ git checkout -b w23-d67-agent-memory
 
 ### Confirmación del Usuario y Registro Auditable
 
-- [ ] Cuando hay una propuesta de memoria pendiente, el siguiente mensaje del usuario debe evaluarse primero contra esa propuesta: ¿la aprueba, la rechaza, o la edita? Reutiliza el mismo tipo de clasificación de intención que ya implementaste para las respuestas sensibles en el sprint de guardrails — no un simple `"sí" in mensaje`.
+- [ ] Cuando hay una propuesta de memoria pendiente, el siguiente mensaje del usuario debe evaluarse primero contra esa propuesta: ¿la aprueba, la rechaza, o la edita? Usa una clasificación de intención explícita (etiqueta estructurada / clasificador), no un simple `"sí" in mensaje`.
 - [ ] Solo puede haber **una propuesta pendiente a la vez**: si ya hay una sin resolver, el agente no debe lanzar una segunda hasta cerrar la primera.
 - [ ] Si el usuario cambia de tema sin responder claramente sí o no, la propuesta se descarta por defecto — nunca se asume aprobación por silencio o ambigüedad.
 - [ ] Cada decisión (propuesta, resultado, mensaje que la originó, marca de tiempo) queda registrada de forma auditable, sin importar si la propuesta fue aprobada o rechazada.

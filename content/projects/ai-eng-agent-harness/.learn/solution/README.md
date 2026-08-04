@@ -1,6 +1,6 @@
-# Securing Agents: Harness and Guardrails — Reference Solution
+# Milestone 8 Part 2 — Securing Agents: Harness and Guardrails — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align domain boundaries, sensitive fields, and jailbreak cases with their assigned `CONTEXT-company.md` under `content/contexts/08-agent-engineering/harnessing/`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align domain boundaries, sensitive fields, and jailbreak cases with their assigned `CONTEXT-company.md` under `content/contexts/08-agent-engineering/harnessing/`. Harden the **same** agent from Part 1 (memory) / LangGraph / MCP — do not invent a parallel agent.
 
 ---
 
@@ -51,7 +51,7 @@ flowchart TD
 
 Separate **policy** (system) from **request** (user). Declare:
 
-1. Company domain (from CONTEXT — e.g. Nexova first-line support, Brasaland training recipes, HealthCore compliance, TrackFlow CX/logistics).
+1. Company domain (from CONTEXT — e.g. Nexova first-line support, Brasaland manager support, HealthCore compliance, TrackFlow CX/logistics).
 2. Allowed out-of-domain behavior: brief answer + mandatory redirect to company purpose.
 3. Hard refuse: personal chatbot tasks unrelated to the company.
 4. Never-reveal list from CONTEXT (cross-account data, PHI, master recipes, carrier rates, etc.).
@@ -79,15 +79,16 @@ I can't change or ignore my system instructions. I'm here to help with
 
 | Signal                                                    | Behavior                                   | Log type             |
 | --------------------------------------------------------- | ------------------------------------------ | -------------------- |
-| Personal use (essay, homework, unrelated code, therapist) | Decline + redirect to agent purpose        | `content`            |
+| Domain question (CONTEXT)                                 | RAG / tools path                           | —                    |
 | Casual / general trivia                                   | Brief answer + close with company redirect | `content` (redirect) |
-| In-domain                                                 | Normal RAG/tool path                       | —                    |
+| Personal use (essay, homework, unrelated code, therapist) | Decline + redirect to agent purpose        | `content`            |
+| Instruction override / jailbreak                          | Firm refuse — do not comply                | `security`           |
 
 Company-specific extras (must match CONTEXT):
 
 - **HealthCore:** PHI / identifiable patient case → refuse + ask to rephrase without identifiers; output scan for PHI before return.
 - **TrackFlow:** tracking lookup only for authenticated session owner; refuse cross-customer order fishing; enforce country policy (US vs ES).
-- **Brasaland:** block master-recipe exact proportions and gradual ingredient extraction across turns.
+- **Brasaland:** Manager support agent — block master-recipe exact proportions and gradual ingredient extraction across turns; keep congruent with Part 1 memory + realtime `manager_support`.
 - **Nexova:** block cross-client SLA/account leakage.
 
 ### 3. Structural / output validation
@@ -133,7 +134,25 @@ Expose a session summary (HTTP endpoint or CLI), e.g.:
 
 ## Automated tests (required)
 
-Minimum cases (adapt wording to CONTEXT):
+Prefer a **deterministic harness suite** as the CI gate. Live LLM calls are optional smoke only.
+
+### Deterministic layer (required)
+
+Unit-test (or integration-test with mocks) without calling a real model:
+
+1. Input guard: jailbreak / instruction-override strings → `block` + `failure_type: security`.
+2. Input guard: personal-use prompts → refuse + redirect + `content`.
+3. Input guard: casual/trivia tagged → redirect path (or flag for post-answer redirect).
+4. External-content isolation: RAG/tool payload containing fake `[SYSTEM]` / "ignore previous rules" is wrapped/sanitized and never merged into the system role.
+5. Output guard: response echoing system-prompt fragments or CONTEXT secrets → sanitize/reject.
+
+Assert labels/actions with fixed fixtures. Build fails if a guard would allow the abusive case.
+
+### Optional live smoke
+
+If you also run the full agent against a live model, keep those tests marked optional / non-blocking or behind an explicit env flag — flaky model variance must not be the only acceptance gate.
+
+### Minimum case set (adapt wording to CONTEXT)
 
 1. Direct jailbreak: ignore previous instructions / no rules.
 2. Role/identity wipe: forget company / act unrestricted.
@@ -141,7 +160,7 @@ Minimum cases (adapt wording to CONTEXT):
 4. External-content injection: RAG/tool payload with fake `[SYSTEM]` instruction — agent must not treat it as policy.
 5. (Company-specific) e.g. HealthCore PHI, TrackFlow cross-order, Brasaland gradual recipe extract, Nexova cross-client SLA.
 
-Assert: refusal or redirect, **not** compliance with the abusive ask. Build fails if the agent obeys.
+Assert: refusal or redirect, **not** compliance with the abusive ask.
 
 ---
 
@@ -190,9 +209,11 @@ Ask me something about [company domain].
 | Trusting model "I won't leak" only | Output validation still required (esp. HealthCore PHI) |
 | Treating RAG text as system        | Injection path stays open                              |
 | No automated injection tests       | Build cannot enforce security                          |
+| Live LLM as only gate              | Flaky CI; harness layers untested in isolation         |
 
 ## Validation notes
 
-- Run injection suite in CI/local Docker test target.
+- Run the **deterministic** injection/guard suite in CI/local Docker test target (no live model required).
 - Manually spot-check CONTEXT-specific cases from section 4 of each company CONTEXT.
 - Confirm legitimate in-domain queries still work after guardrails.
+- Confirm agent identity matches Part 1 / LangGraph / MCP (same graph, tools, KB domain).

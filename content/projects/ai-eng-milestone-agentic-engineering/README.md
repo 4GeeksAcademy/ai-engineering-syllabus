@@ -1,4 +1,4 @@
-# Milestone 8 — Agent Memory and Self-Improvement
+# Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)
 
 <!-- hide -->
 
@@ -19,9 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Your agent already knows the company (RAG), calls tools through the MCP Server, and stays inside its security guardrail. The problem is that every conversation starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
-
-It's not a coincidence that this project comes right after the guardrails sprint, and not before. Without guardrails, a manipulation attempt damages a single conversation; with persistent memory but no prior protection, that same attempt could get written into the memory store and repeat itself in every future conversation — the error stops being a one-off and becomes cumulative. That's why the agent was hardened against manipulation in the previous sprint first, and only now does it gain the ability to remember and self-improve.
+Your agent already knows the company (RAG) and calls tools through the MCP Server. The problem is that every conversation starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
 
 ### 🧠 Complementary Knowledge: Memory Architectures
 
@@ -29,7 +27,7 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 
 > **From: Tech Lead — Ticket #MEM-092**
 >
-> The agent already knows the company, uses the MCP Server's tools, and stays inside its guardrail. But every conversation starts from zero: it doesn't remember that we resolved a similar escalation yesterday, or that someone already corrected a piece of data last week. I need the agent to learn from interaction, without that meaning it starts making things up or piling junk into its memory forever.
+> The agent already knows the company and uses the MCP Server's tools. But every conversation starts from zero: it doesn't remember that we resolved a similar escalation yesterday, or that someone already corrected a piece of data last week. I need the agent to learn from interaction, without that meaning it starts making things up or piling junk into its memory forever.
 >
 > You don't need a new graph or a multi-agent architecture for this — it's the same agent as always, with one extra self-evaluation step:
 >
@@ -45,14 +43,14 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 
 ## 🌱 How to Start the Project
 
-1. If you already have your fork of the company's monorepo, create a new branch from your latest progress (previous milestone or day).
+1. If you already have your fork of the company's monorepo, create a new branch from your latest progress (MCP / LangGraph agent work).
 2. If for some reason you don't have a fork yet (for example, you joined late or lost it), fork the [reference monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) before continuing.
 
 ```bash
 git checkout -b w23-d67-agent-memory
 ```
 
-3. Keep building on the same LangGraph agent that already exposes the MCP Server and applies guardrails — this project doesn't replace that base, it extends it.
+3. Keep building on the **same** LangGraph agent that already consumes the MCP Server — this project doesn't replace that base, it extends it.
 4. Install any new dependency with `uv add` (never `pip install` or `pipenv`).
 
 ---
@@ -75,7 +73,7 @@ git checkout -b w23-d67-agent-memory
 
 ### User Confirmation and Auditable Log
 
-- [ ] When there's a pending memory proposal, the user's next message must first be evaluated against that proposal: does it approve, reject, or edit it? Reuse the same kind of intent classification you already implemented for sensitive responses in the guardrails sprint — not a plain `"yes" in message`.
+- [ ] When there's a pending memory proposal, the user's next message must first be evaluated against that proposal: does it approve, reject, or edit it? Use an explicit intent classification (structured label / classifier), not a plain `"yes" in message`.
 - [ ] There can only be **one pending proposal at a time**: if one is already unresolved, the agent must not launch a second one until the first is closed.
 - [ ] If the user changes topic without clearly responding yes or no, the proposal is discarded by default — approval is never assumed from silence or ambiguity.
 - [ ] Every decision (proposal, outcome, originating message, timestamp) is logged in an auditable way, regardless of whether the proposal was approved or rejected.

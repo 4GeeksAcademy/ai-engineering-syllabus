@@ -1,12 +1,12 @@
 # CONTEXT — Nexova
 
-## Securing Agents: Harness and Guardrails
+## Milestone 8 · Part 2 · Securing Agents: Harness and Guardrails
 
 ---
 
 ## 1. Which agent you are securing
 
-The agent you need to protect is the **first-line support agent** from **Roberto Díaz's, Customer Support Lead** department. This agent already answers queries from the end customers of the companies that outsource their support to Nexova, using RAG over the centralized knowledge base (support procedures, SLAs, policies), and already knows how to call tools and consume the MCP Server built in previous sprints.
+The agent you need to protect is the **first-line support agent** from **Roberto Díaz's, Customer Support Lead** department. This agent already answers queries from the end customers of the companies that outsource their support to Nexova, using RAG over the centralized knowledge base (support procedures, SLAs, policies), and already knows how to call tools and consume the MCP Server built in previous sprints. This is the **same** agent you extended with memory in Milestone 8 Part 1 — keep that identity; do not invent a parallel agent for this sprint.
 
 Unlike the other internal agents in the course, this is **Nexova's first agent exposed directly to external users** (customers of Nexova's client companies) — which makes the risk of abuse and injection higher: you don't control who's messaging it.
 

@@ -1,12 +1,12 @@
 # CONTEXT — TrackFlow
 
-## Hito 8 · Memoria y Auto-mejora de Agentes
+## Hito 8 · Parte 1 · Memoria y Auto-mejora de Agentes
 
 ---
 
 ## Por qué importa esta memoria para TrackFlow
 
-Tu agente ya conoce las operaciones de TrackFlow en Los Ángeles y Zaragoza, consulta el Incidents Manager y el inventario a través del MCP Server, y no se sale de su guardrail. Valentina Cruz (CX Manager) reporta que sus 15 agentes de soporte, distribuidos entre ambos países, tienen que corregirle al asistente las mismas reglas de carrier una y otra vez — el asistente no aprende de una sesión a la siguiente.
+Tu agente ya conoce las operaciones de TrackFlow en Los Ángeles y Zaragoza, consulta el Incidents Manager y el inventario a través del MCP Server, y recibirá su harness en la Parte 2. Valentina Cruz (CX Manager) reporta que sus 15 agentes de soporte, distribuidos entre ambos países, tienen que corregirle al asistente las mismas reglas de carrier una y otra vez — el asistente no aprende de una sesión a la siguiente.
 
 ## Qué SÍ vale la pena recordar
 
