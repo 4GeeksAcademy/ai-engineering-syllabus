@@ -28,5 +28,8 @@
       "en": "Built and shipped: Web Vulnerability Audit and Remediation (OWASP Top 10). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-vulnerabilities #AIEngineering #LearnPack #4GeeksAcademy #python #security #owasp",
       "es": "Construido y publicado: Auditoría y Corrección de Vulnerabilidades Web (OWASP Top 10). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-vulnerabilities #AIEngineering #LearnPack #4GeeksAcademy #python #security #owasp"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3909"
+  }
 }
