@@ -30,10 +30,10 @@ En la Parte 1 ya tienes un flujo que clasifica cada RFP y abre un ticket por cad
 > > - Un agente generador por departamento que reciba los metadatos y el resumen producidos en la Parte 1, y redacte la sección correspondiente de la propuesta económica.
 > > - Varios agentes evaluadores corriendo en paralelo sobre cada sección generada: legibilidad (de nuevo, `py-readability-metrics` te sirve para esto), pertinencia respecto a lo que pide la RFP, y cumplimiento de nuestros lineamientos de empresa.
 > > - Si una sección falla la evaluación, que vuelva al generador correspondiente con feedback concreto sobre qué corregir — no que se quede atascada ni que se descarte el ticket completo.
-> > - Un límite de iteraciones para ese ciclo generador-evaluador, para que no se repita indefinidamente si un generador no logra pasar la evaluación.
+> > - Un límite de iteraciones para ese ciclo generador-evaluador, para que no se repita indefinidamente si un generador no logra pasar la evaluación. Si una sección agota ese límite sin pasar, conserva el último borrador y su resultado de evaluación, márcala `needs_human_review`, e inclúyela igual en el handoff a la Parte 3 — nunca descartes el ticket completo.
 > > - _Opcional:_ si ya tienes montada la base de conocimiento semántica de la empresa, dale acceso al generador — que redacte con nuestras políticas y tono reales en lugar de improvisarlos ayuda mucho a que pase la evaluación de cumplimiento a la primera. No es indispensable para esta parte, pero si la tienes disponible, úsala.
 > >
-> > **Acceptance criteria:** El _handoff_ hacia la Parte 3 debe incluir, por cada departamento, tanto el contenido generado como el resultado de su evaluación.
+> > **Acceptance criteria:** El _handoff_ hacia la Parte 3 debe incluir, por cada departamento, tanto el contenido generado como un resultado de evaluación estructurado (ver schema abajo). Las secciones que agotaron el límite de iteraciones van con `needs_human_review` — no se eliminan.
 > >
 > > — Tu tech lead
 
@@ -74,21 +74,34 @@ Continúa sobre la misma rama de trabajo del Hito 9 en tu fork del monorepo (o c
 - [ ] Al menos un evaluador debe revisar legibilidad (se sugiere `py-readability-metrics`)
 - [ ] Al menos un evaluador debe revisar pertinencia (que el contenido responda lo que pide la RFP)
 - [ ] Al menos un evaluador debe revisar cumplimiento de los lineamientos definidos en tu `CONTEXT-company.md`
+- [ ] Persiste la evaluación de cada sección como un `EvaluationResult` estructurado (los nombres de campo pueden variar un poco; la forma debe ser equivalente):
+
+```text
+EvaluationResult:
+  section_id / department_id
+  readability: { pass, score, details }
+  relevance: { pass, missing_aspects[] }
+  compliance: { pass, rule_ids[], violations[] }
+  overall_pass: bool
+  feedback_for_generator: string   # concreto y accionable
+```
 
 **Ciclo generador-evaluador**
 
-- [ ] Si una sección falla la evaluación, el flujo debe devolverla al agente generador correspondiente junto con las razones del fallo
+- [ ] Si una sección falla la evaluación, el flujo debe devolverla al agente generador correspondiente junto con el `feedback_for_generator` del `EvaluationResult`
 - [ ] Define y aplica un límite de iteraciones para evitar que el ciclo generador-evaluador se repita indefinidamente
+- [ ] Cuando se agota el límite sin pasar: conserva el último borrador + su `EvaluationResult`, marca la sección (y el ticket si aplica) como `needs_human_review`, e inclúyela igual en el handoff a la Parte 3 — no descartes el ticket
 
 **Estado del ticket**
 
-- [ ] Actualiza el ticket creado en la Parte 1 (desde `analisis_completo`) para reflejar el progreso de la generación y evaluación (`generando_borrador`, `en_evaluación`). Persiste borradores y `evaluation_results` en PostgreSQL. Sigue sin crear un API nuevo: extiende el backend existente y el pipeline bajo `data/pipelines/`.
+- [ ] Actualiza el ticket creado en la Parte 1 (desde `analisis_completo`) para reflejar el progreso de la generación y evaluación (`generando_borrador`, `en_evaluación`, `needs_human_review`). Persiste borradores y `evaluation_results` en PostgreSQL. Sigue sin crear un API nuevo: extiende el backend existente y el pipeline bajo `data/pipelines/`.
 
 ⚠️ **IMPORTANTE:** Los lineamientos de la empresa contra los que evalúas el contenido generado, y el formato esperado de cada sección, deben coincidir con lo especificado en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Pruebas**
 
-- [ ] Incluye pruebas unitarias en `tests/pipelines/` para al menos un agente generador y un agente evaluador, incluyendo el caso donde la evaluación falla
+- [ ] Incluye pruebas unitarias en `tests/pipelines/` para al menos un agente generador y un agente evaluador, incluyendo un caso donde la evaluación falla
+- [ ] Añade un caso de fallo de compliance anclado a una regla de tu `CONTEXT-company.md` (p. ej. un borrador que promete algo que los lineamientos prohíben → `compliance.pass == false`). Manténlo pequeño: un fixture, una aserción de fallo — no hace falta el ciclo completo para este caso
 
 ---
 
@@ -96,7 +109,7 @@ Continúa sobre la misma rama de trabajo del Hito 9 en tu fork del monorepo (o c
 
 - ¿Qué información del estado necesita realmente cada agente evaluador? ¿Le estás pasando solo la sección que debe revisar o el documento completo?
 - ¿Cómo evitas que dos evaluadores en paralelo entren en conflicto al escribir su resultado en el estado compartido?
-- ¿Qué pasa si un agente generador alcanza el límite de iteraciones sin pasar la evaluación? ¿Qué le muestra el ticket a Ventas en ese caso?
+- Cuando una sección llega a `needs_human_review` tras agotar iteraciones, ¿cómo se lo muestras a Ventas para que sepa qué borrador es provisional?
 - ¿El feedback que recibe el generador tras un fallo es lo suficientemente específico como para corregir el problema real, o es genérico?
 
 ---
@@ -105,10 +118,10 @@ Continúa sobre la misma rama de trabajo del Hito 9 en tu fork del monorepo (o c
 
 - [ ] Cada departamento tiene su propio agente generador, claramente separado de los demás
 - [ ] Los evaluadores corren en paralelo y no bloquean la ejecución de otros departamentos entre sí
-- [ ] El sistema aplica correctamente el ciclo generador-evaluador, incluyendo el límite de iteraciones
+- [ ] El sistema aplica correctamente el ciclo generador-evaluador, incluyendo el límite de iteraciones y el handoff `needs_human_review` al agotarlo
 - [ ] El ticket refleja con precisión el progreso de generación y evaluación en tiempo real
-- [ ] Los criterios de evaluación (legibilidad, pertinencia, lineamientos) están implementados de forma verificable, no como texto libre sin estructura
-- [ ] Existen pruebas unitarias que cubren tanto el caso de éxito como el de fallo en la evaluación
+- [ ] La salida de evaluación sigue la forma `EvaluationResult` (legibilidad / pertinencia / compliance estructurados — no texto libre sin estructura)
+- [ ] Existen pruebas unitarias que cubren éxito, un fallo genérico de evaluación, y un fallo de compliance anclado al CONTEXT
 - [ ] La implementación usa los lineamientos y formatos definidos en el `CONTEXT-company.md` de tu empresa
 
 ---

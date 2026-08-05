@@ -30,10 +30,10 @@ In Part 1 you already have a flow that classifies each RFP and opens a ticket fo
 > > - A generator agent per department that receives the metadata and summary produced in Part 1, and drafts the corresponding section of the pricing proposal.
 > > - Several evaluator agents running in parallel over each generated section: readability (again, `py-readability-metrics` works for this), relevance to what the RFP is asking for, and compliance with our company guidelines.
 > > - If a section fails evaluation, it should go back to the corresponding generator with concrete feedback on what to fix — it shouldn't get stuck, and the ticket shouldn't be discarded entirely.
-> > - An iteration limit on that generator-evaluator loop, so it doesn't repeat indefinitely if a generator can't pass evaluation.
+> > - An iteration limit on that generator-evaluator loop, so it doesn't repeat indefinitely if a generator can't pass evaluation. If a section hits that limit without passing, keep the last draft and its evaluation result, mark it `needs_human_review`, and still include it in the Part 3 handoff — never discard the whole ticket.
 > > - _Optional:_ if you already have the semantic knowledge base set up, give the generator access to it — drafting with our real policies and tone instead of improvising them makes it much more likely to pass the compliance check on the first try. Not required for this part, but use it if you have it.
 > >
-> > **Acceptance criteria:** The handoff to Part 3 must include, for every department, both the generated content and the result of its evaluation.
+> > **Acceptance criteria:** The handoff to Part 3 must include, for every department, both the generated content and a structured evaluation result (see schema below). Sections that exhausted the iteration limit ship with `needs_human_review` — they are not dropped.
 > >
 > > — Your tech lead
 
@@ -74,21 +74,34 @@ Continue on the same Milestone 9 working branch in your monorepo fork (or create
 - [ ] At least one evaluator must check readability (suggested: `py-readability-metrics`)
 - [ ] At least one evaluator must check relevance (that the content actually answers what the RFP asks for)
 - [ ] At least one evaluator must check compliance with the guidelines defined in your `CONTEXT-company.md`
+- [ ] Persist each section's evaluation as a structured `EvaluationResult` (field names may vary slightly; shape must be equivalent):
+
+```text
+EvaluationResult:
+  section_id / department_id
+  readability: { pass, score, details }
+  relevance: { pass, missing_aspects[] }
+  compliance: { pass, rule_ids[], violations[] }
+  overall_pass: bool
+  feedback_for_generator: string   # concrete and actionable
+```
 
 **Generator-evaluator loop**
 
-- [ ] If a section fails evaluation, the flow must return it to the corresponding generator agent along with the reasons for failure
+- [ ] If a section fails evaluation, the flow must return it to the corresponding generator agent along with `feedback_for_generator` from the `EvaluationResult`
 - [ ] Define and enforce an iteration limit to prevent the generator-evaluator loop from repeating indefinitely
+- [ ] When the limit is hit without a pass: keep the last draft + its `EvaluationResult`, set the section (and ticket if needed) to `needs_human_review`, and still include it in the Part 3 handoff — do not discard the ticket
 
 **Ticket status**
 
-- [ ] Update the ticket created in Part 1 (from `intake_complete`) to reflect generation and evaluation progress (`drafting`, `under_evaluation`). Persist drafts and `evaluation_results` in PostgreSQL. Still no new API: extend the existing backend and the pipeline under `data/pipelines/`.
+- [ ] Update the ticket created in Part 1 (from `intake_complete`) to reflect generation and evaluation progress (`drafting`, `under_evaluation`, `needs_human_review`). Persist drafts and `evaluation_results` in PostgreSQL. Still no new API: extend the existing backend and the pipeline under `data/pipelines/`.
 
 ⚠️ **IMPORTANT:** The company guidelines you evaluate generated content against, and the expected format of each section, must match what's specified in your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
 
 **Testing**
 
-- [ ] Include unit tests in `tests/pipelines/` for at least one generator agent and one evaluator agent, including the case where evaluation fails
+- [ ] Include unit tests in `tests/pipelines/` for at least one generator agent and one evaluator agent, including a case where evaluation fails
+- [ ] Add one compliance-failure case tied to a rule from your `CONTEXT-company.md` (e.g. a draft that promises something the guidelines forbid → `compliance.pass == false`). Keep it small: one fixture, one assertion on fail — no full loop required for this case
 
 ---
 
@@ -96,7 +109,7 @@ Continue on the same Milestone 9 working branch in your monorepo fork (or create
 
 - What state information does each evaluator agent actually need? Are you passing it only the section it should review, or the entire document?
 - How do you prevent two parallel evaluators from conflicting when writing their results to the shared state?
-- What happens if a generator agent hits the iteration limit without passing evaluation? What does the ticket show Sales in that case?
+- When a section hits `needs_human_review` after exhausting iterations, how do you surface that to Sales so they know which draft is provisional?
 - Is the feedback the generator receives after a failure specific enough to fix the real problem, or is it generic?
 
 ---
@@ -105,10 +118,10 @@ Continue on the same Milestone 9 working branch in your monorepo fork (or create
 
 - [ ] Each department has its own generator agent, clearly separated from the others
 - [ ] Evaluators run in parallel and don't block execution across other departments
-- [ ] The system correctly applies the generator-evaluator loop, including the iteration limit
+- [ ] The system correctly applies the generator-evaluator loop, including the iteration limit and `needs_human_review` handoff when exhausted
 - [ ] The ticket accurately reflects generation and evaluation progress in real time
-- [ ] The evaluation criteria (readability, relevance, guidelines) are implemented in a verifiable way, not as unstructured free text
-- [ ] Unit tests exist covering both the success case and the evaluation-failure case
+- [ ] Evaluation output follows the `EvaluationResult` shape (structured readability / relevance / compliance — not unstructured free text)
+- [ ] Unit tests cover success, a generic evaluation-failure case, and one CONTEXT-anchored compliance failure
 - [ ] The implementation uses the guidelines and formats defined in your company's `CONTEXT-company.md`
 
 ---

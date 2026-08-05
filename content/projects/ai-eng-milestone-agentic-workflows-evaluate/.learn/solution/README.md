@@ -32,8 +32,8 @@ flowchart LR
 1. **Reuse Part 1** — generators consume synthesizer/metadata output; do not re-classify RFPs from scratch.
 2. **One generator per department** — clearly separated agents/modules.
 3. **Parallel evaluators** — readability, relevance, and CONTEXT guidelines run concurrently per section.
-4. **Structured fail feedback** — regenerators receive concrete reasons (rule ids, missing fields), not vague “improve it”.
-5. **Bounded loop** — hard `max_iterations`; ticket never stuck forever; exhausting limit ≠ silent discard of whole ticket.
+4. **Structured `EvaluationResult`** — regenerators receive concrete reasons (rule ids, missing fields), not vague “improve it”.
+5. **Bounded loop** — hard `max_iterations`; on exhaust → keep last draft + eval, set `needs_human_review`, still hand off to Part 3 (never silent discard of whole ticket).
 6. **CONTEXT fidelity** — guideline checklist comes from CONTEXT, not generic style taste.
 
 ---
@@ -52,62 +52,73 @@ flowchart LR
 | `data/pipelines/rfp_response/synthesizer.py`             | Package drafts + eval results → assignment tickets |
 | `services/.../routers/rfp.py`                            | Same existing API — trigger Part 2 + GET status    |
 | `tests/pipelines/test_rfp_generator.py`                  | Generator unit tests                               |
-| `tests/pipelines/test_rfp_evaluator.py`                  | Evaluator + failure-path unit tests                |
+| `tests/pipelines/test_rfp_evaluator.py`                  | Evaluator fail path + one CONTEXT compliance fail  |
 
 ---
 
 ## Ticket lifecycle (Part 2 additions)
 
-| Status                         | When set                                       |
-| ------------------------------ | ---------------------------------------------- |
-| `drafting`                     | Generators running for one or more departments |
-| `under_evaluation`             | Evaluators running / loop in progress          |
-| `needs_human_review`           | Optional: iteration limit hit on ≥1 section    |
-| `ready_for_approval` / handoff | All sections packaged for Part 3               |
+| Status                         | When set                                                         |
+| ------------------------------ | ---------------------------------------------------------------- |
+| `drafting`                     | Generators running for one or more departments                   |
+| `under_evaluation`             | Evaluators running / loop in progress                            |
+| `needs_human_review`           | **Required** when iteration limit hit on ≥1 section without pass |
+| `ready_for_approval` / handoff | All sections packaged for Part 3 (including flagged ones)        |
 
-Keep Part 1 statuses (`analyzing`, `discarded`, `intake_complete`) intact; Part 2 extends with `drafting` / `under_evaluation`. Persist drafts and `evaluation_results` in the same PostgreSQL tables.
+Keep Part 1 statuses (`analyzing`, `discarded`, `intake_complete`) intact; Part 2 extends with `drafting` / `under_evaluation` / `needs_human_review`. Persist drafts and `evaluation_results` in the same PostgreSQL tables.
 
 ---
 
-## Evaluator contracts (structured)
+## Evaluator contracts (`EvaluationResult`)
 
-### Readability
+Aggregate per section into this shape (field names may vary slightly; shape must be equivalent):
+
+```text
+EvaluationResult:
+  section_id / department_id
+  readability: { pass, score, details }
+  relevance: { pass, missing_aspects[] }
+  compliance: { pass, rule_ids[], violations[] }
+  overall_pass: bool
+  feedback_for_generator: string   # concrete and actionable
+```
+
+### Readability (feeds `readability`)
 
 ```json
 {
-  "evaluator": "readability",
   "pass": true,
-  "metrics": { "flesch_kincaid_grade": 9.2, "gunning_fog": 10.1 },
-  "feedback": null
+  "score": 9.2,
+  "details": { "flesch_kincaid_grade": 9.2, "gunning_fog": 10.1 }
 }
 ```
 
-### Relevance
+### Relevance (feeds `relevance`)
 
 ```json
 {
-  "evaluator": "relevance",
   "pass": false,
-  "unanswered_asks": ["SLA for API uptime", "Data residency country"],
-  "feedback": "Draft omits SLA and residency; regenerate to address both."
+  "missing_aspects": ["SLA for API uptime", "Data residency country"]
 }
 ```
 
-### Guidelines (CONTEXT)
+### Compliance / guidelines (feeds `compliance`)
 
 ```json
 {
-  "evaluator": "guidelines",
   "pass": false,
-  "failed_rules": [
+  "rule_ids": [
     "GUIDELINE_PRICING_MUST_INCLUDE_CURRENCY",
     "GUIDELINE_NO_UNVERIFIED_SLA"
   ],
-  "feedback": "Add currency on all prices; remove unverified 99.99% uptime claim."
+  "violations": [
+    "Prices listed without currency",
+    "Unverified 99.99% uptime claim"
+  ]
 }
 ```
 
-Section passes only when **all** evaluators pass. Aggregate feedback before regenerating.
+`overall_pass` is true only when **all** of readability, relevance, and compliance pass. `feedback_for_generator` aggregates concrete fixes before regenerating.
 
 ---
 
@@ -130,7 +141,7 @@ for department in workstreams:
     draft = generate(department, part1_summary, feedback=aggregate(results))
 ```
 
-**Parallelism notes:** run department loops concurrently where safe; within a department, run the three evaluators concurrently and merge into keyed results (`readability` / `relevance` / `guidelines`) to avoid shared-state races.
+**Parallelism notes:** run department loops concurrently where safe; within a department, run the three evaluators concurrently and merge into an `EvaluationResult` (`readability` / `relevance` / `compliance`) to avoid shared-state races.
 
 ---
 
@@ -143,15 +154,19 @@ Each department assignment ticket should include:
   "department": "Legal",
   "assigned_content": "…final draft markdown…",
   "evaluation": {
-    "passed": true,
-    "iterations": 2,
-    "results": { "readability": {}, "relevance": {}, "guidelines": {} }
+    "section_id": "legal",
+    "readability": { "pass": true, "score": 9.2, "details": {} },
+    "relevance": { "pass": true, "missing_aspects": [] },
+    "compliance": { "pass": true, "rule_ids": [], "violations": [] },
+    "overall_pass": true,
+    "feedback_for_generator": "",
+    "iterations": 2
   },
   "approval_status": "pending"
 }
 ```
 
-Part 3 consumes these tickets for human approval / final assembly — do not skip storing failed-but-capped sections.
+If iterations were exhausted: `overall_pass` is false, ticket/section status is `needs_human_review`, but the draft + `EvaluationResult` **still** ship in the handoff. Part 3 consumes these tickets for human approval / final assembly — do not skip storing failed-but-capped sections.
 
 ---
 
@@ -159,11 +174,11 @@ Part 3 consumes these tickets for human approval / final assembly — do not ski
 
 - [ ] Generators are per-department and consume Part 1 output
 - [ ] ≥3 evaluators in parallel (readability, relevance, guidelines)
-- [ ] Fail path returns concrete feedback and regenerates
-- [ ] Iteration limit enforced; ticket not discarded wholesale
-- [ ] Ticket status updates during drafting / evaluation
-- [ ] Handoff includes content **and** evaluation per department
-- [ ] Unit tests: generator success, evaluator fail path
+- [ ] Fail path returns `feedback_for_generator` and regenerates
+- [ ] Iteration limit enforced; exhaust → `needs_human_review` + handoff (ticket not discarded)
+- [ ] Ticket status updates during drafting / evaluation / needs_human_review
+- [ ] Handoff includes content **and** `EvaluationResult` per department
+- [ ] Unit tests: generator success, evaluator fail path, one CONTEXT-anchored compliance fail (fixture + assert `compliance.pass == false` — no full loop required)
 - [ ] Pass + fail section examples in PR description
 - [ ] CONTEXT guidelines used as checklist (verifiable rule ids)
 
@@ -171,14 +186,14 @@ Part 3 consumes these tickets for human approval / final assembly — do not ski
 
 ## Common mistakes
 
-| Mistake                                       | Why it fails                                     |
-| --------------------------------------------- | ------------------------------------------------ |
-| One mega-generator for all departments        | Rubric requires per-department generators        |
-| Free-text “looks good” evaluation             | Must be verifiable criteria / structured results |
-| Infinite regenerate loop                      | Missing iteration limit                          |
-| Discarding whole ticket on one failed section | Ticket must survive; flag section instead        |
-| Ignoring CONTEXT guideline list               | Company-specific rules required                  |
-| Rewriting Part 1 from scratch                 | Must extend existing intake/routing              |
+| Mistake                                       | Why it fails                                   |
+| --------------------------------------------- | ---------------------------------------------- |
+| One mega-generator for all departments        | Rubric requires per-department generators      |
+| Free-text “looks good” evaluation             | Must follow `EvaluationResult` shape           |
+| Infinite regenerate loop                      | Missing iteration limit                        |
+| Discarding whole ticket on one failed section | Exhaust → `needs_human_review`, still hand off |
+| Ignoring CONTEXT guideline list               | Company-specific rules required                |
+| Rewriting Part 1 from scratch                 | Must extend existing intake/routing            |
 
 ---
 
@@ -186,5 +201,6 @@ Part 3 consumes these tickets for human approval / final assembly — do not ski
 
 - Feed a Part 1 synthesizer fixture into Part 2 without re-uploading PDF.
 - Force a guidelines failure; confirm feedback names rule ids and regenerates.
-- Hit max iterations; confirm ticket shows human-review path, not crash/discard.
+- Hit max iterations; confirm `needs_human_review` + draft still in handoff (not crash/discard).
 - Confirm evaluators for Dept A do not block Dept B completion.
+- Compliance unit test: one forbidden claim from CONTEXT → `compliance.pass == false`.

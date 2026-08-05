@@ -5,8 +5,8 @@
     "es": "Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 2 de 3): Generación de Respuestas a RFPs"
   },
   "description": {
-    "en": "Build Part 2 of the agentic RFP workflow: per-department generator agents from Part 1 summaries, parallel evaluators for readability/relevance/CONTEXT guidelines, a bounded generator-evaluator loop, and ticket status updates through drafting and under_evaluation — handoff to Part 3 with content + evaluation results.",
-    "es": "Construye la Parte 2 del flujo agéntico de RFPs: generadores por departamento desde los resúmenes de la Parte 1, evaluadores en paralelo (legibilidad/pertinencia/lineamientos del CONTEXT), ciclo generador-evaluador con límite de iteraciones, y estados de ticket drafting/under_evaluation — handoff a la Parte 3 con contenido + resultados de evaluación."
+    "en": "Build Part 2 of the agentic RFP workflow: per-department generators, parallel evaluators with a structured EvaluationResult, bounded generator-evaluator loop (exhaust → needs_human_review + handoff), ticket status updates, and light CONTEXT-anchored compliance tests — handoff to Part 3 with content + evaluation results.",
+    "es": "Construye la Parte 2 del flujo agéntico de RFPs: generadores por departamento, evaluadores en paralelo con EvaluationResult estructurado, ciclo acotado (agotado → needs_human_review + handoff), estados de ticket, y un test ligero de compliance anclado al CONTEXT — handoff a la Parte 3 con contenido + resultados de evaluación."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
