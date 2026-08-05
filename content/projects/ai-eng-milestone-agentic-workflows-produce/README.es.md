@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí está la jerarquía de aprobación por departamento y el formato del documento final de tu empresa.
+**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí están quién aprueba cada departamento (y cualquier aprobador extra que tu empresa exija), las reglas de arbitraje ante conflictos y el formato del documento final. **No** inventes una escalera jerárquica multi-nivel salvo que tu CONTEXT lo diga (p. ej. umbral de CEO); en la mayoría de empresas el _sign-off_ es el responsable nombrado de cada departamento **activo**.
 
 ---
 
@@ -30,7 +30,7 @@ En la Parte 2 cada departamento ya genera y autoevalúa su sección de la propue
 > > - Antes de dar por aprobada la sección de un departamento, el flujo debe pasar por un punto de aprobación humana real — un _human-in-the-loop_, no solo un evaluador automático más.
 > > - El flujo debe detenerse justo antes de esa acción irreversible, guardar el estado con un checkpointer, y poder reanudarse exactamente donde quedó cuando llegue la aprobación — no reiniciar desde cero.
 > > - Esa pausa debe afectar solo la rama del departamento que está esperando aprobación; los demás departamentos que ya tengan su sección lista deben poder seguir avanzando en paralelo, no bloquearse entre sí.
-> > - Define un límite de iteraciones y un nodo de arbitraje explícito para los desacuerdos entre departamentos — no dejes que los agentes lo resuelvan solos.
+> > - Define un límite de iteraciones y un nodo de arbitraje explícito para los desacuerdos entre departamentos. Conéctalo a los triggers de conflicto y al árbitro fijo de tu CONTEXT (reglas o un humano nombrado — no un LLM “votando” entre agentes).
 > > - Cuando todos los departamentos den su _sign-off_, el documento final debe generarse solo, consolidando las secciones aprobadas.
 > > - Quiero poder ver, para cualquier ejecución, qué agente hizo qué y en qué orden, porque cuando algo salga mal en producción no vamos a tener tiempo de adivinar.
 > >
@@ -59,7 +59,7 @@ Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a part
 1. Crea la rama `feature/hito-9-parte-3-aprobacion-documento` a partir de tu rama de la Parte 2.
 2. Configura el checkpointer que corresponda a tu entorno (SQLite o Postgres — evita el checkpointer en memoria salvo en desarrollo local).
 3. Instala cualquier dependencia nueva con `uv add`.
-4. Revisa tu `CONTEXT-company.md` para conocer la jerarquía de aprobación por departamento de tu empresa.
+4. Revisa tu `CONTEXT-company.md` para conocer los aprobadores por departamento, los triggers de conflicto / árbitro fijo, y el formato del documento final.
 
 ---
 
@@ -77,8 +77,12 @@ Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a part
 **Guardrails y control de flujo**
 
 - [ ] Define un límite máximo de iteraciones en cualquier ciclo restante entre departamentos
-- [ ] Implementa un nodo de arbitraje explícito para resolver desacuerdos entre departamentos, en lugar de dejar que los agentes lo resuelvan entre ellos
+- [ ] Implementa un nodo de arbitraje explícito que dispare ante los triggers de conflicto de tu CONTEXT y resuelva con el árbitro fijo allí (humano nombrado o regla determinista — **no** freestyle de LLM entre agentes)
 - [ ] Registra en el estado, para cada ejecución de nodo, el agente, el input, el output y el timestamp (trazabilidad)
+
+**Identidad del checkpointer**
+
+- [ ] Haz _namespacing_ del `thread_id` de cada ejecución del grafo por `ticket_id` (y por departamento si checkpointéas ramas por separado), p. ej. `rfp-{ticket_id}` o `rfp-{ticket_id}:{department}` — tickets concurrentes no deben compartir checkpoint
 
 **Cierre del documento**
 
@@ -88,37 +92,41 @@ Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a part
 **Revisión de extremo a extremo**
 
 - [ ] Corre al menos una RFP de prueba a través de las tres partes completas (recepción → generación → aprobación y cierre) y confirma que los estados del ticket, los mensajes y los datos se mantengan consistentes de principio a fin
+- [ ] Entrega una ruta E2E **reproducible**: fixture + script o test de integración que ejecute la Parte 3 con aprobaciones **simuladas** (`resume` programático / equivalente) — la revisión no debe depender solo de clicks irreproducibles en la UI
 - [ ] Corrige cualquier salto, mensaje inconsistente o dato que se pierda en la transición entre partes
 
-⚠️ **IMPORTANTE:** La jerarquía de aprobación por departamento y el formato del documento final deben coincidir con lo especificado en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los aprobadores por departamento, los triggers/árbitro de arbitraje y el formato del documento final deben coincidir con tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Pruebas**
 
 - [ ] Incluye pruebas unitarias en `tests/pipelines/` que cubran: interrupción y reanudación exitosa, límite de iteraciones alcanzado, y arbitraje ante desacuerdo
+- [ ] Incluye un test (o aserción sobre el trace) que **apruebe el departamento B mientras el departamento A sigue interrumpido** — demuestra ramas paralelas, no paralelismo fingido en serie
+- [ ] Incluye un test de integración / E2E o script con fixtures y resumes humanos simulados en el camino de la Parte 3 (idealmente Partes 1→3 con estado sembrado)
 
 ---
 
 ## 🧭 Preguntas de Diseño
 
 - ¿Qué pasa si un departamento rechaza su sección después de la interrupción? ¿El flujo vuelve al generador de la Parte 2 o requiere una nueva ejecución?
-- ¿Cómo haces _namespacing_ de tu `thread_id` para que ejecuciones concurrentes de distintas RFPs no corrompan el checkpoint de otra?
 - ¿Qué información mínima necesita ver un humano en el punto de aprobación para decidir con confianza, sin tener que releer todo el documento?
-- Si dos departamentos que dependen entre sí dan resultados contradictorios, ¿quién arbitra y con qué regla?
+- ¿Cómo detectas los triggers de conflicto del CONTEXT en estado estructurado (no solo texto libre), para que el nodo de arbitraje sea real y no decorativo?
 
 ---
 
 ## ✅ Lo Que Evaluaremos
 
 - [ ] El flujo se pausa correctamente antes de la aprobación de cada departamento y persiste su estado
-- [ ] La pausa afecta solo la rama del departamento correspondiente — los demás departamentos pueden seguir avanzando sin bloquearse
+- [ ] La pausa afecta solo la rama del departamento correspondiente — los demás pueden seguir sin bloquearse (probado con test/trace: aprobar B mientras A sigue interrumpido)
 - [ ] La ejecución se reanuda exactamente desde el punto de interrupción, sin reiniciar el flujo completo
+- [ ] El `thread_id` está namespaced por ticket (y departamento si aplica); ejecuciones concurrentes no comparten checkpoint
 - [ ] Existe un límite de iteraciones aplicado y verificable en el código, no solo mencionado
-- [ ] Existe un nodo de arbitraje explícito para desacuerdos entre departamentos
+- [ ] El nodo de arbitraje dispara ante los triggers de conflicto del CONTEXT y resuelve con el árbitro fijo del CONTEXT (no freestyle de LLM)
 - [ ] Cada ejecución de nodo queda registrada con agente, input, output y timestamp
 - [ ] El documento final se genera automáticamente solo cuando todos los departamentos han dado su aprobación
 - [ ] El ticket refleja el estado final del proceso y da acceso al documento generado
+- [ ] Existe una ruta E2E/fixture reproducible (script o test de integración con aprobaciones simuladas), no solo una demo manual en UI
 - [ ] Una RFP de prueba puede recorrerse de principio a fin (Parte 1 a Parte 3) sin saltos de estado ni inconsistencias visibles entre partes
-- [ ] Existen pruebas unitarias para la interrupción/reanudación, el límite de iteraciones y el arbitraje
+- [ ] Existen pruebas unitarias para la interrupción/reanudación, el límite de iteraciones, el arbitraje y la aprobación en paralelo bajo interrupt
 
 ---
 
@@ -128,7 +136,7 @@ Esta es la Parte 3 de 3 del Hito 9. Entrégala con su propio Pull Request.
 
 1. Haz commit y push de tu rama `feature/hito-9-parte-3-aprobacion-documento`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo
-3. Incluye en la descripción del PR un ejemplo completo: RFP de entrada, aprobación simulada por cada departamento, y el documento final generado
+3. Incluye en la descripción del PR un ejemplo completo: RFP de entrada, aprobación simulada por cada departamento, y el documento final generado — **y** enlaza el script/test de integración reproducible que ejecuta esas aprobaciones simuladas
 4. Solicita revisión a tu tech lead
 
 ---

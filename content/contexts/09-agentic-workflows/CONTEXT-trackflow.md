@@ -81,4 +81,16 @@ Use the ready-made PDFs in [`rfp-requests/trackflow/`](./rfp-requests/trackflow/
 
 - **Part 1:** the ticket correctly identifies whether a document is a TrackFlow RFP, extracts metadata (including the client's country), and splits the analysis only across the departments the requested scope actually needs.
 - **Part 2:** each active department generates its section and goes through evaluation for readability, relevance, and compliance with the guidelines in section 5 (including the correct currency and SLA).
-- **Part 3:** each department approves its section independently, without blocking the others, and the final document is generated only once all active sections are approved.
+- **Part 3:** each active department's named owner (§2.1) approves its section independently, without blocking the others, and the final document is generated only once all active sections are approved. Do **not** invent a multi-level approval ladder — TrackFlow has peer department owners only.
+
+## 7. Part 3 — Conflict Triggers and Fixed Arbiter
+
+Arbitration must be a dedicated graph node driven by **detectable contradictions in structured state**, not agents negotiating among themselves.
+
+| Trigger id           | When it fires                                                                                                                 | Fixed arbiter (not an LLM)                                                                | Resolution rule                                                                                   |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `volume-vs-capacity` | `warehouse` committed capacity (pallets/SKU or onboarding throughput) cannot support the monthly volume assumed by `lastmile` | Miguel Torres (Commercial Director)                                                       | Cap the proposal volume to warehouse capacity; `lastmile` must revise quoted volume/cost downward |
+| `returns-sla-breach` | `reverse` (or any section) promises returns turnaround under 48 hours (violates §5)                                           | Sofía Ramos rejects her section; if another dept still embeds that promise, Miguel Torres | Force `request_changes` on every section stating under-48h returns; no final doc until compliant  |
+| `currency-mismatch`  | Two active sections quote different currencies, or currency ≠ `client_country` mapping (US→USD, Spain→EUR)                    | Miguel Torres                                                                             | Rewrite offending sections to the country currency; reject if unresolved after iteration limit    |
+
+Wire these trigger ids into your arbitration node. Agents may **surface** a conflict; they must not **resolve** it by free-form consensus.

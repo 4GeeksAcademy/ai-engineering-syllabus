@@ -86,4 +86,16 @@ Usa los PDF listos en [`rfp-requests/healthcore/`](./rfp-requests/healthcore/) c
 
 - **Parte 1:** el ticket identifica correctamente si un documento es una RFP de HealthCore, extrae metadatos sin incluir nunca datos de paciente, detecta y marca cualquier contenido con PHI, y reparte el análisis entre `revenue`, `clinical` y `compliance` (este último siempre activo).
 - **Parte 2:** cada departamento genera su sección y pasa por evaluación de legibilidad, pertinencia y cumplimiento — incluyendo el chequeo de ausencia de PHI como criterio de evaluación obligatorio.
-- **Parte 3:** cada departamento aprueba su sección de forma independiente sin bloquear a los demás; `compliance` debe aprobar siempre antes del cierre; el documento final se genera solo cuando todas las aprobaciones requeridas están completas y ninguna sección contiene PHI.
+- **Parte 3:** el responsable nombrado de cada departamento (§2.1) aprueba de forma independiente sin bloquear a los demás; `compliance` debe aprobar siempre antes del cierre. **No** inventes jerarquía extra más allá de Compliance obligatorio. El documento final solo cuando todas las aprobaciones requeridas están completas y ninguna sección contiene PHI.
+
+## 7. Parte 3 — Triggers de conflicto y árbitro fijo
+
+El arbitraje debe ser un nodo dedicado del grafo disparado por **contradicciones detectables en estado estructurado**, no por agentes negociando entre ellos.
+
+| Id del trigger           | Cuándo dispara                                                                                 | Árbitro fijo (no un LLM)                                                          | Regla de resolución                                                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| `phi-detected`           | Cualquier sección o artefacto tiene `contains_phi: true` o incluye identificadores de paciente | Claire Whitfield (`compliance`)                                                   | Parada dura: redactar/bloquear, `request_changes` o descarte; el synthesizer no debe correr                              |
+| `baa-dpa-mismatch`       | Cliente US sin cláusula BAA, o UK sin DPA/UK GDPR, o instrumento incorrecto para el país       | Claire Whitfield                                                                  | Forzar `request_changes` en `compliance` (y secciones que embeban la cláusula incorrecta) hasta que sea correcto al país |
+| `capacity-vs-population` | La capacidad clínica/staff de `clinical` no cubre la población/`revenue` del contrato          | Tom Callahan (Revenue; dueño del ticket) tras confirmar Compliance que no hay PHI | Reducir población cubierta o añadir sedes; forzar revisión en `revenue` y/o `clinical`                                   |
+
+Conecta estos ids de trigger a tu nodo de arbitraje. Los agentes pueden **señalar** un conflicto; no deben **resolverlo** por consenso libre. Compliance siempre gana en triggers de PHI / regulatorios.

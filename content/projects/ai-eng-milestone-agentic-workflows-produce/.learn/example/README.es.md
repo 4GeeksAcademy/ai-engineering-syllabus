@@ -16,11 +16,11 @@ Pausa solo la rama que espera. Persiste con checkpointer. Reanuda sin reiniciar.
 
 | Proyecto evaluado (`ai-eng-milestone-agentic-workflows-produce`) | Este ejemplo de clase                     |
 | ---------------------------------------------------------------- | ----------------------------------------- |
-| Monorepo de empresa + jerarquía de aprobación del CONTEXT        | Solo mostrador Maple Street               |
+| Monorepo de empresa + aprobadores CONTEXT / arbitraje §7         | Solo mostrador Maple Street               |
 | Pipeline completo Partes 1–2                                     | Fixtures de tickets de asignación Parte 2 |
 | Checkpointer SQLite/Postgres                                     | Checkpointer SQLite en archivo            |
 | UI completa de aprobación en `uis/backoffice`                    | CLI approve/reject + ticket JSON          |
-| RFP E2E de empresa                                               | Mini E2E con fixtures + 5 tests           |
+| E2E reproducible + test de paralelo bajo interrupt               | Mini E2E con fixtures + 6 tests           |
 
 ---
 
@@ -30,10 +30,11 @@ Pausa solo la rama que espera. Persiste con checkpointer. Reanuda sin reiniciar.
 2. **`interrupt` acotado** — solo pausa esa rama
 3. **Checkpointer** + `thread_id` con namespace (p. ej. `grant-{ticket_id}`)
 4. **`resume` explícito** con payload validado: approve / reject / request_changes
-5. **Nodo de arbitraje** si dos departamentos se contradicen
+5. **Nodo de arbitraje** con triggers concretos (Programs vs Finance presupuesto) → árbitro fijo: lead del mostrador (tabla de reglas, no voto LLM)
 6. Límite de iteraciones en bucles post-rechazo
 7. Cuando todos aprueban → **ultimate synthesizer** → documento final → mostrador
 8. Trace por nodo: agente, input, output, timestamp
+9. **Demo obligatoria:** aprobar Finance mientras Programs sigue interrumpido
 
 ![Tickets de aprobación → synthesizer → documento final](../approval-document-completion.jpg)
 
@@ -49,9 +50,10 @@ Pausa solo la rama que espera. Persiste con checkpointer. Reanuda sin reiniciar.
 
 ### 2. Control
 
-- [ ] Nodo de arbitraje ante salidas contradictorias
+- [ ] Nodo de arbitraje ante contradicción de presupuesto Programs vs Finance → árbitro por regla del mostrador (no LLM)
 - [ ] `max_iterations` en bucles restantes entre departamentos
 - [ ] Trace append-only en el estado
+- [ ] `thread_id` = `grant-{ticket_id}` (obligatorio)
 
 ### 3. Produce
 
@@ -60,27 +62,30 @@ Pausa solo la rama que espera. Persiste con checkpointer. Reanuda sin reiniciar.
 
 ### 4. Tests (`tests/test_grant_produce.py`)
 
-| #   | Escenario                         | Esperado                               |
-| --- | --------------------------------- | -------------------------------------- |
-| 1   | Aprobar los tres                  | Documento final; ticket `terminado`    |
-| 2   | Interrupt + resume Finance        | Reanuda; Programs no reinicia          |
-| 3   | Reject Facilities                 | Sin synthesizer; sección a revisión    |
-| 4   | Contradicción Programs vs Finance | Dispara arbitraje                      |
-| 5   | Límite de iteraciones             | Para el bucle; trace muestra el límite |
+| #   | Escenario                                                | Esperado                                  |
+| --- | -------------------------------------------------------- | ----------------------------------------- |
+| 1   | Aprobar los tres                                         | Documento final; ticket `terminado`       |
+| 2   | Interrupt + resume Finance                               | Reanuda; Programs no reinicia             |
+| 3   | **Aprobar Finance mientras Programs sigue interrumpido** | Finance completa; Programs sigue en pausa |
+| 4   | Reject Facilities                                        | Sin synthesizer; sección a revisión       |
+| 5   | Contradicción Programs vs Finance                        | Dispara arbitraje + regla fija            |
+| 6   | Límite de iteraciones                                    | Para el bucle; trace muestra el límite    |
 
 ---
 
 ## Verificar juntos
 
-- [ ] Un departamento esperando no congela a los demás
+- [ ] Un departamento esperando no congela a los demás (test #3)
 - [ ] Resume ≠ reinicio completo
 - [ ] Synthesizer nunca corre con una aprobación pendiente
 - [ ] Trace lista agentes en orden para la ejecución
+- [ ] E2E con fixtures corre sin clicks manuales en UI
 
 ---
 
 ## Preguntas de discusión
 
 1. Guardrail vs interrupt — ¿qué casos nunca necesitan humano?
-2. ¿Cómo namespacias `thread_id` para subvenciones concurrentes?
+2. ¿Por qué el `thread_id` debe ir namespaced por ticket de subvención?
 3. ¿Campos mínimos de UI para aprobar con confianza sin releer todo el borrador?
+4. ¿Por qué el arbitraje usa regla/humano fijo, no consenso LLM?

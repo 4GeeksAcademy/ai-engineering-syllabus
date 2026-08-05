@@ -5,8 +5,8 @@
     "es": "Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 3 de 3): Aprobación y Cierre del Documento"
   },
   "description": {
-    "en": "Close the agentic RFP workflow: human-in-the-loop interrupt/resume per department with checkpointer, scoped pauses so departments do not block each other, arbitration + iteration limits, full node traceability, and automatic final-document synthesis once all approvals land — end-to-end continuity from Parts 1–2.",
-    "es": "Cierra el flujo agéntico de RFPs: interrupt/resume human-in-the-loop por departamento con checkpointer, pausas acotadas para no bloquear otras ramas, arbitraje + límite de iteraciones, trazabilidad por nodo, y síntesis automática del documento final cuando todas las aprobaciones llegan — continuidad extremo a extremo desde las Partes 1–2."
+    "en": "Close the agentic RFP workflow: human-in-the-loop interrupt/resume per department with namespaced checkpointer, parallel branches under interrupt, CONTEXT conflict triggers + fixed arbiter, iteration limits, node traceability, automatic final-document synthesis, and a reproducible E2E/fixture path with simulated approvals — end-to-end continuity from Parts 1–2.",
+    "es": "Cierra el flujo agéntico de RFPs: interrupt/resume human-in-the-loop por departamento con checkpointer namespaced, ramas en paralelo bajo interrupt, triggers de conflicto del CONTEXT + árbitro fijo, límite de iteraciones, trazabilidad por nodo, síntesis automática del documento final, y ruta E2E/fixture reproducible con aprobaciones simuladas — continuidad extremo a extremo desde las Partes 1–2."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",

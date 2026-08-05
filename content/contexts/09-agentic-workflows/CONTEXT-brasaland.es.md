@@ -85,4 +85,16 @@ Usa los PDF listos en [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) com
 
 - **Parte 1:** el ticket identifica correctamente si un documento es una RFP de Brasaland, extrae metadatos y reparte el análisis entre `marketing`, `operaciones`, `procurement` y `training` (solo los que apliquen).
 - **Parte 2:** cada departamento activo genera su sección de la propuesta y pasa por evaluación de legibilidad, pertinencia y cumplimiento de los lineamientos de esta sección 5.
-- **Parte 3:** cada departamento (y, si aplica, la CEO por el umbral de 50.000 USD/año) aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las aprobaciones requeridas están completas.
+- **Parte 3:** el responsable nombrado de cada departamento activo (§2.1) aprueba de forma independiente; si el valor anual estimado supera 50.000 USD/año, **Mariana Restrepo (CEO)** también debe aprobar antes de la síntesis. No inventes jerarquía extra más allá de esa regla del CONTEXT.
+
+## 7. Parte 3 — Triggers de conflicto y árbitro fijo
+
+El arbitraje debe ser un nodo dedicado del grafo disparado por **contradicciones detectables en estado estructurado**, no por agentes negociando entre ellos.
+
+| Id del trigger        | Cuándo dispara                                                                                               | Árbitro fijo (no un LLM)                                                             | Regla de resolución                                                                          |
+| --------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| `cost-vs-feasibility` | El estimado de costo/`procurement` no soporta el precio por evento o por cubierto implícito en `operaciones` | Camila Ospina (Marketing; dueña del ticket)                                          | Subir precio o reducir alcance; forzar `request_changes` en la(s) sección(es) desalineada(s) |
+| `setup-sla-breach`    | Cualquier sección promete montaje/entrega bajo 10 días hábiles (viola §5)                                    | Felipe Guerrero (`operaciones`) rechaza; Camila escala si otros depto aún lo embeben | Forzar `request_changes` hasta ≥10 días hábiles en todas partes                              |
+| `ceo-threshold`       | Valor anual estimado supera 50.000 USD y la aprobación de la CEO sigue pendiente                             | Mariana Restrepo (CEO)                                                               | Bloquear ultimate synthesizer hasta `approve` de CEO; ruta de rechazo si la CEO rechaza      |
+
+Conecta estos ids de trigger a tu nodo de arbitraje. Los agentes pueden **señalar** un conflicto; no deben **resolverlo** por consenso libre.

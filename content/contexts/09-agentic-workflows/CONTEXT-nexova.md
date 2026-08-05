@@ -81,4 +81,16 @@ Use the ready-made PDFs in [`rfp-requests/nexova/`](./rfp-requests/nexova/) as *
 
 - **Part 1:** the ticket correctly identifies whether a document is a Nexova RFP, extracts metadata (including client headquarters), and splits the analysis only across the departments the requested service actually needs.
 - **Part 2:** each active department generates its section and goes through evaluation for readability, relevance, and compliance with the guidelines in section 5 (including the correct currency).
-- **Part 3:** each department approves its section independently, without blocking the others, and the final document is generated only once all active sections are approved.
+- **Part 3:** each active department's named owner (§2.1) approves its section independently, without blocking the others, and the final document is generated only once all active sections are approved. Do **not** invent a multi-level approval ladder.
+
+## 7. Part 3 — Conflict Triggers and Fixed Arbiter
+
+Arbitration must be a dedicated graph node driven by **detectable contradictions in structured state**, not agents negotiating among themselves.
+
+| Trigger id               | When it fires                                                                                              | Fixed arbiter (not an LLM)                                                            | Resolution rule                                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ttc-vs-training-window` | `seleccion` time-to-close overlaps or contradicts `capacitacion` delivery window for the same cohort/roles | Marcos Ibáñez (Sales Director)                                                        | Sequence deliveries; force `request_changes` so training cannot start before selection commits a realistic close date (≥15 business days for executive search) |
+| `support-sla-missing`    | Active `soporte` section omits the mandatory 24-hour response SLA (§5)                                     | Roberto Díaz (`soporte`) rejects; Marcos if other sections contradict staffing vs SLA | Block approval until 24h SLA is explicit; revise headcount if SLA is infeasible                                                                                |
+| `currency-mismatch`      | Sections disagree on currency, or currency ≠ `client_hq` mapping (Spain→EUR, Miami/US→USD)                 | Marcos Ibáñez                                                                         | Rewrite to headquarters currency; reject if unresolved after iteration limit                                                                                   |
+
+Wire these trigger ids into your arbitration node. Agents may **surface** a conflict; they must not **resolve** it by free-form consensus.

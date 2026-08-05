@@ -81,4 +81,16 @@ Usa los PDF listos en [`rfp-requests/nexova/`](./rfp-requests/nexova/) como **su
 
 - **Parte 1:** el ticket identifica correctamente si un documento es una RFP de Nexova, extrae metadatos (incluida la sede del cliente) y reparte el análisis solo entre los departamentos que el servicio solicitado realmente requiere.
 - **Parte 2:** cada departamento activo genera su sección y pasa por evaluación de legibilidad, pertinencia y cumplimiento de los lineamientos de la sección 5 (incluida la moneda correcta).
-- **Parte 3:** cada departamento aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las secciones activas están aprobadas.
+- **Parte 3:** el responsable nombrado de cada departamento activo (§2.1) aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las secciones activas están aprobadas. **No** inventes una escalera jerárquica multi-nivel.
+
+## 7. Parte 3 — Triggers de conflicto y árbitro fijo
+
+El arbitraje debe ser un nodo dedicado del grafo disparado por **contradicciones detectables en estado estructurado**, no por agentes negociando entre ellos.
+
+| Id del trigger           | Cuándo dispara                                                                                                             | Árbitro fijo (no un LLM)                                                                | Regla de resolución                                                                                                                                 |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ttc-vs-training-window` | El time-to-close de `seleccion` se solapa o contradice la ventana de entrega de `capacitacion` para la misma cohorte/roles | Marcos Ibáñez (Director de Ventas)                                                      | Secuenciar entregas; forzar `request_changes` para que la formación no empiece antes de un cierre realista (≥15 días hábiles en búsqueda ejecutiva) |
+| `support-sla-missing`    | La sección activa de `soporte` omite el SLA obligatorio de respuesta 24h (§5)                                              | Roberto Díaz (`soporte`) rechaza; Marcos si otras secciones contradicen staffing vs SLA | Bloquear aprobación hasta que el SLA 24h sea explícito; revisar headcount si el SLA es inviable                                                     |
+| `currency-mismatch`      | Las secciones discrepan en moneda, o la moneda ≠ mapeo de `client_hq` (España→EUR, Miami/US→USD)                           | Marcos Ibáñez                                                                           | Reescribir a la moneda de la sede; rechazar si no se resuelve tras el límite de iteraciones                                                         |
+
+Conecta estos ids de trigger a tu nodo de arbitraje. Los agentes pueden **señalar** un conflicto; no deben **resolverlo** por consenso libre.

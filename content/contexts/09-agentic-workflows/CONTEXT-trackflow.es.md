@@ -81,4 +81,16 @@ Usa los PDF listos en [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) com
 
 - **Parte 1:** el ticket identifica correctamente si un documento es una RFP de TrackFlow, extrae metadatos (incluido el país del cliente) y reparte el análisis solo entre los departamentos que el alcance solicitado realmente requiere.
 - **Parte 2:** cada departamento activo genera su sección y pasa por evaluación de legibilidad, pertinencia y cumplimiento de los lineamientos de la sección 5 (incluida la moneda correcta y el SLA).
-- **Parte 3:** cada departamento aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las secciones activas están aprobadas.
+- **Parte 3:** el responsable nombrado de cada departamento activo (§2.1) aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las secciones activas están aprobadas. **No** inventes una escalera jerárquica multi-nivel — TrackFlow solo tiene responsables pares por departamento.
+
+## 7. Parte 3 — Triggers de conflicto y árbitro fijo
+
+El arbitraje debe ser un nodo dedicado del grafo disparado por **contradicciones detectables en estado estructurado**, no por agentes negociando entre ellos.
+
+| Id del trigger       | Cuándo dispara                                                                                                                         | Árbitro fijo (no un LLM)                                                            | Regla de resolución                                                                                               |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `volume-vs-capacity` | La capacidad comprometida de `warehouse` (pallets/SKU o throughput de onboarding) no soporta el volumen mensual asumido por `lastmile` | Miguel Torres (Director Comercial)                                                  | Limitar el volumen de la propuesta a la capacidad de warehouse; `lastmile` debe revisar volumen/costo a la baja   |
+| `returns-sla-breach` | `reverse` (u otra sección) promete turnaround de devoluciones bajo 48 horas (viola §5)                                                 | Sofía Ramos rechaza su sección; si otro depto aún embebe esa promesa, Miguel Torres | Forzar `request_changes` en toda sección que diga devoluciones en menos de 48h; sin documento final hasta cumplir |
+| `currency-mismatch`  | Dos secciones activas cotizan monedas distintas, o la moneda ≠ mapeo de `client_country` (US→USD, Spain→EUR)                           | Miguel Torres                                                                       | Reescribir las secciones ofensoras a la moneda del país; rechazar si no se resuelve tras el límite de iteraciones |
+
+Conecta estos ids de trigger a tu nodo de arbitraje. Los agentes pueden **señalar** un conflicto; no deben **resolverlo** por consenso libre.

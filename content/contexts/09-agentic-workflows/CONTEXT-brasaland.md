@@ -85,4 +85,16 @@ Use the ready-made PDFs in [`rfp-requests/brasaland/`](./rfp-requests/brasaland/
 
 - **Part 1:** the ticket correctly identifies whether a document is a Brasaland RFP, extracts metadata, and splits the analysis across `marketing`, `operaciones`, `procurement`, and `training` (only the ones that apply).
 - **Part 2:** each active department generates its proposal section and goes through evaluation for readability, relevance, and compliance with the guidelines in section 5.
-- **Part 3:** each department (and, when applicable, the CEO for the $50,000 USD/year threshold) approves its section independently, without blocking the others, and the final document is generated only once all required approvals are complete.
+- **Part 3:** each active department's named owner (§2.1) approves independently; when estimated contract value exceeds $50,000 USD/year, **Mariana Restrepo (CEO)** must also approve before synthesis. Do not invent further hierarchy beyond that CONTEXT rule.
+
+## 7. Part 3 — Conflict Triggers and Fixed Arbiter
+
+Arbitration must be a dedicated graph node driven by **detectable contradictions in structured state**, not agents negotiating among themselves.
+
+| Trigger id            | When it fires                                                                                                   | Fixed arbiter (not an LLM)                                                              | Resolution rule                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `cost-vs-feasibility` | `procurement` ingredient/cost estimate cannot support the per-event or per-cover price implied by `operaciones` | Camila Ospina (Marketing; ticket owner)                                                 | Raise price or reduce scope; force `request_changes` on the mismatched section(s) |
+| `setup-sla-breach`    | Any section promises setup/delivery under 10 business days (violates §5)                                        | Felipe Guerrero (`operaciones`) rejects; Camila escalates if other depts still embed it | Force `request_changes` until ≥10 business days everywhere                        |
+| `ceo-threshold`       | Estimated annual value exceeds $50,000 USD and CEO approval still pending                                       | Mariana Restrepo (CEO)                                                                  | Block ultimate synthesizer until CEO `approve`; reject path if CEO rejects        |
+
+Wire these trigger ids into your arbitration node. Agents may **surface** a conflict; they must not **resolve** it by free-form consensus.
