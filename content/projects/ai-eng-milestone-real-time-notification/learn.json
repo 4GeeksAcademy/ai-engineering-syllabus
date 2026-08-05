@@ -39,5 +39,8 @@
       "en": "Built and shipped: Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-notification #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse",
       "es": "Construido y publicado: Hito 10 — Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-notification #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3903"
+  }
 }
