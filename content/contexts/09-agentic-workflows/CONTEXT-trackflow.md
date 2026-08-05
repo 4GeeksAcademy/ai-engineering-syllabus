@@ -26,10 +26,33 @@ RFPs arrive as PDFs and typically include: client name and country of origin (US
 
 ### 2.3 Suggested Entities for Your State
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `waiting_for_approval`, `drafting`, `under_evaluation`, `done`, `discarded`)
-- **RFP metadata**: `client_name`, `client_country`, `services_requested`, `monthly_volume`, `deadline`, `budget_range`, `departments_needed`
+Persist **Ticket**, **RFP metadata**, and **DepartmentSection** (at least `key_aspects` in Part 1; drafts/evals/approvals in later parts) in **PostgreSQL (Supabase)** via your existing SQLModel/DB layer. TinyDB or JSON files are not the source of truth for these entities.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `client_country`, `services_requested`, `monthly_volume`, `deadline`, `budget_range`, `departments_needed`, readability metrics
 - **DepartmentSection**: `department_id`, `key_aspects`, `draft_content`, `evaluation_results`, `approval_status`, `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `currency`, `generated_at`
+
+**Ticket status by part** (same ticket across Parts 1–3):
+
+| Status                 | Part | When                                           |
+| ---------------------- | ---- | ---------------------------------------------- |
+| `analyzing`            | 1    | Upload accepted; pipeline running              |
+| `discarded`            | 1    | Classifier rejected the document               |
+| `intake_complete`      | 1    | Synthesizer done; Sales can read key aspects   |
+| `drafting`             | 2    | Generators writing proposal sections           |
+| `under_evaluation`     | 2    | Parallel evaluators / generator-evaluator loop |
+| `waiting_for_approval` | 3    | Human-in-the-loop pause per department         |
+| `done`                 | 3    | Final document generated                       |
+
+Workers receive **shared metadata + department-relevant extracts** only. Example: `warehouse` gets warehousing slices / metadata — if monthly volume is missing, record an open question; **never invent** pallet/SKU/order volumes not present in the RFP.
+
+### 2.4 Monorepo layout
+
+- **HTTP**: extend the **existing** backend under `services/` — no new API process.
+- **Pipeline / graph**: `data/pipelines/rfp_intake/` (dedicated graph; do not mix into the CX agent graph). Routers import and trigger; they do not own agent logic.
+- **Standalone CLIs**: `scripts/` if needed.
+- **Uploaded PDFs**: provided via `uis/backoffice`; stored under `data/raw/` as a runtime artifact of intake.
 
 ## 3. Business Metrics and KPIs
 
@@ -40,7 +63,7 @@ RFPs arrive as PDFs and typically include: client name and country of origin (US
 
 ## 4. Seed Data Instructions
 
-Use the ready-made PDFs in [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) as inputs to test the agentic workflow (copy them into `data/raw/` if your pipeline expects that path). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
+Use the ready-made PDFs in [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) as **test uploads through the UI**. The intake process stores each uploaded PDF under `data/raw/` (do not treat curriculum seed PDFs as pre-seeded inventory in the repo). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
 1. **`CONTEXT-trackflow-request-1.pdf` — formal RFP (accept):** _ModaViva_ (Spain), warehousing + returns only (own carrier for last mile). Triggers `warehouse` and `reverse`, not `lastmile`. Currency: EUR.
 2. **`CONTEXT-trackflow-request-2.pdf` — informal RFP (accept):** _Luna Cosmetics_ (LA) email requesting warehousing + last mile for US, ~5,000 orders/month. Triggers `warehouse` and `lastmile`. Currency: USD.

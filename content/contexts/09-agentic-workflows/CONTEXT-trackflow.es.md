@@ -26,10 +26,33 @@ Las RFPs llegan como PDF e incluyen normalmente: nombre y país de origen del cl
 
 ### 2.3 Entidades sugeridas para tu estado
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analizando`, `esperando_aprobación`, `generando_borrador`, `en_evaluación`, `terminado`, `descartado`)
-- **RFP metadata**: `client_name`, `client_country`, `services_requested`, `monthly_volume`, `deadline`, `budget_range`, `departments_needed`
+Persiste **Ticket**, **metadatos RFP** y **DepartmentSection** (al menos `key_aspects` en la Parte 1; borradores/evals/aprobaciones en partes posteriores) en **PostgreSQL (Supabase)** vía tu capa SQLModel/DB existente. TinyDB o archivos JSON no son la fuente de verdad de estas entidades.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `client_country`, `services_requested`, `monthly_volume`, `deadline`, `budget_range`, `departments_needed`, métricas de legibilidad
 - **DepartmentSection**: `department_id`, `key_aspects`, `draft_content`, `evaluation_results`, `approval_status`, `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `currency`, `generated_at`
+
+**Estado del ticket por parte** (mismo ticket en Partes 1–3):
+
+| Estado                 | Parte | Cuándo                                              |
+| ---------------------- | ----- | --------------------------------------------------- |
+| `analizando`           | 1     | Subida aceptada; pipeline en curso                  |
+| `descartado`           | 1     | El clasificador rechazó el documento                |
+| `analisis_completo`    | 1     | Synthesizer listo; Ventas puede leer aspectos clave |
+| `generando_borrador`   | 2     | Generadores escribiendo secciones                   |
+| `en_evaluación`        | 2     | Evaluadores en paralelo / ciclo generador-evaluador |
+| `esperando_aprobación` | 3     | Pausa humana por departamento                       |
+| `terminado`            | 3     | Documento final generado                            |
+
+Los workers reciben **metadatos compartidos + extractos relevantes a su departamento**. Ejemplo: `warehouse` recibe slices/metadatos de warehousing — si falta el volumen mensual, registra una pregunta abierta; **nunca inventes** pallets/SKU/pedidos que no estén en la RFP.
+
+### 2.4 Layout del monorepo
+
+- **HTTP**: extiende el **backend existente** bajo `services/` — sin un proceso API nuevo.
+- **Pipeline / grafo**: `data/pipelines/rfp_intake/` (grafo dedicado; no lo mezcles con el grafo CX). Los routers importan y disparan; no poseen la lógica de agentes.
+- **CLIs sueltos**: `scripts/` si hace falta.
+- **PDFs subidos**: vía `uis/backoffice`; se guardan bajo `data/raw/` como artefacto runtime de la recepción.
 
 ## 3. Métricas de negocio y KPIs
 
@@ -40,7 +63,7 @@ Las RFPs llegan como PDF e incluyen normalmente: nombre y país de origen del cl
 
 ## 4. Instrucciones de datos semilla
 
-Usa los PDF listos en [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) como entradas para probar el flujo agéntico (cópialos a `data/raw/` si tu pipeline espera esa ruta). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
+Usa los PDF listos en [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) como **subidas de prueba a través de la UI**. El proceso de recepción guarda cada PDF subido bajo `data/raw/` (no trates los PDF del currículo como inventario pre-sembrado en el repo). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
 
 1. **`CONTEXT-trackflow-request-1.pdf` — RFP formal (aceptar):** _ModaViva_ (España), solo almacenamiento + devoluciones (transportista propio para última milla). Activa `warehouse` y `reverse`, no `lastmile`. Moneda: EUR.
 2. **`CONTEXT-trackflow-request-2.pdf` — RFP informal (aceptar):** correo de _Luna Cosmetics_ (LA) pidiendo almacenamiento + última milla EE. UU., ~5.000 pedidos/mes. Activa `warehouse` y `lastmile`. Moneda: USD.

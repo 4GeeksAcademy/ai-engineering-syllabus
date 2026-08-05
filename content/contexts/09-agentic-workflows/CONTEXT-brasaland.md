@@ -29,10 +29,33 @@ RFPs arrive as PDFs and typically include: client name and location, type of ser
 
 ### 2.3 Suggested Entities for Your State
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `waiting_for_approval`, `drafting`, `under_evaluation`, `done`, `discarded`), `created_at`, `updated_at`
-- **RFP metadata**: `client_name`, `location`, `service_type`, `scope`, `deadline`, `budget_range` (optional), `departments_needed`
+Persist **Ticket**, **RFP metadata**, and **DepartmentSection** (at least `key_aspects` in Part 1; drafts/evals/approvals in later parts) in **PostgreSQL (Supabase)** via your existing SQLModel/DB layer. TinyDB or JSON files are not the source of truth for these entities.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `location`, `service_type`, `scope`, `deadline`, `budget_range` (optional), `departments_needed`, readability metrics
 - **DepartmentSection**: `department_id`, `key_aspects` (Part 1), `draft_content` (Part 2), `evaluation_results` (readability, relevance, compliance), `approval_status` (`pending`, `approved`, `rejected`), `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `total_estimated_value`, `generated_at`
+
+**Ticket status by part** (same ticket across Parts 1–3):
+
+| Status                 | Part | When                                                         |
+| ---------------------- | ---- | ------------------------------------------------------------ |
+| `analyzing`            | 1    | Upload accepted; pipeline running                            |
+| `discarded`            | 1    | Classifier rejected the document                             |
+| `intake_complete`      | 1    | Synthesizer done; Sales can read key aspects                 |
+| `drafting`             | 2    | Generators writing proposal sections                         |
+| `under_evaluation`     | 2    | Parallel evaluators / generator-evaluator loop               |
+| `waiting_for_approval` | 3    | Human-in-the-loop pause per department (and CEO if required) |
+| `done`                 | 3    | Final document generated                                     |
+
+Workers receive **shared metadata + department-relevant extracts** only. If a figure (volume, budget, diner count, etc.) is absent from the RFP, record it under `open_questions` / missing fields — **never invent** numbers not present in the document.
+
+### 2.4 Monorepo layout
+
+- **HTTP**: extend the **existing** backend under `services/` — no new API process.
+- **Pipeline / graph**: `data/pipelines/rfp_intake/` (dedicated graph; do not mix into the CX agent graph). Routers import and trigger; they do not own agent logic.
+- **Standalone CLIs**: `scripts/` if needed.
+- **Uploaded PDFs**: provided via `uis/backoffice`; stored under `data/raw/` as a runtime artifact of intake.
 
 ## 3. Business Metrics and KPIs
 
@@ -43,7 +66,7 @@ RFPs arrive as PDFs and typically include: client name and location, type of ser
 
 ## 4. Seed Data Instructions
 
-Use the ready-made PDFs in [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) as inputs to test the agentic workflow (copy them into `data/raw/` if your pipeline expects that path). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
+Use the ready-made PDFs in [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) as **test uploads through the UI**. The intake process stores each uploaded PDF under `data/raw/` (do not treat curriculum seed PDFs as pre-seeded inventory in the repo). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
 1. **`CONTEXT-brasaland-request-1.pdf` — formal RFP (accept):** _Sunset Bay Resorts_, co-branded concession across 3 Florida resorts, exclusivity + new signature menu, ~$60–75k USD/year. Triggers all four departments, including `training`. **Note:** above $50,000 USD/year → extra CEO approval (Mariana Restrepo) in Part 3.
 2. **`CONTEXT-brasaland-request-2.pdf` — informal RFP (accept):** _Andes Tech Solutions_ email requesting weekly catering for 220 employees in Medellín, 12-month contract, standard menu. Triggers `marketing`, `operaciones`, and `procurement` (not necessarily `training`).

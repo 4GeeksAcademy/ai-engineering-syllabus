@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí se definen los departamentos, el formato de las RFPs y los lineamientos específicos de tu empresa para esta parte del hito.
+**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí se definen los departamentos, el formato de las RFPs, las reglas de persistencia y los lineamientos específicos de tu empresa para esta parte del hito.
 
 ---
 
@@ -29,19 +29,33 @@ El equipo de Ventas recibe cada semana decenas de RFPs (_Request for Proposal_) 
 > >
 > > **Qué necesito que construyas:**
 > >
-> > - Una interfaz en modo ticket donde el equipo suba la RFP (llega siempre en PDF) y vea su estado en tiempo real: analizando, esperando aprobación, terminado...
-> > - Las RFPs en PDF pesan mucho y nos van a salir caras en tokens si se las pasamos así a los agentes tal cual. Te sugiero convertirlas a Markdown apenas entran — algo como **MarkItDown** de Microsoft hace bien ese trabajo — antes de que cualquier agente las procese.
-> > - Un primer agente clasificador que decida si el documento es una RFP legítima; si no lo es, que el flujo se detenga ahí, sin pasar al resto del pipeline.
-> > - Para cada RFP válida, extrae metadatos y métricas de legibilidad que nos anticipen cuánto va a tardar el procesamiento (`py-readability-metrics` te puede servir para esto).
-> > - El resto del flujo debe repartir el análisis por departamento con el patrón orchestrator-worker-synthesizer que vimos en clase — no quiero un solo agente tratando de hacerlo todo.
+> > - Una interfaz en modo ticket donde el equipo suba la RFP (siempre PDF) y vea el estado en tiempo real. La subida pasa por el **backend existente** de la empresa — **sin un API nuevo**. Guarda el PDF bajo `data/raw/` como parte del proceso de recepción.
+> > - Persiste el ticket, los metadatos de la RFP y los aspectos clave por departamento en **PostgreSQL (Supabase)** — el mismo stack de DB que ya usas para inventario — no TinyDB ni archivos JSON como fuente de verdad.
+> > - El pipeline LangGraph (o equivalente) vive en `data/pipelines/` (p. ej. `data/pipelines/rfp_intake/`). Los routers en `services/` solo disparan y consultan; no poseen el grafo. Helpers CLI sueltos van en `scripts/`.
+> > - Las RFPs en PDF pesan mucho en tokens. Conviértelas a Markdown apenas entran — **MarkItDown** (o un paso PDF→Markdown equivalente documentado) — antes de que cualquier agente las lea.
+> > - Un agente clasificador que decida si el documento es una RFP legítima; si no lo es, detén el flujo y deja el ticket en `descartado`.
+> > - Para cada RFP válida, extrae metadatos y métricas de legibilidad (`py-readability-metrics` sirve) para anticipar el costo de procesamiento.
+> > - Reparte el análisis por departamento con orchestrator-worker-synthesizer — no un solo agente. Usa un **grafo dedicado `rfp_intake`**; no enganches nodos RFP al grafo CX / knowledge-agent.
 > >
 > > **Acceptance criteria:** Ventas debe poder mirar el resultado de una RFP procesada y saber, sin leer el documento original, qué le toca a cada departamento y a quién pedírselo.
 > >
 > > — Tu tech lead
 
-### 📚 Conocimiento complementario: PDFs, legibilidad y "modo ticket"
+### 📚 Conocimiento complementario: PDFs, legibilidad, tickets e ingesta async
 
-Las RFPs reales llegan como PDF, un formato denso en marcado y ruido visual que consume muchos más tokens de los necesarios cuando se pasa directo a un LLM. Convertirlas a Markdown con una herramienta como **MarkItDown** antes de procesarlas reduce ese costo y le da a tus agentes un texto más limpio para trabajar. Ya con el texto en Markdown, `py-readability-metrics` calcula índices como Flesch-Kincaid o Gunning Fog; úsalo para estimar cuánto le costará procesar cada RFP, no como una nota de calidad literaria. El "modo ticket" simplemente significa que cada RFP subida se convierte en una entidad con un ciclo de vida — estados como `analizando`, `esperando_aprobación` o `terminado` — que el frontend puede consultar y refrescar, igual que un ticket de soporte.
+Las RFPs reales llegan como PDF. Convertirlas a Markdown antes del LLM reduce costo de tokens y ruido. Usa `py-readability-metrics` sobre el Markdown para estimar costo de procesamiento (Flesch-Kincaid, Gunning Fog, etc.), no como nota literaria.
+
+**Modo ticket** significa que cada subida es una fila con ciclo de vida que la UI puede consultar. Estados de la Parte 1 que debes manejar:
+
+| Estado              | Cuándo                                                                        |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `analizando`        | Subida aceptada; conversión + agentes en curso                                |
+| `descartado`        | El clasificador rechazó el documento                                          |
+| `analisis_completo` | El synthesizer terminó; Ventas puede leer los aspectos clave por departamento |
+
+`esperando_aprobación` / `waiting_for_approval` es el gate humano de la **Parte 3** — no lo uses como estado de éxito de la Parte 1. La Parte 2 moverá el mismo ticket por `generando_borrador` / `en_evaluación`.
+
+PDF→Markdown + clasificador + workers en paralelo pueden tardar minutos. El **`POST` de subida no debe ejecutar el pipeline completo en sync**: crea el ticket (`analizando`), guarda el PDF en `data/raw/`, responde rápido (p. ej. `202` + `ticket_id`), corre el pipeline en background, y deja que la UI haga poll del `GET` de estado.
 
 ### 🗺️ Referencia visual: análisis inicial y aislamiento de workstreams
 
@@ -57,66 +71,82 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 
 1. Crea una rama nueva a partir de tu rama principal: `feature/hito-9-parte-1-revision-rfps`.
 2. Instala las dependencias nuevas que necesites con `uv add` (por ejemplo, `uv add markitdown` y `uv add py-readability-metrics`) — nunca con `pip install` ni `pipenv`.
-3. Si necesitas construir o extender una interfaz, hazlo sobre `uis/backoffice` — no crees una aplicación nueva.
-4. Ubica la lógica de tus agentes en `services/` siguiendo el mismo patrón que usaste en el Hito 8.
-5. Lee tu `CONTEXT-company.md` antes de definir los departamentos o el formato de las RFPs de ejemplo.
+3. Extiende `uis/backoffice` para la UI de subida — no crees una app frontend nueva.
+4. Añade rutas HTTP en el **backend existente** bajo `services/` (mismo proceso / mismo API). Implementa el pipeline de agentes en `data/pipelines/` (p. ej. `data/pipelines/rfp_intake/`). Pon runners CLI sueltos en `scripts/` si hace falta.
+5. Lee tu `CONTEXT-company.md` antes de definir departamentos, esquema o RFPs de prueba. Usa los PDF de muestra en `rfp-requests/<empresa>/` de la carpeta CONTEXT — súbelos por la UI para verificar el flujo.
 
 ---
 
 ## 💻 Lo Que Debes Hacer
 
+**Layout del monorepo (no negociable)**
+
+- [ ] **Sin API nuevo** — extiende el backend existente en `services/`; los routers llaman a `data/pipelines/`
+- [ ] Implementa el grafo/pipeline de recepción RFP bajo `data/pipelines/` (`rfp_intake` dedicado, no mezclado con el grafo CX)
+- [ ] Scripts standalone (reproceso manual, smoke runs) viven en `scripts/`, no como segundo HTTP API
+- [ ] Persiste **Ticket**, **metadatos RFP** y **DepartmentSection.key_aspects** en **PostgreSQL (Supabase)** vía SQLModel (o tu capa DB existente) — TinyDB no es aceptable para estos datos
+
 **Interfaz de recepción (modo ticket)**
 
-- [ ] Implementa en `uis/backoffice` una interfaz donde se puedan subir documentos RFP en PDF y se cree un ticket por cada uno
-- [ ] El ticket debe mostrar su estado actual (por ejemplo: `analizando`, `esperando_aprobación`, `terminado`) y actualizarse a medida que el flujo avanza
+- [ ] Implementa en `uis/backoffice` una interfaz donde se puedan subir RFPs en PDF y se cree un ticket por cada una
+- [ ] Al subir, guarda el PDF bajo `data/raw/` (artefacto runtime del proceso) y deja el ticket en `analizando`
+- [ ] El endpoint de subida responde rápido; el pipeline corre en async; la UI consulta/refresca estado (`analizando` → `analisis_completo` o `descartado`)
 
 **Ingesta y conversión del documento**
 
-- [ ] Convierte cada RFP de PDF a Markdown antes de pasarla a los agentes (se sugiere `MarkItDown` de Microsoft) para reducir el consumo de tokens
-- [ ] Extrae metadatos del documento ya convertido (por ejemplo: cliente, fecha, departamentos mencionados)
-- [ ] Calcula métricas de legibilidad que permitan anticipar el tiempo de procesamiento (se sugiere `py-readability-metrics`)
+- [ ] Convierte cada RFP de PDF a Markdown **antes** de que cualquier agente la lea (obligatorio: MarkItDown o equivalente documentado)
+- [ ] Extrae metadatos del documento convertido (campos que pide tu CONTEXT)
+- [ ] Calcula métricas de legibilidad que anticipen el costo de procesamiento (se sugiere `py-readability-metrics`)
+- [ ] Guarda metadatos y métricas en PostgreSQL junto al ticket
 
 **Agente clasificador**
 
-- [ ] Implementa un primer agente que lea el documento (ya convertido) y determine si es una RFP válida
-- [ ] Si el documento no es una RFP, el flujo debe detenerse y dejar el ticket en un estado explícito de descarte (no fallar en silencio)
+- [ ] Implementa un primer agente que lea el Markdown convertido y determine si es una RFP válida
+- [ ] Si no lo es, detén el flujo y deja el ticket en `descartado` (no falles en silencio)
 
 **Orquestación por departamento**
 
-- [ ] Implementa el patrón orchestrator-worker-synthesizer: el orquestador descompone la RFP en subtareas por departamento
-- [ ] Cada agente worker extrae los aspectos clave que le corresponden a su departamento
-- [ ] Un agente synthesizer consolida los resultados en un resumen que le indique a Ventas qué debe pedir a cada departamento
+- [ ] Implementa orchestrator-worker-synthesizer: el orquestador descompone en subtareas por departamento
+- [ ] Cada worker recibe **metadatos + extractos relevantes a su departamento** (sin inventar volúmenes/cifras que no estén en la RFP); guarda `key_aspects` por departamento en PostgreSQL
+- [ ] El synthesizer consolida un resumen para Ventas (qué pedir a quién)
+- [ ] En éxito, deja el ticket en `analisis_completo` con handoff claro hacia la Parte 2
 
 **Enrutamiento**
 
-- [ ] Implementa el enrutamiento (_routing_) del documento clasificado hacia el resto del flujo agéntico
+- [ ] Implementa el enrutamiento del documento clasificado hacia el resto del flujo agéntico (flag en cola, campo en DB o contrato de handoff documentado — sin segundo API)
 
 ⚠️ **IMPORTANTE:** Los nombres de los departamentos, el formato de las RFPs y los criterios de clasificación deben coincidir con lo que se especifica en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Pruebas**
 
 - [ ] Incluye pruebas unitarias en `tests/pipelines/` para el agente clasificador y para al menos un agente worker
+- [ ] Verifica contra los PDF de muestra del CONTEXT (formal aceptar, informal aceptar, inválido rechazar) subiéndolos por la UI
 
 ---
 
 ## 🧭 Preguntas de Diseño
 
-- ¿Qué pasa si una RFP menciona un departamento que no existe en tu `CONTEXT-company.md`? ¿Cómo lo maneja tu agente clasificador?
-- ¿Qué información necesita realmente cada agente worker del estado compartido? ¿Le estás pasando todo el documento o solo lo relevante para su departamento?
-- ¿Cómo decides que un documento "no es una RFP"? ¿Qué criterio usas, y qué pasa si el agente se equivoca?
-- ¿Qué pasa si dos agentes worker devuelven información contradictoria sobre la misma sección de la RFP?
+- ¿Qué pasa si una RFP menciona un departamento que no existe en tu `CONTEXT-company.md`? ¿Cómo lo maneja tu clasificador/orquestador?
+- ¿Qué necesita realmente cada worker del estado compartido? ¿Le pasas el documento completo o solo lo relevante — y qué haces si falta una cifra requerida?
+- ¿Cómo decides que un documento "no es una RFP"? ¿Qué pasa con un falso negativo?
+- ¿Qué pasa si dos workers devuelven información contradictoria sobre la misma sección?
+- ¿Dónde corre el trabajo async (background task, worker process, Prefect) — y cómo el ticket sigue siendo verdad si el job falla a mitad de pipeline?
 
 ---
 
 ## ✅ Lo Que Evaluaremos
 
-- [ ] El ticket refleja el estado real del flujo en cada momento (analizando, esperando aprobación, terminado, descartado)
-- [ ] El agente clasificador rechaza correctamente documentos que no son RFPs, sin detener el resto del sistema
-- [ ] Los metadatos y las métricas de legibilidad se calculan y se almacenan por cada documento procesado
-- [ ] El patrón orchestrator-worker-synthesizer está implementado con agentes claramente separados (no un solo agente monolítico)
-- [ ] El resultado final identifica, por departamento, los aspectos clave y a quién dirigirse — verificable comparando contra un caso de prueba real
-- [ ] Existen pruebas unitarias para el agente clasificador y al menos un agente worker
-- [ ] La implementación usa los departamentos y el formato de RFP definidos en el `CONTEXT-company.md` de tu empresa
+- [ ] Solo el mismo backend API; código de pipeline bajo `data/pipelines/`; sin segundo servicio HTTP
+- [ ] Ticket, metadatos RFP y aspectos clave persistidos en PostgreSQL (Supabase)
+- [ ] Los PDF subidos caen en `data/raw/` como parte de la recepción; la UI dispara la subida
+- [ ] El estado del ticket refleja la realidad: `analizando` → `analisis_completo` o `descartado` (Parte 1); no `esperando_aprobación`
+- [ ] La subida es async (respuesta rápida + pipeline en background + estado consultable)
+- [ ] El clasificador rechaza no-RFPs sin detener otros tickets
+- [ ] Metadatos y métricas de legibilidad almacenados por documento procesado
+- [ ] Orchestrator-worker-synthesizer como agentes separados en un grafo `rfp_intake` dedicado
+- [ ] El resultado final lista aspectos clave + contactos por departamento — verificable contra los PDF de muestra del CONTEXT
+- [ ] Pruebas unitarias del clasificador y al menos un worker
+- [ ] La implementación usa los departamentos y el formato de RFP del `CONTEXT-company.md` de tu empresa
 
 ---
 
@@ -126,7 +156,7 @@ Esta es la Parte 1 de 3 del Hito 9. Entrégala con su propio Pull Request contra
 
 1. Haz commit y push de tu rama `feature/hito-9-parte-1-revision-rfps`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo
-3. Incluye en la descripción del PR un ejemplo de RFP de prueba y el resultado que produce tu flujo
+3. Incluye en la descripción del PR un ejemplo de RFP de prueba (de `rfp-requests/` del CONTEXT) y el resultado que produce tu flujo
 4. Solicita revisión a tu tech lead
 
 ---

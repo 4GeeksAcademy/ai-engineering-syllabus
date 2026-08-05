@@ -40,18 +40,19 @@ flowchart LR
 
 ## Recommended layout (indicative)
 
-| Path                                              | Responsibility                                     |
-| ------------------------------------------------- | -------------------------------------------------- |
-| `services/rfp_response/orchestrator.py`           | Map Part 1 workstreams → department generators     |
-| `services/rfp_response/generators/`               | One generator module per CONTEXT department        |
-| `services/rfp_response/evaluators/readability.py` | py-readability-metrics wrapper → pass/fail         |
-| `services/rfp_response/evaluators/relevance.py`   | Section vs RFP asks                                |
-| `services/rfp_response/evaluators/guidelines.py`  | CONTEXT rule checklist                             |
-| `services/rfp_response/loop.py`                   | Generator ↔ evaluators with iteration counter      |
-| `services/rfp_response/synthesizer.py`            | Package drafts + eval results → assignment tickets |
-| `services/rfp_intake/tickets.py`                  | Extend statuses: `drafting`, `under_evaluation`, … |
-| `tests/pipelines/test_rfp_generator.py`           | Generator unit tests                               |
-| `tests/pipelines/test_rfp_evaluator.py`           | Evaluator + failure-path unit tests                |
+| Path                                                     | Responsibility                                     |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| `data/pipelines/rfp_response/` (or extend `rfp_intake/`) | Generators, evaluators, loop, synthesizer          |
+| `data/pipelines/rfp_response/orchestrator.py`            | Map Part 1 workstreams → department generators     |
+| `data/pipelines/rfp_response/generators/`                | One generator module per CONTEXT department        |
+| `data/pipelines/rfp_response/evaluators/readability.py`  | py-readability-metrics wrapper → pass/fail         |
+| `data/pipelines/rfp_response/evaluators/relevance.py`    | Section vs RFP asks                                |
+| `data/pipelines/rfp_response/evaluators/guidelines.py`   | CONTEXT rule checklist                             |
+| `data/pipelines/rfp_response/loop.py`                    | Generator ↔ evaluators with iteration counter      |
+| `data/pipelines/rfp_response/synthesizer.py`             | Package drafts + eval results → assignment tickets |
+| `services/.../routers/rfp.py`                            | Same existing API — trigger Part 2 + GET status    |
+| `tests/pipelines/test_rfp_generator.py`                  | Generator unit tests                               |
+| `tests/pipelines/test_rfp_evaluator.py`                  | Evaluator + failure-path unit tests                |
 
 ---
 
@@ -64,7 +65,7 @@ flowchart LR
 | `needs_human_review`           | Optional: iteration limit hit on ≥1 section    |
 | `ready_for_approval` / handoff | All sections packaged for Part 3               |
 
-Keep Part 1 statuses (`analyzing`, `discarded`, `done` for intake) intact; extend the state machine rather than replacing it.
+Keep Part 1 statuses (`analyzing`, `discarded`, `intake_complete`) intact; Part 2 extends with `drafting` / `under_evaluation`. Persist drafts and `evaluation_results` in the same PostgreSQL tables.
 
 ---
 

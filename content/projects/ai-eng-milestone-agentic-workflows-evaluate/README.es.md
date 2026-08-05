@@ -82,7 +82,7 @@ Continúa sobre la misma rama de trabajo del Hito 9 en tu fork del monorepo (o c
 
 **Estado del ticket**
 
-- [ ] Actualiza el ticket creado en la Parte 1 para reflejar el progreso de la generación y evaluación (por ejemplo: `generando_borrador`, `en_evaluación`)
+- [ ] Actualiza el ticket creado en la Parte 1 (desde `analisis_completo`) para reflejar el progreso de la generación y evaluación (`generando_borrador`, `en_evaluación`). Persiste borradores y `evaluation_results` en PostgreSQL. Sigue sin crear un API nuevo: extiende el backend existente y el pipeline bajo `data/pipelines/`.
 
 ⚠️ **IMPORTANTE:** Los lineamientos de la empresa contra los que evalúas el contenido generado, y el formato esperado de cada sección, deben coincidir con lo especificado en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 

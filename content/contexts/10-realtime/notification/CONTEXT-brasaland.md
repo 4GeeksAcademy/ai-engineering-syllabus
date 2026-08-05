@@ -10,7 +10,7 @@ The RFP ticket is opened by **Camila Ospina's** team, Marketing and Digital Expe
 
 Reuse exactly the same entities you already defined for the RFP system:
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `waiting_for_approval`, `drafting`, `under_evaluation`, `done`, `discarded`), `created_at`, `updated_at`
+- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `intake_complete`, `drafting`, `under_evaluation`, `waiting_for_approval`, `done`, `discarded`), `created_at`, `updated_at`
 - **RFP metadata**: `client_name`, `location`, `service_type`, `scope`, `deadline`, `budget_range` (optional), `departments_needed`
 
 The real-time notification must fire the exact moment a new ticket enters the system with `status = analyzing` — meaning the document was classified as a valid RFP and the flow starts processing it.

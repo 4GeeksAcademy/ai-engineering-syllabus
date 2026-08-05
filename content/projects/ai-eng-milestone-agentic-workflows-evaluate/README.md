@@ -82,7 +82,7 @@ Continue on the same Milestone 9 working branch in your monorepo fork (or create
 
 **Ticket status**
 
-- [ ] Update the ticket created in Part 1 to reflect generation and evaluation progress (for example: `drafting`, `under_evaluation`)
+- [ ] Update the ticket created in Part 1 (from `intake_complete`) to reflect generation and evaluation progress (`drafting`, `under_evaluation`). Persist drafts and `evaluation_results` in PostgreSQL. Still no new API: extend the existing backend and the pipeline under `data/pipelines/`.
 
 ⚠️ **IMPORTANT:** The company guidelines you evaluate generated content against, and the expected format of each section, must match what's specified in your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
 

@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it defines the departments, the RFP format, and the guidelines specific to your company for this part of the milestone.
+**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it defines the departments, the RFP format, persistence rules, and the guidelines specific to your company for this part of the milestone.
 
 ---
 
@@ -29,19 +29,33 @@ The Sales team receives dozens of RFPs (_Requests for Proposal_) in PDF every we
 > >
 > > **What I need you to build:**
 > >
-> > - A ticket-mode interface where the team can upload the RFP (it always arrives as a PDF) and see its status in real time: analyzing, waiting for approval, done...
-> > - PDF RFPs are heavy and will get expensive in tokens if we hand them to the agents as-is. I'd suggest converting them to Markdown as soon as they come in — something like Microsoft's **MarkItDown** does this well — before any agent processes them.
-> > - A first classifier agent that decides whether the document is a legitimate RFP; if it isn't, the flow should stop there, without moving on to the rest of the pipeline.
-> > - For each valid RFP, extract metadata and readability metrics that let us anticipate how long processing will take (`py-readability-metrics` could work for this).
-> > - The rest of the flow needs to split the analysis by department using the orchestrator-worker-synthesizer pattern we covered in class — I don't want a single agent trying to do it all.
+> > - A ticket-mode interface where the team uploads the RFP (always PDF) and sees status in real time. Upload goes through the **existing** company backend — **no new API service**. Store the PDF under `data/raw/` as part of the intake process.
+> > - Persist the ticket, RFP metadata, and per-department key aspects in **PostgreSQL (Supabase)** — same DB stack you already use for inventory — not TinyDB and not JSON-only files as the source of truth.
+> > - Put the LangGraph (or equivalent) pipeline under `data/pipelines/` (e.g. `data/pipelines/rfp_intake/`). Routers in `services/` only trigger and query; they do not own the agent graph. Standalone CLI helpers belong in `scripts/`.
+> > - PDF RFPs are heavy on tokens. Convert to Markdown as soon as they arrive — **MarkItDown** (or an equivalent PDF→Markdown step you document) — before any agent reads them.
+> > - A classifier agent that decides whether the document is a legitimate RFP; if it isn't, stop the flow and mark the ticket `discarded`.
+> > - For each valid RFP, extract metadata and readability metrics (`py-readability-metrics` works) so Sales can anticipate processing cost.
+> > - Split analysis by department with orchestrator-worker-synthesizer — not one agent doing everything. Use a **dedicated `rfp_intake` graph**; do not bolt RFP nodes onto the CX / knowledge-agent graph.
 > >
 > > **Acceptance criteria:** Sales should be able to look at the result of a processed RFP and know, without reading the original document, what's needed from each department and who to ask.
 > >
 > > — Your tech lead
 
-### 📚 Complementary Knowledge: PDFs, readability, and "ticket mode"
+### 📚 Complementary Knowledge: PDFs, readability, tickets, and async intake
 
-Real-world RFPs arrive as PDFs, a format dense in markup and visual noise that burns far more tokens than necessary when fed directly to an LLM. Converting them to Markdown with a tool like **MarkItDown** before processing cuts that cost and gives your agents cleaner text to work with. Once the text is in Markdown, `py-readability-metrics` computes indexes like Flesch-Kincaid or Gunning Fog; use it to estimate how expensive each RFP will be to process, not as a note on literary quality. "Ticket mode" simply means every uploaded RFP becomes an entity with a lifecycle — states like `analyzing`, `waiting_for_approval`, or `done` — that the frontend can query and refresh, just like a support ticket.
+Real-world RFPs arrive as PDFs. Converting them to Markdown before the LLM cuts token cost and noise. Use `py-readability-metrics` on the Markdown to estimate processing cost (Flesch-Kincaid, Gunning Fog, etc.), not as a literary grade.
+
+**Ticket mode** means each upload becomes a row with a lifecycle the UI can poll. Part 1 statuses you must drive:
+
+| Status            | When                                                            |
+| ----------------- | --------------------------------------------------------------- |
+| `analyzing`       | Upload accepted; conversion + agents running                    |
+| `discarded`       | Classifier rejected the document                                |
+| `intake_complete` | Synthesizer finished; Sales can read per-department key aspects |
+
+`waiting_for_approval` / `esperando_aprobación` is a **Part 3** human gate — do not use it as Part 1's success state. Part 2 will move the same ticket through `drafting` / `under_evaluation`.
+
+PDF→Markdown + classifier + parallel workers can take minutes. **`POST` upload must not run the full pipeline synchronously**: create the ticket (`analyzing`), store the PDF under `data/raw/`, return quickly (e.g. `202` + `ticket_id`), run the pipeline in the background, and let the UI poll `GET` ticket status.
 
 ### 🗺️ Visual reference: initial analysis & workstream isolation
 
@@ -57,66 +71,82 @@ Keep working on the fork of your company's monorepo that you've been using since
 
 1. Create a new branch from your main branch: `feature/milestone-9-part-1-rfp-intake`.
 2. Install any new dependencies with `uv add` (for example, `uv add markitdown` and `uv add py-readability-metrics`) — never with `pip install` or `pipenv`.
-3. If you need to build or extend an interface, do it on top of `uis/backoffice` — don't create a new app.
-4. Place your agent logic in `services/`, following the same pattern you used in Milestone 8.
-5. Read your `CONTEXT-company.md` before defining the departments or the sample RFP format.
+3. Extend `uis/backoffice` for the upload UI — don't create a new frontend app.
+4. Add HTTP routes on the **existing** backend under `services/` (same process / same API). Implement the agent pipeline in `data/pipelines/` (e.g. `data/pipelines/rfp_intake/`). Put one-off CLI runners in `scripts/` if needed.
+5. Read your `CONTEXT-company.md` before defining departments, schema, or test RFPs. Use the sample PDFs under `rfp-requests/<company>/` in the CONTEXT folder — upload them through the UI to verify the flow.
 
 ---
 
 ## 💻 What You Need to Do
 
+**Monorepo layout (non-negotiable)**
+
+- [ ] **No new API service** — extend the existing backend in `services/`; routers call into `data/pipelines/`
+- [ ] Implement the RFP intake graph/pipeline under `data/pipelines/` (dedicated `rfp_intake`, not mixed into the CX agent graph)
+- [ ] Standalone scripts (manual reprocess, smoke runs) live in `scripts/`, not as a second HTTP API
+- [ ] Persist **Ticket**, **RFP metadata**, and **DepartmentSection.key_aspects** in **PostgreSQL (Supabase)** via SQLModel (or your existing DB layer) — TinyDB is not acceptable for this data
+
 **Intake interface (ticket mode)**
 
-- [ ] Implement an interface in `uis/backoffice` where PDF RFP documents can be uploaded, creating a ticket for each one
-- [ ] The ticket must show its current status (for example: `analyzing`, `waiting_for_approval`, `done`) and update as the flow progresses
+- [ ] Implement an interface in `uis/backoffice` where PDF RFPs can be uploaded, creating one ticket per upload
+- [ ] On upload, store the PDF under `data/raw/` (runtime artifact of the process) and set ticket status to `analyzing`
+- [ ] Upload endpoint returns quickly; pipeline runs asynchronously; UI polls/refreshes status (`analyzing` → `intake_complete` or `discarded`)
 
 **Document ingestion and conversion**
 
-- [ ] Convert each RFP from PDF to Markdown before handing it to the agents (suggested: `MarkItDown` from Microsoft) to reduce token usage
-- [ ] Extract metadata from the converted document (e.g., client, date, departments mentioned)
-- [ ] Compute readability metrics that let you anticipate processing time (suggested: `py-readability-metrics`)
+- [ ] Convert each RFP from PDF to Markdown **before** any agent reads it (required: MarkItDown or a documented equivalent)
+- [ ] Extract metadata from the converted document (fields required by your CONTEXT)
+- [ ] Compute readability metrics that anticipate processing cost (suggested: `py-readability-metrics`)
+- [ ] Store metadata and metrics in PostgreSQL with the ticket
 
 **Classifier agent**
 
-- [ ] Implement a first agent that reads the (already converted) document and determines whether it's a valid RFP
-- [ ] If the document isn't an RFP, the flow must stop and leave the ticket in an explicit discarded state (don't fail silently)
+- [ ] Implement a first agent that reads the converted Markdown and determines whether it's a valid RFP
+- [ ] If it isn't, stop the flow and set the ticket to `discarded` (don't fail silently)
 
 **Department orchestration**
 
-- [ ] Implement the orchestrator-worker-synthesizer pattern: the orchestrator breaks the RFP down into per-department subtasks
-- [ ] Each worker agent extracts the key aspects relevant to its department
-- [ ] A synthesizer agent consolidates the results into a summary that tells Sales what to ask each department for
+- [ ] Implement orchestrator-worker-synthesizer: orchestrator decomposes into per-department subtasks
+- [ ] Each worker receives **metadata + department-relevant extracts** (not inventing volumes/figures absent from the RFP); store `key_aspects` per department in PostgreSQL
+- [ ] Synthesizer consolidates into a Sales-facing summary (what to ask whom)
+- [ ] On success, set ticket status to `intake_complete` and leave a clear handoff for Part 2
 
 **Routing**
 
-- [ ] Implement the routing of the classified document toward the rest of the agentic flow
+- [ ] Implement routing of the classified document toward the rest of the agentic flow (queue flag, DB field, or documented handoff contract — no second API)
 
-⚠️ **IMPORTANT:** The department names, the RFP format, and the classification criteria must match what's specified in your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Department names, RFP format, and classification criteria must match your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
 
 **Testing**
 
 - [ ] Include unit tests in `tests/pipelines/` for the classifier agent and at least one worker agent
+- [ ] Verify against the CONTEXT sample PDFs (formal accept, informal accept, invalid reject) by uploading them through the UI
 
 ---
 
 ## 🧭 Design Questions
 
-- What happens if an RFP mentions a department that doesn't exist in your `CONTEXT-company.md`? How does your classifier agent handle it?
-- What does each worker agent actually need from the shared state? Are you passing it the whole document, or only what's relevant to its department?
-- How do you decide that a document "isn't an RFP"? What criterion do you use, and what happens if the agent gets it wrong?
-- What happens if two worker agents return contradictory information about the same section of the RFP?
+- What happens if an RFP mentions a department that doesn't exist in your `CONTEXT-company.md`? How does your classifier/orchestrator handle it?
+- What does each worker actually need from shared state? Are you passing the whole document, or only what's relevant — and what do you do when a required figure is missing?
+- How do you decide that a document "isn't an RFP"? What happens on a false negative?
+- What happens if two workers return contradictory information about the same section?
+- Where does async work run (background task, worker process, Prefect) — and how does the ticket stay truthful if the job crashes mid-pipeline?
 
 ---
 
 ## ✅ What We Will Evaluate
 
-- [ ] The ticket accurately reflects the flow's real status at every moment (analyzing, waiting for approval, done, discarded)
-- [ ] The classifier agent correctly rejects documents that aren't RFPs, without stopping the rest of the system
-- [ ] Metadata and readability metrics are computed and stored for every processed document
-- [ ] The orchestrator-worker-synthesizer pattern is implemented with clearly separated agents (not a single monolithic agent)
-- [ ] The final result identifies, per department, the key aspects and who to approach — verifiable against a real test case
-- [ ] Unit tests exist for the classifier agent and at least one worker agent
-- [ ] The implementation uses the departments and RFP format defined in your company's `CONTEXT-company.md`
+- [ ] Same backend API only; pipeline code under `data/pipelines/`; no second HTTP service
+- [ ] Ticket, RFP metadata, and key aspects persisted in PostgreSQL (Supabase)
+- [ ] Uploaded PDFs land under `data/raw/` as part of intake; UI drives upload
+- [ ] Ticket status reflects reality: `analyzing` → `intake_complete` or `discarded` (Part 1); not `waiting_for_approval`
+- [ ] Upload is async (quick response + background pipeline + pollable status)
+- [ ] Classifier rejects non-RFPs without stopping other tickets
+- [ ] Metadata and readability metrics stored per processed document
+- [ ] Orchestrator-worker-synthesizer as separate agents on a dedicated `rfp_intake` graph
+- [ ] Final result lists per-department key aspects + contacts — verifiable against CONTEXT sample PDFs
+- [ ] Unit tests for classifier and at least one worker
+- [ ] Implementation matches departments and RFP format in `CONTEXT-company.md`
 
 ---
 
@@ -126,7 +156,7 @@ This is Part 1 of 3 of Milestone 9. Submit it with its own Pull Request against 
 
 1. Commit and push your `feature/milestone-9-part-1-rfp-intake` branch
 2. Open a Pull Request describing what you implemented and how to test it
-3. Include a sample test RFP and the output your flow produces in the PR description
+3. Include a sample test RFP (from CONTEXT `rfp-requests/`) and the output your flow produces in the PR description
 4. Request a review from your tech lead
 
 ---

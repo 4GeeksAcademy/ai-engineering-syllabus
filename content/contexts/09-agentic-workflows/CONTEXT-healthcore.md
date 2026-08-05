@@ -30,10 +30,33 @@ RFPs arrive as PDFs and typically include: institutional client name and country
 
 ### 2.3 Suggested Entities for Your State
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `waiting_for_approval`, `drafting`, `under_evaluation`, `done`, `discarded`)
-- **RFP metadata**: `client_name`, `client_country` (US/UK), `program_type`, `covered_population`, `deadline`, `budget_range`, `departments_needed` — **never** an individual patient data field
+Persist **Ticket**, **RFP metadata**, and **DepartmentSection** (at least `key_aspects` in Part 1; drafts/evals/approvals in later parts) in **PostgreSQL (Supabase)** via your existing SQLModel/DB layer. TinyDB or JSON files are not the source of truth for these entities. **Never** store patient identifiers or PHI in any of these tables.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `client_country` (US/UK), `program_type`, `covered_population`, `deadline`, `budget_range`, `departments_needed`, readability metrics — **never** an individual patient data field
 - **DepartmentSection**: `department_id`, `key_aspects`, `draft_content`, `evaluation_results` (includes a `contains_phi: bool` flag the compliance evaluator must be able to set), `approval_status`, `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `currency`, `generated_at`
+
+**Ticket status by part** (same ticket across Parts 1–3):
+
+| Status                 | Part | When                                           |
+| ---------------------- | ---- | ---------------------------------------------- |
+| `analyzing`            | 1    | Upload accepted; pipeline running              |
+| `discarded`            | 1    | Classifier rejected the document               |
+| `intake_complete`      | 1    | Synthesizer done; Sales can read key aspects   |
+| `drafting`             | 2    | Generators writing proposal sections           |
+| `under_evaluation`     | 2    | Parallel evaluators / generator-evaluator loop |
+| `waiting_for_approval` | 3    | Human-in-the-loop pause per department         |
+| `done`                 | 3    | Final document generated                       |
+
+Workers receive **shared metadata + department-relevant extracts** only. If covered-population / volume figures are missing, record open questions — **never invent** headcount or PHI.
+
+### 2.4 Monorepo layout
+
+- **HTTP**: extend the **existing** backend under `services/` — no new API process.
+- **Pipeline / graph**: `data/pipelines/rfp_intake/` (dedicated graph; do not mix into the CX agent graph). Routers import and trigger; they do not own agent logic.
+- **Standalone CLIs**: `scripts/` if needed.
+- **Uploaded PDFs**: provided via `uis/backoffice`; stored under `data/raw/` as a runtime artifact of intake (still no PHI in paths, logs, or DB columns).
 
 ## 3. Business Metrics and KPIs
 
@@ -44,7 +67,7 @@ RFPs arrive as PDFs and typically include: institutional client name and country
 
 ## 4. Seed Data Instructions
 
-Use the ready-made PDFs in [`rfp-requests/healthcore/`](./rfp-requests/healthcore/) as inputs to test the agentic workflow (copy them into `data/raw/` if your pipeline expects that path). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
+Use the ready-made PDFs in [`rfp-requests/healthcore/`](./rfp-requests/healthcore/) as **test uploads through the UI**. The intake process stores each uploaded PDF under `data/raw/` (do not treat curriculum seed PDFs as pre-seeded inventory in the repo). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
 1. **`CONTEXT-healthcore-request-1.pdf` — formal RFP (accept):** _Meridian Manufacturing_ (Austin, 800 employees), on-site occupational health and wellness, 12-month contract. Triggers `revenue`, `clinical`, and `compliance` (BAA). Currency: USD.
 2. **`CONTEXT-healthcore-request-2.pdf` — informal RFP (accept):** _Thames Valley University_ email requesting a referral network partnership with a satellite clinic. Triggers `revenue`, `clinical`, and `compliance` (DPA / UK GDPR). Currency: GBP.

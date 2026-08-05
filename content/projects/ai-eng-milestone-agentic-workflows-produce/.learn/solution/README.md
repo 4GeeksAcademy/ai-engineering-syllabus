@@ -42,31 +42,32 @@ flowchart LR
 
 ## Recommended layout (indicative)
 
-| Path                                       | Responsibility                            |
-| ------------------------------------------ | ----------------------------------------- |
-| `services/rfp_produce/approval.py`         | Interrupt payloads + resume validation    |
-| `services/rfp_produce/checkpointer.py`     | SQLite/Postgres checkpointer wiring       |
-| `services/rfp_produce/arbitration.py`      | Explicit conflict resolution node         |
-| `services/rfp_produce/synthesizer.py`      | Ultimate document consolidation           |
-| `services/rfp_produce/trace.py`            | Append agent/input/output/timestamp       |
-| `services/rfp_intake/tickets.py`           | Extend statuses + approval UI fields      |
-| `uis/backoffice/.../approvals/`            | Per-department approve / reject / changes |
-| `tests/pipelines/test_interrupt_resume.py` | Interrupt + resume                        |
-| `tests/pipelines/test_arbitration.py`      | Disagreement path                         |
-| `tests/pipelines/test_iteration_limit.py`  | Cap enforcement                           |
+| Path                                                    | Responsibility                                                    |
+| ------------------------------------------------------- | ----------------------------------------------------------------- |
+| `data/pipelines/rfp_produce/` (or extend `rfp_intake/`) | Interrupt, checkpointer, arbitration, ultimate synthesizer, trace |
+| `data/pipelines/rfp_produce/approval.py`                | Interrupt payloads + resume validation                            |
+| `data/pipelines/rfp_produce/checkpointer.py`            | SQLite/Postgres checkpointer wiring                               |
+| `data/pipelines/rfp_produce/arbitration.py`             | Explicit conflict resolution node                                 |
+| `data/pipelines/rfp_produce/synthesizer.py`             | Ultimate document consolidation                                   |
+| `data/pipelines/rfp_produce/trace.py`                   | Append agent/input/output/timestamp                               |
+| `services/.../routers/rfp.py`                           | Same existing API — approve/reject/resume + GET ticket            |
+| `uis/backoffice/.../approvals/`                         | Per-department approve / reject / changes                         |
+| `tests/pipelines/test_interrupt_resume.py`              | Interrupt + resume                                                |
+| `tests/pipelines/test_arbitration.py`                   | Disagreement path                                                 |
+| `tests/pipelines/test_iteration_limit.py`               | Cap enforcement                                                   |
 
 ---
 
 ## Ticket lifecycle (Part 3)
 
-| Status               | When set                                     |
-| -------------------- | -------------------------------------------- |
-| `awaiting_approval`  | ≥1 department interrupt pending              |
-| `partially_approved` | Some departments approved; others still open |
-| `needs_revision`     | Reject / request_changes on a section        |
-| `arbitrating`        | Explicit arbitration node running            |
-| `producing`          | Ultimate synthesizer running                 |
-| `done`               | Final document stored and linked on ticket   |
+| Status                 | When set                                            |
+| ---------------------- | --------------------------------------------------- |
+| `waiting_for_approval` | ≥1 department interrupt pending (Part 3 human gate) |
+| `partially_approved`   | Some departments approved; others still open        |
+| `needs_revision`       | Reject / request_changes on a section               |
+| `arbitrating`          | Explicit arbitration node running                   |
+| `producing`            | Ultimate synthesizer running                        |
+| `done`                 | Final document stored and linked on ticket          |
 
 Department-level approval status lives on each assignment ticket: `pending` / `approved` / `rejected` / `changes_requested`.
 

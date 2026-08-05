@@ -29,10 +29,33 @@ Las RFPs llegan como PDF y normalmente incluyen: nombre del cliente y ubicación
 
 ### 2.3 Entidades sugeridas para tu estado
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analizando`, `esperando_aprobación`, `generando_borrador`, `en_evaluación`, `terminado`, `descartado`), `created_at`, `updated_at`
-- **RFP metadata**: `client_name`, `location`, `service_type`, `scope`, `deadline`, `budget_range` (opcional), `departments_needed`
+Persiste **Ticket**, **metadatos RFP** y **DepartmentSection** (al menos `key_aspects` en la Parte 1; borradores/evals/aprobaciones en partes posteriores) en **PostgreSQL (Supabase)** vía tu capa SQLModel/DB existente. TinyDB o archivos JSON no son la fuente de verdad de estas entidades.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `location`, `service_type`, `scope`, `deadline`, `budget_range` (opcional), `departments_needed`, métricas de legibilidad
 - **DepartmentSection**: `department_id`, `key_aspects` (Parte 1), `draft_content` (Parte 2), `evaluation_results` (legibilidad, pertinencia, cumplimiento), `approval_status` (`pendiente`, `aprobado`, `rechazado`), `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `total_estimated_value`, `generated_at`
+
+**Estado del ticket por parte** (mismo ticket en Partes 1–3):
+
+| Estado                 | Parte | Cuándo                                              |
+| ---------------------- | ----- | --------------------------------------------------- |
+| `analizando`           | 1     | Subida aceptada; pipeline en curso                  |
+| `descartado`           | 1     | El clasificador rechazó el documento                |
+| `analisis_completo`    | 1     | Synthesizer listo; Ventas puede leer aspectos clave |
+| `generando_borrador`   | 2     | Generadores escribiendo secciones                   |
+| `en_evaluación`        | 2     | Evaluadores en paralelo / ciclo generador-evaluador |
+| `esperando_aprobación` | 3     | Pausa humana por departamento (y CEO si aplica)     |
+| `terminado`            | 3     | Documento final generado                            |
+
+Los workers reciben **metadatos compartidos + extractos relevantes a su departamento**. Si falta una cifra (volumen, presupuesto, comensales, etc.) en la RFP, regístrala en `open_questions` / campos faltantes — **nunca inventes** números que no estén en el documento.
+
+### 2.4 Layout del monorepo
+
+- **HTTP**: extiende el **backend existente** bajo `services/` — sin un proceso API nuevo.
+- **Pipeline / grafo**: `data/pipelines/rfp_intake/` (grafo dedicado; no lo mezcles con el grafo CX). Los routers importan y disparan; no poseen la lógica de agentes.
+- **CLIs sueltos**: `scripts/` si hace falta.
+- **PDFs subidos**: vía `uis/backoffice`; se guardan bajo `data/raw/` como artefacto runtime de la recepción.
 
 ## 3. Métricas de negocio y KPIs
 
@@ -43,7 +66,7 @@ Las RFPs llegan como PDF y normalmente incluyen: nombre del cliente y ubicación
 
 ## 4. Instrucciones de datos semilla
 
-Usa los PDF listos en [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) como entradas para probar el flujo agéntico (cópialos a `data/raw/` si tu pipeline espera esa ruta). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
+Usa los PDF listos en [`rfp-requests/brasaland/`](./rfp-requests/brasaland/) como **subidas de prueba a través de la UI**. El proceso de recepción guarda cada PDF subido bajo `data/raw/` (no trates los PDF del currículo como inventario pre-sembrado en el repo). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
 
 1. **`CONTEXT-brasaland-request-1.pdf` — RFP formal (aceptar):** _Sunset Bay Resorts_, concesión co-branded en 3 resorts de Florida, exclusividad + menú de autor, ~60–75k USD/año. Activa los cuatro departamentos, incluido `training`. **Nota:** supera 50.000 USD/año → aprobación extra de la CEO (Mariana Restrepo) en la Parte 3.
 2. **`CONTEXT-brasaland-request-2.pdf` — RFP informal (aceptar):** correo de _Andes Tech Solutions_ pidiendo catering semanal para 220 empleados en Medellín, contrato 12 meses, menú estándar. Activa `marketing`, `operaciones` y `procurement` (no necesariamente `training`).

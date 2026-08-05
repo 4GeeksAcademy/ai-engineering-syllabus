@@ -5,8 +5,8 @@
     "es": "Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 1 de 3): Recepción y Enrutamiento de RFPs"
   },
   "description": {
-    "en": "Build Part 1 of an agentic RFP workflow on your company monorepo: ticket-mode PDF upload in uis/backoffice, MarkItDown conversion, readability metrics, a classifier that stops non-RFPs, and orchestrator-worker-synthesizer department analysis with routing — aligned to CONTEXT-company.md.",
-    "es": "Construye la Parte 1 de un flujo agéntico de RFPs sobre el monorepo de tu empresa: subida PDF en modo ticket en uis/backoffice, conversión con MarkItDown, métricas de legibilidad, clasificador que detiene no-RFPs, y análisis por departamento con orchestrator-worker-synthesizer más enrutamiento — alineado a CONTEXT-company.md."
+    "en": "Build Part 1 of an agentic RFP workflow: PDF upload via existing backend + uis/backoffice, store under data/raw/, persist tickets/metadata/key aspects in Postgres (Supabase), pipeline in data/pipelines/rfp_intake (MarkItDown, classifier, orchestrator-worker-synthesizer) — aligned to CONTEXT-company.md.",
+    "es": "Construye la Parte 1 de un flujo agéntico de RFPs: subida PDF vía backend existente + uis/backoffice, guarda en data/raw/, persiste tickets/metadatos/aspectos clave en Postgres (Supabase), pipeline en data/pipelines/rfp_intake (MarkItDown, clasificador, orchestrator-worker-synthesizer) — alineado a CONTEXT-company.md."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
