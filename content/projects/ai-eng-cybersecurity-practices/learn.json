@@ -39,5 +39,8 @@
       "en": "Built and shipped: Secure Practices for AI Integration in Systems. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-practices #AIEngineering #LearnPack #4GeeksAcademy #python #security #nist",
       "es": "Construido y publicado: Prácticas Seguras en la Integración de IA en Sistemas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-practices #AIEngineering #LearnPack #4GeeksAcademy #python #security #nist"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3907"
+  }
 }
