@@ -40,5 +40,8 @@
       "en": "Built and shipped: Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket",
       "es": "Construido y publicado: Hito 10 — Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket"
     }
-  ]
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3903"
+  }
 }
