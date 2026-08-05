@@ -42,6 +42,6 @@
     }
   ],
   "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3903"
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3905"
   }
 }
