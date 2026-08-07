@@ -15,7 +15,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 | Graded project (`ai-eng-milestone-real-time-communication`) | This class example                                      |
 | ----------------------------------------------------------- | ------------------------------------------------------- |
 | Company monorepo + existing support agent                   | Stub “bot” that yields fake tokens (or a tiny LLM call) |
-| LangGraph stream modes + checkpoint interrupt               | `asyncio` cancel + resume with new prompt               |
+| Stream abort (cancel task); HITL `interrupt()` optional     | `asyncio` cancel + new turn with new prompt             |
 | Full company chat UI                                        | Single HTML/JS page + optional second tab               |
 | CONTEXT `ChatSession` / agent_id fidelity                   | Fixed demo: `session_id`, `status`                      |
 | Company PR + design questions                               | Live demo + 2 automated tests                           |
@@ -27,9 +27,9 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 1. **Why WebSocket** — client must send while server still streaming (SSE insufficient)
 2. **Token events** — named `token_chunk`, not one blob at the end
 3. **Pub/sub** — one producer, many WS consumers on `chat.<session_id>`
-4. **True interrupt** — cancel generation; next reply uses `new_input`
+4. **True abort** — cancel generation task (no more tokens); keep partial as `interrupted`; next reply = new turn with `new_input`
 5. **Live typing UI** — append tokens as they arrive
-6. **Backoff reconnect** — drop socket → reconnect same session
+6. **Reconnect + rehydrate** — drop socket → same `session_id` → restore history, not empty chat
 7. **Do not rebuild the “agent”** — only the channel (stub bot OK for class)
 
 ---
@@ -39,6 +39,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 ```json
 {"event": "token_chunk", "data": {"session_id": "chat_demo_1", "token": "Slip ", "sequence": 1}}
 {"event": "interrupt_requested", "data": {"session_id": "chat_demo_1", "new_input": "I meant slip B-17, not A-3"}}
+{"event": "generation_interrupted", "data": {"session_id": "chat_demo_1", "message_id": "msg_00", "status": "interrupted"}}
 {"event": "generation_completed", "data": {"session_id": "chat_demo_1", "message_id": "msg_01"}}
 ```
 

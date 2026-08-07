@@ -1,38 +1,36 @@
 {
-    "slug": "ai-eng-milestone-real-time-communication",
-    "title": {
-        "us": "Milestone 10 \u2014 Real-Time Systems: WebSocket Chat Streaming",
-        "es": "Hito 10 \u2014 Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket"
-    },
-    "description": {
-        "us": "Bidirectional WebSocket channel for the existing support agent: token-by-token streaming, mid-response interrupt via checkpointing, pub/sub fan-out per chat session, frontend live typing + interrupt control, backoff reconnect \u2014 reuse Part 1 event naming; do not rewrite agent logic or tools.",
-        "es": "Canal WebSocket bidireccional para el agente de soporte existente: streaming token a token, interrupci\u00f3n a mitad de respuesta con checkpointing, fan-out pub/sub por sesi\u00f3n de chat, tipado en vivo + control de interrupci\u00f3n en frontend, reconexi\u00f3n con backoff \u2014 reutiliza nombres de evento de la Parte 1; no reescribas l\u00f3gica ni herramientas del agente."
-    },
-    "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/preview.png?raw=true",
-    "difficulty": "INTERMEDIATE",
-    "duration": 3,
-    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-    "gitpod": true,
-    "technologies": [
-        "javascript",
-        "python",
-        "fastapi",
-        "websocket",
-        "testing",
-        "langgraph",
-        "streaming",
-        "pubsub"
-    ],
-    "projectType": "project",
-    "solution": {
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/.learn/solution/README.md",
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/.learn/solution/README.md"
-    },
-    "delivery": {
-        "instructions": "",
-        "formats": [
-            "url"
-        ],
-        "regex": ""
-    }
+  "slug": "ai-eng-milestone-real-time-communication",
+  "title": {
+    "us": "Milestone 10 \u2014 Real-Time Systems: WebSocket Chat Streaming",
+    "es": "Hito 10 \u2014 Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket"
+  },
+  "description": {
+    "us": "Bidirectional WebSocket channel for the existing support agent: token-by-token streaming, mid-response stream abort (not HITL-only), keep interrupted partial + new turn, pub/sub fan-out per chat session, session_id handshake + checkpoint/history rehydrate on reconnect \u2014 Part 2 CONTEXT only; do not rewrite agent logic or tools.",
+    "es": "Canal WebSocket bidireccional para el agente de soporte existente: streaming token a token, abort real del stream a mitad de respuesta (no solo HITL), conservar parcial interrupted + turno nuevo, fan-out pub/sub por sesi\u00f3n, handshake con session_id + rehidrataci\u00f3n desde checkpoint/historial al reconectar \u2014 solo CONTEXT Parte 2; no reescribas l\u00f3gica ni herramientas del agente."
+  },
+  "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/preview.png?raw=true",
+  "difficulty": "INTERMEDIATE",
+  "duration": 3,
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "gitpod": true,
+  "technologies": [
+    "javascript",
+    "python",
+    "fastapi",
+    "websocket",
+    "testing",
+    "langgraph",
+    "streaming",
+    "pubsub"
+  ],
+  "projectType": "project",
+  "solution": {
+    "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/.learn/solution/README.md",
+    "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/.learn/solution/README.md"
+  },
+  "delivery": {
+    "instructions": "",
+    "formats": ["url"],
+    "regex": ""
+  }
 }
