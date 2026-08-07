@@ -1,4 +1,4 @@
-# Milestone 7 — RAG & Knowledge Base
+# Milestone — RAG & Knowledge Base
 
 <!-- hide -->
 

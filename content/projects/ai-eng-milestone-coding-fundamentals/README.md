@@ -1,4 +1,4 @@
-# Milestone 2 — Building Scripts to Automate Tasks
+# Milestone — Building Scripts to Automate Tasks
 
 <!-- hide -->
 

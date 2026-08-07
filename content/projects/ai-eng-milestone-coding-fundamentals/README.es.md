@@ -1,4 +1,4 @@
-# Hito 2 — Desarrollando scripts para automatizar tareas
+# Hito — Desarrollando scripts para automatizar tareas
 
 <!-- hide -->
 

@@ -1,4 +1,4 @@
-# Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3)
+# Hito — Pipeline de Desempeño de Negocio Resiliente (Parte 2 de 3)
 
 <!-- hide -->
 

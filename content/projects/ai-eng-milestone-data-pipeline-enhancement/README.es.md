@@ -1,4 +1,4 @@
-# Hito 6 — Mejora del Pipeline de Desempeño de Negocio: Subflows y Tests (3/3)
+# Hito — Mejora del Pipeline: Subflows y Tests (Parte 3 de 3)
 
 <!-- hide -->
 
@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Asegúrate de haber completado la **Parte 2 del Hito 6** — este proyecto se construye directamente sobre `data/pipelines/pipeline.py` implementado en la sesión anterior. Mantén abierto tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** — nombres de KPIs, esquema y audiencia de stakeholders vienen de ahí.
+**Antes de empezar**: Asegúrate de haber completado la **Parte 2 de este Hito** — este proyecto se construye directamente sobre `data/pipelines/pipeline.py` implementado en la sesión anterior. Mantén abierto tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** — nombres de KPIs, esquema y audiencia de stakeholders vienen de ahí.
 
 ---
 
@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu propia copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la compañía seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Esta es la **Parte 3 del Hito 6 — Telemetría y Data Pipelines**. Tu pipeline de desempeño de negocio ya funciona: lee de `telemetry_events` y produce los KPIs que pidió el liderazgo — los nombrados en tu `CONTEXT-company.md` — sin tocar el sistema técnico de telemetría existente. Hoy lo llevas a nivel de producción: refactorizas el flow principal en subflows reutilizables, agregas tests unitarios que validan el comportamiento de las tasks de transformación, aseguras que el pipeline corra directamente desde la línea de comandos, y — la parte que realmente le importa al liderazgo — pones esos KPIs frente a un dashboard que alguien pueda leer.
+Esta es la **Parte 3 de este Hito — Telemetría y Data Pipelines**. Tu pipeline de desempeño de negocio ya funciona: lee de `telemetry_events` y produce los KPIs que pidió el liderazgo — los nombrados en tu `CONTEXT-company.md` — sin tocar el sistema técnico de telemetría existente. Hoy lo llevas a nivel de producción: refactorizas el flow principal en subflows reutilizables, agregas tests unitarios que validan el comportamiento de las tasks de transformación, aseguras que el pipeline corra directamente desde la línea de comandos, y — la parte que realmente le importa al liderazgo — pones esos KPIs frente a un dashboard que alguien pueda leer.
 
 > > **Ticket de Mejora — Pipeline a Producción**
 > >

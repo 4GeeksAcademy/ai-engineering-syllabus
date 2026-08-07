@@ -1,4 +1,4 @@
-# Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)
+# Milestone — Agent Memory and Self-Improvement (Part 1 of 2)
 
 <!-- hide -->
 

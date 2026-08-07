@@ -1,14 +1,14 @@
 {
   "slug": "ai-eng-milestone-real-time-communication",
   "title": {
-    "us": "Milestone 10 \u2014 Real-Time Systems: WebSocket Chat Streaming",
-    "es": "Hito 10 \u2014 Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket"
+    "us": "Milestone — Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2)",
+    "es": "Hito — Sistemas en Tiempo Real: Streaming de Chat por WebSocket (Parte 2 de 2)"
   },
   "description": {
-    "us": "Bidirectional WebSocket channel for the existing support agent: token-by-token streaming, mid-response stream abort (not HITL-only), keep interrupted partial + new turn, pub/sub fan-out per chat session, session_id handshake + checkpoint/history rehydrate on reconnect \u2014 Part 2 CONTEXT only; do not rewrite agent logic or tools.",
-    "es": "Canal WebSocket bidireccional para el agente de soporte existente: streaming token a token, abort real del stream a mitad de respuesta (no solo HITL), conservar parcial interrupted + turno nuevo, fan-out pub/sub por sesi\u00f3n, handshake con session_id + rehidrataci\u00f3n desde checkpoint/historial al reconectar \u2014 solo CONTEXT Parte 2; no reescribas l\u00f3gica ni herramientas del agente."
+    "us": "Bidirectional WebSocket channel for the existing support agent: token-by-token streaming, mid-response stream abort (not HITL-only), keep interrupted partial + new turn, pub/sub fan-out per chat session, session_id handshake + checkpoint/history rehydrate on reconnect — Part 2 CONTEXT only; do not rewrite agent logic or tools.",
+    "es": "Canal WebSocket bidireccional para el agente de soporte existente: streaming token a token, abort real del stream a mitad de respuesta (no solo HITL), conservar parcial interrupted + turno nuevo, fan-out pub/sub por sesión, handshake con session_id + rehidratación desde checkpoint/historial al reconectar — solo CONTEXT Parte 2; no reescribas lógica ni herramientas del agente."
   },
-  "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/preview.png?raw=true",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-communication/.learn/preview.png",
   "difficulty": "INTERMEDIATE",
   "duration": 3,
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -30,7 +30,19 @@
   },
   "delivery": {
     "instructions": "",
-    "formats": ["url"],
+    "formats": [
+      "url"
+    ],
     "regex": ""
-  }
+  },
+  "sharing": [
+    {
+      "en": "I just completed Milestone — Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #javascript #python #fastapi",
+      "es": "Acabo de completar Hito — Sistemas en Tiempo Real: Streaming de Chat por WebSocket (Parte 2 de 2) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #javascript #python #fastapi"
+    },
+    {
+      "en": "Built and shipped: Milestone — Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #javascript #python #fastapi",
+      "es": "Construido y publicado: Hito — Sistemas en Tiempo Real: Streaming de Chat por WebSocket (Parte 2 de 2). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #javascript #python #fastapi"
+    }
+  ]
 }

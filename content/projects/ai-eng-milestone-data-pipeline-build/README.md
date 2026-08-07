@@ -1,4 +1,4 @@
-# Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3)
+# Milestone — Implementing a Resilient Business Performance Pipeline (Part 2 of 3)
 
 <!-- hide -->
 

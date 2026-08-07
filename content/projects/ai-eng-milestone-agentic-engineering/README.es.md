@@ -1,4 +1,4 @@
-# Hito 8 — Memoria y Auto-mejora de Agentes (Parte 1 de 2)
+# Hito — Memoria y Auto-mejora de Agentes (Parte 1 de 2)
 
 <!-- hide -->
 

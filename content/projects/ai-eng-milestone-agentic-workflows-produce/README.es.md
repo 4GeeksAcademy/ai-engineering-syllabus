@@ -1,4 +1,4 @@
-# Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 3 de 3): Aprobación y Cierre del Documento
+# Hito — Flujo Agéntico de RFPs: Aprobación y Cierre (Parte 3 de 3)
 
 <!-- hide -->
 
@@ -54,7 +54,7 @@ Cuando los tickets de asignación por departamento de la Parte 2 están **totalm
 
 ## 🌱 Cómo Empezar el Proyecto
 
-Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a partir de donde entregaste la Parte 2. Si todavía no tienes tu fork, créalo desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir de donde entregaste la Parte 2. Si todavía no tienes tu fork, créalo desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Crea la rama `feature/rfp-approval-completion` a partir de tu rama de la Parte 2.
 2. Configura el checkpointer que corresponda a tu entorno (SQLite o Postgres — evita el checkpointer en memoria salvo en desarrollo local).
@@ -132,7 +132,7 @@ Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a part
 
 ## 📦 Cómo Entregar
 
-Esta es la Parte 3 de 3 del Hito 9. Entrégala con su propio Pull Request.
+Esta es la Parte 3 de 3 del Hito. Entrégala con su propio Pull Request.
 
 1. Haz commit y push de tu rama `feature/rfp-approval-completion`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo

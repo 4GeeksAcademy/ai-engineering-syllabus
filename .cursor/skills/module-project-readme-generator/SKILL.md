@@ -72,6 +72,15 @@ Before writing, internalize these rules:
 
 ---
 
+### Project Title (length — mandatory)
+
+- H1 title in **both** languages must be **≤ 80 characters** (count every character, including spaces, em dash, and any `(Part X of Y)` / `(Parte X de Y)` suffix).
+- Prefer short, capability-focused wording. Drop filler; keep the signal.
+- If the title also lands in `learn.json` (`title.en` / `title.es` / `title.us`), apply the same ≤80 limit there.
+- Before delivering, count characters on each language title and shorten if over the limit.
+
+---
+
 ### Hidden Metadata Block
 
 Place this immediately after the title, before the first `---`.
@@ -230,6 +239,7 @@ Each file must include a link to its counterpart, **written in the target langua
 - [ ] Technology constraints marked with ⚠️ IMPORTANT
 - [ ] Difficulty matches the module's position in the syllabus
 - [ ] All required sections present and in correct order
+- [ ] Project title ≤ 80 characters in both languages (H1 and any synced `learn.json` title)
 - [ ] Section emojis consistent: 🎯 🌱 💻 ✅ 📦
 - [ ] All checklists use `- [ ]` format
 - [ ] Nested blockquotes used only for client-sourced or attributed requirements

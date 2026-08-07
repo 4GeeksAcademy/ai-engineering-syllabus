@@ -1,4 +1,4 @@
-# ⚛️ Milestone 3 — Talent Pipeline Tracker
+# ⚛️ Milestone — Talent Pipeline Tracker
 
 <!-- hide -->
 

@@ -1,4 +1,4 @@
-# Milestone 9 — Agentic Workflow Generation (Part 3 of 3): Approval & Document Completion
+# Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)
 
 <!-- hide -->
 
@@ -54,7 +54,7 @@ Once department assignment tickets from Part 2 are **fully approved**, an **ulti
 
 ## 🌱 How to Start the Project
 
-Continue on your Milestone 9 branch in your company's monorepo fork, picking up from where you submitted Part 2. If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Continue on your Milestone branch in your company's monorepo fork, picking up from where you submitted Part 2. If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Create the `feature/rfp-approval-completion` branch from your Part 2 branch.
 2. Set up the checkpointer that fits your environment (SQLite or Postgres — avoid the in-memory checkpointer outside of local development).
@@ -132,7 +132,7 @@ Continue on your Milestone 9 branch in your company's monorepo fork, picking up 
 
 ## 📦 How to Submit
 
-This is Part 3 of 3 of Milestone 9. Submit it with its own Pull Request.
+This is Part 3 of 3 of Milestone. Submit it with its own Pull Request.
 
 1. Commit and push your `feature/rfp-approval-completion` branch
 2. Open a Pull Request describing what you implemented and how to test it

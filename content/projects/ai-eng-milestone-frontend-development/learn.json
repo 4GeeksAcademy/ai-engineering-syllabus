@@ -1,8 +1,8 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 3 — Talent Pipeline Tracker",
-    "es": "Hito 3 — Talent Pipeline Tracker"
+    "en": "Milestone — Talent Pipeline Tracker",
+    "es": "Hito — Talent Pipeline Tracker"
   },
   "status": "published",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -52,12 +52,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-frontend-development/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 3 — Talent Pipeline Tracker with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
-      "es": "Acabo de completar Hito 3 — Talent Pipeline Tracker con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
+      "en": "I just completed Milestone — Talent Pipeline Tracker with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
+      "es": "Acabo de completar Hito — Talent Pipeline Tracker con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
     },
     {
-      "en": "Built and shipped: Milestone 3 — Talent Pipeline Tracker. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
-      "es": "Construido y publicado: Hito 3 — Talent Pipeline Tracker. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
+      "en": "Built and shipped: Milestone — Talent Pipeline Tracker. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript",
+      "es": "Construido y publicado: Hito — Talent Pipeline Tracker. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-frontend-development #AIEngineering #LearnPack #4GeeksAcademy #nextjs #react #typescript"
     }
   ],
   "telemetry": {

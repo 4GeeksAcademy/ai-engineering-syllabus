@@ -1,4 +1,4 @@
-# Hito 5 — Backend: Gestión de Inventario con ORM y Doble Base de Datos
+# Hito — Backend: Gestión de Inventario con ORM y Doble Base de Datos
 
 <!-- hide -->
 
@@ -38,7 +38,7 @@ Antes de escribir cualquier consulta, debes conocer el **problema N+1**. Si carg
 ### Brief de tu tech lead
 
 > > **De:** Tech Lead
-> > **Asunto:** Hito 5 — arquitectura de doble base de datos + ORM de inventario
+> > **Asunto:** Hito — arquitectura de doble base de datos + ORM de inventario
 > >
 > > El **PRD** está listo. Esto es lo que debe hacer el sistema:
 > >

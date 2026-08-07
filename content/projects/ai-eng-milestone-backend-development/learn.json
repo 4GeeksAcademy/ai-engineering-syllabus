@@ -1,8 +1,8 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 5 — Backend: Inventory Management with ORM & Dual Database",
-    "es": "Hito 5 — Backend: Gestión de Inventario con ORM y Doble Base de Datos"
+    "en": "Milestone — Backend: Inventory Management with ORM & Dual Database",
+    "es": "Hito — Backend: Gestión de Inventario con ORM y Doble Base de Datos"
   },
   "description": {
     "en": "Extend your FastAPI monorepo with a dual-database inventory layer: TinyDB for auth, Supabase + SQLModel for products and traceable inbound/outbound orders under /inventory.",
@@ -35,12 +35,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-backend-development/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 5 — Backend: Inventory Management with ORM & Dual Database with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
-      "es": "Acabo de completar Hito 5 — Backend: Gestión de Inventario con ORM y Doble Base de Datos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+      "en": "I just completed Milestone — Backend: Inventory Management with ORM & Dual Database with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Hito — Backend: Gestión de Inventario con ORM y Doble Base de Datos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
     },
     {
-      "en": "Built and shipped: Milestone 5 — Backend: Inventory Management with ORM & Dual Database. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
-      "es": "Construido y publicado: Hito 5 — Backend: Gestión de Inventario con ORM y Doble Base de Datos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+      "en": "Built and shipped: Milestone — Backend: Inventory Management with ORM & Dual Database. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Hito — Backend: Gestión de Inventario con ORM y Doble Base de Datos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-backend-development #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
     }
   ]
 }

@@ -1,4 +1,4 @@
-# Hito 6 — Diseño de un Pipeline de Desempeño de Negocio (1/3)
+# Hito — Diseño de un Pipeline de Desempeño de Negocio (Parte 1 de 3)
 
 <!-- hide -->
 

@@ -1,33 +1,43 @@
 {
-    "slug": "ai-eng-milestone-choose-company-es",
-    "title": {
-        "es": "Hito 0 \u2014 Elige tu empresa",
-        "us": "Milestone 0 \u2014 Choose Your Company"
-    },
-    "description": {
-        "es": "Elige la empresa que automatizar\u00e1s con AI Engineering y registra tu decisi\u00f3n en company-choice.md despu\u00e9s de leer los perfiles proporcionados CONTEXT-company.",
-        "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles."
-    },
-    "preview": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/preview.png?raw=true",
-    "difficulty": "BEGINNER",
-    "duration": 1,
-    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-    "gitpod": true,
-    "technologies": [
-        "ai-engineering",
-        "company-research",
-        "writing"
+  "slug": "ai-eng-milestone-choose-company-es",
+  "title": {
+    "es": "Hito — Elige tu empresa",
+    "us": "Milestone — Choose Your Company"
+  },
+  "description": {
+    "es": "Elige la empresa que automatizarás con AI Engineering y registra tu decisión en company-choice.md después de leer los perfiles proporcionados CONTEXT-company.",
+    "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles."
+  },
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-choose-company/.learn/preview.png",
+  "difficulty": "BEGINNER",
+  "duration": 1,
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "gitpod": true,
+  "technologies": [
+    "ai-engineering",
+    "company-research",
+    "writing"
+  ],
+  "projectType": "project",
+  "solution": {
+    "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md",
+    "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md"
+  },
+  "delivery": {
+    "instructions": "",
+    "formats": [
+      "url"
     ],
-    "projectType": "project",
-    "solution": {
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md",
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-choose-company/.learn/solution/README.md"
+    "regex": ""
+  },
+  "sharing": [
+    {
+      "en": "I just completed Milestone — Choose Your Company with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company-es #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing",
+      "es": "Acabo de completar Hito — Elige tu empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company-es #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing"
     },
-    "delivery": {
-        "instructions": "",
-        "formats": [
-            "url"
-        ],
-        "regex": ""
+    {
+      "en": "Built and shipped: Milestone — Choose Your Company. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company-es #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing",
+      "es": "Construido y publicado: Hito — Elige tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-choose-company-es #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #companyresearch #writing"
     }
+  ]
 }

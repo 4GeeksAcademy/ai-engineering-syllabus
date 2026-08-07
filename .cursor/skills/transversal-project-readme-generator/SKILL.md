@@ -130,7 +130,7 @@ How to Start must include a create-branch step. Same English branch/PR strings i
 Follow this structure exactly, in this order:
 
 ```markdown
-1. Milestone Title (e.g., "Milestone 6 — Telemetry & Data Pipelines")
+1. Milestone Title (e.g., "Milestone — Telemetry & Data Pipelines")
 2. Hidden metadata block
 3. --- separator
 4. The Challenge (🎯)
@@ -143,6 +143,13 @@ Follow this structure exactly, in this order:
 8. How to Submit (📦)
 9. --- separator + Footer
 ```
+
+### Milestone Title (length — mandatory)
+
+- H1 title in **both** languages must be **≤ 80 characters** (count every character, including spaces, em dash, and any `(Part X of Y)` / `(Parte X de Y)` suffix).
+- Prefer short, capability-focused wording. Put Part refs at the **end** of the title.
+- If the title also lands in `learn.json` (`title.en` / `title.es` / `title.us`), apply the same ≤80 limit there.
+- Before delivering, count characters on each language title and shorten if over the limit.
 
 ### Hidden metadata block template
 
@@ -221,6 +228,7 @@ Each file must link to its counterpart, written in the language of the target do
 - [ ] Prior milestone continuity sentence present (if not milestone 1)
 - [ ] Complementary knowledge subsection present if the milestone requires context not in lessons
 - [ ] All checklist items use `- [ ]` format
+- [ ] Milestone title ≤ 80 characters in both languages (H1 and any synced `learn.json` title)
 - [ ] Evaluation criteria are observable and measurable
 - [ ] Primary language document generated and delivered for review before translation begins
 - [ ] Translation generated only after explicit approval of the primary document

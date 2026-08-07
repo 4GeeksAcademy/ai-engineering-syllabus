@@ -1,8 +1,8 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 2 — Building Scripts to Automate Tasks",
-    "es": "Hito 2 — Desarrollando scripts para automatizar tareas"
+    "en": "Milestone — Building Scripts to Automate Tasks",
+    "es": "Hito — Desarrollando scripts para automatizar tareas"
   },
   "status": "published",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -44,12 +44,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-coding-fundamentals/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 2 — Building Scripts to Automate Tasks with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",
-      "es": "Acabo de completar Hito 2 — Desarrollando scripts para automatizar tareas con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode"
+      "en": "I just completed Milestone — Building Scripts to Automate Tasks with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",
+      "es": "Acabo de completar Hito — Desarrollando scripts para automatizar tareas con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode"
     },
     {
-      "en": "Built and shipped: Milestone 2 — Building Scripts to Automate Tasks. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",
-      "es": "Construido y publicado: Hito 2 — Desarrollando scripts para automatizar tareas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode"
+      "en": "Built and shipped: Milestone — Building Scripts to Automate Tasks. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode",
+      "es": "Construido y publicado: Hito — Desarrollando scripts para automatizar tareas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-coding-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #typescript #algorithms #cleancode"
     }
   ],
   "telemetry": {

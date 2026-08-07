@@ -1,4 +1,4 @@
-# Hito 1 — Sitio Web Público de tu Empresa
+# Hito — Sitio Web Público de tu Empresa
 
 <!-- hide -->
 

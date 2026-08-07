@@ -1,4 +1,4 @@
-# Milestone 0 — Choose Your Company
+# Milestone — Choose Your Company
 
 <!-- hide -->
 
@@ -80,7 +80,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 1. Make sure your `company-choice.md` is committed and pushed to your repository.
 2. Copy the URL of your repository on GitHub.
-3. Submit that URL through the 4Geeks platform assignment for Milestone 0.
+3. Submit that URL through the 4Geeks platform assignment for Milestone.
 
 Your submission will be reviewed by your instructor before Week 1 begins. If anything is missing or incomplete, you will be asked to resubmit before the course starts.
 

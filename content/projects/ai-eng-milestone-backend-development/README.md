@@ -1,4 +1,4 @@
-# Milestone 5 — Backend: Inventory Management with ORM & Dual Database
+# Milestone — Backend: Inventory Management with ORM & Dual Database
 
 <!-- hide -->
 
@@ -38,7 +38,7 @@ One pattern you must be aware of before writing any query: the **N+1 problem**. 
 ### Brief from your tech lead
 
 > > **From:** Tech Lead
-> > **Subject:** Milestone 5 — dual database architecture + inventory ORM
+> > **Subject:** Milestone — dual database architecture + inventory ORM
 > >
 > > The **PRD** is ready. Here is what the system must do:
 > >

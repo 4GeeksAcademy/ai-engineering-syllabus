@@ -1,4 +1,4 @@
-# Hito 7 — RAG y Base de Conocimiento
+# Hito — RAG y Base de Conocimiento
 
 <!-- hide -->
 

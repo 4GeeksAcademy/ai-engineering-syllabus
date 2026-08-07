@@ -1,4 +1,4 @@
-# Milestone 0 — Elige tu empresa
+# Hito — Elige tu empresa
 
 <!-- hide -->
 
@@ -80,7 +80,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 1. Asegúrate de que tu `company-choice.md` está commiteado y pusheado a tu repositorio.
 2. Copia la URL de tu repositorio en GitHub.
-3. Entrega esa URL a través de la tarea del Milestone 0 en la plataforma de 4Geeks.
+3. Entrega esa URL a través de la tarea del Milestone en la plataforma de 4Geeks.
 
 Tu entrega será revisada por tu instructor antes de que comience la Semana 1. Si falta algo o está incompleto, se te pedirá que vuelvas a entregar antes de que empiece el curso.
 

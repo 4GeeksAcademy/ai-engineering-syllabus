@@ -1,4 +1,4 @@
-# Milestone 4 — AI-driven Engineering
+# Milestone — AI-driven Engineering
 
 <!-- hide -->
 
@@ -37,7 +37,7 @@ Your tech lead has had a ticket sitting on the board for two weeks:
 >
 > Finally, I want us to formalise at least one skill that captures a recurring task in our workflow — something the agent can execute consistently and that we can reuse in upcoming milestones. It needs explicit acceptance criteria: if it can't be verified, it doesn't count.
 >
-> As for the app, the public website needs to live in `./uis/website` as a Next.js app — not as a copy, but as an improved version with reusable components. In parallel, create `./uis/backoffice` to host all internal company logic with its own layout and entry view, and integrate the TypeScript script from the business logic module (Milestone 2) there so we have something visible from day one. Any APIs must be created under `/services`.
+> As for the app, the public website needs to live in `./uis/website` as a Next.js app — not as a copy, but as an improved version with reusable components. In parallel, create `./uis/backoffice` to host all internal company logic with its own layout and entry view, and integrate the TypeScript script from the business logic module (Milestone) there so we have something visible from day one. Any APIs must be created under `/services`.
 >
 > When you're done, open a PR and let me know.
 >
@@ -105,14 +105,14 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
 
 - [ ] Initialise the frontend structure under `/uis` inside the monorepo following the template repository structure
 - [ ] Create the public web project in `./uis/website` (Next.js + TypeScript)
-- [ ] Migrate and improve the corporate website from Milestone 1 in `./uis/website` as the home route (`/`):
-  - [ ] All sections from Milestone 1 present and complete
+- [ ] Migrate and improve the corporate website from Milestone in `./uis/website` as the home route (`/`):
+  - [ ] All sections from Milestone present and complete
   - [ ] Implemented with reusable React components and correct TypeScript typing
-  - [ ] Styles consistent with the visual identity established in Milestone 1
+  - [ ] Styles consistent with the visual identity established in Milestone
 - [ ] Create the internal app in `./uis/backoffice`:
   - [ ] Route `/` in `./uis/backoffice` accessible with a basic entry view (welcome screen or empty dashboard structure)
   - [ ] Its own layout, separate from the public corporate website layout in `./uis/website`
-- [ ] Integrate the TypeScript script from the business logic module (Milestone 2) inside `./uis/backoffice`:
+- [ ] Integrate the TypeScript script from the business logic module (Milestone) inside `./uis/backoffice`:
   - [ ] Code is imported from its original location in the monorepo — not copied
   - [ ] The output of the business logic is visible in the interface (not just in the console)
 
@@ -127,7 +127,7 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
 - [ ] The public web in `./uis/website` starts without errors with `npm run dev`
 - [ ] The `/` route in `./uis/website` renders the complete corporate website with TypeScript components
 - [ ] `./uis/backoffice` exists, has its own layout, and renders without errors
-- [ ] The TypeScript script (Milestone 2) is integrated in `./uis/backoffice` and produces visible output on screen
+- [ ] The TypeScript script (Milestone) is integrated in `./uis/backoffice` and produces visible output on screen
 - [ ] No business logic code is duplicated — it is imported from its original location in the monorepo
 
 ---
@@ -139,7 +139,7 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
 3. Open a Pull Request targeting the `main` branch of your fork
 4. In the PR description include:
    - Screenshot of the corporate website rendered from `./uis/website`
-   - Screenshot of `./uis/backoffice` with the TypeScript script (Milestone 2) visible on screen
+   - Screenshot of `./uis/backoffice` with the TypeScript script (Milestone) visible on screen
    - Direct link to your `AGENTS.md`
 5. Submit the link to your PR on the 4Geeks campus
 

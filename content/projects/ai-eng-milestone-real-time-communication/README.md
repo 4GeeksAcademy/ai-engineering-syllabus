@@ -1,4 +1,4 @@
-# Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming
+# Milestone — Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2)
 
 <!-- hide -->
 
@@ -35,7 +35,7 @@ Some requirements are left implicit, and you'll need to identify them carefully:
 
 ## 🌱 How to Start the Project
 
-Keep working on the fork of your company's monorepo that you've been using since Milestone 1 (and Part 1 of this milestone). If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Keep working on the fork of your company's monorepo that you've been using since Milestone (and Part 1 of this milestone). If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Create a new branch from your main branch: `feature/websocket-chat`.
 2. Locate the endpoint or function that currently invokes your support agent with a traditional request/response pattern — extend that path; do not create a parallel app or a delivery folder.
@@ -97,7 +97,7 @@ Before considering your implementation done, think through and document your ans
 
 ## 📦 How to Submit This Project
 
-This is Part 2 of 2 of Milestone 10. Submit it with its own Pull Request against your main branch — independent from Part 1.
+This is Part 2 of 2 of Milestone. Submit it with its own Pull Request against your main branch — independent from Part 1.
 
 1. Commit and push your `feature/websocket-chat` branch (code lives in `services/`, `uis/`, and `tests/` — do **not** create a separate delivery folder)
 2. Open a Pull Request describing what you implemented and how to test token streaming and interrupt

@@ -1,4 +1,4 @@
-# Milestone 9 — Agentic Workflow Generation (Part 1 of 3): RFP Intake & Routing
+# Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3)
 
 <!-- hide -->
 
@@ -67,7 +67,7 @@ This part of the workflow starts with rapid triage (is this an RFP / complex eno
 
 ## 🌱 How to Start the Project
 
-Keep working on the fork of your company's monorepo that you've been using since Milestone 1. If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Keep working on the fork of your company's monorepo that you've been using since Milestone. If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Create a new branch from your main branch: `feature/rfp-intake`.
 2. Install any new dependencies with `uv add` (for example, `uv add markitdown` and `uv add py-readability-metrics`) — never with `pip install` or `pipenv`.
@@ -152,7 +152,7 @@ Keep working on the fork of your company's monorepo that you've been using since
 
 ## 📦 How to Submit
 
-This is Part 1 of 3 of Milestone 9. Submit it with its own Pull Request against your main branch — don't wait until Parts 2 and 3 are ready.
+This is Part 1 of 3 of Milestone. Submit it with its own Pull Request against your main branch — don't wait until Parts 2 and 3 are ready.
 
 1. Commit and push your `feature/rfp-intake` branch
 2. Open a Pull Request describing what you implemented and how to test it

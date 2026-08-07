@@ -1,4 +1,4 @@
-# Milestone 6 — Designing a Business Performance Data Pipeline (1/3)
+# Milestone — Designing a Business Performance Data Pipeline (Part 1 of 3)
 
 <!-- hide -->
 

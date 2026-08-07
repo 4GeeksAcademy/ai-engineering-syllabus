@@ -1,4 +1,4 @@
-# Milestone 1 — Your Company's Public Website
+# Milestone — Your Company's Public Website
 
 <!-- hide -->
 

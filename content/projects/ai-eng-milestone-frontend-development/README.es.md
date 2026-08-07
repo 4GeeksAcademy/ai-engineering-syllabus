@@ -1,4 +1,4 @@
-# ⚛️ Hito 3 — Talent Pipeline Tracker
+# ⚛️ Hito — Talent Pipeline Tracker
 
 <!-- hide -->
 

@@ -1,4 +1,4 @@
-# Milestone 6 — Business Performance Pipeline Enhancement: Subflows and Tests (3/3)
+# Milestone — Pipeline Enhancement: Subflows and Tests (Part 3 of 3)
 
 <!-- hide -->
 
@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Make sure you have completed **Part 2 of Milestone 6** — this project builds directly on `data/pipelines/pipeline.py` implemented in the previous session. Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** open — KPI names, schema, and stakeholder audience come from there.
+**Before you start**: Make sure you have completed **Part 2 of this Milestone** — this project builds directly on `data/pipelines/pipeline.py` implemented in the previous session. Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** open — KPI names, schema, and stakeholder audience come from there.
 
 ---
 
@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-This is **Part 3 of Milestone 6 — Telemetry and Data Pipelines**. Your business performance pipeline already works: it reads from `telemetry_events` and produces the KPIs leadership asked for — the ones named in your `CONTEXT-company.md` — without touching the existing technical telemetry system. Today you bring it to production level: you refactor the main flow into reusable subflows, add unit tests that validate the behaviour of transformation tasks, ensure the pipeline runs directly from the command line, and — this is the part leadership actually cares about — put those KPIs in front of a dashboard someone can read.
+This is **Part 3 of this Milestone — Telemetry and Data Pipelines**. Your business performance pipeline already works: it reads from `telemetry_events` and produces the KPIs leadership asked for — the ones named in your `CONTEXT-company.md` — without touching the existing technical telemetry system. Today you bring it to production level: you refactor the main flow into reusable subflows, add unit tests that validate the behaviour of transformation tasks, ensure the pipeline runs directly from the command line, and — this is the part leadership actually cares about — put those KPIs in front of a dashboard someone can read.
 
 > > **Enhancement Ticket — Pipeline to Production**
 > >

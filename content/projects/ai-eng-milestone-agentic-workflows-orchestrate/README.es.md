@@ -1,4 +1,4 @@
-# Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 1 de 3): Recepción y Enrutamiento de RFPs
+# Hito — Flujo Agéntico de RFPs: Recepción y Enrutamiento (Parte 1 de 3)
 
 <!-- hide -->
 
@@ -67,7 +67,7 @@ Esta parte del flujo empieza con un triage rápido (¿es una RFP / lo bastante c
 
 ## 🌱 Cómo Empezar el Proyecto
 
-Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usando desde el Hito 1. Si por algún motivo todavía no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usando desde el Hito. Si por algún motivo todavía no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Crea una rama nueva a partir de tu rama principal: `feature/rfp-intake`.
 2. Instala las dependencias nuevas que necesites con `uv add` (por ejemplo, `uv add markitdown` y `uv add py-readability-metrics`) — nunca con `pip install` ni `pipenv`.
@@ -152,7 +152,7 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 
 ## 📦 Cómo Entregar
 
-Esta es la Parte 1 de 3 del Hito 9. Entrégala con su propio Pull Request contra tu rama principal — no esperes a tener las partes 2 y 3 listas.
+Esta es la Parte 1 de 3 del Hito. Entrégala con su propio Pull Request contra tu rama principal — no esperes a tener las partes 2 y 3 listas.
 
 1. Haz commit y push de tu rama `feature/rfp-intake`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo

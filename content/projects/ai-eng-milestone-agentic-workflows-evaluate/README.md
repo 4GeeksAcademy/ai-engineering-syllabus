@@ -1,4 +1,4 @@
-# Milestone 9 — Agentic Workflow Generation (Part 2 of 3): RFP Response Generation
+# Milestone — Agentic RFP Workflow: Response Generation (Part 2 of 3)
 
 <!-- hide -->
 
@@ -51,7 +51,7 @@ This stretch of the workflow takes the **defined workstream structure** from Par
 
 ## 🌱 How to Start the Project
 
-Continue on the same Milestone 9 working branch in your monorepo fork (or create `feature/rfp-response-generation` from the branch where you submitted Part 1). If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Continue on the same Milestone working branch in your monorepo fork (or create `feature/rfp-response-generation` from the branch where you submitted Part 1). If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Build on top of the classification and routing flow you built in Part 1 — don't rewrite it from scratch.
 2. Install any new dependencies with `uv add`.
@@ -128,7 +128,7 @@ EvaluationResult:
 
 ## 📦 How to Submit
 
-This is Part 2 of 3 of Milestone 9. Submit it with its own Pull Request — don't wait until Part 3 is ready.
+This is Part 2 of 3 of Milestone. Submit it with its own Pull Request — don't wait until Part 3 is ready.
 
 1. Commit and push your `feature/rfp-response-generation` branch
 2. Open a Pull Request describing what you implemented and how to test it
