@@ -70,7 +70,7 @@ El flujo tiene tres pasos y dos momentos separados en el tiempo:
 
 ## 🌱 Cómo Iniciar el Proyecto
 
-Este proyecto continúa dentro de tu monorepo existente. Abre una nueva rama: `git checkout -b feature/password-reset`.
+Este proyecto continúa dentro de tu monorepo existente. Abre una nueva rama: `git switch -c feature/password-reset`.
 
 Antes de empezar, regístrate en uno de los servicios de email listados arriba y obtén una API key. Guárdala en tu archivo `.env`. Asegúrate de que `.env` está en tu `.gitignore` — nunca hagas commit de API keys.
 

@@ -56,7 +56,7 @@ Once department assignment tickets from Part 2 are **fully approved**, an **ulti
 
 Continue on your Milestone 9 branch in your company's monorepo fork, picking up from where you submitted Part 2. If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Create the `feature/milestone-9-part-3-approval-completion` branch from your Part 2 branch.
+1. Create the `feature/rfp-approval-completion` branch from your Part 2 branch.
 2. Set up the checkpointer that fits your environment (SQLite or Postgres — avoid the in-memory checkpointer outside of local development).
 3. Install any new dependencies with `uv add`.
 4. Review your `CONTEXT-company.md` for department approvers, conflict triggers / fixed arbiter, and final document format.
@@ -134,7 +134,7 @@ Continue on your Milestone 9 branch in your company's monorepo fork, picking up 
 
 This is Part 3 of 3 of Milestone 9. Submit it with its own Pull Request.
 
-1. Commit and push your `feature/milestone-9-part-3-approval-completion` branch
+1. Commit and push your `feature/rfp-approval-completion` branch
 2. Open a Pull Request describing what you implemented and how to test it
 3. Include a complete example in the PR description: the input RFP, simulated approval from each department, and the generated final document — **and** link the reproducible script/integration test that drives those simulated approvals
 4. Request a review from your tech lead

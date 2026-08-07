@@ -40,7 +40,7 @@ NIST organizes cybersecurity management into six functions: **Govern** (policy a
 
 ## 🌱 How to Start the Project
 
-1. `git pull` your monorepo fork and create a new branch for this work.
+1. `git pull` your monorepo fork and create a new branch for this work: `git switch -c feature/nist-security-practices`.
 2. Read your `CONTEXT-company.md` to identify the regulatory framework that applies to your company and the AI systems you've already built in prior milestones.
 3. Review `.env.example` and confirm how credentials and API keys are currently managed.
 4. Before touching any code, sketch or list (in your own report's README) every point where a language model receives external input — from a user, from a document in your semantic knowledge base, or from an MCP tool.

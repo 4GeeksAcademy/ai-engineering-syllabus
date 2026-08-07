@@ -51,7 +51,7 @@ Este tramo del flujo toma la **estructura de workstreams definida** en la Parte 
 
 ## 🌱 Cómo Empezar el Proyecto
 
-Continúa sobre la misma rama de trabajo del Hito 9 en tu fork del monorepo (o crea `feature/hito-9-parte-2-generacion-respuestas` a partir de la rama donde entregaste la Parte 1). Si aún no tienes tu fork, créalo desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Continúa sobre la misma rama de trabajo del Hito 9 en tu fork del monorepo (o crea `feature/rfp-response-generation` a partir de la rama donde entregaste la Parte 1). Si aún no tienes tu fork, créalo desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Parte del flujo de clasificación y enrutamiento que construiste en la Parte 1 — no lo reescribas desde cero.
 2. Instala cualquier dependencia nueva con `uv add`.
@@ -130,7 +130,7 @@ EvaluationResult:
 
 Esta es la Parte 2 de 3 del Hito 9. Entrégala con su propio Pull Request — no esperes a tener la Parte 3 lista.
 
-1. Haz commit y push de tu rama `feature/hito-9-parte-2-generacion-respuestas`
+1. Haz commit y push de tu rama `feature/rfp-response-generation`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo
 3. Incluye en la descripción del PR un ejemplo de sección generada: uno que pase evaluación y uno que falle
 4. Solicita revisión a tu tech lead

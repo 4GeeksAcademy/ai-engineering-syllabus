@@ -47,7 +47,7 @@ La memoria de un agente no es un solo componente — se organiza por alcance tem
 2. Si por alguna razón no tienes fork aún (por ejemplo, te uniste tarde o lo perdiste), haz fork del [monorepo de referencia](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) antes de continuar.
 
 ```bash
-git checkout -b w23-d67-agent-memory
+git switch -c feature/agent-memory
 ```
 
 3. Sigue trabajando sobre el **mismo** agente LangGraph que ya consume el MCP Server — este proyecto no reemplaza esa base, la extiende.
@@ -121,7 +121,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 
 Sigue el flujo estándar de Pull Request contra tu propio fork del monorepo:
 
-- [ ] Abre un PR desde `w23-d67-agent-memory` hacia tu rama principal.
+- [ ] Abre un PR desde `feature/agent-memory` hacia tu rama principal.
 - [ ] Incluye en la descripción del PR la justificación de tu arquitectura de memoria y las respuestas a las decisiones de diseño.
 - [ ] Adjunta o describe la evidencia de los dos ciclos completos (aprobado y rechazado).
 

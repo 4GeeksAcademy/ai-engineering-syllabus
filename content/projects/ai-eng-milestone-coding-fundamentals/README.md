@@ -102,10 +102,10 @@ At minimum, your project must include a clear command to validate or execute the
    - Your company's specific validation rules
    - The reports you must generate
 
-4. Create a branch for this milestone:
+4. Create a branch for this work:
 
    ```bash
-   git checkout -b milestone-2-programming-fundamentals
+   git switch -c feature/domain-models
    ```
 
 5. Organize your code in the proposed folder structure and start implementing the functions.
@@ -198,7 +198,7 @@ npx http-server . -p 3000 -a 0.0.0.0
 
 ## 📦 How to Submit
 
-1. Make sure all your changes are in the `milestone-2-programming-fundamentals` branch
+1. Make sure all your changes are in the `feature/domain-models` branch
 
 2. Commit your changes with descriptive messages. Example:
 
@@ -210,7 +210,7 @@ npx http-server . -p 3000 -a 0.0.0.0
 3. Push your branch to the remote repository:
 
    ```bash
-   git push origin milestone-2-programming-fundamentals
+   git push origin feature/domain-models
    ```
 
 4. Open a Pull Request from your branch to `main` in your repository

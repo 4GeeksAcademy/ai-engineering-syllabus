@@ -205,7 +205,7 @@ qdrant:
 - [ ] Endpoint returns model-generated `answer` only
 - [ ] UI demonstrates one real company question
 - [ ] `pytest tests/pipelines/test_rag.py` passes
-- [ ] PR title `[W18D51] RAG Knowledge Base` with example Q&A + screenshot + collection stats
+- [ ] PR title `feat: rag knowledge base` with example Q&A + screenshot + collection stats
 
 ---
 

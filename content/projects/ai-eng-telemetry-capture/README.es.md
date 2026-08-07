@@ -124,7 +124,7 @@ El servicio de captura del frontend no dispara una llamada HTTP por cada evento 
 ## 📦 Cómo Entregar
 
 1. Asegúrate de que los cambios estén en tu copia: endpoint stub en `services/` y `TelemetryService` + instrumentación en `uis/backoffice/`.
-2. Crea un Pull Request contra la rama principal del monorepo con el título: `[W16D47] Telemetry Frontend`.
+2. Crea un Pull Request contra la rama principal del monorepo con el título: `feat: telemetry event capture`.
 3. En la descripción del PR, incluye:
    - La lista de eventos instrumentados, marcando cuáles son obligatorios y cuáles identificados por ti, y qué componente o hook captura cada uno
    - Una captura de DevTools mostrando un lote de eventos llegando al stub con respuesta 200

@@ -35,7 +35,7 @@ Some requirements are left implicit in this brief, and you'll need to identify t
 
 Keep working on the fork of your company's monorepo that you've been using since Milestone 1. If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Create a new branch from your main branch: `feature/milestone-10-part-1-sse-notifications`.
+1. Create a new branch from your main branch: `feature/sse-notifications`.
 2. Locate the service and dashboard view that currently depend on polling — you will extend those paths, not create a parallel app or a delivery folder.
 3. Check your `CONTEXT-company.md` to confirm how an RFP ticket is represented (fields, initial status) — that defines what the real-time notification must carry.
 4. Add any new dependencies with `uv add` (backend) / your UI package manager as already used in the monorepo — never with `pip install` or `pipenv`.
@@ -108,7 +108,7 @@ Before considering your implementation done, think through and document your ans
 
 This is Part 1 of 2 of Milestone 10. Submit it with its own Pull Request against your main branch — don't wait until Part 2 is ready.
 
-1. Commit and push your `feature/milestone-10-part-1-sse-notifications` branch (code lives in `services/`, `uis/`, and `tests/` — do **not** create a separate delivery folder)
+1. Commit and push your `feature/sse-notifications` branch (code lives in `services/`, `uis/`, and `tests/` — do **not** create a separate delivery folder)
 2. Open a Pull Request describing what you implemented and how to test the SSE stream
 3. Include your answers to the Design Questions in the PR description
 4. Request a review from your tech lead

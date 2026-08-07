@@ -50,7 +50,7 @@ Once the API returns a token at login, the frontend's job is: store it, send it,
 
 ## 🌱 How to Start the Project
 
-This project continues inside your existing monorepo. Work on the same branch or open a new one: `git checkout -b feature/auth-frontend`.
+This project continues inside your existing monorepo. Work on the same branch or open a new one: `git switch -c feature/auth-frontend`.
 
 Make sure your API from the previous delivery is running and reachable from the frontend before you start.
 

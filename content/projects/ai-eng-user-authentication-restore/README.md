@@ -70,7 +70,7 @@ The flow has three steps and two separate moments in time:
 
 ## 🌱 How to Start the Project
 
-This project continues inside your existing monorepo. Open a new branch: `git checkout -b feature/password-reset`.
+This project continues inside your existing monorepo. Open a new branch: `git switch -c feature/password-reset`.
 
 Before you start, sign up for one of the email services listed above and obtain an API key. Store it in your `.env` file. Make sure `.env` is in your `.gitignore` — never commit API keys.
 

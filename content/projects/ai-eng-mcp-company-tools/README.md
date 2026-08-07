@@ -46,11 +46,12 @@ As part of the challenge, your implementation must resolve — without being tol
 ## 🌱 How to Start the Project
 
 1. Go to your copy of the [company monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (if you don't have your own fork yet, create one before continuing).
-2. Work on top of the Incidents Manager backend and the inventory module you already built in previous milestones — the MCP Server relies on those services, it doesn't replace them.
-3. Install the dependencies you need with `uv add` (e.g., `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — never use `pip install` directly in this monorepo.
-4. Create the MCP server inside the monorepo's `mcps/` folder (not under `services/`).
-5. Wire OAuth with [MCP Auth](https://mcp-auth.dev/) (Python package `mcpauth`) — plug-and-play OAuth 2.1 / OIDC for MCP resource servers. Do **not** rely on FastMCP's built-in auth helpers; use MCP Auth for Protected Resource Metadata, bearer JWT validation, and scopes.
-6. Locate the agent node that currently calls the Incidents Manager directly — that's the point you'll migrate so it consumes the new MCP Server as a client instead of calling the API outside of it.
+2. Create a new branch: `git switch -c feature/mcp-oauth-tools`.
+3. Work on top of the Incidents Manager backend and the inventory module you already built in previous milestones — the MCP Server relies on those services, it doesn't replace them.
+4. Install the dependencies you need with `uv add` (e.g., `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — never use `pip install` directly in this monorepo.
+5. Create the MCP server inside the monorepo's `mcps/` folder (not under `services/`).
+6. Wire OAuth with [MCP Auth](https://mcp-auth.dev/) (Python package `mcpauth`) — plug-and-play OAuth 2.1 / OIDC for MCP resource servers. Do **not** rely on FastMCP's built-in auth helpers; use MCP Auth for Protected Resource Metadata, bearer JWT validation, and scopes.
+7. Locate the agent node that currently calls the Incidents Manager directly — that's the point you'll migrate so it consumes the new MCP Server as a client instead of calling the API outside of it.
 
 ---
 

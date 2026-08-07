@@ -37,7 +37,7 @@ Algunos requisitos quedan implícitos y tendrás que identificarlos con cuidado:
 
 Sigue trabajando en el fork del monorepo de tu empresa que has usado desde el Hito 1 (y la Parte 1 de este hito). Si por alguna razón aún no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Crea una rama nueva desde tu rama principal: `feature/milestone-10-part-2-websocket-chat`.
+1. Crea una rama nueva desde tu rama principal: `feature/websocket-chat`.
 2. Ubica el endpoint o función que hoy invoca a tu agente de soporte con un patrón de petición/respuesta tradicional — extiende esa ruta; no crees una app paralela ni una carpeta de entrega.
 3. Revisa tu `CONTEXT-company.md` (en `10-realtime/communication/`) para confirmar qué agente vas a conectar y los nombres de sesión / eventos de esta parte — reutiliza la _disciplina_ de nombres de la Parte 1, no los esquemas RFP/SSE de la Parte 1.
 4. Repasa cómo tu agente expone el streaming (modos `messages`, `values`, `updates` o `custom` de LangGraph) antes de decidir cuál necesitas para transmitir tokens.
@@ -99,7 +99,7 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 
 Esta es la Parte 2 de 2 del Hito 10. Entrégala con su propio Pull Request contra tu rama principal — independiente de la Parte 1.
 
-1. Haz commit y push de tu rama `feature/milestone-10-part-2-websocket-chat` (el código vive en `services/`, `uis/` y `tests/` — **no** crees una carpeta de entrega aparte)
+1. Haz commit y push de tu rama `feature/websocket-chat` (el código vive en `services/`, `uis/` y `tests/` — **no** crees una carpeta de entrega aparte)
 2. Abre un Pull Request describiendo qué implementaste y cómo probar el streaming de tokens y la interrupción
 3. Incluye en la descripción del PR tus respuestas a las Preguntas de Diseño
 4. Solicita revisión a tu tech lead

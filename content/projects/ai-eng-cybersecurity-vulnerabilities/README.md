@@ -36,7 +36,7 @@ A security **ticket** has come in: before any of the company's applications rece
 
 ## 🌱 How to Start the Project
 
-1. `git pull` your monorepo fork and create a new branch for this work.
+1. `git pull` your monorepo fork and create a new branch for this work: `git switch -c feature/owasp-top10-audit`.
 2. Review how you currently access your server: are you using the root user for everything? which ports are exposed?
 3. Get familiar with the 10 OWASP Top 10 categories before auditing — don't guess at them while reviewing code.
 4. Before fixing anything, document the current state: it's your baseline for demonstrating improvement.

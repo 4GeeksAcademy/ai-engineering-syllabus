@@ -45,7 +45,7 @@ This is a cross-cutting engineering task — not a new feature. The deliverable 
 This project works directly on your existing company monorepo — the same one you've been building since Milestone 1.
 
 1. Open the monorepo in your editor or Codespace.
-2. Create a new branch for this work: `git checkout -b error-handling-audit`.
+2. Create a new branch for this work: `git switch -c feature/error-handling-audit`.
 3. Work through each layer of the codebase systematically (see checklist below).
 4. Commit your changes with clear messages that explain what you fixed and why.
 
@@ -139,7 +139,7 @@ Run the audit, read the report carefully, and use the checklist below to track y
 
 ## 📦 How to Submit
 
-Push your `error-handling-audit` branch to GitHub and share the pull request URL (or repository link) with your instructor as indicated in your cohort's submission instructions.
+Push your `feature/error-handling-audit` branch to GitHub and share the pull request URL (or repository link) with your instructor as indicated in your cohort's submission instructions.
 
 ---
 

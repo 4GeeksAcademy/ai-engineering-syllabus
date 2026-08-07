@@ -108,7 +108,7 @@ Use this checklist against student submissions:
 
 ### Delivery
 
-- [ ] Branch name is `milestone-4` (per project instructions).
+- [ ] Branch name is `feature/agent-memory-bank` (per project instructions).
 - [ ] PR targets `main` on the student fork and includes screenshots plus link to `AGENTS.md` as required.
 
 ---

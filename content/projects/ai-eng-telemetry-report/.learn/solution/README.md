@@ -187,7 +187,7 @@ Bounds passed to SQL: **inclusive start, exclusive end**. Endpoint resolves defa
 - Names of ≥3 metrics + **operational** question each answers
 - Sample JSON from `GET /telemetry/report` with real data
 - Note if `auth_failure_rate` and/or visual dashboard were implemented
-- PR title: `[W17D49] Telemetry Report`
+- PR title: `feat: telemetry report endpoint`
 
 ---
 

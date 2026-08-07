@@ -69,7 +69,7 @@ Esta parte del flujo empieza con un triage rápido (¿es una RFP / lo bastante c
 
 Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usando desde el Hito 1. Si por algún motivo todavía no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Crea una rama nueva a partir de tu rama principal: `feature/hito-9-parte-1-revision-rfps`.
+1. Crea una rama nueva a partir de tu rama principal: `feature/rfp-intake`.
 2. Instala las dependencias nuevas que necesites con `uv add` (por ejemplo, `uv add markitdown` y `uv add py-readability-metrics`) — nunca con `pip install` ni `pipenv`.
 3. Extiende `uis/backoffice` para la UI de subida — no crees una app frontend nueva.
 4. Añade rutas HTTP en el **backend existente** bajo `services/` (mismo proceso / mismo API). Implementa el pipeline de agentes en `data/pipelines/` (p. ej. `data/pipelines/rfp_intake/`). Pon runners CLI sueltos en `scripts/` si hace falta.
@@ -154,7 +154,7 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 
 Esta es la Parte 1 de 3 del Hito 9. Entrégala con su propio Pull Request contra tu rama principal — no esperes a tener las partes 2 y 3 listas.
 
-1. Haz commit y push de tu rama `feature/hito-9-parte-1-revision-rfps`
+1. Haz commit y push de tu rama `feature/rfp-intake`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo
 3. Incluye en la descripción del PR un ejemplo de RFP de prueba (de `rfp-requests/` del CONTEXT) y el resultado que produce tu flujo
 4. Solicita revisión a tu tech lead

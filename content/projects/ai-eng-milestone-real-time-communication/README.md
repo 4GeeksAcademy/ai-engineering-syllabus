@@ -37,7 +37,7 @@ Some requirements are left implicit, and you'll need to identify them carefully:
 
 Keep working on the fork of your company's monorepo that you've been using since Milestone 1 (and Part 1 of this milestone). If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Create a new branch from your main branch: `feature/milestone-10-part-2-websocket-chat`.
+1. Create a new branch from your main branch: `feature/websocket-chat`.
 2. Locate the endpoint or function that currently invokes your support agent with a traditional request/response pattern — extend that path; do not create a parallel app or a delivery folder.
 3. Check your `CONTEXT-company.md` (under `10-realtime/communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
 4. Review how your agent exposes streaming (LangGraph's `messages`, `values`, `updates`, or `custom` modes) before deciding which one you need to transmit tokens.
@@ -99,7 +99,7 @@ Before considering your implementation done, think through and document your ans
 
 This is Part 2 of 2 of Milestone 10. Submit it with its own Pull Request against your main branch — independent from Part 1.
 
-1. Commit and push your `feature/milestone-10-part-2-websocket-chat` branch (code lives in `services/`, `uis/`, and `tests/` — do **not** create a separate delivery folder)
+1. Commit and push your `feature/websocket-chat` branch (code lives in `services/`, `uis/`, and `tests/` — do **not** create a separate delivery folder)
 2. Open a Pull Request describing what you implemented and how to test token streaming and interrupt
 3. Include your answers to the Design Questions in the PR description
 4. Request a review from your tech lead

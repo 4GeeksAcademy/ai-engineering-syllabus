@@ -63,7 +63,7 @@ Si ya tienes tu fork del monorepo de la empresa desde el inicio del curso, crea 
 Si por algún motivo todavía no tienes un fork (por ejemplo, te uniste tarde o lo perdiste), haz un fork del [monorepo de referencia](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) antes de continuar.
 
 ```bash
-git checkout -b w23-d68-agent-guardrails
+git switch -c feature/agent-guardrails
 ```
 
 Instala cualquier dependencia nueva que necesites con `uv add` (nunca `pip install` ni `pipenv`).

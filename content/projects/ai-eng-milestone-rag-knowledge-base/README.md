@@ -52,7 +52,7 @@ As an AI Engineering student, use the **models provided by 4Geeks** (included wi
 ## 🌱 How to Start the Project
 
 1. Make sure your fork of your company's monorepo is up to date with your work from previous milestones.
-2. Create a new branch for this milestone.
+2. Create a new branch for this work: `git switch -c feature/rag-knowledge-base`.
 3. Add Qdrant to `docker-compose.yml` (or use Qdrant Cloud) and confirm connectivity from your Python environment.
 4. Install dependencies with `uv add` — Qdrant client, an embeddings library, your generation LLM SDK, `fastapi`, etc. Never use `pip install` or `pipenv`. Configure the **4Geeks-provided** embedding model and generation model as separate model IDs (and API keys / base URLs in `.env` if required) — never reuse the generation model for embeddings.
 5. Review `CONTEXT-company.md`, copy the company source documents you must index (policies, catalogs, procedures — filenames are company-specific) into `docs/company-knowledge-base/` in your monorepo, and point `setup()` at that folder.
@@ -140,7 +140,7 @@ Suggested file layout (names may vary; responsibilities must not):
 ## 📦 How to Submit
 
 1. Commit and push your changes to your fork.
-2. Open a Pull Request against the main branch of your monorepo with the title: `[W18D51] RAG Knowledge Base`.
+2. Open a Pull Request against the main branch of your monorepo with the title: `feat: rag knowledge base`.
 3. In the PR description, include:
    - One example question a salesperson would ask
    - The answer your system generated

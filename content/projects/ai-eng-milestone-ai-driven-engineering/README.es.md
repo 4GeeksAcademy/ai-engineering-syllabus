@@ -134,7 +134,7 @@ Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria
 
 ## 📦 Cómo entregar
 
-1. Asegúrate de que tu rama de trabajo tenga el nombre `milestone-4`
+1. Asegúrate de que tu rama de trabajo tenga el nombre `feature/agent-memory-bank`
 2. Ejecuta el flujo de entrega definido en tu `AGENTS.md` antes del commit final
 3. Abre una Pull Request hacia la rama `main` de tu fork
 4. En la descripción de la PR incluye:

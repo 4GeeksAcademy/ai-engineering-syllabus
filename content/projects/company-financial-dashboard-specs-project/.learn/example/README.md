@@ -33,7 +33,7 @@ Your job is to write precise specifications for both features. Check the API doc
 Continue in the same local library catalog example project. Create a new branch:
 
 ```bash
-git checkout -b feature/frontend-specs
+git switch -c feature/frontend-specs
 mkdir -p frontend/specs
 ```
 

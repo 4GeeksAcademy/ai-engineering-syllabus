@@ -134,7 +134,7 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
 
 ## 📦 How to Submit
 
-1. Make sure your working branch is named `milestone-4`
+1. Make sure your working branch is named `feature/agent-memory-bank`
 2. Run the delivery workflow defined in your `AGENTS.md` before the final commit
 3. Open a Pull Request targeting the `main` branch of your fork
 4. In the PR description include:

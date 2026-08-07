@@ -247,7 +247,7 @@ A complete submission should demonstrate:
 - [ ] Instrumented events align with Phase 1 schemas grounded in CONTEXT-company.md
 - [ ] No PII in emitted events
 - [ ] Network evidence of batched payloads with 200 responses
-- [ ] PR title `[W16D47] Telemetry Frontend` with mandatory vs identified event list
+- [ ] PR title `feat: telemetry event capture` with mandatory vs identified event list
 
 ---
 

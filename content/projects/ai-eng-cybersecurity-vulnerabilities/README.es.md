@@ -36,7 +36,7 @@ Ha llegado un **ticket** de seguridad: antes de que cualquier aplicación de la 
 
 ## 🌱 Cómo Empezar el Proyecto
 
-1. Haz un `git pull` de tu fork del monorepo y crea una rama nueva para este trabajo.
+1. Haz un `git pull` de tu fork del monorepo y crea una rama nueva para este trabajo: `git switch -c feature/owasp-top10-audit`.
 2. Revisa cómo accedes actualmente a tu servidor: ¿usas el usuario root para todo? ¿qué puertos están expuestos?
 3. Familiarízate con las 10 categorías del OWASP Top 10 antes de auditar — no las adivines mientras revisas código.
 4. Antes de corregir nada, documenta el estado actual: es tu línea base para demostrar la mejora.

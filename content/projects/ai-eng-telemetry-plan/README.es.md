@@ -107,7 +107,7 @@ No hay servidor nuevo que levantar hoy. El entregable es documentación de dise�
 ## 📦 Cómo Entregar
 
 1. Asegúrate de que los archivos `docs/telemetry/telemetry-plan.md` y `docs/telemetry/event-schemas.json` estén en tu copia.
-2. Crea un Pull Request contra la rama principal del monorepo con el título: `[W16D46] Telemetry Design Plan`.
+2. Crea un Pull Request contra la rama principal del monorepo con el título: `docs: telemetry design plan`.
 3. En la descripción del PR, incluye:
    - El número total de eventos diseñados, y cuántos son obligatorios (del CONTEXT) vs. identificados por ti
    - Las categorías cubiertas (negocio, autenticación, rendimiento, errores, navegación, etc.)

@@ -33,7 +33,7 @@ Tu trabajo es escribir especificaciones precisas para ambas funcionalidades. Con
 Continúa en el mismo proyecto local de ejemplo del catálogo de biblioteca. Crea una nueva rama:
 
 ```bash
-git checkout -b feature/frontend-specs
+git switch -c feature/frontend-specs
 mkdir -p frontend/specs
 ```
 

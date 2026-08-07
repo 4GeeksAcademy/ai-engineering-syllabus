@@ -219,7 +219,7 @@ Justifications must cite **business or operational decision timing**, not develo
 - [ ] Valid `event-schemas.json` aligned with the plan.
 - [ ] Stream/batch choices justified by business or operational urgency.
 - [ ] Risks and exclusions section shows deliberate scope cuts.
-- [ ] PR title `[W16D46] Telemetry Design Plan` with mandatory vs identified counts in description.
+- [ ] PR title `docs: telemetry design plan` with mandatory vs identified counts in description.
 
 ---
 

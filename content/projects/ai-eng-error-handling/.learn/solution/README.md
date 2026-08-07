@@ -6,7 +6,7 @@ Reference quality bar for the **cross-cutting error-handling audit** on the comp
 
 ## Scope of Work
 
-Students work on branch `error-handling-audit` and fix existing code in:
+Students work on branch `feature/error-handling-audit` and fix existing code in:
 
 - `uis/` — Next.js / TypeScript frontends
 - `services/api/` — FastAPI backend

@@ -60,7 +60,7 @@ Continuarás trabajando en el **mismo repositorio** que utilizaste en la sesión
 1. Abre tu repositorio existente del dashboard financiero (tu fork de [**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) en GitHub Codespaces o clónalo localmente.
 2. Asegúrate de que tu memory bank (`memory-bank/`) y las reglas de contexto (`.cursor/rules/` o equivalente) de la sesión anterior están commiteadas y actualizadas.
 3. Haz pull de los últimos cambios si trabajas en equipo: `git pull origin main`.
-4. Crea una rama nueva para el trabajo de hoy: `git checkout -b feature/agent-skills`.
+4. Crea una rama nueva para el trabajo de hoy: `git switch -c feature/agent-skills`.
 
 Si necesitas repasar la configuración del proyecto: [cómo iniciar un proyecto de código](https://4geeks.com/lesson/how-to-start-a-project).
 

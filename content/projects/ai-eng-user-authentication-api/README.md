@@ -56,7 +56,7 @@ In FastAPI, this flow is implemented as a dependency. You write a function that 
 This project is an extension of your existing transversal project API. **Do not create a new repository.** Work inside your company's current backend codebase.
 
 1. Open your existing project in Codespaces or clone it locally.
-2. Create a new branch for this feature: `git checkout -b feature/auth`.
+2. Create a new branch for this feature: `git switch -c feature/auth-api`.
 3. Install the required packages with `uv` (never use `pip install` or `pipenv`):
    ```bash
    uv add "python-jose[cryptography]" "passlib[bcrypt]"

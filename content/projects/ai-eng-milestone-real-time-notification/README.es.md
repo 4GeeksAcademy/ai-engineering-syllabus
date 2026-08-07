@@ -35,7 +35,7 @@ Algunos requisitos quedan implícitos en este encargo y tendrás que identificar
 
 Sigue trabajando en el fork del monorepo de tu empresa que has usado desde el Hito 1. Si por alguna razón aún no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Crea una rama nueva desde tu rama principal: `feature/milestone-10-part-1-sse-notifications`.
+1. Crea una rama nueva desde tu rama principal: `feature/sse-notifications`.
 2. Ubica el servicio y la vista de dashboard que hoy dependen de polling — vas a extender esas rutas, no crear una app paralela ni una carpeta de entrega.
 3. Revisa tu `CONTEXT-company.md` para confirmar cómo se representa un ticket de RFP (campos, estado inicial) — eso define qué debe llevar la notificación en tiempo real.
 4. Añade dependencias nuevas con `uv add` (backend) / el gestor de paquetes que ya uses en el monorepo para la UI — nunca con `pip install` ni `pipenv`.
@@ -108,7 +108,7 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 
 Esta es la Parte 1 de 2 del Hito 10. Entrégala con su propio Pull Request contra tu rama principal — no esperes a tener la Parte 2 lista.
 
-1. Haz commit y push de tu rama `feature/milestone-10-part-1-sse-notifications` (el código vive en `services/`, `uis/` y `tests/` — **no** crees una carpeta de entrega aparte)
+1. Haz commit y push de tu rama `feature/sse-notifications` (el código vive en `services/`, `uis/` y `tests/` — **no** crees una carpeta de entrega aparte)
 2. Abre un Pull Request describiendo qué implementaste y cómo probar el stream SSE
 3. Incluye en la descripción del PR tus respuestas a las Preguntas de Diseño
 4. Solicita revisión a tu tech lead

@@ -36,8 +36,9 @@ LangGraph formaliza ese mismo loop como una máquina de estados: cada paso es un
 ## 🌱 Cómo Empezar
 
 1. Sigue trabajando sobre tu fork existente del [**monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). Si por algún motivo aún no lo tienes, haz un fork y ábrelo en **GitHub Codespaces** o clónalo localmente.
-2. Instala la dependencia con `uv add langgraph` (nunca uses `pip install` ni `pipenv`).
-3. Ubica tu código RAG existente: tus funciones `setup`, `embed`, `retrieve` y `query` en `data/pipelines/`, y el endpoint que las expone en `services/`.
+2. Crea una rama nueva: `git switch -c feature/langgraph-agent-base`.
+3. Instala la dependencia con `uv add langgraph` (nunca uses `pip install` ni `pipenv`).
+4. Ubica tu código RAG existente: tus funciones `setup`, `embed`, `retrieve` y `query` en `data/pipelines/`, y el endpoint que las expone en `services/`.
 
 ---
 
@@ -101,7 +102,7 @@ tests/
   pipelines/                     ← evals del agente
 ```
 
-1. Sube tu rama con la estructura anterior y abre un Pull Request al repositorio original con la etiqueta `parte-1-langgraph`.
+1. Sube tu rama con la estructura anterior y abre un Pull Request al repositorio original con la etiqueta `langgraph-agent-base`.
 2. Asegúrate de que el PR incluya:
    - Una captura o export del trace de al menos una corrida completa.
    - El resultado de correr los evals (consola o archivo).

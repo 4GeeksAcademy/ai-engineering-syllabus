@@ -56,7 +56,7 @@ En FastAPI, este flujo se implementa como una dependencia. Escribes una función
 Este proyecto es una extensión de tu API del proyecto transversal existente. **No crees un repositorio nuevo.** Trabaja dentro del codebase de backend actual de tu empresa.
 
 1. Abre tu proyecto existente en Codespaces o clónalo en local.
-2. Crea una nueva rama para esta feature: `git checkout -b feature/auth`.
+2. Crea una nueva rama para esta feature: `git switch -c feature/auth-api`.
 3. Instala los paquetes necesarios con `uv` (nunca uses `pip install` ni `pipenv`):
    ```bash
    uv add "python-jose[cryptography]" "passlib[bcrypt]"

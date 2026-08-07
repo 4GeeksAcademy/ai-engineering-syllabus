@@ -56,7 +56,7 @@ Cuando los tickets de asignación por departamento de la Parte 2 están **totalm
 
 Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a partir de donde entregaste la Parte 2. Si todavía no tienes tu fork, créalo desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Crea la rama `feature/hito-9-parte-3-aprobacion-documento` a partir de tu rama de la Parte 2.
+1. Crea la rama `feature/rfp-approval-completion` a partir de tu rama de la Parte 2.
 2. Configura el checkpointer que corresponda a tu entorno (SQLite o Postgres — evita el checkpointer en memoria salvo en desarrollo local).
 3. Instala cualquier dependencia nueva con `uv add`.
 4. Revisa tu `CONTEXT-company.md` para conocer los aprobadores por departamento, los triggers de conflicto / árbitro fijo, y el formato del documento final.
@@ -134,7 +134,7 @@ Continúa sobre tu rama del Hito 9 en el fork del monorepo de tu empresa, a part
 
 Esta es la Parte 3 de 3 del Hito 9. Entrégala con su propio Pull Request.
 
-1. Haz commit y push de tu rama `feature/hito-9-parte-3-aprobacion-documento`
+1. Haz commit y push de tu rama `feature/rfp-approval-completion`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo
 3. Incluye en la descripción del PR un ejemplo completo: RFP de entrada, aprobación simulada por cada departamento, y el documento final generado — **y** enlaza el script/test de integración reproducible que ejecuta esas aprobaciones simuladas
 4. Solicita revisión a tu tech lead

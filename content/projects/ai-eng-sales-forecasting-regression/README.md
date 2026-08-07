@@ -42,7 +42,7 @@ Your tech lead has opened a **ticket** based on an **RFI** that came in from Fin
 ## 🌱 How to Start the Project
 
 1. If you still don't have a fork of your company's [monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo), create it on GitHub. We recommend opening and working on that fork in **GitHub Codespaces**; if you prefer to work locally, clone it to your machine.
-2. From `main` in your fork, create a new branch for this project (in Codespaces or in your local environment).
+2. From `main` in your fork, create a new branch for this project: `git switch -c feature/sales-forecast-model` (in Codespaces or in your local environment).
 3. Verify that `uv` is installed with `uv --version`; if you don't have it, install it with `curl -LsSf https://astral.sh/uv/install.sh | sh` and, at the project root, initialize the environment with `uv init` (only if `pyproject.toml` does not already exist). Then add dependencies with `uv add` (for example `scikit-learn`, `xgboost`, `pandas`, `matplotlib`) — never use `pip install` or `pipenv`.
 4. Use your company's historical sales dataset already provided: in the monorepo it is located at `data/raw/<company>_sales.csv`, and in this reference repository at `content/contexts/sales-forecasting/<company>/<company>_sales.csv`; do not generate or simulate it.
 5. Read your full `CONTEXT-company.md` before writing code: it contains each column's meaning, the date range, and the seasonality pattern the dataset already reflects.

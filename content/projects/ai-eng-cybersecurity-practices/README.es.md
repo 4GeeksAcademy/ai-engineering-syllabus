@@ -40,7 +40,7 @@ NIST organiza la gestión de ciberseguridad en seis funciones: **Govern** (polí
 
 ## 🌱 Cómo Empezar el Proyecto
 
-1. Haz un `git pull` de tu fork del monorepo y crea una rama nueva para este trabajo.
+1. Haz un `git pull` de tu fork del monorepo y crea una rama nueva para este trabajo: `git switch -c feature/nist-security-practices`.
 2. Lee tu `CONTEXT-empresa.md` para identificar el marco regulatorio aplicable a tu compañía y los sistemas de IA que ya construiste en milestones anteriores.
 3. Revisa `.env.example` y confirma cómo se gestionan actualmente tus credenciales y API keys.
 4. Antes de tocar código, dibuja o lista (en el README de tu propio informe) todos los puntos donde un modelo de lenguaje recibe input externo — de un usuario, de un documento en tu base de conocimiento semántica, o de una herramienta MCP.

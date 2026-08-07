@@ -50,7 +50,7 @@ Una vez que la API devuelve un token en el login, el trabajo del frontend es: al
 
 ## 🌱 Cómo Iniciar el Proyecto
 
-Este proyecto continúa dentro de tu monorepo existente. Trabaja en la misma rama o abre una nueva: `git checkout -b feature/auth-frontend`.
+Este proyecto continúa dentro de tu monorepo existente. Trabaja en la misma rama o abre una nueva: `git switch -c feature/auth-frontend`.
 
 Asegúrate de que tu API de la entrega anterior está corriendo y es accesible desde el frontend antes de empezar.
 

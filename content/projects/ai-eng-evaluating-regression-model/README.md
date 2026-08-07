@@ -44,7 +44,7 @@ There is no universal "correct" curve — what matters is the relative pattern b
 ## 🌱 How to Start the Project
 
 1. Continue on your existing copy of the [company's monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) assigned to you at the beginning of the course (if you don't have one yet, fork the repository).
-2. Work on this project in your fork using GitHub Codespaces and create a branch for this work; if you work locally, you can clone the repository to your computer.
+2. Work on this project in your fork using GitHub Codespaces and create a branch for this work: `git switch -c feature/regression-model-eval`; if you work locally, you can clone the repository to your computer.
 3. Confirm that the trained model and the temporal split (8 years train / 2 years test) from your previous project are still available and reproducible.
 4. Install any additional dependencies with `uv add` — never use `pip install` or `pipenv`.
 5. Read your `CONTEXT-company.md` to understand which error is more costly for your business: overestimating sales or underestimating them.

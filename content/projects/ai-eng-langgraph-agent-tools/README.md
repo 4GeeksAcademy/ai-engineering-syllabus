@@ -41,7 +41,7 @@ It's tempting to solve this by indexing tickets into the same vector store as th
 ## 🌱 How to Start
 
 1. Confirm your **incident manager** service (`GET /api/incidents`, `GET /api/incidents/{id}`) is running locally — it's the one you built in an earlier monorepo project. If you also built the **inventory manager** (`GET /inventory/products`), have it available too for the stretch goal.
-2. Start from the Part 1 branch (compiled graph, with tracing and evals).
+2. Start from the Part 1 branch (compiled graph, with tracing and evals) and create a new branch: `git switch -c feature/langgraph-external-tools`.
 3. You don't need any new dependencies beyond whatever you already use to make HTTP calls from your backend.
 
 ---
@@ -103,7 +103,7 @@ tests/
   pipelines/                     ← routing and fallback evals
 ```
 
-1. Push your branch with the structure above and open a Pull Request to the original repository with the `part-2-external-tools` label.
+1. Push your branch with the structure above and open a Pull Request to the original repository with the `langgraph-external-tools` label.
 2. Make sure your PR includes:
    - The trace of a run where the agent used the ticket tool.
    - The trace of a run where the agent used the RAG (to show correct routing).

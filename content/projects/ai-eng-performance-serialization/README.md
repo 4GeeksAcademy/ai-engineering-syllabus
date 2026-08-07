@@ -83,7 +83,7 @@ This project is built on top of your company's existing monorepo. You do not nee
 1. Open your monorepo in your coding environment (Codespaces or local).
 2. Navigate to your FastAPI application — typically under `/apps/<your-app-name>/` or the backend folder established in previous milestones.
 3. Make sure your environment is running and your existing endpoints are reachable before you begin the audit.
-4. Work on a dedicated branch: `git checkout -b feature/serialization-audit`.
+4. Work on a dedicated branch: `git switch -c feature/serialization-audit`.
 
 ---
 

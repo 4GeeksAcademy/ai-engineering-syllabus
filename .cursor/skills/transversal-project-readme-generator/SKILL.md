@@ -111,6 +111,18 @@ If this is not milestone 1, open with one sentence acknowledging what was built 
 
 If the milestone requires operational context not covered in lessons (e.g., what makes a good dashboard, what an SLA is), add a brief focused subsection inside the challenge. Keep it under 150 words. Label it clearly.
 
+### Git branching standard (mandatory)
+
+How to Start must include a create-branch step. Same English branch/PR strings in both READMEs.
+
+- Create: `git switch -c <type>/<kebab-capability>` — never `git checkout -b`
+- Types: `feature` \| `fix` \| `chore` \| `docs` \| `refactor` \| `perf` \| `test`
+- Name = functionality shipped, not curriculum metadata (`milestone-N`, `hito-N`, `part-N`, `wNNdNN` banned)
+- PR title (if any): `<type>: <short capability>` — no `[WxxDyy]`
+- PR label (if any): functionality English label, not part/parte codes
+
+✅ `feature/rfp-intake` · ❌ `feature/milestone-9-part-1-rfp-intake`
+
 ---
 
 ## Step 3 — Structure
@@ -215,3 +227,4 @@ Each file must link to its counterpart, written in the language of the target do
 - [ ] Translation is structurally identical to the approved primary — same requirements, same checklist items, same order
 - [ ] Both README.md and README.es.md link to each other (once both exist)
 - [ ] Footer present in both files with correct language variant
+- [ ] Branch/PR follow Git branching standard (`git switch -c`, functionality names, shared English)
