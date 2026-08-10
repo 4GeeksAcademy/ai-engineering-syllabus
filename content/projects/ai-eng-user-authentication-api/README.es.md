@@ -59,7 +59,7 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 2. Crea una nueva rama para esta feature: `git checkout -b feature/auth`.
 3. Instala los paquetes necesarios con `uv` (nunca uses `pip install` ni `pipenv`):
    ```bash
-   uv add "python-jose[cryptography]" "passlib[bcrypt]"
+   uv add "python-jose[cryptography]" "libpass[bcrypt]"
    ```
 
 ---
@@ -110,7 +110,7 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 
 ⚠️ **IMPORTANTE:** No uses autenticación basada en sesiones ni en cookies. Este proyecto implementa únicamente auth JWT stateless.
 
-⚠️ **IMPORTANTE:** Nunca almacenes contraseñas en texto plano. Usa `passlib` con el esquema `bcrypt` para todas las operaciones con contraseñas.
+⚠️ **IMPORTANTE:** Nunca almacenes contraseñas en texto plano. Usa `libpass` con el esquema `bcrypt` para todas las operaciones con contraseñas.
 
 ---
 
