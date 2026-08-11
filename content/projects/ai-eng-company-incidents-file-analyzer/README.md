@@ -130,7 +130,7 @@ services/
   api/                    ← backend with analysis and export endpoints
 
 uis/
-  web/                    ← web interface with file upload and visualisation
+  backoffice/             ← web interface with file upload and visualisation
 ```
 
 1. Push your branch with the structure above and open a Pull Request to the original repository.

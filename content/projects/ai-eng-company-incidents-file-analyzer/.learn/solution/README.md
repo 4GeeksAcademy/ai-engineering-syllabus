@@ -1,90 +1,112 @@
-# Company Incident File Analysis - Reference solution
+# Company Incident File Analysis — Reference Solution
 
-This README defines what a correct reference delivery should include for the **Company Incident File Analysis** project.
+## Purpose
 
-The expected output is a robust CLI analysis script that validates incident records against `CONTEXT-company.md`, reports trustworthy metrics, and supports CSV export for non-terminal users.
+Two phases, one shared core: a CLI that validates the CONTEXT CSV, then the same logic behind FastAPI + a backoffice upload page. A CLI-only submission fails the Backend/Frontend evals.
 
-## Expected deliverables
+Copy the official CSV from `content/contexts/incidents-file-analysis/` (e.g. `incidents-brasaland.csv`). Expected counts in CONTEXT must match the shipped file.
 
-A valid solution should include:
+## Expected layout
 
-- `analyze.py` at the project root.
-- A supported dataset file (for example `incidents-brasaland.csv` or equivalent company file).
-- Console summary output with clear formatting (labels, separators, aligned values).
-- Optional CSV export (`results.csv`) triggered by user confirmation.
+```text
+scripts/
+  analyze.py                 # Phase 1 CLI
+  incidents-COMPANY.csv      # official sample
+packages/shared/             # validation + metrics (script AND API)
+services/api/                # POST analyze + GET export
+uis/backoffice/              # upload + summary + download
+```
 
-## Required implementation structure
+Do **not** put `analyze.py` at the repo root. Do **not** use `uis/web`.
 
-The reference solution should be organized into clear, testable functions with single responsibilities:
+---
 
-- Argument parsing (`python analyze.py incidents.csv`).
-- CSV loading/parsing.
-- Record validation by context rules.
-- Metrics aggregation on valid records.
-- Console report rendering.
-- Export serialization (CSV).
+## Phase 1 — CLI (`scripts/analyze.py`)
 
-## Validation rules that must be enforced
+```bash
+python scripts/analyze.py scripts/incidents-COMPANY.csv
+```
 
-A record is invalid when any required constraint from the selected context is violated. At minimum:
+Functions with single responsibilities: parse args, load CSV, validate, aggregate, print, optional export.
 
-- Missing required fields.
-- Invalid category/status value (outside allowed set).
-- Incomplete description (for contexts that require minimum length).
-- Closed incidents without score (when the context requires score for closed status).
-- Scores outside accepted numeric range.
+### Validation (CONTEXT rules)
 
-Invalid records must be:
+Invalid when any CONTEXT constraint fails, at minimum:
 
-- Counted.
-- Classified by reason.
-- Excluded from valid-only metrics.
-- Explicitly reported (never silently ignored).
+- Missing required fields
+- Category/status outside the allowed set
+- Incomplete description (if CONTEXT sets a min length)
+- Closed incidents without score (if CONTEXT requires it)
+- Scores outside the accepted range
 
-## Metrics the script must output
+Invalid records: counted, classified by reason, excluded from valid-only metrics, reported (never silent).
 
-On **valid records**, the solution must report:
+### Metrics (valid records only)
 
-1. Total processed records, split into valid and invalid totals.
-2. Breakdown by category.
-3. Breakdown by status.
-4. Satisfaction metrics for closed incidents with score:
-   - Number of scored closed incidents.
-   - Average satisfaction score.
-   - Optional distribution by score if available in context.
+1. Total processed, valid, invalid
+2. Breakdown by category
+3. Breakdown by status
+4. Satisfaction for closed+scored: count, average (optional score distribution)
 
-Where expected values are provided in `CONTEXT-company.md`, numeric totals must match exactly for the official sample CSV.
+Official sample: numeric totals must match CONTEXT **exactly**.
 
-## CSV export expectations
-
-At the end of execution, the script prompts:
+### CSV export prompt
 
 `Export results to CSV? [y / n]`
 
-Behavior:
+- `y` → `results.csv` (`metric`, `value`, optional `percentage`)
+- `n` → no file
 
-- `y` -> generates `results.csv` with one row per metric.
-- `n` -> exits without generating export.
+---
 
-Recommended export schema:
+## Phase 2 — Platform
 
-- `metric`
-- `value`
-- `percentage` (optional for ratio-based rows)
+Extract the same validation/metrics into `packages/shared/` (or equivalent). The router **imports** that module — it does not copy-paste the script.
 
-## Quality checklist (reviewer-ready)
+### Backend
 
-- [ ] Script accepts CSV path via command-line argument.
-- [ ] Input file is parsed safely, with clear error handling.
-- [ ] Invalid records are detected and grouped by rule type.
-- [ ] Valid/invalid totals are correct and visible in output.
-- [ ] Category and status breakdowns are correct for valid records.
-- [ ] Satisfaction average is computed only on eligible closed records.
-- [ ] Console output is readable and professional (not raw dict output).
-- [ ] CSV export prompt and behavior (`y/n`) work as specified.
-- [ ] For the official sample file, results match context expected values.
+| Method | Path                            | Notes                                                 |
+| ------ | ------------------------------- | ----------------------------------------------------- |
+| `POST` | `/api/incidents/analyze`        | `multipart/form-data` CSV; JSON summary = CLI metrics |
+| `GET`  | `/api/incidents/results/export` | last analysis as downloadable CSV                     |
 
-## Notes for reviewers
+Empty file / bad format → appropriate HTTP status + descriptive message (not a traceback).
 
-- Minor spacing/styling differences in the console report are acceptable if all required values and sections are present.
-- Prioritize data correctness, validation completeness, and clarity of script structure over cosmetic formatting.
+### Frontend (`uis/backoffice`)
+
+- Menu entry for incident analysis
+- Upload (drag-drop or file picker) → `POST /api/incidents/analyze`
+- On-screen summary: general metrics, category, status, satisfaction
+- Download button → `GET /api/incidents/results/export`
+- Tell the user how many invalid records (and by type)
+
+Light and dark mode if the backoffice already has a design system.
+
+---
+
+## Reviewer checklist
+
+### Script
+
+- [ ] `python scripts/analyze.py <csv>` works without code edits
+- [ ] Invalid records classified and shown
+- [ ] Five required metrics; official CSV matches CONTEXT
+- [ ] `y/n` export works
+
+### Backend / frontend
+
+- [ ] Analyze endpoint returns the same summary as the CLI
+- [ ] Export endpoint downloads CSV
+- [ ] Input errors → HTTP error, not 500 stack trace
+- [ ] Upload UI works without the terminal
+- [ ] Invalid counts visible in the UI
+
+### Cross-cutting
+
+- [ ] One shared module — not two divergent implementations
+- [ ] Layout: `scripts/` + `services/api/` + `uis/backoffice/`
+
+## Notes
+
+- Console spacing/styling may vary; values and sections must be present.
+- Prioritize correctness and shared logic over cosmetic formatting.

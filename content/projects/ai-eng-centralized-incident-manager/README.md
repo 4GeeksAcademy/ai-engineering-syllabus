@@ -141,6 +141,7 @@ You do not need to implement any of this in the current delivery. The point is t
 ### Frontend
 
 - [ ] The form validates required fields on the client before submitting.
+- [ ] When `origin` is `branch`, the `branch` field is visually highlighted and the dropdown shows CONTEXT display labels.
 - [ ] Loading states are visible and the submit button is disabled during the request.
 - [ ] API errors are shown in plain language to the user, never as technical text.
 - [ ] The list correctly handles all three possible states: loading, empty, with data.
