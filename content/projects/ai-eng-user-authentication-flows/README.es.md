@@ -41,7 +41,7 @@ Una vez que la API devuelve un token en el login, el trabajo del frontend es: al
 
 1. **Almacenar** el token en `localStorage` después de una respuesta de login exitosa.
 2. **Leer** el token en cada llamada protegida a la API y establecerlo en la cabecera `Authorization`: `Bearer <token>`.
-3. **Proteger rutas** — en Next.js App Router esto se gestiona con un middleware o una comprobación a nivel de layout: si no hay token, redirigir a `/login`.
+3. **Proteger rutas** — usa un layout guard o hook **en el cliente** que lea `localStorage` y redirija a `/login` si no hay token. El middleware de Next.js corre en el servidor y **no puede** leer `localStorage`; no lo uses para esta comprobación salvo que también guardes una cookie que el middleware pueda ver.
 4. **Limpiar** el token al cerrar sesión y redirigir.
 
 > **Nota:** La rotura temporal del frontend de la entrega anterior termina aquí. Al finalizar este proyecto, todas las vistas protegidas deben funcionar de extremo a extremo con autenticación real.
@@ -70,7 +70,7 @@ Asegúrate de que tu API de la entrega anterior está corriendo y es accesible d
 ### Protección de rutas
 
 - [ ] Identifica todas las vistas de tus aplicaciones Next.js (excluyendo el website público) que requieren sesión autenticada.
-- [ ] Implementa un mecanismo de protección — middleware, layout guard o un hook personalizado — que compruebe el token en `localStorage` y redirija a `/login` si está ausente o no es válido.
+- [ ] Implementa un mecanismo de protección **en el cliente** (layout guard o hook personalizado) que compruebe el token en `localStorage` y redirija a `/login` si está ausente o no es válido. No uses el middleware de Next.js para esto salvo que el token también esté en una cookie que el middleware pueda leer.
 - [ ] Asegúrate de que el website público (Hito 1) no se ve afectado — sin comprobación de token, sin redirección.
 
 ### Ciclo de vida del token

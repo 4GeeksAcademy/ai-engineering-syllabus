@@ -123,6 +123,7 @@ This project is an extension of your existing transversal project API. **Do not 
 - [ ] Login endpoint returns a valid, signed JWT token.
 - [ ] `get_current_user` dependency correctly decodes the token and identifies the user.
 - [ ] Protected routes return `401` when called without a valid token.
+- [ ] A user accessing or updating another user's profile or credentials receives `403 Forbidden` (not only `401` for missing/invalid token).
 - [ ] Token expiry and signing secret are read from environment variables, not hardcoded.
 - [ ] Auth routes are under `/auth`, user routes under `/users`, and profile routes under `/profiles` — clean, consistent structure.
 - [ ] At least **5 existing routes outside `/users` and `/auth`** require a valid token (in addition to the protected user/auth routes themselves).

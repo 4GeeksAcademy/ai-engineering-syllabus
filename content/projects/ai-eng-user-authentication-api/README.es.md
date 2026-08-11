@@ -123,6 +123,7 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 - [ ] El endpoint de login devuelve un token JWT válido y firmado.
 - [ ] La dependencia `get_current_user` decodifica correctamente el token e identifica al usuario.
 - [ ] Las rutas protegidas devuelven `401` al ser llamadas sin un token válido.
+- [ ] Un usuario que accede o actualiza el perfil o las credenciales de otro usuario recibe `403 Forbidden` (no solo `401` por token ausente o inválido).
 - [ ] La expiración del token y la clave de firma se leen desde variables de entorno, no están hardcodeadas.
 - [ ] Las rutas de auth están bajo `/auth`, las de usuarios bajo `/users` y las de perfil bajo `/profiles` — estructura limpia y coherente.
 - [ ] Al menos **5 rutas existentes fuera de `/users` y `/auth`** requieren un token válido (además de las rutas protegidas de usuario/auth).

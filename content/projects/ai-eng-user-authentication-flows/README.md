@@ -41,7 +41,7 @@ Once the API returns a token at login, the frontend's job is: store it, send it,
 
 1. **Store** the token in `localStorage` after a successful login response.
 2. **Read** the token on every protected API call and set it in the `Authorization` header: `Bearer <token>`.
-3. **Protect routes** — in Next.js App Router this is handled with a middleware or a layout-level check: if there is no token, redirect to `/login`.
+3. **Protect routes** — use a **client** layout guard or custom hook that reads `localStorage` and redirects to `/login` if the token is absent. Next.js middleware runs on the server and **cannot** read `localStorage`; do not use middleware for this check unless you also store a cookie the middleware can see.
 4. **Clear** the token on logout and redirect.
 
 > **Note:** The temporary frontend breakage from the previous delivery ends here. By the end of this project, all protected views should be working end-to-end with real authentication.
@@ -70,7 +70,7 @@ Make sure your API from the previous delivery is running and reachable from the 
 ### Route protection
 
 - [ ] Identify every view in your Next.js applications (excluding the public website) that requires an authenticated session.
-- [ ] Implement a protection mechanism — middleware, layout guard, or a custom hook — that checks for the token in `localStorage` and redirects to `/login` if it is absent or invalid.
+- [ ] Implement a **client** protection mechanism (layout guard or custom hook) that checks for the token in `localStorage` and redirects to `/login` if it is absent or invalid. Do not use Next.js middleware for this unless the token is also in a cookie the middleware can read.
 - [ ] Ensure the public website (Milestone 1) is entirely unaffected — no token check, no redirect.
 
 ### Token lifecycle
