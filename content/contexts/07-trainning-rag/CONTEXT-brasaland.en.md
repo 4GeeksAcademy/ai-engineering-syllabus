@@ -16,14 +16,14 @@ Your knowledge base must be built from the source documents in section 2. You mu
 
 ## 2. Knowledge Base Source Documents
 
-Use the following source documents as the base for your knowledge base. Each has been split into its own file so you can load it directly into your chunking pipeline.
+Use the following source documents as the base for your knowledge base. Copy them from [`00-general-contexts/brasaland/`](../00-general-contexts/brasaland/) into `docs/company-knowledge-base/` in your monorepo. Each has been split into its own file so you can load it directly into your chunking pipeline.
 
-| File | Content |
-|---|---|
-| [`brasaland-loyalty-program.en.md`](brasaland-loyalty-program.en.md) | "Brasa Points" Loyalty Program |
-| [`brasaland-waste-protocol.en.md`](brasaland-waste-protocol.en.md) | Waste Control Protocol |
-| [`brasaland-menu-allergens.en.md`](brasaland-menu-allergens.en.md) | Menu Allergen Guide |
-| [`brasaland-supplier-ordering.en.md`](brasaland-supplier-ordering.en.md) | Supplier Ordering Procedure |
+| File                                                                                                      | Content                        |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| [`brasaland-loyalty-program.en.md`](../00-general-contexts/brasaland/brasaland-loyalty-program.en.md)     | "Brasa Points" Loyalty Program |
+| [`brasaland-waste-protocol.en.md`](../00-general-contexts/brasaland/brasaland-waste-protocol.en.md)       | Waste Control Protocol         |
+| [`brasaland-menu-allergens.en.md`](../00-general-contexts/brasaland/brasaland-menu-allergens.en.md)       | Menu Allergen Guide            |
+| [`brasaland-supplier-ordering.en.md`](../00-general-contexts/brasaland/brasaland-supplier-ordering.en.md) | Supplier Ordering Procedure    |
 
 ---
 
@@ -35,7 +35,9 @@ payload:
 ```json
 {
   "id": "chunk-uuid",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "brasaland",
     "source_document": "loyalty-program | waste-protocol | menu-allergens | supplier-ordering",

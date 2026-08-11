@@ -18,14 +18,14 @@ Tu base de conocimiento debe construirse a partir de los documentos fuente de la
 
 ## 2. Documentos Fuente para la Base de Conocimiento
 
-Usa los siguientes documentos fuente como base de tu base de conocimiento. Cada uno se entrega como un archivo independiente para que lo cargues directamente en tu pipeline de chunking.
+Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópialos desde [`00-general-contexts/healthcore/`](../00-general-contexts/healthcore/) a `docs/company-knowledge-base/` en tu monorepo. Cada uno se entrega como un archivo independiente para que lo cargues directamente en tu pipeline de chunking.
 
-| Archivo | Contenido |
-|---|---|
-| [`healthcore-insurance-coverage.es.md`](healthcore-insurance-coverage.es.md) | Cobertura de Seguros Aceptados |
-| [`healthcore-appointment-policy.es.md`](healthcore-appointment-policy.es.md) | Política de Citas y Cancelaciones |
-| [`healthcore-referral-process.es.md`](healthcore-referral-process.es.md) | Proceso de Referencia Interna |
-| [`healthcore-new-patient-checklist.es.md`](healthcore-new-patient-checklist.es.md) | Checklist para Pacientes Nuevos |
+| Archivo                                                                                                              | Contenido                         |
+| -------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| [`healthcore-insurance-coverage.es.md`](../00-general-contexts/healthcore/healthcore-insurance-coverage.es.md)       | Cobertura de Seguros Aceptados    |
+| [`healthcore-appointment-policy.es.md`](../00-general-contexts/healthcore/healthcore-appointment-policy.es.md)       | Política de Citas y Cancelaciones |
+| [`healthcore-referral-process.es.md`](../00-general-contexts/healthcore/healthcore-referral-process.es.md)           | Proceso de Referencia Interna     |
+| [`healthcore-new-patient-checklist.es.md`](../00-general-contexts/healthcore/healthcore-new-patient-checklist.es.md) | Checklist para Pacientes Nuevos   |
 
 ---
 
@@ -34,7 +34,9 @@ Usa los siguientes documentos fuente como base de tu base de conocimiento. Cada 
 ```json
 {
   "id": "uuid-del-chunk",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "healthcore",
     "source_document": "insurance-coverage | appointment-policy | referral-process | new-patient-checklist",

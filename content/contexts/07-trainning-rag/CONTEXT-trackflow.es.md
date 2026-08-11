@@ -16,14 +16,14 @@ Tu base de conocimiento debe construirse a partir de los documentos fuente de la
 
 ## 2. Documentos Fuente para la Base de Conocimiento
 
-Usa los siguientes documentos fuente como base de tu base de conocimiento. Cada uno se entrega como un archivo independiente para que lo cargues directamente en tu pipeline de chunking.
+Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópialos desde [`00-general-contexts/trackflow/`](../00-general-contexts/trackflow/) a `docs/company-knowledge-base/` en tu monorepo. Cada uno se entrega como un archivo independiente para que lo cargues directamente en tu pipeline de chunking.
 
-| Archivo | Contenido |
-|---|---|
-| [`trackflow-sla-delivery.es.md`](trackflow-sla-delivery.es.md) | SLA de Entrega |
-| [`trackflow-returns-policy.es.md`](trackflow-returns-policy.es.md) | Política de Devoluciones |
-| [`trackflow-carrier-coverage.es.md`](trackflow-carrier-coverage.es.md) | Cobertura de Transportistas |
-| [`trackflow-storage-pricing.es.md`](trackflow-storage-pricing.es.md) | Tarifas de Almacenamiento |
+| Archivo                                                                                                 | Contenido                   |
+| ------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [`trackflow-sla-delivery.es.md`](../00-general-contexts/trackflow/trackflow-sla-delivery.es.md)         | SLA de Entrega              |
+| [`trackflow-returns-policy.es.md`](../00-general-contexts/trackflow/trackflow-returns-policy.es.md)     | Política de Devoluciones    |
+| [`trackflow-carrier-coverage.es.md`](../00-general-contexts/trackflow/trackflow-carrier-coverage.es.md) | Cobertura de Transportistas |
+| [`trackflow-storage-pricing.es.md`](../00-general-contexts/trackflow/trackflow-storage-pricing.es.md)   | Tarifas de Almacenamiento   |
 
 ---
 
@@ -32,7 +32,9 @@ Usa los siguientes documentos fuente como base de tu base de conocimiento. Cada 
 ```json
 {
   "id": "uuid-del-chunk",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "trackflow",
     "source_document": "sla-delivery | returns-policy | carrier-coverage | storage-pricing",

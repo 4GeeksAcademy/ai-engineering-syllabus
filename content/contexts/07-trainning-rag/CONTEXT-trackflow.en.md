@@ -16,14 +16,14 @@ Your knowledge base must be built from the source documents in section 2.
 
 ## 2. Knowledge Base Source Documents
 
-Use the following source documents as the base for your knowledge base. Each has been split into its own file so you can load it directly into your chunking pipeline.
+Use the following source documents as the base for your knowledge base. Copy them from [`00-general-contexts/trackflow/`](../00-general-contexts/trackflow/) into `docs/company-knowledge-base/` in your monorepo. Each has been split into its own file so you can load it directly into your chunking pipeline.
 
-| File | Content |
-|---|---|
-| [`trackflow-sla-delivery.en.md`](trackflow-sla-delivery.en.md) | Delivery SLA |
-| [`trackflow-returns-policy.en.md`](trackflow-returns-policy.en.md) | Returns Policy |
-| [`trackflow-carrier-coverage.en.md`](trackflow-carrier-coverage.en.md) | Carrier Coverage |
-| [`trackflow-storage-pricing.en.md`](trackflow-storage-pricing.en.md) | Storage Pricing |
+| File                                                                                                    | Content          |
+| ------------------------------------------------------------------------------------------------------- | ---------------- |
+| [`trackflow-sla-delivery.en.md`](../00-general-contexts/trackflow/trackflow-sla-delivery.en.md)         | Delivery SLA     |
+| [`trackflow-returns-policy.en.md`](../00-general-contexts/trackflow/trackflow-returns-policy.en.md)     | Returns Policy   |
+| [`trackflow-carrier-coverage.en.md`](../00-general-contexts/trackflow/trackflow-carrier-coverage.en.md) | Carrier Coverage |
+| [`trackflow-storage-pricing.en.md`](../00-general-contexts/trackflow/trackflow-storage-pricing.en.md)   | Storage Pricing  |
 
 ---
 
@@ -32,7 +32,9 @@ Use the following source documents as the base for your knowledge base. Each has
 ```json
 {
   "id": "chunk-uuid",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "trackflow",
     "source_document": "sla-delivery | returns-policy | carrier-coverage | storage-pricing",

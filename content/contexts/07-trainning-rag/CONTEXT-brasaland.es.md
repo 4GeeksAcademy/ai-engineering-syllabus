@@ -16,14 +16,14 @@ Tu base de conocimiento debe construirse a partir de los documentos fuente de la
 
 ## 2. Documentos Fuente para la Base de Conocimiento
 
-Usa los siguientes documentos fuente como base de tu base de conocimiento. Cada uno se entrega como un archivo independiente para que lo cargues directamente en tu pipeline de chunking.
+Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópialos desde [`00-general-contexts/brasaland/`](../00-general-contexts/brasaland/) a `docs/company-knowledge-base/` en tu monorepo. Cada uno se entrega como un archivo independiente para que lo cargues directamente en tu pipeline de chunking.
 
-| Archivo | Contenido |
-|---|---|
-| [`brasaland-loyalty-program.es.md`](brasaland-loyalty-program.es.md) | Programa de Lealtad "Brasa Points" |
-| [`brasaland-waste-protocol.es.md`](brasaland-waste-protocol.es.md) | Protocolo de Control de Desperdicio |
-| [`brasaland-menu-allergens.es.md`](brasaland-menu-allergens.es.md) | Guía de Alérgenos del Menú |
-| [`brasaland-supplier-ordering.es.md`](brasaland-supplier-ordering.es.md) | Procedimiento de Pedido a Proveedores |
+| Archivo                                                                                                   | Contenido                             |
+| --------------------------------------------------------------------------------------------------------- | ------------------------------------- |
+| [`brasaland-loyalty-program.es.md`](../00-general-contexts/brasaland/brasaland-loyalty-program.es.md)     | Programa de Lealtad "Brasa Points"    |
+| [`brasaland-waste-protocol.es.md`](../00-general-contexts/brasaland/brasaland-waste-protocol.es.md)       | Protocolo de Control de Desperdicio   |
+| [`brasaland-menu-allergens.es.md`](../00-general-contexts/brasaland/brasaland-menu-allergens.es.md)       | Guía de Alérgenos del Menú            |
+| [`brasaland-supplier-ordering.es.md`](../00-general-contexts/brasaland/brasaland-supplier-ordering.es.md) | Procedimiento de Pedido a Proveedores |
 
 ---
 
@@ -35,7 +35,9 @@ siguiente payload:
 ```json
 {
   "id": "uuid-del-chunk",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "brasaland",
     "source_document": "loyalty-program | waste-protocol | menu-allergens | supplier-ordering",

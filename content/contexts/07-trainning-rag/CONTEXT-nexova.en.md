@@ -16,14 +16,14 @@ Your knowledge base must be built from the source documents in section 2.
 
 ## 2. Knowledge Base Source Documents
 
-Use the following source documents as the base for your knowledge base. Each has been split into its own file so you can load it directly into your chunking pipeline.
+Use the following source documents as the base for your knowledge base. Copy them from [`00-general-contexts/nexova/`](../00-general-contexts/nexova/) into `docs/company-knowledge-base/` in your monorepo. Each has been split into its own file so you can load it directly into your chunking pipeline.
 
-| File                                                                 | Content                             |
-| -------------------------------------------------------------------- | ----------------------------------- |
-| [`nexova-service-lines.en.md`](nexova-service-lines.en.md)           | Service Lines                       |
-| [`nexova-pricing-model.en.md`](nexova-pricing-model.en.md)           | Pricing Model                       |
-| [`nexova-hiring-process-sla.en.md`](nexova-hiring-process-sla.en.md) | Hiring Process SLA                  |
-| [`nexova-objection-handling.en.md`](nexova-objection-handling.en.md) | Handling Common Prospect Objections |
+| File                                                                                               | Content                             |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| [`nexova-service-lines.en.md`](../00-general-contexts/nexova/nexova-service-lines.en.md)           | Service Lines                       |
+| [`nexova-pricing-model.en.md`](../00-general-contexts/nexova/nexova-pricing-model.en.md)           | Pricing Model                       |
+| [`nexova-hiring-process-sla.en.md`](../00-general-contexts/nexova/nexova-hiring-process-sla.en.md) | Hiring Process SLA                  |
+| [`nexova-objection-handling.en.md`](../00-general-contexts/nexova/nexova-objection-handling.en.md) | Handling Common Prospect Objections |
 
 ---
 

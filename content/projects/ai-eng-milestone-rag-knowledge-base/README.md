@@ -55,7 +55,7 @@ As an AI Engineering student, use the **models provided by 4Geeks** (included wi
 2. Create a new branch for this work: `git switch -c feature/rag-knowledge-base`.
 3. Add Qdrant to `docker-compose.yml` (or use Qdrant Cloud) and confirm connectivity from your Python environment.
 4. Install dependencies with `uv add` — Qdrant client, an embeddings library, your generation LLM SDK, `fastapi`, etc. Never use `pip install` or `pipenv`. Configure the **4Geeks-provided** embedding model and generation model as separate model IDs (and API keys / base URLs in `.env` if required) — never reuse the generation model for embeddings.
-5. Review `CONTEXT-company.md`, copy the company source documents you must index (policies, catalogs, procedures — filenames are company-specific) into `docs/company-knowledge-base/` in your monorepo, and point `setup()` at that folder.
+5. Review `CONTEXT-company.md`, copy the company source documents you must index from [`00-general-contexts/<company>/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (policies, catalogs, procedures — filenames are company-specific) into `docs/company-knowledge-base/` in your monorepo, and point `setup()` at that folder.
 6. Implement the four functions in the order below: `setup` → `embed` → `retrieve` → `query` → API → UI → tests.
 
 Suggested file layout (names may vary; responsibilities must not):

@@ -18,14 +18,14 @@ Your knowledge base must be built from the source documents in section 2.
 
 ## 2. Knowledge Base Source Documents
 
-Use the following source documents as the base for your knowledge base. Each has been split into its own file so you can load it directly into your chunking pipeline.
+Use the following source documents as the base for your knowledge base. Copy them from [`00-general-contexts/healthcore/`](../00-general-contexts/healthcore/) into `docs/company-knowledge-base/` in your monorepo. Each has been split into its own file so you can load it directly into your chunking pipeline.
 
-| File | Content |
-|---|---|
-| [`healthcore-insurance-coverage.en.md`](healthcore-insurance-coverage.en.md) | Accepted Insurance Coverage |
-| [`healthcore-appointment-policy.en.md`](healthcore-appointment-policy.en.md) | Appointment and Cancellation Policy |
-| [`healthcore-referral-process.en.md`](healthcore-referral-process.en.md) | Internal Referral Process |
-| [`healthcore-new-patient-checklist.en.md`](healthcore-new-patient-checklist.en.md) | New Patient Checklist |
+| File                                                                                                                 | Content                             |
+| -------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| [`healthcore-insurance-coverage.en.md`](../00-general-contexts/healthcore/healthcore-insurance-coverage.en.md)       | Accepted Insurance Coverage         |
+| [`healthcore-appointment-policy.en.md`](../00-general-contexts/healthcore/healthcore-appointment-policy.en.md)       | Appointment and Cancellation Policy |
+| [`healthcore-referral-process.en.md`](../00-general-contexts/healthcore/healthcore-referral-process.en.md)           | Internal Referral Process           |
+| [`healthcore-new-patient-checklist.en.md`](../00-general-contexts/healthcore/healthcore-new-patient-checklist.en.md) | New Patient Checklist               |
 
 ---
 
@@ -34,7 +34,9 @@ Use the following source documents as the base for your knowledge base. Each has
 ```json
 {
   "id": "chunk-uuid",
-  "vector": [/* embedding */],
+  "vector": [
+    /* embedding */
+  ],
   "payload": {
     "company": "healthcore",
     "source_document": "insurance-coverage | appointment-policy | referral-process | new-patient-checklist",

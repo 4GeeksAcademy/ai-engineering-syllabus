@@ -28,14 +28,14 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 
 **Company milestones (transversal monorepo)**
 
-0. **[General company briefings](./00-general-contexts)** — Choose-your-company profiles (`CONTEXT-*-briefing.en.md` / `.es.md`).
+0. **[General company briefings](./00-general-contexts)** — Choose-your-company profiles (`CONTEXT-*-briefing.en.md` / `.es.md`) and source corpora folders (`brasaland/`, `healthcore/`, `nexova/`, `trackflow/`).
 1. **[Web fundamentals](./01-web-fundamentals)** — `Milestone 1` public site and form data.
 2. **[Coding fundamentals](./02-coding-fundamentals)** — `Milestone 2` TypeScript scripts and automation inputs.
 3. **[Frontend development](./03-frontend-development)** — `Milestone 3` talent pipeline tracker UI.
 4. **[AI-driven engineering](./04-ai-driven-engineering)** — `Milestone 4` monorepo setup (placeholder; contexts may ship with the project brief).
 5. **[Backend development](./05-backend-development)** — `Milestone 5` inventory API entities and seed rules.
 6. **[Telemetry plan design](./06-telemetry-data-pipelines/telemetry)** — Mandatory metrics, inventory entities, and telemetry opportunities per company (Plan · Capture · Storage · Report).
-7. **[Training & RAG](./07-trainning-rag)** — Source Markdown corpora per company (policies, catalogs, procedures).
+7. **[Training & RAG](./07-trainning-rag)** — Milestone 7 CONTEXT files. Source Markdown corpora live in `00-general-contexts/<company>/`.
 8. **[Agent engineering](./08-agent-engineering)** — Reserved for agent modules (placeholder).
 9. **[Workflows & automation](./09-workflows-automation)** — Reserved for workflow modules (placeholder).
 10. **[Realtime](./10-realtime)** — Reserved for realtime modules (placeholder).
@@ -46,7 +46,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 12. **[Supplier directory](./supplier-directory)** — Supplier seed data and validation rules for the TinyDB API.
 13. **[Incidents file analysis](./incidents-file-analysis)** — CSV schemas, categories, and expected analyzer output.
 14. **[Centralized incident manager](./centralized-incident-manager)** — Live incident manager fields, branches, and seed values.
-15. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths, and eval rules per company.
+15. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.
 
 ## Contributors
 
