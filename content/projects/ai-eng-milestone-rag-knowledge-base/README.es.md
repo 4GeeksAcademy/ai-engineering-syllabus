@@ -80,7 +80,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Implementar `embed(text: str) -> list[float]`: genera un vector para un texto usando un **modelo de embeddings** dedicado — **no** el mismo modelo usado para generación en `query()`. Prefiere el modelo de embeddings gratuito proporcionado por 4Geeks para estudiantes de AI Engineering. La misma función `embed()` se usa para los chunks al indexar y para la pregunta del usuario al consultar.
 - [ ] Crear o recrear la colección de Qdrant de tu empresa (nombre de colección desde `CONTEXT-company.md`). Inserta todos los chunks con:
   - `vector`: salida de `embed(chunk_text)`
-  - `payload`: como mínimo `source_document`, `section`, `company`, `language`, `chunk_index` y `text` (cuerpo del chunk para el prompt) — nombres de campo desde `CONTEXT-company.md`
+  - `payload`: como mínimo `source_document`, `section`, `company`, `language`, `chunk_index` y `text` (cuerpo del chunk para el prompt) — nombres de campo del CONTEXT más `text` para armar el prompt
 - [ ] `setup()` debe ser idempotente en desarrollo: volver a ejecutarlo no debe duplicar puntos (usa IDs deterministas o estrategia de limpiar-y-recargar — documenta cuál elegiste).
 
 ### Fase 2 — Pipeline de recuperación y generación (`data/pipelines/`)
@@ -111,6 +111,11 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Las pruebas de `query()` deben simular `retrieve()` y el LLM de generación. Verificar: la función devuelve la salida del modelo; no devuelve texto crudo de chunks sin pasar por generación.
 - [ ] Las pruebas pasan con `python -m pytest tests/pipelines/test_rag.py`.
 
+### Fase 5b — Eval de retrieval (`data/eval/`)
+
+- [ ] Guarda `data/eval/test-queries.json` con al menos 8 preguntas de prueba que cubran **todos** los documentos fuente del CONTEXT (copia esos archivos desde `00-general-contexts/<company>/` a `docs/company-knowledge-base/` primero).
+- [ ] Mide **Recall@3** contra ese archivo: al menos el 80% de las preguntas deben tener el chunk correcto entre los 3 primeros resultados, como define el CONTEXT.
+
 ### Fase 6 — Documento de diseño RAG (`docs/rag/`)
 
 - [ ] Crear `docs/rag/rag-design.md` en tu monorepo. Otro desarrollador debe poder leerlo y entender tu stack RAG sin revisar el código.
@@ -132,6 +137,10 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] El endpoint reutiliza la lógica de `data/pipelines/` sin duplicarla.
 - [ ] La interfaz permite ingresar una consulta y muestra la respuesta obtenida del endpoint.
 - [ ] Las pruebas unitarias cubren `retrieve()` y `query()` con mocks; pasan en local.
+- [ ] El prompt de generación responde desde la **perspectiva de un vendedor** usando solo el contexto recuperado.
+- [ ] Cuando `retrieve()` no devuelve nada por encima de `min_score`, la respuesta indica que no hay información suficiente — sin inventar hechos de la empresa.
+- [ ] Existe `data/eval/test-queries.json` con ≥ 8 preguntas que cubren todos los documentos fuente.
+- [ ] Recall@3 cumple el umbral del CONTEXT (≥ 80%).
 - [ ] Los valores específicos de la empresa usados en la implementación coinciden con el `CONTEXT-company.md` asignado.
 - [ ] `docs/rag/rag-design.md` explica el proceso RAG, la estrategia de chunking y las prácticas de embeddings aplicadas — con decisiones justificadas para los documentos de tu empresa.
 

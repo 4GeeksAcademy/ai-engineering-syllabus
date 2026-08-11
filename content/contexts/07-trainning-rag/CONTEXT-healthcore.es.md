@@ -29,6 +29,8 @@ Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópi
 
 ---
 
+**Nombre de la colección Qdrant:** `healthcore_knowledge` — usa este nombre exacto en `setup()`.
+
 ## 3. Estructura de Datos de Dominio
 
 ```json

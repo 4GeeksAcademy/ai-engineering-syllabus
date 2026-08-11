@@ -6,7 +6,7 @@ This reference solution defines the expected quality bar for deliverables in the
 - `services/reporting/` — API endpoints that query or trigger the pipeline
 - CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
 - Execution metadata persisted per run
-- Idempotent writes into `reporting.business_metrics`
+- Idempotent writes into the CONTEXT destination table (`reporting.*`)
 
 The deliverable is **runnable orchestration code** that implements the student's approved `data/pipelines/PIPELINE_DESIGN.md` and the company **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
 
@@ -57,11 +57,11 @@ flowchart TD
 
 **Component boundaries:**
 
-| Layer                               | Responsibility                                                                                  |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `data/pipelines/pipeline.py`        | Prefect `@flow` / `@task`, resilience config, idempotent load into `reporting.business_metrics` |
-| `services/reporting/`               | HTTP surface — imports flows/functions from `data/pipelines/`; no duplicated ETL logic          |
-| `pipeline_runs` (or structured log) | Per-run metadata: start, end, rows processed, status, errors                                    |
+| Layer                               | Responsibility                                                                                   |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `data/pipelines/pipeline.py`        | Prefect `@flow` / `@task`, resilience config, idempotent load into the CONTEXT destination table |
+| `services/reporting/`               | HTTP surface — imports flows/functions from `data/pipelines/`; no duplicated ETL logic           |
+| `pipeline_runs` (or structured log) | Per-run metadata: start, end, rows processed, status, errors                                     |
 
 ---
 
@@ -205,6 +205,10 @@ Endpoints follow existing monorepo auth and RESPONSE shape from CONTEXT.
 
 Must call the flow from `data/pipelines/pipeline.py` — not re-implement ETL in `services/`.
 
+### KPI query (required — Part 3 dashboard consumes this)
+
+Read-only query over the CONTEXT destination table. Response shape must match the CONTEXT contract (column names, grain, KPIs). Do not invent a generic `reporting.business_metrics` path unless CONTEXT uses that name.
+
 ---
 
 ## Common mistakes (incomplete submissions)
@@ -229,13 +233,14 @@ Must call the flow from `data/pipelines/pipeline.py` — not re-implement ETL in
 - [ ] ≥1 task has `retries > 0` with justification comment
 - [ ] ≥1 optional task invoked with `return_state=True`; flow continues on its failure
 - [ ] ≥1 transform task has `cache_key_fn` + `cache_expiration` with comment
-- [ ] Load is idempotent into `reporting.business_metrics` — no duplicates on second run
+- [ ] Load is idempotent into the CONTEXT destination table — no duplicates on second run
 - [ ] Each run logs ≥5 metadata fields (start, end, records, status, errors)
 - [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors
 - [ ] Run command documented in `PIPELINE_DESIGN.md` or inline comments
 - [ ] `telemetry_events` and `services/telemetry/analysis.py` untouched
 - [ ] `services/reporting/` endpoint returns last run metadata
 - [ ] `services/reporting/` endpoint triggers manual run via import from `data/pipelines/`
+- [ ] `services/reporting/` endpoint returns KPI rows from the CONTEXT destination table
 - [ ] KPI values match CONTEXT "KPIs to Measure"
 - [ ] Implementation matches `PIPELINE_DESIGN.md`
 - [ ] Commit message `feat: implement resilient business performance pipeline`

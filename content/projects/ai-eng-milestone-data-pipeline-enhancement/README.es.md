@@ -45,7 +45,7 @@ Un flow que crece sin estructura termina siendo tan difícil de mantener como el
 3. Ten a mano tu `CONTEXT-company.md`: los nombres de subflows, tasks, y tests deben reflejar los nombres de KPI de su sección "KPIs a medir" y el esquema que implementaste — no etiquetas genéricas.
 4. Mantén la estructura de carpetas existente: `data/pipelines/` para flows y subflows, `data/process/` para lógica de transformación, `data/raw/` para datos de entrada, `data/eval/` para salidas de validación.
 5. Los tests unitarios van en `tests/pipelines/` en la raíz del monorepo.
-6. La página del dashboard va en `uis/backoffice/`, consumiendo el endpoint `services/reporting/` que ya construiste en la Parte 2.
+6. La página del dashboard va en `uis/backoffice/`, consumiendo el endpoint de **consulta de KPIs** de `services/reporting/` que construiste en la Parte 2.
 7. Asegúrate de que Prefect 3 esté instalado desde la Parte 2: `uv add "prefect>=3"`.
 
 ---
@@ -54,7 +54,7 @@ Un flow que crece sin estructura termina siendo tan difícil de mantener como el
 
 ### Fase 1 — Refactorización en subflows
 
-- [ ] Divide el flow principal en al menos tres subflows (`@flow`) que correspondan a las etapas de tu diseño: uno para extracción (desde `telemetry_events` y cualquier otra tabla de dominio), uno para transformación, y uno para carga (en tu tabla `reporting.business_metrics`). El flow principal los invoca en secuencia.
+- [ ] Divide el flow principal en al menos tres subflows (`@flow`) que correspondan a las etapas de tu diseño: uno para extracción (desde `telemetry_events` y cualquier otra tabla de dominio), uno para transformación, y uno para carga (en la tabla de destino nombrada en tu CONTEXT-company.md). El flow principal los invoca en secuencia.
 - [ ] Cada subflow debe tener inputs y outputs explícitos — no dependas de variables globales entre subflows.
 - [ ] Si tienes pasos opcionales (notificaciones, exportaciones secundarias), extráelos también como subflows e invócalos con `return_state=True` desde el flow principal.
 
@@ -79,7 +79,7 @@ Tu pipeline produce KPIs — pero una tabla que nadie mira no es un entregable. 
 - [ ] Construye una página en `uis/backoffice/` (ej. `/reporting`) que consuma tu endpoint de `services/reporting/` y muestre cada KPI de la sección "KPIs a medir" de tu `CONTEXT-company.md` — un gráfico o una tabla por KPI es suficiente.
 - [ ] Etiqueta cada KPI claramente con el mismo nombre que tiene en tu `CONTEXT-company.md`, y muestra el período (semana o mes, según tu frecuencia) que cubren los datos.
 - [ ] Este dashboard es de cara al negocio, no una herramienta de desarrollador: debe ser legible para el stakeholder nombrado en tu `CONTEXT-company.md` (ej. el CEO o el gerente de departamento) sin que nada necesite traducción ni explicación.
-- [ ] No necesitas pulirlo visualmente — el objetivo es una vista funcional y correctamente etiquetada de datos reales desde `reporting.business_metrics`.
+- [ ] No necesitas pulirlo visualmente — el objetivo es una vista funcional y correctamente etiquetada de datos reales desde la tabla de destino de tu CONTEXT.
 
 ⚠️ **IMPORTANTE:** Los nombres de subflows, tasks, y tests deben seguir el mismo vocabulario de dominio definido en `data/pipelines/PIPELINE_DESIGN.md` y tu `CONTEXT-company.md`. Un subflow llamado `extract_data` no es aceptable si tu compañía tiene entidades concretas y nombres de KPI — nómbralo según la métrica de negocio real que produce este pipeline.
 

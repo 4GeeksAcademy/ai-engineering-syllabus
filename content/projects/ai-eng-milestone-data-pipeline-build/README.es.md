@@ -50,7 +50,7 @@ Un pipeline resiliente no es uno que nunca falla — es uno que falla bien. En P
 2. Abre tu `data/pipelines/PIPELINE_DESIGN.md` — ese documento es tu especificación. Implementa lo que diseñaste.
 3. Mantén abierto tu `CONTEXT-company.md` del contexto de data pipelines mientras programas: es la fuente de verdad para los nombres exactos de los KPIs (su sección "KPIs a medir"), el esquema de la tabla de destino, y el contrato del endpoint que estás implementando. (Los campos de evento de los que estás extrayendo son los que tu `CONTEXT-company.md` de telemetría ya definió como obligatorios.)
 4. Escribe el código de tu pipeline en `data/pipelines/`. El punto de entrada principal debe llamarse `data/pipelines/pipeline.py`. Usa `data/raw/` para datos de entrada y archivos intermedios, `data/process/` para scripts de transformación reutilizables, y `data/eval/` para salidas de validación del pipeline.
-5. La task de extracción lee de `telemetry_events` (y cualquier otra tabla de dominio que necesites) — en modo solo lectura. La task de carga escribe en la tabla **nueva** `reporting.business_metrics` que diseñaste en la Parte 1. No escribas de vuelta en `telemetry_events` ni modifiques `services/telemetry/analysis.py`.
+5. La task de extracción lee de `telemetry_events` (y cualquier otra tabla de dominio que necesites) — en modo solo lectura. La task de carga escribe en la **tabla de destino nombrada en tu CONTEXT-company.md** (bajo el esquema `reporting`) que diseñaste en la Parte 1. No escribas de vuelta en `telemetry_events` ni modifiques `services/telemetry/analysis.py`.
 6. Cualquier endpoint que exponga o dispare el pipeline (por ejemplo, para consultar el estado de la última corrida o lanzar una corrida manual) debe implementarse en `services/reporting/`, un módulo separado de `services/telemetry/`, importando funciones y flows desde `data/pipelines/` según se necesite.
 7. Instala Prefect 3 en tu entorno: `uv add "prefect>=3"`.
 
@@ -72,7 +72,7 @@ Un pipeline resiliente no es uno que nunca falla — es uno que falla bien. En P
 
 ### Fase 3 — Idempotencia
 
-- [ ] La fase de carga debe ser idempotente: si el pipeline corre dos veces sobre el mismo rango de datos, el resultado en tu tabla `reporting.business_metrics` debe ser idéntico después de ambas corridas. Implementa la estrategia que documentaste en tu diseño (upsert, tabla de control, timestamp, u otra) — el constraint único del esquema de tu `CONTEXT-company.md` es en el que debe apoyarse tu upsert.
+- [ ] La fase de carga debe ser idempotente: si el pipeline corre dos veces sobre el mismo rango de datos, el resultado en la tabla de destino de tu CONTEXT debe ser idéntico después de ambas corridas. Implementa la estrategia que documentaste en tu diseño (upsert, tabla de control, timestamp, u otra) — el constraint único del esquema de tu `CONTEXT-company.md` es en el que debe apoyarse tu upsert.
 - [ ] Registra en la base de datos o en un archivo de log la metadata mínima de ejecución de cada corrida: hora de inicio, hora de fin, registros procesados, estado final, y cualquier error capturado.
 
 ### Fase 4 — Ejecución basada en script
@@ -83,7 +83,7 @@ Un pipeline resiliente no es uno que nunca falla — es uno que falla bien. En P
 
 ### Fase 5 — Endpoints del backend
 
-- [ ] En `services/reporting/`, implementa al menos dos endpoints relacionados con este pipeline: uno para consultar el estado y metadata de la última corrida, y otro para disparar una corrida manual del flow. Mantenlos en su propio módulo, separado de `services/telemetry/`.
+- [ ] En `services/reporting/`, implementa **tres** endpoints relacionados con este pipeline: (1) consultar el estado y metadata de la última corrida, (2) disparar una corrida manual del flow, (3) **consultar las filas de KPIs** de la tabla de destino del CONTEXT — esto es lo que consumirá el dashboard de la Parte 3. Mantenlos en su propio módulo, separado de `services/telemetry/`.
 - [ ] Los endpoints deben importar flows o funciones desde `data/pipelines/` — no dupliques la lógica del pipeline en `services/`.
 - [ ] Los endpoints siguen las mismas convenciones de autenticación y estructura de respuesta que el resto de tu API, y la forma de la respuesta del endpoint de consulta de KPIs coincide con el contrato de tu `CONTEXT-company.md`.
 
@@ -97,13 +97,14 @@ Un pipeline resiliente no es uno que nunca falla — es uno que falla bien. En P
 - [ ] Al menos una task tiene `retries` configurado con un valor mayor a cero y un comentario que justifica el número elegido.
 - [ ] Al menos una task opcional se invoca con `return_state=True` y el flow continúa ejecutándose cuando esa task falla.
 - [ ] Al menos una task de transformación tiene caché configurado con `cache_key_fn` y `cache_expiration`.
-- [ ] La fase de carga es idempotente: correr el pipeline dos veces sobre los mismos datos no produce duplicados en la tabla `reporting.business_metrics`.
+- [ ] La fase de carga es idempotente: correr el pipeline dos veces sobre los mismos datos no produce duplicados en la tabla de destino del CONTEXT.
 - [ ] Cada corrida del pipeline registra al menos cinco campos de metadata (hora de inicio, hora de fin, registros procesados, estado, errores) en la base de datos o en un archivo de log estructurado.
 - [ ] `python data/pipelines/pipeline.py` corre el flujo ETL completo sin errores.
 - [ ] El comando de ejecución está documentado en `data/pipelines/PIPELINE_DESIGN.md` o en comentarios inline.
-- [ ] El pipeline escribe en la nueva tabla `reporting.business_metrics` de tu `CONTEXT-company.md` — `telemetry_events` y `services/telemetry/analysis.py` quedan intactos.
+- [ ] El pipeline escribe en la tabla de destino definida en la sección Destination table de tu `CONTEXT-company.md` — `telemetry_events` y `services/telemetry/analysis.py` quedan intactos.
 - [ ] Existe al menos un endpoint en `services/reporting/` que devuelve la metadata de la última corrida del pipeline (estado, hora de inicio, hora de fin, registros procesados).
 - [ ] Existe al menos un endpoint en `services/reporting/` que dispara una corrida manual del flow, importando la función desde `data/pipelines/` sin duplicar la lógica.
+- [ ] Existe al menos un endpoint en `services/reporting/` que devuelve las filas de KPIs de la tabla de destino del CONTEXT (el contrato que consumirá el dashboard de la Parte 3).
 - [ ] Los valores de los KPIs producidos coinciden con las definiciones de la sección "KPIs a medir" de tu `CONTEXT-company.md` — no con una reinterpretación de ellos.
 - [ ] El diseño implementado es consistente con `data/pipelines/PIPELINE_DESIGN.md` — las etapas, entidades, y estrategias de resiliencia descritas ahí se reflejan en el código.
 

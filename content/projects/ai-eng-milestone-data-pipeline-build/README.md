@@ -50,7 +50,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 2. Open your `data/pipelines/PIPELINE_DESIGN.md` — that document is your specification. Implement what you designed.
 3. Keep your `CONTEXT-company.md` from the data pipelines context open while you code: it's the source of truth for the exact KPI names (its "KPIs to Measure" section), the destination table schema, and the endpoint contract you're implementing. (The event fields you're extracting from are the ones your telemetry `CONTEXT-company.md` already defined as mandatory.)
 4. Write your pipeline code in `data/pipelines/`. The main entry point must be named `data/pipelines/pipeline.py`. Use `data/raw/` for input data and intermediate files, `data/process/` for reusable transformation scripts, and `data/eval/` for pipeline validation outputs.
-5. The extraction task reads from `telemetry_events` (and any other domain tables you need) — read-only. The load task writes to the **new** `reporting.business_metrics` table you designed in Part 1. Do not write back into `telemetry_events` and do not modify `services/telemetry/analysis.py`.
+5. The extraction task reads from `telemetry_events` (and any other domain tables you need) — read-only. The load task writes to the **new destination table named in your CONTEXT-company.md** (under the `reporting` schema) that you designed in Part 1. Do not write back into `telemetry_events` and do not modify `services/telemetry/analysis.py`.
 6. Any endpoint that exposes or triggers the pipeline (for example, to query the status of the last run or launch a run manually) must be implemented in `services/reporting/`, a module separate from `services/telemetry/`, importing functions and flows from `data/pipelines/` as needed.
 7. Install Prefect 3 in your environment: `uv add "prefect>=3"`.
 
@@ -72,7 +72,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 
 ### Phase 3 — Idempotency
 
-- [ ] The load phase must be idempotent: if the pipeline runs twice over the same data range, the result in your `reporting.business_metrics` table must be identical after both runs. Implement the strategy you documented in your design (upsert, control table, timestamp, or another) — the unique constraint from your `CONTEXT-company.md` schema is what your upsert should key off.
+- [ ] The load phase must be idempotent: if the pipeline runs twice over the same data range, the result in your CONTEXT destination table must be identical after both runs. Implement the strategy you documented in your design (upsert, control table, timestamp, or another) — the unique constraint from your `CONTEXT-company.md` schema is what your upsert should key off.
 - [ ] Record in the database or in a log file the minimum execution metadata for each run: start time, end time, records processed, final status, and any captured errors.
 
 ### Phase 4 — Script-based execution
@@ -83,7 +83,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 
 ### Phase 5 — Backend endpoints
 
-- [ ] In `services/reporting/`, implement at least two endpoints related to this pipeline: one to query the status and metadata of the last run, and one to trigger a manual flow run. Keep them in their own module, separate from `services/telemetry/`.
+- [ ] In `services/reporting/`, implement **three** endpoints related to this pipeline: (1) query the status and metadata of the last run, (2) trigger a manual flow run, (3) **query the KPI rows** from the CONTEXT destination table — this is what the Part 3 dashboard will consume. Keep them in their own module, separate from `services/telemetry/`.
 - [ ] The endpoints must import flows or functions from `data/pipelines/` — do not duplicate pipeline logic in `services/`.
 - [ ] The endpoints follow the same authentication conventions and response structure as the rest of your API, and the KPI query endpoint's response shape matches the contract in your `CONTEXT-company.md`.
 
@@ -97,13 +97,14 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 - [ ] At least one task has `retries` configured with a value greater than zero and a comment justifying the number chosen.
 - [ ] At least one optional task is invoked with `return_state=True` and the flow continues executing when that task fails.
 - [ ] At least one transformation task has caching configured with `cache_key_fn` and `cache_expiration`.
-- [ ] The load phase is idempotent: running the pipeline twice over the same data does not produce duplicates in the `reporting.business_metrics` table.
+- [ ] The load phase is idempotent: running the pipeline twice over the same data does not produce duplicates in the CONTEXT destination table.
 - [ ] Each pipeline run records at least five metadata fields (start time, end time, records processed, status, errors) in the database or in a structured log file.
 - [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors.
 - [ ] The run command is documented in `data/pipelines/PIPELINE_DESIGN.md` or inline comments.
-- [ ] The pipeline writes to the new `reporting.business_metrics` table from your `CONTEXT-company.md` — `telemetry_events` and `services/telemetry/analysis.py` are untouched.
+- [ ] The pipeline writes to the destination table defined in your `CONTEXT-company.md` Destination table section — `telemetry_events` and `services/telemetry/analysis.py` are untouched.
 - [ ] At least one endpoint exists in `services/reporting/` that returns the metadata of the last pipeline run (status, start time, end time, records processed).
 - [ ] At least one endpoint exists in `services/reporting/` that triggers a manual flow run, importing the function from `data/pipelines/` without duplicating the logic.
+- [ ] At least one endpoint exists in `services/reporting/` that returns the KPI rows from the CONTEXT destination table (the contract the Part 3 dashboard will consume).
 - [ ] The KPI values produced match the definitions in your `CONTEXT-company.md`'s "KPIs to Measure" section — not a reinterpretation of them.
 - [ ] The implemented design is consistent with `data/pipelines/PIPELINE_DESIGN.md` — the stages, entities, and resilience strategies described there are reflected in the code.
 

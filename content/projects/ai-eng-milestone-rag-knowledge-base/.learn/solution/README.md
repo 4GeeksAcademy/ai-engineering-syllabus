@@ -38,7 +38,7 @@ flowchart LR
 
 Responsibilities only:
 
-1. Load documents from paths in `CONTEXT-company.md` (e.g. `data/raw/knowledge/sales-playbook.md`)
+1. Load documents from `docs/company-knowledge-base/` after copying them from `content/contexts/00-general-contexts/<company>/` (filenames listed in `CONTEXT-company.md`, e.g. `brasaland-loyalty-program.en.md`)
 2. Split into chunks at semantic boundaries (`##` headings, product blocks, numbered procedure groups)
 3. For each chunk, compute `point_id` deterministically (e.g. hash of `document + section + chunk_index`) so re-runs upsert instead of duplicate
 4. Call `embed(chunk.text)` and upsert to Qdrant
@@ -65,7 +65,7 @@ Responsibilities only:
 ```python
 # Indicative — use name from CONTEXT
 client.create_collection(
-    collection_name="company_knowledge",
+    collection_name="brasaland_knowledge",  # exact name from CONTEXT-company.md
     vectors_config=VectorParams(size=EMBED_DIM, distance=Distance.COSINE),
 )
 ```
@@ -182,6 +182,16 @@ def test_query_returns_llm_output_not_raw_chunks(monkeypatch):
 
 ---
 
+## Phase 6 — `docs/rag/rag-design.md`
+
+Another developer must understand the stack without reading code. Required subsections:
+
+1. **RAG process** — numbered flow: copy docs from `00-general-contexts/<company>/` → `docs/company-knowledge-base/` → `setup()` → Qdrant → `retrieve()` → `generate_answer()` → `query()` → `POST /knowledge/query`.
+2. **Chunking strategy** — heading/semantic split, why it fits this corpus, approximate chunk size/count per source file.
+3. **Embedding practices** — distinct embedding vs generation model IDs (4Geeks-provided), vector dimension, Qdrant distance, `min_score` and how it was tuned.
+
+---
+
 ## Docker — Qdrant service
 
 ```yaml
@@ -205,16 +215,21 @@ qdrant:
 - [ ] Endpoint returns model-generated `answer` only
 - [ ] UI demonstrates one real company question
 - [ ] `pytest tests/pipelines/test_rag.py` passes
+- [ ] `data/eval/test-queries.json` ≥ 8 questions; Recall@3 ≥ 80%
+- [ ] `docs/rag/rag-design.md` covers process, chunking, embeddings
 - [ ] PR title `feat: rag knowledge base` with example Q&A + screenshot + collection stats
 
 ---
 
 ## Evaluation mapping
 
-| Rubric item                     | Where to verify                                |
-| ------------------------------- | ---------------------------------------------- |
-| Modular four functions          | `data/process/rag.py`, `data/pipelines/rag.py` |
-| No raw vector results to client | API response schema + manual curl test         |
-| CONTEXT alignment               | Collection name, doc paths, domain terms       |
-| Salesperson voice               | Generation system prompt in `query()`          |
-| Tests                           | `tests/pipelines/test_rag.py` CI/local         |
+| Rubric item                     | Where to verify                                 |
+| ------------------------------- | ----------------------------------------------- |
+| Modular four functions          | `data/process/rag.py`, `data/pipelines/rag.py`  |
+| No raw vector results to client | API response schema + manual curl test          |
+| CONTEXT alignment               | Collection name, doc paths, domain terms        |
+| Salesperson voice               | Generation system prompt in `generate_answer()` |
+| Honest refusal                  | Empty retrieve() → no invented company facts    |
+| Recall@3 + test queries         | `data/eval/test-queries.json`                   |
+| RAG design doc                  | `docs/rag/rag-design.md`                        |
+| Tests                           | `tests/pipelines/test_rag.py` CI/local          |

@@ -61,7 +61,7 @@ Cuando escribas el propósito del pipeline en la Fase 2, nombra el entregable de
 2. Explora la carpeta [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) del monorepo — contiene las subcarpetas `raw/`, `process/`, `pipelines/`, y `eval/` que usarás a lo largo de este módulo. El código de orquestación vivirá en `data/pipelines/`; los scripts de transformación reutilizables en `data/process/`; los endpoints HTTP que consultan o disparan el pipeline vivirán en `services/` e importarán desde `data/pipelines/` — no al revés.
 3. Crea el archivo `data/pipelines/PIPELINE_DESIGN.md` — ahí va tu documento de diseño.
 4. Lee tu `CONTEXT-company.md` del contexto de data pipelines — su sección "KPIs a medir" nombra los números exactos que este pipeline debe producir, y también indica la audiencia, la frecuencia, la agregación requerida, y la tabla de destino. (Las métricas obligatorias que alimentan esos KPIs son las de tu `CONTEXT-company.md` de telemetría, ya familiar del hito anterior.)
-5. El resultado de este pipeline **no** pertenece a `telemetry_events`. Todas las tablas de destino nuevas viven bajo un esquema dedicado `reporting`, nombradas `reporting.business_metrics` — y se exponen a través de un módulo nuevo `services/reporting/`, separado de `services/telemetry/` y del endpoint `GET /telemetry/report`.
+5. El resultado de este pipeline **no** pertenece a `telemetry_events`. Todas las tablas de destino nuevas viven bajo un esquema dedicado `reporting`. Usa la tabla **exactamente como se nombra en la sección Destination table de tu CONTEXT-company.md** (no un `reporting.business_metrics` genérico) — y expónla a través de un módulo nuevo `services/reporting/`, separado de `services/telemetry/` y del endpoint `GET /telemetry/report`.
 
 > **Nota sobre herramientas:** Hoy se te introduce **Prefect** como framework de orquestación — flows, tasks, states, y bloques de configuración. Tu documento de diseño debe reflejar cómo organizarías tu pipeline usando estos conceptos, aunque la implementación en código llega en los próximos días.
 
@@ -80,7 +80,7 @@ Cuando escribas el propósito del pipeline en la Fase 2, nombra el entregable de
 - [ ] Especifica el **formato de extracción**: tu fuente es `telemetry_events` (más cualquier otra tabla de dominio existente que necesites) — en qué formato llega el dato, y con qué frecuencia se actualiza.
 - [ ] Diseña el **flujo de datos** con un diagrama de texto o Mermaid que muestre al menos tres etapas claramente separadas: extracción, transformación, y carga.
 - [ ] Describe cómo manejarías una fuente que **actualiza registros existentes** en lugar de siempre insertar nuevos — explica la estrategia concreta para evitar duplicados en tu caso específico.
-- [ ] Nombra la(s) **tabla(s) de destino nueva(s)** bajo el esquema `reporting` (`reporting.business_metrics`) donde vivirá el resultado de este pipeline, y el/los **endpoint(s) nuevo(s) en `services/reporting/`** que lo expondrán — explícitamente separados de `telemetry_events` y de `GET /telemetry/report`.
+- [ ] Nombra la(s) **tabla(s) de destino nueva(s)** bajo el esquema `reporting` usando el **nombre exacto de la sección Destination table de tu CONTEXT-company.md**, y el/los **endpoint(s) nuevo(s) en `services/reporting/`** que lo expondrán (estado, disparo manual **y consulta de KPIs**) — explícitamente separados de `telemetry_events` y de `GET /telemetry/report`.
 
 ### Fase 3 — Resiliencia e idempotencia
 
@@ -228,6 +228,8 @@ Antes de escribir `PIPELINE_DESIGN.md`, responde por escrito — aunque sea como
 ## ✅ Qué Vamos a Evaluar
 
 - [ ] El archivo `data/pipelines/PIPELINE_DESIGN.md` existe en el monorepo y está escrito en Markdown legible.
+- [ ] `PIPELINE_DESIGN.md` tiene una sección Current State más la brecha de negocio (qué responde y qué no el reporte de telemetría).
+- [ ] El formato de extracción está especificado (tablas origen, forma del payload, cadencia de actualización).
 - [ ] El propósito del pipeline está definido en una sola frase concreta que nombra el entregable de negocio y el/los KPI(s) del `CONTEXT-company.md` de la compañía — no un KPI genérico o técnico.
 - [ ] El diseño no modifica `telemetry_events`, `services/telemetry/analysis.py`, ni `GET /telemetry/report` — el resultado del nuevo pipeline vive en tablas nuevas bajo un esquema `reporting` y se expone a través de un módulo nuevo `services/reporting/`.
 - [ ] El diagrama de flujo de datos muestra al menos tres etapas distintas (extracción, transformación, carga) con los nombres reales de entidad o tabla de la compañía.
@@ -235,7 +237,7 @@ Antes de escribir `PIPELINE_DESIGN.md`, responde por escrito — aunque sea como
 - [ ] La estrategia de idempotencia es explícita: describe qué pasa en la segunda corrida después de un fallo en la fase de carga, no solo lo que sería deseable.
 - [ ] El log de ejecución especifica al menos cinco campos con el nombre del campo, tipo de dato, y justificación de por qué ese campo es necesario para auditoría.
 - [ ] El mapeo a Prefect identifica al menos dos flows y tres tasks con nombres concretos alineados con las etapas del pipeline.
-- [ ] El diseño documenta al menos dos endpoints planeados en `services/reporting/` (consulta de estado y disparo manual) y nombra las funciones de `data/pipelines/` que cada uno importará.
+- [ ] El diseño documenta al menos **tres** endpoints planeados en `services/reporting/` (consulta de estado, disparo manual **y consulta de KPIs** para el dashboard) y nombra las funciones de `data/pipelines/` que cada uno importará.
 - [ ] El diseño es consistente con los eventos de telemetría y las métricas obligatorias ya definidas en el archivo CONTEXT de la compañía.
 
 ---

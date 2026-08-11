@@ -27,6 +27,8 @@ Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópi
 
 ---
 
+**Nombre de la colección Qdrant:** `brasaland_knowledge` — usa este nombre exacto en `setup()`.
+
 ## 3. Estructura de Datos de Dominio
 
 Cada punto (point) que insertes en Qdrant debe incluir, como mínimo, el

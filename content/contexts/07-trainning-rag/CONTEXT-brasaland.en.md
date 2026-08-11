@@ -27,6 +27,8 @@ Use the following source documents as the base for your knowledge base. Copy the
 
 ---
 
+**Qdrant collection name:** `brasaland_knowledge` — use this exact name in `setup()`.
+
 ## 3. Domain Data Structure
 
 Every point you insert into Qdrant must include, at minimum, the following

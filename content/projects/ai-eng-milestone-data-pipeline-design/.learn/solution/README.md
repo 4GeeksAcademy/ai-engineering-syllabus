@@ -10,7 +10,7 @@ The deliverable is **design documentation only** — no Prefect flows, Python sc
 
 All KPIs, mandatory metrics, audience, cadence, and destination names must come from the company's **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** and existing telemetry work. Generic placeholders that ignore sector-specific KPIs or entity naming should be treated as incomplete.
 
-**Hard constraint:** this pipeline is **new**. Designs must not modify `telemetry_events`, `services/telemetry/analysis.py`, or `GET /telemetry/report`. Output lives under `reporting.business_metrics` (and related reporting tables) and is exposed via `services/reporting/`.
+**Hard constraint:** this pipeline is **new**. Designs must not modify `telemetry_events`, `services/telemetry/analysis.py`, or `GET /telemetry/report`. Output lives in the **destination table named in CONTEXT-company.md** (always under the `reporting` schema — never a generic `reporting.business_metrics` unless CONTEXT uses that name) and is exposed via `services/reporting/` (status, trigger, **and KPI query**).
 
 ---
 
@@ -163,7 +163,7 @@ Keep these in `services/reporting/`, separate from `services/telemetry/`.
 
 - Purpose names technical KPIs (volume, latency) instead of CONTEXT business KPIs.
 - Mutating or "replacing" `telemetry_events` / `GET /telemetry/report`.
-- Destination in `public` instead of `reporting.business_metrics`.
+- Destination in `public` instead of the CONTEXT `reporting.*` table.
 - Generic table names (`events`, `metrics`) instead of company-specific entity names.
 - Data flow diagram with only two stages or missing real source/destination names.
 - Idempotency described as a wish ("should be idempotent") without second-run behavior.

@@ -80,7 +80,7 @@ Suggested file layout (names may vary; responsibilities must not):
 - [ ] Implement `embed(text: str) -> list[float]`: generates a vector for a single text using a dedicated **embeddings model** — **not** the same model used for generation in `query()`. Prefer the free embeddings model provided by 4Geeks for AI Engineering students. The same `embed()` function is used for chunks at index time and for the user question at query time.
 - [ ] Create or recreate the Qdrant collection for your company (collection name from `CONTEXT-company.md`). Upsert all chunks with:
   - `vector`: output of `embed(chunk_text)`
-  - `payload`: at minimum `source_document`, `section`, `company`, `language`, `chunk_index`, and `text` (chunk body for prompt assembly) — field names from `CONTEXT-company.md`
+  - `payload`: at minimum `source_document`, `section`, `company`, `language`, `chunk_index`, and `text` (chunk body for prompt assembly) — CONTEXT field names plus `text` for prompt assembly
 - [ ] `setup()` must be idempotent for development: re-running it should not duplicate points (use deterministic point IDs or clear-and-reload strategy — document which you chose).
 
 ### Phase 2 — Retrieval and generation pipeline (`data/pipelines/`)
@@ -111,6 +111,11 @@ Suggested file layout (names may vary; responsibilities must not):
 - [ ] `query()` tests must mock `retrieve()` and the generation LLM. Verify: the function returns the model output; it does not return raw chunk text without passing through generation.
 - [ ] Tests pass with `python -m pytest tests/pipelines/test_rag.py`.
 
+### Phase 5b — Retrieval eval (`data/eval/`)
+
+- [ ] Save `data/eval/test-queries.json` with at least 8 test questions covering **all** CONTEXT source documents (copy those files from `00-general-contexts/<company>/` into `docs/company-knowledge-base/` first).
+- [ ] Measure **Recall@3** against that file: at least 80% of questions must have the correct chunk among the top 3 retrieved results, as defined in CONTEXT.
+
 ### Phase 6 — RAG design document (`docs/rag/`)
 
 - [ ] Create `docs/rag/rag-design.md` in your monorepo. Another developer should be able to read it and understand your RAG stack without digging through the code.
@@ -132,6 +137,10 @@ Suggested file layout (names may vary; responsibilities must not):
 - [ ] The endpoint reuses the logic in `data/pipelines/` without duplicating it.
 - [ ] The interface allows a user to enter a query and displays the answer obtained from the endpoint.
 - [ ] Unit tests cover `retrieve()` and `query()` with mocks; they pass locally.
+- [ ] The generation prompt answers from a **salesperson's perspective** using only retrieved context.
+- [ ] When `retrieve()` returns nothing above `min_score`, the answer states there isn't enough information — no invented company facts.
+- [ ] `data/eval/test-queries.json` exists with ≥ 8 questions covering all source documents.
+- [ ] Recall@3 meets the CONTEXT threshold (≥ 80%).
 - [ ] Company-specific values used in the implementation match the assigned `CONTEXT-company.md`.
 - [ ] `docs/rag/rag-design.md` explains the RAG process, chunking strategy, and embedding practices applied — with choices justified for your company's documents.
 

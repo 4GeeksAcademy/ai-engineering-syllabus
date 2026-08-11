@@ -29,6 +29,8 @@ Use the following source documents as the base for your knowledge base. Copy the
 
 ---
 
+**Qdrant collection name:** `healthcore_knowledge` — use this exact name in `setup()`.
+
 ## 3. Domain Data Structure
 
 ```json
