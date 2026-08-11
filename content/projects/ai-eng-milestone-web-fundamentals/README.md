@@ -112,6 +112,7 @@ Do not clone this repository because we are going to use a different template.
 - [ ] Use semantic HTML tags (`<section>`, `<article>`, `<nav>`, etc.)
 - [ ] Implement ARIA attributes where appropriate (`aria-label`, `role`)
 - [ ] Add Schema.org markup for company information (Organization or LocalBusiness type)
+- [ ] Expose the site on a **public Codespaces URL** (port forwarding → Public) so it can be audited externally
 
 ### Application/Sign-up Form
 
@@ -154,7 +155,7 @@ Do not clone this repository because we are going to use a different template.
 - [ ] Tailwind breakpoints (`sm:`, `md:`, `lg:`) are used appropriately
 - [ ] There is no unnecessary custom CSS (only Tailwind)
 - [ ] The design is visually coherent and professional
-- [ ] Performance is verified on the public URL with [PageSpeed Insights](https://pagespeed.web.dev/) with a minimum score of **80** (ideal: **above 90**). You will have to publish your page to vercel in order to run google page speed because Codespaces has a warning message that blocks google page speed from visiting your website.
+- [ ] Performance is verified with a minimum score of **80** (ideal: **above 90**) using [PageSpeed Insights](https://pagespeed.web.dev/) on your **public Codespaces URL** (forward the port as **Public**). If PageSpeed cannot reach Codespaces, run **Lighthouse** from Chrome DevTools (Lighthouse panel, or the Lighthouse extension) against the same local/Codespaces preview and include that screenshot instead.
 
 ### Accessibility
 
@@ -194,11 +195,13 @@ Do not clone this repository because we are going to use a different template.
    - `validation.js`
    - `CONTEXT.md` (unmodified)
 
-3. Test your site by opening `index.html` in different browser window sizes
+3. Include your **public Codespaces URL** and a screenshot of PageSpeed Insights **or** Chrome DevTools Lighthouse (score ≥ 80) in the PR description
 
-4. Test all form validations to ensure they work
+4. Test your site by opening `index.html` in different browser window sizes
 
-5. Submit the URL of your repository for evaluation
+5. Test all form validations to ensure they work
+
+6. Submit the URL of your repository for evaluation
 
 **Tip:** Use browser DevTools (F12) to test different screen sizes and verify there are no console errors.
 

@@ -20,7 +20,7 @@ Serve during development (Codespaces-compatible):
 npx http-server . -p 3000 -a 0.0.0.0
 ```
 
-Deploy to Vercel (or similar) before running PageSpeed Insights — Codespaces URLs block Lighthouse.
+Prefer PageSpeed Insights on the **public Codespaces URL** (port forwarding → Public). If PageSpeed cannot reach the preview, run **Lighthouse** from Chrome DevTools (Lighthouse panel or extension) against the same preview.
 
 ## Required Coverage (From README)
 
@@ -111,7 +111,7 @@ Wire one validator per CONTEXT field; map errors to visible elements with `aria-
 
 ## PageSpeed / Performance
 
-- Target **≥ 80** on PageSpeed Insights (ideal **> 90**) on deployed URL.
+- Target **≥ 80** (ideal **> 90**) on PageSpeed Insights (public Codespaces URL) **or** Chrome DevTools Lighthouse if PageSpeed cannot reach the preview.
 - Optimise images (reasonable dimensions, modern formats).
 - Minimise render-blocking scripts; load `validation.js` with `defer` where possible.
 
@@ -123,7 +123,7 @@ Wire one validator per CONTEXT field; map errors to visible elements with `aria-
 - [ ] All CONTEXT form fields implemented with matching validation rules.
 - [ ] Error messages specific; submit blocked until valid.
 - [ ] Landing content reflects company sector and tone from CONTEXT.
-- [ ] PageSpeed score ≥ 80 on public deployment URL.
+- [ ] PageSpeed **or** Lighthouse score ≥ 80 (public Codespaces URL or local/Codespaces preview).
 
 ## Reviewer Notes
 

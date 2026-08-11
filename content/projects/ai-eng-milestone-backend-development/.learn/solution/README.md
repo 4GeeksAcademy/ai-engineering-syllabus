@@ -223,14 +223,16 @@ For `GET /inventory/orders`, eager-load product data in one query (e.g. `selecti
 
 - [ ] Two DB connections active: TinyDB for auth, Supabase/SQLModel for inventory.
 - [ ] All inventory routes under `/inventory` via dedicated `APIRouter`.
-- [ ] SQLModel FK: inbound/outbound `product_id` → product table.
+- [ ] SQLModel FK: inbound/outbound → product-equivalent entity named in CONTEXT.md.
 - [ ] `current_stock` computed from orders — no direct stock mutation endpoint.
+- [ ] Stock calculation respects CONTEXT.md scoping (global vs per-partition / per-warehouse).
 - [ ] Outbound exceeding stock returns `400` **before** any write.
 - [ ] Each order stores authenticated `user_uuid` from TinyDB.
 - [ ] `models.py` and `schemas.py` are separate; endpoints return Pydantic schemas only.
 - [ ] `get_db` injected per request; no global session.
 - [ ] Connection strings in `.env`; `.env` in `.gitignore`.
 - [ ] Entity and field names match the student's CONTEXT.md.
+- [ ] CONTEXT.md seed data is present; `GET /inventory/products` reflects net stock from those seeds.
 
 ## Key implementation decisions
 

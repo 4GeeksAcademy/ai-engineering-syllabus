@@ -48,6 +48,9 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
   - State clearly: which company you chose and why (3–5 sentences minimum).
   - Identify at least two departments whose problems you find most interesting.
   - Identify one automation or AI challenge from the milestone map that you are most looking forward to building.
+- [ ] **Copy your company's briefing into the monorepo root as `CONTEXT.md`:**
+  - Source: [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) → `CONTEXT-<company>-briefing.en.md` (use the Spanish `.es.md` only if your cohort works in Spanish).
+  - Replace the template placeholder in `CONTEXT.md` entirely — do not leave the "Replace this file" stub.
 - [ ] **Set up your working environment:**
   - Open the repository in GitHub Codespaces (recommended) and verify everything loads correctly.
   - Confirm you have access to GitHub Codespaces.
@@ -67,6 +70,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 - [ ] The `company-choice.md` file exists in the root of the submitted repository.
 - [ ] A specific company has been selected (not a general statement or "I haven't decided yet").
+- [ ] `CONTEXT.md` in the monorepo root contains the assigned company's briefing (template placeholder replaced).
 - [ ] The written justification is at least 3 sentences and references specific details from the company's context file — not just the company name or sector.
 - [ ] Two or more departments have been identified with a brief explanation of why they are interesting.
 - [ ] At least one specific milestone or automation challenge has been named.
@@ -78,7 +82,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 ## 📦 How to Submit
 
-1. Make sure your `company-choice.md` is committed and pushed to your repository.
+1. Make sure your `company-choice.md` and updated `CONTEXT.md` are committed and pushed to your repository.
 2. Copy the URL of your repository on GitHub.
 3. Submit that URL through the 4Geeks platform assignment for Milestone.
 

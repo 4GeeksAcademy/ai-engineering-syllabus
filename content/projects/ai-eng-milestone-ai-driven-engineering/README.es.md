@@ -72,7 +72,7 @@ Una **skill de agente** es una instrucción estructurada y reutilizable: más co
 
 ## 🌱 Cómo iniciar el proyecto
 
-Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
+Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese archivo debe ser el briefing de tu empresa de [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.es.md` / `.en.md`), copiado al monorepo en el hito choose-company — no el placeholder vacío de la plantilla. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
 
 1. Haz fork del repositorio de plantilla: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Ábrelo en **GitHub Codespaces** o clónalo localmente y revisa la estructura existente antes de crear carpetas nuevas
@@ -99,7 +99,7 @@ Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria
   - [ ] Inputs documentados
   - [ ] Criterios de aceptación explícitos y verificables
 
-⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones documentados en el `CONTEXT.md` de tu monorepo. Una infraestructura genérica que ignore el escenario de la empresa no será aceptada.
+⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones del `CONTEXT.md` de tu monorepo (el briefing de tu empresa). Una infraestructura genérica — o construida sobre el placeholder de plantilla sin reemplazar — no será aceptada.
 
 ### Aplicación Next.js + TypeScript
 

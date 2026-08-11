@@ -72,7 +72,7 @@ An **agent skill** is a structured, reusable instruction: more concrete than a g
 
 ## 🌱 How to Start the Project
 
-Read the `CONTEXT.md` in your monorepo before doing anything else. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
+Read the `CONTEXT.md` at the **root of your monorepo** before doing anything else. That file must be your company briefing from [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.en.md`), copied into the monorepo during the choose-company milestone — not the empty template placeholder. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
 
 1. Fork the template repository: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Open your fork in **GitHub Codespaces** or clone it locally, then review the existing structure before creating new folders
@@ -99,7 +99,7 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
   - [ ] Documented inputs
   - [ ] Explicit and verifiable acceptance criteria
 
-⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints documented in your monorepo's `CONTEXT.md`. A generic infrastructure that ignores the company scenario will not be accepted.
+⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints in your monorepo's `CONTEXT.md` (your company briefing). A generic infrastructure — or one built against the unreplaced template placeholder — will not be accepted.
 
 ### Next.js + TypeScript Application
 

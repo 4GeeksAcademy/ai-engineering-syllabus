@@ -48,6 +48,9 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
   - Indica claramente: qué empresa elegiste y por qué (mínimo 3-5 frases).
   - Identifica al menos dos departamentos cuyos problemas encuentres más interesantes.
   - Identifica un reto de automatización o IA del milestone map que más ganas tengas de construir.
+- [ ] **Copia el briefing de tu empresa en la raíz del monorepo como `CONTEXT.md`:**
+  - Fuente: [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) → `CONTEXT-<company>-briefing.es.md` (o `.en.md` si tu cohorte trabaja en inglés).
+  - Sustituye por completo el placeholder de la plantilla en `CONTEXT.md` — no dejes el stub "Replace this file".
 - [ ] **Configura tu entorno de trabajo:**
   - Abre el repositorio en GitHub Codespaces (recomendado) y verifica que todo carga correctamente.
   - Confirma que tienes acceso a GitHub Codespaces.
@@ -67,6 +70,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 - [ ] El archivo `company-choice.md` existe en la raíz del repositorio entregado.
 - [ ] Se ha seleccionado una empresa concreta (no una afirmación genérica ni "aún no lo he decidido").
+- [ ] `CONTEXT.md` en la raíz del monorepo contiene el briefing de la empresa asignada (placeholder de plantilla sustituido).
 - [ ] La justificación escrita tiene al menos 3 frases y hace referencia a detalles específicos del archivo de contexto de la empresa — no solo el nombre del sector.
 - [ ] Se han identificado dos o más departamentos con una breve explicación de por qué resultan interesantes.
 - [ ] Se ha nombrado al menos un milestone o reto de automatización concreto.
@@ -78,7 +82,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 ## 📦 Cómo entregar
 
-1. Asegúrate de que tu `company-choice.md` está commiteado y pusheado a tu repositorio.
+1. Asegúrate de que tu `company-choice.md` y el `CONTEXT.md` actualizado están commiteados y pusheados a tu repositorio.
 2. Copia la URL de tu repositorio en GitHub.
 3. Entrega esa URL a través de la tarea del Milestone en la plataforma de 4Geeks.
 

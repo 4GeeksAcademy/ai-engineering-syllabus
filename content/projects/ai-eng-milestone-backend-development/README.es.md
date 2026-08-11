@@ -19,7 +19,9 @@ _These instructions are also available in [English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Ya has construido la API y la capa de autenticación. Ahora el equipo de operaciones ha enviado una **RFP** a la unidad tecnológica: la empresa necesita un sistema centralizado de gestión de inventario antes de la próxima revisión operativa.
+Ya has construido — o se espera que tengas — la API y la capa de autenticación bajo `services/`. Si FastAPI + auth TinyDB (`User` / `get_current_user`) aún no está en tu monorepo, completa los proyectos de autenticación (o monta esa capa) antes de empezar este hito: aquí **extiendes** ese servicio; no creas uno nuevo desde cero.
+
+Ahora el equipo de operaciones ha enviado una **RFP** a la unidad tecnológica: la empresa necesita un sistema centralizado de gestión de inventario antes de la próxima revisión operativa.
 
 Tu tech lead ha convertido esa RFP en una decisión arquitectónica que condiciona todo lo que construirás aquí: **la autenticación permanece en TinyDB** (búsquedas rápidas, locales y basadas en documentos), y **todos los datos de negocio — productos, órdenes de entrada y órdenes de salida — se mueven a Supabase** (una base de datos PostgreSQL alojada en la nube). Tu aplicación FastAPI mantendrá dos conexiones de base de datos simultáneas y deberá usarlas de forma deliberada: cada petición llega al almacén correcto.
 
@@ -55,15 +57,15 @@ Antes de escribir cualquier consulta, debes conocer el **problema N+1**. Si carg
 
 ## 🌱 Cómo Empezar el Proyecto
 
-Este hito extiende el servicio FastAPI ya presente en tu monorepo. No crearás un nuevo servicio — añadirás la capa de inventario sobre el existente.
+Este hito extiende el servicio FastAPI de tu monorepo. No crearás un nuevo servicio — añadirás la capa de inventario sobre el existente.
 
 1. Abre tu repositorio existente (forkeado desde `https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo`).
-2. Navega a `services/` — aquí vive tu aplicación FastAPI.
+2. Navega a `services/` — tu aplicación FastAPI con auth TinyDB debería vivir ya aquí. Si no, detente y monta / termina auth primero.
 3. Instala las nuevas dependencias:
    ```bash
    uv add sqlmodel psycopg2-binary
    ```
-4. Añade tu cadena de conexión de Supabase a `.env`. Tu configuración de TinyDB ya está ahí — no la modifiques.
+4. Añade tu cadena de conexión de Supabase a `.env`. Deja intacta la configuración TinyDB de auth — no la modifiques.
 5. Lee tu **CONTEXT-company.md** antes de definir cualquier modelo — los nombres de entidades y las restricciones de campos están especificados allí.
 
 ### Conexión con Supabase
@@ -86,17 +88,17 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 
 ### Modelos ORM — `models.py`
 
-- [ ] Define un modelo `Product` con `SQLModel, table=True`, con al menos: `id`, `name`, `sku` y cualquier campo específico de tu empresa indicado en CONTEXT.md.
-- [ ] Define un modelo `InboundOrder` con: `id`, `product_id` (FK → Product), `quantity`, `created_at` y `user_uuid` (cadena de texto — referencia al usuario de TinyDB; sin FK, sin replicación de tabla de usuarios).
-- [ ] Define un modelo `OutboundOrder` con: `id`, `product_id` (FK → Product), `quantity`, `created_at` y `user_uuid`.
+- [ ] Define la entidad **equivalente a producto** de tu CONTEXT.md (p. ej. `Ingredient`, `SKU`, `Asset`, `MedicalSupply`) con `SQLModel, table=True`, con al menos: `id`, `name`, `sku` y cualquier campo específico de CONTEXT.md.
+- [ ] Define el modelo **equivalente a entrada** (p. ej. `IngredientEntry`, `StockEntry`) con: `id`, una FK a la entidad equivalente a producto (`ingredient_id` / `sku_id` / … según CONTEXT.md), `quantity`, `created_at`, `user_uuid` (cadena — referencia al usuario de TinyDB; sin FK, sin replicación de tabla de usuarios), y cualquier otro campo que CONTEXT.md exija.
+- [ ] Define el modelo **equivalente a salida** (p. ej. `IngredientExit`, `StockExit`) con el mismo patrón de FK, más `quantity`, `created_at`, `user_uuid` y los campos que CONTEXT.md exija.
 - [ ] Llama a `SQLModel.metadata.create_all(engine)` al inicio de la aplicación para inicializar el esquema en Supabase.
 
   > ⚠️ `create_all()` es aceptable en contextos de desarrollo y aprendizaje. En un sistema en producción, los cambios de esquema se gestionan siempre mediante archivos de migración (p. ej., Alembic) que mantienen un historial versionado de cada cambio. Nunca uses `create_all()` contra una base de datos compartida o de producción.
 
 ### Schemas Pydantic — `schemas.py`
 
-- [ ] Define schemas de request y response para Product, InboundOrder y OutboundOrder como modelos Pydantic independientes — separados de los modelos ORM.
-- [ ] El schema de respuesta de Product debe incluir un campo `current_stock` (calculado, no almacenado).
+- [ ] Define schemas de request y response para las entidades equivalentes a producto, entrada y salida como modelos Pydantic independientes — separados de los modelos ORM. Usa los nombres de CONTEXT.md.
+- [ ] El schema de respuesta de la entidad equivalente a producto debe incluir un campo `current_stock` (calculado, no almacenado).
 - [ ] Los modelos ORM y los schemas Pydantic deben estar en **archivos separados**. Son clases distintas, aunque algunos campos coincidan.
 
 ### Router de inventario — `routers/inventory.py`
@@ -115,12 +117,16 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 
 ### Reglas de negocio
 
-- [ ] `current_stock` se calcula siempre como `SUMA(cantidades de entradas) − SUMA(cantidades de salidas)` para cada producto. Nunca se almacena como una columna que pueda modificarse directamente.
-- [ ] Un producto comienza con stock cero al crearse y solo puede acumular stock a través de órdenes de entrada.
+- [ ] `current_stock` se calcula siempre como `SUMA(cantidades de entradas) − SUMA(cantidades de salidas)` para cada entidad equivalente a producto, **acotado por cualquier clave de partición que defina tu CONTEXT.md** (p. ej. warehouse). Nunca se almacena como una columna que pueda modificarse directamente.
+- [ ] Una entidad equivalente a producto comienza con stock cero al crearse y solo puede acumular stock a través de registros de entrada.
 - [ ] Cada endpoint de creación de órdenes requiere autenticación. El UUID del usuario autenticado (de TinyDB) debe almacenarse en el campo `user_uuid` de la orden.
-- [ ] Una orden de salida que resultaría en stock negativo debe rechazarse **antes de persistir la orden**, devolviendo `HTTP 400` con un mensaje de error descriptivo.
+- [ ] Un registro de salida que resultaría en stock negativo (dentro del alcance que define CONTEXT.md) debe rechazarse **antes de persistir el registro**, devolviendo `HTTP 400` con un mensaje de error descriptivo.
 
 ⚠️ **IMPORTANTE:** Los nombres de entidades, nombres de campos y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+
+### Datos semilla
+
+- [ ] Siembra las tablas de inventario con los registros mínimos listados en tu CONTEXT.md (equivalentes a producto, entradas y salidas) antes de la demo. El stock sembrado debe coincidir con neto entradas − salidas.
 
 ---
 
@@ -128,14 +134,16 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 
 - [ ] Dos conexiones de base de datos están presentes y se usan correctamente: TinyDB para autenticación y consultas de usuario; Supabase (SQLModel) para todas las entidades de inventario.
 - [ ] Todos los endpoints de inventario están agrupados bajo `/inventory` mediante un `APIRouter` dedicado.
-- [ ] Los modelos ORM SQLModel declaran correctamente las relaciones FK: `InboundOrder.product_id` y `OutboundOrder.product_id` referencian la tabla `Product`.
-- [ ] `current_stock` se calcula a partir de órdenes — ningún endpoint permite modificar directamente un campo de stock en el Producto.
-- [ ] Una orden de salida que supera el stock disponible se rechaza con `HTTP 400` antes de que ocurra cualquier escritura.
+- [ ] Los modelos ORM SQLModel declaran correctamente las relaciones FK: los modelos de entrada/salida referencian la entidad equivalente a producto nombrada en CONTEXT.md (no un `Product` genérico salvo que CONTEXT.md lo diga).
+- [ ] `current_stock` se calcula a partir de órdenes — ningún endpoint permite modificar directamente un campo de stock en la entidad equivalente a producto.
+- [ ] El cálculo de stock respeta el alcance de CONTEXT.md (global vs por partición / por warehouse cuando aplique).
+- [ ] Un registro de salida que supera el stock disponible (dentro de ese alcance) se rechaza con `HTTP 400` antes de que ocurra cualquier escritura.
 - [ ] Cada orden almacena el `user_uuid` del creador autenticado (obtenido de TinyDB).
 - [ ] Los modelos ORM (`models.py`) y los schemas Pydantic (`schemas.py`) están en archivos separados y son estructuralmente distintos — ningún endpoint devuelve un objeto SQLModel directamente.
 - [ ] La sesión SQLModel se inyecta por petición mediante `Depends()` — no existe ninguna sesión global en el código.
 - [ ] Todos los parámetros de conexión están en `.env`; `.env` aparece en `.gitignore`.
 - [ ] Los nombres de entidades y campos coinciden con la especificación del CONTEXT.md del estudiante.
+- [ ] Los datos semilla de CONTEXT.md están presentes; `GET /inventory/products` refleja el stock neto de esas semillas.
 
 ---
 
