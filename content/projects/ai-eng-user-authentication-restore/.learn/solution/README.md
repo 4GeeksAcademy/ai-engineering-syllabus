@@ -33,7 +33,7 @@ This reference solution describes the expected architecture, implementation scop
 
 ## Key Implementation Decisions
 
-- Passwords are never stored in plain text; use `passlib` with `bcrypt`.
+- Passwords are never stored in plain text; use `libpass` with `bcrypt`.
 - JWT creation/validation is centralized in one security module.
 - `get_current_user` is used as a reusable dependency on protected routes.
 - Secret keys and token TTL come from environment variables.

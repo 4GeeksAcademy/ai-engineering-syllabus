@@ -110,7 +110,7 @@ This project is an extension of your existing transversal project API. **Do not 
 
 ⚠️ **IMPORTANT:** Do not use session-based or cookie-based authentication. This project implements stateless JWT auth only.
 
-⚠️ **IMPORTANT:** Never store plain-text passwords. Use `libpass` with the `bcrypt` scheme for all password operations.
+⚠️ **IMPORTANT:** Never store plain-text passwords. Use `libpass` with the `bcrypt` scheme for all password operations. Install `libpass[bcrypt]` — not unmaintained `passlib`. The Python import stays `from passlib.hash import bcrypt` (libpass is a drop-in fork).
 
 ---
 

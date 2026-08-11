@@ -110,7 +110,7 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 
 ⚠️ **IMPORTANTE:** No uses autenticación basada en sesiones ni en cookies. Este proyecto implementa únicamente auth JWT stateless.
 
-⚠️ **IMPORTANTE:** Nunca almacenes contraseñas en texto plano. Usa `libpass` con el esquema `bcrypt` para todas las operaciones con contraseñas.
+⚠️ **IMPORTANTE:** Nunca almacenes contraseñas en texto plano. Usa `libpass` con el esquema `bcrypt` para todas las operaciones con contraseñas. Instala `libpass[bcrypt]` — no el `passlib` sin mantenimiento. El import de Python sigue siendo `from passlib.hash import bcrypt` (libpass es un fork drop-in).
 
 ---
 

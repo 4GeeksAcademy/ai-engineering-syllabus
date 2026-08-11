@@ -178,7 +178,7 @@ def build_solution_readme(title_en: str, readme_en: str) -> str:
         "## Expected API Surface\n\n"
         f"{routes_lines}\n\n"
         "## Key Implementation Decisions\n\n"
-        "- Passwords are never stored in plain text; use `passlib` with `bcrypt`.\n"
+        "- Passwords are never stored in plain text; use `libpass` with `bcrypt`.\n"
         "- JWT creation/validation is centralized in one security module.\n"
         "- `get_current_user` is used as a reusable dependency on protected routes.\n"
         "- Secret keys and token TTL come from environment variables.\n"
