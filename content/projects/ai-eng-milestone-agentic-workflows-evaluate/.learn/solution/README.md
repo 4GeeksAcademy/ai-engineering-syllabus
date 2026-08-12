@@ -58,12 +58,12 @@ flowchart LR
 
 ## Ticket lifecycle (Part 2 additions)
 
-| Status                         | When set                                                         |
-| ------------------------------ | ---------------------------------------------------------------- |
-| `drafting`                     | Generators running for one or more departments                   |
-| `under_evaluation`             | Evaluators running / loop in progress                            |
-| `needs_human_review`           | **Required** when iteration limit hit on ≥1 section without pass |
-| `ready_for_approval` / handoff | All sections packaged for Part 3 (including flagged ones)        |
+| Status                         | When set                                                                                                                                                                  |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `drafting`                     | Generators running for one or more departments                                                                                                                            |
+| `under_evaluation`             | Evaluators running / loop in progress                                                                                                                                     |
+| `needs_human_review`           | **Required** when iteration limit hit on ≥1 section without pass                                                                                                          |
+| Part 3 handoff (same statuses) | All sections packaged with draft + `EvaluationResult` (including flagged ones) — stay on `needs_human_review` / `under_evaluation`; do **not** invent a new ticket status |
 
 Keep Part 1 statuses (`analyzing`, `discarded`, `intake_complete`) intact; Part 2 extends with `drafting` / `under_evaluation` / `needs_human_review`. Persist drafts and `evaluation_results` in the same PostgreSQL tables.
 

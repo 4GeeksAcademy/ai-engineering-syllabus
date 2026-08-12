@@ -117,6 +117,8 @@ In the Supabase dashboard (**Connect → Direct**), use **Transaction pooler** a
 | `POST` | `/inventory/orders/outbound` | Register an outbound order (requires auth)        |
 | `GET`  | `/inventory/orders`          | List all orders with product data and `user_uuid` |
 
+> **Auth on GET:** order and product **writes** always require auth. Whether `GET` routes are public or authenticated follows your CONTEXT.md (e.g. HealthCore requires authenticated access on inventory routes).
+
 ### Business rules
 
 - [ ] `current_stock` is always computed as `SUM(inbound quantities) − SUM(outbound quantities)` for each product-equivalent entity, **scoped by any partition key your CONTEXT.md defines** (e.g. warehouse). It is never stored as a column that can be set directly.

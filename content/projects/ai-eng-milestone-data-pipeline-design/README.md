@@ -25,7 +25,7 @@ Today your tech lead is asking for something different: a **new** data pipeline,
 
 > > **Technical Brief — Business Performance Data Pipeline (Design Phase)**
 > >
-> > Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand every week.
+> > Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand on your company's CONTEXT cadence.
 > >
 > > This is a **new** pipeline, built on top of the telemetry you already have. Your technical report and the `GET /telemetry/report` endpoint keep serving engineering exactly as before. `telemetry_events` remains the **source** (never this pipeline's destination). Additive payload fields required by your data-pipelines CONTEXT on existing event types are allowed. What you're building now reads from that source but produces a different kind of output: numbers a non-technical stakeholder can act on.
 > >
@@ -76,7 +76,7 @@ When you write the pipeline purpose in Phase 2, name the business deliverable yo
 
 ### Phase 2 — Pipeline design
 
-- [ ] Define the **purpose** of the pipeline in a single concrete sentence: name the specific business deliverable you're targeting (e.g., "produce the daily rollup that feeds [role]'s weekly executive report"), the KPI(s) it computes (from your `CONTEXT-company.md`'s "KPIs to Measure" section), and the mandatory metric(s) from your telemetry CONTEXT it's built on.
+- [ ] Define the **purpose** of the pipeline in a single concrete sentence: name the specific business deliverable you're targeting (e.g., "produce the rollup that feeds [role]'s executive report at the CONTEXT cadence"), the KPI(s) it computes (from your `CONTEXT-company.md`'s "KPIs to Measure" section), and the mandatory metric(s) from your telemetry CONTEXT it's built on.
 - [ ] Specify the **extraction format**: your source is `telemetry_events` (plus any other existing domain tables you need) — in what format the data arrives, and how often it's updated.
 - [ ] Design the **data flow** with a text or Mermaid diagram showing at least three clearly separated stages: extraction, transformation, and load.
 - [ ] Describe how you would handle a source that **updates existing records** rather than always inserting new ones — explain the concrete strategy to avoid duplicates in your specific case.

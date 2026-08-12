@@ -25,7 +25,12 @@ Usa nombres de evento explícitos y payloads estructurados (misma disciplina de 
 {"event": "interrupt_requested", "data": {"session_id": "chat_0044", "new_input": "espera, pregunté por el local de Miami"}}
 {"event": "generation_interrupted", "data": {"session_id": "chat_0044", "message_id": "msg_0090", "status": "interrupted"}}
 {"event": "generation_completed", "data": {"session_id": "chat_0044", "message_id": "msg_0091"}}
+{"event": "session_snapshot", "data": {"session_id": "chat_0044", "messages": []}}
+{"event": "user_message", "data": {"session_id": "chat_0044", "text": "..."}}
+
 ```
+
+También soporta rehidratación en reconnect (`session_snapshot`) y turnos de usuario entrantes (`user_message`) — necesarios para restaurar el handshake y la entrada de chat.
 
 ## 5. Patrón Pub/Sub
 

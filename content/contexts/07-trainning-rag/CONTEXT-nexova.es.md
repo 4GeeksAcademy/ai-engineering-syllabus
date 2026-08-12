@@ -42,7 +42,8 @@ Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópi
     "source_document": "service-lines | pricing-model | hiring-process-sla | objection-handling",
     "section": "título o subtítulo de la sección de origen",
     "language": "es",
-    "chunk_index": 0
+    "chunk_index": 0,
+    "text": "cuerpo del chunk usado para armar el prompt"
   }
 }
 ```
@@ -60,6 +61,10 @@ Usa los siguientes documentos fuente como base de tu base de conocimiento. Cópi
   indicar que esa condición requiere aprobación y no debe inventarla.
 
 ---
+
+- **Umbral mínimo de similitud**: define un umbral y documenta por qué lo
+  elegiste; si ningún chunk lo supera, la respuesta debe decir explícitamente
+  que no hay información suficiente — nunca inventes datos.
 
 ## 5. Instrucciones de Datos Semilla
 

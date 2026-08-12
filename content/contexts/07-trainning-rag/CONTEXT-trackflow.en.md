@@ -42,7 +42,8 @@ Use the following source documents as the base for your knowledge base. Copy the
     "source_document": "sla-delivery | returns-policy | carrier-coverage | storage-pricing",
     "section": "title or subtitle of the source section",
     "language": "en",
-    "chunk_index": 0
+    "chunk_index": 0,
+    "text": "chunk body used for prompt assembly"
   }
 }
 ```
@@ -60,6 +61,10 @@ Use the following source documents as the base for your knowledge base. Copy the
   condition.
 
 ---
+
+- **Minimum similarity threshold**: define a threshold and document why you
+  chose it; if no chunk exceeds it, the answer must explicitly state there
+  isn't enough information — it must never make something up.
 
 ## 5. Seed Data Instructions
 

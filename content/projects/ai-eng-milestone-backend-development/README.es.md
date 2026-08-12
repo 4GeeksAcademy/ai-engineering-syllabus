@@ -115,6 +115,8 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 | `POST` | `/inventory/orders/outbound` | Registra una orden de salida (requiere autenticación)        |
 | `GET`  | `/inventory/orders`          | Lista todas las órdenes con datos del producto y `user_uuid` |
 
+> **Auth en GET:** las escrituras de producto y órdenes **siempre** requieren autenticación. Si los `GET` son públicos o autenticados lo define tu CONTEXT.md (p. ej. HealthCore exige acceso autenticado en las rutas de inventario).
+
 ### Reglas de negocio
 
 - [ ] `current_stock` se calcula siempre como `SUMA(cantidades de entradas) − SUMA(cantidades de salidas)` para cada entidad equivalente a producto, **acotado por cualquier clave de partición que defina tu CONTEXT.md** (p. ej. warehouse). Nunca se almacena como una columna que pueda modificarse directamente.

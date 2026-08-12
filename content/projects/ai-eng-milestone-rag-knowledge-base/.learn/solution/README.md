@@ -182,6 +182,21 @@ def test_query_returns_llm_output_not_raw_chunks(monkeypatch):
 
 ---
 
+## Phase 5b — Retrieval eval (`data/eval/`)
+
+Measure **Recall@3** against `data/eval/test-queries.json` (≥ 8 questions covering all CONTEXT source documents).
+
+**Indicative method:**
+
+1. For each question, call `retrieve(question, k=3, min_score=0)` (or a low floor) and collect `source_document` / `chunk_index` (or chunk ids) from the top hits.
+2. A question **hits** if any of the top-3 payloads matches the expected source chunk recorded in `test-queries.json`.
+3. `Recall@3 = hits / total_questions`. CONTEXT requires ≥ **80%**.
+4. Document the run (script under `data/eval/` or a short note in `docs/rag/rag-design.md`) so reviewers can reproduce it.
+
+Prefer mocking or a local Qdrant loaded by `setup()` — do not invent scores.
+
+---
+
 ## Phase 6 — `docs/rag/rag-design.md`
 
 Another developer must understand the stack without reading code. Required subsections:

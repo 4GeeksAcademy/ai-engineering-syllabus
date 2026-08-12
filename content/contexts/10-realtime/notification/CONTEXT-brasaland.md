@@ -15,21 +15,14 @@ Reuse exactly the same entities you already defined for the RFP system:
 
 The real-time notification must fire the exact moment a new ticket enters the system with `status = analyzing` — meaning the document was classified as a valid RFP and the flow starts processing it.
 
-## 3. Suggested Payload for the `rfp_ticket_created` Event
+## 3. Suggested SSE wire format for `rfp_ticket_created`
 
-```json
-{
-  "event": "rfp_ticket_created",
-  "data": {
-    "ticket_id": "tkt_0192",
-    "rfp_id": "rfp_0088",
-    "client_name": "Andes Tech Solutions",
-    "location": "Medellín",
-    "service_type": "recurring_catering",
-    "status": "analyzing",
-    "created_at": "2026-07-24T14:32:00Z"
-  }
-}
+SSE uses a named `event:` line and a JSON `data:` body (ticket fields only — not a nested `{"event","data"}` envelope):
+
+```text
+event: rfp_ticket_created
+data: { "ticket_id": "tkt_0192", "rfp_id": "rfp_0088", "client_name": "Andes Tech Solutions", "location": "Medellín", "service_type": "recurring_catering", "status": "analyzing", "created_at": "2026-07-24T14:32:00Z" }
+
 ```
 
 You don't need to include the full document content or the per-department sections — just enough for whoever is watching the dashboard to know what arrived and decide whether it needs their attention now.
@@ -44,4 +37,4 @@ If you decide to implement the README's optional case, here are two starting poi
 ## 5. Constraints
 
 - Field names must exactly match what you already used in the RFP system — don't invent new names for the same entities.
-- If Part 2 (WebSockets) gets added to this project later, this same document will be extended — don't duplicate the ticket definition in another file.
+- Part 2 (WebSocket chat) lives under `10-realtime/communication/` — do **not** copy the RFP `Ticket` schema into that CONTEXT; reuse naming discipline only.

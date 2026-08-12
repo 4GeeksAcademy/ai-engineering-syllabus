@@ -25,7 +25,12 @@ Use explicit event names and structured payloads (same naming discipline as Part
 {"event": "interrupt_requested", "data": {"session_id": "chat_0157", "new_input": "actually my question was about the invoice"}}
 {"event": "generation_interrupted", "data": {"session_id": "chat_0157", "message_id": "msg_0321", "status": "interrupted"}}
 {"event": "generation_completed", "data": {"session_id": "chat_0157", "message_id": "msg_0322"}}
+{"event": "session_snapshot", "data": {"session_id": "chat_0157", "messages": []}}
+{"event": "user_message", "data": {"session_id": "chat_0157", "text": "..."}}
+
 ```
+
+Also support reconnect rehydrate (`session_snapshot`) and inbound user turns (`user_message`) — required for handshake restore and chat input.
 
 ## 5. Pub/Sub Pattern
 

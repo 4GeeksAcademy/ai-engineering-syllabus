@@ -45,7 +45,8 @@ siguiente payload:
     "source_document": "loyalty-program | waste-protocol | menu-allergens | supplier-ordering",
     "section": "título o subtítulo de la sección de origen",
     "language": "es",
-    "chunk_index": 0
+    "chunk_index": 0,
+    "text": "cuerpo del chunk usado para armar el prompt"
   }
 }
 ```

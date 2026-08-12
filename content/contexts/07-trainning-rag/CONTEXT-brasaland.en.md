@@ -45,7 +45,8 @@ payload:
     "source_document": "loyalty-program | waste-protocol | menu-allergens | supplier-ordering",
     "section": "title or subtitle of the source section",
     "language": "en",
-    "chunk_index": 0
+    "chunk_index": 0,
+    "text": "chunk body used for prompt assembly"
   }
 }
 ```

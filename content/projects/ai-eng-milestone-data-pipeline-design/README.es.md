@@ -25,7 +25,7 @@ Hoy tu tech lead te pide algo distinto: un pipeline de datos **nuevo**, diseñad
 
 > > **Brief Técnico — Pipeline de Desempeño de Negocio (Fase de Diseño)**
 > >
-> > Antes de escribir una sola línea de código de orquestación, necesito que documentes el diseño de un nuevo pipeline de datos. Este no es para nosotros — es para el lado de negocio: el equipo de liderazgo que ha estado pidiendo un reporte de verdad en lugar de un PDF que alguien arma a mano cada semana.
+> > Antes de escribir una sola línea de código de orquestación, necesito que documentes el diseño de un nuevo pipeline de datos. Este no es para nosotros — es para el lado de negocio: el equipo de liderazgo que ha estado pidiendo un reporte de verdad en lugar de un PDF que alguien arma a mano con la cadencia del CONTEXT de tu empresa.
 > >
 > > Este es un pipeline **nuevo**, construido sobre la telemetría que ya tienes. Tu reporte técnico y el endpoint `GET /telemetry/report` siguen sirviendo a ingeniería exactamente igual que antes. `telemetry_events` sigue siendo la **fuente** (nunca el destino de este pipeline). Se permiten campos aditivos de payload que tu CONTEXT de data-pipelines exija en tipos de evento ya existentes. Lo que vas a construir ahora lee de esa fuente pero produce un tipo de salida distinto: números sobre los que un stakeholder no técnico puede actuar.
 > >
@@ -76,7 +76,7 @@ Cuando escribas el propósito del pipeline en la Fase 2, nombra el entregable de
 
 ### Fase 2 — Diseño del pipeline
 
-- [ ] Define el **propósito** del pipeline en una sola frase concreta: nombra el entregable de negocio específico al que apuntas (ej. "producir el consolidado diario que alimenta el reporte ejecutivo semanal de [rol]"), el/los KPI(s) que calcula (de la sección "KPIs a medir" de tu `CONTEXT-company.md`), y la(s) métrica(s) obligatoria(s) de tu CONTEXT de telemetría sobre la que se construye.
+- [ ] Define el **propósito** del pipeline en una sola frase concreta: nombra el entregable de negocio específico al que apuntas (ej. "producir el consolidado que alimenta el reporte ejecutivo de [rol] con la cadencia del CONTEXT"), el/los KPI(s) que calcula (de la sección "KPIs a medir" de tu `CONTEXT-company.md`), y la(s) métrica(s) obligatoria(s) de tu CONTEXT de telemetría sobre la que se construye.
 - [ ] Especifica el **formato de extracción**: tu fuente es `telemetry_events` (más cualquier otra tabla de dominio existente que necesites) — en qué formato llega el dato, y con qué frecuencia se actualiza.
 - [ ] Diseña el **flujo de datos** con un diagrama de texto o Mermaid que muestre al menos tres etapas claramente separadas: extracción, transformación, y carga.
 - [ ] Describe cómo manejarías una fuente que **actualiza registros existentes** en lugar de siempre insertar nuevos — explica la estrategia concreta para evitar duplicados en tu caso específico.

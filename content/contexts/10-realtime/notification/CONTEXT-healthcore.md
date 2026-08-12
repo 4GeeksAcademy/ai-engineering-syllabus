@@ -17,21 +17,14 @@ Reuse exactly the same entities you already defined for the RFP system:
 
 The real-time notification must fire the exact moment a new ticket enters the system with `status = analyzing` — meaning the document was classified as a valid RFP and the flow starts processing it. These are institutional contracts (with employers, universities, insurers), not patient records — the payload never touches PHI anywhere in this flow.
 
-## 3. Suggested Payload for the `rfp_ticket_created` Event
+## 3. Suggested SSE wire format for `rfp_ticket_created`
 
-```json
-{
-  "event": "rfp_ticket_created",
-  "data": {
-    "ticket_id": "tkt_0508",
-    "rfp_id": "rfp_0193",
-    "client_name": "Westbrook Manufacturing",
-    "client_country": "US",
-    "program_type": "occupational_health",
-    "status": "analyzing",
-    "created_at": "2026-07-24T14:32:00Z"
-  }
-}
+SSE uses a named `event:` line and a JSON `data:` body (ticket fields only — not a nested `{"event","data"}` envelope):
+
+```text
+event: rfp_ticket_created
+data: { "ticket_id": "tkt_0508", "rfp_id": "rfp_0193", "client_name": "Westbrook Manufacturing", "client_country": "US", "program_type": "occupational_health", "status": "analyzing", "created_at": "2026-07-24T14:32:00Z" }
+
 ```
 
 You don't need to include the full document content or the per-department sections — just enough for whoever is watching the dashboard to know what arrived and decide whether it needs their attention now.
@@ -48,4 +41,4 @@ If you'd rather implement the agent escalation case instead, be especially caref
 
 - Field names must exactly match what you already used in the RFP system — don't invent new names for the same entities.
 - No payload in this part may contain PHI, no exceptions — review every field before emitting it.
-- If Part 2 (WebSockets) gets added to this project later, this same document will be extended — don't duplicate the ticket definition in another file.
+- Part 2 (WebSocket chat) lives under `10-realtime/communication/` — do **not** copy the RFP `Ticket` schema into that CONTEXT; reuse naming discipline only.

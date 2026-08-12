@@ -15,24 +15,17 @@ Reutiliza exactamente las mismas entidades que ya definiste para el sistema de R
 
 La notificación en tiempo real debe dispararse en el momento exacto en que un ticket nuevo entra al sistema con `status = analyzing` — es decir, cuando el documento fue clasificado como una RFP válida y el flujo empieza a procesarlo.
 
-## 3. Payload Sugerido para el Evento `rfp_ticket_created`
+## 3. Formato SSE sugerido para `rfp_ticket_created`
 
-```json
-{
-  "event": "rfp_ticket_created",
-  "data": {
-    "ticket_id": "tkt_0341",
-    "rfp_id": "rfp_0127",
-    "client_name": "NubeSoft",
-    "client_hq": "Miami",
-    "services_requested": ["soporte"],
-    "status": "analyzing",
-    "created_at": "2026-07-24T14:32:00Z"
-  }
-}
+SSE usa una línea `event:` con nombre y un cuerpo JSON en `data:` (solo campos del ticket — no un sobre anidado `{"event","data"}`):
+
+```text
+event: rfp_ticket_created
+data: { "ticket_id": "tkt_0341", "rfp_id": "rfp_0127", "client_name": "NubeSoft", "client_hq": "Miami", "services_requested": ["soporte"], "status": "analyzing", "created_at": "2026-07-24T14:32:00Z" }
+
 ```
 
-No necesitas incluir el contenido completo del documento ni las secciones por departamento — solo lo suficiente para que quien vea el dashboard sepa qué llegó y decida si necesita revisarlo ahora.
+No necesitas incluir el contenido completo del documento ni las secciones por departamento — solo lo suficiente para que quien mire el dashboard sepa qué llegó y decida si necesita su atención ahora.
 
 ## 4. Caso Opcional, con Datos Reales de Nexova
 
@@ -44,4 +37,4 @@ Si decides implementar el caso opcional del README, aquí tienes dos puntos de p
 ## 5. Restricciones
 
 - Los nombres de campos deben coincidir exactamente con los que ya usaste en el sistema de RFPs — no inventes nombres nuevos para las mismas entidades.
-- Si más adelante se agrega la Parte 2 (WebSockets) a este proyecto, este mismo documento se extenderá — no dupliques la definición del ticket en otro archivo.
+- La Parte 2 (chat WebSocket) vive en `10-realtime/communication/` — **no** copies el esquema RFP `Ticket` a ese CONTEXT; reutiliza solo la disciplina de nombres.
