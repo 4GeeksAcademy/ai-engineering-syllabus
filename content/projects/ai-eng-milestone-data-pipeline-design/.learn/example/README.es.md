@@ -85,7 +85,7 @@ Añade al menos un campo más con tipo y justificación.
 
 ### 8. Mapa a Prefect
 
-- [ ] Nombra ≥2 flows (p. ej. ETL nocturno + backfill).
+- [ ] Nombra ≥1 flow principal (p. ej. ETL nocturno). Un segundo flow de backfill es opcional — la Parte 3 introduce ≥3 subflows como barra nueva.
 - [ ] Nombra ≥3 tasks alineadas con etapas ETL.
 - [ ] Lista estados relevantes y al menos un block (p. ej. credenciales Supabase).
 

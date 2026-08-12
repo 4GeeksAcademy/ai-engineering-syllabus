@@ -27,14 +27,16 @@ Esta es la **Parte 3 de este Hito — Telemetría y Data Pipelines**. Tu pipelin
 > >
 > > 1. El flow principal está creciendo — refactorízalo en subflows para que cada fase sea independiente, testeable, y reutilizable.
 > > 2. Necesito tests unitarios para las tasks de transformación. Si un test falla, quiero saberlo antes de que el pipeline llegue a producción, no después.
-> > 3. El pipeline debe poder correrse como script. Cuando ejecuto `python data/pipelines/pipeline.py`, el flujo ETL completo debe completarse sin errores.
+> > 3. Tras el refactor a subflows, el pipeline debe seguir pudiendo correrse como script: `python data/pipelines/pipeline.py` completa sin errores (conserva el entrypoint de la Parte 2).
 > > 4. Necesito un dashboard. Nadie en el equipo de liderazgo va a consultar un endpoint — pon los KPIs en algún lugar donde realmente puedan mirarlos.
 > >
 > > Punto de partida: `data/pipelines/pipeline.py` de la sesión anterior.
 
 ### Por qué subflows
 
-Un flow que crece sin estructura termina siendo tan difícil de mantener como el script que reemplazó. Los subflows aplican el principio DRY a nivel de orquestación: cada fase del pipeline (extracción, transformación, carga) se convierte en un flow independiente que puede ejecutarse, monitorearse, y reutilizarse por separado. El flow principal los coordina pero no contiene su lógica.
+Las Partes 1–2 pedían **un flow principal** con al menos tres tasks. **Esta parte sube ese listón:** divides esas etapas en **al menos tres subflows** (`@flow`) coordinados por el flow principal — esa topología es nueva en la Parte 3 y es lo que evaluamos aquí.
+
+Un flow que crece sin estructura acaba siendo tan difícil de mantener como el script que reemplazó. Los subflows aplican el principio DRY a nivel de orquestación: cada fase del pipeline (extracción, transformación, carga) se convierte en un flow independiente que se puede ejecutar, monitorear y reutilizar por separado. El flow principal los coordina pero no contiene su lógica.
 
 ---
 
@@ -66,11 +68,9 @@ Un flow que crece sin estructura termina siendo tan difícil de mantener como el
 - [ ] Incluye al menos un test que confirme que el valor calculado de un KPI coincide con la definición de tu `CONTEXT-company.md` para un input conocido, calculado a mano.
 - [ ] Los tests deben pasar con `python -m pytest tests/pipelines/test_pipeline.py` sin errores.
 
-### Fase 3 — Ejecución basada en script
+### Fase 3 — El CLI sigue funcionando tras el refactor
 
-- [ ] Asegúrate de que `data/pipelines/pipeline.py` pueda ejecutarse directamente como script de CLI (por ejemplo, con un bloque `if __name__ == "__main__"` que invoque el flow principal).
-- [ ] Verifica que el pipeline completo corre sin errores: `python data/pipelines/pipeline.py`.
-- [ ] Documenta el comando de ejecución en un comentario o en `data/pipelines/PIPELINE_DESIGN.md`.
+- [ ] Tras dividir en subflows, `python data/pipelines/pipeline.py` sigue corriendo el ETL completo sin errores (el entrypoint `__main__` y la documentación del comando de la Parte 2 deben seguir válidos — no los reconstruyas desde cero).
 
 ### Fase 4 — Dashboard de negocio (obligatorio)
 
@@ -100,8 +100,7 @@ Tu pipeline produce KPIs — pero una tabla que nadie mira no es un entregable. 
 - [ ] Al menos un test verifica el comportamiento defensivo de una task ante un input inválido.
 - [ ] Al menos un test valida el valor calculado de un KPI contra su definición en `CONTEXT-company.md`.
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` pasa sin errores.
-- [ ] `python data/pipelines/pipeline.py` corre el flujo ETL completo sin errores.
-- [ ] El comando de ejecución está documentado en `data/pipelines/PIPELINE_DESIGN.md` o en comentarios inline.
+- [ ] Tras el refactor a subflows, `python data/pipelines/pipeline.py` sigue corriendo el flujo ETL completo sin errores (entrypoint CLI de la Parte 2 preservado).
 - [ ] Los nombres de subflows, tasks, y tests reflejan el vocabulario de dominio y los nombres de KPI de `CONTEXT-company.md`.
 - [ ] `telemetry_events` y `services/telemetry/analysis.py` permanecen sin modificar durante toda la refactorización.
 - [ ] Existe un dashboard en `uis/backoffice/` que muestra cada KPI de la sección "KPIs a medir" de `CONTEXT-company.md`, correctamente etiquetado, alimentado desde tu endpoint `services/reporting/`.

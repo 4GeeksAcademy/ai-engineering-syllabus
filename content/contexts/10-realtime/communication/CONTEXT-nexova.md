@@ -16,6 +16,8 @@ The agent you're exposing over WebSocket is the **first-line support agent** fro
 
 Use `session_id` (and the same value as LangGraph `thread_id` if you checkpoint) on the WebSocket handshake so a reconnect can rehydrate the conversation.
 
+Authenticate the WebSocket with the **same JWT** as the backoffice API (and Part 1 SSE). Prefer `?token=` on the URL and/or a first client auth frame — reject before chat events if missing or invalid.
+
 ## 4. Suggested Events Over the WebSocket
 
 Use explicit event names and structured payloads (same naming discipline as Part 1 — not the same RFP/SSE schemas):

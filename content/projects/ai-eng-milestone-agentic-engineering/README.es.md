@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Tu agente ya conoce a la empresa (RAG) y llama herramientas a través del MCP Server. El problema es que cada conversación empieza de cero: no recuerda que ayer se resolvió una escalación parecida, ni que un usuario ya corrigió un dato la semana pasada. Tu tech lead abrió un **ticket** después de que dos clientes distintos tuvieron que repetir la misma corrección tres veces en la misma semana.
+Tu empresa ya tiene una **base de conocimiento RAG** de un hito anterior — un almacén de documentos que el modelo puede consultar. Eso **no** es el mismo producto que este agente. El agente que extiendes aquí tiene su propia identidad (ver tu CONTEXT: soporte a managers, CX, compliance, soporte de primera línea, …). Puede **llamar** al RAG como herramienta; no se convierte en la UI de Q&A comercial. El problema es que cada conversación sigue empezando de cero: no recuerda que ayer se resolvió una escalación parecida, ni que un usuario ya corrigió un dato la semana pasada. Tu tech lead abrió un **ticket** después de que dos clientes distintos tuvieron que repetir la misma corrección tres veces en la misma semana.
 
 ### 🧠 Conocimiento Complementario: Arquitecturas de Memoria
 
@@ -27,7 +27,7 @@ La memoria de un agente no es un solo componente — se organiza por alcance tem
 
 > **De: Tech Lead — Ticket #MEM-092**
 >
-> El agente ya conoce a la empresa y usa las herramientas del MCP Server. Pero cada conversación empieza de cero: no recuerda que ayer resolvimos una escalación parecida, ni que alguien ya corrigió un dato la semana pasada. Necesito que el agente aprenda de la interacción, sin que eso signifique que empiece a inventar cosas o a acumular basura en su memoria para siempre.
+> El agente ya usa el conocimiento de la empresa (RAG como **herramienta**, no como identidad de este agente) y las herramientas del MCP Server. Pero cada conversación empieza de cero: no recuerda que ayer resolvimos una escalación parecida, ni que alguien ya corrigió un dato la semana pasada. Necesito que el agente aprenda de la interacción, sin que eso signifique que empiece a inventar cosas o a acumular basura en su memoria para siempre.
 >
 > No hace falta un grafo nuevo ni una arquitectura multi-agente para esto — es el mismo agente de siempre, con un paso extra de auto-evaluación:
 >
@@ -60,6 +60,7 @@ git switch -c feature/agent-memory
 ### Selección de Arquitectura de Memoria
 
 - [ ] Elige un backend de memoria persistente (por ejemplo Redis, una base clave-valor, una VectorDB, o una combinación) y documenta por escrito por qué encaja con lo que tu agente necesita recordar en tu empresa.
+- [ ] **No escribas memoria en las colecciones RAG de la empresa** (`*_knowledge` / almacén Qdrant de conocimiento de la empresa). El RAG sigue siendo herramienta de **solo lectura**. La memoria usa un store aparte o una colección claramente no-knowledge (p. ej. Redis, KV, o `*_agent_memory`). Mezclar hechos episódicos/aprobados con docs curados rompe evals de retrieval y controles de poison.
 - [ ] Implementa una interfaz explícita de lectura/escritura de memoria — el agente no debe acumular estado simplemente agregando todo al system prompt.
 
 ⚠️ **IMPORTANTE:** Qué tipo de hechos son memorizables y cuáles están terminantemente prohibidos de guardar debe corresponder exactamente a lo especificado en tu CONTEXT-company.md. Una implementación genérica que ignore esas restricciones no será aceptada.
@@ -105,6 +106,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 ## ✅ Qué Evaluaremos
 
 - [ ] La arquitectura de memoria elegida está justificada por escrito y corresponde a lo que el agente realmente necesita recordar.
+- [ ] Las escrituras de memoria nunca apuntan a colecciones `*_knowledge` / RAG de la empresa (solo store aparte o colección no-knowledge).
 - [ ] Existe una interfaz explícita de lectura/escritura de memoria (no memoria implícita vía system prompt).
 - [ ] El agente distingue correctamente interacciones memorables de las que no lo son, con al menos 3 ejemplos documentados de cada tipo.
 - [ ] La propuesta de memoria se comunica dentro de la misma conversación, no en un canal o proceso separado.

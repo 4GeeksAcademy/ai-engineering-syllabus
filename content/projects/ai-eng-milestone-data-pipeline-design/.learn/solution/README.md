@@ -31,8 +31,8 @@ A complete design should include at least:
 | **Update / dedup strategy** | Concrete mechanism when sources update existing records (upsert, partition key, control table).                                                                                                   |
 | **Idempotency strategy**    | What happens on the **second run** after a load-phase failure.                                                                                                                                    |
 | **Execution log**           | ≥5 fields with name, type, and audit justification.                                                                                                                                               |
-| **Prefect mapping**         | ≥2 flows, ≥3 tasks, relevant states, and blocks for credentials/config.                                                                                                                           |
-| **Application integration** | ≥3 planned `services/reporting/` endpoints (status query, manual trigger, **and KPI query**) naming `data/pipelines/` functions each will call.                                                    |
+| **Prefect mapping**         | ≥1 main flow, ≥3 tasks, relevant states, and blocks for credentials/config. (Optional second flow e.g. backfill — Part 3 introduces ≥3 subflows as the new bar.)                                  |
+| **Application integration** | ≥3 planned `services/reporting/` endpoints (status query, manual trigger, **and KPI query**) naming `data/pipelines/` functions each will call.                                                   |
 
 ---
 
@@ -124,16 +124,16 @@ Telemetry events are append-only, but **aggregated KPI rows** may be recomputed 
 
 ## Execution log — minimum fields (reference)
 
-| Field                             | Type                                  | Rationale                                              |
-| --------------------------------- | ------------------------------------- | ------------------------------------------------------ |
-| `run_id`                          | UUID                                  | Correlate logs, metrics, and alerts for one execution. |
-| `started_at` / `finished_at`      | ISO 8601 UTC                          | SLA tracking, duration trends, incident timelines.     |
-| `watermark_from` / `watermark_to` | ISO 8601 UTC                          | Audit which event time range was processed.            |
-| `rows_extracted`                  | integer                               | Detect empty or truncated source windows.              |
-| `rows_loaded`                     | integer                               | Reconcile with `reporting.weekly_location_performance` counts.    |
-| `status`                          | enum (`success`, `failed`, `partial`) | Automation and paging rules.                           |
-| `error_summary`                   | string (nullable)                     | Human-readable failure without scraping stack traces.  |
-| `pipeline_version`                | semver / git sha                      | Reproducibility when logic changes.                    |
+| Field                             | Type                                  | Rationale                                                      |
+| --------------------------------- | ------------------------------------- | -------------------------------------------------------------- |
+| `run_id`                          | UUID                                  | Correlate logs, metrics, and alerts for one execution.         |
+| `started_at` / `finished_at`      | ISO 8601 UTC                          | SLA tracking, duration trends, incident timelines.             |
+| `watermark_from` / `watermark_to` | ISO 8601 UTC                          | Audit which event time range was processed.                    |
+| `rows_extracted`                  | integer                               | Detect empty or truncated source windows.                      |
+| `rows_loaded`                     | integer                               | Reconcile with `reporting.weekly_location_performance` counts. |
+| `status`                          | enum (`success`, `failed`, `partial`) | Automation and paging rules.                                   |
+| `error_summary`                   | string (nullable)                     | Human-readable failure without scraping stack traces.          |
+| `pipeline_version`                | semver / git sha                      | Reproducibility when logic changes.                            |
 
 At least **five** fields with type and justification are required by the rubric.
 
@@ -141,12 +141,12 @@ At least **five** fields with type and justification are required by the rubric.
 
 ## Prefect mapping (reference)
 
-| Prefect concept | Example mapping                                                                                                                               |
-| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Flow**        | `business_performance_etl_flow` — nightly/weekly run; `backfill_weekly_location_performance_flow` — reprocesses date range on demand.                    |
-| **Task**        | `extract_telemetry_events`, `transform_business_kpis`, `load_weekly_location_performance`                                                                |
-| **States**      | `Running` during extract/transform/load; `Completed` when `pipeline_runs.status = success`; `Failed` triggers alert and preserves checkpoint. |
-| **Blocks**      | `SupabaseCredentials` (DB URL + service key), `PipelineConfig` (watermark table, batch size, reprocess window days).                          |
+| Prefect concept | Example mapping                                                                                                                                                            |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Flow**        | `business_performance_etl_flow` — main scheduled run (required). Optional: `backfill_weekly_location_performance_flow` for on-demand reprocess (not required in Part 1/2). |
+| **Task**        | `extract_telemetry_events`, `transform_business_kpis`, `load_weekly_location_performance` (≥3 required)                                                                    |
+| **States**      | `Running` during extract/transform/load; `Completed` when `pipeline_runs.status = success`; `Failed` triggers alert and preserves checkpoint.                              |
+| **Blocks**      | `SupabaseCredentials` (DB URL + service key), `PipelineConfig` (watermark table, batch size, reprocess window days).                                                       |
 
 ---
 
@@ -154,11 +154,11 @@ At least **five** fields with type and justification are required by the rubric.
 
 > Indicative names below follow **Brasaland** CONTEXT. Other companies use their own Destination table and path (e.g. `weekly_warehouse_client_performance`, `monthly_clinic_supply_performance`).
 
-| Endpoint                                      | Calls from `data/pipelines/`                                                                                          |
-| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `GET /reporting/pipeline-runs/latest`         | `get_latest_pipeline_run()` — status + metadata of the last run                                                       |
-| `POST /reporting/pipeline-runs`               | `business_performance_etl_flow()` or `trigger_pipeline_run()` — no ETL logic inside `services/`                       |
-| `GET /reporting/weekly-location-performance`  | `get_weekly_location_performance(week_start)` — KPI rows from `reporting.weekly_location_performance` (dashboard feed) |
+| Endpoint                                     | Calls from `data/pipelines/`                                                                                           |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `GET /reporting/pipeline-runs/latest`        | `get_latest_pipeline_run()` — status + metadata of the last run                                                        |
+| `POST /reporting/pipeline-runs`              | `business_performance_etl_flow()` or `trigger_pipeline_run()` — no ETL logic inside `services/`                        |
+| `GET /reporting/weekly-location-performance` | `get_weekly_location_performance(week_start)` — KPI rows from `reporting.weekly_location_performance` (dashboard feed) |
 
 Keep these in `services/reporting/`, separate from `services/telemetry/`.
 
@@ -189,7 +189,7 @@ Keep these in `services/reporting/`, separate from `services/telemetry/`.
 - [ ] Update/dedup strategy uses a concrete mechanism.
 - [ ] Idempotency describes second run after load failure.
 - [ ] Execution log has ≥5 fields with name, type, and justification.
-- [ ] Prefect mapping: ≥2 flows, ≥3 tasks, states, and ≥1 block.
+- [ ] Prefect mapping: ≥1 main flow, ≥3 tasks, states, and ≥1 block.
 - [ ] ≥3 `services/reporting/` endpoints (status, trigger, **KPI query**) naming `data/pipelines/` functions.
 - [ ] Design consistent with telemetry events and mandatory metrics from CONTEXT.
 - [ ] Commit message `feat: add business performance pipeline design document`.

@@ -41,6 +41,17 @@ In Part 1 you already have a flow that classifies each RFP and opens a ticket fo
 
 When the ticket asks an evaluator to check "compliance with company guidelines," it doesn't mean a free-form style judgment: your `CONTEXT-company.md` includes a concrete list of rules (tone, data that can't be missing, figures that must appear) that the evaluator must check the generated content against — not the agent's subjective opinion. If your company already has a semantic knowledge base, it's a good place for the generator to look up real policies, reference pricing, or brand language before drafting — it cuts down on how often the evaluator bounces a section for inventing something that doesn't match what the company actually says. This is a suggested improvement, not a requirement of this part.
 
+**Ticket statuses for this part** (same ticket row as Part 1 — match CONTEXT names). Full lifecycle is in CONTEXT; **here you only need:**
+
+| Status               | Role              | When                                                                        |
+| -------------------- | ----------------- | --------------------------------------------------------------------------- |
+| `intake_complete`    | Entry from Part 1 | Start here via Part 1 routing handoff — do not rewrite this status          |
+| `drafting`           | Part 2 sets       | Generators writing proposal sections                                        |
+| `under_evaluation`   | Part 2 sets       | Parallel evaluators / generator-evaluator loop                              |
+| `needs_human_review` | Part 2 sets       | Iteration limit exhausted; last draft + EvaluationResult hand off to Part 3 |
+
+Do **not** invent Part 3 statuses (`waiting_for_approval`, `done`) in this part.
+
 ### 🗺️ Visual reference: departmental mapping & deliverable finalization
 
 This stretch of the workflow takes the **defined workstream structure** from Part 1, maps tasks to departments via an **assignment orchestrator**, runs department-scoped generation in parallel, then a **synthesizer** consolidates outputs into department-specific assignment tickets ready for evaluation / approval:
@@ -54,16 +65,21 @@ This stretch of the workflow takes the **defined workstream structure** from Par
 Continue on the same Milestone working branch in your monorepo fork (or create `feature/rfp-response-generation` from the branch where you submitted Part 1). If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Build on top of the classification and routing flow you built in Part 1 — don't rewrite it from scratch.
-2. Install any new dependencies with `uv add`.
-3. Review your `CONTEXT-company.md` again: it contains the concrete guidelines your evaluator agents must validate against.
+2. **Consume Part 1's routing handoff** — Part 2 must start from tickets that Part 1 marked ready (status `intake_complete` plus the queue flag / DB field / handoff contract you defined). Input = `ticket_id` + synthesizer payload (`key_aspects` / workstream structure). Do **not** re-parse the PDF or invent a parallel summary path that ignores that contract.
+3. Install any new dependencies with `uv add`.
+4. Review your `CONTEXT-company.md` again: it contains the concrete guidelines your evaluator agents must validate against.
 
 ---
 
 ## 💻 What You Need to Do
 
+**Consume Part 1 routing**
+
+- [ ] Part 2 entry reads Part 1's routing handoff (`ticket_id` + synthesizer / `key_aspects` payload, via the queue flag, DB field, or documented contract from Part 1) — generators must not re-ingest the raw PDF as their primary input
+
 **Per-department generation**
 
-- [ ] Implement a generator agent per department that receives the relevant summary produced in Part 1
+- [ ] Implement a generator agent per department that receives the relevant summary produced in Part 1 (from that handoff)
 - [ ] The generator agent must produce content specific to its department's section of the pricing proposal
 
 > 💡 _Optional:_ if your company already has a semantic knowledge base, you can give the generator access to it so it drafts with real policies and brand language. This isn't a requirement of this part and isn't graded as one — it's an improvement that can reduce how often a section bounces back during evaluation.
@@ -117,6 +133,7 @@ EvaluationResult:
 ## ✅ What We Will Evaluate
 
 - [ ] Each department has its own generator agent, clearly separated from the others
+- [ ] Part 2 consumes Part 1's routing handoff (`ticket_id` + synthesizer / `key_aspects` payload) — does not re-parse the PDF as the primary generator input
 - [ ] Evaluators run in parallel and don't block execution across other departments
 - [ ] The system correctly applies the generator-evaluator loop, including the iteration limit and `needs_human_review` handoff when exhausted
 - [ ] The ticket accurately reflects generation and evaluation progress in real time

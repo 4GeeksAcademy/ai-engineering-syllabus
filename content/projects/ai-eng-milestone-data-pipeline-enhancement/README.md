@@ -27,12 +27,14 @@ This is **Part 3 of this Milestone — Telemetry and Data Pipelines**. Your busi
 > >
 > > 1. The main flow is growing — refactor it into subflows so that each phase is independent, testable, and reusable.
 > > 2. I need unit tests for the transformation tasks. If a test fails, I want to know before the pipeline reaches production, not after.
-> > 3. The pipeline must be runnable as a script. When I execute `python data/pipelines/pipeline.py`, the full ETL flow must complete without errors.
+> > 3. After the subflow refactor, the pipeline must still be runnable as a script: `python data/pipelines/pipeline.py` completes without errors (keep the Part 2 entrypoint).
 > > 4. I need a dashboard. Nobody on the leadership team is going to query an endpoint — put the KPIs somewhere they can actually look at them.
 > >
 > > Starting point: `data/pipelines/pipeline.py` from the previous session.
 
 ### Why subflows
+
+Parts 1–2 required **one main flow** with at least three tasks. **This part raises that bar:** you split those stages into **at least three subflows** (`@flow`) coordinated by the main flow — that topology is new to Part 3 and is what we evaluate here.
 
 A flow that grows without structure ends up being as hard to maintain as the script it replaced. Subflows apply the DRY principle at the orchestration level: each phase of the pipeline (extraction, transformation, load) becomes an independent flow that can be executed, monitored, and reused separately. The main flow coordinates them but does not contain their logic.
 
@@ -66,11 +68,9 @@ A flow that grows without structure ends up being as hard to maintain as the scr
 - [ ] Include at least one test that asserts a computed KPI value matches the definition in your `CONTEXT-company.md` for a known, hand-calculated input.
 - [ ] The tests must pass with `python -m pytest tests/pipelines/test_pipeline.py` without errors.
 
-### Phase 3 — Script-based execution
+### Phase 3 — CLI still works after the refactor
 
-- [ ] Ensure `data/pipelines/pipeline.py` can be executed directly as a CLI script (for example, with an `if __name__ == "__main__"` block that invokes the main flow).
-- [ ] Verify the full pipeline runs without errors: `python data/pipelines/pipeline.py`.
-- [ ] Document the run command in a comment or in `data/pipelines/PIPELINE_DESIGN.md`.
+- [ ] After the subflow split, `python data/pipelines/pipeline.py` still runs the full ETL without errors (the `__main__` entrypoint and run-command docs from Part 2 must keep working — do not rebuild them from scratch).
 
 ### Phase 4 — Business dashboard (mandatory)
 
@@ -100,8 +100,7 @@ Your pipeline produces KPIs — but a table nobody looks at isn't a deliverable.
 - [ ] At least one test verifies the defensive behaviour of a task against invalid input.
 - [ ] At least one test validates a KPI's computed value against its definition in `CONTEXT-company.md`.
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes without errors.
-- [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors.
-- [ ] The run command is documented in `data/pipelines/PIPELINE_DESIGN.md` or inline comments.
+- [ ] After the subflow refactor, `python data/pipelines/pipeline.py` still runs the full ETL flow without errors (Part 2 CLI entrypoint preserved).
 - [ ] Subflow names, task names, and test names reflect the domain vocabulary and KPI names from `CONTEXT-company.md`.
 - [ ] `telemetry_events` and `services/telemetry/analysis.py` remain unmodified throughout the refactor.
 - [ ] A dashboard exists in `uis/backoffice/` that displays every KPI from `CONTEXT-company.md`'s "KPIs to Measure" section, correctly labeled, sourced from your `services/reporting/` endpoint.

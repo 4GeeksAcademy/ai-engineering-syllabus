@@ -45,15 +45,13 @@ El equipo de Ventas recibe cada semana decenas de RFPs (_Request for Proposal_) 
 
 Las RFPs reales llegan como PDF. Convertirlas a Markdown antes del LLM reduce costo de tokens y ruido. Usa `py-readability-metrics` sobre el Markdown para estimar costo de procesamiento (Flesch-Kincaid, Gunning Fog, etc.), no como nota literaria.
 
-**Modo ticket** significa que cada subida es una fila con ciclo de vida que la UI puede consultar. Estados de la Parte 1 que debes manejar:
+**Modo ticket** significa que cada subida es una fila con ciclo de vida que la UI puede consultar. El mismo ticket continúa en partes posteriores — el vocabulario completo vive en el CONTEXT. **Esta parte solo usa:**
 
 | Estado              | Cuándo                                                                        |
 | ------------------- | ----------------------------------------------------------------------------- |
 | `analizando`        | Subida aceptada; conversión + agentes en curso                                |
 | `descartado`        | El clasificador rechazó el documento                                          |
 | `analisis_completo` | El synthesizer terminó; Ventas puede leer los aspectos clave por departamento |
-
-`esperando_aprobación` / `waiting_for_approval` es el gate humano de la **Parte 3** — no lo uses como estado de éxito de la Parte 1. La Parte 2 moverá el mismo ticket por `generando_borrador` / `en_evaluación`.
 
 PDF→Markdown + clasificador + workers en paralelo pueden tardar minutos. El **`POST` de subida no debe ejecutar el pipeline completo en sync**: crea el ticket (`analizando`), guarda el PDF en `data/raw/`, responde rápido (p. ej. `202` + `ticket_id`), corre el pipeline en background, y deja que la UI haga poll del `GET` de estado.
 
@@ -113,7 +111,7 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 
 **Enrutamiento**
 
-- [ ] Implementa el enrutamiento del documento clasificado hacia el resto del flujo agéntico (flag en cola, campo en DB o contrato de handoff documentado — sin segundo API)
+- [ ] Implementa el enrutamiento del documento clasificado hacia el resto del flujo agéntico (flag en cola, campo en DB o contrato de handoff documentado — sin segundo API). El handoff **debe** llevar `ticket_id` + payload del synthesizer (`key_aspects` / estructura de workstreams) para que la Parte 2 arranque sin re-parsear el PDF.
 
 ⚠️ **IMPORTANTE:** Los nombres de los departamentos, el formato de las RFPs y los criterios de clasificación deben coincidir con lo que se especifica en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
@@ -144,6 +142,7 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 - [ ] El clasificador rechaza no-RFPs sin detener otros tickets
 - [ ] Metadatos y métricas de legibilidad almacenados por documento procesado
 - [ ] Orchestrator-worker-synthesizer como agentes separados en un grafo `rfp_intake` dedicado
+- [ ] El handoff de enrutamiento lleva `ticket_id` + payload synthesizer / `key_aspects` para la Parte 2 (flag de cola, campo DB o contrato documentado)
 - [ ] El resultado final lista aspectos clave + contactos por departamento — verificable contra los PDF de muestra del CONTEXT
 - [ ] Pruebas unitarias del clasificador y al menos un worker
 - [ ] La implementación usa los departamentos y el formato de RFP del `CONTEXT-company.md` de tu empresa

@@ -41,6 +41,17 @@ En la Parte 1 ya tienes un flujo que clasifica cada RFP y abre un ticket por cad
 
 Cuando el ticket pide que un evaluador revise "cumplimiento de lineamientos de la empresa", no se refiere a un juicio de estilo libre: tu `CONTEXT-company.md` incluye una lista concreta de reglas (tono, datos que no pueden faltar, cifras que deben aparecer) contra la cual el evaluador debe verificar el contenido generado — no una opinión subjetiva del agente. Si tu empresa ya tiene una base de conocimiento semántica, es un buen lugar para que el generador busque políticas, precios de referencia o lenguaje de marca reales antes de redactar — reduce las veces que el evaluador rebota la sección por inventar algo que no coincide con lo que la empresa realmente dice. Esto es una mejora sugerida, no un requisito de esta parte.
 
+**Estados del ticket para esta parte** (misma fila que la Parte 1 — nombres del CONTEXT). El ciclo completo está en el CONTEXT; **aquí solo necesitas:**
+
+| Estado               | Rol             | Cuándo                                                                            |
+| -------------------- | --------------- | --------------------------------------------------------------------------------- |
+| `analisis_completo`  | Entrada Parte 1 | Arranca aquí vía handoff de enrutamiento — no reescribas este estado              |
+| `generando_borrador` | Parte 2 escribe | Generadores escribiendo secciones                                                 |
+| `en_evaluación`      | Parte 2 escribe | Evaluadores en paralelo / ciclo generador-evaluador                               |
+| `needs_human_review` | Parte 2 escribe | Límite de iteraciones agotado; último borrador + EvaluationResult pasan a Parte 3 |
+
+**No** inventes estados de Parte 3 (`esperando_aprobación`, `terminado`) en esta parte.
+
 ### 🗺️ Referencia visual: mapeo departamental y finalización del entregable
 
 Este tramo del flujo toma la **estructura de workstreams definida** en la Parte 1, mapea tareas a departamentos vía un **assignment orchestrator**, ejecuta generación por departamento en paralelo, y un **synthesizer** consolida las salidas en tickets de asignación por departamento listos para evaluación / aprobación:
@@ -54,16 +65,21 @@ Este tramo del flujo toma la **estructura de workstreams definida** en la Parte 
 Continúa sobre la misma rama de trabajo del Hito en tu fork del monorepo (o crea `feature/rfp-response-generation` a partir de la rama donde entregaste la Parte 1). Si aún no tienes tu fork, créalo desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Parte del flujo de clasificación y enrutamiento que construiste en la Parte 1 — no lo reescribas desde cero.
-2. Instala cualquier dependencia nueva con `uv add`.
-3. Revisa nuevamente tu `CONTEXT-company.md`: allí están los lineamientos concretos contra los que deben validar tus agentes evaluadores.
+2. **Consume el handoff de enrutamiento de la Parte 1** — la Parte 2 debe arrancar desde tickets que la Parte 1 marcó listos (estado `analisis_completo` más el flag de cola / campo DB / contrato de handoff que definiste). Entrada = `ticket_id` + payload del synthesizer (`key_aspects` / estructura de workstreams). **No** vuelvas a parsear el PDF ni inventes un resumen paralelo que ignore ese contrato.
+3. Instala cualquier dependencia nueva con `uv add`.
+4. Revisa nuevamente tu `CONTEXT-company.md`: allí están los lineamientos concretos contra los que deben validar tus agentes evaluadores.
 
 ---
 
 ## 💻 Lo Que Debes Hacer
 
+**Consumir el enrutamiento de la Parte 1**
+
+- [ ] La entrada de la Parte 2 lee el handoff de enrutamiento de la Parte 1 (`ticket_id` + payload del synthesizer / `key_aspects`, vía el flag de cola, campo DB o contrato documentado de la Parte 1) — los generadores no deben re-ingerir el PDF crudo como input principal
+
 **Generación por departamento**
 
-- [ ] Implementa un agente generador por departamento que reciba el resumen relevante producido en la Parte 1
+- [ ] Implementa un agente generador por departamento que reciba el resumen relevante producido en la Parte 1 (desde ese handoff)
 - [ ] El agente generador debe producir contenido específico para la sección de propuesta económica de su departamento
 
 > 💡 _Opcional:_ si tu empresa ya tiene una base de conocimiento semántica, puedes darle acceso al generador para que redacte con políticas y lenguaje de marca reales. No es un requisito de esta parte ni se evalúa como tal — es una mejora que puede reducir cuántas veces una sección rebota en la evaluación.
@@ -117,6 +133,7 @@ EvaluationResult:
 ## ✅ Lo Que Evaluaremos
 
 - [ ] Cada departamento tiene su propio agente generador, claramente separado de los demás
+- [ ] La Parte 2 consume el handoff de enrutamiento de la Parte 1 (`ticket_id` + payload synthesizer / `key_aspects`) — no re-parsea el PDF como input principal del generador
 - [ ] Los evaluadores corren en paralelo y no bloquean la ejecución de otros departamentos entre sí
 - [ ] El sistema aplica correctamente el ciclo generador-evaluador, incluyendo el límite de iteraciones y el handoff `needs_human_review` al agotarlo
 - [ ] El ticket refleja con precisión el progreso de generación y evaluación en tiempo real

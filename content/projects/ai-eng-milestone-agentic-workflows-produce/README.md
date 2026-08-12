@@ -44,6 +44,16 @@ In Part 2 each department already generates and self-evaluates its section of th
 
 Not every control needs to pause the flow for a human. Guardrails (automated schema, type, or business validations) should resolve the clear-cut cases on their own; save interruptions (`interrupt`) for decisions that genuinely require human judgment, like approving a pricing proposal before it goes to a client. And when you do interrupt, keep it scoped: the interruption should only pause the branch of the graph that depends on that approval (that department's section and whatever depends on it), not the entire flow — one department waiting on their manager's sign-off shouldn't stall the others that are already ready to move forward.
 
+**Ticket statuses for this part** (same ticket row — match CONTEXT). Full lifecycle is in CONTEXT; **here you only need:**
+
+| Status                                    | Role              | When                                                                    |
+| ----------------------------------------- | ----------------- | ----------------------------------------------------------------------- |
+| `under_evaluation` / `needs_human_review` | Entry from Part 2 | Ticket arrives with drafts + `EvaluationResult` (incl. capped sections) |
+| `waiting_for_approval`                    | Part 3 sets       | Human-in-the-loop pause while any department approval is pending        |
+| `done`                                    | Part 3 sets       | Final document stored and accessible                                    |
+
+Do **not** invent orphan statuses; keep earlier Part 1/2 values on the same row when you are not transitioning.
+
 ### 🗺️ Visual reference: approval tickets & ultimate document synthesis
 
 Once department assignment tickets from Part 2 are **fully approved**, an **ultimate document synthesizer** compiles the final agreed-upon document and delivers it to Sales — parallel department branches approve independently, then converge:
@@ -87,7 +97,7 @@ Continue on your Milestone branch in your company's monorepo fork, picking up fr
 **Document completion**
 
 - [ ] Once every department has given approval, generate the final document by consolidating the approved sections
-- [ ] Update the ticket to its final status (for example: `done`) and make the generated document accessible
+- [ ] While any department approval is pending, set ticket status to `waiting_for_approval`; when the final document is stored, set it to `done` and make the document accessible
 
 **End-to-end review**
 
@@ -123,7 +133,7 @@ Continue on your Milestone branch in your company's monorepo fork, picking up fr
 - [ ] Arbitration node fires on CONTEXT conflict triggers and resolves via the fixed CONTEXT arbiter (not LLM freestyle)
 - [ ] Every node execution is logged with agent, input, output, and timestamp
 - [ ] The final document is generated automatically only once every department has given approval
-- [ ] The ticket reflects the final status of the process and provides access to the generated document
+- [ ] Ticket status uses `waiting_for_approval` while HITL is pending and `done` when the final document is accessible
 - [ ] A reproducible E2E/fixture path exists (script or integration test with simulated approvals), not only a manual UI demo
 - [ ] A test RFP can be traced end to end (Part 1 through Part 3) with no state jumps or visible inconsistencies between parts
 - [ ] Unit tests exist for interruption/resume, the iteration limit, arbitration, and parallel approval under interrupt

@@ -44,6 +44,16 @@ En la Parte 2 cada departamento ya genera y autoevalúa su sección de la propue
 
 No todo control debe pausar el flujo para un humano. Los guardrails (validaciones automáticas de esquema, tipo o negocio) deben resolver solos los casos claros; reserva las interrupciones (`interrupt`) para decisiones que de verdad requieren juicio humano, como aprobar una propuesta económica antes de enviarla a un cliente. Y cuando interrumpas, hazlo de forma acotada: la interrupción debe pausar únicamente la rama del grafo que depende de esa aprobación (la sección de ese departamento y lo que dependa de ella), no el flujo completo — un departamento esperando el visto bueno de su gerente no debería frenar a los demás que ya están listos para avanzar.
 
+**Estados del ticket para esta parte** (misma fila — nombres del CONTEXT). El ciclo completo está en el CONTEXT; **aquí solo necesitas:**
+
+| Estado                                 | Rol             | Cuándo                                                                        |
+| -------------------------------------- | --------------- | ----------------------------------------------------------------------------- |
+| `en_evaluación` / `needs_human_review` | Entrada Parte 2 | El ticket llega con borradores + `EvaluationResult` (incl. secciones al tope) |
+| `esperando_aprobación`                 | Parte 3 escribe | Pausa humana mientras alguna aprobación de departamento esté pendiente        |
+| `terminado`                            | Parte 3 escribe | Documento final guardado y accesible                                          |
+
+**No** inventes estados huérfanos; conserva valores previos de Parte 1/2 en la misma fila cuando no estés en transición.
+
 ### 🗺️ Referencia visual: tickets de aprobación y síntesis del documento final
 
 Cuando los tickets de asignación por departamento de la Parte 2 están **totalmente aprobados**, un **ultimate document synthesizer** compila el documento final acordado y lo entrega a Ventas — las ramas por departamento aprueban de forma independiente y luego convergen:
@@ -87,7 +97,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 **Cierre del documento**
 
 - [ ] Cuando todos los departamentos dan su aprobación, genera el documento final consolidando las secciones aprobadas
-- [ ] Actualiza el ticket a su estado final (por ejemplo: `terminado`) y deja accesible el documento generado
+- [ ] Mientras alguna aprobación de departamento esté pendiente, pon el ticket en `esperando_aprobación`; cuando el documento final esté guardado, ponlo en `terminado` y déjalo accesible
 
 **Revisión de extremo a extremo**
 
@@ -123,7 +133,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 - [ ] El nodo de arbitraje dispara ante los triggers de conflicto del CONTEXT y resuelve con el árbitro fijo del CONTEXT (no freestyle de LLM)
 - [ ] Cada ejecución de nodo queda registrada con agente, input, output y timestamp
 - [ ] El documento final se genera automáticamente solo cuando todos los departamentos han dado su aprobación
-- [ ] El ticket refleja el estado final del proceso y da acceso al documento generado
+- [ ] El ticket usa `esperando_aprobación` mientras el HITL esté pendiente y `terminado` cuando el documento final sea accesible
 - [ ] Existe una ruta E2E/fixture reproducible (script o test de integración con aprobaciones simuladas), no solo una demo manual en UI
 - [ ] Una RFP de prueba puede recorrerse de principio a fin (Parte 1 a Parte 3) sin saltos de estado ni inconsistencias visibles entre partes
 - [ ] Existen pruebas unitarias para la interrupción/reanudación, el límite de iteraciones, el arbitraje y la aprobación en paralelo bajo interrupt

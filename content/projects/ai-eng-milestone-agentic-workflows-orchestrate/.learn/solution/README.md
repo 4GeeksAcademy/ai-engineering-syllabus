@@ -165,6 +165,7 @@ Part 1 ends with **routing**: validated RFP + synthesizer output ready for Part 
 - [ ] MarkItDown (or equivalent) conversion artifact
 - [ ] Classifier rejects non-RFP with `discarded`
 - [ ] Orchestrator / workers / synthesizer as separate agents
+- [ ] Routing handoff: `ticket_id` + synthesizer payload ready for Part 2
 - [ ] Final output lists per-department needs + contacts (CONTEXT-aligned)
 - [ ] Unit tests: classifier + ≥1 worker
 - [ ] Sample CONTEXT RFP + pipeline output attached to PR

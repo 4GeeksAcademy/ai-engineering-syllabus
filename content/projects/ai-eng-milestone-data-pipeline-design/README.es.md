@@ -89,7 +89,7 @@ Cuando escribas el propósito del pipeline en la Fase 2, nombra el entregable de
 
 ### Fase 4 — Mapeo a Prefect
 
-- [ ] Mapea tu diseño a conceptos de Prefect: identifica qué partes serían **flows**, cuáles serían **tasks**, y qué **states** (Running, Completed, Failed) son relevantes para tu pipeline.
+- [ ] Mapea tu diseño a conceptos de Prefect: identifica **al menos un flow principal** y **al menos tres tasks** (extracción, transformación y carga como mínimo), más qué **states** (Running, Completed, Failed) son relevantes. Un segundo flow (p. ej. backfill) es opcional en la Parte 1 — la Parte 3 subirá el listón al dividir las etapas en **subflows**.
 - [ ] Indica qué configuración o credenciales manejarías como **Prefect blocks** (por ejemplo, la conexión a Supabase).
 
 ### Fase 5 — Integración con la aplicación (solo diseño)
@@ -236,7 +236,7 @@ Antes de escribir `PIPELINE_DESIGN.md`, responde por escrito — aunque sea como
 - [ ] La estrategia para manejar actualizaciones a registros existentes está documentada con un mecanismo concreto (ej. upsert por clave primaria, timestamp de última modificación, tabla de control).
 - [ ] La estrategia de idempotencia es explícita: describe qué pasa en la segunda corrida después de un fallo en la fase de carga, no solo lo que sería deseable.
 - [ ] El log de ejecución especifica al menos cinco campos con el nombre del campo, tipo de dato, y justificación de por qué ese campo es necesario para auditoría.
-- [ ] El mapeo a Prefect identifica al menos dos flows y tres tasks con nombres concretos alineados con las etapas del pipeline.
+- [ ] El mapeo a Prefect identifica al menos **un flow principal** y **tres tasks** con nombres concretos alineados con las etapas del pipeline (coincide con la barra de la Parte 2; la Parte 3 añade subflows).
 - [ ] El diseño documenta al menos **tres** endpoints planeados en `services/reporting/` (consulta de estado, disparo manual **y consulta de KPIs** para el dashboard) y nombra las funciones de `data/pipelines/` que cada uno importará.
 - [ ] El diseño es consistente con los eventos de telemetría y las métricas obligatorias ya definidas en el archivo CONTEXT de la compañía.
 

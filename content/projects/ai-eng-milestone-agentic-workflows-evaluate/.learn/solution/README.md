@@ -29,7 +29,7 @@ flowchart LR
 
 **Design invariants:**
 
-1. **Reuse Part 1** — generators consume synthesizer/metadata output; do not re-classify RFPs from scratch.
+1. **Reuse Part 1** — generators **consume** the Part 1 routing handoff (`ticket_id` + synthesizer / `key_aspects` payload via queue flag, DB field, or documented contract). Do not re-classify RFPs or re-parse the PDF as the primary path.
 2. **One generator per department** — clearly separated agents/modules.
 3. **Parallel evaluators** — readability, relevance, and CONTEXT guidelines run concurrently per section.
 4. **Structured `EvaluationResult`** — regenerators receive concrete reasons (rule ids, missing fields), not vague “improve it”.
@@ -172,7 +172,7 @@ If iterations were exhausted: `overall_pass` is false, ticket/section status is 
 
 ## PR evidence checklist
 
-- [ ] Generators are per-department and consume Part 1 output
+- [ ] Generators are per-department and consume Part 1 routing handoff (`ticket_id` + synthesizer payload) — not a re-parsed PDF path
 - [ ] ≥3 evaluators in parallel (readability, relevance, guidelines)
 - [ ] Fail path returns `feedback_for_generator` and regenerates
 - [ ] Iteration limit enforced; exhaust → `needs_human_review` + handoff (ticket not discarded)
@@ -186,14 +186,15 @@ If iterations were exhausted: `overall_pass` is false, ticket/section status is 
 
 ## Common mistakes
 
-| Mistake                                       | Why it fails                                   |
-| --------------------------------------------- | ---------------------------------------------- |
-| One mega-generator for all departments        | Rubric requires per-department generators      |
-| Free-text “looks good” evaluation             | Must follow `EvaluationResult` shape           |
-| Infinite regenerate loop                      | Missing iteration limit                        |
-| Discarding whole ticket on one failed section | Exhaust → `needs_human_review`, still hand off |
-| Ignoring CONTEXT guideline list               | Company-specific rules required                |
-| Rewriting Part 1 from scratch                 | Must extend existing intake/routing            |
+| Mistake                                        | Why it fails                                          |
+| ---------------------------------------------- | ----------------------------------------------------- |
+| One mega-generator for all departments         | Rubric requires per-department generators             |
+| Free-text “looks good” evaluation              | Must follow `EvaluationResult` shape                  |
+| Infinite regenerate loop                       | Missing iteration limit                               |
+| Discarding whole ticket on one failed section  | Exhaust → `needs_human_review`, still hand off        |
+| Ignoring CONTEXT guideline list                | Company-specific rules required                       |
+| Rewriting Part 1 from scratch                  | Must extend existing intake/routing                   |
+| Ignoring Part 1 routing handoff / re-parse PDF | Part 2 must consume `ticket_id` + synthesizer payload |
 
 ---
 

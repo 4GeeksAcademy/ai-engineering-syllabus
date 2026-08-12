@@ -89,7 +89,7 @@ When you write the pipeline purpose in Phase 2, name the business deliverable yo
 
 ### Phase 4 — Mapping to Prefect
 
-- [ ] Map your design to Prefect concepts: identify which parts would be **flows**, which would be **tasks**, and which **states** (Running, Completed, Failed) are relevant for your pipeline.
+- [ ] Map your design to Prefect concepts: identify **at least one main flow** and **at least three tasks** (extract, transform, load as a minimum), plus which **states** (Running, Completed, Failed) are relevant. A second flow (e.g. backfill) is optional in Part 1 — Part 3 will raise the bar by splitting stages into **subflows**.
 - [ ] Indicate which configuration or credentials you would manage as **Prefect blocks** (for example, the connection to Supabase).
 
 ### Phase 5 — Application integration (design only)
@@ -236,7 +236,7 @@ Before writing `PIPELINE_DESIGN.md`, answer in writing — even as a draft — h
 - [ ] The strategy for handling updates to existing records is documented with a concrete mechanism (e.g., upsert by primary key, last-modified timestamp, control table).
 - [ ] The idempotency strategy is explicit: it describes what happens on the second run after a load-phase failure, not just what would be desirable.
 - [ ] The execution log specifies at least five fields with the field name, data type, and justification for why that field is necessary for auditing.
-- [ ] The Prefect mapping identifies at least two flows and three tasks with concrete names aligned with the pipeline stages.
+- [ ] The Prefect mapping identifies at least **one main flow** and **three tasks** with concrete names aligned with the pipeline stages (matches Part 2's implementation bar; Part 3 adds subflows).
 - [ ] The design documents at least **three** planned `services/reporting/` endpoints (status query, manual trigger, **and KPI query** for the dashboard) and names the `data/pipelines/` functions each will import.
 - [ ] The design is consistent with the telemetry events and mandatory metrics already defined in the company's CONTEXT file.
 

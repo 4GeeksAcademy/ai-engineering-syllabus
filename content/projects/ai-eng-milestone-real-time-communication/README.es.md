@@ -52,6 +52,7 @@ Si necesitas un repaso de cómo montar un proyecto, mira [cómo empezar un proye
 **Backend (`services/`)**
 
 - [ ] Implementa un endpoint WebSocket que acepte una conexión persistente por sesión de chat
+- [ ] Protege el socket con el **mismo JWT** que usa la API del backoffice (y el SSE de la Parte 1). Pasa el token al conectar vía query string (p. ej. `?token=…`) y/o un primer frame de auth del cliente — los navegadores no pueden poner `Authorization` limpio en el handshake WebSocket. Rechaza conexiones sin autenticación antes de cualquier evento de chat
 - [ ] Exige `session_id` (y/o LangGraph `thread_id`) en el handshake / URL para que el socket quede ligado a un hilo de conversación existente
 - [ ] Transmite la respuesta del agente token por token a través de esa conexión, usando el modo de streaming de LangGraph que corresponda
 - [ ] Ante una interrupción del cliente: **aborta el stream en curso** para que no se produzcan más eventos `token_chunk` de esa generación (cancela la tarea / detén el stream del modelo). **No** uses LangGraph `interrupt()` HITL como sustituto del abort del stream — usa `interrupt()` solo si además necesitas una pausa de grafo aparte
@@ -88,6 +89,7 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 ## ✅ Qué Evaluaremos
 
 - [ ] La interfaz de chat muestra los tokens de la respuesta conforme se generan, no la respuesta completa de una sola vez
+- [ ] El WebSocket exige el mismo JWT que el backoffice (query param y/o primer frame de auth); se rechazan clientes sin autenticación
 - [ ] El WebSocket queda ligado a una conversación existente vía `session_id` y/o LangGraph `thread_id` en el handshake o la URL
 - [ ] Enviar una interrupción a mitad de una respuesta aborta de forma medible la generación original (sin más tokens), conserva el mensaje parcial marcado como `interrupted`, y la siguiente respuesta del agente es un turno nuevo que refleja la nueva entrada
 - [ ] El WebSocket se reconecta tras una caída con el mismo `session_id` / `thread_id` y rehidrata desde checkpoint o historial — el hilo de conversación no se pierde

@@ -19,9 +19,9 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Ya tienes una API central funcionando y un pipeline de datos que alimenta dashboards en tiempo real. Ahora tu empresa necesita algo distinto: que cualquier persona del equipo comercial pueda hacer una pregunta en lenguaje natural y obtener una respuesta confiable, sin tener que buscarla manualmente en documentos dispersos.
+Ya tienes una API central funcionando y un pipeline de datos que alimenta dashboards en tiempo real. Ahora tu empresa necesita algo distinto: que la audiencia nombrada en tu CONTEXT pueda hacer una pregunta en lenguaje natural y obtener una respuesta confiable, sin tener que buscarla manualmente en documentos dispersos.
 
-El equipo de ventas pierde tiempo respondiendo preguntas de prospectos y clientes que ya están contestadas en algún documento interno — políticas, catálogos, procedimientos — pero nadie las encuentra a tiempo. Tu tech lead te traslada un **ticket** con el **brief** que dejó el equipo comercial: necesitan un asistente que responda **desde la perspectiva de un vendedor**, con la voz y las prioridades del negocio, no un buscador que devuelva fragmentos crudos de la base de datos.
+El equipo de primera línea pierde tiempo respondiendo preguntas de prospectos y clientes que ya están contestadas en algún documento interno — políticas, catálogos, procedimientos — pero nadie las encuentra a tiempo. Tu tech lead te traslada un **ticket** con el **brief** de tu CONTEXT: necesitan un asistente que responda con la **voz y audiencia que define tu CONTEXT** (vendedor, coordinador, account manager, …), con las prioridades del negocio, no un buscador que devuelva fragmentos crudos de la base de datos.
 
 El **ticket** deja claro el criterio de aceptación central: la respuesta final siempre debe ser generada por un modelo a partir del contexto recuperado — nunca se debe devolver directamente el resultado de la búsqueda en la base de datos vectorial. Además, la solución debe estar modularizada: cada responsabilidad (preparar los datos, guardar los vectores, buscar, generar la respuesta) debe vivir en su propia función, de forma que el equipo técnico pueda reemplazar cualquier pieza sin tocar las demás.
 
@@ -88,7 +88,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Implementar `retrieve(query: str, *, k: int = 5, min_score: float) -> list[dict]`: embebe la consulta, busca en Qdrant los k vecinos más cercanos, **filtra** los que queden por debajo de `min_score`, y devuelve los payloads supervivientes (no objetos crudos del SDK de Qdrant).
 - [ ] Implementar `query(question: str) -> str`: la **única** función que deben llamar consumidores externos. Orquesta `retrieve()` → armado del prompt → llamada al LLM de **generación** (modelo de chat/completion — no el de embeddings) → devuelve la respuesta final como string. Prefiere el modelo de generación gratuito proporcionado por 4Geeks para estudiantes de AI Engineering. Si `retrieve()` no devuelve nada por encima del umbral, el modelo debe responder con honestidad (p. ej. que la base de conocimiento no tiene información relevante) — nunca inventar datos de la empresa.
 - [ ] Mantén el **paso de generación** (armado del prompt + llamada al LLM) en su propia función — p. ej. `generate_answer(question: str, context: list[dict]) -> str` — de modo que `query()` sea literalmente `retrieve()` + `generate_answer()`. Un proyecto posterior (el agente LangGraph) llamará a `retrieve()` y `generate_answer()` como pasos **separados**; separarlos ahora permite que el agente reutilice ambos sin ejecutar la recuperación dos veces ni re-envolver el monolito de `query()`.
-- [ ] El prompt de generación debe instruir al modelo a responder desde la **perspectiva de un vendedor** usando solo el contexto recuperado, según el brief comercial del ticket.
+- [ ] El prompt de generación debe instruir al modelo a responder con la **voz y audiencia definidas en tu CONTEXT-company.md** usando solo el contexto recuperado, según el brief del ticket.
 
 ⚠️ **IMPORTANTE:** Los nombres de campos, nombres de colección, rutas de documentos, IDs de entidad y valores específicos del dominio deben coincidir con `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
@@ -138,7 +138,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] El endpoint reutiliza la lógica de `data/pipelines/` sin duplicarla.
 - [ ] La interfaz permite ingresar una consulta y muestra la respuesta obtenida del endpoint.
 - [ ] Las pruebas unitarias cubren `retrieve()` y `query()` con mocks; pasan en local.
-- [ ] El prompt de generación responde desde la **perspectiva de un vendedor** usando solo el contexto recuperado.
+- [ ] El prompt de generación responde con la **voz y audiencia definidas en CONTEXT-company.md** usando solo el contexto recuperado.
 - [ ] Cuando `retrieve()` no devuelve nada por encima de `min_score`, la respuesta indica que no hay información suficiente — sin inventar hechos de la empresa.
 - [ ] Existe `data/eval/test-queries.json` con ≥ 8 preguntas que cubren todos los documentos fuente.
 - [ ] Recall@3 cumple el umbral del CONTEXT (≥ 80%).
@@ -152,7 +152,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 1. Haz commit y push de tus cambios a tu fork.
 2. Abre un Pull Request hacia la rama principal del monorepo con el título: `feat: rag knowledge base`.
 3. En la descripción del PR, incluye:
-   - Una pregunta de ejemplo que haría un vendedor
+   - Una pregunta de ejemplo que haría la audiencia de tu CONTEXT
    - La respuesta que generó tu sistema
    - El nombre de la colección Qdrant y el conteo de chunks tras `setup()`
    - Un enlace a `docs/rag/rag-design.md` y un resumen de una línea de tu estrategia de chunking

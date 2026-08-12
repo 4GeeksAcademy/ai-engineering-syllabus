@@ -45,15 +45,13 @@ The Sales team receives dozens of RFPs (_Requests for Proposal_) in PDF every we
 
 Real-world RFPs arrive as PDFs. Converting them to Markdown before the LLM cuts token cost and noise. Use `py-readability-metrics` on the Markdown to estimate processing cost (Flesch-Kincaid, Gunning Fog, etc.), not as a literary grade.
 
-**Ticket mode** means each upload becomes a row with a lifecycle the UI can poll. Part 1 statuses you must drive:
+**Ticket mode** means each upload becomes a row with a lifecycle the UI can poll. Same ticket continues in later parts — full vocabulary lives in CONTEXT. **This part only uses:**
 
 | Status            | When                                                            |
 | ----------------- | --------------------------------------------------------------- |
 | `analyzing`       | Upload accepted; conversion + agents running                    |
 | `discarded`       | Classifier rejected the document                                |
 | `intake_complete` | Synthesizer finished; Sales can read per-department key aspects |
-
-`waiting_for_approval` / `esperando_aprobación` is a **Part 3** human gate — do not use it as Part 1's success state. Part 2 will move the same ticket through `drafting` / `under_evaluation`.
 
 PDF→Markdown + classifier + parallel workers can take minutes. **`POST` upload must not run the full pipeline synchronously**: create the ticket (`analyzing`), store the PDF under `data/raw/`, return quickly (e.g. `202` + `ticket_id`), run the pipeline in the background, and let the UI poll `GET` ticket status.
 
@@ -113,7 +111,7 @@ Keep working on the fork of your company's monorepo that you've been using since
 
 **Routing**
 
-- [ ] Implement routing of the classified document toward the rest of the agentic flow (queue flag, DB field, or documented handoff contract — no second API)
+- [ ] Implement routing of the classified document toward the rest of the agentic flow (queue flag, DB field, or documented handoff contract — no second API). The handoff **must** carry `ticket_id` + synthesizer payload (`key_aspects` / workstream structure) so Part 2 can start without re-parsing the PDF.
 
 ⚠️ **IMPORTANT:** Department names, RFP format, and classification criteria must match your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
 
@@ -144,6 +142,7 @@ Keep working on the fork of your company's monorepo that you've been using since
 - [ ] Classifier rejects non-RFPs without stopping other tickets
 - [ ] Metadata and readability metrics stored per processed document
 - [ ] Orchestrator-worker-synthesizer as separate agents on a dedicated `rfp_intake` graph
+- [ ] Routing handoff carries `ticket_id` + synthesizer / `key_aspects` payload for Part 2 (queue flag, DB field, or documented contract)
 - [ ] Final result lists per-department key aspects + contacts — verifiable against CONTEXT sample PDFs
 - [ ] Unit tests for classifier and at least one worker
 - [ ] Implementation matches departments and RFP format in `CONTEXT-company.md`

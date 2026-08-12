@@ -62,6 +62,8 @@ Document **why** the backend fits what the agent must remember (from CONTEXT). I
 | Explicit hierarchies / dependencies         | Knowledge graph (only if CONTEXT needs it) |
 | Parametric fine-tuning                      | Out of scope for this milestone            |
 
+⚠️ **Forbidden:** upserting agent memory into Milestone 7 company RAG collections (`brasaland_knowledge`, `trackflow_knowledge`, … or any `*_knowledge` corpus). RAG may be **read** as a tool; memory persistence must use Redis/KV or a **separate** vector collection (e.g. `*_agent_memory`). Mixing curated docs with episodic/approved chat facts breaks Recall@3 / faithfulness and weakens poison controls.
+
 A generic “we used Redis because it’s popular” without tying to CONTEXT memorable types fails the rubric.
 
 ---
@@ -153,6 +155,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 ## PR evidence checklist
 
 - [ ] Written backend justification tied to CONTEXT memorable types.
+- [ ] Memory store is not Milestone 7 `*_knowledge` / company RAG collections (RAG read-only as tool).
 - [ ] Explicit read/write interface (not prompt-only memory).
 - [ ] ≥3 memorable and ≥3 non-memorable documented examples.
 - [ ] Proposal in-conversation; single pending proposal enforced.
@@ -172,6 +175,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 | `"yes" in message` as confirmation       | Ambiguous / gaming-prone; must classify intent    |
 | Unlimited append-only store              | Missing consolidation                             |
 | Ignoring CONTEXT never-store list        | Company-specific restriction fails                |
+| Writing memory into M7 `*_knowledge` RAG | RAG is read-only tool; use separate memory store  |
 | Second agent just for “memory proposal”  | Unnecessary; structured field on same call enough |
 | Assuming silence = approve               | Default must be discard                           |
 

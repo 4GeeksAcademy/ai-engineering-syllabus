@@ -52,6 +52,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 **Backend (`services/`)**
 
 - [ ] Implement a WebSocket endpoint that accepts a persistent connection per chat session
+- [ ] Protect the socket with the **same JWT** used by the backoffice API (and Part 1 SSE). Pass the token on connect via query string (e.g. `?token=…`) and/or a first client auth frame — browsers cannot set `Authorization` on the WebSocket handshake cleanly. Reject unauthenticated connections before any chat events
 - [ ] Require `session_id` (and/or LangGraph `thread_id`) in the handshake / URL so the socket is bound to an existing conversation thread
 - [ ] Stream the agent's response token by token over that connection, using whichever LangGraph streaming mode fits
 - [ ] On client interrupt: **abort the running stream** so no further `token_chunk` events are produced for that generation (cancel the task / stop the model stream). Do **not** treat LangGraph `interrupt()` HITL as a substitute for stream abort — use `interrupt()` only if you also need a separate graph-level pause
@@ -88,6 +89,7 @@ Before considering your implementation done, think through and document your ans
 ## ✅ What We Will Evaluate
 
 - [ ] The chat interface shows response tokens as they're generated, not the full response all at once
+- [ ] The WebSocket requires the same JWT as the backoffice (query param and/or first-frame auth); unauthenticated clients are rejected
 - [ ] The WebSocket is bound to an existing conversation via `session_id` and/or LangGraph `thread_id` in the handshake or URL
 - [ ] Sending an interrupt mid-response measurably aborts the original generation (no further tokens), keeps the partial message marked `interrupted`, and the agent's next response is a new turn that reflects the new input
 - [ ] The WebSocket reconnects after a drop with the same `session_id` / `thread_id` and rehydrates from checkpoint or history — conversation thread is not lost

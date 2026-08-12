@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Your agent already knows the company (RAG) and calls tools through the MCP Server. The problem is that every conversation starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
+Your company already has a **RAG knowledge base** from an earlier milestone — a document store the model can consult. That is **not** the same product as this agent. The agent you extend here has its own identity (see your CONTEXT: manager support, CX, compliance, first-line support, …). It may **call** RAG as a tool; it does not become the commercial Q&A UI. The problem is that every conversation still starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
 
 ### 🧠 Complementary Knowledge: Memory Architectures
 
@@ -27,7 +27,7 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 
 > **From: Tech Lead — Ticket #MEM-092**
 >
-> The agent already knows the company and uses the MCP Server's tools. But every conversation starts from zero: it doesn't remember that we resolved a similar escalation yesterday, or that someone already corrected a piece of data last week. I need the agent to learn from interaction, without that meaning it starts making things up or piling junk into its memory forever.
+> The agent already uses company knowledge (RAG as a **tool**, not as this agent's identity) and the MCP Server's tools. But every conversation starts from zero: it doesn't remember that we resolved a similar escalation yesterday, or that someone already corrected a piece of data last week. I need the agent to learn from interaction, without that meaning it starts making things up or piling junk into its memory forever.
 >
 > You don't need a new graph or a multi-agent architecture for this — it's the same agent as always, with one extra self-evaluation step:
 >
@@ -60,6 +60,7 @@ git switch -c feature/agent-memory
 ### Memory Architecture Selection
 
 - [ ] Choose a persistent memory backend (e.g. Redis, a key-value store, a VectorDB, or a combination) and document in writing why it fits what your agent needs to remember at your company.
+- [ ] **Do not write memory into the company RAG collections** (`*_knowledge` / company Qdrant knowledge store). RAG stays a **read-only tool**. Memory uses a separate store or a clearly named non-knowledge collection (e.g. Redis, KV, or `*_agent_memory`). Mixing episodic/approved facts into curated docs breaks retrieval evals and poison controls.
 - [ ] Implement an explicit read/write memory interface — the agent must not accumulate state by simply appending everything to the system prompt.
 
 ⚠️ **IMPORTANT:** Which facts are memorable and which are strictly forbidden to store must match exactly what's specified in your CONTEXT-company.md. A generic implementation that ignores those restrictions will not be accepted.
@@ -105,6 +106,7 @@ As part of the challenge, your implementation must resolve — without being tol
 ## ✅ What We Will Evaluate
 
 - [ ] The chosen memory architecture is justified in writing and matches what the agent actually needs to remember.
+- [ ] Memory writes never target company `*_knowledge` / company RAG collections (separate store or non-knowledge collection only).
 - [ ] There's an explicit read/write memory interface (not implicit memory via the system prompt).
 - [ ] The agent correctly distinguishes memorable interactions from non-memorable ones, with at least 3 documented examples of each type.
 - [ ] The memory proposal is communicated within the same conversation, not through a separate channel or process.
