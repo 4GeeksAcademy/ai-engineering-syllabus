@@ -127,7 +127,8 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 
 ## ✅ Lo Que Evaluaremos
 
-- [ ] Las cuatro funciones mínimas (`setup`, `embed`, `retrieve`, `query`) existen, están separadas y cada una tiene una única responsabilidad.
+- [ ] Los cuatro puntos de entrada del pipeline (`setup`, `embed`, `retrieve`, `query`) existen, están separados y cada uno tiene una única responsabilidad.
+- [ ] La generación está factorizada en su propia función (p. ej. `generate_answer`); `query()` compone `retrieve()` + esa función para que un agente posterior pueda llamarlas como pasos separados.
 - [ ] Los documentos fuente viven en `docs/company-knowledge-base/` y son lo que `setup()` indexa.
 - [ ] El chunking respeta unidades semánticas del contenido (no corta a mitad de una idea).
 - [ ] Cada chunk almacenado en Qdrant conserva metadatos de origen recuperables (`source_document`, `section` como mínimo).

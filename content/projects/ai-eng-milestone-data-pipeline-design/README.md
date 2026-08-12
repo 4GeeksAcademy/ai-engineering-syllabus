@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Over the past weeks you captured telemetry events, stored them in `telemetry_events`, and built a technical report — event volume, error rates, latency — for your own engineering team. **That system stays exactly as it is.** You are not touching `telemetry_events`, `services/telemetry/analysis.py`, or the `GET /telemetry/report` endpoint in this milestone.
+Over the past weeks you captured telemetry events, stored them in `telemetry_events`, and built a technical report — event volume, error rates, latency — for your own engineering team. **That technical reporting path stays as it is.** Do not change `services/telemetry/analysis.py` or the `GET /telemetry/report` endpoint, and do **not** use `telemetry_events` as this pipeline's destination. If your data-pipelines `CONTEXT-company.md` requires an additive payload field on an existing mandatory event type (for example a cost field), add that field to the capture schema — that is an extension of telemetry, not a rewrite of the technical report.
 
 Today your tech lead is asking for something different: a **new** data pipeline, designed from scratch, whose only job is to turn that same telemetry into data that describes how the business is performing — the kind of numbers a department head or the CEO would read, not the kind an engineer uses to debug a service.
 
@@ -27,7 +27,7 @@ Today your tech lead is asking for something different: a **new** data pipeline,
 > >
 > > Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand every week.
 > >
-> > This is a **new** pipeline, built on top of the telemetry you already have. Your existing `telemetry_events` table, your technical report, and the `GET /telemetry/report` endpoint don't change — they keep serving engineering exactly as before. What you're building now reads from the same source but produces a different kind of output: numbers a non-technical stakeholder can act on.
+> > This is a **new** pipeline, built on top of the telemetry you already have. Your technical report and the `GET /telemetry/report` endpoint keep serving engineering exactly as before. `telemetry_events` remains the **source** (never this pipeline's destination). Additive payload fields required by your data-pipelines CONTEXT on existing event types are allowed. What you're building now reads from that source but produces a different kind of output: numbers a non-technical stakeholder can act on.
 > >
 > > Deliverable: a design document in Markdown, committed to the monorepo. No orchestration code yet — design first, implementation next.
 
@@ -49,7 +49,7 @@ Before you design extraction, transformation, or load stages, read your `CONTEXT
 
 Design the pipeline to produce exactly the data that deliverable needs — at the right freshness, granularity, and audit trail. Don't invent a generic KPI; the one your company needs is already scoped for you in `CONTEXT-company.md`.
 
-**This is a new pipeline, not a replacement.** The technical telemetry report you built earlier keeps answering technical questions for engineers (volume, errors, latency). This pipeline answers a different question, for a different audience, and its output lives in different tables and different endpoints. Nothing from the earlier project changes.
+**This is a new pipeline, not a replacement.** The technical telemetry report you built earlier keeps answering technical questions for engineers (volume, errors, latency). This pipeline answers a different question, for a different audience, and its output lives in different tables and different endpoints. Do not change the technical report path (`services/telemetry/analysis.py`, `GET /telemetry/report`) or use `telemetry_events` as this pipeline's destination — additive CONTEXT-required payload fields on existing event types are the only allowed telemetry schema extension.
 
 When you write the pipeline purpose in Phase 2, name the business deliverable you're targeting and the mandatory metric(s) that feed it. If a stage in your design doesn't support that deliverable, question whether it belongs in v1.
 
@@ -94,7 +94,7 @@ When you write the pipeline purpose in Phase 2, name the business deliverable yo
 
 ### Phase 5 — Application integration (design only)
 
-- [ ] Sketch the **new endpoint(s) in `services/reporting/`** the business side will use to query the resulting metric(s) and/or trigger a run — kept separate from `services/telemetry/` and the `GET /telemetry/report` endpoint.
+- [ ] Sketch the **three** new endpoints in `services/reporting/` the business side will use: **status query**, **manual trigger**, and **KPI query** (the feed Part 3's dashboard will consume) — kept separate from `services/telemetry/` and the `GET /telemetry/report` endpoint.
 - [ ] For each endpoint, state which **function or flow in `data/pipelines/`** it will call — no ETL logic belongs in `services/`.
 
 ⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your design must match your company's domain vocabulary in the monorepo. A generic design that ignores your company's data model will not be accepted.
@@ -231,7 +231,7 @@ Before writing `PIPELINE_DESIGN.md`, answer in writing — even as a draft — h
 - [ ] `PIPELINE_DESIGN.md` has a Current State section plus the business gap (what the telemetry report does vs does not answer).
 - [ ] Extraction format is specified (source tables, payload shape, update cadence).
 - [ ] The pipeline purpose is defined in a single concrete sentence that names the business deliverable and KPI(s) from the company's `CONTEXT-company.md` — not a generic or technical KPI.
-- [ ] The design does not modify `telemetry_events`, `services/telemetry/analysis.py`, or `GET /telemetry/report` — the new pipeline's output lives in new tables under a `reporting` schema and is exposed through a new `services/reporting/` module.
+- [ ] The design does not modify `services/telemetry/analysis.py` or `GET /telemetry/report`, and does not write this pipeline's output into `telemetry_events` — output lives in new tables under a `reporting` schema and is exposed through a new `services/reporting/` module. Additive CONTEXT-required payload fields on existing event types are allowed.
 - [ ] The data flow diagram shows at least three distinct stages (extraction, transformation, load) with the real entity or table names from the company.
 - [ ] The strategy for handling updates to existing records is documented with a concrete mechanism (e.g., upsert by primary key, last-modified timestamp, control table).
 - [ ] The idempotency strategy is explicit: it describes what happens on the second run after a load-phase failure, not just what would be desirable.

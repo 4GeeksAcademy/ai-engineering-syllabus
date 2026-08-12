@@ -1,3 +1,5 @@
+> Indicative Brasaland example — replace destination table/paths with your CONTEXT.
+
 # Pipeline Design Document — Business Performance Pipeline (Reference Excerpt)
 
 > Instructor/evaluator reference only. Student deliverable: `data/pipelines/PIPELINE_DESIGN.md` in the company monorepo. KPIs and deliverable must come from the company data-pipelines CONTEXT.
@@ -17,7 +19,7 @@ We capture inventory telemetry events (`inbound_order_created`, `outbound_order_
 
 ## Purpose
 
-Produce the daily rollup that feeds the weekly executive location cost & waste report by computing CONTEXT KPIs into `reporting.business_metrics` from mandatory telemetry metrics — without changing `telemetry_events` or `GET /telemetry/report`.
+Produce the daily rollup that feeds the weekly executive location cost & waste report by computing CONTEXT KPIs into `reporting.weekly_location_performance` from mandatory telemetry metrics — without changing `telemetry_events` or `GET /telemetry/report`.
 
 ## Extraction Format
 
@@ -35,7 +37,7 @@ flowchart TD
   A[telemetry_events] --> B[Extract since watermark]
   B --> C[Validate envelope + allowlist]
   C --> D[Aggregate by date / location to CONTEXT KPIs]
-  D --> E[Upsert reporting.business_metrics]
+  D --> E[Upsert reporting.weekly_location_performance]
   E --> F[services/reporting endpoints]
 ```
 
@@ -44,13 +46,13 @@ Dedup/idempotency enforced at **E** via upsert keys. Watermark advanced only aft
 ## Update / Dedup Strategy
 
 - **Event-level:** skip rows whose `eventId` already exists in `pipeline.processed_event_ids` (insert-on-conflict-do-nothing).
-- **Aggregate-level:** upsert `reporting.business_metrics` on `(report_date, location_id)` — recomputes KPIs when late events arrive within the 7-day reprocess window.
+- **Aggregate-level:** upsert `reporting.weekly_location_performance` on `(report_date, location_id)` — recomputes KPIs when late events arrive within the 7-day reprocess window.
 
 ## Idempotency Plan
 
 1. Start run → insert `pipeline_runs` row with `status = running`, `run_id`.
 2. Extract/transform write to `staging.*` tagged with `run_id`.
-3. Load executes single transaction: upsert `reporting.business_metrics`, insert processed `eventId`s, update watermark.
+3. Load executes single transaction: upsert `reporting.weekly_location_performance`, insert processed `eventId`s, update watermark.
 4. On load failure: transaction rolls back; `pipeline_runs.status = failed`, checkpoint = `pre_load`. Retry reuses staging if still valid, otherwise re-extracts same window — upsert prevents duplicate reporting rows.
 
 ## Execution Log
@@ -63,7 +65,7 @@ Dedup/idempotency enforced at **E** via upsert keys. Watermark advanced only aft
 | `watermark_from` | timestamptz | Audit processed range start                    |
 | `watermark_to`   | timestamptz | Audit processed range end                      |
 | `rows_extracted` | integer     | Detect empty windows                           |
-| `rows_loaded`    | integer     | Reconcile with `reporting.business_metrics`    |
+| `rows_loaded`    | integer     | Reconcile with `reporting.weekly_location_performance`    |
 | `status`         | enum        | Alerting automation                            |
 | `error_summary`  | text        | Ops-readable failure reason                    |
 
@@ -72,10 +74,10 @@ Dedup/idempotency enforced at **E** via upsert keys. Watermark advanced only aft
 | Concept | Name                             | Role                                                   |
 | ------- | -------------------------------- | ------------------------------------------------------ |
 | Flow    | `business_performance_etl_flow`  | Scheduled orchestration                                |
-| Flow    | `backfill_business_metrics_flow` | Manual date-range reprocess                            |
+| Flow    | `backfill_weekly_location_performance_flow` | Manual date-range reprocess                            |
 | Task    | `extract_telemetry_events`       | Query Supabase since watermark                         |
 | Task    | `transform_business_kpis`        | Validate + aggregate to CONTEXT KPI grain              |
-| Task    | `load_business_metrics`          | Transactional upsert + watermark advance               |
+| Task    | `load_weekly_location_performance`          | Transactional upsert + watermark advance               |
 | States  | Running / Completed / Failed     | Per flow run; Failed preserves checkpoint              |
 | Block   | `SupabaseCredentials`            | DB connection string + service role key                |
 | Block   | `PipelineConfig`                 | Watermark table, batch size, reprocess window (7 days) |
@@ -84,5 +86,7 @@ Dedup/idempotency enforced at **E** via upsert keys. Watermark advanced only aft
 
 | Endpoint                          | Calls                                                  |
 | --------------------------------- | ------------------------------------------------------ |
-| `GET /reporting/business-metrics` | `get_business_metrics()` in `data/pipelines/`          |
+| `GET /reporting/pipeline-runs/latest` | `get_latest_pipeline_run()` in `data/pipelines/` |
+| `POST /reporting/pipeline-runs` | `trigger_pipeline_run()` in `data/pipelines/` |
+| `GET /reporting/weekly-location-performance` | `get_weekly_location_performance()` in `data/pipelines/` |
 | `POST /reporting/pipeline/run`    | `business_performance_etl_flow()` in `data/pipelines/` |

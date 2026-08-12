@@ -121,6 +121,7 @@ EvaluationResult:
 - [ ] El sistema aplica correctamente el ciclo generador-evaluador, incluyendo el límite de iteraciones y el handoff `needs_human_review` al agotarlo
 - [ ] El ticket refleja con precisión el progreso de generación y evaluación en tiempo real
 - [ ] La salida de evaluación sigue la forma `EvaluationResult` (legibilidad / pertinencia / compliance estructurados — no texto libre sin estructura)
+- [ ] Los borradores y `evaluation_results` se persisten en PostgreSQL; sigue habiendo un solo API backend bajo `services/` (sin un segundo servicio HTTP)
 - [ ] Existen pruebas unitarias que cubren éxito, un fallo genérico de evaluación, y un fallo de compliance anclado al CONTEXT
 - [ ] La implementación usa los lineamientos y formatos definidos en el `CONTEXT-company.md` de tu empresa
 

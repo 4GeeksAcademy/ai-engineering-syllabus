@@ -62,7 +62,7 @@ Un pipeline resiliente no es uno que nunca falla — es uno que falla bien. En P
 
 - [ ] Implementa el pipeline como uno o más **flows** de Prefect (`@flow`) siguiendo la estructura de etapas de tu diseño: extracción, transformación, y carga como mínimo.
 - [ ] Cada etapa debe ser una **task** (`@task`) independiente con inputs y outputs explícitos.
-- [ ] Si tu pipeline tiene pasos opcionales (por ejemplo, notificaciones o exportaciones secundarias), invócalos con `return_state=True` para que un fallo en ellos no interrumpa la ejecución principal.
+- [ ] Incluye al menos un paso **opcional / no crítico** (por ejemplo, una notificación, exportación secundaria o snapshot de eval) e invócalo con `return_state=True` para que un fallo en ese paso no interrumpa la ejecución principal extract → transform → load.
 
 ### Fase 2 — Resiliencia
 

@@ -14,6 +14,8 @@ The deliverable is **runnable orchestration code** that implements the student's
 
 ---
 
+> **Indicative examples** use Brasaland's `reporting.weekly_location_performance`. Substitute your CONTEXT Destination table and paths.
+
 ## Solution architecture
 
 ```mermaid
@@ -21,19 +23,19 @@ flowchart TD
   subgraph api [services/reporting/]
     GET[GET /reporting/... last run]
     POST[POST /reporting/... trigger]
-    KPI[GET KPIs from business_metrics]
+    KPI[GET KPIs from weekly_location_performance]
   end
   subgraph prefect [data/pipelines/pipeline.py]
     FLOW[business_performance_etl_flow]
     EXT[extract_telemetry_events]
     TRF[transform_business_kpis]
-    LOD[load_business_metrics]
+    LOD[load_weekly_location_performance]
     OPT[notify_ops_optional]
   end
   subgraph data [Data layer]
     SRC[(telemetry_events — read-only)]
     STG[staging.*]
-    RPT[(reporting.business_metrics)]
+    RPT[(reporting.weekly_location_performance)]
     LOG[pipeline_runs]
   end
   subgraph untouched [Unchanged]
@@ -144,19 +146,19 @@ def transform_business_kpis(rows: list[dict], ...) -> list[dict]:
 
 **Load phase** must use the strategy from `PIPELINE_DESIGN.md` + CONTEXT unique constraint — typical pattern:
 
-- Upsert on business grain into `reporting.business_metrics` (e.g. `(report_date, location_id)`)
+- Upsert on business grain into `reporting.weekly_location_performance` (e.g. `(report_date, location_id)`)
 - `ON CONFLICT DO UPDATE` for KPI columns
 - Watermark advanced only after successful load commit
 
 **Minimum metadata per run** (≥5 fields):
 
-| Field               | Example                                               |
-| ------------------- | ----------------------------------------------------- |
-| `started_at`        | `2026-06-24T02:00:01Z`                                |
-| `finished_at`       | `2026-06-24T02:03:12Z`                                |
-| `records_processed` | `1842`                                                |
-| `status`            | `success` / `failed` / `partial`                      |
-| `error_summary`     | `null` or `"load_business_metrics: connection reset"` |
+| Field               | Example                                                          |
+| ------------------- | ---------------------------------------------------------------- |
+| `started_at`        | `2026-06-24T02:00:01Z`                                           |
+| `finished_at`       | `2026-06-24T02:03:12Z`                                           |
+| `records_processed` | `1842`                                                           |
+| `status`            | `success` / `failed` / `partial`                                 |
+| `error_summary`     | `null` or `"load_weekly_location_performance: connection reset"` |
 
 Persist in `pipeline_runs` table or structured JSON log under `data/eval/`.
 
@@ -220,7 +222,7 @@ Read-only query over the CONTEXT destination table. Response shape must match th
 - Retries missing on DB/API tasks, or no justification comment
 - Optional step fails and stops entire flow
 - No cache on any transform task
-- Load appends rows on re-run → duplicates in `reporting.business_metrics`
+- Load appends rows on re-run → duplicates in `reporting.weekly_location_performance`
 - Fewer than five metadata fields logged per execution
 - Missing `if __name__ == "__main__"` block
 - Endpoints duplicate pipeline logic instead of importing from `data/pipelines/`

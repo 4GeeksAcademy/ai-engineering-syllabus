@@ -46,6 +46,7 @@ Persist **Ticket**, **RFP metadata**, and **DepartmentSection** (at least `key_a
 | `intake_complete`      | 1    | Synthesizer done; Sales can read key aspects   |
 | `drafting`             | 2    | Generators writing proposal sections           |
 | `under_evaluation`     | 2    | Parallel evaluators / generator-evaluator loop |
+| `needs_human_review`   | 2    | Iteration limit exhausted; last draft + EvaluationResult hand off to Part 3 |
 | `waiting_for_approval` | 3    | Human-in-the-loop pause per department         |
 | `done`                 | 3    | Final document generated                       |
 

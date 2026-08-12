@@ -121,6 +121,7 @@ EvaluationResult:
 - [ ] The system correctly applies the generator-evaluator loop, including the iteration limit and `needs_human_review` handoff when exhausted
 - [ ] The ticket accurately reflects generation and evaluation progress in real time
 - [ ] Evaluation output follows the `EvaluationResult` shape (structured readability / relevance / compliance — not unstructured free text)
+- [ ] Drafts and `evaluation_results` are persisted in PostgreSQL; still one backend API under `services/` (no second HTTP service)
 - [ ] Unit tests cover success, a generic evaluation-failure case, and one CONTEXT-anchored compliance failure
 - [ ] The implementation uses the guidelines and formats defined in your company's `CONTEXT-company.md`
 

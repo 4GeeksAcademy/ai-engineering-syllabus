@@ -88,9 +88,10 @@ Before considering your implementation done, think through and document your ans
 ## ✅ What We Will Evaluate
 
 - [ ] The chat interface shows response tokens as they're generated, not the full response all at once
+- [ ] The WebSocket is bound to an existing conversation via `session_id` and/or LangGraph `thread_id` in the handshake or URL
 - [ ] Sending an interrupt mid-response measurably aborts the original generation (no further tokens), keeps the partial message marked `interrupted`, and the agent's next response is a new turn that reflects the new input
 - [ ] The WebSocket reconnects after a drop with the same `session_id` / `thread_id` and rehydrates from checkpoint or history — conversation thread is not lost
-- [ ] Events between the agent, the pub/sub layer, and the WebSocket clients are named and structured, not a single generic message type
+- [ ] Agent event production is decoupled from WebSocket consumers via a pub/sub (or equivalent producer/consumer) pattern; events are named and structured, not a single generic message type
 - [ ] Field and entity names match what's defined in your company's Part 2 CONTEXT.md
 
 ---

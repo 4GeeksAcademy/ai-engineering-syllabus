@@ -13,6 +13,8 @@ The deliverable is **production-ready orchestration + leadership-facing UI** bui
 
 ---
 
+> **Indicative examples** use Brasaland's `reporting.weekly_location_performance`. Substitute your CONTEXT Destination table and paths.
+
 ## Solution architecture
 
 ```mermaid
@@ -21,7 +23,7 @@ flowchart TD
     MAIN[business_performance_etl_flow]
     EXT[extract_telemetry_subflow]
     TRF[transform_business_kpis_subflow]
-    LOD[load_business_metrics_subflow]
+    LOD[load_weekly_location_performance_subflow]
     OPT[notify_ops_subflow]
   end
   subgraph tests [tests/pipelines/test_pipeline.py]
@@ -38,7 +40,7 @@ flowchart TD
     KPI[GET business metrics]
   end
   subgraph dest [Destination]
-    RPT[(reporting.business_metrics)]
+    RPT[(reporting.weekly_location_performance)]
   end
   subgraph cli [Script execution]
     RUN[python data/pipelines/pipeline.py]
@@ -100,16 +102,16 @@ def extract_telemetry_subflow(watermark_from: datetime) -> list[dict]:
 def transform_business_kpis_subflow(rows: list[dict], watermark_to: datetime) -> list[dict]:
     return transform_business_kpis(rows, watermark_to=watermark_to)
 
-@flow(name="load-business-metrics")
-def load_business_metrics_subflow(aggregates: list[dict], run_id: str) -> int:
-    return load_business_metrics(aggregates, run_id=run_id)
+@flow(name="load-weekly-location-performance")
+def load_weekly_location_performance_subflow(aggregates: list[dict], run_id: str) -> int:
+    return load_weekly_location_performance(aggregates, run_id=run_id)
 
 @flow
 def business_performance_etl_flow():
     watermark_from = resolve_watermark()
     rows = extract_telemetry_subflow(watermark_from)
     aggregates = transform_business_kpis_subflow(rows, watermark_to=datetime.now(UTC))
-    records = load_business_metrics_subflow(aggregates, run_id=str(uuid4()))
+    records = load_weekly_location_performance_subflow(aggregates, run_id=str(uuid4()))
     notify_ops_subflow(records, return_state=True)
     return records
 ```
@@ -154,7 +156,7 @@ Must include: ≥3 transform tests, ≥1 defensive/malformed input test, ≥1 ha
 ## Business dashboard (mandatory)
 
 - Page under `uis/backoffice/` (e.g. `/reporting`)
-- Fetches `services/reporting/` — real data from `reporting.business_metrics`
+- Fetches `services/reporting/` — real data from `reporting.weekly_location_performance`
 - Renders **every** KPI from CONTEXT "KPIs to Measure", labeled with exact CONTEXT names
 - Shows period (week/month per CONTEXT cadence)
 - Legible to the stakeholder named in CONTEXT (CEO / ops lead) — not a raw JSON dump

@@ -62,7 +62,7 @@ A resilient pipeline is not one that never fails — it is one that fails well. 
 
 - [ ] Implement the pipeline as one or more Prefect **flows** (`@flow`) following the stage structure from your design: extraction, transformation, and load as a minimum.
 - [ ] Each stage must be an independent **task** (`@task`) with explicit inputs and outputs.
-- [ ] If your pipeline has optional steps (for example, notifications or secondary exports), invoke them with `return_state=True` so that a failure in them does not interrupt the main execution.
+- [ ] Include at least one **optional / non-critical** step (for example, a notification, secondary export, or eval snapshot) and invoke it with `return_state=True` so that a failure in that step does not interrupt the main extract → transform → load execution.
 
 ### Phase 2 — Resilience
 

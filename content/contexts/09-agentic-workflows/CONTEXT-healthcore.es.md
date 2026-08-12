@@ -46,6 +46,7 @@ Persiste **Ticket**, **metadatos RFP** y **DepartmentSection** (al menos `key_as
 | `analisis_completo`    | 1     | Synthesizer listo; Ventas puede leer aspectos clave |
 | `generando_borrador`   | 2     | Generadores escribiendo secciones                   |
 | `en_evaluación`        | 2     | Evaluadores en paralelo / ciclo generador-evaluador |
+| `needs_human_review`   | 2     | Límite de iteraciones agotado; último borrador + EvaluationResult pasan a Parte 3 |
 | `esperando_aprobación` | 3     | Pausa humana por departamento                       |
 | `terminado`            | 3     | Documento final generado                            |
 

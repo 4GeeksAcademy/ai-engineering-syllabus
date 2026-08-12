@@ -88,9 +88,10 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 ## ✅ Qué Evaluaremos
 
 - [ ] La interfaz de chat muestra los tokens de la respuesta conforme se generan, no la respuesta completa de una sola vez
+- [ ] El WebSocket queda ligado a una conversación existente vía `session_id` y/o LangGraph `thread_id` en el handshake o la URL
 - [ ] Enviar una interrupción a mitad de una respuesta aborta de forma medible la generación original (sin más tokens), conserva el mensaje parcial marcado como `interrupted`, y la siguiente respuesta del agente es un turno nuevo que refleja la nueva entrada
 - [ ] El WebSocket se reconecta tras una caída con el mismo `session_id` / `thread_id` y rehidrata desde checkpoint o historial — el hilo de conversación no se pierde
-- [ ] Los eventos entre el agente, la capa pub/sub y los clientes WebSocket están nombrados y estructurados, no son un único tipo de mensaje genérico
+- [ ] La producción de eventos del agente está desacoplada de los consumidores WebSocket vía un patrón pub/sub (o productor/consumidor equivalente); los eventos están nombrados y estructurados, no son un único tipo de mensaje genérico
 - [ ] Los nombres de campos y entidades coinciden con los definidos en el CONTEXT.md de la Parte 2 de tu empresa
 
 ---

@@ -96,6 +96,7 @@ Your pipeline produces KPIs — but a table nobody looks at isn't a deliverable.
 - [ ] The main flow in `data/pipelines/pipeline.py` invokes at least three subflows (`@flow`) instead of containing all logic directly.
 - [ ] Each subflow has explicit inputs and outputs and can be executed independently.
 - [ ] The file `tests/pipelines/test_pipeline.py` exists and contains at least three unit tests for transformation tasks.
+- [ ] Unit tests run in isolation: in-memory fixtures shaped like CONTEXT telemetry — no live database or external APIs.
 - [ ] At least one test verifies the defensive behaviour of a task against invalid input.
 - [ ] At least one test validates a KPI's computed value against its definition in `CONTEXT-company.md`.
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes without errors.

@@ -127,7 +127,8 @@ Suggested file layout (names may vary; responsibilities must not):
 
 ## ✅ What We Will Evaluate
 
-- [ ] The four minimum functions (`setup`, `embed`, `retrieve`, `query`) exist, are separated, and each has a single responsibility.
+- [ ] The four pipeline entrypoints (`setup`, `embed`, `retrieve`, `query`) exist, are separated, and each has a single responsibility.
+- [ ] Generation is factored into its own function (e.g. `generate_answer`); `query()` composes `retrieve()` + that function so a later agent can call them as separate steps.
 - [ ] Source documents live under `docs/company-knowledge-base/` and are what `setup()` indexes.
 - [ ] Chunking respects semantic units of the content (no chunk cuts an idea in half).
 - [ ] Every chunk stored in Qdrant retains retrievable source metadata (`source_document`, `section` at minimum).
