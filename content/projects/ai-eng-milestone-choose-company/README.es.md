@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El desafío
+## 🎯 Tu reto
 
 Antes de que comience el curso, tienes que tomar una decisión que marcará todos los proyectos que construirás durante las próximas 24 semanas: **elegir la empresa que automatizarás con AI Engineering**.
 

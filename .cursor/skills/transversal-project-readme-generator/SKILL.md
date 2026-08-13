@@ -81,7 +81,7 @@ The challenge narrative must contain at least two or three requirements that the
 
 ### Company monorepo reminder — mandatory
 
-At the very beginning of the **🎯 The Challenge** section (before the narrative opens), insert a short callout block reminding students that this project belongs to the company they were assigned at the start of the course and must be worked on in their own fork of the company monorepo.
+At the very beginning of the **🎯 Your challenge** section (before the narrative opens), insert a short callout block reminding students that this project belongs to the company they were assigned at the start of the course and must be worked on in their own fork of the company monorepo.
 
 Use this exact callout (adapt the language to match the document language):
 
@@ -97,7 +97,7 @@ Use this exact callout (adapt the language to match the document language):
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 ```
 
-This callout must appear as the **first element inside the 🎯 The Challenge section**, before any narrative text or blockquote.
+This callout must appear as the **first element inside the 🎯 Your challenge section**, before any narrative text or blockquote.
 
 ---
 
@@ -133,7 +133,7 @@ Follow this structure exactly, in this order:
 1. Milestone Title (e.g., "Milestone — Telemetry & Data Pipelines")
 2. Hidden metadata block
 3. --- separator
-4. The Challenge (🎯)
+4. Your challenge (🎯)
    └── Company monorepo callout (mandatory — first element)
    └── [optional] complementary knowledge subsection
    └── CTO/manager brief in nested blockquotes
@@ -220,7 +220,7 @@ Each file must link to its counterpart, written in the language of the target do
 
 ## Quality Self-Check Before Delivering
 
-- [ ] Company monorepo callout present as the first element inside the 🎯 The Challenge section (both language versions)
+- [ ] Company monorepo callout present as the first element inside the 🎯 Your challenge section (both language versions)
 - [ ] No sector name, company name, or industry reference anywhere in the README
 - [ ] At least one in-company communication term (RFI, RFP, brief, PRD, ticket, stakeholder, acceptance criteria, handoff, or sign-off) appears in both the challenge narrative opening and the CTO/manager brief
 - [ ] CONTEXT anchor present in both the metadata block and the task checklist

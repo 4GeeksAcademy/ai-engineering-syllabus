@@ -52,7 +52,7 @@ Before writing, internalize these rules:
 1. Project Title
 2. Hidden metadata block
 3. --- separator
-4. 🎯 Challenge
+4. 🎯 Your challenge
    └── [optional] complementary knowledge subsection
    └── [optional] client spec in blockquotes
 5. 🌱 How to Start the Project
@@ -64,7 +64,7 @@ Before writing, internalize these rules:
 
 **Mandatory section emojis:**
 
-- `🎯` Challenge / Tu reto
+- `🎯` Your challenge / Tu reto
 - `🌱` How to start / Cómo iniciar el proyecto
 - `💻` What to do / Qué debes hacer
 - `✅` Evaluation / Qué vamos a evaluar
@@ -112,7 +112,7 @@ By [@firstusername](https://github.com/firstusername) and [@secondusername](http
 
 ---
 
-### 🎯 Challenge Section
+### 🎯 Your challenge Section
 
 1. Open with a **realistic professional scenario**: a client, a startup, a consulting engagement, an internal team need. Be specific enough to feel real.
 2. **Describe the problem**, not just the solution. What situation does the client face? What do they need?

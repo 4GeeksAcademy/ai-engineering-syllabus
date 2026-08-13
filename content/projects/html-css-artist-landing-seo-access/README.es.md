@@ -15,7 +15,7 @@ _These instructions are [available in english](https://github.com/4GeeksAcademy/
 
 <!-- endhide -->
 
-## Tu Reto
+## 🎯 Tu reto
 
 Has decidido tirarte de cabeza en el mundo de la AI Engineering. Y mientras aprendes fundamentos de HTML, CSS y SEO, te ha surgido la primera oportunidad de hacer un _website_ para un amigo artista que necesita darse a conocer y exponer su talento.
 

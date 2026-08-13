@@ -13,7 +13,7 @@ _These instructions are also available in [English](./README.md)._
 
 ---
 
-## 🎯 El Desafío
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 

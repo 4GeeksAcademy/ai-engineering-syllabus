@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 You have been using Openclaw for a few weeks now, building skills and wiring up integrations. It has been useful — but every time you start a new session, it forgets everything. It doesn't know your name, your ongoing projects, your preferences, or what you were working on yesterday.
 

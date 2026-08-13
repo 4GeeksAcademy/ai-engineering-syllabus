@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 Wanderlust Labs is a travel-tech startup building a platform where users can discover and save curated experiences around the world — from street-food tours in Bangkok to sailing trips in the Adriatic. Their product designer has already produced reference mockups (you'll find them in the brief below), and the engineering team needs a frontend developer to bring the MVP explorer to life.
 

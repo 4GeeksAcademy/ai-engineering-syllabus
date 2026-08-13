@@ -56,8 +56,8 @@ By [@user](https://github.com/user) and [other contributors](https://github.com/
 ```
 
 - Always use the 🎯 emoji before the title
-- English title: "Your challenge" (or "The Challenge")
-- Spanish title: "Tu reto" (or "El Reto")
+- English title: "Your challenge" (exact: `## 🎯 Your challenge`)
+- Spanish title: "Tu reto" (exact: `## 🎯 Tu reto`)
 - Include full project context, problem to solve, and key questions
 
 ## 5. Content Sections (by project type)

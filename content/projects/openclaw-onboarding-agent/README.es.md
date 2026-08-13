@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 El desarrollo de este proyecto se realiza en el **VPS asignado por 4Geeks Academy**. Del monorepo de la empresa solo debes consultar el contexto y los datos necesarios de la empresa.
 

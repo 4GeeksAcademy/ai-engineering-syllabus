@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 A small productivity startup has built a voice-first interface that lets users manage their to-do lists entirely by speaking. The frontend is already done — it runs in the browser, captures the user's voice through the microphone, and transcribes it to text using the Web Speech API. Your job is to build the backend that makes that interface actually do something.
 

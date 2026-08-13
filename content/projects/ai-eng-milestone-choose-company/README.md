@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 Before the course starts, you need to make one decision that will shape every project you build over the next 24 weeks: **choose the company you will automate with AI Engineering**.
 

@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 Tu Reto
+## 🎯 Tu reto
 
 Trabajas como ingeniero/a de IA freelance para **StreamLoop**, una plataforma de streaming por suscripción de tamaño mediano. Hace unas semanas entregaste una primera versión de su clasificador de cancelación (churn) — lo entrenaste, revisaste el accuracy, y lo diste por terminado. El tech lead volvió con una observación:
 

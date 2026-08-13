@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 The financial dashboard you shipped recently is working. The data loads, the charts render, the layout holds up. Your tech lead reviewed the pull request and left a comment:
 

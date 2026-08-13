@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 A startup is building a music streaming platform and needs to design the data layer before writing a single line of application code. You've been brought in as the engineer responsible for defining the object model — the blueprint that developers will use to implement the system.
 

@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 A public hospital's IT department has been asked to modernize its emergency unit intake process. Right now, a nurse manually writes patient names on a whiteboard and calls them out in arrival order — which creates chaos when a critical case comes in and jumps the line, or when two nurses try to update the board at the same time and one entry gets erased.
 

@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 The financial dashboard you built recently is now in the hands of the client's finance team, and they have feedback. They want more control over the data they see, a way to spot unusual spending without digging through rows, and a dedicated view to compare revenue across their two business lines.
 

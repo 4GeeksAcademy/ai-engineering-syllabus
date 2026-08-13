@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en inglés](./README.md)._
 
 ---
 
-## 🎯 El reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 

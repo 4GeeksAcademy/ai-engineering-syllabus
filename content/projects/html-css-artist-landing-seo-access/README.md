@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](https://github.com/4GeeksA
 
 <!-- endhide -->
 
-## Your challenge
+## 🎯 Your challenge
 
 You've decided to dive headfirst into the world of AI Engineering. And while you're learning the fundamentals of HTML, CSS, and SEO, your first opportunity to build a _website_ has come up — for an artist friend who needs to get noticed and showcase their talent.
 

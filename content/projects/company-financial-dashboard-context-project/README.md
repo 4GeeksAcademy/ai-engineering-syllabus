@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 Your team receives a repository that already contains a frontend and backend implementation, but the handover is incomplete: there is very little product documentation, almost no explicit coding standards, and no reliable project memory artifact for future contributors.
 

@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 A product design studio has just won a contract to rebuild the front end of a vacation rental platform. Before writing any custom design system, they want to validate the component architecture by cloning a well-known, production-grade interface: Airbnb. This way, the team learns what components are needed, what data each one requires, and how they connect across different views.
 

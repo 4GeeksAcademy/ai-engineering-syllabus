@@ -15,7 +15,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 The plumbing is done. Your OpenClaw agent is installed, your Composio connection is active — Google Docs, Google Calendar, Gmail, Google Drive, Google Tasks, GitHub, and more are all reachable — and Telegram lets you talk to it from your phone. You built this for yourself.
 
