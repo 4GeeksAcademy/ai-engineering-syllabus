@@ -1,3 +1,5 @@
+# Platform – Roles and Permissions
+
 <!-- hide -->
 
 By [@4geeksacademy](https://github.com/4geeksacademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
@@ -12,8 +14,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 **Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[CONTEXT-roles-permissions.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/roles-permissions)** before writing any code — that's where your company's roles, departments, and concrete access rules live.
 
 ---
-
-# Platform – Roles and Permissions
 
 ## 🎯 The Challenge
 
