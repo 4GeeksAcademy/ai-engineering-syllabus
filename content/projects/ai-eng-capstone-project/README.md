@@ -1,4 +1,4 @@
-# Milestone — Final Project Video: 5-Minute AI Pitch
+# Capstone — Final Project Video: 5-Minute AI Pitch
 
 By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
 

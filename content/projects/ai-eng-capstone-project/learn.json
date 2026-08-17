@@ -1,8 +1,8 @@
 {
   "gitpod": false,
   "title": {
-    "en": "Milestone — Final Project Video: 5-Minute AI Pitch",
-    "es": "Hito — Vídeo del proyecto final: pitch de IA en 5 minutos"
+    "en": "Capstone — Final Project Video: 5-Minute AI Pitch",
+    "es": "Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos"
   },
   "description": {
     "en": "Record a ~5-minute landscape pitch of the AI system you built for your company: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with the MP4, a 1–2 sentence description, and the signed media release.",
@@ -35,12 +35,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-capstone-project/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone — Final Project Video: 5-Minute AI Pitch with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio",
-      "es": "Acabo de completar Hito — Vídeo del proyecto final: pitch de IA en 5 minutos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio"
+      "en": "I just completed Capstone — Final Project Video: 5-Minute AI Pitch with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio",
+      "es": "Acabo de completar Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio"
     },
     {
-      "en": "Built and shipped: Milestone — Final Project Video: 5-Minute AI Pitch. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio",
-      "es": "Construido y publicado: Hito — Vídeo del proyecto final: pitch de IA en 5 minutos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio"
+      "en": "Built and shipped: Capstone — Final Project Video: 5-Minute AI Pitch. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio",
+      "es": "Construido y publicado: Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio"
     }
   ]
 }

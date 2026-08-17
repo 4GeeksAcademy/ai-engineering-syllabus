@@ -1,4 +1,4 @@
-# Hito — Vídeo del proyecto final: pitch de IA en 5 minutos
+# Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos
 
 By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
 

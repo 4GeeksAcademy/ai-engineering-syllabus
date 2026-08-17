@@ -218,7 +218,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 69. **[Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-milestone-real-time-communication)**  
     `Milestone 10` Part 2 — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic.
 
-70. **[Milestone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
+70. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
     Capstone — Record a ~5-minute landscape pitch of the company AI system: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with `FirstnameLastname-ProjectName.mp4`, a 1–2 sentence description, and the signed media release.
 
 ## Other projects

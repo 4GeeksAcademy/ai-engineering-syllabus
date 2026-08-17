@@ -218,7 +218,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 69. **[Hito 10 — Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket](./ai-eng-milestone-real-time-communication)**  
     `Hito 10` Parte 2 — WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente.
 
-70. **[Hito — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
+70. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
     Capstone — Graba un pitch horizontal de ~5 minutos del sistema de IA de la empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con `FirstnameLastname-ProjectName.mp4`, una descripción de 1–2 frases y la cesión de imagen firmada.
 
 ## Otros proyectos

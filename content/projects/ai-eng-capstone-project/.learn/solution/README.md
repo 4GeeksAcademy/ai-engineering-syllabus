@@ -1,4 +1,4 @@
-# Milestone — Final Project Video — Reference solution
+# Capstone — Final Project Video — Reference solution
 
 This is an **explanatory** reference. There is no single correct video. A passing submission is a ~5-minute landscape pitch of **the student's own company system**, delivered as a **Google Drive (or similar) folder link** with the required files.
 
@@ -28,7 +28,7 @@ No new application code is required.
 4:05–4:50  Camera. Three Q&A answers, 2s silence before/after each.
 ```
 
-Total stays near five minutes. A 12-minute tour of every milestone fails the brief.
+Total stays near five minutes. A 12-minute tour of every project in the course fails the brief.
 
 ## Sample description file
 
@@ -52,13 +52,13 @@ draft to the right department for human sign-off.
 
 **Engineering voice (fail — sounds like homework):**
 
-> In this milestone I learned how LangGraph interrupts work.
+> In this project I learned how LangGraph interrupts work.
 
 **Q&A (pass — complete sentence includes the question):**
 
 > What made me decide to pursue AI Engineering was watching tools ship without anyone who could own the system around them — and what almost held me back was my full-time job; I did not think I would have the hours.
 
-> There was a moment during the RAG milestone when things really clicked for me: the first time a wrong chunk produced a confident lie, and retrieval quality stopped being theoretical.
+> There was a moment during the RAG project when things really clicked for me: the first time a wrong chunk produced a confident lie, and retrieval quality stopped being theoretical.
 
 > What I would tell someone who's on the fence about joining 4Geeks is this: if you want a portfolio that is one company system, not ten disconnected tutorials, this is the program that forces that.
 
