@@ -35,6 +35,9 @@
     ],
     "regex": ""
   },
+   "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3905"
+  },
   "sharing": [
     {
       "en": "I just completed Milestone — Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-communication #AIEngineering #LearnPack #4GeeksAcademy #javascript #python #fastapi",
