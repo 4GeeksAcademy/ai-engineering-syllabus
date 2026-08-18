@@ -1,12 +1,12 @@
 # CONTEXT — Brasaland
 
-## Hito 8 · Memoria y Auto-mejora de Agentes
+## Hito 8 · Parte 1 · Memoria y Auto-mejora de Agentes
 
 ---
 
 ## Por qué importa esta memoria para Brasaland
 
-Tu agente ya conoce las 14 locations de Brasaland (Colombia y Florida), consulta el Incidents Manager y el inventario a través del MCP Server, y no se sale de su guardrail. El problema que reporta Felipe Guerrero (Operations Director): los mismos gerentes de local repiten las mismas correcciones semana tras semana — "el proveedor de carne de Medellín entrega los martes, no los lunes", "la ubicación de Miami cierra a las 10pm los viernes, no a las 9pm" — y el agente los sigue tratando como preguntas nuevas cada vez.
+Tu agente ya conoce las 14 locations de Brasaland (Colombia y Florida), consulta el Incidents Manager y el inventario a través del MCP Server, y recibirá su harness en la Parte 2. Este es el **Manager support agent** para gerentes de localización — la misma identidad que la Parte 2 y el chat realtime posterior blindarán y expondrán. El problema que reporta Felipe Guerrero (Operations Director): los mismos gerentes de local repiten las mismas correcciones semana tras semana — "el proveedor de carne de Medellín entrega los martes, no los lunes", "la ubicación de Miami cierra a las 10pm los viernes, no a las 9pm" — y el agente los sigue tratando como preguntas nuevas cada vez.
 
 ## Qué SÍ vale la pena recordar
 
@@ -23,11 +23,13 @@ Tu agente ya conoce las 14 locations de Brasaland (Colombia y Florida), consulta
 ## Ejemplos para tu checklist de "Auto-evaluación"
 
 **Deberían generar una propuesta de memoria:**
+
 1. "En realidad el proveedor de vegetales en Zaragoza... espera, es Medellín, entrega los miércoles, no los martes como dijiste antes."
 2. "La location de Miami Beach ahora cierra a las 11pm los fines de semana, cambió el mes pasado."
 3. "Esa alerta de ventas en cero en la location 7 fue porque hubo un apagón, no fue un error del POS — ya pasó dos veces este mes."
 
 **NO deberían generar una propuesta:**
+
 1. "¿Cuál fue el ticket promedio de ayer en Bogotá?" (consulta puntual, dato ya vive en el pipeline de telemetría, no en la memoria del agente).
 2. "Gracias, eso resuelve mi duda." (cierre de conversación, nada nuevo que recordar).
 3. "¿Puedes traducir esto al inglés para el reporte de Ashley?" (tarea de un solo uso, sin valor de persistir).

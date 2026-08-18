@@ -8,8 +8,12 @@ Reference quality bar for the student's company monorepo fork. Values below are 
 
 ```mermaid
 flowchart LR
-  UP[PDF upload] --> TICKET[Ticket: analyzing]
-  TICKET --> MD[MarkItDown → Markdown]
+  UP[PDF upload via UI] --> API[Existing services/ API]
+  API --> RAW[Store PDF under data/raw/]
+  API --> TICKET[Ticket: analyzing in Postgres]
+  TICKET --> BG[Background job]
+  BG --> PIPE[data/pipelines/rfp_intake]
+  PIPE --> MD[MarkItDown → Markdown]
   MD --> META[Metadata + readability]
   META --> CLS{Classifier: is RFP?}
   CLS -->|no| DISC[Ticket: discarded]
@@ -20,51 +24,58 @@ flowchart LR
   W1 --> SYN[Synthesizer]
   W2 --> SYN
   WN --> SYN
-  SYN --> DONE[Ticket: done / waiting_for_approval]
-  DONE --> ROUTE[Route to Part 2 pipeline]
+  SYN --> DONE[Ticket: intake_complete]
+  DONE --> ROUTE[Handoff field/flag → Part 2]
 ```
 
 ![Initial analysis and workstream isolation](../rfp-intake-workstream-isolation.jpg)
 
 **Design invariants:**
 
-1. **Convert before classify** — no agent reads raw PDF bytes; Markdown first.
-2. **Classifier is a hard gate** — non-RFP stops the flow; ticket must show `discarded` explicitly.
-3. **Separate agents** — orchestrator, workers, and synthesizer are distinct nodes/modules, not one prompt pretending to be three roles.
-4. **Ticket truth** — UI/API status reflects actual pipeline stage; no optimistic `done`.
-5. **CONTEXT fidelity** — department names, RFP sections, and rejection rules come from CONTEXT, not generic defaults.
-6. **Scoped worker input** — workers receive orchestrator-assigned slices + shared metadata, not necessarily the full document (document the choice).
+1. **One backend** — extend existing `services/` API; no second HTTP service. Standalone CLIs → `scripts/`.
+2. **Pipeline owns the graph** — LangGraph (or equivalent) lives under `data/pipelines/rfp_intake/`; routers only create tickets, enqueue, and query Postgres.
+3. **Postgres source of truth** — Ticket, RFP metadata, and `key_aspects` in Supabase/PostgreSQL (SQLModel). Not TinyDB / JSON-as-DB.
+4. **PDF via UI → `data/raw/`** — runtime artifact of intake; test with CONTEXT `rfp-requests/` uploaded through the UI.
+5. **Convert before classify** — no agent reads raw PDF bytes; Markdown first (MarkItDown or documented equivalent).
+6. **Classifier is a hard gate** — non-RFP → `discarded`; do not enqueue orchestrator.
+7. **Separate agents** — orchestrator, workers, synthesizer are distinct nodes — dedicated `rfp_intake` graph, not bolted onto CX.
+8. **Async upload** — `POST` returns quickly (`202` + `ticket_id`); pipeline runs in background; UI polls status.
+9. **Part 1 statuses only** — `analyzing` → `intake_complete` | `discarded`. `waiting_for_approval` is Part 3.
+10. **Scoped worker input** — metadata + department extracts; never invent missing volumes/figures.
 
 ---
 
 ## Recommended layout (indicative)
 
-| Path                                         | Responsibility                                  |
-| -------------------------------------------- | ----------------------------------------------- |
-| `uis/backoffice/.../rfp/`                    | Upload UI, ticket list, status polling          |
-| `services/rfp_intake/convert.py`             | MarkItDown wrapper; store `.md` artifact        |
-| `services/rfp_intake/metrics.py`             | Metadata extraction + py-readability-metrics    |
-| `services/rfp_intake/tickets.py`             | Ticket CRUD + status enum                       |
-| `services/rfp_intake/agents/classifier.py`   | RFP yes/no structured output                    |
-| `services/rfp_intake/agents/orchestrator.py` | Decompose into department workstreams           |
-| `services/rfp_intake/agents/workers/`        | One module per CONTEXT department               |
-| `services/rfp_intake/agents/synthesizer.py`  | Merge worker outputs → Sales summary            |
-| `services/rfp_intake/pipeline.py`            | LangGraph (or equivalent) wiring + routing hook |
-| `tests/pipelines/test_rfp_classifier.py`     | Classifier unit tests                           |
-| `tests/pipelines/test_rfp_worker_*.py`       | At least one worker unit-tested                 |
+| Path                                          | Responsibility                                          |
+| --------------------------------------------- | ------------------------------------------------------- |
+| `uis/backoffice/.../rfp/`                     | Upload UI, ticket list, status polling                  |
+| `services/.../routers/rfp.py` (or equivalent) | Upload + GET ticket on **existing** API; calls pipeline |
+| `data/pipelines/rfp_intake/`                  | LangGraph wiring, convert, agents, routing hook         |
+| `data/pipelines/rfp_intake/convert.py`        | MarkItDown wrapper; `.md` artifact path                 |
+| `data/pipelines/rfp_intake/metrics.py`        | Metadata + py-readability-metrics                       |
+| `data/pipelines/rfp_intake/models.py`         | SQLModel: Ticket, RFP metadata, DepartmentSection       |
+| `data/pipelines/rfp_intake/agents/`           | classifier, orchestrator, workers/, synthesizer         |
+| `data/raw/rfp/` (or similar)                  | Uploaded PDFs (runtime)                                 |
+| `scripts/rfp_intake_smoke.py`                 | Optional CLI smoke / reprocess — not a second API       |
+| `tests/pipelines/test_rfp_classifier.py`      | Classifier unit tests                                   |
+| `tests/pipelines/test_rfp_worker_*.py`        | At least one worker unit-tested                         |
+
+Reuse LiteLLM / structured-output patterns from Milestone 8; keep the **graph** separate.
 
 ---
 
-## Ticket lifecycle
+## Ticket lifecycle (Part 1)
 
-| Status                 | When set                                                   |
-| ---------------------- | ---------------------------------------------------------- |
-| `analyzing`            | Upload received; conversion + agents running               |
-| `waiting_for_approval` | Optional: human review before Part 2 (if CONTEXT requires) |
-| `done`                 | Synthesizer output stored; Sales can read routing summary  |
-| `discarded`            | Classifier rejected document; pipeline halted              |
+| Status            | When set                                                                      |
+| ----------------- | ----------------------------------------------------------------------------- |
+| `analyzing`       | Upload received; PDF in `data/raw/`; background pipeline started              |
+| `discarded`       | Classifier rejected document; pipeline halted                                 |
+| `intake_complete` | Synthesizer output + `key_aspects` stored in Postgres; Sales can read summary |
 
-Persist: ticket id, original filename, markdown path, metadata JSON, readability scores, classifier result, synthesizer output, timestamps per transition.
+Do **not** set `waiting_for_approval` in Part 1. Part 2 uses `drafting` / `under_evaluation`; Part 3 uses `waiting_for_approval` → `done`.
+
+Persist in PostgreSQL: ticket id, `raw_pdf_path`, markdown path, metadata JSON/columns, readability scores, classifier result, per-department `key_aspects`, synthesizer summary, timestamps per transition.
 
 ---
 
@@ -75,13 +86,13 @@ Persist: ticket id, original filename, markdown path, metadata JSON, readability
   "is_rfp": true,
   "confidence": 0.94,
   "reason": "Contains scope, pricing request, and submission deadline per CONTEXT RFP template.",
-  "detected_departments": ["Legal", "Engineering", "Finance"]
+  "detected_departments": ["operaciones", "procurement"]
 }
 ```
 
-If `is_rfp` is false: set ticket `discarded`, log reason, **do not** enqueue orchestrator. Other tickets continue processing independently.
+If `is_rfp` is false: set ticket `discarded`, log reason, **do not** enqueue orchestrator. Other tickets continue independently.
 
-Unit tests: valid CONTEXT sample RFP, obvious non-RFP (invoice, marketing brochure), edge case (RFP-like but missing mandatory sections per CONTEXT).
+Unit tests: CONTEXT formal RFP, informal RFP, invalid reject (and HealthCore PHI case if assigned).
 
 ---
 
@@ -93,14 +104,9 @@ Unit tests: valid CONTEXT sample RFP, obvious non-RFP (invoice, marketing brochu
 {
   "workstreams": [
     {
-      "department": "Engineering",
-      "section_refs": ["Technical Requirements", "Integration SLA"],
+      "department": "warehouse",
+      "section_refs": ["Storage requirements", "SKU volume"],
       "prompt_context": "...extracted markdown slices..."
-    },
-    {
-      "department": "Legal",
-      "section_refs": ["Compliance", "Data Processing"],
-      "prompt_context": "..."
     }
   ]
 }
@@ -110,10 +116,10 @@ Unit tests: valid CONTEXT sample RFP, obvious non-RFP (invoice, marketing brochu
 
 ```json
 {
-  "department": "Engineering",
-  "key_aspects": ["48h API uptime SLA", "OAuth2 required"],
-  "open_questions": ["Who owns staging credentials?"],
-  "suggested_contact_role": "Engineering lead — integrations"
+  "department": "warehouse",
+  "key_aspects": ["Needs ambient + cold storage for 5k orders/mo"],
+  "open_questions": ["Peak season volume not stated"],
+  "suggested_contact_role": "Warehouse Operations — Ana Whitfield"
 }
 ```
 
@@ -121,12 +127,12 @@ Unit tests: valid CONTEXT sample RFP, obvious non-RFP (invoice, marketing brochu
 
 ```json
 {
-  "summary": "RFP from Acme Corp — due 2026-08-01",
+  "summary": "RFP from ModaViva — due 2026-08-01",
   "by_department": [
     {
-      "department": "Engineering",
-      "needs": ["Confirm integration SLA", "Assign staging owner"],
-      "contact": "Engineering lead — integrations"
+      "department": "warehouse",
+      "needs": ["Confirm pallet capacity", "Clarify peak volume"],
+      "contact": "Warehouse Operations — Ana Whitfield"
     }
   ],
   "readability_estimate": "high complexity — allow extra worker time",
@@ -134,62 +140,59 @@ Unit tests: valid CONTEXT sample RFP, obvious non-RFP (invoice, marketing brochu
 }
 ```
 
-Workers should run in parallel where the runtime allows; synthesizer waits for all workstreams or handles partial failure explicitly (document behavior).
+Workers run in parallel where the runtime allows; synthesizer waits for all workstreams or documents partial failure. Missing figures → `open_questions`, never invented numbers.
 
 ---
 
 ## Readability & metadata
 
-Use `py-readability-metrics` on Markdown body to estimate processing cost (Flesch-Kincaid, Gunning Fog, etc.). Store alongside:
-
-- Client / issuer name (if present)
-- Submission deadline
-- Departments explicitly mentioned
-- Page / word count post-conversion
-
-These fields support Sales triage without opening the PDF.
+Use `py-readability-metrics` on Markdown body. Store alongside CONTEXT-required metadata fields in Postgres.
 
 ---
 
 ## Routing hook (Part 1 → Part 2)
 
-Part 1 ends with a **routing decision**: validated RFP + synthesizer output enqueued for the next milestone (proposal generation). Implement as:
-
-- Message queue topic, database row flag, or API handoff — document the contract.
-- Include ticket id + synthesizer JSON payload so Part 2 is idempotent.
+Part 1 ends with **routing**: validated RFP + synthesizer output ready for Part 2. Implement as DB flag/field, queue topic, or documented handoff — **still the same API**. Include ticket id + synthesizer payload so Part 2 is idempotent.
 
 ---
 
 ## PR evidence checklist
 
-- [ ] Ticket UI upload + live status updates
-- [ ] MarkItDown conversion artifact stored
-- [ ] Metadata + readability on every processed (non-discarded) document
-- [ ] Classifier rejects non-RFP with `discarded` status
+- [ ] Same backend only; pipeline under `data/pipelines/rfp_intake/`
+- [ ] Ticket + metadata + key aspects in PostgreSQL (Supabase)
+- [ ] UI upload → PDF under `data/raw/` + async status polling
+- [ ] Statuses: `analyzing` → `intake_complete` | `discarded`
+- [ ] MarkItDown (or equivalent) conversion artifact
+- [ ] Classifier rejects non-RFP with `discarded`
 - [ ] Orchestrator / workers / synthesizer as separate agents
+- [ ] Routing handoff: `ticket_id` + synthesizer payload ready for Part 2
 - [ ] Final output lists per-department needs + contacts (CONTEXT-aligned)
 - [ ] Unit tests: classifier + ≥1 worker
-- [ ] Sample RFP + pipeline output attached to PR
-- [ ] Design questions answered (unknown department, contradictions, false negatives)
+- [ ] Sample CONTEXT RFP + pipeline output attached to PR
 
 ---
 
 ## Common mistakes
 
-| Mistake                        | Why it fails                                               |
-| ------------------------------ | ---------------------------------------------------------- |
-| Single agent plays all roles   | Rubric requires orchestrator-worker-synthesizer separation |
-| PDF sent directly to LLM       | Token cost + rubric expects MarkItDown first               |
-| Silent failure on non-RFP      | Ticket must show explicit `discarded`                      |
-| Generic department names       | Must match CONTEXT-company.md                              |
-| Status stuck on `analyzing`    | Ticket must reflect real pipeline stage                    |
-| No tests for classifier/worker | Required in `tests/pipelines/`                             |
+| Mistake                                     | Why it fails                                |
+| ------------------------------------------- | ------------------------------------------- |
+| New FastAPI/Flask app for RFP               | Must extend existing `services/` backend    |
+| Graph under `services/` only                | Pipeline logic belongs in `data/pipelines/` |
+| TinyDB / JSON as ticket store               | Postgres/Supabase required                  |
+| Sync `POST` runs full pipeline              | Timeouts; must be async + poll              |
+| `waiting_for_approval` after Part 1 success | That status is Part 3 HITL                  |
+| Single agent plays all roles                | Rubric requires separation                  |
+| PDF sent directly to LLM                    | Convert first                               |
+| Silent failure on non-RFP                   | Explicit `discarded`                        |
+| Invented volumes in workers                 | Use `open_questions`                        |
+| Generic department names                    | Must match CONTEXT                          |
 
 ---
 
 ## Validation notes
 
-- Run pipeline in Docker test target with sample CONTEXT RFP PDF.
-- Upload non-RFP; confirm ticket `discarded` and no worker invocation.
-- Verify synthesizer JSON is sufficient for Sales without reading source PDF.
-- Confirm parallel workers do not block unrelated ticket processing.
+- Run pipeline via Docker/test target; upload CONTEXT sample PDFs through UI.
+- Upload non-RFP; confirm `discarded` and no worker invocation.
+- Confirm rows in Postgres for ticket / metadata / key_aspects.
+- Confirm PDF path under `data/raw/` and synthesizer JSON enough for Sales without opening the PDF.
+- Confirm parallel workers do not block unrelated tickets.

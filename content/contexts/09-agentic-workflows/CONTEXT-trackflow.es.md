@@ -12,11 +12,11 @@ En TrackFlow, las RFPs llegan al equipo de **Miguel Torres, Commercial Director*
 
 Usa exactamente estos identificadores de departamento:
 
-| `department_id` | Departamento                | Responsable      | Qué aporta a la propuesta                                                  |
-| ---------------- | ----------------------------- | ------------------ | -------------------------------------------------------------------------------- |
-| `warehouse`         | Warehouse Operations           | Ana Whitfield        | Capacidad de almacenamiento, costo por pallet/SKU, tiempo de onboarding          |
-| `lastmile`          | Last Mile and Carrier Management | Carlos Vega        | Costo por envío, transportistas disponibles según destino, SLA de entrega        |
-| `reverse`           | Reverse Logistics              | Sofía Ramos          | Costo y tiempo de procesamiento de devoluciones (si el cliente lo solicita)       |
+| `department_id` | Departamento                     | Responsable   | Qué aporta a la propuesta                                                   |
+| --------------- | -------------------------------- | ------------- | --------------------------------------------------------------------------- |
+| `warehouse`     | Warehouse Operations             | Ana Whitfield | Capacidad de almacenamiento, costo por pallet/SKU, tiempo de onboarding     |
+| `lastmile`      | Last Mile and Carrier Management | Carlos Vega   | Costo por envío, transportistas disponibles según destino, SLA de entrega   |
+| `reverse`       | Reverse Logistics                | Sofía Ramos   | Costo y tiempo de procesamiento de devoluciones (si el cliente lo solicita) |
 
 No toda RFP necesita a los tres departamentos: un cliente puede pedir solo almacenamiento y devoluciones, sin última milla (porque usa su propio transportista), por ejemplo. Tu clasificador/orquestador debe decidir qué departamentos aplican según el alcance solicitado.
 
@@ -26,10 +26,34 @@ Las RFPs llegan como PDF e incluyen normalmente: nombre y país de origen del cl
 
 ### 2.3 Entidades sugeridas para tu estado
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analizando`, `esperando_aprobación`, `generando_borrador`, `en_evaluación`, `terminado`, `descartado`)
-- **RFP metadata**: `client_name`, `client_country`, `services_requested`, `monthly_volume`, `deadline`, `budget_range`, `departments_needed`
+Persiste **Ticket**, **metadatos RFP** y **DepartmentSection** (al menos `key_aspects` en la Parte 1; borradores/evals/aprobaciones en partes posteriores) en **PostgreSQL (Supabase)** vía tu capa SQLModel/DB existente. TinyDB o archivos JSON no son la fuente de verdad de estas entidades.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `client_country`, `services_requested`, `monthly_volume`, `deadline`, `budget_range`, `departments_needed`, métricas de legibilidad
 - **DepartmentSection**: `department_id`, `key_aspects`, `draft_content`, `evaluation_results`, `approval_status`, `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `currency`, `generated_at`
+
+**Estado del ticket por parte** (mismo ticket en Partes 1–3):
+
+| Estado                 | Parte | Cuándo                                              |
+| ---------------------- | ----- | --------------------------------------------------- |
+| `analizando`           | 1     | Subida aceptada; pipeline en curso                  |
+| `descartado`           | 1     | El clasificador rechazó el documento                |
+| `analisis_completo`    | 1     | Synthesizer listo; Ventas puede leer aspectos clave |
+| `generando_borrador`   | 2     | Generadores escribiendo secciones                   |
+| `en_evaluación`        | 2     | Evaluadores en paralelo / ciclo generador-evaluador |
+| `needs_human_review`   | 2     | Límite de iteraciones agotado; último borrador + EvaluationResult pasan a Parte 3 |
+| `esperando_aprobación` | 3     | Pausa humana por departamento                       |
+| `terminado`            | 3     | Documento final generado                            |
+
+Los workers reciben **metadatos compartidos + extractos relevantes a su departamento**. Ejemplo: `warehouse` recibe slices/metadatos de warehousing — si falta el volumen mensual, registra una pregunta abierta; **nunca inventes** pallets/SKU/pedidos que no estén en la RFP.
+
+### 2.4 Layout del monorepo
+
+- **HTTP**: extiende el **backend existente** bajo `services/` — sin un proceso API nuevo.
+- **Pipeline / grafo**: `data/pipelines/rfp_intake/` (grafo dedicado; no lo mezcles con el grafo CX). Los routers importan y disparan; no poseen la lógica de agentes.
+- **CLIs sueltos**: `scripts/` si hace falta.
+- **PDFs subidos**: vía `uis/backoffice`; se guardan bajo `data/raw/` como artefacto runtime de la recepción.
 
 ## 3. Métricas de negocio y KPIs
 
@@ -40,11 +64,11 @@ Las RFPs llegan como PDF e incluyen normalmente: nombre y país de origen del cl
 
 ## 4. Instrucciones de datos semilla
 
-Crea al menos 3 documentos de prueba en `data/raw/`:
+Usa los PDF listos en [`rfp-requests/trackflow/`](./rfp-requests/trackflow/) como **subidas de prueba a través de la UI**. El proceso de recepción guarda cada PDF subido bajo `data/raw/` (no trates los PDF del currículo como inventario pre-sembrado en el repo). Las RFP formales e informales deben **aceptarse y procesarse**; el documento inválido debe **rechazarse**.
 
-1. **RFP válida (completa):** *Luna Cosmetics*, marca DTC de Los Ángeles, solicita almacenamiento y última milla para el mercado de EE. UU., ~5.000 pedidos/mes. Fecha límite: 20 días. Activa `warehouse` y `lastmile`. Moneda: USD.
-2. **RFP válida (parcial):** *Zaragoza ModaViva*, marca de moda española, solicita solo almacenamiento y gestión de devoluciones (usa su propio transportista para última milla). Fecha límite: 25 días. Activa `warehouse` y `reverse`, no `lastmile`. Moneda: EUR.
-3. **Documento que NO es una RFP:** un correo de una empresa de transporte ofreciéndole a TrackFlow nuevas tarifas de envío. Es una oferta entrante de un proveedor, no una solicitud de un cliente. Tu clasificador debe descartarlo.
+1. **`CONTEXT-trackflow-request-1.pdf` — RFP formal (aceptar):** _ModaViva_ (España), solo almacenamiento + devoluciones (transportista propio para última milla). Activa `warehouse` y `reverse`, no `lastmile`. Moneda: EUR.
+2. **`CONTEXT-trackflow-request-2.pdf` — RFP informal (aceptar):** correo de _Luna Cosmetics_ (LA) pidiendo almacenamiento + última milla EE. UU., ~5.000 pedidos/mes. Activa `warehouse` y `lastmile`. Moneda: USD.
+3. **`CONTEXT-trackflow-request-3.pdf` — inválido (rechazar):** pitch entrante de tarifas de transportista — no es RFP de cliente. El clasificador debe descartarlo.
 
 ## 5. Restricciones de negocio (lineamientos para el evaluador de cumplimiento)
 
@@ -58,4 +82,16 @@ Crea al menos 3 documentos de prueba en `data/raw/`:
 
 - **Parte 1:** el ticket identifica correctamente si un documento es una RFP de TrackFlow, extrae metadatos (incluido el país del cliente) y reparte el análisis solo entre los departamentos que el alcance solicitado realmente requiere.
 - **Parte 2:** cada departamento activo genera su sección y pasa por evaluación de legibilidad, pertinencia y cumplimiento de los lineamientos de la sección 5 (incluida la moneda correcta y el SLA).
-- **Parte 3:** cada departamento aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las secciones activas están aprobadas.
+- **Parte 3:** el responsable nombrado de cada departamento activo (§2.1) aprueba su sección de forma independiente, sin bloquear a los demás, y el documento final se genera solo cuando todas las secciones activas están aprobadas. **No** inventes una escalera jerárquica multi-nivel — TrackFlow solo tiene responsables pares por departamento.
+
+## 7. Parte 3 — Triggers de conflicto y árbitro fijo
+
+El arbitraje debe ser un nodo dedicado del grafo disparado por **contradicciones detectables en estado estructurado**, no por agentes negociando entre ellos.
+
+| Id del trigger       | Cuándo dispara                                                                                                                         | Árbitro fijo (no un LLM)                                                            | Regla de resolución                                                                                               |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `volume-vs-capacity` | La capacidad comprometida de `warehouse` (pallets/SKU o throughput de onboarding) no soporta el volumen mensual asumido por `lastmile` | Miguel Torres (Director Comercial)                                                  | Limitar el volumen de la propuesta a la capacidad de warehouse; `lastmile` debe revisar volumen/costo a la baja   |
+| `returns-sla-breach` | `reverse` (u otra sección) promete turnaround de devoluciones bajo 48 horas (viola §5)                                                 | Sofía Ramos rechaza su sección; si otro depto aún embebe esa promesa, Miguel Torres | Forzar `request_changes` en toda sección que diga devoluciones en menos de 48h; sin documento final hasta cumplir |
+| `currency-mismatch`  | Dos secciones activas cotizan monedas distintas, o la moneda ≠ mapeo de `client_country` (US→USD, Spain→EUR)                           | Miguel Torres                                                                       | Reescribir las secciones ofensoras a la moneda del país; rechazar si no se resuelve tras el límite de iteraciones |
+
+Conecta estos ids de trigger a tu nodo de arbitraje. Los agentes pueden **señalar** un conflicto; no deben **resolverlo** por consenso libre.

@@ -34,7 +34,7 @@ Continúa desde el proyecto de ejemplo local usado en la sesión anterior.
 Crea una nueva rama antes de empezar:
 
 ```bash
-git checkout -b feature/agent-skills
+git switch -c feature/agent-skills
 ```
 
 ---

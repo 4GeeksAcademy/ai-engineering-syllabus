@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 A local independent cinema is opening a new screening room and has hired your team to build a simple digital seat reservation system. Right now, their staff tracks seat availability manually on paper grids, which causes confusion during busy showtimes and makes it hard to answer customer questions quickly.
 

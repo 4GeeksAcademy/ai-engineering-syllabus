@@ -1,8 +1,8 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 1 — Your Company's Public Website",
-    "es": "Hito 1 — Sitio web público de tu empresa"
+    "en": "Milestone — Your Company's Public Website",
+    "es": "Hito — Sitio web público de tu empresa"
   },
   "status": "published",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -55,12 +55,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-web-fundamentals/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 1 — Your Company's Public Website with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss",
-      "es": "Acabo de completar Hito 1 — Sitio web público de tu empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss"
+      "en": "I just completed Milestone — Your Company's Public Website with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #htmlcss #javascript #tailwindcss",
+      "es": "Acabo de completar Hito — Sitio web público de tu empresa con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #htmlcss #javascript #tailwindcss"
     },
     {
-      "en": "Built and shipped: Milestone 1 — Your Company's Public Website. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss",
-      "es": "Construido y publicado: Hito 1 — Sitio web público de tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #html #javascript #tailwindcss"
+      "en": "Built and shipped: Milestone — Your Company's Public Website. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #htmlcss #javascript #tailwindcss",
+      "es": "Construido y publicado: Hito — Sitio web público de tu empresa. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-web-fundamentals #AIEngineering #LearnPack #4GeeksAcademy #htmlcss #javascript #tailwindcss"
     }
   ],
   "telemetry": {

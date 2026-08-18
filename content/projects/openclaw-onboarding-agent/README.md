@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 Development for this project must happen on the **VPS assigned by 4Geeks Academy**. From the company monorepo, you should only consult the company context and required company data.
 

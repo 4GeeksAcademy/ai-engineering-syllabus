@@ -1,74 +1,103 @@
-# Centralized Incident Manager - Reference Solution
+# Centralized Incident Manager — Reference Solution
 
 ## Purpose
 
-This reference solution describes the expected architecture, implementation scope, and validation evidence for a complete submission.
+This is an **incident manager** delivery (model + seed + REST + three UI panels). It is **not** an auth project. Do not document JWT, password hashing, login responses, or `get_current_user` here — those live in the user-authentication projects.
 
-## Solution Structure
+Field names, categories, branch values, and CSV → model maps come from the student's `CONTEXT-company.md` under `content/contexts/centralized-incident-manager/`.
 
-- `app/models/` for persistence models and schema contracts.
-- `app/services/` for business logic and route-independent operations.
-- `app/routes/` (or equivalent) for API endpoint definitions.
-- `app/core/security.py` (or equivalent) for JWT, password hashing, and auth dependencies.
-- `tests/` for route, service, and auth behavior tests.
+## Expected layout
 
-## Required Coverage (From README)
+```text
+scripts/
+  seed_incidents.py
+  incidents-COMPANY.csv          # from the analyzer project / CONTEXT
+packages/shared/                 # CSV validation reused from analyzer
+services/api/                    # FastAPI incident routes
+uis/backoffice/                  # registration, list, summary
+```
 
-- Define the `Incident` model with the following fields:
-- Apply the necessary integrity constraints: required fields, allowed values for `status`, `origin`, and `category`.
-- Create the `seed_incidents.py` script that reads the CSV file from the previous project and loads all its rows into the database, assigning `origin: "customer"` to every record.
-- The script must reuse the existing validation logic — extract the shared functions to `packages/shared/` if you haven't already: invalid CSV records are not inserted and are reported to the console at the end of execution.
-- The script is idempotent: running it twice does not duplicate records (check against an identifying field from the CSV before inserting).
-- `POST /api/incidents` — creates a new incident. Validates all required fields and returns `400` with a descriptive message if any are missing or contain an invalid value.
-- `GET /api/incidents` — returns the list of incidents. Accepts optional filter parameters: `status`, `origin`, `branch`, `category`.
-- `GET /api/incidents/{id}` — returns the detail of a single incident. Returns `404` if it does not exist.
+## Required coverage (from README)
 
-## Expected API Surface
+### Model
 
-- `POST /api/incidents`
-- `GET /api/incidents`
-- `GET /api/incidents/{id}`
-- `PATCH /api/incidents/{id}/status`
-- `GET /api/incidents/summary`
+`Incident` with: `id`, `title`, `description`, `category` (CONTEXT set), `status` (`open` | `in_progress` | `resolved` | `discarded`), `origin` (`customer` | `branch` | `internal`), `branch` (CONTEXT values including `central`), `created_at`, `updated_at`. Constraints on required fields and allowed enums.
 
-## Key Implementation Decisions
+### Seed (`scripts/seed_incidents.py`)
 
-- Passwords are never stored in plain text; use `passlib` with `bcrypt`.
-- JWT creation/validation is centralized in one security module.
-- `get_current_user` is used as a reusable dependency on protected routes.
-- Secret keys and token TTL come from environment variables.
-- Unauthorized access returns `401`; forbidden ownership actions return `403`.
+- Read the analyzer CSV; assign `origin: "customer"` to every inserted row.
+- Apply CONTEXT maps **before** insert: status, category, `description` → `title`, `date` → `created_at`, location → `branch`.
+- Reuse analyzer validation from `packages/shared/` — invalid rows are skipped and printed at the end.
+- Idempotent: a second run does not duplicate (match on a stable CSV identity field).
 
-## Indicative Examples
+After seed, `GET /api/incidents/summary` totals by **model** `status` and `category` must match the transformed expected values in CONTEXT (same valid-record set as the analyzer).
 
-### Example: Login success response
+### Backend
+
+| Method  | Path                         | Notes                                                                 |
+| ------- | ---------------------------- | --------------------------------------------------------------------- |
+| `POST`  | `/api/incidents`             | `400` with `{ field, message }` on validation errors                  |
+| `GET`   | `/api/incidents`             | filters: `status`, `origin`, `branch`, `category`; empty list if none |
+| `GET`   | `/api/incidents/{id}`        | `404` if missing                                                      |
+| `PATCH` | `/api/incidents/{id}/status` | lifecycle only (see below)                                            |
+| `GET`   | `/api/incidents/summary`     | totals by status, category, origin, branch; zeros if empty            |
+
+**Lifecycle:** `open` → `in_progress` \| `discarded`; `in_progress` → `resolved` \| `discarded`; `resolved` and `discarded` are final. Invalid transition → `400`. Unhandled errors → `500` generic body, never a stack trace.
+
+### Frontend (`uis/backoffice`)
+
+**Registration form**
+
+- All model fields; `branch` always visible/required; options = CONTEXT values with **display labels** (not raw slugs).
+- When `origin` is `branch`, visually highlight the `branch` field.
+- Loading: disable submit; field-level plain-language errors; success clears the form.
+
+**List**
+
+- Filters: `status`, `origin`, `branch`.
+- States: loading, empty (message, not a blank table), data.
+- Inline status update; on failure revert UI and notify.
+
+**Summary**
+
+- Consume `/api/incidents/summary`. Failure/loading must not break the rest of the page.
+
+## Indicative API responses
+
+### `GET /api/incidents/summary` (after seed)
 
 ```json
 {
-  "access_token": "<jwt-token>",
-  "token_type": "bearer"
+  "by_status": { "open": 12, "in_progress": 4, "resolved": 80, "discarded": 4 },
+  "by_category": {},
+  "by_origin": { "customer": 100, "branch": 0, "internal": 0 },
+  "by_branch": {}
 }
 ```
 
-### Example: Accessing a protected route without token
+Totals must match CONTEXT after the CSV → model transform. Do not copy the numbers above.
+
+### Invalid status transition
 
 ```json
 {
-  "detail": "Not authenticated"
+  "field": "status",
+  "message": "Cannot move from resolved to open."
 }
 ```
 
-### Example: Ownership violation
+## Validation notes
 
-```json
-{
-  "detail": "Forbidden"
-}
-```
+- Seed twice; row count unchanged.
+- `PATCH` a `resolved` incident to `open` → `400`.
+- Empty DB: list `[]`, summary zeros, no 500.
+- Browser: register (highlight when origin=branch) → list filters → summary.
+- No JWT/login checks belong in this rubric.
 
-## Validation Notes
+## Reviewer checklist
 
-- Verify register -> login -> authenticated request flow in `/docs`.
-- Validate invalid, malformed, and expired token scenarios.
-- Confirm protected and public routes behavior matches the rubric.
-- Ensure the final output remains aligned with all project evaluation criteria.
+- [ ] Model + enums match CONTEXT
+- [ ] Seed transforms CSV → model; invalid rows reported; idempotent
+- [ ] Five endpoints + lifecycle + no stack traces
+- [ ] Form, list (3 states), summary; branch highlight when `origin=branch`
+- [ ] Shared validation in `packages/shared/`

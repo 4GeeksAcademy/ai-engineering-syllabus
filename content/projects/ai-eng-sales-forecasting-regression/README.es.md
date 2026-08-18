@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -42,7 +42,7 @@ Tu tech lead ha abierto un **ticket** a partir de una **RFI** que llegó del ár
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Si aún no tienes un _fork_ del [monorepo de tu empresa](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo), créalo en GitHub. Recomendamos abrir y trabajar ese fork en **GitHub Codespaces**; si prefieres trabajar en local, clónalo en tu máquina.
-2. Desde `main` de tu fork, crea una rama nueva para este proyecto (en Codespaces o en tu entorno local).
+2. Desde `main` de tu fork, crea una rama nueva para este proyecto: `git switch -c feature/sales-forecast-model` (en Codespaces o en tu entorno local).
 3. Valida que `uv` esté instalado con `uv --version`; si no lo tienes, instálalo con `curl -LsSf https://astral.sh/uv/install.sh | sh` y, en la raíz del proyecto, inicializa el entorno con `uv init` (solo si aún no existe `pyproject.toml`). Luego agrega las dependencias con `uv add` (por ejemplo `scikit-learn`, `xgboost`, `pandas`, `matplotlib`) — nunca uses `pip install` ni `pipenv`.
 4. Usa el dataset de ventas históricas ya provisto para tu empresa: en el monorepo está en `data/raw/<empresa>_sales.csv` y en este repositorio de referencia en `content/contexts/sales-forecasting/<empresa>/<empresa>_sales.csv`; no lo generes ni lo simules.
 5. Lee tu `CONTEXT-empresa.md` completo antes de escribir código: ahí están el significado de cada columna, el rango de fechas y el patrón de estacionalidad que el dataset ya refleja.

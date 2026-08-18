@@ -1,12 +1,12 @@
 # CONTEXT — HealthCore
 
-## Aseguramiento de Agentes: Harness y Guardrails
+## Hito 8 · Parte 2 · Aseguramiento de Agentes: Harness y Guardrails
 
 ---
 
 ## 1. Qué agente estás asegurando
 
-El agente que debes proteger es el **asistente de compliance** del área de **Claire Whitfield, Chief Compliance Officer**. Este agente ya responde preguntas del personal clínico y administrativo usando RAG sobre la librería de políticas, procedimientos y protocolos clínicos de HealthCore, y ya sabe invocar herramientas y consumir el MCP Server construido en sprints anteriores.
+El agente que debes proteger es el **asistente de compliance** del área de **Claire Whitfield, Chief Compliance Officer**. Este agente ya responde preguntas del personal clínico y administrativo usando RAG sobre la librería de políticas, procedimientos y protocolos clínicos de HealthCore, y ya sabe invocar herramientas y consumir el MCP Server construido en sprints anteriores. Es el **mismo** agente que extendiste con memoria en el Hito 8 Parte 1 — mantén esa identidad; no inventes un agente paralelo para este sprint.
 
 Lo usan aproximadamente 200 empleados en 12 clínicas ambulatorias de EE. UU. y Reino Unido, incluyendo personal clínico bajo presión de tiempo que puede formular preguntas de forma imprecisa o apresurada.
 

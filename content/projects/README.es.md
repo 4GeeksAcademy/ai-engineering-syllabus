@@ -2,7 +2,7 @@
 
 Repositorio de proyectos prácticos del programa de **Ingeniería de IA** de 4Geeks Academy. Cada carpeta es un proyecto independiente con su propio README, criterios de evaluación y, cuando aplica, `learn.json` para la plataforma.
 
-Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO, accesibilidad) y Tailwind, pasando por hitos de empresa y colaboración, **configuración e integraciones de agentes OpenClaw**, luego TypeScript y diseño de sistemas, React/Next.js y entrega asistida por IA, APIs, autenticación, agentes, rendimiento, telemetría, pipelines de datos, jobs en segundo plano, colas de mensajes y bases de conocimiento RAG.
+Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO, accesibilidad) y Tailwind, pasando por hitos de empresa y colaboración, **configuración e integraciones de agentes OpenClaw**, luego TypeScript y diseño de sistemas, React/Next.js y entrega asistida por IA, APIs, autenticación, agentes, rendimiento, telemetría, pipelines de datos, jobs en segundo plano, colas de mensajes, bases de conocimiento RAG, flujos agénticos de RFPs, sistemas en tiempo real y un **pitch final de 5 minutos**.
 
 ---
 
@@ -39,7 +39,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
    Conecta OpenClaw a la API de 4Geeks con tu token para que el agente reporte proyectos pendientes, progreso del curso y datos LearnPack relacionados.
 
 10. **[Dale memoria a tu agente](./openclaw-memory)**  
-   Configura tipos de memoria OpenClaw (episódica, semántica, procedimental), reestructura archivos del workspace y valida que el contexto persiste entre sesiones.
+    Configura tipos de memoria OpenClaw (episódica, semántica, procedimental), reestructura archivos del workspace y valida que el contexto persiste entre sesiones.
 
 11. **[Agente de onboarding con memoria](./openclaw-onboarding-agent)**  
     Construye un flujo de onboarding empresarial: agente OpenClaw con memoria que lee plantillas HR y envía email de bienvenida personalizado desde tu `CONTEXT-empresa.md`.
@@ -197,8 +197,39 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 62. **[Servidor MCP: Conectando tu Agente con las Herramientas de la Empresa](./ai-eng-mcp-company-tools)**  
     Expón el Incidents Manager y el inventario de solo lectura como un servidor FastMCP autenticado (API Key, mínimo privilegio, esquemas de discovery, logs de invocación), valídalo con un cliente MCP y migra el agente LangGraph para consumir incidentes vía MCP en lugar de tools HTTP directas.
 
-63. **[Aseguramiento de Agentes: Harness y Guardrails](./ai-eng-agent-harness)**  
-    Cierra el agente de la empresa antes de usuarios reales: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests automatizados de jailbreak — defensas en capas, no un único filtro.
+63. **[Hito 8 — Memoria y Auto-mejora de Agentes (Parte 1 de 2)](./ai-eng-milestone-agentic-engineering)**  
+    `Hito 8` Parte 1 — Extiende el agente LangGraph de la empresa (RAG + MCP) con memoria persistente: interfaz explícita de lectura/escritura, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar — solo hechos permitidos por CONTEXT, nunca escrituras silenciosas. Misma identidad de agente que la Parte 2.
+
+64. **[Hito 8 — Aseguramiento de Agentes: Harness y Guardrails (Parte 2 de 2)](./ai-eng-agent-harness)**  
+    `Hito 8` Parte 2 — Cierra el **mismo** agente de la empresa después de memoria: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests **deterministas** del harness — defensas en capas, no un único filtro ni solo un LLM vivo.
+
+65. **[Hito — Flujo Agéntico de RFPs: Recepción y Enrutamiento (Parte 1 de 3)](./ai-eng-milestone-agentic-workflows-orchestrate)**  
+    `Hito 9` Parte 1 — Ingesta agéntica de RFPs: router de triage, filtro de RFP, descomposición orchestrator-worker en workstreams paralelos y synthesizer hacia la estructura definida en el CONTEXT.
+
+66. **[Hito — Flujo Agéntico de RFPs: Generación de Respuestas (Parte 2 de 3)](./ai-eng-milestone-agentic-workflows-evaluate)**  
+    `Hito 9` Parte 2 — Mapea workstreams a departamentos, genera y autoevalúa cada sección y produce tickets de asignación — misma fila de ticket que la Parte 1.
+
+67. **[Hito — Flujo Agéntico de RFPs: Aprobación y Cierre (Parte 3 de 3)](./ai-eng-milestone-agentic-workflows-produce)**  
+    `Hito 9` Parte 3 — Interrupt/resume human-in-the-loop por departamento, ramas en paralelo bajo interrupt, árbitro de conflicto del CONTEXT, síntesis automática del documento final y continuidad E2E desde las Partes 1–2.
+
+68. **[Hito 10 — Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE](./ai-eng-milestone-real-time-notification)**  
+    `Hito 10` Parte 1 — Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del CONTEXT, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente).
+
+69. **[Hito 10 — Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket](./ai-eng-milestone-real-time-communication)**  
+    `Hito 10` Parte 2 — WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente.
+
+70. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
+    Capstone — Graba un pitch horizontal de ~5 minutos del sistema de IA de la empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con `FirstnameLastname-ProjectName.mp4`, una descripción de 1–2 frases y la cesión de imagen firmada.
+
+## Otros proyectos
+
+No forman parte de la secuencia del temario. Se mantienen aquí como referencia o uso opcional.
+
+- **[Plataforma – Roles y Permisos](./ai-eng-roles-permissions)**  
+  Ejes independientes de rol y departamento en la plataforma de la empresa: 403 centralizado, datos con alcance departamental y vista Admin solo para roles/departamentos.
+
+- **[Plataforma – Autenticación Federada](./ai-eng-federated-authentication)**  
+  Vincular Google / Microsoft / LinkedIn solo desde un perfil existente: el login federado nunca crea cuentas; OAuth `state` + `redirect_uri`; auditar intentos rechazados.
 
 ---
 

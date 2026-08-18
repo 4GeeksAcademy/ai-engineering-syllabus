@@ -1,0 +1,44 @@
+# CONTEXT — Nexova: Sistemas en Tiempo Real (Parte 2)
+
+> Da por hecho que tu agente de soporte ya existe y funciona — aquí no se rediseña el agente, solo el canal por el que habla con el usuario.
+
+## 1. Introducción
+
+La solicitud viene del área de Customer Support de **Roberto Díaz** — el equipo que opera el agente de soporte de primera línea para los clientes de outsourcing de Nexova. Hoy un cliente final de esas empresas envía un mensaje, espera, y recibe la respuesta completa de una sola vez. Si el agente está respondiendo al tema equivocado (factura vs otro asunto), no puede corregir el rumbo hasta que termina la respuesta. Roberto lo convirtió en un ticket: streamear tokens en tiempo real y permitir interrumpir a mitad de respuesta para que el soporte se sienta como una conversación en vivo, no como una respuesta por lotes. Quienes van a usar lo que construyas son esos **clientes** que chatean con el agente de primera línea.
+
+## 2. Qué Agente Vas a Conectar
+
+El agente que vas a exponer por WebSocket es el **agente de soporte de primera línea** del área de Customer Support de Roberto Díaz: el que hoy resuelve consultas de los clientes de outsourcing de Nexova. No cambies su lógica ni sus herramientas — solo el canal por el que habla con el usuario.
+
+## 3. Entidad de Sesión de Chat
+
+- **ChatSession**: `session_id`, `agent_id` (`first_line_support`), `user_id` (el cliente que está chateando), `client_id`, `status` (`active`, `interrupted`, `closed`), `created_at`
+
+Usa `session_id` (y el mismo valor como LangGraph `thread_id` si haces checkpoint) en el handshake del WebSocket para poder rehidratar la conversación al reconectar.
+
+Autentica el WebSocket con el **mismo JWT** que la API del backoffice (y el SSE de la Parte 1). Preferible `?token=` en la URL y/o un primer frame de auth del cliente — rechaza antes de eventos de chat si falta o es inválido.
+
+## 4. Eventos Sugeridos sobre el WebSocket
+
+Usa nombres de evento explícitos y payloads estructurados (misma disciplina de nombres que en la Parte 1 — no los mismos esquemas RFP/SSE):
+
+```json
+{"event": "token_chunk", "data": {"session_id": "chat_0157", "token": "Claro", "sequence": 4}}
+{"event": "interrupt_requested", "data": {"session_id": "chat_0157", "new_input": "en realidad mi pregunta era sobre la factura"}}
+{"event": "generation_interrupted", "data": {"session_id": "chat_0157", "message_id": "msg_0321", "status": "interrupted"}}
+{"event": "generation_completed", "data": {"session_id": "chat_0157", "message_id": "msg_0322"}}
+{"event": "session_snapshot", "data": {"session_id": "chat_0157", "messages": []}}
+{"event": "user_message", "data": {"session_id": "chat_0157", "text": "..."}}
+
+```
+
+También soporta rehidratación en reconnect (`session_snapshot`) y turnos de usuario entrantes (`user_message`) — necesarios para restaurar el handshake y la entrada de chat.
+
+## 5. Patrón Pub/Sub
+
+Usa un canal por sesión (por ejemplo, `chat.<session_id>`) para que el productor (el agente generando tokens) esté desacoplado de los consumidores (las conexiones WebSocket suscritas). No necesitas Redis para esta entrega — un mecanismo en memoria es aceptable si tu implementación corre en un solo proceso.
+
+## 6. Restricciones
+
+- Los nombres de campos y entidades de la sesión de chat deben coincidir con este CONTEXT — no inventes ids paralelos para la misma sesión.
+- No mezcles los payloads de notificación de ticket RFP de la Parte 1 en el contrato WebSocket del chat.

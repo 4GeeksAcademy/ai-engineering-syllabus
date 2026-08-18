@@ -17,7 +17,7 @@ Tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllab
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -148,7 +148,7 @@ El modelo se reutiliza sin cambios desde la Fase 2 — lo usas como **validador 
 ## 📦 Cómo Entregar
 
 1. Asegúrate de que los cambios estén en tu copia: tabla creada en Supabase y endpoint real en `services/`.
-2. Crea un Pull Request contra la rama principal del monorepo con el título: `[W16D48] Telemetry Storage`.
+2. Crea un Pull Request contra la rama principal del monorepo con el título: `feat: telemetry event storage`.
 3. En la descripción del PR, incluye:
    - Una captura de la tabla `telemetry_events` en Supabase con al menos 5 filas de eventos reales, incluyendo al menos un evento técnico y uno de negocio
    - El JSON de respuesta de un lote que mezcle eventos válidos e inválidos (mostrando `received`, `stored` y `rejected`)

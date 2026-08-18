@@ -15,7 +15,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 EduTrack's engineering team has normalized the database. What used to be a single flat `enrollments` table is now a proper relational schema: students, courses, and enrollments are separate entities, each with their own table and linked by foreign keys.
 

@@ -141,6 +141,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 ### Frontend
 
 - [ ] El formulario valida campos obligatorios en el cliente antes de enviar.
+- [ ] Cuando `origin` es `branch`, el campo `branch` se resalta visualmente y el desplegable muestra las etiquetas de CONTEXT.
 - [ ] Los estados de carga son visibles y el botón de envío queda deshabilitado durante la petición.
 - [ ] Los errores de la API se muestran en lenguaje comprensible para el usuario, nunca como texto técnico.
 - [ ] El listado gestiona correctamente los tres estados posibles: cargando, vacío, con datos.

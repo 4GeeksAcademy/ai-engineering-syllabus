@@ -81,7 +81,7 @@ The challenge narrative must contain at least two or three requirements that the
 
 ### Company monorepo reminder — mandatory
 
-At the very beginning of the **🎯 The Challenge** section (before the narrative opens), insert a short callout block reminding students that this project belongs to the company they were assigned at the start of the course and must be worked on in their own fork of the company monorepo.
+At the very beginning of the **🎯 Your challenge** section (before the narrative opens), insert a short callout block reminding students that this project belongs to the company they were assigned at the start of the course and must be worked on in their own fork of the company monorepo.
 
 Use this exact callout (adapt the language to match the document language):
 
@@ -97,7 +97,7 @@ Use this exact callout (adapt the language to match the document language):
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 ```
 
-This callout must appear as the **first element inside the 🎯 The Challenge section**, before any narrative text or blockquote.
+This callout must appear as the **first element inside the 🎯 Your challenge section**, before any narrative text or blockquote.
 
 ---
 
@@ -111,6 +111,18 @@ If this is not milestone 1, open with one sentence acknowledging what was built 
 
 If the milestone requires operational context not covered in lessons (e.g., what makes a good dashboard, what an SLA is), add a brief focused subsection inside the challenge. Keep it under 150 words. Label it clearly.
 
+### Git branching standard (mandatory)
+
+How to Start must include a create-branch step. Same English branch/PR strings in both READMEs.
+
+- Create: `git switch -c <type>/<kebab-capability>` — never `git checkout -b`
+- Types: `feature` \| `fix` \| `chore` \| `docs` \| `refactor` \| `perf` \| `test`
+- Name = functionality shipped, not curriculum metadata (`milestone-N`, `hito-N`, `part-N`, `wNNdNN` banned)
+- PR title (if any): `<type>: <short capability>` — no `[WxxDyy]`
+- PR label (if any): functionality English label, not part/parte codes
+
+✅ `feature/rfp-intake` · ❌ `feature/milestone-9-part-1-rfp-intake`
+
 ---
 
 ## Step 3 — Structure
@@ -118,10 +130,10 @@ If the milestone requires operational context not covered in lessons (e.g., what
 Follow this structure exactly, in this order:
 
 ```markdown
-1. Milestone Title (e.g., "Milestone 6 — Telemetry & Data Pipelines")
+1. Milestone Title (e.g., "Milestone — Telemetry & Data Pipelines")
 2. Hidden metadata block
 3. --- separator
-4. The Challenge (🎯)
+4. Your challenge (🎯)
    └── Company monorepo callout (mandatory — first element)
    └── [optional] complementary knowledge subsection
    └── CTO/manager brief in nested blockquotes
@@ -131,6 +143,13 @@ Follow this structure exactly, in this order:
 8. How to Submit (📦)
 9. --- separator + Footer
 ```
+
+### Milestone Title (length — mandatory)
+
+- H1 title in **both** languages must be **≤ 80 characters** (count every character, including spaces, em dash, and any `(Part X of Y)` / `(Parte X de Y)` suffix).
+- Prefer short, capability-focused wording. Put Part refs at the **end** of the title.
+- If the title also lands in `learn.json` (`title.en` / `title.es` / `title.us`), apply the same ≤80 limit there.
+- Before delivering, count characters on each language title and shorten if over the limit.
 
 ### Hidden metadata block template
 
@@ -201,7 +220,7 @@ Each file must link to its counterpart, written in the language of the target do
 
 ## Quality Self-Check Before Delivering
 
-- [ ] Company monorepo callout present as the first element inside the 🎯 The Challenge section (both language versions)
+- [ ] Company monorepo callout present as the first element inside the 🎯 Your challenge section (both language versions)
 - [ ] No sector name, company name, or industry reference anywhere in the README
 - [ ] At least one in-company communication term (RFI, RFP, brief, PRD, ticket, stakeholder, acceptance criteria, handoff, or sign-off) appears in both the challenge narrative opening and the CTO/manager brief
 - [ ] CONTEXT anchor present in both the metadata block and the task checklist
@@ -209,9 +228,11 @@ Each file must link to its counterpart, written in the language of the target do
 - [ ] Prior milestone continuity sentence present (if not milestone 1)
 - [ ] Complementary knowledge subsection present if the milestone requires context not in lessons
 - [ ] All checklist items use `- [ ]` format
+- [ ] Milestone title ≤ 80 characters in both languages (H1 and any synced `learn.json` title)
 - [ ] Evaluation criteria are observable and measurable
 - [ ] Primary language document generated and delivered for review before translation begins
 - [ ] Translation generated only after explicit approval of the primary document
 - [ ] Translation is structurally identical to the approved primary — same requirements, same checklist items, same order
 - [ ] Both README.md and README.es.md link to each other (once both exist)
 - [ ] Footer present in both files with correct language variant
+- [ ] Branch/PR follow Git branching standard (`git switch -c`, functionality names, shared English)

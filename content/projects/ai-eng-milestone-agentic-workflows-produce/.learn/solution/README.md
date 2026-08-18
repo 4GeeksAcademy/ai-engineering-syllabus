@@ -1,6 +1,6 @@
 # Milestone 9 Part 3 — Approval & Document Completion — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align approval hierarchy and final document format with their assigned `CONTEXT-company.md`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align department approvers, CONTEXT conflict triggers / fixed arbiter, and final document format with their assigned `CONTEXT-company.md`.
 
 ---
 
@@ -34,39 +34,44 @@ flowchart LR
 2. **Scoped interrupt** — pause only the department branch waiting on approval.
 3. **Durable pause** — checkpointer (SQLite/Postgres) before interrupt; resume from checkpoint.
 4. **Resume is an entrypoint** — validated human payload; not a full graph restart.
-5. **Explicit arbitration** — disagreements go to a dedicated node, not agent freestyle.
-6. **Synthesize last** — final document only when every required department is approved.
-7. **One continuous ticket** — Part 1→2→3 shares identity, statuses, and artifacts.
+5. **Explicit arbitration** — CONTEXT conflict triggers → fixed arbiter (named human / deterministic rule); not LLM freestyle among agents.
+6. **Namespaced `thread_id`** — e.g. `rfp-{ticket_id}` (optionally `:{department}`); concurrent tickets never share a checkpoint.
+7. **Synthesize last** — final document only when every required department is approved.
+8. **One continuous ticket** — Part 1→2→3 shares identity, statuses, and artifacts.
+9. **Reproducible E2E** — fixture + script/integration test with simulated resumes; not UI-click-only evidence.
 
 ---
 
 ## Recommended layout (indicative)
 
-| Path                                       | Responsibility                            |
-| ------------------------------------------ | ----------------------------------------- |
-| `services/rfp_produce/approval.py`         | Interrupt payloads + resume validation    |
-| `services/rfp_produce/checkpointer.py`     | SQLite/Postgres checkpointer wiring       |
-| `services/rfp_produce/arbitration.py`      | Explicit conflict resolution node         |
-| `services/rfp_produce/synthesizer.py`      | Ultimate document consolidation           |
-| `services/rfp_produce/trace.py`            | Append agent/input/output/timestamp       |
-| `services/rfp_intake/tickets.py`           | Extend statuses + approval UI fields      |
-| `uis/backoffice/.../approvals/`            | Per-department approve / reject / changes |
-| `tests/pipelines/test_interrupt_resume.py` | Interrupt + resume                        |
-| `tests/pipelines/test_arbitration.py`      | Disagreement path                         |
-| `tests/pipelines/test_iteration_limit.py`  | Cap enforcement                           |
+| Path                                                    | Responsibility                                                    |
+| ------------------------------------------------------- | ----------------------------------------------------------------- |
+| `data/pipelines/rfp_produce/` (or extend `rfp_intake/`) | Interrupt, checkpointer, arbitration, ultimate synthesizer, trace |
+| `data/pipelines/rfp_produce/approval.py`                | Interrupt payloads + resume validation                            |
+| `data/pipelines/rfp_produce/checkpointer.py`            | SQLite/Postgres checkpointer wiring                               |
+| `data/pipelines/rfp_produce/arbitration.py`             | Explicit conflict resolution node                                 |
+| `data/pipelines/rfp_produce/synthesizer.py`             | Ultimate document consolidation                                   |
+| `data/pipelines/rfp_produce/trace.py`                   | Append agent/input/output/timestamp                               |
+| `services/.../routers/rfp.py`                           | Same existing API — approve/reject/resume + GET ticket            |
+| `uis/backoffice/.../approvals/`                         | Per-department approve / reject / changes                         |
+| `tests/pipelines/test_interrupt_resume.py`              | Interrupt + resume                                                |
+| `tests/pipelines/test_arbitration.py`                   | CONTEXT trigger → fixed arbiter path                              |
+| `tests/pipelines/test_iteration_limit.py`               | Cap enforcement                                                   |
+| `tests/pipelines/test_parallel_interrupt.py`            | Approve B while A still interrupted                               |
+| `tests/pipelines/test_e2e_produce.py` or `scripts/`     | Fixture + simulated resumes E2E                                   |
 
 ---
 
 ## Ticket lifecycle (Part 3)
 
-| Status               | When set                                     |
-| -------------------- | -------------------------------------------- |
-| `awaiting_approval`  | ≥1 department interrupt pending              |
-| `partially_approved` | Some departments approved; others still open |
-| `needs_revision`     | Reject / request_changes on a section        |
-| `arbitrating`        | Explicit arbitration node running            |
-| `producing`          | Ultimate synthesizer running                 |
-| `done`               | Final document stored and linked on ticket   |
+| Status                 | When set                                            |
+| ---------------------- | --------------------------------------------------- |
+| `waiting_for_approval` | ≥1 department interrupt pending (Part 3 human gate) |
+| `partially_approved`   | Some departments approved; others still open        |
+| `needs_revision`       | Reject / request_changes on a section               |
+| `arbitrating`          | Explicit arbitration node running                   |
+| `producing`            | Ultimate synthesizer running                        |
+| `done`                 | Final document stored and linked on ticket          |
 
 Department-level approval status lives on each assignment ticket: `pending` / `approved` / `rejected` / `changes_requested`.
 
@@ -100,27 +105,28 @@ Department-level approval status lives on each assignment ticket: `pending` / `a
 
 Reject / `request_changes` should route back to Part 2 generation for that department (document the edge). Do not invent silent auto-approve.
 
-**Thread id:** namespace per RFP, e.g. `rfp-{ticket_id}` or `rfp-{ticket_id}:{department}` if you checkpoint branches separately — document the choice and prove concurrent RFPs do not collide.
+**Thread id (required):** namespace per ticket, e.g. `rfp-{ticket_id}` or `rfp-{ticket_id}:{department}` if you checkpoint branches separately. Concurrent tickets must not collide — this is graded, not optional.
 
 ---
 
 ## Arbitration
 
-Trigger when structured contradiction detectors fire (e.g. Finance price ≠ Sales quoted price; Legal forbids a clause Operations included).
+Implement the **trigger ids and fixed arbiters** from your CONTEXT §7 (TrackFlow / Brasaland / Nexova / HealthCore). Detect contradictions in structured state; route to the named human or deterministic rule — never LLM consensus.
 
 Arbitration node output (indicative):
 
 ```json
 {
-  "conflict_id": "price-mismatch-01",
-  "departments": ["Sales", "Finance"],
-  "rule": "CONTEXT_ARBITRATION_FINANCE_OWNS_NUMBERS",
-  "resolution": "Rewrite Sales section to match Finance figure",
-  "next": "request_changes:Sales"
+  "conflict_id": "volume-vs-capacity",
+  "departments": ["warehouse", "lastmile"],
+  "arbiter": "miguel.torres",
+  "rule": "CONTEXT_ARBITRATION_CAP_TO_WAREHOUSE",
+  "resolution": "Cap lastmile volume to warehouse capacity; request_changes:lastmile",
+  "next": "request_changes:lastmile"
 }
 ```
 
-Agents must not “vote among themselves” as the resolution mechanism.
+Agents may surface a conflict; they must not resolve it by free-form voting.
 
 ---
 
@@ -160,6 +166,7 @@ Enough to answer “which agent did what, in what order” for one run without d
 - [ ] Part 2 drafts are the ones humans approve (no regenerated silent swap)
 - [ ] Messages / UI copy consistent across handoffs
 - [ ] One sample RFP documented in PR: input → approvals → final doc
+- [ ] Reproducible fixture/script or integration test linked (simulated resumes)
 
 ---
 
@@ -167,34 +174,43 @@ Enough to answer “which agent did what, in what order” for one run without d
 
 - [ ] Scoped interrupt per department + durable checkpointer
 - [ ] Resume entrypoint with validated human decisions
-- [ ] Other departments progress while one waits
-- [ ] Arbitration node + iteration limit in code
+- [ ] Test/trace: approve B while A still interrupted
+- [ ] `thread_id` namespaced by ticket (and dept if applicable)
+- [ ] Arbitration on CONTEXT triggers + fixed arbiter + iteration limit
 - [ ] Per-node trace with agent/input/output/timestamp
 - [ ] Final document only after all approvals
 - [ ] Ticket `done` + accessible artifact
-- [ ] E2E sample across Parts 1–3
-- [ ] Tests: interrupt/resume, iteration limit, arbitration
-- [ ] CONTEXT approval hierarchy + final format honored
+- [ ] Reproducible E2E/fixture with simulated approvals (script or integration test)
+- [ ] E2E sample across Parts 1–3 linked in PR
+- [ ] Tests: interrupt/resume, iteration limit, arbitration, parallel-under-interrupt
+- [ ] CONTEXT approvers + §7 arbitration + final format honored
 
 ---
 
 ## Common mistakes
 
-| Mistake                                | Why it fails                          |
-| -------------------------------------- | ------------------------------------- |
-| Treating Part 2 eval as approval       | Rubric requires real HITL             |
-| Global graph pause on one interrupt    | Must be branch-scoped                 |
-| In-memory checkpointer in “prod” tests | State lost across process restarts    |
-| Resume = re-invoke from start          | Must continue from checkpoint         |
-| Agents resolve conflicts alone         | Need explicit arbitration node        |
-| Synthesize with pending approvals      | Final doc must wait for full sign-off |
-| Broken Part 1→2→3 handoff              | E2E continuity is graded              |
+| Mistake                                   | Why it fails                           |
+| ----------------------------------------- | -------------------------------------- |
+| Treating Part 2 eval as approval          | Rubric requires real HITL              |
+| Global graph pause on one interrupt       | Must be branch-scoped                  |
+| Serial fake-parallelism                   | Need approve-B-while-A-paused proof    |
+| Shared `thread_id` across tickets         | Concurrent runs corrupt checkpoints    |
+| In-memory checkpointer in “prod” tests    | State lost across process restarts     |
+| Resume = re-invoke from start             | Must continue from checkpoint          |
+| Arbitration node without CONTEXT triggers | Decorative stub; fails rubric          |
+| Agents resolve conflicts alone            | Fixed arbiter / rules required         |
+| Invented multi-level hierarchy            | Use CONTEXT owners only (+ CEO if any) |
+| Manual-only E2E (no fixture script)       | Review must be reproducible            |
+| Synthesize with pending approvals         | Final doc must wait for full sign-off  |
+| Broken Part 1→2→3 handoff                 | E2E continuity is graded               |
 
 ---
 
 ## Validation notes
 
-- Simulate approve on two departments while third remains interrupted; confirm first two continue / complete their branches.
+- **Required test:** approve department B while A remains interrupted; confirm B completes and A stays paused.
 - Reject one section; confirm synthesizer does not run and revision path is taken.
-- Force a Finance/Sales contradiction; confirm arbitration node executes and is traced.
+- Force a CONTEXT §7 trigger (e.g. TrackFlow `volume-vs-capacity`); confirm arbitration node + fixed arbiter path execute and are traced.
+- Run fixture E2E with programmatic resumes; no dependency on live UI clicks for CI/review.
 - Restart the process mid-interrupt; resume from checkpointer without replaying Part 1.
+- Two concurrent tickets with distinct `thread_id`s; confirm checkpoints do not collide.

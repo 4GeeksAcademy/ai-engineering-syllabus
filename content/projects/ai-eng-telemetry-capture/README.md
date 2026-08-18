@@ -17,7 +17,7 @@ Keep your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -124,7 +124,7 @@ The frontend capture service does not fire an HTTP call for every event — that
 ## 📦 How to Submit
 
 1. Make sure the changes are in your fork: stub endpoint in `services/` and `TelemetryService` + instrumentation in `uis/backoffice/`.
-2. Create a Pull Request against the main branch of the monorepo with the title: `[W16D47] Telemetry Frontend`.
+2. Create a Pull Request against the main branch of the monorepo with the title: `feat: telemetry event capture`.
 3. In the PR description, include:
    - The list of instrumented events, marking which are mandatory and which you identified yourself, and which component or hook captures each one
    - A DevTools screenshot showing a batch of events arriving at the stub with a 200 response

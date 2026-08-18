@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -83,7 +83,7 @@ This project is built on top of your company's existing monorepo. You do not nee
 1. Open your monorepo in your coding environment (Codespaces or local).
 2. Navigate to your FastAPI application — typically under `/apps/<your-app-name>/` or the backend folder established in previous milestones.
 3. Make sure your environment is running and your existing endpoints are reachable before you begin the audit.
-4. Work on a dedicated branch: `git checkout -b feature/serialization-audit`.
+4. Work on a dedicated branch: `git switch -c feature/serialization-audit`.
 
 ---
 
@@ -114,7 +114,7 @@ This project is built on top of your company's existing monorepo. You do not nee
 - [ ] Ensure every endpoint has an explicit `response_model` declared on its route decorator.
 - [ ] For list endpoints: define a schema that returns only the fields consumers need — avoid returning full nested objects when a flat representation is sufficient.
 - [ ] For write endpoints (POST, PUT, PATCH): define a separate input schema that accepts only the fields that should be writable. Do not reuse the response schema as the input schema.
-- [ ] Ensure no endpoint exposes sensitive fields (e.g., hashed passwords, internal tokens, raw foreign keys when a nested object is available). Auth routes (register, login, password restore) must never return password fields or email in the response body.
+- [ ] Ensure no endpoint exposes sensitive fields (e.g., hashed passwords, internal tokens, raw foreign keys when a nested object is available). Auth routes (register, login, forgot/reset password) must never return password fields or email in the response body. `GET /auth/me` **may** return the caller's own `email` — the profile view depends on it.
 - [ ] Where a relationship is needed in the response, decide explicitly: return the full nested object, return only the related ID, or return a flat projection — and document that decision in your audit file.
 
 ### Phase 3 — Verification
@@ -130,7 +130,7 @@ This project is built on top of your company's existing monorepo. You do not nee
 - [ ] Every endpoint in the application has an explicit `response_model` declared.
 - [ ] Pydantic schemas are defined for both input and output where applicable — input and output schemas are not conflated.
 - [ ] List endpoint schemas return only the fields necessary for the consumer — no unnecessary nesting or over-fetching.
-- [ ] No endpoint exposes sensitive model fields in its response schema. Auth endpoints do not return password or email fields in responses.
+- [ ] No endpoint exposes hashed passwords or internal tokens in its response schema. Unauthenticated auth flows (register, login, forgot/reset) do not echo email. `GET /auth/me` may return the authenticated user's email.
 - [ ] The serialization audit document (`docs/serialization-audit.md`) exists, lists all endpoints, their original state, and the changes applied.
 - [ ] The application continues to function correctly after all schema changes — no regressions.
 

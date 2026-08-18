@@ -1,0 +1,40 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Platform – Roles and Permissions",
+    "es": "Plataforma – Roles y Permisos"
+  },
+  "description": {
+    "en": "Complete the Platform – Roles and Permissions project following the README instructions.",
+    "es": "Completa el proyecto Plataforma – Roles y Permisos siguiendo las instrucciones del README."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-roles-permissions",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "nextjs",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3917"
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-roles-permissions/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-roles-permissions/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Platform – Roles and Permissions with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-roles-permissions #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Plataforma – Roles y Permisos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-roles-permissions #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    },
+    {
+      "en": "Built and shipped: Platform – Roles and Permissions. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-roles-permissions #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Plataforma – Roles y Permisos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-roles-permissions #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    }
+  ]
+}

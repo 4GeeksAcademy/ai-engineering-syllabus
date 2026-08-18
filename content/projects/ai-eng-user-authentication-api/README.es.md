@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 Tu Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -56,10 +56,10 @@ En FastAPI, este flujo se implementa como una dependencia. Escribes una función
 Este proyecto es una extensión de tu API del proyecto transversal existente. **No crees un repositorio nuevo.** Trabaja dentro del codebase de backend actual de tu empresa.
 
 1. Abre tu proyecto existente en Codespaces o clónalo en local.
-2. Crea una nueva rama para esta feature: `git checkout -b feature/auth`.
+2. Crea una nueva rama para esta feature: `git switch -c feature/auth-api`.
 3. Instala los paquetes necesarios con `uv` (nunca uses `pip install` ni `pipenv`):
    ```bash
-   uv add "python-jose[cryptography]" "passlib[bcrypt]"
+   uv add "python-jose[cryptography]" "libpass[bcrypt]"
    ```
 
 ---
@@ -110,7 +110,7 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 
 ⚠️ **IMPORTANTE:** No uses autenticación basada en sesiones ni en cookies. Este proyecto implementa únicamente auth JWT stateless.
 
-⚠️ **IMPORTANTE:** Nunca almacenes contraseñas en texto plano. Usa `passlib` con el esquema `bcrypt` para todas las operaciones con contraseñas.
+⚠️ **IMPORTANTE:** Nunca almacenes contraseñas en texto plano. Usa `libpass` con el esquema `bcrypt` para todas las operaciones con contraseñas. Instala `libpass[bcrypt]` — no el `passlib` sin mantenimiento. El import de Python sigue siendo `from passlib.hash import bcrypt` (libpass es un fork drop-in).
 
 ---
 
@@ -123,6 +123,7 @@ Este proyecto es una extensión de tu API del proyecto transversal existente. **
 - [ ] El endpoint de login devuelve un token JWT válido y firmado.
 - [ ] La dependencia `get_current_user` decodifica correctamente el token e identifica al usuario.
 - [ ] Las rutas protegidas devuelven `401` al ser llamadas sin un token válido.
+- [ ] Un usuario que accede o actualiza el perfil o las credenciales de otro usuario recibe `403 Forbidden` (no solo `401` por token ausente o inválido).
 - [ ] La expiración del token y la clave de firma se leen desde variables de entorno, no están hardcodeadas.
 - [ ] Las rutas de auth están bajo `/auth`, las de usuarios bajo `/users` y las de perfil bajo `/profiles` — estructura limpia y coherente.
 - [ ] Al menos **5 rutas existentes fuera de `/users` y `/auth`** requieren un token válido (además de las rutas protegidas de usuario/auth).

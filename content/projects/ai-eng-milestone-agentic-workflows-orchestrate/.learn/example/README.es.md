@@ -26,7 +26,7 @@ En una sesión: construye el **primer tramo** de un flujo agéntico que reciba e
 
 ## Columna vertebral (debe cubrirse en vivo)
 
-1. **Ciclo de vida del ticket** — `analizando` → `esperando_aprobación` / `terminado` / `descartado`
+1. **Ciclo de vida del ticket** — `analizando` → `analisis_completo` / `descartado` (`esperando_aprobación` solo Parte 3)
 2. **PDF → Markdown** antes de cualquier llamada al LLM (lección de coste en tokens)
 3. **Puerta clasificadora** — PDF que no es subvención detiene el pipeline; ticket = `descartado`
 4. **Metadatos + legibilidad** almacenados por documento (estimación de coste de procesamiento)
@@ -88,13 +88,13 @@ Contraejemplo no-subvención: PDF de carta de restaurante → clasificador → `
 
 ### 5. Tests (`tests/test_grant_orchestration.py`)
 
-| #   | Escenario                                   | Esperado                                     |
-| --- | ------------------------------------------- | -------------------------------------------- |
-| 1   | PDF de subvención válida                    | Estado `terminado`; synthesizer con 3 deptos |
-| 2   | PDF de menú                                 | Estado `descartado`; sin llamadas a workers  |
-| 3   | Subvención sin sección Finance              | Worker Finance devuelve "no mencionado"      |
-| 4   | Salida del orquestador                      | ≥2 work items paralelos                      |
-| 5   | Clasificador + un worker testeados aislados | Solo mocks; sin LLM en vivo                  |
+| #   | Escenario                                   | Esperado                                             |
+| --- | ------------------------------------------- | ---------------------------------------------------- |
+| 1   | PDF de subvención válida                    | Estado `analisis_completo`; synthesizer con 3 deptos |
+| 2   | PDF de menú                                 | Estado `descartado`; sin llamadas a workers          |
+| 3   | Subvención sin sección Finance              | Worker Finance devuelve "no mencionado"              |
+| 4   | Salida del orquestador                      | ≥2 work items paralelos                              |
+| 5   | Clasificador + un worker testeados aislados | Solo mocks; sin LLM en vivo                          |
 
 ---
 

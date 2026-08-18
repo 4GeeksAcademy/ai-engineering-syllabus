@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 You have been using Openclaw for a few weeks now, building skills and wiring up integrations. It has been useful — but every time you start a new session, it forgets everything. It doesn't know your name, your ongoing projects, your preferences, or what you were working on yesterday.
 
@@ -60,7 +60,7 @@ This project is built on top of your existing Openclaw setup from previous lesso
 
 1. Open your Openclaw workspace in your local environment or Codespace.
 2. If you need a fresh start or want to review the base setup, refer to the repository you created in Week 2 Day 6.
-3. Create a new branch for this project: `git checkout -b feature/memory-setup`
+3. Create a new branch for this project: `git switch -c feature/memory-setup`
 4. Need a reminder on how to structure a coding project? [Read the guide](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---

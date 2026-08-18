@@ -27,10 +27,10 @@ Part 1 already told the grants desk **what** Programs, Facilities, and Finance m
 1. **Assignment orchestrator** maps Part 1 workstreams → department generators
 2. **One generator per department** drafts its pricing/grant section
 3. **Parallel evaluators** on each draft: readability, relevance, guidelines
-4. **Fail → regenerate** with structured feedback (not free-form vibes)
-5. **Iteration limit** — ticket stays alive; section marked `needs_human_review` if exhausted
-6. **Synthesizer / handoff** packages content + eval results per department
-7. Ticket states: `drafting` → `under_evaluation` → ready for Part 3
+4. **Fail → regenerate** with structured `EvaluationResult` feedback (not free-form vibes)
+5. **Iteration limit** — ticket stays alive; section marked `needs_human_review` if exhausted; draft still in handoff
+6. **Synthesizer / handoff** packages content + `EvaluationResult` per department
+7. Ticket states: `drafting` → `under_evaluation` → (`needs_human_review` if capped) → ready for Part 3
 
 ![Departmental mapping and deliverable finalization](../departmental-mapping-deliverable-finalization.jpg)
 
@@ -90,4 +90,4 @@ Part 1 already told the grants desk **what** Programs, Facilities, and Finance m
 
 1. Why structured evaluator output beats a single “score: 7/10” string?
 2. How do parallel evaluators write results without clobbering shared state?
-3. Iteration limit exhausted: discard section, escalate, or ship with warning?
+3. Iteration limit exhausted → `needs_human_review` + keep draft in handoff: how do you make that visible to Sales?

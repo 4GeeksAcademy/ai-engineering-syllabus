@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 You're a freelance AI engineer working with **StreamLoop**, a mid-size streaming subscription platform. A few weeks ago you delivered a first version of their churn classifier — trained it, checked accuracy, called it done. The tech lead has come back with a follow-up:
 

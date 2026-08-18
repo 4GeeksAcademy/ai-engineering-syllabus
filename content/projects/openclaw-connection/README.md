@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 Your OpenClaw instance is already running as a personal assistant. It responds, it has a personality, it's connected to a model of your choice. But it's still a desktop assistant — you have to be in front of the VPS or the web interface to use it.
 

@@ -17,7 +17,7 @@ This project produces a **technical report**, not a business report. Business-de
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -47,13 +47,13 @@ load (SQL) → refine (Pandas) → convert types → group → aggregate → ser
 
 ### Where each filter belongs
 
-| Criterion                                          | Layer                | How                                                                                                                                                 |
-| --------------------------------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `timestamp` range (`start_date` / `end_date`)      | **SQL**              | `WHERE timestamp >= :start AND timestamp < :end` — bounds are **inclusive start, exclusive end** in UTC                                             |
-| `event_type` (one or many)                         | **SQL**              | `WHERE event_type = '...'` or `WHERE event_type IN (...)` — ratio metrics need every relevant type loaded in one query                             |
-| `tags` dimensions (warehouse, endpoint, etc.)      | **Pandas**           | Extract from `tags`, drop rows where the dimension is null, then `groupby` — segment **all** values, do not pre-filter to a single value           |
-| Derived flags (`is_error`, rates)                  | **Pandas**           | Build columns after load, then `.agg()`                                                                                                            |
-| Optional `tags` predicates (e.g. `endpoint = X`)   | **Pandas** (default) | Filter the DataFrame after extracting the field; SQL `tags->>'...'` push-down is optional optimisation, not required                                |
+| Criterion                                        | Layer                | How                                                                                                                                      |
+| ------------------------------------------------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `timestamp` range (`start_date` / `end_date`)    | **SQL**              | `WHERE timestamp >= :start AND timestamp < :end` — bounds are **inclusive start, exclusive end** in UTC                                  |
+| `event_type` (one or many)                       | **SQL**              | `WHERE event_type = '...'` or `WHERE event_type IN (...)` — ratio metrics need every relevant type loaded in one query                   |
+| `tags` dimensions (warehouse, endpoint, etc.)    | **Pandas**           | Extract from `tags`, drop rows where the dimension is null, then `groupby` — segment **all** values, do not pre-filter to a single value |
+| Derived flags (`is_error`, rates)                | **Pandas**           | Build columns after load, then `.agg()`                                                                                                  |
+| Optional `tags` predicates (e.g. `endpoint = X`) | **Pandas** (default) | Filter the DataFrame after extracting the field; SQL `tags->>'...'` push-down is optional optimisation, not required                     |
 
 **Load (SQL)** — fetch only rows the metric needs. Never load the entire `telemetry_events` table into memory.
 
@@ -107,6 +107,7 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
   - Convert `timestamp` to `datetime` with `pd.to_datetime(..., utc=True)` before any grouping operation
   - Group with `groupby()` by the appropriate temporal or operational dimension and aggregate with `.count()`, `.sum()`, or `.mean()`
   - Return the result as a list of dicts serialisable to JSON with `.reset_index().to_dict(orient='records')`
+
 - [ ] Each function must be **independent and side-effect free** — calling it twice with the same parameters must produce the same result.
 - [ ] Do not use loops to calculate metrics — only Pandas operations (`.groupby()`, `.agg()`, `.count()`, `.sum()`, `.mean()`).
 
@@ -161,7 +162,7 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 ## 📦 How to Submit
 
 1. Make sure the changes are in your fork: `analysis.py` in `services/telemetry/` and the `GET /telemetry/report` endpoint in `services/`.
-2. Create a Pull Request against the main branch of the monorepo with the title: `[W17D49] Telemetry Report`.
+2. Create a Pull Request against the main branch of the monorepo with the title: `feat: telemetry report endpoint`.
 3. In the PR description, include:
    - The name of the metrics implemented and what operational question each one answers
    - A sample of the JSON returned by `GET /telemetry/report` with real data

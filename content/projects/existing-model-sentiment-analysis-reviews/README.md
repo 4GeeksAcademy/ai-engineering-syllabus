@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 You're working as a freelance AI engineer for a small data consultancy. Your latest client, **WeLoveReviews**, helps companies understand what their customers really think. They've just onboarded a new account: a business with an average rating of **4.5 / 5**, but the account manager has a nagging doubt — _does the sentiment expressed in the written reviews actually match that score?_ Before they hand a report to their client, they want a second opinion built on data, not gut feeling.
 

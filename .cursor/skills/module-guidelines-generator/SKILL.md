@@ -119,24 +119,23 @@ Los estudiantes cubren teoría sobre...
 - `course-outline-generator/ai-engineering/syllabus.md`
 - <https://raw.githubusercontent.com/4GeeksAcademy/course-outline-generator/refs/heads/main/ai-engineering/syllabus.md>
 
-**Official source:** `New Syllabus AI Engineer - Planificación del programa.csv` (or the AI Native Full Stack CSV when that program applies). `syllabus.md` is a derived export only — if it disagrees with the CSV, the CSV wins.
+**Official source:** CSVs under `**/syllabus/` (canonical: `ai-engineering-syllabus/docs/syllabus/`). `syllabus.md` is a derived export only — if it disagrees with the CSV, the CSV wins.
 
-The parser normalizes week/day, merges multi-row content, and exposes prior skills.
+The parser auto-discovers those CSVs. **If more than one and the user did not name the program/file → ask which one** (see `syllabus-context-reader`). Do not hardcode a CSV path.
 
 ### Required parser invocation
 
-1. If week/day are unknown, run `--list` or `--search` (see `syllabus-context-reader`).
-2. Always extract the target day with **`--include-prior`**:
+1. Resolve CSV: `--list-csvs` (or follow skill §2). Multiple + unspecified → **ask user**.
+2. If week/day unknown, run `--list` or `--search`.
+3. Always extract the target day with **`--include-prior`**:
 
 ```bash
 python3 course-outline-generator/skills/syllabus-context-reader/scripts/parse_syllabus.py \
-  --csv "course-outline-generator/ai-engineering/New Syllabus AI Engineer - Planificación del programa.csv" \
   --week <week> \
   --day <day> \
   --include-prior
+# if several CSVs: add --csv "<path or unique name substring>"
 ```
-
-Use the **AI Native Full Stack** CSV only when the user explicitly names that program.
 
 ### Map JSON output → guideline inputs
 

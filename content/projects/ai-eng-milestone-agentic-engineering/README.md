@@ -1,4 +1,4 @@
-# Milestone 8 — Agent Memory and Self-Improvement
+# Milestone — Agent Memory and Self-Improvement (Part 1 of 2)
 
 <!-- hide -->
 
@@ -15,13 +15,11 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Your agent already knows the company (RAG), calls tools through the MCP Server, and stays inside its security guardrail. The problem is that every conversation starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
-
-It's not a coincidence that this project comes right after the guardrails sprint, and not before. Without guardrails, a manipulation attempt damages a single conversation; with persistent memory but no prior protection, that same attempt could get written into the memory store and repeat itself in every future conversation — the error stops being a one-off and becomes cumulative. That's why the agent was hardened against manipulation in the previous sprint first, and only now does it gain the ability to remember and self-improve.
+Your company already has a **RAG knowledge base** from an earlier milestone — a document store the model can consult. That is **not** the same product as this agent. The agent you extend here has its own identity (see your CONTEXT: manager support, CX, compliance, first-line support, …). It may **call** RAG as a tool; it does not become the commercial Q&A UI. The problem is that every conversation still starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
 
 ### 🧠 Complementary Knowledge: Memory Architectures
 
@@ -29,7 +27,7 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 
 > **From: Tech Lead — Ticket #MEM-092**
 >
-> The agent already knows the company, uses the MCP Server's tools, and stays inside its guardrail. But every conversation starts from zero: it doesn't remember that we resolved a similar escalation yesterday, or that someone already corrected a piece of data last week. I need the agent to learn from interaction, without that meaning it starts making things up or piling junk into its memory forever.
+> The agent already uses company knowledge (RAG as a **tool**, not as this agent's identity) and the MCP Server's tools. But every conversation starts from zero: it doesn't remember that we resolved a similar escalation yesterday, or that someone already corrected a piece of data last week. I need the agent to learn from interaction, without that meaning it starts making things up or piling junk into its memory forever.
 >
 > You don't need a new graph or a multi-agent architecture for this — it's the same agent as always, with one extra self-evaluation step:
 >
@@ -45,14 +43,14 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 
 ## 🌱 How to Start the Project
 
-1. If you already have your fork of the company's monorepo, create a new branch from your latest progress (previous milestone or day).
+1. If you already have your fork of the company's monorepo, create a new branch from your latest progress (MCP / LangGraph agent work).
 2. If for some reason you don't have a fork yet (for example, you joined late or lost it), fork the [reference monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) before continuing.
 
 ```bash
-git checkout -b w23-d67-agent-memory
+git switch -c feature/agent-memory
 ```
 
-3. Keep building on the same LangGraph agent that already exposes the MCP Server and applies guardrails — this project doesn't replace that base, it extends it.
+3. Keep building on the **same** LangGraph agent that already consumes the MCP Server — this project doesn't replace that base, it extends it.
 4. Install any new dependency with `uv add` (never `pip install` or `pipenv`).
 
 ---
@@ -62,6 +60,7 @@ git checkout -b w23-d67-agent-memory
 ### Memory Architecture Selection
 
 - [ ] Choose a persistent memory backend (e.g. Redis, a key-value store, a VectorDB, or a combination) and document in writing why it fits what your agent needs to remember at your company.
+- [ ] **Do not write memory into the company RAG collections** (`*_knowledge` / company Qdrant knowledge store). RAG stays a **read-only tool**. Memory uses a separate store or a clearly named non-knowledge collection (e.g. Redis, KV, or `*_agent_memory`). Mixing episodic/approved facts into curated docs breaks retrieval evals and poison controls.
 - [ ] Implement an explicit read/write memory interface — the agent must not accumulate state by simply appending everything to the system prompt.
 
 ⚠️ **IMPORTANT:** Which facts are memorable and which are strictly forbidden to store must match exactly what's specified in your CONTEXT-company.md. A generic implementation that ignores those restrictions will not be accepted.
@@ -75,7 +74,7 @@ git checkout -b w23-d67-agent-memory
 
 ### User Confirmation and Auditable Log
 
-- [ ] When there's a pending memory proposal, the user's next message must first be evaluated against that proposal: does it approve, reject, or edit it? Reuse the same kind of intent classification you already implemented for sensitive responses in the guardrails sprint — not a plain `"yes" in message`.
+- [ ] When there's a pending memory proposal, the user's next message must first be evaluated against that proposal: does it approve, reject, or edit it? Use an explicit intent classification (structured label / classifier), not a plain `"yes" in message`.
 - [ ] There can only be **one pending proposal at a time**: if one is already unresolved, the agent must not launch a second one until the first is closed.
 - [ ] If the user changes topic without clearly responding yes or no, the proposal is discarded by default — approval is never assumed from silence or ambiguity.
 - [ ] Every decision (proposal, outcome, originating message, timestamp) is logged in an auditable way, regardless of whether the proposal was approved or rejected.
@@ -107,6 +106,7 @@ As part of the challenge, your implementation must resolve — without being tol
 ## ✅ What We Will Evaluate
 
 - [ ] The chosen memory architecture is justified in writing and matches what the agent actually needs to remember.
+- [ ] Memory writes never target company `*_knowledge` / company RAG collections (separate store or non-knowledge collection only).
 - [ ] There's an explicit read/write memory interface (not implicit memory via the system prompt).
 - [ ] The agent correctly distinguishes memorable interactions from non-memorable ones, with at least 3 documented examples of each type.
 - [ ] The memory proposal is communicated within the same conversation, not through a separate channel or process.
@@ -123,7 +123,7 @@ As part of the challenge, your implementation must resolve — without being tol
 
 Follow the standard Pull Request flow against your own fork of the monorepo:
 
-- [ ] Open a PR from `w23-d67-agent-memory` to your main branch.
+- [ ] Open a PR from `feature/agent-memory` to your main branch.
 - [ ] Include in the PR description the justification for your memory architecture and the answers to the design decisions.
 - [ ] Attach or describe the evidence for both complete cycles (approved and rejected).
 

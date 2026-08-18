@@ -1,4 +1,4 @@
-# Milestone 4 — AI-driven Engineering
+# Milestone — AI-driven Engineering
 
 <!-- hide -->
 
@@ -13,7 +13,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -37,7 +37,7 @@ Your tech lead has had a ticket sitting on the board for two weeks:
 >
 > Finally, I want us to formalise at least one skill that captures a recurring task in our workflow — something the agent can execute consistently and that we can reuse in upcoming milestones. It needs explicit acceptance criteria: if it can't be verified, it doesn't count.
 >
-> As for the app, the public website needs to live in `./uis/website` as a Next.js app — not as a copy, but as an improved version with reusable components. In parallel, create `./uis/backoffice` to host all internal company logic with its own layout and entry view, and integrate the TypeScript script from the business logic module (Milestone 2) there so we have something visible from day one. Any APIs must be created under `/services`.
+> As for the app, the public website needs to live in `./uis/website` as a Next.js app — not as a copy, but as an improved version with reusable components. In parallel, create `./uis/backoffice` to host all internal company logic with its own layout and entry view, and integrate the TypeScript script from the business logic module (Milestone) there so we have something visible from day one. Any APIs must be created under `/services`.
 >
 > When you're done, open a PR and let me know.
 >
@@ -72,7 +72,7 @@ An **agent skill** is a structured, reusable instruction: more concrete than a g
 
 ## 🌱 How to Start the Project
 
-Read the `CONTEXT.md` in your monorepo before doing anything else. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
+Read the `CONTEXT.md` at the **root of your monorepo** before doing anything else. That file must be your company briefing from [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.en.md`), copied into the monorepo during the choose-company milestone — not the empty template placeholder. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
 
 1. Fork the template repository: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Open your fork in **GitHub Codespaces** or clone it locally, then review the existing structure before creating new folders
@@ -99,20 +99,20 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
   - [ ] Documented inputs
   - [ ] Explicit and verifiable acceptance criteria
 
-⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints documented in your monorepo's `CONTEXT.md`. A generic infrastructure that ignores the company scenario will not be accepted.
+⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints in your monorepo's `CONTEXT.md` (your company briefing). A generic infrastructure — or one built against the unreplaced template placeholder — will not be accepted.
 
 ### Next.js + TypeScript Application
 
 - [ ] Initialise the frontend structure under `/uis` inside the monorepo following the template repository structure
 - [ ] Create the public web project in `./uis/website` (Next.js + TypeScript)
-- [ ] Migrate and improve the corporate website from Milestone 1 in `./uis/website` as the home route (`/`):
-  - [ ] All sections from Milestone 1 present and complete
+- [ ] Migrate and improve the corporate website from Milestone in `./uis/website` as the home route (`/`):
+  - [ ] All sections from Milestone present and complete
   - [ ] Implemented with reusable React components and correct TypeScript typing
-  - [ ] Styles consistent with the visual identity established in Milestone 1
+  - [ ] Styles consistent with the visual identity established in Milestone
 - [ ] Create the internal app in `./uis/backoffice`:
   - [ ] Route `/` in `./uis/backoffice` accessible with a basic entry view (welcome screen or empty dashboard structure)
   - [ ] Its own layout, separate from the public corporate website layout in `./uis/website`
-- [ ] Integrate the TypeScript script from the business logic module (Milestone 2) inside `./uis/backoffice`:
+- [ ] Integrate the TypeScript script from the business logic module (Milestone) inside `./uis/backoffice`:
   - [ ] Code is imported from its original location in the monorepo — not copied
   - [ ] The output of the business logic is visible in the interface (not just in the console)
 
@@ -127,19 +127,19 @@ Read the `CONTEXT.md` in your monorepo before doing anything else. The memory ba
 - [ ] The public web in `./uis/website` starts without errors with `npm run dev`
 - [ ] The `/` route in `./uis/website` renders the complete corporate website with TypeScript components
 - [ ] `./uis/backoffice` exists, has its own layout, and renders without errors
-- [ ] The TypeScript script (Milestone 2) is integrated in `./uis/backoffice` and produces visible output on screen
+- [ ] The TypeScript script (Milestone) is integrated in `./uis/backoffice` and produces visible output on screen
 - [ ] No business logic code is duplicated — it is imported from its original location in the monorepo
 
 ---
 
 ## 📦 How to Submit
 
-1. Make sure your working branch is named `milestone-4`
+1. Make sure your working branch is named `feature/agent-memory-bank`
 2. Run the delivery workflow defined in your `AGENTS.md` before the final commit
 3. Open a Pull Request targeting the `main` branch of your fork
 4. In the PR description include:
    - Screenshot of the corporate website rendered from `./uis/website`
-   - Screenshot of `./uis/backoffice` with the TypeScript script (Milestone 2) visible on screen
+   - Screenshot of `./uis/backoffice` with the TypeScript script (Milestone) visible on screen
    - Direct link to your `AGENTS.md`
 5. Submit the link to your PR on the 4Geeks campus
 

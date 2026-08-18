@@ -34,7 +34,7 @@ Continue from the local example project used in the previous session.
 Create a new branch before starting:
 
 ```bash
-git checkout -b feature/agent-skills
+git switch -c feature/agent-skills
 ```
 
 ---

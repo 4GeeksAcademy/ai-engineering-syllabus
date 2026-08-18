@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 **Veridian Logistics** is a mid-size freight company that routes cargo across five regional hubs. Their operations team has been exporting daily activity reports as CSV files from their fleet management system — dispatches, delivery completions, route changes, and vehicle status updates all land in the same flat export every night.
 

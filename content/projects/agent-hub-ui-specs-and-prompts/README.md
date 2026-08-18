@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en Español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 A startup called **AgentHub** is building a SaaS platform where companies can rent AI agents — pre-configured intelligent assistants that can be equipped with different skills (capabilities such as browsing the web, reading documents, or managing calendars) and deployed for specific business tasks.
 

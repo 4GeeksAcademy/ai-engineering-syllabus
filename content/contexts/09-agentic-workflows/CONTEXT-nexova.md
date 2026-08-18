@@ -12,11 +12,11 @@ At Nexova, RFPs go straight to **Marcos Ibáñez's** team, the **Sales Director*
 
 Use exactly these department identifiers:
 
-| `department_id` | Department                        | Owner            | What it contributes to the proposal                                       |
-| ---------------- | ------------------------------------ | ------------------ | ------------------------------------------------------------------------------ |
-| `seleccion`         | Talent Selection Operations           | Javier Almeida        | Roles to fill, estimated time-to-close, consulting hours needed               |
-| `capacitacion`       | Corporate Training                    | Elena Vargas           | Applicable training programs, duration, delivery format                       |
-| `soporte`            | Customer Support (outsourcing)         | Roberto Díaz           | Agent staffing, shifts, committed response SLA                                |
+| `department_id` | Department                     | Owner          | What it contributes to the proposal                             |
+| --------------- | ------------------------------ | -------------- | --------------------------------------------------------------- |
+| `seleccion`     | Talent Selection Operations    | Javier Almeida | Roles to fill, estimated time-to-close, consulting hours needed |
+| `capacitacion`  | Corporate Training             | Elena Vargas   | Applicable training programs, duration, delivery format         |
+| `soporte`       | Customer Support (outsourcing) | Roberto Díaz   | Agent staffing, shifts, committed response SLA                  |
 
 Not every RFP needs all three departments: it depends on which service(s) the client is asking for (headhunting, training, outsourced support, or a combination). Your classifier/orchestrator agent must identify which departments apply by reading the document — never activate all three by default.
 
@@ -26,10 +26,34 @@ RFPs arrive as PDFs and typically include: client name and headquarters (Spain o
 
 ### 2.3 Suggested Entities for Your State
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `waiting_for_approval`, `drafting`, `under_evaluation`, `done`, `discarded`)
-- **RFP metadata**: `client_name`, `client_hq` (Spain/Miami), `services_requested`, `scope`, `deadline`, `budget_range`, `departments_needed`
+Persist **Ticket**, **RFP metadata**, and **DepartmentSection** (at least `key_aspects` in Part 1; drafts/evals/approvals in later parts) in **PostgreSQL (Supabase)** via your existing SQLModel/DB layer. TinyDB or JSON files are not the source of truth for these entities.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `client_hq` (Spain/Miami), `services_requested`, `scope`, `deadline`, `budget_range`, `departments_needed`, readability metrics
 - **DepartmentSection**: `department_id`, `key_aspects`, `draft_content`, `evaluation_results`, `approval_status`, `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `currency`, `generated_at`
+
+**Ticket status by part** (same ticket across Parts 1–3):
+
+| Status                 | Part | When                                           |
+| ---------------------- | ---- | ---------------------------------------------- |
+| `analyzing`            | 1    | Upload accepted; pipeline running              |
+| `discarded`            | 1    | Classifier rejected the document               |
+| `intake_complete`      | 1    | Synthesizer done; Sales can read key aspects   |
+| `drafting`             | 2    | Generators writing proposal sections           |
+| `under_evaluation`     | 2    | Parallel evaluators / generator-evaluator loop |
+| `needs_human_review`   | 2    | Iteration limit exhausted; last draft + EvaluationResult hand off to Part 3 |
+| `waiting_for_approval` | 3    | Human-in-the-loop pause per department         |
+| `done`                 | 3    | Final document generated                       |
+
+Workers receive **shared metadata + department-relevant extracts** only. If volume/scope figures are missing, record open questions — **never invent** headcount, agent counts, or training seats not present in the RFP.
+
+### 2.4 Monorepo layout
+
+- **HTTP**: extend the **existing** backend under `services/` — no new API process.
+- **Pipeline / graph**: `data/pipelines/rfp_intake/` (dedicated graph; do not mix into the CX agent graph). Routers import and trigger; they do not own agent logic.
+- **Standalone CLIs**: `scripts/` if needed.
+- **Uploaded PDFs**: provided via `uis/backoffice`; stored under `data/raw/` as a runtime artifact of intake.
 
 ## 3. Business Metrics and KPIs
 
@@ -40,11 +64,11 @@ RFPs arrive as PDFs and typically include: client name and headquarters (Spain o
 
 ## 4. Seed Data Instructions
 
-Create at least 3 test documents in `data/raw/`:
+Use the ready-made PDFs in [`rfp-requests/nexova/`](./rfp-requests/nexova/) as **test uploads through the UI**. The intake process stores each uploaded PDF under `data/raw/` (do not treat curriculum seed PDFs as pre-seeded inventory in the repo). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
-1. **Valid RFP (headhunting + training):** *Vantex Retail Group* (Madrid) requests an executive search for 5 mid-management positions plus a quarterly leadership program. Deadline: 15 days. Triggers `seleccion` and `capacitacion`. Currency: EUR.
-2. **Valid RFP (outsourced support):** *NubeSoft* (a Miami-based SaaS startup) requests a 24/7 customer support team of 12 agents. Deadline: 20 days. Triggers `soporte` (and possibly `seleccion` to recruit the agents). Currency: USD.
-3. **Document that is NOT an RFP:** an email from a software vendor pitching Nexova a new ATS tool. It has no client, scope, or expected response deadline from Nexova to a third party — it's an inbound pitch, not a request for proposal. Your classifier should discard it.
+1. **`CONTEXT-nexova-request-1.pdf` — formal RFP (accept):** _Vantex Retail Group_ (Madrid), executive search for 5 mid-management roles + quarterly leadership program. Triggers `seleccion` and `capacitacion`. Currency: EUR.
+2. **`CONTEXT-nexova-request-2.pdf` — informal RFP (accept):** _NubeSoft_ (Miami SaaS) email requesting 24/7 support team of 12 agents. Triggers `soporte` (and possibly `seleccion`). Currency: USD.
+3. **`CONTEXT-nexova-request-3.pdf` — invalid (reject):** inbound ATS vendor pitch — not a client RFP. Classifier must discard it.
 
 ## 5. Business Constraints (Guidelines for the Compliance Evaluator)
 
@@ -58,4 +82,16 @@ Create at least 3 test documents in `data/raw/`:
 
 - **Part 1:** the ticket correctly identifies whether a document is a Nexova RFP, extracts metadata (including client headquarters), and splits the analysis only across the departments the requested service actually needs.
 - **Part 2:** each active department generates its section and goes through evaluation for readability, relevance, and compliance with the guidelines in section 5 (including the correct currency).
-- **Part 3:** each department approves its section independently, without blocking the others, and the final document is generated only once all active sections are approved.
+- **Part 3:** each active department's named owner (§2.1) approves its section independently, without blocking the others, and the final document is generated only once all active sections are approved. Do **not** invent a multi-level approval ladder.
+
+## 7. Part 3 — Conflict Triggers and Fixed Arbiter
+
+Arbitration must be a dedicated graph node driven by **detectable contradictions in structured state**, not agents negotiating among themselves.
+
+| Trigger id               | When it fires                                                                                              | Fixed arbiter (not an LLM)                                                            | Resolution rule                                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ttc-vs-training-window` | `seleccion` time-to-close overlaps or contradicts `capacitacion` delivery window for the same cohort/roles | Marcos Ibáñez (Sales Director)                                                        | Sequence deliveries; force `request_changes` so training cannot start before selection commits a realistic close date (≥15 business days for executive search) |
+| `support-sla-missing`    | Active `soporte` section omits the mandatory 24-hour response SLA (§5)                                     | Roberto Díaz (`soporte`) rejects; Marcos if other sections contradict staffing vs SLA | Block approval until 24h SLA is explicit; revise headcount if SLA is infeasible                                                                                |
+| `currency-mismatch`      | Sections disagree on currency, or currency ≠ `client_hq` mapping (Spain→EUR, Miami/US→USD)                 | Marcos Ibáñez                                                                         | Rewrite to headquarters currency; reject if unresolved after iteration limit                                                                                   |
+
+Wire these trigger ids into your arbitration node. Agents may **surface** a conflict; they must not **resolve** it by free-form consensus.

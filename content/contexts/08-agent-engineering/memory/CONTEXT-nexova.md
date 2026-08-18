@@ -1,12 +1,12 @@
 # CONTEXT — Nexova
 
-## Milestone 8 · Agent Memory and Self-Improvement
+## Milestone 8 · Part 1 · Agent Memory and Self-Improvement
 
 ---
 
 ## Why this memory matters for Nexova
 
-Your agent already knows Nexova's three business lines (headhunting, support outsourcing, corporate training), queries the Incidents Manager and inventory through the MCP Server, and stays inside its guardrail. Roberto Díaz (Customer Support Lead) reports that his 30 support agents, when using the internal assistant, have to re-explain the same escalation procedure every time they talk to it — the assistant retains nothing between sessions.
+Your agent already knows Nexova's three business lines (headhunting, support outsourcing, corporate training), queries the Incidents Manager and inventory through the MCP Server, and will get its harness in Part 2. Roberto Díaz (Customer Support Lead) reports that his 30 support agents, when using the internal assistant, have to re-explain the same escalation procedure every time they talk to it — the assistant retains nothing between sessions.
 
 ## What IS worth remembering
 

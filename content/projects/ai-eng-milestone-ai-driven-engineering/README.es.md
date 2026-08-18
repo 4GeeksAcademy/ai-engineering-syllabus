@@ -1,4 +1,4 @@
-# Milestone 4 — Ingeniería impulsada por IA
+# Hito — Ingeniería impulsada por IA
 
 <!-- hide -->
 
@@ -13,7 +13,7 @@ _These instructions are also available in [English](./README.md)._
 
 ---
 
-## 🎯 El Desafío
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -37,7 +37,7 @@ Tu tech lead ha dejado una tarea pendiente en el tablero desde hace dos semanas:
 >
 > Por último, quiero que formalicemos al menos una skill que capture una tarea recurrente de nuestro flujo de trabajo — algo que el agente pueda ejecutar de forma consistente y que podamos reutilizar en los próximos hitos. Que tenga criterios de aceptación explícitos: si no se puede verificar, no vale.
 >
-> En cuanto a la app, la web pública tiene que vivir en `./uis/website` como app Next.js — no como copia, sino como una versión mejorada con componentes reutilizables. En paralelo, crea `./uis/backoffice` para desarrollar toda la lógica interna de la empresa con su propio layout y vista de entrada, e integra ahí el script de TypeScript del módulo de lógica de negocio (Hito 2) para tener algo visible desde el primer día. Cualquier API debe crearse dentro de `/services`.
+> En cuanto a la app, la web pública tiene que vivir en `./uis/website` como app Next.js — no como copia, sino como una versión mejorada con componentes reutilizables. En paralelo, crea `./uis/backoffice` para desarrollar toda la lógica interna de la empresa con su propio layout y vista de entrada, e integra ahí el script de TypeScript del módulo de lógica de negocio (Hito) para tener algo visible desde el primer día. Cualquier API debe crearse dentro de `/services`.
 >
 > Cuando termines, PR y avísame.
 >
@@ -72,7 +72,7 @@ Una **skill de agente** es una instrucción estructurada y reutilizable: más co
 
 ## 🌱 Cómo iniciar el proyecto
 
-Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
+Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese archivo debe ser el briefing de tu empresa de [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.es.md` / `.en.md`), copiado al monorepo en el hito choose-company — no el placeholder vacío de la plantilla. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
 
 1. Haz fork del repositorio de plantilla: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Ábrelo en **GitHub Codespaces** o clónalo localmente y revisa la estructura existente antes de crear carpetas nuevas
@@ -99,20 +99,20 @@ Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria
   - [ ] Inputs documentados
   - [ ] Criterios de aceptación explícitos y verificables
 
-⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones documentados en el `CONTEXT.md` de tu monorepo. Una infraestructura genérica que ignore el escenario de la empresa no será aceptada.
+⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones del `CONTEXT.md` de tu monorepo (el briefing de tu empresa). Una infraestructura genérica — o construida sobre el placeholder de plantilla sin reemplazar — no será aceptada.
 
 ### Aplicación Next.js + TypeScript
 
 - [ ] Inicializar la estructura frontend dentro de `/uis` en el monorepo siguiendo la estructura del repositorio de plantilla
 - [ ] Crear el proyecto web público en `./uis/website` (Next.js + TypeScript)
-- [ ] Migrar y mejorar la web corporativa del Hito 1 en `./uis/website` como ruta de inicio (`/`):
-  - [ ] Todas las secciones del Hito 1 presentes y completas
+- [ ] Migrar y mejorar la web corporativa del Hito en `./uis/website` como ruta de inicio (`/`):
+  - [ ] Todas las secciones del Hito presentes y completas
   - [ ] Implementada con componentes React reutilizables y tipado TypeScript correcto
-  - [ ] Estilos consistentes con la identidad visual establecida en el Hito 1
+  - [ ] Estilos consistentes con la identidad visual establecida en el Hito
 - [ ] Crear la aplicación interna en `./uis/backoffice`:
   - [ ] Ruta `/` de `./uis/backoffice` accesible con una vista de entrada básica (pantalla de bienvenida o estructura vacía de dashboard)
   - [ ] Layout propio, separado del layout público de la web corporativa en `./uis/website`
-- [ ] Integrar el script de TypeScript del módulo de lógica de negocio (Hito 2) dentro de `./uis/backoffice`:
+- [ ] Integrar el script de TypeScript del módulo de lógica de negocio (Hito) dentro de `./uis/backoffice`:
   - [ ] El código se importa desde su ubicación original en el monorepo — no se copia
   - [ ] El resultado de la lógica de negocio es visible en la interfaz (no solo en consola)
 
@@ -127,19 +127,19 @@ Lee el `CONTEXT.md` de tu monorepo antes de hacer nada más. El banco de memoria
 - [ ] La web pública en `./uis/website` arranca sin errores con `npm run dev`
 - [ ] La ruta `/` en `./uis/website` renderiza el contenido completo de la web corporativa con componentes TypeScript
 - [ ] `./uis/backoffice` existe, tiene layout propio y renderiza sin errores
-- [ ] El script de TypeScript (Hito 2) está integrado en `./uis/backoffice` y produce output visible en pantalla
+- [ ] El script de TypeScript (Hito) está integrado en `./uis/backoffice` y produce output visible en pantalla
 - [ ] No hay código de lógica de negocio duplicado — se importa desde su ubicación original en el monorepo
 
 ---
 
 ## 📦 Cómo entregar
 
-1. Asegúrate de que tu rama de trabajo tenga el nombre `milestone-4`
+1. Asegúrate de que tu rama de trabajo tenga el nombre `feature/agent-memory-bank`
 2. Ejecuta el flujo de entrega definido en tu `AGENTS.md` antes del commit final
 3. Abre una Pull Request hacia la rama `main` de tu fork
 4. En la descripción de la PR incluye:
    - Captura de pantalla de la web corporativa renderizada desde `./uis/website`
-   - Captura de pantalla de `./uis/backoffice` con el script de TypeScript (Hito 2) visible en pantalla
+   - Captura de pantalla de `./uis/backoffice` con el script de TypeScript (Hito) visible en pantalla
    - Enlace directo a tu `AGENTS.md`
 5. Entrega el enlace a tu PR en el campus de 4Geeks
 

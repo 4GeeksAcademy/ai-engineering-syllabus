@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -36,8 +36,9 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 ## 🌱 How to Start
 
 1. Keep working on your existing fork of the [**monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). If for some reason you don't have one yet, fork it and open it in **GitHub Codespaces** or clone it locally.
-2. Install the dependency with `uv add langgraph` (never use `pip install` or `pipenv`).
-3. Locate your existing RAG code: your `setup`, `embed`, `retrieve`, and `query` functions in `data/pipelines/`, and the endpoint that exposes them in `services/`.
+2. Create a new branch: `git switch -c feature/langgraph-agent-base`.
+3. Install the dependency with `uv add langgraph` (never use `pip install` or `pipenv`).
+4. Locate your existing RAG code: your `setup`, `embed`, `retrieve`, and `query` functions in `data/pipelines/`, and the endpoint that exposes them in `services/`.
 
 ---
 
@@ -101,7 +102,7 @@ tests/
   pipelines/                     ← agent evals
 ```
 
-1. Push your branch with the structure above and open a Pull Request to the original repository with the `part-1-langgraph` label.
+1. Push your branch with the structure above and open a Pull Request to the original repository with the `langgraph-agent-base` label.
 2. Make sure your PR includes:
    - A screenshot or export of the trace from at least one full run.
    - The output of running the evals (console or file).

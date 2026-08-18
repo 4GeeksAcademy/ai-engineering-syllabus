@@ -28,14 +28,14 @@ _These instructions are [available in English](./README.md)_.
 
 **Hitos de la empresa (monorepo transversal)**
 
-0. **[Briefings generales de empresa](./00-general-contexts)** — Perfiles para elegir compañía (`CONTEXT-*-briefing.en.md` / `.es.md`).
+0. **[Briefings generales de empresa](./00-general-contexts)** — Perfiles para elegir compañía (`CONTEXT-*-briefing.en.md` / `.es.md`) y carpetas de corpus fuente (`brasaland/`, `healthcore/`, `nexova/`, `trackflow/`).
 1. **[Fundamentos web](./01-web-fundamentals)** — Datos del sitio público y formulario del `Milestone 1`.
 2. **[Fundamentos de programación](./02-coding-fundamentals)** — Entradas para scripts TypeScript del `Milestone 2`.
 3. **[Desarrollo frontend](./03-frontend-development)** — UI del talent pipeline tracker (`Milestone 3`).
 4. **[Ingeniería impulsada por IA](./04-ai-driven-engineering)** — Setup del monorepo (`Milestone 4`; placeholder; el contexto puede ir en el brief del proyecto).
 5. **[Desarrollo backend](./05-backend-development)** — Entidades y reglas de seed del API de inventario (`Milestone 5`).
 6. **[Pipelines de datos de telemetría](./06-telemetry-data-pipelines/telemetry)** — Métricas obligatorias, entidades de inventario y oportunidades de telemetría por compañía (Plan · Captura · Almacenamiento · Reporte).
-7. **[Entrenamiento y RAG](./07-trainning-rag)** — Corpus Markdown fuente por compañía (políticas, catálogos, procedimientos).
+7. **[Entrenamiento y RAG](./07-trainning-rag)** — Archivos CONTEXT del Hito 7. El corpus Markdown fuente vive en `00-general-contexts/<compañía>/`.
 8. **[Ingeniería de agentes](./08-agent-engineering)** — Reservado para módulos de agentes (placeholder).
 9. **[Workflows y automatización](./09-workflows-automation)** — Reservado para módulos de workflows (placeholder).
 10. **[Tiempo real](./10-realtime)** — Reservado para módulos realtime (placeholder).
@@ -46,7 +46,9 @@ _These instructions are [available in English](./README.md)_.
 2. **[Directorio de proveedores](./supplier-directory)** — Datos semilla y reglas de validación para la API TinyDB.
 3. **[Análisis de archivos de incidentes](./incidents-file-analysis)** — Esquemas CSV, categorías y salida esperada del analizador.
 4. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
-5. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos y reglas de eval del Hito 7 por compañía.
+5. **[Roles y permisos](./roles-permissions)** — Códigos de rol, departamentos, matriz de capacidades y usuarios semilla por compañía (`CONTEXT-<compañía>.en.md` / `.es.md`).
+6. **[Autenticación federada](./federated-authentication)** — IdP obligatorio (Google / Microsoft / LinkedIn), audiencia de vinculación, env OAuth, usuarios semilla y eventos de auditoría por compañía.
+7. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos (`00-general-contexts/<compañía>/`) y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 

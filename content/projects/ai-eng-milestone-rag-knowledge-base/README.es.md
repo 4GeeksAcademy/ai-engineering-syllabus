@@ -1,4 +1,4 @@
-# Hito 7 — RAG y Base de Conocimiento
+# Hito — RAG y Base de Conocimiento
 
 <!-- hide -->
 
@@ -15,13 +15,13 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Ya tienes una API central funcionando y un pipeline de datos que alimenta dashboards en tiempo real. Ahora tu empresa necesita algo distinto: que cualquier persona del equipo comercial pueda hacer una pregunta en lenguaje natural y obtener una respuesta confiable, sin tener que buscarla manualmente en documentos dispersos.
+Ya tienes una API central funcionando y un pipeline de datos que alimenta dashboards en tiempo real. Ahora tu empresa necesita algo distinto: que la audiencia nombrada en tu CONTEXT pueda hacer una pregunta en lenguaje natural y obtener una respuesta confiable, sin tener que buscarla manualmente en documentos dispersos.
 
-El equipo de ventas pierde tiempo respondiendo preguntas de prospectos y clientes que ya están contestadas en algún documento interno — políticas, catálogos, procedimientos — pero nadie las encuentra a tiempo. Tu tech lead te traslada un **ticket** con el **brief** que dejó el equipo comercial: necesitan un asistente que responda **desde la perspectiva de un vendedor**, con la voz y las prioridades del negocio, no un buscador que devuelva fragmentos crudos de la base de datos.
+El equipo de primera línea pierde tiempo respondiendo preguntas de prospectos y clientes que ya están contestadas en algún documento interno — políticas, catálogos, procedimientos — pero nadie las encuentra a tiempo. Tu tech lead te traslada un **ticket** con el **brief** de tu CONTEXT: necesitan un asistente que responda con la **voz y audiencia que define tu CONTEXT** (vendedor, coordinador, account manager, …), con las prioridades del negocio, no un buscador que devuelva fragmentos crudos de la base de datos.
 
 El **ticket** deja claro el criterio de aceptación central: la respuesta final siempre debe ser generada por un modelo a partir del contexto recuperado — nunca se debe devolver directamente el resultado de la búsqueda en la base de datos vectorial. Además, la solución debe estar modularizada: cada responsabilidad (preparar los datos, guardar los vectores, buscar, generar la respuesta) debe vivir en su propia función, de forma que el equipo técnico pueda reemplazar cualquier pieza sin tocar las demás.
 
@@ -52,10 +52,10 @@ Como estudiante de AI Engineering, usa los **modelos que proporciona 4Geeks** (i
 ## 🌱 Cómo Empezar
 
 1. Asegúrate de tener actualizado tu fork del monorepo de tu empresa con el trabajo de los hitos anteriores.
-2. Crea una rama nueva para este hito.
+2. Crea una rama nueva para este trabajo: `git switch -c feature/rag-knowledge-base`.
 3. Añade Qdrant a `docker-compose.yml` (o usa Qdrant Cloud) y confirma la conectividad desde tu entorno Python.
 4. Instala las dependencias con `uv add` — cliente de Qdrant, librería de embeddings, SDK del LLM de generación, `fastapi`, etc. Nunca uses `pip install` ni `pipenv`. Configura el modelo de embeddings y el de generación **proporcionados por 4Geeks** como IDs de modelo separados (y claves / URLs base en `.env` si aplica) — nunca reutilices el modelo de generación para embeddings.
-5. Revisa `CONTEXT-company.md`, copia los documentos fuente de la empresa que debes indexar (políticas, catálogos, procedimientos — los nombres de archivo son específicos de cada empresa) en `docs/company-knowledge-base/` de tu monorepo, y apunta `setup()` a esa carpeta.
+5. Revisa `CONTEXT-company.md`, copia los documentos fuente de la empresa que debes indexar desde [`00-general-contexts/<compañía>/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (políticas, catálogos, procedimientos — los nombres de archivo son específicos de cada empresa) en `docs/company-knowledge-base/` de tu monorepo, y apunta `setup()` a esa carpeta.
 6. Implementa las cuatro funciones en este orden: `setup` → `embed` → `retrieve` → `query` → API → UI → tests.
 
 Distribución de archivos sugerida (los nombres pueden variar; las responsabilidades no):
@@ -80,7 +80,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Implementar `embed(text: str) -> list[float]`: genera un vector para un texto usando un **modelo de embeddings** dedicado — **no** el mismo modelo usado para generación en `query()`. Prefiere el modelo de embeddings gratuito proporcionado por 4Geeks para estudiantes de AI Engineering. La misma función `embed()` se usa para los chunks al indexar y para la pregunta del usuario al consultar.
 - [ ] Crear o recrear la colección de Qdrant de tu empresa (nombre de colección desde `CONTEXT-company.md`). Inserta todos los chunks con:
   - `vector`: salida de `embed(chunk_text)`
-  - `payload`: como mínimo `source_document`, `section`, `company`, `language`, `chunk_index` y `text` (cuerpo del chunk para el prompt) — nombres de campo desde `CONTEXT-company.md`
+  - `payload`: como mínimo `source_document`, `section`, `company`, `language`, `chunk_index` y `text` (cuerpo del chunk para el prompt) — nombres de campo del CONTEXT más `text` para armar el prompt
 - [ ] `setup()` debe ser idempotente en desarrollo: volver a ejecutarlo no debe duplicar puntos (usa IDs deterministas o estrategia de limpiar-y-recargar — documenta cuál elegiste).
 
 ### Fase 2 — Pipeline de recuperación y generación (`data/pipelines/`)
@@ -88,7 +88,7 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Implementar `retrieve(query: str, *, k: int = 5, min_score: float) -> list[dict]`: embebe la consulta, busca en Qdrant los k vecinos más cercanos, **filtra** los que queden por debajo de `min_score`, y devuelve los payloads supervivientes (no objetos crudos del SDK de Qdrant).
 - [ ] Implementar `query(question: str) -> str`: la **única** función que deben llamar consumidores externos. Orquesta `retrieve()` → armado del prompt → llamada al LLM de **generación** (modelo de chat/completion — no el de embeddings) → devuelve la respuesta final como string. Prefiere el modelo de generación gratuito proporcionado por 4Geeks para estudiantes de AI Engineering. Si `retrieve()` no devuelve nada por encima del umbral, el modelo debe responder con honestidad (p. ej. que la base de conocimiento no tiene información relevante) — nunca inventar datos de la empresa.
 - [ ] Mantén el **paso de generación** (armado del prompt + llamada al LLM) en su propia función — p. ej. `generate_answer(question: str, context: list[dict]) -> str` — de modo que `query()` sea literalmente `retrieve()` + `generate_answer()`. Un proyecto posterior (el agente LangGraph) llamará a `retrieve()` y `generate_answer()` como pasos **separados**; separarlos ahora permite que el agente reutilice ambos sin ejecutar la recuperación dos veces ni re-envolver el monolito de `query()`.
-- [ ] El prompt de generación debe instruir al modelo a responder desde la **perspectiva de un vendedor** usando solo el contexto recuperado, según el brief comercial del ticket.
+- [ ] El prompt de generación debe instruir al modelo a responder con la **voz y audiencia definidas en tu CONTEXT-company.md** usando solo el contexto recuperado, según el brief del ticket.
 
 ⚠️ **IMPORTANTE:** Los nombres de campos, nombres de colección, rutas de documentos, IDs de entidad y valores específicos del dominio deben coincidir con `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
@@ -111,6 +111,11 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] Las pruebas de `query()` deben simular `retrieve()` y el LLM de generación. Verificar: la función devuelve la salida del modelo; no devuelve texto crudo de chunks sin pasar por generación.
 - [ ] Las pruebas pasan con `python -m pytest tests/pipelines/test_rag.py`.
 
+### Fase 5b — Eval de retrieval (`data/eval/`)
+
+- [ ] Guarda `data/eval/test-queries.json` con al menos 8 preguntas de prueba que cubran **todos** los documentos fuente del CONTEXT (copia esos archivos desde `00-general-contexts/<company>/` a `docs/company-knowledge-base/` primero).
+- [ ] Mide **Recall@3** contra ese archivo: al menos el 80% de las preguntas deben tener el chunk correcto entre los 3 primeros resultados, como define el CONTEXT.
+
 ### Fase 6 — Documento de diseño RAG (`docs/rag/`)
 
 - [ ] Crear `docs/rag/rag-design.md` en tu monorepo. Otro desarrollador debe poder leerlo y entender tu stack RAG sin revisar el código.
@@ -122,7 +127,8 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 
 ## ✅ Lo Que Evaluaremos
 
-- [ ] Las cuatro funciones mínimas (`setup`, `embed`, `retrieve`, `query`) existen, están separadas y cada una tiene una única responsabilidad.
+- [ ] Los cuatro puntos de entrada del pipeline (`setup`, `embed`, `retrieve`, `query`) existen, están separados y cada uno tiene una única responsabilidad.
+- [ ] La generación está factorizada en su propia función (p. ej. `generate_answer`); `query()` compone `retrieve()` + esa función para que un agente posterior pueda llamarlas como pasos separados.
 - [ ] Los documentos fuente viven en `docs/company-knowledge-base/` y son lo que `setup()` indexa.
 - [ ] El chunking respeta unidades semánticas del contenido (no corta a mitad de una idea).
 - [ ] Cada chunk almacenado en Qdrant conserva metadatos de origen recuperables (`source_document`, `section` como mínimo).
@@ -132,6 +138,10 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 - [ ] El endpoint reutiliza la lógica de `data/pipelines/` sin duplicarla.
 - [ ] La interfaz permite ingresar una consulta y muestra la respuesta obtenida del endpoint.
 - [ ] Las pruebas unitarias cubren `retrieve()` y `query()` con mocks; pasan en local.
+- [ ] El prompt de generación responde con la **voz y audiencia definidas en CONTEXT-company.md** usando solo el contexto recuperado.
+- [ ] Cuando `retrieve()` no devuelve nada por encima de `min_score`, la respuesta indica que no hay información suficiente — sin inventar hechos de la empresa.
+- [ ] Existe `data/eval/test-queries.json` con ≥ 8 preguntas que cubren todos los documentos fuente.
+- [ ] Recall@3 cumple el umbral del CONTEXT (≥ 80%).
 - [ ] Los valores específicos de la empresa usados en la implementación coinciden con el `CONTEXT-company.md` asignado.
 - [ ] `docs/rag/rag-design.md` explica el proceso RAG, la estrategia de chunking y las prácticas de embeddings aplicadas — con decisiones justificadas para los documentos de tu empresa.
 
@@ -140,9 +150,9 @@ Distribución de archivos sugerida (los nombres pueden variar; las responsabilid
 ## 📦 Cómo Entregar
 
 1. Haz commit y push de tus cambios a tu fork.
-2. Abre un Pull Request hacia la rama principal del monorepo con el título: `[W18D51] RAG Knowledge Base`.
+2. Abre un Pull Request hacia la rama principal del monorepo con el título: `feat: rag knowledge base`.
 3. En la descripción del PR, incluye:
-   - Una pregunta de ejemplo que haría un vendedor
+   - Una pregunta de ejemplo que haría la audiencia de tu CONTEXT
    - La respuesta que generó tu sistema
    - El nombre de la colección Qdrant y el conteo de chunks tras `setup()`
    - Un enlace a `docs/rag/rag-design.md` y un resumen de una línea de tu estrategia de chunking

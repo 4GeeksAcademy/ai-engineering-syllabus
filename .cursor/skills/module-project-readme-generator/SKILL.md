@@ -52,7 +52,7 @@ Before writing, internalize these rules:
 1. Project Title
 2. Hidden metadata block
 3. --- separator
-4. 🎯 Challenge
+4. 🎯 Your challenge
    └── [optional] complementary knowledge subsection
    └── [optional] client spec in blockquotes
 5. 🌱 How to Start the Project
@@ -64,11 +64,20 @@ Before writing, internalize these rules:
 
 **Mandatory section emojis:**
 
-- `🎯` Challenge / Tu reto
+- `🎯` Your challenge / Tu reto
 - `🌱` How to start / Cómo iniciar el proyecto
 - `💻` What to do / Qué debes hacer
 - `✅` Evaluation / Qué vamos a evaluar
 - `📦` Submission / Cómo entregar
+
+---
+
+### Project Title (length — mandatory)
+
+- H1 title in **both** languages must be **≤ 80 characters** (count every character, including spaces, em dash, and any `(Part X of Y)` / `(Parte X de Y)` suffix).
+- Prefer short, capability-focused wording. Drop filler; keep the signal.
+- If the title also lands in `learn.json` (`title.en` / `title.es` / `title.us`), apply the same ≤80 limit there.
+- Before delivering, count characters on each language title and shorten if over the limit.
 
 ---
 
@@ -103,7 +112,7 @@ By [@firstusername](https://github.com/firstusername) and [@secondusername](http
 
 ---
 
-### 🎯 Challenge Section
+### 🎯 Your challenge Section
 
 1. Open with a **realistic professional scenario**: a client, a startup, a consulting engagement, an internal team need. Be specific enough to feel real.
 2. **Describe the problem**, not just the solution. What situation does the client face? What do they need?
@@ -137,6 +146,22 @@ By [@firstusername](https://github.com/firstusername) and [@secondusername](http
 - Reference both Codespaces and local clone
 - Remind the student to create their own GitHub repo and update the remote URL
 - Link to: [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project)
+- If a working branch is named, follow the **Git branching standard** below
+
+---
+
+### Git branching standard
+
+When suggesting a branch, PR title, or label:
+
+- Create: `git switch -c <type>/<kebab-capability>` — never `git checkout -b`
+- Types: `feature` \| `fix` \| `chore` \| `docs` \| `refactor` \| `perf` \| `test`
+- Name = functionality shipped, not curriculum metadata (`milestone-N`, `hito-N`, `part-N`, `wNNdNN` banned)
+- Same English strings in `README.md` and `README.es.md`
+- PR title (if any): `<type>: <short capability>` — no `[WxxDyy]`
+- PR label (if any): functionality English label, not part/parte codes
+
+✅ `feature/sse-notifications` · ❌ `feature/milestone-10-part-1-sse-notifications`
 
 ---
 
@@ -214,6 +239,7 @@ Each file must include a link to its counterpart, **written in the target langua
 - [ ] Technology constraints marked with ⚠️ IMPORTANT
 - [ ] Difficulty matches the module's position in the syllabus
 - [ ] All required sections present and in correct order
+- [ ] Project title ≤ 80 characters in both languages (H1 and any synced `learn.json` title)
 - [ ] Section emojis consistent: 🎯 🌱 💻 ✅ 📦
 - [ ] All checklists use `- [ ]` format
 - [ ] Nested blockquotes used only for client-sourced or attributed requirements
@@ -221,3 +247,4 @@ Each file must include a link to its counterpart, **written in the target langua
 - [ ] Footer present in both languages with correct links
 - [ ] Both README.md and README.es.md generated and consistent
 - [ ] Alternate language link included in both files
+- [ ] Branch/PR suggestions follow Git branching standard (`git switch -c`, functionality names, shared English)

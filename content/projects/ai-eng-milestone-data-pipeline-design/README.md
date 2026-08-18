@@ -1,4 +1,4 @@
-# Milestone 6 — Designing a Business Performance Data Pipeline (1/3)
+# Milestone — Designing a Business Performance Data Pipeline (Part 1 of 3)
 
 <!-- hide -->
 
@@ -15,19 +15,19 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Over the past weeks you captured telemetry events, stored them in `telemetry_events`, and built a technical report — event volume, error rates, latency — for your own engineering team. **That system stays exactly as it is.** You are not touching `telemetry_events`, `services/telemetry/analysis.py`, or the `GET /telemetry/report` endpoint in this milestone.
+Over the past weeks you captured telemetry events, stored them in `telemetry_events`, and built a technical report — event volume, error rates, latency — for your own engineering team. **That technical reporting path stays as it is.** Do not change `services/telemetry/analysis.py` or the `GET /telemetry/report` endpoint, and do **not** use `telemetry_events` as this pipeline's destination. If your data-pipelines `CONTEXT-company.md` requires an additive payload field on an existing mandatory event type (for example a cost field), add that field to the capture schema — that is an extension of telemetry, not a rewrite of the technical report.
 
 Today your tech lead is asking for something different: a **new** data pipeline, designed from scratch, whose only job is to turn that same telemetry into data that describes how the business is performing — the kind of numbers a department head or the CEO would read, not the kind an engineer uses to debug a service.
 
 > > **Technical Brief — Business Performance Data Pipeline (Design Phase)**
 > >
-> > Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand every week.
+> > Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand on your company's CONTEXT cadence.
 > >
-> > This is a **new** pipeline, built on top of the telemetry you already have. Your existing `telemetry_events` table, your technical report, and the `GET /telemetry/report` endpoint don't change — they keep serving engineering exactly as before. What you're building now reads from the same source but produces a different kind of output: numbers a non-technical stakeholder can act on.
+> > This is a **new** pipeline, built on top of the telemetry you already have. Your technical report and the `GET /telemetry/report` endpoint keep serving engineering exactly as before. `telemetry_events` remains the **source** (never this pipeline's destination). Additive payload fields required by your data-pipelines CONTEXT on existing event types are allowed. What you're building now reads from that source but produces a different kind of output: numbers a non-technical stakeholder can act on.
 > >
 > > Deliverable: a design document in Markdown, committed to the monorepo. No orchestration code yet — design first, implementation next.
 
@@ -49,7 +49,7 @@ Before you design extraction, transformation, or load stages, read your `CONTEXT
 
 Design the pipeline to produce exactly the data that deliverable needs — at the right freshness, granularity, and audit trail. Don't invent a generic KPI; the one your company needs is already scoped for you in `CONTEXT-company.md`.
 
-**This is a new pipeline, not a replacement.** The technical telemetry report you built earlier keeps answering technical questions for engineers (volume, errors, latency). This pipeline answers a different question, for a different audience, and its output lives in different tables and different endpoints. Nothing from the earlier project changes.
+**This is a new pipeline, not a replacement.** The technical telemetry report you built earlier keeps answering technical questions for engineers (volume, errors, latency). This pipeline answers a different question, for a different audience, and its output lives in different tables and different endpoints. Do not change the technical report path (`services/telemetry/analysis.py`, `GET /telemetry/report`) or use `telemetry_events` as this pipeline's destination — additive CONTEXT-required payload fields on existing event types are the only allowed telemetry schema extension.
 
 When you write the pipeline purpose in Phase 2, name the business deliverable you're targeting and the mandatory metric(s) that feed it. If a stage in your design doesn't support that deliverable, question whether it belongs in v1.
 
@@ -61,7 +61,7 @@ When you write the pipeline purpose in Phase 2, name the business deliverable yo
 2. Explore the [`data/`](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/tree/main/data) folder in the monorepo — it contains the subfolders `raw/`, `process/`, `pipelines/`, and `eval/` that you will use throughout this module. Orchestration code will live in `data/pipelines/`; reusable transformation scripts in `data/process/`; HTTP endpoints that query or trigger the pipeline will live in `services/` and import from `data/pipelines/` — not the other way around.
 3. Create the file `data/pipelines/PIPELINE_DESIGN.md` — that is where your design document goes.
 4. Read your `CONTEXT-company.md` from the data pipelines context — its "KPIs to Measure" section names the exact numbers this pipeline must produce, and it also states the audience, cadence, required aggregation, and destination table. (The mandatory metrics feeding those KPIs are the ones from your telemetry `CONTEXT-company.md`, already familiar from the earlier milestone.)
-5. This pipeline's output does **not** belong in `telemetry_events`. All new destination tables live under a dedicated `reporting` schema, named `reporting.business_metrics` — and are exposed through a new `services/reporting/` module, kept separate from `services/telemetry/` and the `GET /telemetry/report` endpoint.
+5. This pipeline's output does **not** belong in `telemetry_events`. All new destination tables live under a dedicated `reporting` schema. Use the table **exactly as named in your CONTEXT-company.md Destination table section** (not a generic `reporting.business_metrics`) — and expose it through a new `services/reporting/` module, kept separate from `services/telemetry/` and the `GET /telemetry/report` endpoint.
 
 > **Note on tooling:** Today you are introduced to **Prefect** as an orchestration framework — flows, tasks, states, and configuration blocks. Your design document should reflect how you would organize your pipeline using these concepts, even though the code implementation comes over the next days.
 
@@ -76,11 +76,11 @@ When you write the pipeline purpose in Phase 2, name the business deliverable yo
 
 ### Phase 2 — Pipeline design
 
-- [ ] Define the **purpose** of the pipeline in a single concrete sentence: name the specific business deliverable you're targeting (e.g., "produce the daily rollup that feeds [role]'s weekly executive report"), the KPI(s) it computes (from your `CONTEXT-company.md`'s "KPIs to Measure" section), and the mandatory metric(s) from your telemetry CONTEXT it's built on.
+- [ ] Define the **purpose** of the pipeline in a single concrete sentence: name the specific business deliverable you're targeting (e.g., "produce the rollup that feeds [role]'s executive report at the CONTEXT cadence"), the KPI(s) it computes (from your `CONTEXT-company.md`'s "KPIs to Measure" section), and the mandatory metric(s) from your telemetry CONTEXT it's built on.
 - [ ] Specify the **extraction format**: your source is `telemetry_events` (plus any other existing domain tables you need) — in what format the data arrives, and how often it's updated.
 - [ ] Design the **data flow** with a text or Mermaid diagram showing at least three clearly separated stages: extraction, transformation, and load.
 - [ ] Describe how you would handle a source that **updates existing records** rather than always inserting new ones — explain the concrete strategy to avoid duplicates in your specific case.
-- [ ] Name the **new destination table(s)** under the `reporting` schema (`reporting.business_metrics`) where this pipeline's output will live, and the **new endpoint(s) in `services/reporting/`** that will expose it — explicitly separate from `telemetry_events` and `GET /telemetry/report`.
+- [ ] Name the **new destination table(s)** under the `reporting` schema using the **exact name from your CONTEXT-company.md Destination table section**, and the **new endpoint(s) in `services/reporting/`** that will expose it (status, manual trigger, **and KPI query**) — explicitly separate from `telemetry_events` and `GET /telemetry/report`.
 
 ### Phase 3 — Resilience and idempotency
 
@@ -89,12 +89,12 @@ When you write the pipeline purpose in Phase 2, name the business deliverable yo
 
 ### Phase 4 — Mapping to Prefect
 
-- [ ] Map your design to Prefect concepts: identify which parts would be **flows**, which would be **tasks**, and which **states** (Running, Completed, Failed) are relevant for your pipeline.
+- [ ] Map your design to Prefect concepts: identify **at least one main flow** and **at least three tasks** (extract, transform, load as a minimum), plus which **states** (Running, Completed, Failed) are relevant. A second flow (e.g. backfill) is optional in Part 1 — Part 3 will raise the bar by splitting stages into **subflows**.
 - [ ] Indicate which configuration or credentials you would manage as **Prefect blocks** (for example, the connection to Supabase).
 
 ### Phase 5 — Application integration (design only)
 
-- [ ] Sketch the **new endpoint(s) in `services/reporting/`** the business side will use to query the resulting metric(s) and/or trigger a run — kept separate from `services/telemetry/` and the `GET /telemetry/report` endpoint.
+- [ ] Sketch the **three** new endpoints in `services/reporting/` the business side will use: **status query**, **manual trigger**, and **KPI query** (the feed Part 3's dashboard will consume) — kept separate from `services/telemetry/` and the `GET /telemetry/report` endpoint.
 - [ ] For each endpoint, state which **function or flow in `data/pipelines/`** it will call — no ETL logic belongs in `services/`.
 
 ⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your design must match your company's domain vocabulary in the monorepo. A generic design that ignores your company's data model will not be accepted.
@@ -228,14 +228,16 @@ Before writing `PIPELINE_DESIGN.md`, answer in writing — even as a draft — h
 ## ✅ What We Will Evaluate
 
 - [ ] The file `data/pipelines/PIPELINE_DESIGN.md` exists in the monorepo and is written in readable Markdown.
+- [ ] `PIPELINE_DESIGN.md` has a Current State section plus the business gap (what the telemetry report does vs does not answer).
+- [ ] Extraction format is specified (source tables, payload shape, update cadence).
 - [ ] The pipeline purpose is defined in a single concrete sentence that names the business deliverable and KPI(s) from the company's `CONTEXT-company.md` — not a generic or technical KPI.
-- [ ] The design does not modify `telemetry_events`, `services/telemetry/analysis.py`, or `GET /telemetry/report` — the new pipeline's output lives in new tables under a `reporting` schema and is exposed through a new `services/reporting/` module.
+- [ ] The design does not modify `services/telemetry/analysis.py` or `GET /telemetry/report`, and does not write this pipeline's output into `telemetry_events` — output lives in new tables under a `reporting` schema and is exposed through a new `services/reporting/` module. Additive CONTEXT-required payload fields on existing event types are allowed.
 - [ ] The data flow diagram shows at least three distinct stages (extraction, transformation, load) with the real entity or table names from the company.
 - [ ] The strategy for handling updates to existing records is documented with a concrete mechanism (e.g., upsert by primary key, last-modified timestamp, control table).
 - [ ] The idempotency strategy is explicit: it describes what happens on the second run after a load-phase failure, not just what would be desirable.
 - [ ] The execution log specifies at least five fields with the field name, data type, and justification for why that field is necessary for auditing.
-- [ ] The Prefect mapping identifies at least two flows and three tasks with concrete names aligned with the pipeline stages.
-- [ ] The design documents at least two planned `services/reporting/` endpoints (status query and manual trigger) and names the `data/pipelines/` functions each will import.
+- [ ] The Prefect mapping identifies at least **one main flow** and **three tasks** with concrete names aligned with the pipeline stages (matches Part 2's implementation bar; Part 3 adds subflows).
+- [ ] The design documents at least **three** planned `services/reporting/` endpoints (status query, manual trigger, **and KPI query** for the dashboard) and names the `data/pipelines/` functions each will import.
 - [ ] The design is consistent with the telemetry events and mandatory metrics already defined in the company's CONTEXT file.
 
 ---

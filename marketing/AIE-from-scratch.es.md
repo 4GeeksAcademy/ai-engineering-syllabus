@@ -1,272 +1,173 @@
-# AI Engineering desde cero — Módulos del programa
+# AI Engineering — Módulos del programa
 
-_This content is also available in [English](./AIE-from-scratch.md)._
+_This content is also available in [English](./README.md)._
 
-Cosas que faltan mencionar:
+## Introducción al curso de AI Engineering
 
-- VPS y configuracion de tu propia nube.
--
-- Logos: Antropic, Claude, OpenAI, ChatGPT, Gemini,
-- ***
+Este programa está diseñado para **ingenieros de software que están listos para dar el salto a la Ingeniería de IA** — profesionales que ya saben construir y entregar software, y que ahora quieren aplicar esa base a los sistemas que están definiendo la próxima década de la industria.
 
-## IA y Agentes (Core)
+El currículo asume que tienes conocimientos sólidos de **desarrollo frontend** (React, Next.js, JavaScript / TypeScript) y de **desarrollo backend** (FastAPI o Flask). No dedicarás tiempo a los fundamentos del desarrollo web ni al diseño de APIs — en cambio, entrarás directamente en la capa específica de IA: agentes, LLMs, sistemas de recuperación de información, orquestación multi-agente, infraestructura agéntica y las prácticas de seguridad que exigen las aplicaciones de IA en producción.
 
-### Asistentes Personales con OpenClaw
-
-`AI` `Agents` `OpenClaw` `Deployment`
-
-Aprenderás a desplegar y configurar un asistente de IA open-source, auto-alojado — tuyo, bajo tu control, sin depender de proveedores externos. La base práctica para los módulos más avanzados de agentes del programa.
-
-**Habilidades desarrolladas:**
-
-- Configurar un agente de IA open-source como asistente personal
-- Asignar tareas e integrar aplicaciones externas con el agente
+Si llevas años construyendo software de forma profesional y quieres reposicionarte en la frontera de la disciplina — este es tu programa.
 
 ---
 
-### Asistentes Personales Avanzados con OpenClaw
+## IA y Agentes
 
-`Agent Skills` `Memory` `Tool Calling` `Advanced configuration`
+### Personal Assistants with OpenClaw
 
-Llevarás tu agente asistente básico a una herramienta productiva. Aprenderás a enseñarle nuevas habilidades, elegir el tipo de memoria adecuado para cada caso y configurarlo para operar con autonomía real en contextos de negocio.
+`IA` `Agentes` `OpenClaw` `Despliegue`
+Aprenderás a desplegar y configurar un asistente de IA de código abierto y autoalojado — tuyo, bajo tu control, sin depender de proveedores externos. La base práctica sobre la que se construyen los módulos de agentes más avanzados del programa.
 
 **Habilidades desarrolladas:**
 
-- Identificar escenarios donde un agente resuelve problemas reales de negocio
-- Desarrollar habilidades personalizadas para OpenClaw
-- Implementar memoria contextual (episódica, semántica, procedimental)
-- Configuración avanzada y extensión del agente
+- Configurar un agente de IA de código abierto y autoalojado como un asistente personal básico
+- Asignar tareas sencillas e integrar aplicaciones a OpenClaw
 
 ---
 
-### Trabajo con Agentes de Código
+### Advanced Personal Assistants with OpenClaw
 
-`Coding Agents` `Context Engineering` `Agent Rules` `Memory Banks` `Skills`
-
-El salto de "usar IA" a "trabajar profesionalmente con IA." Aprenderás a construir bancos de memoria y reglas de contexto que convierten a un agente de código en un colaborador que entiende tu codebase. Dominarás la escritura de especificaciones que un agente puede ejecutar con precisión.
+`Agent Skills` `OpenClaw` `Workspaces` `Configuración avanzada`
+Convertirás tu agente asistente básico en una herramienta productiva. Aprenderás a enseñarle nuevas habilidades adaptadas a necesidades reales de negocio, configurar workspaces avanzados y construir las conexiones que le permiten interactuar de forma autónoma con sistemas externos.
 
 **Habilidades desarrolladas:**
 
-- Construir bancos de memoria y reglas de contexto a partir de un codebase existente
-- Escribir especificaciones ejecutables para agentes (agent specs)
-- Sintetizar habilidades reutilizables para que los agentes actúen con precisión
+- Identificar escenarios en los que un agente puede resolver problemas de la empresa e implementar la solución
+- Desarrollar habilidades personalizadas para OpenClaw según las necesidades del problema
 
 ---
 
-### LLMs, Entrenamiento y RAG
+### Working with AI Coding Agents
 
-`RAG` `Vector DBs` `Chunking` `Fine-tuning` `Embeddings` `Model Evaluation`
-
-Entenderás cómo funcionan los modelos que impulsan a los agentes — y cómo hacerlos más inteligentes para casos de uso específicos. Implementarás RAG para que tu agente responda con conocimiento propietario y actualizado, y aprenderás cuándo y cómo entrenar o hacer fine-tuning de un modelo.
+`Coding Agents` `Context Engineering` `Reglas de agente` `Memory Banks` `Skills` `Economía de tokens`
+El salto de "usar IA" a "trabajar profesionalmente con IA." Aprenderás a gestionar agentes de codificación para un desarrollo eficiente y una buena economía de tokens. Escribirás especificaciones ejecutables, construirás memory banks y reglas de contexto a partir de bases de código existentes, y sintetizarás habilidades reutilizables para que los agentes actúen con precisión ante problemas complejos.
 
 **Habilidades desarrolladas:**
 
-- Preparar datos y seleccionar modelos para entrenamiento
-- Implementar técnicas de RAG sobre bases de conocimiento propietarias
-- Trabajar con bases de datos vectoriales
-- Evaluar, depurar e integrar modelos en producción
+- Gestionar adecuadamente el uso del agente de código para un desarrollo eficiente y una buena economía de tokens
+- Escribir especificaciones claras y ejecutables garantizando que el producto cumpla con los requisitos definidos
+- Construir un banco de memoria y reglas de contexto a partir de un código base preexistente
+- Sintetizar acciones y reglas como habilidades (skills) para que los agentes puedan resolver problemas complejos de forma clara y precisa
 
 ---
 
-### Ingeniería Agéntica
+### Model Training & RAG
 
-`Tool Calling` `CLIs` `MCPs` `Guardrails` `Agent Memory`
-
-El corazón técnico del programa. Construirás agentes que pueden llamar herramientas, acceder a sistemas externos vía MCPs y CLIs, operar con memoria persistente y comportarse de forma segura bajo guardrails. El conocimiento que separa a un ingeniero de IA de alguien que solo usa chatbots.
+`RAG` `Bases de datos vectoriales` `Modelos de predicción` `Clasificación` `Regresión` `Fine-tuning` `Hyperparameter Tuning` `Evaluación de modelos`
+Entenderás cómo funcionan los modelos que alimentan a los agentes — y cómo hacerlos más inteligentes para casos de uso específicos. Aplicarás modelos de predicción en casos reales, prepararás y seleccionarás datos de entrenamiento, entrenarás modelos de clasificación y regresión, ajustarás hiperparámetros, evaluarás resultados e implementarás RAG para que tu agente responda con conocimiento propio y actualizado.
 
 **Habilidades desarrolladas:**
 
-- Construir agentes con tool calling (llamadas a funciones reales)
-- Implementar guardrails como mecanismo de seguridad y control
-- Proveer herramientas al agente mediante CLIs optimizados para IA
-- Extender las capacidades del agente con el Model Context Protocol (MCP)
-- Dotar al agente de memoria persistente
+- Aplicar modelos de predicción en casos reales
+- Preparar datos para el entrenamiento de modelos de predicción
+- Seleccionar y entrenar modelos de clasificación
+- Seleccionar y entrenar modelos de regresión
+- Realizar hyperparameter tuning
+- Evaluar un modelo entrenado
+- Depurar e integrar modelos en producción
+- Implementar técnicas de RAG para construir la base de conocimientos de un modelo
 
 ---
 
-### Workflows Agénticos y Orquestación
+### Agentic Engineering
 
-`Multi-Agent Systems` `LangGraph` `State Graphs` `Routing` `Human-in-the-Loop` `Checkpointing`
-
-Cuando un solo agente no es suficiente. Aprenderás a diseñar y orquestar sistemas multi-agente con LangGraph, dominando el modelo de grafos de estado que hace posible la colaboración compleja entre agentes. Definirás esquemas de estado, implementarás enrutamiento condicional y ciclos con condiciones de terminación, construirás checkpoints human-in-the-loop para aprobación y escalamiento, y compondrás subgrafos modulares reutilizables entre proyectos. También aprenderás a rastrear, evaluar y depurar flujos multi-agente — entendiendo qué agente hizo qué, por qué el enrutamiento tomó un camino específico y cuánto costó cada decisión.
+`Tool Calling` `MCPs` `Guardrails` `Memoria de agente` `LangGraph`
+El núcleo técnico del programa. Construirás agentes capaces de llamar herramientas (funciones reales), extender sus capacidades mediante el Model Context Protocol (MCP), operar con memoria persistente y comportarse de forma segura bajo guardrails dentro de sistemas de orquestación con LangGraph. El conocimiento que separa a un ingeniero de IA de alguien que solo usa chatbots.
 
 **Habilidades desarrolladas:**
 
-- Diseñar sistemas multi-agente con el modelo de grafos de estado de LangGraph
-- Definir esquemas de estado e implementar aristas condicionales y ciclos
-- Implementar patrones human-in-the-loop (puertas de aprobación, checkpoints de revisión, enrutamiento de escalamiento)
-- Usar persistencia de estado y checkpointing para workflows de larga duración
-- Manejar errores y recuperación en nodos individuales sin colapsar el grafo
-- Construir subgrafos modulares y componerlos en sistemas más grandes
-- Implementar memoria y contexto compartido entre agentes
-- Rastrear, evaluar y observar la ejecución multi-agente (decisiones de enrutamiento, costo de tokens por camino)
+- Construir un agente de IA capaz de llamar herramientas (funciones)
+- Extender las capacidades de un agente mediante MCPs
+- Dotar de memoria a un agente
+- Implementar sistemas seguros de orquestación de agentes con LangGraph
+
+---
+
+### Agentic Workflows
+
+`Sistemas multi-agente` `Self-Improvement` `Control & Resuming` `Human-in-the-Loop`
+Cuando un solo agente no es suficiente. Aprenderás a diseñar sistemas multi-agente que resuelven problemas complejos, implementar bucles de auto-mejora que permiten a los agentes optimizar sus propios resultados, y construir sistemas de control y resuming que mantienen los flujos de larga duración seguros y auditables.
+
+**Habilidades desarrolladas:**
+
+- Implementar sistemas multi-agente para resolver problemas complejos
+- Implementar agentes con capacidades de auto-mejora para optimizar resultados
+- Implementar sistemas multi-agente con capacidades de control y resuming
 
 ---
 
 ## Infraestructura para IA
 
-### Desarrollo Backend con Agentes de Código
+### Container Applications with Docker
 
-`Python` `FastAPI` `Agent Loops` `APIs` `Document DBs`
-
-El backend que da vida a los agentes. Construirás APIs robustas con FastAPI, implementarás agent loops en Python y aprenderás a diseñar arquitecturas backend orientadas a casos de uso de IA — desde procesamiento de datos hasta integración con LLMs.
-
-**Habilidades desarrolladas:**
-
-- Diseñar arquitecturas backend para soluciones potenciadas por IA
-- Crear agent loops integrando LLMs con APIs
-- Implementar almacenamiento ligero y procesamiento de datos CSV
-- Construir y exponer APIs REST para frontends y agentes
-
----
-
-### Automatización de Workflows
-
-`n8n` `LLM Nodes` `Webhooks` `Automation`
-
-Automatización de negocio con IA integrada. Aprenderás a representar procesos de negocio como flujos ejecutables, implementarlos en n8n y conectar LLMs y aplicaciones de terceros en esos flujos. El resultado: procesos que corren de forma autónoma sin intervención manual.
+`Docker` `Contenedores` `Despliegue` `Production-Ready`
+Empaquetado y despliegue de aplicaciones completas con Docker para entornos productivos y reproducibles. Construirás aplicaciones production-ready empleando contenedores, garantizando que funcionen de forma consistente desde el desarrollo hasta el despliegue.
 
 **Habilidades desarrolladas:**
 
-- Modelar lógica de negocio con diagramas de workflow
-- Implementar flujos básicos y avanzados en n8n
-- Integrar LLMs y aplicaciones externas en automatizaciones
-- Desplegar workflows mantenibles con manejo de errores
+- Construir aplicaciones production-ready empleando contenedores
 
 ---
 
-### Pipelines de Datos
+### Architecture Optimization
 
-`Pandas` `ETL` `Data Pipelines`
-
-Los datos son el combustible de cualquier solución de IA. Aprenderás a construir pipelines que toman datos crudos de una aplicación, los transforman y los dejan listos para alimentar modelos, reportes o agentes — el eslabón que determina la calidad del output.
+`Rendimiento` `Caching` `Optimización frontend` `Escalabilidad` `Alto tráfico`
+Estrategias de rendimiento para sistemas frontend y backend que sirven cargas de trabajo de IA. Implementarás estrategias de optimización frontend y técnicas de caching en el backend para construir sistemas que se mantengan responsivos bajo alto tráfico.
 
 **Habilidades desarrolladas:**
 
-- Manipular y preparar datasets con Python
-- Construir pipelines de datos desde la aplicación hasta sistemas de análisis
+- Implementar estrategias para la optimización del desempeño de aplicaciones de frontend
+- Optimizar la arquitectura del backend para alto tráfico empleando caching
 
 ---
 
-### Telemetría
+### Application Telemetry
 
-`Observability` `Reporting` `Data Collection` `Analysis`
-
-No puedes mejorar lo que no mides. Aprenderás a instrumentar aplicaciones para recolectar datos de comportamiento, construir reportes a partir de esos datos y tomar decisiones de negocio basadas en evidencia real — no en intuición.
+`Observabilidad` `Reporting` `Recolección de datos` `Análisis`
+No puedes mejorar lo que no mides. Aprenderás a instrumentar aplicaciones para identificar oportunidades de recolección de datos, capturar telemetría y contexto de usuario, preparar conjuntos de datos para su procesamiento, y exponer esa información como informes accionables para la toma de decisiones de negocio.
 
 **Habilidades desarrolladas:**
 
-- Optimizar almacenamiento para reportes e integridad de datos
-- Identificar oportunidades de recolección de datos en escenarios reales
-- Recolectar telemetría y contexto de usuario desde la aplicación
-- Construir reportes a partir de datos de telemetría
+- Identificar oportunidades de recolección de datos en escenarios reales que permitan optimizar compañías
+- Recolectar telemetría e información de contexto del usuario y de la aplicación
+- Manipular conjuntos de datos y prepararlos para su procesamiento
+- Preparar y exponer la telemetría o los datos de usuario para su reporte
 
 ---
 
-### Procesamiento Asíncrono y Despliegue Agéntico
+### Implementing Data Pipelines
 
-`Queues` `Background Jobs` `Workers` `Redis` `Serverless` `Durable Execution` `Cronjobs`
-
-Las tareas que no deben bloquear al usuario van a la cola — y los workflows agénticos que deben correr de forma confiable también van aquí. Aprenderás a implementar procesamiento en background y sistemas de colas que permiten a agentes y aplicaciones delegar trabajo pesado sin sacrificar tiempo de respuesta. Luego irás más allá: desplegando workflows agénticos en producción con funciones serverless, patrones de ejecución durable y pipelines disparados por cron. Implementarás retry y reanudación desde checkpoints, dispararás pipelines de LangGraph vía webhooks y construirás la infraestructura que mantiene a los sistemas multi-agente corriendo de forma autónoma, continua y a escala.
+`Pandas` `ETL` `Data Pipelines` `Flujos resilientes`
+Los datos son el combustible de cualquier solución de IA. Aprenderás a optimizar el almacenamiento para reporte e integridad, construir pipelines de datos a partir de los datos de la aplicación, y hacer esos flujos resilientes para evitar interrupciones — la capa que determina la calidad de todo lo que viene después.
 
 **Habilidades desarrolladas:**
 
-- Implementar procesamiento en background para tareas costosas
-- Gestionar colas de procesos con workers
-- Usar colas para delegar trabajo entre agentes y servicios
-- Desplegar workflows agénticos con funciones serverless y ejecución durable
-- Disparar pipelines de agentes vía webhooks y cron jobs
-- Implementar patrones de retry y reanudación desde checkpoints de workflows
+- Optimizar el almacenamiento para reporte, integridad, consulta o transporte
+- Construir un pipeline de datos a partir de los datos de la aplicación
+- Hacer los flujos resilientes para evitar interrupciones en el data pipeline
 
 ---
 
-### Real-Time
+### Asynchronous Processing and Offloading
 
-`WebSockets` `Streaming` `Pub/Sub` `Event Architecture`
-
-La capa que hace que la IA se sienta viva. Implementarás comunicación en tiempo real entre usuarios y modelos de lenguaje usando streaming, WebSockets y arquitecturas orientadas a eventos — la misma tecnología detrás de las interfaces conversacionales modernas.
+`Colas` `Jobs en background` `Workers` `Colas de mensajes`
+Las tareas que no deben bloquear al usuario van a la cola. Aprenderás a delegar procesos secundarios en segundo plano, implementar algoritmos de gestión de colas en sistemas sencillos, y construir procesamiento asíncrono que delega tareas mediante colas de mensajes — manteniendo las aplicaciones responsivas mientras agentes y servicios hacen el trabajo pesado.
 
 **Habilidades desarrolladas:**
 
-- Construir chats de soporte con LLMs en tiempo real
-- Implementar streaming de respuestas con generadores (yield)
-- Integrar webhooks y pub/sub en aplicaciones de IA
+- Delegar la ejecución de procesos secundarios en segundo plano
+- Implementar algoritmos de gestión de colas en sistemas sencillos
+- Implementar procesos asíncronos delegando tareas mediante el uso de colas de mensajes
 
 ---
 
-### Autenticación en Aplicaciones Web
+### Cybersecurity in AI-First Applications
 
-`JWT` `FastAPI` `Auth flows` `Security`
-
-Toda aplicación productiva necesita saber quién es quién. Aprenderás a implementar autenticación segura en FastAPI y construir flujos completos de login que definen qué puede hacer cada usuario — y qué pueden invocar los agentes en su nombre.
+`OWASP` `Seguridad en IA` `Auditoría de LLMs` `Guardrails`
+La IA introduce vectores de ataque que la seguridad tradicional no cubre. Aprenderás a identificar y corregir las vulnerabilidades más comunes a las que está expuesta una aplicación en internet, e implementar prácticas seguras específicas para la integración de IA.
 
 **Habilidades desarrolladas:**
 
-- Implementar autenticación y restricciones de rutas en FastAPI
-- Construir flujos completos de autenticación (login, tokens, sesiones)
-
----
-
-### Manejo de Errores, Debugging y Testing
-
-`Error Handling` `Testing` `Debugging` `TDD`
-
-El código que generan los agentes debe ser verificado. Aprenderás a manejar errores de forma controlada, escribir suites de tests que validen el comportamiento esperado y depurar aplicaciones con criterio — los estándares de calidad que separan el software profesional de los prototipos.
-
-**Habilidades desarrolladas:**
-
-- Entender y gestionar errores en tiempo de ejecución con control de flujo
-- Desarrollar suites de tests para aplicaciones robustas
-
----
-
-### Ciberseguridad en Aplicaciones de IA
-
-`OWASP` `AI Security` `LLM Auditing` `Guardrails`
-
-La IA introduce vectores de ataque que la seguridad tradicional no cubre. Aprenderás a identificar las vulnerabilidades más críticas en aplicaciones de IA, implementar prácticas seguras en la integración de modelos y usar los propios LLMs como herramienta de auditoría de un sistema.
-
-**Habilidades desarrolladas:**
-
-- Identificar y corregir vulnerabilidades OWASP Top 10 en aplicaciones web
-- Implementar prácticas de seguridad específicas para integraciones de IA
-- Usar LLMs como herramienta de auditoría de ciberseguridad
-
----
-
-## Otros conocimientos complementarios
-
-### Fundamentos y habilidades técnicas de soporte
-
-`Algorithms` `Data Structures` `Docker` `TypeScript` `React` `Next.js` `Tailwind` `SQL` `Git` `Command Line`
-
-Estos módulos proveen las bases esenciales para colaborar efectivamente con agentes de software y revisar su trabajo:
-
-- **Herramientas de colaboración:** Línea de comandos, Git y GitHub para flujos de trabajo colaborativos y seguros.
-- **Contenedorización:** Empaquetar y desplegar aplicaciones completas con Docker para entornos productivos y reproducibles.
-- **Programación:** Lógica, algoritmos, estructuras de datos y POO con TypeScript y Python para entender y mejorar código generado por IA.
-- **Frontend moderno:** Construir y revisar interfaces con React, Next.js y specs visuales; estilos accesibles y optimizados con HTML, CSS y Tailwind.
-- **Bases de datos:** SQL, PostgreSQL y ORMs para manejo robusto de datos y consultas relacionales.
-- **Optimización:** Estrategias de rendimiento en frontend y backend: caching, serializers, lazy loading y prácticas para alta carga.
-
-Este conocimiento complementa y fortalece el ciclo completo de desarrollo de sistemas impulsados por IA y agentes.
-
----
-
-## Capstone
-
-### Empresa transformada por IA
-
-`Final Project` `AI-First Company`
-
-El programa cierra con un entregable real: la transformación completa de una empresa a través de IA. Integrarás todo lo aprendido — frontend generado por agentes, APIs autenticadas, telemetría, workflows automatizados, una capa de conocimiento RAG y agentes con tool calling — en un sistema funcional y desplegado. No es un ejercicio académico: es una demostración de capacidad profesional.
-
-**Componentes del entregable:**
-
-- Frontend generado por IA
-- API con autenticación completa
-- Pipeline de telemetría y reportes
-- Workflows automatizados generados por agentes
-- Capa de conocimiento RAG
-- Agentes con tool calling
-- Comunicación en tiempo real
+- Identificar y corregir las vulnerabilidades más comunes a las que está expuesta una aplicación en internet
+- Implementar prácticas seguras en la integración de IA en sistemas

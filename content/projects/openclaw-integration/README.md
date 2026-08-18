@@ -15,7 +15,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 After spending meaningful time in the course, you've come to a realization: OpenClaw is useful, but it's generic. It doesn't know anything about your course, your projects, your deadlines, or how you're actually doing. Every time you want to check your progress, you leave the agent and go look it up somewhere else — which defeats the purpose of having a personal assistant at all.
 

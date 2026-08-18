@@ -2,7 +2,7 @@
 
 Repository of hands-on projects for the **AI Engineering** program at 4Geeks Academy. Each folder is a standalone project with its own README, evaluation criteria, and (when applicable) `learn.json` for the platform.
 
-Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, accessibility) and Tailwind, through company milestones and collaboration, **OpenClaw agent setup and integrations**, then TypeScript and system design, React/Next.js and AI-assisted delivery, APIs, authentication, agents, performance, telemetry, data pipelines, background jobs, message queues, and RAG knowledge bases.
+Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, accessibility) and Tailwind, through company milestones and collaboration, **OpenClaw agent setup and integrations**, then TypeScript and system design, React/Next.js and AI-assisted delivery, APIs, authentication, agents, performance, telemetry, data pipelines, background jobs, message queues, RAG knowledge bases, agentic RFP workflows, real-time systems, and a **final 5-minute project pitch**.
 
 ---
 
@@ -39,7 +39,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
    Connect OpenClaw to the 4Geeks API with your account token so the agent can report pending projects, course progress, and related LearnPack data.
 
 10. **[Give Your Agent a Memory](./openclaw-memory)**  
-   Configure OpenClaw memory types (episodic, semantic, procedural), restructure workspace files, and validate that context persists across sessions.
+    Configure OpenClaw memory types (episodic, semantic, procedural), restructure workspace files, and validate that context persists across sessions.
 
 11. **[Onboarding Agent with Memory](./openclaw-onboarding-agent)**  
     Build a company onboarding flow: an OpenClaw agent with memory that reads HR templates and sends personalized onboarding email from your assigned `CONTEXT-company.md`.
@@ -197,11 +197,39 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 62. **[MCP Server: Connecting Your Agent to the Company's Tools](./ai-eng-mcp-company-tools)**  
     Expose Incidents Manager and read-only inventory as an authenticated FastMCP server (API Key, least privilege, discovery schemas, invocation logs), validate with an MCP client, and migrate the LangGraph support agent to consume incidents through MCP instead of direct HTTP tools.
 
-63. **[Securing Agents: Harness and Guardrails](./ai-eng-agent-harness)**  
-    Lock down the company agent before real users: CONTEXT-aligned secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and automated jailbreak tests — layered defenses, not a single filter.
+63. **[Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)](./ai-eng-milestone-agentic-engineering)**  
+    `Milestone 8` Part 1 — Extend the LangGraph company agent (RAG + MCP) with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes. Same agent identity as Part 2.
 
-64. **[Milestone 8 — Agent Memory and Self-Improvement](./ai-eng-milestone-agentic-engineering)**  
-    Extend the guarded LangGraph company agent with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes.
+64. **[Milestone 8 — Securing Agents: Harness and Guardrails (Part 2 of 2)](./ai-eng-agent-harness)**  
+    `Milestone 8` Part 2 — Lock down the **same** company agent after memory: CONTEXT-aligned secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and **deterministic** harness tests — layered defenses, not a single filter or live-LLM-only gate.
+
+65. **[Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3)](./ai-eng-milestone-agentic-workflows-orchestrate)**  
+    `Milestone 9` Part 1 — Agentic RFP intake: triage router, RFP filter, orchestrator-worker decomposition into parallel workstreams, then synthesizer into the defined workstream structure from CONTEXT.
+
+66. **[Milestone — Agentic RFP Workflow: Response Generation (Part 2 of 3)](./ai-eng-milestone-agentic-workflows-evaluate)**  
+    `Milestone 9` Part 2 — Map workstreams to departments, generate and self-evaluate each section, and produce department assignment tickets — same ticket row as Part 1.
+
+67. **[Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)](./ai-eng-milestone-agentic-workflows-produce)**  
+    `Milestone 9` Part 3 — Human-in-the-loop interrupt/resume per department, parallel branches under interrupt, CONTEXT conflict arbiter, automatic final-document synthesis, and E2E continuity from Parts 1–2.
+
+68. **[Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-milestone-real-time-notification)**  
+    `Milestone 10` Part 1 — Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent).
+
+69. **[Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-milestone-real-time-communication)**  
+    `Milestone 10` Part 2 — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic.
+
+70. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
+    Capstone — Record a ~5-minute landscape pitch of the company AI system: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with `FirstnameLastname-ProjectName.mp4`, a 1–2 sentence description, and the signed media release.
+
+## Other projects
+
+Not part of the syllabus sequence. Kept here for reference or optional use.
+
+- **[Platform – Roles and Permissions](./ai-eng-roles-permissions)**  
+  Independent role and department axes on the company platform: centralized 403 enforcement, department-scoped data, and an Admin-only roles/departments view.
+
+- **[Platform – Federated Authentication](./ai-eng-federated-authentication)**  
+  Link Google / Microsoft / LinkedIn from an existing profile only: federated login never creates accounts; OAuth `state` + `redirect_uri`; audit rejected attempts.
 
 ---
 

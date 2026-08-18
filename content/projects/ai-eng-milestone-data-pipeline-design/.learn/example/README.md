@@ -85,7 +85,7 @@ Add at least one more field with type and justification.
 
 ### 8. Prefect mapping
 
-- [ ] Name ≥2 flows (e.g. nightly ETL + backfill).
+- [ ] Name ≥1 main flow (e.g. nightly ETL). A second backfill flow is optional — Part 3 introduces ≥3 subflows as the new bar.
 - [ ] Name ≥3 tasks aligned with ETL stages.
 - [ ] List relevant states and at least one block (e.g. Supabase credentials).
 

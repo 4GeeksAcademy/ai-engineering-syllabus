@@ -117,7 +117,7 @@ Con pocos registros, casi todo el API responde rápido y los logs de timing no r
 Este proyecto se construye sobre tu monorepo del proyecto transversal existente. No hay que forkear un repositorio nuevo.
 
 1. Abre tu monorepo en Codespaces o clónalo en local.
-2. Crea una nueva rama: `git checkout -b feature/caching-optimisation`
+2. Crea una nueva rama: `git switch -c feature/caching-optimisation`
 3. Asegúrate de que tanto el frontend como el backend funcionan correctamente antes de hacer ningún cambio.
 
 ---

@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 Tu Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -58,19 +58,19 @@ El flujo tiene tres pasos y dos momentos separados en el tiempo:
 
 1. **Solicitud** — el usuario envía su email. El servidor genera un token de restablecimiento (un JWT firmado o una cadena aleatoria almacenada en la base de datos), construye una URL de restablecimiento que contiene ese token (`/reset-password?token=<token>`) y la envía al email del usuario mediante un servicio de correo transaccional.
 
-2. **Restablecimiento** — el usuario hace clic en el enlace, llega a la página `/reset-password`, introduce una nueva contraseña y envía el formulario. El frontend envía el token (leído de la URL) y la nueva contraseña a la API. El servidor valida el token — si la firma es válida y no ha expirado — actualiza la contraseña e invalida el token para que no pueda reutilizarse.
+2. **Restablecimiento** — el usuario hace clic en el enlace, llega a la página `/reset-password`, introduce una nueva contraseña y envía el formulario. El frontend envía el token (leído de la URL) y la nueva contraseña a la API. El servidor valida el token (firma, expiración **y que no se haya usado ya**), actualiza la contraseña e invalida el token para que no pueda reutilizarse.
 
 3. **Confirmación** — el usuario es redirigido a `/login` y puede iniciar sesión con la nueva contraseña.
 
 **¿Por qué mostrar siempre un mensaje de confirmación?** Si el formulario muestra "email no encontrado" para direcciones que no existen, un atacante puede usar eso para enumerar qué emails están registrados. Responder siempre con "si esa dirección está en nuestro sistema, recibirás un enlace" lo evita.
 
-**La expiración del token importa.** Un token de restablecimiento debe tener una vida corta — entre 15 y 60 minutos es lo estándar. Una vez usado o expirado, no debe poder reutilizarse. Si usas un JWT, codifica la expiración en el payload. Si usas una cadena aleatoria almacenada en la base de datos, guarda el timestamp de expiración junto a ella.
+**Expiración y reutilización.** Un token de restablecimiento debe durar 15–60 minutos y quedar inutilizable tras un reset exitoso. Un JWT con solo un claim `exp` no se puede invalidar después de usarlo. Persiste estado en el servidor: una fila con el token hasheado, un registro de tokens usados, o un `password_changed_at` que rechace tokens emitidos antes de ese momento. Codificar la expiración en el payload del JWT no basta.
 
 ---
 
 ## 🌱 Cómo Iniciar el Proyecto
 
-Este proyecto continúa dentro de tu monorepo existente. Abre una nueva rama: `git checkout -b feature/password-reset`.
+Este proyecto continúa dentro de tu monorepo existente. Abre una nueva rama: `git switch -c feature/password-reset`.
 
 Antes de empezar, regístrate en uno de los servicios de email listados arriba y obtén una API key. Guárdala en tu archivo `.env`. Asegúrate de que `.env` está en tu `.gitignore` — nunca hagas commit de API keys.
 
@@ -81,7 +81,7 @@ Antes de empezar, regístrate en uno de los servicios de email listados arriba y
 ### Backend
 
 - [ ] `POST /auth/forgot-password` — acepta `{ email }`. Si el usuario existe, genera un token de restablecimiento con expiración corta (15–60 minutos) y envía un email con el enlace de restablecimiento. Devuelve siempre `200` independientemente de si el email fue encontrado.
-- [ ] `POST /auth/reset-password` — acepta `{ token, new_password }`. Valida el token (firma y expiración). Si es válido, hashea la nueva contraseña, actualiza el registro del usuario e invalida el token. Devuelve `400` para tokens inválidos o expirados.
+- [ ] `POST /auth/reset-password` — acepta `{ token, new_password }`. Valida el token (firma, expiración y que no se haya usado ya). Si es válido, hashea la nueva contraseña, actualiza el registro del usuario e invalida el token. Devuelve `400` para tokens inválidos, expirados **o ya utilizados**.
 - [ ] `POST /auth/change-password` — acepta `{ current_password, new_password }`. Requiere un token de sesión válido en la cabecera `Authorization`. Verifica la contraseña actual antes de actualizar. Devuelve `400` si la contraseña actual es incorrecta.
 - [ ] Integra un servicio de correo transaccional para enviar el email de restablecimiento. El email debe incluir el enlace de restablecimiento y ser legible en móvil.
 - [ ] Almacena la API key del servicio de email en una variable de entorno. Documenta el nombre de la variable en tu `README` o en un `.env.example`.

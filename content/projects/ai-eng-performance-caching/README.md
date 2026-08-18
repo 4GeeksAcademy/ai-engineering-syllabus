@@ -15,7 +15,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -117,7 +117,7 @@ With only a handful of rows, almost every endpoint looks fast — timing logs wi
 This project is built on top of your existing transversal project monorepo. You do not fork a new repository.
 
 1. Open your monorepo in Codespaces or clone it locally.
-2. Create a new branch: `git checkout -b feature/caching-optimisation`
+2. Create a new branch: `git switch -c feature/caching-optimisation`
 3. Make sure both the frontend and backend run correctly before making any changes.
 
 ---

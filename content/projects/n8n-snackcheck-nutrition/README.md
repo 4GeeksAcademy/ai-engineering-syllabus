@@ -13,7 +13,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 This is your **capstone**: one automation that puts together everything you have built across this microsyllabus. No new nodes, no new tricks — just you, proving you can take a real product idea and turn it into a working, well-documented automation on your own.
 

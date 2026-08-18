@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -41,7 +41,7 @@ Es tentador resolver esto indexando los tickets en el mismo vector store del RAG
 ## 🌱 Cómo Empezar
 
 1. Confirma que tu servicio del **gestor de incidentes** (`GET /api/incidents`, `GET /api/incidents/{id}`) está corriendo localmente — es el que construiste en un proyecto anterior del monorepo. Si construiste también el **gestor de inventario** (`GET /inventory/products`), tenlo disponible también para el extra.
-2. Parte de la rama de la Parte 1 (grafo compilado, con tracing y evals).
+2. Parte de la rama de la Parte 1 (grafo compilado, con tracing y evals) y crea una rama nueva: `git switch -c feature/langgraph-external-tools`.
 3. No necesitas instalar dependencias nuevas más allá de las que ya usas para llamar HTTP desde tu backend.
 
 ---
@@ -103,7 +103,7 @@ tests/
   pipelines/                     ← evals de enrutamiento y fallback
 ```
 
-1. Sube tu rama con la estructura anterior y abre un Pull Request al repositorio original con la etiqueta `parte-2-tools-externas`.
+1. Sube tu rama con la estructura anterior y abre un Pull Request al repositorio original con la etiqueta `langgraph-external-tools`.
 2. Asegúrate de que el PR incluya:
    - El trace de una corrida donde el agente usó la tool de tickets.
    - El trace de una corrida donde el agente usó el RAG (para mostrar el enrutamiento correcto).

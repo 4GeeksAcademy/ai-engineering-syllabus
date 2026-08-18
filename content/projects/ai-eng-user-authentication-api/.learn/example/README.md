@@ -21,7 +21,7 @@ A small community has a FastAPI backend for listing and claiming plants that mem
 | Layer        | Tool                                     |
 | ------------ | ---------------------------------------- |
 | Framework    | FastAPI                                  |
-| Auth         | JWT (`python-jose`) + bcrypt (`passlib`) |
+| Auth         | JWT (`python-jose`) + bcrypt (`libpass`) |
 | Token scheme | `OAuth2PasswordBearer`                   |
 | Database     | TinyDB (auth models only)                |
 | Config       | `.env` + `python-dotenv`                 |
@@ -29,7 +29,7 @@ A small community has a FastAPI backend for listing and claiming plants that mem
 Install the auth dependencies:
 
 ```bash
-uv add "python-jose[cryptography]" "passlib[bcrypt]"
+uv add "python-jose[cryptography]" "libpass[bcrypt]"
 ```
 
 ---
@@ -129,14 +129,14 @@ Work through these steps in the FastAPI `/docs` UI:
 
 ## Key Concepts to Discuss in Class
 
-| Concept                                  | Where it appears                             |
-| ---------------------------------------- | -------------------------------------------- |
-| Password hashing                         | `passlib.hash.bcrypt.hash()` on registration |
-| JWT structure (header.payload.signature) | `python-jose` token creation                 |
-| `OAuth2PasswordBearer`                   | Token extraction from `Authorization` header |
-| FastAPI `Depends()`                      | `get_current_user` injected into routes      |
-| Environment variables for secrets        | `SECRET_KEY` in `.env`                       |
-| `401` vs `403`                           | Missing token vs. wrong user                 |
+| Concept                                  | Where it appears                                                                   |
+| ---------------------------------------- | ---------------------------------------------------------------------------------- |
+| Password hashing                         | `libpass` (`from passlib.hash import bcrypt`) then `bcrypt.hash()` on registration |
+| JWT structure (header.payload.signature) | `python-jose` token creation                                                       |
+| `OAuth2PasswordBearer`                   | Token extraction from `Authorization` header                                       |
+| FastAPI `Depends()`                      | `get_current_user` injected into routes                                            |
+| Environment variables for secrets        | `SECRET_KEY` in `.env`                                                             |
+| `401` vs `403`                           | Missing token vs. wrong user                                                       |
 
 ---
 

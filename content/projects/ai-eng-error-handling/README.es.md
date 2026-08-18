@@ -45,7 +45,7 @@ Esta es una tarea de ingeniería transversal — no una nueva funcionalidad. El 
 Este proyecto trabaja directamente sobre el monorepo de tu empresa — el mismo que llevas construyendo desde el Hito 1.
 
 1. Abre el monorepo en tu editor o Codespace.
-2. Crea una nueva rama para este trabajo: `git checkout -b error-handling-audit`.
+2. Crea una nueva rama para este trabajo: `git switch -c feature/error-handling-audit`.
 3. Trabaja en cada capa del código de forma sistemática (ver checklist más abajo).
 4. Haz commits con mensajes claros que expliquen qué corregiste y por qué.
 
@@ -139,7 +139,7 @@ Ejecuta la auditoría, lee el informe con atención y usa el checklist de abajo 
 
 ## 📦 Cómo entregar
 
-Sube tu rama `error-handling-audit` a GitHub y comparte la URL del pull request (o del repositorio) con tu instructor según las instrucciones de entrega de tu cohorte.
+Sube tu rama `feature/error-handling-audit` a GitHub y comparte la URL del pull request (o del repositorio) con tu instructor según las instrucciones de entrega de tu cohorte.
 
 ---
 

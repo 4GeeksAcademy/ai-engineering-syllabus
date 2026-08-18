@@ -1,4 +1,4 @@
-# Hito 1 — Sitio Web Público de tu Empresa
+# Hito — Sitio Web Público de tu Empresa
 
 <!-- hide -->
 
@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Desafío
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -112,6 +112,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 - [ ] Usar etiquetas HTML semánticas (`<section>`, `<article>`, `<nav>`, etc.)
 - [ ] Implementar atributos ARIA donde sea apropiado (`aria-label`, `role`)
 - [ ] Añadir marcado Schema.org para la información de la empresa (tipo Organization o LocalBusiness)
+- [ ] Exponer el sitio en una **URL pública de Codespaces** (port forwarding → Public) para que se pueda auditar desde fuera
 
 ### Formulario de Aplicación/Registro
 
@@ -154,7 +155,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 - [ ] Los breakpoints de Tailwind (`sm:`, `md:`, `lg:`) se usan apropiadamente
 - [ ] No hay CSS personalizado innecesario (solo Tailwind)
 - [ ] El diseño es visualmente coherente y profesional
-- [ ] El rendimiento se verifica en la URL pública con [PageSpeed Insights](https://pagespeed.web.dev/) con una puntuación mínima de **80** (ideal: **por encima de 90**)
+- [ ] El rendimiento se verifica con una puntuación mínima de **80** (ideal: **por encima de 90**) usando [PageSpeed Insights](https://pagespeed.web.dev/) en tu **URL pública de Codespaces** (expón el puerto como **Public**). Si PageSpeed no puede alcanzar Codespaces, ejecuta **Lighthouse** desde las DevTools de Chrome (panel Lighthouse, o la extensión Lighthouse) contra la misma vista previa local/Codespaces e incluye esa captura.
 
 ### Accesibilidad
 
@@ -194,11 +195,13 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
    - `validation.js`
    - Tu `CONTEXT.md` (no modificado)
 
-3. Prueba tu sitio abriendo `index.html` en diferentes tamaños de ventana del navegador
+3. Incluye tu **URL pública de Codespaces** y una captura de PageSpeed Insights **o** Lighthouse de Chrome DevTools (puntuación ≥ 80) en la descripción del PR
 
-4. Prueba todas las validaciones del formulario para asegurarte de que funcionan
+4. Prueba tu sitio abriendo `index.html` en diferentes tamaños de ventana del navegador
 
-5. Envía la URL de tu repositorio para evaluación
+5. Prueba todas las validaciones del formulario para asegurarte de que funcionan
+
+6. Envía la URL de tu repositorio para evaluación
 
 **Tip:** Usa las DevTools del navegador (F12) para probar diferentes tamaños de pantalla y verificar que no haya errores en la consola.
 

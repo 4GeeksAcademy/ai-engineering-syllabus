@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 The financial dashboard you shipped recently is working. The data loads, the charts render, the layout holds up. Your tech lead reviewed the pull request and left a comment:
 
@@ -60,7 +60,7 @@ You will continue working on the **same repository** you used in the previous se
 1. Open your existing financial dashboard repository (your fork of [**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) in GitHub Codespaces or clone it locally.
 2. Make sure your memory bank (`memory-bank/`) and context rules (`.cursor/rules/` or equivalent) from the previous session are committed and up to date.
 3. Pull the latest changes if you are working in a team: `git pull origin main`.
-4. Create a new branch for today's work: `git checkout -b feature/agent-skills`.
+4. Create a new branch for today's work: `git switch -c feature/agent-skills`.
 
 If you need a refresher on project setup: [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project).
 

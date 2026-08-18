@@ -21,7 +21,7 @@ Una pequeña comunidad tiene un backend FastAPI para listar y reclamar plantas q
 | Capa             | Herramienta                              |
 | ---------------- | ---------------------------------------- |
 | Framework        | FastAPI                                  |
-| Auth             | JWT (`python-jose`) + bcrypt (`passlib`) |
+| Auth             | JWT (`python-jose`) + bcrypt (`libpass`) |
 | Esquema de token | `OAuth2PasswordBearer`                   |
 | Base de datos    | TinyDB (solo modelos de auth)            |
 | Configuración    | `.env` + `python-dotenv`                 |
@@ -29,7 +29,7 @@ Una pequeña comunidad tiene un backend FastAPI para listar y reclamar plantas q
 Instalar las dependencias de auth:
 
 ```bash
-uv add "python-jose[cryptography]" "passlib[bcrypt]"
+uv add "python-jose[cryptography]" "libpass[bcrypt]"
 ```
 
 ---
@@ -129,14 +129,14 @@ Trabajar estos pasos en la UI de `/docs` de FastAPI:
 
 ## Conceptos Clave a Trabajar en Clase
 
-| Concepto                                  | Dónde aparece                                       |
-| ----------------------------------------- | --------------------------------------------------- |
-| Hash de contraseñas                       | `passlib.hash.bcrypt.hash()` en el registro         |
-| Estructura JWT (header.payload.signature) | Creación de token con `python-jose`                 |
-| `OAuth2PasswordBearer`                    | Extracción del token de la cabecera `Authorization` |
-| `Depends()` de FastAPI                    | `get_current_user` inyectado en las rutas           |
-| Variables de entorno para secretos        | `SECRET_KEY` en `.env`                              |
-| `401` vs `403`                            | Token ausente vs. usuario incorrecto                |
+| Concepto                                  | Dónde aparece                                                                        |
+| ----------------------------------------- | ------------------------------------------------------------------------------------ |
+| Hash de contraseñas                       | `libpass` (`from passlib.hash import bcrypt`) y luego `bcrypt.hash()` en el registro |
+| Estructura JWT (header.payload.signature) | Creación de token con `python-jose`                                                  |
+| `OAuth2PasswordBearer`                    | Extracción del token de la cabecera `Authorization`                                  |
+| `Depends()` de FastAPI                    | `get_current_user` inyectado en las rutas                                            |
+| Variables de entorno para secretos        | `SECRET_KEY` en `.env`                                                               |
+| `401` vs `403`                            | Token ausente vs. usuario incorrecto                                                 |
 
 ---
 

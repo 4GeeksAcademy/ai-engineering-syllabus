@@ -1,4 +1,4 @@
-# Milestone 9 — Agentic Workflow Generation (Part 3 of 3): Approval & Document Completion
+# Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)
 
 <!-- hide -->
 
@@ -11,11 +11,11 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it contains your company's department approval hierarchy and the final document format.
+**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it names who approves each department (and any extra approver your company requires), plus conflict-arbitration rules and the final document format. Do **not** invent a multi-level org ladder unless your CONTEXT says so (e.g. a CEO threshold); for most companies, sign-off is the named owner of each **active** department.
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You're building on top of **your own copy** of the **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** for the company you picked at the start of the course — not a brand-new repository.
 
@@ -30,7 +30,7 @@ In Part 2 each department already generates and self-evaluates its section of th
 > > - Before a department's section is considered approved, the flow must go through a real human approval point — an actual human-in-the-loop, not just one more automatic evaluator.
 > > - The flow must pause right before that irreversible action, persist its state with a checkpointer, and be able to resume exactly where it left off once the approval comes in — not restart from scratch.
 > > - That pause should only affect the branch for the department that's waiting on approval; the other departments whose sections are already ready should be able to keep moving in parallel, not get blocked by each other.
-> > - Define an iteration limit and an explicit arbitration node for disagreements between departments — don't let the agents sort it out on their own.
+> > - Define an iteration limit and an explicit arbitration node for disagreements between departments. Wire it to the conflict triggers and fixed arbiter in your CONTEXT (rules or a named human — not an LLM “voting” among agents).
 > > - Once every department has given its sign-off, the final document should generate itself, consolidating the approved sections.
 > > - I want to be able to see, for any run, which agent did what and in what order, because when something breaks in production we won't have time to guess.
 > >
@@ -44,6 +44,16 @@ In Part 2 each department already generates and self-evaluates its section of th
 
 Not every control needs to pause the flow for a human. Guardrails (automated schema, type, or business validations) should resolve the clear-cut cases on their own; save interruptions (`interrupt`) for decisions that genuinely require human judgment, like approving a pricing proposal before it goes to a client. And when you do interrupt, keep it scoped: the interruption should only pause the branch of the graph that depends on that approval (that department's section and whatever depends on it), not the entire flow — one department waiting on their manager's sign-off shouldn't stall the others that are already ready to move forward.
 
+**Ticket statuses for this part** (same ticket row — match CONTEXT). Full lifecycle is in CONTEXT; **here you only need:**
+
+| Status                                    | Role              | When                                                                    |
+| ----------------------------------------- | ----------------- | ----------------------------------------------------------------------- |
+| `under_evaluation` / `needs_human_review` | Entry from Part 2 | Ticket arrives with drafts + `EvaluationResult` (incl. capped sections) |
+| `waiting_for_approval`                    | Part 3 sets       | Human-in-the-loop pause while any department approval is pending        |
+| `done`                                    | Part 3 sets       | Final document stored and accessible                                    |
+
+Do **not** invent orphan statuses; keep earlier Part 1/2 values on the same row when you are not transitioning.
+
 ### 🗺️ Visual reference: approval tickets & ultimate document synthesis
 
 Once department assignment tickets from Part 2 are **fully approved**, an **ultimate document synthesizer** compiles the final agreed-upon document and delivers it to Sales — parallel department branches approve independently, then converge:
@@ -54,12 +64,12 @@ Once department assignment tickets from Part 2 are **fully approved**, an **ulti
 
 ## 🌱 How to Start the Project
 
-Continue on your Milestone 9 branch in your company's monorepo fork, picking up from where you submitted Part 2. If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Continue on your Milestone branch in your company's monorepo fork, picking up from where you submitted Part 2. If you don't have your fork yet, create it from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
-1. Create the `feature/milestone-9-part-3-approval-completion` branch from your Part 2 branch.
+1. Create the `feature/rfp-approval-completion` branch from your Part 2 branch.
 2. Set up the checkpointer that fits your environment (SQLite or Postgres — avoid the in-memory checkpointer outside of local development).
 3. Install any new dependencies with `uv add`.
-4. Review your `CONTEXT-company.md` to learn your company's department approval hierarchy.
+4. Review your `CONTEXT-company.md` for department approvers, conflict triggers / fixed arbiter, and final document format.
 
 ---
 
@@ -77,58 +87,66 @@ Continue on your Milestone 9 branch in your company's monorepo fork, picking up 
 **Guardrails and flow control**
 
 - [ ] Define a maximum iteration limit on any remaining loop between departments
-- [ ] Implement an explicit arbitration node to resolve disagreements between departments, instead of letting the agents settle it themselves
+- [ ] Implement an explicit arbitration node that fires on the conflict triggers in your CONTEXT and resolves via the fixed arbiter there (named human or deterministic rule — **not** LLM freestyle among agents)
 - [ ] Log the agent, input, output, and timestamp in the state for every node execution (traceability)
+
+**Checkpointer identity**
+
+- [ ] Namespace every graph run's `thread_id` by `ticket_id` (and by department if you checkpoint branches separately), e.g. `rfp-{ticket_id}` or `rfp-{ticket_id}:{department}` — concurrent tickets must not share a checkpoint
 
 **Document completion**
 
 - [ ] Once every department has given approval, generate the final document by consolidating the approved sections
-- [ ] Update the ticket to its final status (for example: `done`) and make the generated document accessible
+- [ ] While any department approval is pending, set ticket status to `waiting_for_approval`; when the final document is stored, set it to `done` and make the document accessible
 
 **End-to-end review**
 
 - [ ] Run at least one test RFP through all three complete parts (intake → generation → approval and completion) and confirm that ticket states, messages, and data stay consistent from start to finish
+- [ ] Ship a **reproducible** E2E path: fixture + script or integration test that drives Part 3 with **simulated** approvals (programmatic `resume` / equivalent) — reviewers must not depend on irreproducible UI clicks alone
 - [ ] Fix any jump, inconsistent message, or data loss in the transition between parts
 
-⚠️ **IMPORTANT:** The department approval hierarchy and the final document format must match what's specified in your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Department approvers, arbitration triggers/arbiter, and final document format must match your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
 
 **Testing**
 
 - [ ] Include unit tests in `tests/pipelines/` covering: successful interruption and resume, iteration limit reached, and arbitration on disagreement
+- [ ] Include a test (or trace assertion) that **approves department B while department A remains interrupted** — proves parallel branches, not serial fake-parallelism
+- [ ] Include an integration / E2E test or script with fixtures and simulated human resumes across the Part 3 path (ideally Parts 1→3 with seeded state)
 
 ---
 
 ## 🧭 Design Questions
 
 - What happens if a department rejects its section after the interruption? Does the flow go back to the Part 2 generator, or does it require a new run?
-- How do you namespace your `thread_id` so concurrent runs from different RFPs don't corrupt each other's checkpoint?
 - What's the minimum information a human needs to see at the approval point to decide with confidence, without having to reread the entire document?
-- If two interdependent departments return contradictory results, who arbitrates, and by what rule?
+- How do you detect CONTEXT conflict triggers in structured state (not only free-text), so the arbitration node is real and not decorative?
 
 ---
 
 ## ✅ What We Will Evaluate
 
 - [ ] The flow correctly pauses before each department's approval and persists its state
-- [ ] The pause only affects the corresponding department's branch — other departments can keep moving without getting blocked
+- [ ] The pause only affects the corresponding department's branch — other departments can keep moving without getting blocked (proven by test/trace: approve B while A is still interrupted)
 - [ ] Execution resumes exactly from the interruption point, without restarting the entire flow
+- [ ] `thread_id` is namespaced by ticket (and department if applicable); concurrent runs do not share checkpoints
 - [ ] An iteration limit is applied and verifiable in the code, not just mentioned
-- [ ] An explicit arbitration node exists for disagreements between departments
+- [ ] Arbitration node fires on CONTEXT conflict triggers and resolves via the fixed CONTEXT arbiter (not LLM freestyle)
 - [ ] Every node execution is logged with agent, input, output, and timestamp
 - [ ] The final document is generated automatically only once every department has given approval
-- [ ] The ticket reflects the final status of the process and provides access to the generated document
+- [ ] Ticket status uses `waiting_for_approval` while HITL is pending and `done` when the final document is accessible
+- [ ] A reproducible E2E/fixture path exists (script or integration test with simulated approvals), not only a manual UI demo
 - [ ] A test RFP can be traced end to end (Part 1 through Part 3) with no state jumps or visible inconsistencies between parts
-- [ ] Unit tests exist for interruption/resume, the iteration limit, and arbitration
+- [ ] Unit tests exist for interruption/resume, the iteration limit, arbitration, and parallel approval under interrupt
 
 ---
 
 ## 📦 How to Submit
 
-This is Part 3 of 3 of Milestone 9. Submit it with its own Pull Request.
+This is Part 3 of 3 of Milestone. Submit it with its own Pull Request.
 
-1. Commit and push your `feature/milestone-9-part-3-approval-completion` branch
+1. Commit and push your `feature/rfp-approval-completion` branch
 2. Open a Pull Request describing what you implemented and how to test it
-3. Include a complete example in the PR description: the input RFP, simulated approval from each department, and the generated final document
+3. Include a complete example in the PR description: the input RFP, simulated approval from each department, and the generated final document — **and** link the reproducible script/integration test that drives those simulated approvals
 4. Request a review from your tech lead
 
 ---

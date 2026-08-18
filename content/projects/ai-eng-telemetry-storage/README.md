@@ -17,7 +17,7 @@ Your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syll
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -148,7 +148,7 @@ The model is reused unchanged from Phase 2 — you use it as a **per-item valida
 ## 📦 How to Submit
 
 1. Make sure the changes are in your fork: table created in Supabase and real endpoint in `services/`.
-2. Create a Pull Request against the main branch of the monorepo with the title: `[W16D48] Telemetry Storage`.
+2. Create a Pull Request against the main branch of the monorepo with the title: `feat: telemetry event storage`.
 3. In the PR description, include:
    - A screenshot of the `telemetry_events` table in Supabase with at least 5 rows of real events, including at least one technical and one business event
    - The JSON response of a batch mixing valid and invalid events (showing `received`, `stored`, and `rejected`)

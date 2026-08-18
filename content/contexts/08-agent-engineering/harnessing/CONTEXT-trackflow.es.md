@@ -1,12 +1,12 @@
 # CONTEXT — TrackFlow
 
-## Aseguramiento de Agentes: Harness y Guardrails
+## Hito 8 · Parte 2 · Aseguramiento de Agentes: Harness y Guardrails
 
 ---
 
 ## 1. Qué agente estás asegurando
 
-El agente que debes proteger es el **agente de primera línea de CX** del área de **Valentina Cruz, CX Manager**. Este agente ya responde consultas de clientes B2B (marcas que contratan a TrackFlow) y B2C (destinatarios finales de paquetes) usando RAG sobre la base de conocimientos semántica de políticas de devolución, SLAs por país e incidencias, y ya sabe invocar herramientas y consumir el MCP Server construido en sprints anteriores.
+El agente que debes proteger es el **agente de primera línea de CX** del área de **Valentina Cruz, CX Manager**. Este agente ya responde consultas de clientes B2B (marcas que contratan a TrackFlow) y B2C (destinatarios finales de paquetes) usando RAG sobre la base de conocimientos semántica de políticas de devolución, SLAs por país e incidencias, y ya sabe invocar herramientas y consumir el MCP Server construido en sprints anteriores. Es el **mismo** agente que extendiste con memoria en el Hito 8 Parte 1 — mantén esa identidad; no inventes un agente paralelo para este sprint.
 
 Este agente atiende a usuarios de dos países (Estados Unidos y España) y dos tipos de cliente muy distintos — lo que hace que el "dominio de la empresa" no sea un único bloque de contenido, sino que varía según quién pregunta.
 

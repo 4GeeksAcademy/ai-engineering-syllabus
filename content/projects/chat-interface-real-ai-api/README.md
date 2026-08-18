@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 A small digital consultancy has been hired by a client who wants to explore AI-powered interfaces for internal use. Before committing to a full product, the team lead has asked you to build a **proof-of-concept chat interface** that communicates with a real language model through an external API.
 

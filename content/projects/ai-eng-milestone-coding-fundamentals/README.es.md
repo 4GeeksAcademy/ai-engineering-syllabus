@@ -1,4 +1,4 @@
-# Hito 2 — Desarrollando scripts para automatizar tareas
+# Hito — Desarrollando scripts para automatizar tareas
 
 <!-- hide -->
 
@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Desafío
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -97,10 +97,10 @@ Como mínimo, tu proyecto debe incluir un comando claro para validar o ejecutar 
    - Las reglas de validación específicas de tu empresa
    - Los reportes que debes generar
 
-4. Crea una rama para este hito:
+4. Crea una rama para este trabajo:
 
    ```bash
-   git checkout -b hito-2-fundamentos-programacion
+   git switch -c feature/domain-models
    ```
 
 5. Organiza tu código en la estructura de carpetas propuesta y comienza a implementar las funciones.
@@ -193,7 +193,7 @@ npx http-server . -p 3000 -a 0.0.0.0
 
 ## 📦 Cómo Entregar
 
-1. Asegúrate de que todos tus cambios están en la rama `hito-2-fundamentos-programacion`
+1. Asegúrate de que todos tus cambios están en la rama `feature/domain-models`
 
 2. Haz commit de tus cambios con mensajes descriptivos. Por ejmplo:
 
@@ -205,7 +205,7 @@ npx http-server . -p 3000 -a 0.0.0.0
 3. Sube tu rama al repositorio remoto:
 
    ```bash
-   git push origin hito-2-fundamentos-programacion
+   git push origin feature/domain-models
    ```
 
 4. Abre un Pull Request desde tu rama hacia `main` en tu repositorio

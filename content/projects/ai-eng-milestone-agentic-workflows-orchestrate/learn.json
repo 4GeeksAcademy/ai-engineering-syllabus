@@ -1,12 +1,12 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 9 — Agentic Workflow Generation (Part 1 of 3): RFP Intake & Routing",
-    "es": "Hito 9 — Generación de Flujos de Trabajo Agénticos (Parte 1 de 3): Recepción y Enrutamiento de RFPs"
+    "en": "Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3)",
+    "es": "Hito — Flujo Agéntico de RFPs: Recepción y Enrutamiento (Parte 1 de 3)"
   },
   "description": {
-    "en": "Build Part 1 of an agentic RFP workflow on your company monorepo: ticket-mode PDF upload in uis/backoffice, MarkItDown conversion, readability metrics, a classifier that stops non-RFPs, and orchestrator-worker-synthesizer department analysis with routing — aligned to CONTEXT-company.md.",
-    "es": "Construye la Parte 1 de un flujo agéntico de RFPs sobre el monorepo de tu empresa: subida PDF en modo ticket en uis/backoffice, conversión con MarkItDown, métricas de legibilidad, clasificador que detiene no-RFPs, y análisis por departamento con orchestrator-worker-synthesizer más enrutamiento — alineado a CONTEXT-company.md."
+    "en": "Build Part 1 of an agentic RFP workflow: PDF upload via existing backend + uis/backoffice, store under data/raw/, persist tickets/metadata/key aspects in Postgres (Supabase), pipeline in data/pipelines/rfp_intake (MarkItDown, classifier, orchestrator-worker-synthesizer) — aligned to CONTEXT-company.md.",
+    "es": "Construye la Parte 1 de un flujo agéntico de RFPs: subida PDF vía backend existente + uis/backoffice, guarda en data/raw/, persiste tickets/metadatos/aspectos clave en Postgres (Supabase), pipeline en data/pipelines/rfp_intake (MarkItDown, clasificador, orchestrator-worker-synthesizer) — alineado a CONTEXT-company.md."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -24,21 +24,24 @@
     "mcp",
     "testing"
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "telemetry": {
     "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3843"
   },
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate/.learn/solution/README.md",
-  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate/.learn/rfp-intake-workstream-isolation.jpg",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 9 Part 1 — RFP Intake & Routing with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
-      "es": "Acabo de completar Hito 9 Parte 1 — Recepción y Enrutamiento de RFPs con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
+      "en": "I just completed Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
+      "es": "Acabo de completar Hito — Flujo Agéntico de RFPs: Recepción y Enrutamiento (Parte 1 de 3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
     },
     {
-      "en": "Built and shipped: Milestone 9 Part 1 — Agentic Workflow RFP Intake. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
-      "es": "Construido y publicado: Hito 9 Parte 1 — Flujo agéntico de recepción de RFPs. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
+      "en": "Built and shipped: Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents",
+      "es": "Construido y publicado: Hito — Flujo Agéntico de RFPs: Recepción y Enrutamiento (Parte 1 de 3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-agentic-workflows-orchestrate #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents"
     }
   ]
 }

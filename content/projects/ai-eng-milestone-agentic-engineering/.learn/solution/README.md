@@ -1,4 +1,4 @@
-# Milestone 8 — Agent Memory and Self-Improvement — Reference Solution
+# Milestone 8 Part 1 — Agent Memory and Self-Improvement — Reference Solution
 
 Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align memorable facts, forbidden stores, and consolidation policy with their assigned `CONTEXT-company.md` under `content/contexts/08-agent-engineering/memory/`.
 
@@ -15,7 +15,7 @@ flowchart TD
   WRITE --> AUDIT[Audit log]
   DROP --> AUDIT
   CLS -->|continue conversation| AGENT
-  PEND -->|no| AGENT[LangGraph agent + RAG/MCP + guardrails]
+  PEND -->|no| AGENT[LangGraph agent + RAG/MCP]
   AGENT --> SO[Structured output: reply + memory_proposal?]
   SO -->|proposal| ASK[Append proposal question in reply]
   ASK --> STATE[Store single pending proposal]
@@ -62,6 +62,8 @@ Document **why** the backend fits what the agent must remember (from CONTEXT). I
 | Explicit hierarchies / dependencies         | Knowledge graph (only if CONTEXT needs it) |
 | Parametric fine-tuning                      | Out of scope for this milestone            |
 
+⚠️ **Forbidden:** upserting agent memory into Milestone 7 company RAG collections (`brasaland_knowledge`, `trackflow_knowledge`, … or any `*_knowledge` corpus). RAG may be **read** as a tool; memory persistence must use Redis/KV or a **separate** vector collection (e.g. `*_agent_memory`). Mixing curated docs with episodic/approved chat facts breaks Recall@3 / faithfulness and weakens poison controls.
+
 A generic “we used Redis because it’s popular” without tying to CONTEXT memorable types fails the rubric.
 
 ---
@@ -99,7 +101,7 @@ When `memory_proposal` is non-null and no pending proposal exists: surface the a
 
 ## Confirmation and audit
 
-Reuse the same style of intent classifier as the guardrails sprint (structured label, not `"yes" in text`).
+Use an explicit intent classifier (structured label, not `"yes" in text`). Part 2 will add more guardrail layers on the same agent.
 
 | Classifier label         | Effect                                    |
 | ------------------------ | ----------------------------------------- |
@@ -153,6 +155,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 ## PR evidence checklist
 
 - [ ] Written backend justification tied to CONTEXT memorable types.
+- [ ] Memory store is not Milestone 7 `*_knowledge` / company RAG collections (RAG read-only as tool).
 - [ ] Explicit read/write interface (not prompt-only memory).
 - [ ] ≥3 memorable and ≥3 non-memorable documented examples.
 - [ ] Proposal in-conversation; single pending proposal enforced.
@@ -172,6 +175,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 | `"yes" in message` as confirmation       | Ambiguous / gaming-prone; must classify intent    |
 | Unlimited append-only store              | Missing consolidation                             |
 | Ignoring CONTEXT never-store list        | Company-specific restriction fails                |
+| Writing memory into M7 `*_knowledge` RAG | RAG is read-only tool; use separate memory store  |
 | Second agent just for “memory proposal”  | Unnecessary; structured field on same call enough |
 | Assuming silence = approve               | Default must be discard                           |
 
@@ -179,4 +183,4 @@ Poisoning defense (required design decision): never write without confirmation; 
 
 - Exercise approve + reject paths in Docker/test target.
 - Spot-check CONTEXT “never enter memory” items cannot be written even after a fake approve.
-- Confirm guardrails from the previous sprint still apply (memory must not become a poison channel).
+- Design Part 1 so Part 2 (harness) can wrap it — memory must not become an unchecked poison channel; explicit confirm already limits silent writes.

@@ -26,7 +26,7 @@ In one session: build the **first stretch** of an agentic workflow that receives
 
 ## Teaching spine (must hit live)
 
-1. **Ticket lifecycle** — `analyzing` → `waiting_for_approval` / `done` / `discarded`
+1. **Ticket lifecycle** — `analyzing` → `intake_complete` / `discarded` (`waiting_for_approval` is Part 3 only)
 2. **PDF → Markdown** before any LLM call (token cost lesson)
 3. **Classifier gate** — non-grant PDF stops pipeline; ticket = `discarded`
 4. **Metadata + readability** stored per document (processing cost estimate)
@@ -88,13 +88,13 @@ Non-grant counterexample: a restaurant menu PDF → classifier → `discarded`.
 
 ### 5. Tests (`tests/test_grant_orchestration.py`)
 
-| #   | Scenario                                         | Expect                                       |
-| --- | ------------------------------------------------ | -------------------------------------------- |
-| 1   | Valid grant PDF                                  | Status `done`; synthesizer has 3 departments |
-| 2   | Menu PDF                                         | Status `discarded`; no worker calls          |
-| 3   | Grant missing Finance section                    | Finance worker returns "not mentioned"       |
-| 4   | Orchestrator output                              | ≥2 parallel work items                       |
-| 5   | Classifier + one worker unit-tested in isolation | Mocks only; no live LLM required             |
+| #   | Scenario                                         | Expect                                                  |
+| --- | ------------------------------------------------ | ------------------------------------------------------- |
+| 1   | Valid grant PDF                                  | Status `intake_complete`; synthesizer has 3 departments |
+| 2   | Menu PDF                                         | Status `discarded`; no worker calls                     |
+| 3   | Grant missing Finance section                    | Finance worker returns "not mentioned"                  |
+| 4   | Orchestrator output                              | ≥2 parallel work items                                  |
+| 5   | Classifier + one worker unit-tested in isolation | Mocks only; no live LLM required                        |
 
 ---
 

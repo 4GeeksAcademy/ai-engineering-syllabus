@@ -1,0 +1,46 @@
+{
+  "gitpod": false,
+  "title": {
+    "en": "Capstone — Final Project Video: 5-Minute AI Pitch",
+    "es": "Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos"
+  },
+  "description": {
+    "en": "Record a ~5-minute landscape pitch of the AI system you built for your company: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with the MP4, a 1–2 sentence description, and the signed media release.",
+    "es": "Graba un pitch horizontal de ~5 minutos del sistema de IA que construiste para tu empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y un Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con el MP4, una descripción de 1–2 frases y la cesión de imagen firmada."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-capstone-project",
+  "coverImage": "ai-communication.svg",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "ai-engineering",
+    "communication",
+    "portfolio",
+    "video",
+    "product-demo"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "delivery": {
+    "instructions": "Submit a Google Drive (or similar) folder link with FirstnameLastname-ProjectName.mp4 (MP4, 1080p if possible), FirstnameLastname-ProjectName-description.txt (1–2 sentences), and the signed media release. Anyone with the link must be able to view.",
+    "formats": ["url"],
+    "regex": ""
+  },
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3913"
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-capstone-project/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-capstone-project/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Capstone — Final Project Video: 5-Minute AI Pitch with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio",
+      "es": "Acabo de completar Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio"
+    },
+    {
+      "en": "Built and shipped: Capstone — Final Project Video: 5-Minute AI Pitch. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio",
+      "es": "Construido y publicado: Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-capstone-project #AIEngineering #LearnPack #4GeeksAcademy #aiengineering #communication #portfolio"
+    }
+  ]
+}

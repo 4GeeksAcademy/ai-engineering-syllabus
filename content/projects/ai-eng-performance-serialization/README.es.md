@@ -83,7 +83,7 @@ Este proyecto se construye sobre el monorepo existente de tu empresa. No necesit
 1. Abre tu monorepo en tu entorno de desarrollo (Codespaces o local).
 2. Navega a tu aplicación FastAPI — normalmente en `/apps/<nombre-de-tu-app>/` o en la carpeta de backend establecida en milestones anteriores.
 3. Asegúrate de que tu entorno está en funcionamiento y tus endpoints existentes son accesibles antes de comenzar la auditoría.
-4. Trabaja en una rama dedicada: `git checkout -b feature/serialization-audit`.
+4. Trabaja en una rama dedicada: `git switch -c feature/serialization-audit`.
 
 ---
 
@@ -114,7 +114,7 @@ Este proyecto se construye sobre el monorepo existente de tu empresa. No necesit
 - [ ] Asegúrate de que cada endpoint tiene un `response_model` explícito declarado en su decorador de ruta.
 - [ ] Para endpoints de listado: define un esquema que devuelva solo los campos que los consumidores necesitan. Evita devolver objetos anidados completos cuando una representación plana es suficiente.
 - [ ] Para endpoints de escritura (POST, PUT, PATCH): define un esquema de entrada separado que acepte únicamente los campos que deben poder escribirse. No reutilices el esquema de respuesta como esquema de entrada.
-- [ ] Asegúrate de que ningún endpoint exponga campos sensibles (por ejemplo, contraseñas hasheadas, tokens internos, claves foráneas en bruto cuando hay un objeto anidado disponible). Las rutas de auth (registro, login, restauración de contraseña) nunca deben devolver contraseñas ni email en el cuerpo de la respuesta.
+- [ ] Asegúrate de que ningún endpoint exponga campos sensibles (por ejemplo, contraseñas hasheadas, tokens internos, claves foráneas en bruto cuando hay un objeto anidado disponible). Las rutas de auth (registro, login, forgot/reset password) nunca deben devolver contraseñas ni email en el cuerpo de la respuesta. `GET /auth/me` **sí puede** devolver el `email` del propio llamante — la vista de perfil depende de ello.
 - [ ] Cuando una relación sea necesaria en la respuesta, decide explícitamente: devolver el objeto anidado completo, devolver solo el ID relacionado o devolver una proyección plana — y documenta esa decisión en tu archivo de auditoría.
 
 ### Fase 3 — Verificación
@@ -130,7 +130,7 @@ Este proyecto se construye sobre el monorepo existente de tu empresa. No necesit
 - [ ] Cada endpoint de la aplicación tiene un `response_model` explícito declarado.
 - [ ] Los esquemas Pydantic están definidos tanto para entrada como para salida donde corresponde — los esquemas de entrada y salida no se confunden entre sí.
 - [ ] Los esquemas de endpoints de listado devuelven solo los campos necesarios para el consumidor — sin anidado innecesario ni over-fetching.
-- [ ] Ningún endpoint expone campos sensibles del modelo en su esquema de respuesta. Los endpoints de auth no devuelven contraseña ni email en las respuestas.
+- [ ] Ningún endpoint expone contraseñas hasheadas ni tokens internos en su esquema de respuesta. Los flujos de auth no autenticados (registro, login, forgot/reset) no reenvían el email. `GET /auth/me` puede devolver el email del usuario autenticado.
 - [ ] El documento de auditoría de serialización (`docs/serialization-audit.md`) existe, lista todos los endpoints, su estado original y los cambios aplicados.
 - [ ] La aplicación sigue funcionando correctamente después de todos los cambios de esquema — sin regresiones.
 

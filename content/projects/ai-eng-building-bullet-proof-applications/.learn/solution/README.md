@@ -117,7 +117,7 @@ Prefer fixtures in `conftest.py` for TinyDB test DB isolation — wipe or use a 
 
 - FastAPI/OpenAPI response schema generation internals
 - Generic 404/422 framework messages with no business meaning
-- Third-party library behaviour (`passlib`, `python-jose`) — mock only when necessary
+- Third-party library behaviour (`libpass`, `python-jose`) — mock only when necessary
 
 ## Evaluation Checklist
 

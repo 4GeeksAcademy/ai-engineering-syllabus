@@ -1,12 +1,12 @@
 # CONTEXT — Nexova
 
-## Aseguramiento de Agentes: Harness y Guardrails
+## Hito 8 · Parte 2 · Aseguramiento de Agentes: Harness y Guardrails
 
 ---
 
 ## 1. Qué agente estás asegurando
 
-El agente que debes proteger es el **agente de primera línea de soporte** del área de **Roberto Díaz, Customer Support Lead**. Este agente ya responde consultas de los clientes finales de las empresas que contratan el outsourcing de soporte de Nexova, usando RAG sobre la base de conocimientos centralizada (procedimientos de soporte, SLAs, políticas), y ya sabe invocar herramientas y consumir el MCP Server construido en sprints anteriores.
+El agente que debes proteger es el **agente de primera línea de soporte** del área de **Roberto Díaz, Customer Support Lead**. Este agente ya responde consultas de los clientes finales de las empresas que contratan el outsourcing de soporte de Nexova, usando RAG sobre la base de conocimientos centralizada (procedimientos de soporte, SLAs, políticas), y ya sabe invocar herramientas y consumir el MCP Server construido en sprints anteriores. Es el **mismo** agente que extendiste con memoria en el Hito 8 Parte 1 — mantén esa identidad; no inventes un agente paralelo para este sprint.
 
 A diferencia del resto de agentes internos del curso, este es **el primer agente de Nexova expuesto directamente a usuarios externos** (clientes de las empresas cliente de Nexova) — lo que hace que el riesgo de abuso e inyección sea mayor: no controlas quién le escribe.
 

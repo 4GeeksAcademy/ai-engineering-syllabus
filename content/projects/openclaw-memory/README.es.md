@@ -60,7 +60,7 @@ Este proyecto se construye sobre tu configuración de Openclaw existente de lecc
 
 1. Abre tu workspace de Openclaw en tu entorno local o en Codespace.
 2. Si necesitas un punto de partida limpio o quieres revisar la configuración base, consulta el repositorio que creaste en la Semana 2 Día 6.
-3. Crea una nueva rama para este proyecto: `git checkout -b feature/memory-setup`
+3. Crea una nueva rama para este proyecto: `git switch -c feature/memory-setup`
 4. ¿Necesitas un recordatorio sobre cómo estructurar un proyecto? [Lee la guía](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---

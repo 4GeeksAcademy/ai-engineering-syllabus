@@ -1,12 +1,12 @@
 # CONTEXT — Nexova
 
-## Hito 8 · Memoria y Auto-mejora de Agentes
+## Hito 8 · Parte 1 · Memoria y Auto-mejora de Agentes
 
 ---
 
 ## Por qué importa esta memoria para Nexova
 
-Tu agente ya conoce las tres líneas de negocio de Nexova (headhunting, outsourcing de soporte, formación corporativa), consulta el Incidents Manager y el inventario a través del MCP Server, y no se sale de su guardrail. Roberto Díaz (Customer Support Lead) reporta que sus 30 agentes de soporte, al usar el asistente interno, tienen que volver a explicar el mismo procedimiento de escalación cada vez que hablan con él — el asistente no retiene nada entre sesiones.
+Tu agente ya conoce las tres líneas de negocio de Nexova (headhunting, outsourcing de soporte, formación corporativa), consulta el Incidents Manager y el inventario a través del MCP Server, y recibirá su harness en la Parte 2. Roberto Díaz (Customer Support Lead) reporta que sus 30 agentes de soporte, al usar el asistente interno, tienen que volver a explicar el mismo procedimiento de escalación cada vez que hablan con él — el asistente no retiene nada entre sesiones.
 
 ## Qué SÍ vale la pena recordar
 

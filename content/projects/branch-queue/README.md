@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 Banco Meridional has modernized its branches — clients now take a numbered ticket at the entrance and sit down to wait. Each ticket is tagged with a service type: **deposits**, **withdrawals**, or **account management**. The branch has dedicated agents for each service type, and they operate independently: the deposits agent calls their next client regardless of what the withdrawals agent is doing.
 

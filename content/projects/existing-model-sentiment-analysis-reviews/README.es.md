@@ -15,7 +15,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 Tu Reto
+## 🎯 Tu reto
 
 Trabajas como ingeniero/a de IA freelance para una pequeña consultora de datos. Tu último cliente, **WeLoveReviews**, ayuda a empresas a entender lo que realmente piensan sus clientes. Acaban de incorporar una nueva cuenta: un negocio con una puntuación promedio de **4.5 / 5**, pero la account manager tiene una duda que no la deja tranquila — _¿el sentimiento expresado en las reseñas escritas realmente coincide con esa puntuación?_ Antes de entregarle un reporte a su cliente, quieren una segunda opinión basada en datos, no en intuición.
 

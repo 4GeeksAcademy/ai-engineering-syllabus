@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -58,19 +58,19 @@ The flow has three steps and two separate moments in time:
 
 1. **Request** — the user submits their email. The server generates a reset token (a signed JWT or a random string stored in the database), builds a reset URL containing that token (`/reset-password?token=<token>`), and sends it to the user's email via a transactional email service.
 
-2. **Reset** — the user clicks the link, lands on the `/reset-password` page, enters a new password, and submits. The frontend sends the token (read from the URL) and the new password to the API. The server validates the token — if the signature is valid and it hasn't expired — updates the password, and invalidates the token so it can't be reused.
+2. **Reset** — the user clicks the link, lands on the `/reset-password` page, enters a new password, and submits. The frontend sends the token (read from the URL) and the new password to the API. The server validates the token (signature, expiry, **and that it has not already been used**), updates the password, and invalidates the token so it can't be reused.
 
 3. **Confirmation** — the user is redirected to `/login` and can sign in with the new password.
 
 **Why always show a confirmation message?** If the form shows "email not found" for addresses that don't exist, an attacker can use that to enumerate which emails are registered. Always responding with "if that address is in our system, you'll receive a link" prevents this.
 
-**Token expiry matters.** A reset token should have a short lifespan — 15 to 60 minutes is standard. After it's used or after it expires, it should be unusable. If you use a JWT, encode the expiry in the payload. If you use a random string stored in the database, store the expiry timestamp alongside it.
+**Token expiry and reuse.** A reset token should last 15–60 minutes and must be unusable after one successful reset. A JWT with only an `exp` claim cannot be invalidated after use. Persist server-side state: a hashed token row, a used-token record, or a `password_changed_at` timestamp that rejects tokens issued before that moment. Encoding expiry in the JWT payload is not enough.
 
 ---
 
 ## 🌱 How to Start the Project
 
-This project continues inside your existing monorepo. Open a new branch: `git checkout -b feature/password-reset`.
+This project continues inside your existing monorepo. Open a new branch: `git switch -c feature/password-reset`.
 
 Before you start, sign up for one of the email services listed above and obtain an API key. Store it in your `.env` file. Make sure `.env` is in your `.gitignore` — never commit API keys.
 
@@ -81,7 +81,7 @@ Before you start, sign up for one of the email services listed above and obtain 
 ### Backend
 
 - [ ] `POST /auth/forgot-password` — accepts `{ email }`. If the user exists, generate a reset token with a short expiry (15–60 minutes) and send an email containing the reset link. Always return a `200` response regardless of whether the email was found.
-- [ ] `POST /auth/reset-password` — accepts `{ token, new_password }`. Validate the token (signature and expiry). If valid, hash the new password, update the user record, and invalidate the token. Return `400` for invalid or expired tokens.
+- [ ] `POST /auth/reset-password` — accepts `{ token, new_password }`. Validate the token (signature, expiry, and that it has not already been used). If valid, hash the new password, update the user record, and invalidate the token. Return `400` for invalid, expired, **or already-used** tokens.
 - [ ] `POST /auth/change-password` — accepts `{ current_password, new_password }`. Requires a valid session token in the `Authorization` header. Verify the current password before updating. Return `400` if the current password is wrong.
 - [ ] Integrate one transactional email service (Resend or SendGrid) to send the reset email. The email must include the reset link and be readable on mobile.
 - [ ] Store the email service API key in an environment variable. Document which variable name to set in your `README` or `.env.example`.

@@ -1,0 +1,46 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Secure Practices for AI Integration in Systems",
+    "es": "Prácticas Seguras en la Integración de IA en Sistemas"
+  },
+  "description": {
+    "en": "Inventory the company's AI systems, produce a NIST-mapped security report (Govern, Identify, Protect, Detect, Respond, Recover) grounded in CONTEXT, and remediate critical gaps — prompt injection defenses, secrets handling, rate limiting on model endpoints, agent decision logging, and human confirmation for irreversible actions.",
+    "es": "Inventaría los sistemas de IA de la compañía, elabora un informe de seguridad mapeado a NIST (Govern, Identify, Protect, Detect, Respond, Recover) anclado al CONTEXT, y remedia las brechas críticas — defensas contra prompt injection, manejo de secretos, rate limiting en endpoints que invocan modelos, logging de decisiones de agentes y confirmación humana para acciones irreversibles."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-cybersecurity-practices",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "python",
+    "security",
+    "nist",
+    "agents",
+    "prompt-injection",
+    "rate-limiting",
+    "observability"
+  ],
+  "coverImage": "ai-coding.svg",
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-cybersecurity-practices/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-cybersecurity-practices/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Secure Practices for AI Integration in Systems with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-practices #AIEngineering #LearnPack #4GeeksAcademy #python #security #nist",
+      "es": "Acabo de completar Prácticas Seguras en la Integración de IA en Sistemas con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-practices #AIEngineering #LearnPack #4GeeksAcademy #python #security #nist"
+    },
+    {
+      "en": "Built and shipped: Secure Practices for AI Integration in Systems. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-practices #AIEngineering #LearnPack #4GeeksAcademy #python #security #nist",
+      "es": "Construido y publicado: Prácticas Seguras en la Integración de IA en Sistemas. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-cybersecurity-practices #AIEngineering #LearnPack #4GeeksAcademy #python #security #nist"
+    }
+  ],
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3907"
+  }
+}

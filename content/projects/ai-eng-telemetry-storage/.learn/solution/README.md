@@ -207,7 +207,7 @@ Expected: `{ "received": 2, "stored": 1, "rejected": 1 }` and one new row in `te
 - [ ] Zero frontend diffs
 - [ ] Supabase rows show `event_type`, `timestamp`, `tags` for technical **and** business events
 - [ ] `tags` mapping preserves CONTEXT-specific dimensions from student's telemetry-plan.md
-- [ ] PR title `[W16D48] Telemetry Storage` with required evidence (mixed batch JSON + screenshot including tech + business)
+- [ ] PR title `feat: telemetry event storage` with required evidence (mixed batch JSON + screenshot including tech + business)
 
 ---
 

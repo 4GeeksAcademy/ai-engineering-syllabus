@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -56,10 +56,10 @@ In FastAPI, this flow is implemented as a dependency. You write a function that 
 This project is an extension of your existing transversal project API. **Do not create a new repository.** Work inside your company's current backend codebase.
 
 1. Open your existing project in Codespaces or clone it locally.
-2. Create a new branch for this feature: `git checkout -b feature/auth`.
+2. Create a new branch for this feature: `git switch -c feature/auth-api`.
 3. Install the required packages with `uv` (never use `pip install` or `pipenv`):
    ```bash
-   uv add "python-jose[cryptography]" "passlib[bcrypt]"
+   uv add "python-jose[cryptography]" "libpass[bcrypt]"
    ```
 
 ---
@@ -110,7 +110,7 @@ This project is an extension of your existing transversal project API. **Do not 
 
 ⚠️ **IMPORTANT:** Do not use session-based or cookie-based authentication. This project implements stateless JWT auth only.
 
-⚠️ **IMPORTANT:** Never store plain-text passwords. Use `passlib` with the `bcrypt` scheme for all password operations.
+⚠️ **IMPORTANT:** Never store plain-text passwords. Use `libpass` with the `bcrypt` scheme for all password operations. Install `libpass[bcrypt]` — not unmaintained `passlib`. The Python import stays `from passlib.hash import bcrypt` (libpass is a drop-in fork).
 
 ---
 
@@ -123,6 +123,7 @@ This project is an extension of your existing transversal project API. **Do not 
 - [ ] Login endpoint returns a valid, signed JWT token.
 - [ ] `get_current_user` dependency correctly decodes the token and identifies the user.
 - [ ] Protected routes return `401` when called without a valid token.
+- [ ] A user accessing or updating another user's profile or credentials receives `403 Forbidden` (not only `401` for missing/invalid token).
 - [ ] Token expiry and signing secret are read from environment variables, not hardcoded.
 - [ ] Auth routes are under `/auth`, user routes under `/users`, and profile routes under `/profiles` — clean, consistent structure.
 - [ ] At least **5 existing routes outside `/users` and `/auth`** require a valid token (in addition to the protected user/auth routes themselves).

@@ -1,12 +1,12 @@
 # CONTEXT — TrackFlow
 
-## Securing Agents: Harness and Guardrails
+## Milestone 8 · Part 2 · Securing Agents: Harness and Guardrails
 
 ---
 
 ## 1. Which agent you are securing
 
-The agent you need to protect is the **first-line CX agent** from **Valentina Cruz's, CX Manager** department. This agent already answers queries from B2B customers (brands that contract TrackFlow) and B2C customers (end recipients of parcels) using RAG over the semantic knowledge base of return policies, per-country SLAs, and incident procedures, and already knows how to call tools and consume the MCP Server built in previous sprints.
+The agent you need to protect is the **first-line CX agent** from **Valentina Cruz's, CX Manager** department. This agent already answers queries from B2B customers (brands that contract TrackFlow) and B2C customers (end recipients of parcels) using RAG over the semantic knowledge base of return policies, per-country SLAs, and incident procedures, and already knows how to call tools and consume the MCP Server built in previous sprints. This is the **same** agent you extended with memory in Milestone 8 Part 1 — keep that identity; do not invent a parallel agent for this sprint.
 
 This agent serves users from two countries (United States and Spain) and two very different customer types — which means the "company domain" isn't a single block of content, but varies depending on who's asking.
 

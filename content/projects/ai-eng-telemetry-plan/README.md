@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
@@ -107,7 +107,7 @@ There is no new server to spin up today. The deliverable is design documentation
 ## 📦 How to Submit
 
 1. Make sure the files `docs/telemetry/telemetry-plan.md` and `docs/telemetry/event-schemas.json` are in your fork.
-2. Create a Pull Request against the main branch of the monorepo with the title: `[W16D46] Telemetry Design Plan`.
+2. Create a Pull Request against the main branch of the monorepo with the title: `docs: telemetry design plan`.
 3. In the PR description, include:
    - The total number of events designed, and how many are mandatory (from CONTEXT) vs. identified by you
    - The categories covered (business, authentication, performance, errors, navigation, etc.)

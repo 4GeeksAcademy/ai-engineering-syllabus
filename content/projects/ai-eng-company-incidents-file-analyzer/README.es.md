@@ -130,7 +130,7 @@ services/
   api/                    ← backend con los endpoints de análisis y exportación
 
 uis/
-  web/                    ← interfaz web con carga de fichero y visualización
+  backoffice/             ← interfaz web con carga de fichero y visualización
 ```
 
 1. Haz push de tu rama con la estructura anterior y abre un Pull Request al repositorio original.

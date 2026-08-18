@@ -9,7 +9,7 @@ _These instructions are [available in English](./README.md)._
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -46,11 +46,12 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Ubícate en tu copia del [monorepo de la compañía](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) (si aún no tienes tu propio fork, créalo antes de continuar).
-2. Trabaja sobre el backend del Incidents Manager y del módulo de inventario que ya construiste en hitos anteriores — el MCP Server se apoya en esos servicios, no los reemplaza.
-3. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — nunca uses `pip install` directamente en este monorepo.
-4. Crea el servidor MCP dentro de la carpeta `mcps/` del monorepo (no bajo `services/`).
-5. Cablea OAuth con [MCP Auth](https://mcp-auth.dev/) (paquete Python `mcpauth`) — OAuth 2.1 / OIDC listo para usar en servidores MCP como resource server. **No** uses las helpers de auth integradas de FastMCP; usa MCP Auth para Protected Resource Metadata, validación de JWT bearer y scopes.
-6. Ubica el nodo del agente que hoy llama directamente al Incidents Manager — es el punto que vas a migrar para que consuma el nuevo MCP Server como cliente en lugar de llamar la API por fuera de él.
+2. Crea una rama nueva: `git switch -c feature/mcp-oauth-tools`.
+3. Trabaja sobre el backend del Incidents Manager y del módulo de inventario que ya construiste en hitos anteriores — el MCP Server se apoya en esos servicios, no los reemplaza.
+4. Instala las dependencias necesarias con `uv add` (por ejemplo, `fastmcp`, `mcpauth`, `langchain-mcp-adapters`) — nunca uses `pip install` directamente en este monorepo.
+5. Crea el servidor MCP dentro de la carpeta `mcps/` del monorepo (no bajo `services/`).
+6. Cablea OAuth con [MCP Auth](https://mcp-auth.dev/) (paquete Python `mcpauth`) — OAuth 2.1 / OIDC listo para usar en servidores MCP como resource server. **No** uses las helpers de auth integradas de FastMCP; usa MCP Auth para Protected Resource Metadata, validación de JWT bearer y scopes.
+7. Ubica el nodo del agente que hoy llama directamente al Incidents Manager — es el punto que vas a migrar para que consuma el nuevo MCP Server como cliente en lugar de llamar la API por fuera de él.
 
 ---
 

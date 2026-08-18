@@ -27,10 +27,10 @@ La Parte 1 ya le dijo al mostrador de subvenciones **qué** deben responder Prog
 1. **Assignment orchestrator** mapea workstreams de Parte 1 → generadores por departamento
 2. **Un generador por departamento** redacta su sección
 3. **Evaluadores en paralelo** sobre cada borrador: legibilidad, pertinencia, lineamientos
-4. **Fallo → regenerar** con feedback estructurado (no vibes libres)
-5. **Límite de iteraciones** — el ticket sigue vivo; sección `needs_human_review` si se agota
-6. **Synthesizer / handoff** empaqueta contenido + resultados de eval por departamento
-7. Estados del ticket: `drafting` → `under_evaluation` → listo para Parte 3
+4. **Fallo → regenerar** con feedback de `EvaluationResult` estructurado (no vibes libres)
+5. **Límite de iteraciones** — el ticket sigue vivo; sección `needs_human_review` si se agota; borrador sigue en el handoff
+6. **Synthesizer / handoff** empaqueta contenido + `EvaluationResult` por departamento
+7. Estados del ticket: `drafting` → `under_evaluation` → (`needs_human_review` si se agota) → listo para Parte 3
 
 ![Mapeo departamental y finalización del entregable](../departmental-mapping-deliverable-finalization.jpg)
 
@@ -90,4 +90,4 @@ La Parte 1 ya le dijo al mostrador de subvenciones **qué** deben responder Prog
 
 1. ¿Por qué la salida estructurada del evaluador gana a un solo “score: 7/10”?
 2. ¿Cómo escriben resultados los evaluadores en paralelo sin pisar el estado compartido?
-3. Límite agotado: ¿descartar sección, escalar, o enviar con warning?
+3. Límite agotado → `needs_human_review` + conservar borrador en el handoff: ¿cómo se lo haces visible a Ventas?

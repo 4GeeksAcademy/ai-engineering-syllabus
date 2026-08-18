@@ -15,7 +15,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 ---
 
-## 🎯 Challenge
+## 🎯 Your challenge
 
 A small local business — a coffee shop supply store with two physical locations — is losing money. Not because sales are down, but because no one on the team can answer a simple question at any given moment: _"Do we have enough of this product to cover the week?"_
 

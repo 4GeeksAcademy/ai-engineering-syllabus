@@ -15,7 +15,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ---
 
-## 🎯 Your Challenge
+## 🎯 Your challenge
 
 A fintech company is building a digital wallet product — think Wise, Revolut, or a similar service — and needs its data model designed before development begins. You've been assigned to map out the core entities the system will need to operate.
 

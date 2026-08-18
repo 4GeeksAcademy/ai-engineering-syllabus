@@ -17,7 +17,7 @@ Este proyecto produce un **reporte técnico**, no un reporte de negocio. Las mé
 
 ---
 
-## 🎯 El Reto
+## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
@@ -47,13 +47,13 @@ cargar (SQL) → refinar (Pandas) → convertir tipos → agrupar → agregar �
 
 ### Dónde va cada filtro
 
-| Criterio                                              | Capa                   | Cómo                                                                                                                                                 |
-| -------------------------------------------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Rango de `timestamp` (`start_date` / `end_date`)      | **SQL**                | `WHERE timestamp >= :start AND timestamp < :end` — límites de **inicio inclusivo, fin exclusivo** en UTC                                              |
-| `event_type` (uno o varios)                           | **SQL**                | `WHERE event_type = '...'` o `WHERE event_type IN (...)` — las métricas de tasa/ratio necesitan cargar todos los tipos relevantes en una sola consulta |
-| Dimensiones dentro de `tags` (almacén, endpoint, etc.) | **Pandas**              | Extraer de `tags`, descartar filas donde la dimensión es nula, luego `groupby` — segmenta **todos** los valores, no prefiltres a un solo valor        |
-| Flags derivados (`is_error`, tasas)                   | **Pandas**              | Construir columnas después de cargar, luego `.agg()`                                                                                                  |
-| Predicados opcionales sobre `tags` (ej. `endpoint = X`) | **Pandas** (por defecto) | Filtrar el DataFrame después de extraer el campo; el push-down `tags->>'...'` en SQL es optimización opcional, no obligatoria                         |
+| Criterio                                                | Capa                     | Cómo                                                                                                                                                   |
+| ------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Rango de `timestamp` (`start_date` / `end_date`)        | **SQL**                  | `WHERE timestamp >= :start AND timestamp < :end` — límites de **inicio inclusivo, fin exclusivo** en UTC                                               |
+| `event_type` (uno o varios)                             | **SQL**                  | `WHERE event_type = '...'` o `WHERE event_type IN (...)` — las métricas de tasa/ratio necesitan cargar todos los tipos relevantes en una sola consulta |
+| Dimensiones dentro de `tags` (almacén, endpoint, etc.)  | **Pandas**               | Extraer de `tags`, descartar filas donde la dimensión es nula, luego `groupby` — segmenta **todos** los valores, no prefiltres a un solo valor         |
+| Flags derivados (`is_error`, tasas)                     | **Pandas**               | Construir columnas después de cargar, luego `.agg()`                                                                                                   |
+| Predicados opcionales sobre `tags` (ej. `endpoint = X`) | **Pandas** (por defecto) | Filtrar el DataFrame después de extraer el campo; el push-down `tags->>'...'` en SQL es optimización opcional, no obligatoria                          |
 
 **Cargar (SQL)** — trae solo las filas que la métrica necesita. Nunca cargues toda la tabla `telemetry_events` en memoria.
 
@@ -107,6 +107,7 @@ MÉTRICA = AGREGACIÓN(columna) agrupada por DIMENSIÓN
   - Convertir `timestamp` a `datetime` con `pd.to_datetime(..., utc=True)` antes de cualquier operación de agrupación
   - Agrupar con `groupby()` por la dimensión temporal u operacional apropiada, y agregar con `.count()`, `.sum()`, o `.mean()`
   - Devolver el resultado como una lista de dicts serializable a JSON con `.reset_index().to_dict(orient='records')`
+
 - [ ] Cada función debe ser **independiente y libre de efectos secundarios** — llamarla dos veces con los mismos parámetros debe producir el mismo resultado.
 - [ ] No uses loops para calcular métricas — solo operaciones de Pandas (`.groupby()`, `.agg()`, `.count()`, `.sum()`, `.mean()`).
 
@@ -161,7 +162,7 @@ MÉTRICA = AGREGACIÓN(columna) agrupada por DIMENSIÓN
 ## 📦 Cómo Entregar
 
 1. Asegúrate de que los cambios estén en tu copia: `analysis.py` en `services/telemetry/` y el endpoint `GET /telemetry/report` en `services/`.
-2. Crea un Pull Request contra la rama principal del monorepo con el título: `[W17D49] Telemetry Report`.
+2. Crea un Pull Request contra la rama principal del monorepo con el título: `feat: telemetry report endpoint`.
 3. En la descripción del PR, incluye:
    - El nombre de las métricas implementadas y qué pregunta operacional responde cada una
    - Una muestra del JSON devuelto por `GET /telemetry/report` con datos reales

@@ -1,4 +1,4 @@
-# Milestone 5 — Backend: Inventory Management with ORM & Dual Database
+# Milestone — Backend: Inventory Management with ORM & Dual Database
 
 <!-- hide -->
 
@@ -15,11 +15,13 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ---
 
-## 🎯 The Challenge
+## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-You've already built the API and the authentication layer. Now the operations team has submitted an **RFP** to the technology unit: the company needs a centralised inventory management system, and it must be live before the next operational review.
+You've already built — or are expected to have — the API and the authentication layer under `services/`. If FastAPI + TinyDB auth (`User` / `get_current_user`) is not in your monorepo yet, complete the auth projects (or scaffold that layer) before starting this milestone — you extend that service here; you do not create a new one from scratch.
+
+Now the operations team has submitted an **RFP** to the technology unit: the company needs a centralised inventory management system, and it must be live before the next operational review.
 
 Your tech lead has translated that RFP into an architectural decision that shapes everything you build here: **authentication stays in TinyDB** (fast, local, document-based lookups), and **all business data — products, inbound orders, and outbound orders — moves to Supabase** (a hosted PostgreSQL database). Your FastAPI application will maintain two simultaneous database connections and must use each one deliberately: every request reaches the right store.
 
@@ -38,7 +40,7 @@ One pattern you must be aware of before writing any query: the **N+1 problem**. 
 ### Brief from your tech lead
 
 > > **From:** Tech Lead
-> > **Subject:** Milestone 5 — dual database architecture + inventory ORM
+> > **Subject:** Milestone — dual database architecture + inventory ORM
 > >
 > > The **PRD** is ready. Here is what the system must do:
 > >
@@ -55,17 +57,17 @@ One pattern you must be aware of before writing any query: the **N+1 problem**. 
 
 ## 🌱 How to Start the Project
 
-This milestone extends the FastAPI service already present in your monorepo. You will not create a new service — you will add the inventory layer to it.
+This milestone extends the FastAPI service in your monorepo. You will not create a new service — you will add the inventory layer to it.
 
 1. Open your existing repository (forked from `https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo`).
-2. Navigate to `services/` — this is where your FastAPI application lives.
+2. Navigate to `services/` — your FastAPI application with TinyDB auth should already live here. If it does not, stop and scaffold / finish auth first.
 3. Install new dependencies:
 
    ```bash
    uv add sqlmodel psycopg2-binary
    ```
 
-4. Add your Supabase connection string to `.env`. Your TinyDB configuration is already there — do not change it.
+4. Add your Supabase connection string to `.env`. Leave the existing TinyDB auth config untouched — do not change it.
 5. Read your **CONTEXT-company.md** before defining any model — entity names and field constraints are specified there.
 
 ### Supabase Connection Settings
@@ -88,17 +90,17 @@ In the Supabase dashboard (**Connect → Direct**), use **Transaction pooler** a
 
 ### ORM models — `models.py`
 
-- [ ] Define a `Product` model using `SQLModel, table=True`, with at minimum: `id`, `name`, `sku`, and any company-specific fields from your CONTEXT.md.
-- [ ] Define an `InboundOrder` model with: `id`, `product_id` (FK → Product), `quantity`, `created_at`, and `user_uuid` (string — references the TinyDB user; no FK, no user table replication).
-- [ ] Define an `OutboundOrder` model with: `id`, `product_id` (FK → Product), `quantity`, `created_at`, and `user_uuid`.
+- [ ] Define the **product-equivalent** entity from your CONTEXT.md (e.g. `Ingredient`, `SKU`, `Asset`, `MedicalSupply`) using `SQLModel, table=True`, with at minimum: `id`, `name`, `sku`, and any company-specific fields from CONTEXT.md.
+- [ ] Define the **inbound-equivalent** model (e.g. `IngredientEntry`, `StockEntry`) with: `id`, a foreign key to the product-equivalent entity (`ingredient_id` / `sku_id` / … as named in CONTEXT.md), `quantity`, `created_at`, `user_uuid` (string — references the TinyDB user; no FK, no user table replication), and any other CONTEXT-required fields.
+- [ ] Define the **outbound-equivalent** model (e.g. `IngredientExit`, `StockExit`) with the same FK pattern, plus `quantity`, `created_at`, `user_uuid`, and CONTEXT-required fields.
 - [ ] Call `SQLModel.metadata.create_all(engine)` on application startup to initialise the schema in Supabase.
 
   > ⚠️ `create_all()` is acceptable for development and learning contexts. In a production system, schema changes are always managed through migration files (e.g., Alembic) that keep a versioned history of every change. Never use `create_all()` against a shared or production database.
 
 ### Pydantic schemas — `schemas.py`
 
-- [ ] Define request and response schemas for Product, InboundOrder, and OutboundOrder as standalone Pydantic models — separate from the ORM models.
-- [ ] The Product response schema must include a `current_stock` field (computed, not stored).
+- [ ] Define request and response schemas for the product-, inbound-, and outbound-equivalent entities as standalone Pydantic models — separate from the ORM models. Use the names from CONTEXT.md.
+- [ ] The product-equivalent response schema must include a `current_stock` field (computed, not stored).
 - [ ] ORM models and Pydantic schemas must live in **separate files**. They are different classes, even if some fields overlap.
 
 ### Inventory router — `routers/inventory.py`
@@ -115,14 +117,20 @@ In the Supabase dashboard (**Connect → Direct**), use **Transaction pooler** a
 | `POST` | `/inventory/orders/outbound` | Register an outbound order (requires auth)        |
 | `GET`  | `/inventory/orders`          | List all orders with product data and `user_uuid` |
 
+> **Auth on GET:** order and product **writes** always require auth. Whether `GET` routes are public or authenticated follows your CONTEXT.md (e.g. HealthCore requires authenticated access on inventory routes).
+
 ### Business rules
 
-- [ ] `current_stock` is always computed as `SUM(inbound quantities) − SUM(outbound quantities)` for each product. It is never stored as a column that can be set directly.
-- [ ] A product starts with zero stock at creation and can only accumulate stock through inbound orders.
+- [ ] `current_stock` is always computed as `SUM(inbound quantities) − SUM(outbound quantities)` for each product-equivalent entity, **scoped by any partition key your CONTEXT.md defines** (e.g. warehouse). It is never stored as a column that can be set directly.
+- [ ] A product-equivalent entity starts with zero stock at creation and can only accumulate stock through inbound records.
 - [ ] Every order creation endpoint requires authentication. The authenticated user's UUID (from TinyDB) must be stored in the order's `user_uuid` field.
-- [ ] An outbound order that would result in negative stock must be rejected **before the order is persisted**, returning `HTTP 400` with a descriptive error message.
+- [ ] An outbound record that would result in negative stock (within the CONTEXT-defined scope) must be rejected **before the record is persisted**, returning `HTTP 400` with a descriptive error message.
 
 ⚠️ **IMPORTANT:** Entity names, field names, and domain-specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+
+### Seed data
+
+- [ ] Seed the inventory tables with the minimum records listed in your CONTEXT.md (product-equivalents, inbound, outbound) before the demo. Seeded stock must match net inbound − outbound.
 
 ---
 
@@ -130,14 +138,16 @@ In the Supabase dashboard (**Connect → Direct**), use **Transaction pooler** a
 
 - [ ] Two database connections are demonstrably present and used correctly: TinyDB for auth and user lookups; Supabase (SQLModel) for all inventory entities.
 - [ ] All inventory endpoints are grouped under `/inventory` via a dedicated `APIRouter`.
-- [ ] SQLModel ORM models correctly declare FK relationships: `InboundOrder.product_id` and `OutboundOrder.product_id` reference the `Product` table.
-- [ ] `current_stock` is computed from orders — no endpoint allows direct modification of a stock field on the Product.
-- [ ] An outbound order that exceeds available stock is rejected with `HTTP 400` before any write occurs.
+- [ ] SQLModel ORM models correctly declare FK relationships: inbound/outbound models reference the product-equivalent entity named in CONTEXT.md (not a generic `Product` unless CONTEXT.md says so).
+- [ ] `current_stock` is computed from orders — no endpoint allows direct modification of a stock field on the product-equivalent entity.
+- [ ] Stock calculation respects CONTEXT.md scoping (global vs per-partition / per-warehouse when required).
+- [ ] An outbound record that exceeds available stock (within that scope) is rejected with `HTTP 400` before any write occurs.
 - [ ] Every order stores the `user_uuid` of the authenticated creator (sourced from TinyDB).
 - [ ] ORM models (`models.py`) and Pydantic schemas (`schemas.py`) are in separate files and are structurally different — no endpoint returns a raw SQLModel object.
 - [ ] The SQLModel session is injected per request via `Depends()` — no global session exists in the codebase.
 - [ ] All connection parameters live in `.env`; `.env` is listed in `.gitignore`.
 - [ ] Entity names and field names match the student's CONTEXT.md specification.
+- [ ] Seed data from CONTEXT.md is present; `GET /inventory/products` reflects net stock from those seeds.
 
 ---
 

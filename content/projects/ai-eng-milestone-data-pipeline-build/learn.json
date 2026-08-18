@@ -1,8 +1,8 @@
 {
   "gitpod": true,
   "title": {
-    "en": "Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3)",
-    "es": "Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3)"
+    "en": "Milestone — Implementing a Resilient Business Performance Pipeline (Part 2 of 3)",
+    "es": "Hito — Pipeline de Desempeño de Negocio Resiliente (Parte 2 de 3)"
   },
   "description": {
     "en": "Build a resilient Prefect business-performance pipeline: implement extract-transform-load from telemetry_events into reporting.business_metrics, configure retries caching and partial-failure tolerance, ensure idempotent loads with run metadata, run via python data/pipelines/pipeline.py, and expose status + trigger endpoints in services/reporting/ — without touching GET /telemetry/report.",
@@ -22,21 +22,24 @@
     "fastapi",
     "backend-design"
   ],
-  "translations": ["es", "en"],
+  "translations": [
+    "es",
+    "en"
+  ],
   "projectType": "project",
   "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3687"
   },
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-data-pipeline-build/.learn/solution/README.md",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-data-pipeline-build/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Acabo de completar Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "I just completed Milestone — Implementing a Resilient Business Performance Pipeline (Part 2 of 3) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Acabo de completar Hito — Pipeline de Desempeño de Negocio Resiliente (Parte 2 de 3) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     },
     {
-      "en": "Built and shipped: Milestone 6 — Implementing a Resilient Business Performance Pipeline (2/3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
-      "es": "Construido y publicado: Hito 6 — Implementando un Pipeline de Desempeño de Negocio Resiliente (2/3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
+      "en": "Built and shipped: Milestone — Implementing a Resilient Business Performance Pipeline (Part 2 of 3). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl",
+      "es": "Construido y publicado: Hito — Pipeline de Desempeño de Negocio Resiliente (Parte 2 de 3). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-data-pipeline-build #AIEngineering #LearnPack #4GeeksAcademy #architecture #dataengineering #etl"
     }
   ]
 }

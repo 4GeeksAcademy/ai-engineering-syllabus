@@ -142,4 +142,4 @@ Evals should inspect **stored traces** or deterministic graph outputs — not re
 - [ ] Separate tools for tickets and inventory (if inventory built).
 - [ ] Trace distinguishes sources and order.
 - [ ] ≥ 2 new routing evals in `tests/pipelines/`.
-- [ ] PR labeled `part-2-external-tools` / `parte-2-tools-externas` with traces and eval output.
+- [ ] PR labeled `langgraph-external-tools` with traces and eval output.

@@ -16,11 +16,11 @@ Today, putting together an institutional proposal takes **3 weeks on average**, 
 
 Use exactly these department identifiers:
 
-| `department_id` | Department                          | Owner                | What it contributes to the proposal                                                     |
-| ---------------- | -------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
-| `revenue`            | Revenue Cycle                            | Tom Callahan               | Financial terms, currency, payment structure. Owns the ticket.                                |
-| `clinical`            | Clinical Operations                       | Dr. Marcus Reid             | Clinical feasibility: which clinics and staff capacity can cover the contract                |
-| `compliance`          | Compliance and Data Governance             | Claire Whitfield             | Regulatory review (HIPAA/UK GDPR), BAA or DPA clauses depending on the client's country      |
+| `department_id` | Department                     | Owner            | What it contributes to the proposal                                                     |
+| --------------- | ------------------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `revenue`       | Revenue Cycle                  | Tom Callahan     | Financial terms, currency, payment structure. Owns the ticket.                          |
+| `clinical`      | Clinical Operations            | Dr. Marcus Reid  | Clinical feasibility: which clinics and staff capacity can cover the contract           |
+| `compliance`    | Compliance and Data Governance | Claire Whitfield | Regulatory review (HIPAA/UK GDPR), BAA or DPA clauses depending on the client's country |
 
 `compliance` is **mandatory on every RFP, without exception** — no matter how simple the contract looks, no institutional proposal can close without Compliance's approval in Part 3.
 
@@ -30,10 +30,34 @@ RFPs arrive as PDFs and typically include: institutional client name and country
 
 ### 2.3 Suggested Entities for Your State
 
-- **Ticket**: `ticket_id`, `rfp_id`, `status` (`analyzing`, `waiting_for_approval`, `drafting`, `under_evaluation`, `done`, `discarded`)
-- **RFP metadata**: `client_name`, `client_country` (US/UK), `program_type`, `covered_population`, `deadline`, `budget_range`, `departments_needed` — **never** an individual patient data field
+Persist **Ticket**, **RFP metadata**, and **DepartmentSection** (at least `key_aspects` in Part 1; drafts/evals/approvals in later parts) in **PostgreSQL (Supabase)** via your existing SQLModel/DB layer. TinyDB or JSON files are not the source of truth for these entities. **Never** store patient identifiers or PHI in any of these tables.
+
+- **Ticket**: `ticket_id`, `rfp_id`, `status`, `raw_pdf_path`, `created_at`, `updated_at`
+- **RFP metadata**: `client_name`, `client_country` (US/UK), `program_type`, `covered_population`, `deadline`, `budget_range`, `departments_needed`, readability metrics — **never** an individual patient data field
 - **DepartmentSection**: `department_id`, `key_aspects`, `draft_content`, `evaluation_results` (includes a `contains_phi: bool` flag the compliance evaluator must be able to set), `approval_status`, `approver`, `approved_at`
 - **FinalDocument**: `ticket_id`, `sections`, `currency`, `generated_at`
+
+**Ticket status by part** (same ticket across Parts 1–3):
+
+| Status                 | Part | When                                           |
+| ---------------------- | ---- | ---------------------------------------------- |
+| `analyzing`            | 1    | Upload accepted; pipeline running              |
+| `discarded`            | 1    | Classifier rejected the document               |
+| `intake_complete`      | 1    | Synthesizer done; Sales can read key aspects   |
+| `drafting`             | 2    | Generators writing proposal sections           |
+| `under_evaluation`     | 2    | Parallel evaluators / generator-evaluator loop |
+| `needs_human_review`   | 2    | Iteration limit exhausted; last draft + EvaluationResult hand off to Part 3 |
+| `waiting_for_approval` | 3    | Human-in-the-loop pause per department         |
+| `done`                 | 3    | Final document generated                       |
+
+Workers receive **shared metadata + department-relevant extracts** only. If covered-population / volume figures are missing, record open questions — **never invent** headcount or PHI.
+
+### 2.4 Monorepo layout
+
+- **HTTP**: extend the **existing** backend under `services/` — no new API process.
+- **Pipeline / graph**: `data/pipelines/rfp_intake/` (dedicated graph; do not mix into the CX agent graph). Routers import and trigger; they do not own agent logic.
+- **Standalone CLIs**: `scripts/` if needed.
+- **Uploaded PDFs**: provided via `uis/backoffice`; stored under `data/raw/` as a runtime artifact of intake (still no PHI in paths, logs, or DB columns).
 
 ## 3. Business Metrics and KPIs
 
@@ -44,12 +68,12 @@ RFPs arrive as PDFs and typically include: institutional client name and country
 
 ## 4. Seed Data Instructions
 
-Create at least 4 test documents in `data/raw/`:
+Use the ready-made PDFs in [`rfp-requests/healthcore/`](./rfp-requests/healthcore/) as **test uploads through the UI**. The intake process stores each uploaded PDF under `data/raw/` (do not treat curriculum seed PDFs as pre-seeded inventory in the repo). Formal and informal RFPs must both be **accepted and processed**; the invalid document must be **rejected**.
 
-1. **Valid RFP (US):** *Meridian Manufacturing* (Austin, 800 employees) requests an on-site occupational health and wellness program, a 12-month contract. Deadline: 20 days. Triggers `revenue`, `clinical`, and `compliance` (with a BAA clause, since it's US-based). Currency: USD.
-2. **Valid RFP (UK):** *Thames Valley University* requests a referral network partnership with a satellite clinic for its students. Deadline: 25 days. Triggers `revenue`, `clinical`, and `compliance` (with a DPA clause referencing UK GDPR, since it's UK-based). Currency: GBP.
-3. **Document that is NOT an RFP:** an email from a software vendor pitching a new electronic health record system to HealthCore. It's not a request from an institutional client. Your classifier should discard it.
-4. **RFP with improper PHI (critical case):** an "RFP" from an employer that attaches, as an example of a previous case with another provider, a clinical case summary including a patient's name and diagnosis. Your flow must **never** let that content pass through to generator agents, logs, or the ticket interface as-is — it must detect and block (or redact) it before it advances, and flag it explicitly for human review by Compliance.
+1. **`CONTEXT-healthcore-request-1.pdf` — formal RFP (accept):** _Meridian Manufacturing_ (Austin, 800 employees), on-site occupational health and wellness, 12-month contract. Triggers `revenue`, `clinical`, and `compliance` (BAA). Currency: USD.
+2. **`CONTEXT-healthcore-request-2.pdf` — informal RFP (accept):** _Thames Valley University_ email requesting a referral network partnership with a satellite clinic. Triggers `revenue`, `clinical`, and `compliance` (DPA / UK GDPR). Currency: GBP.
+3. **`CONTEXT-healthcore-request-3.pdf` — invalid (reject):** vendor pitch for an EHR system — not a client RFP. Classifier must discard it.
+4. **RFP with improper PHI (critical case — create yourself):** an "RFP" that attaches a clinical case summary with a patient's name and diagnosis. Flow must **never** pass that content as-is to generators, logs, or the ticket UI — detect, block/redact, and flag for Compliance human review.
 
 ## 5. Business Constraints (Guidelines for the Compliance Evaluator)
 
@@ -63,4 +87,16 @@ Create at least 4 test documents in `data/raw/`:
 
 - **Part 1:** the ticket correctly identifies whether a document is a HealthCore RFP, extracts metadata without ever including patient data, detects and flags any PHI content, and splits the analysis across `revenue`, `clinical`, and `compliance` (the latter always active).
 - **Part 2:** each department generates its section and goes through evaluation for readability, relevance, and compliance — including the absence-of-PHI check as a mandatory evaluation criterion.
-- **Part 3:** each department approves its section independently without blocking the others; `compliance` must always approve before closing; the final document is generated only once every required approval is complete and no section contains PHI.
+- **Part 3:** each department's named owner (§2.1) approves independently without blocking the others; `compliance` must always approve before closing; the final document is generated only once every required approval is complete and no section contains PHI. Do **not** invent further hierarchy beyond mandatory Compliance.
+
+## 7. Part 3 — Conflict Triggers and Fixed Arbiter
+
+Arbitration must be a dedicated graph node driven by **detectable contradictions in structured state**, not agents negotiating among themselves.
+
+| Trigger id               | When it fires                                                                                            | Fixed arbiter (not an LLM)                                                  | Resolution rule                                                                                            |
+| ------------------------ | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `phi-detected`           | Any section or artifact has `contains_phi: true` or otherwise includes patient identifiers               | Claire Whitfield (`compliance`)                                             | Hard stop: redact/block content, `request_changes` or discard path; synthesizer must not run               |
+| `baa-dpa-mismatch`       | US client without BAA clause, or UK client without DPA/UK GDPR clause, or wrong instrument for country   | Claire Whitfield                                                            | Force `request_changes` on `compliance` (and any section embedding the wrong clause) until country-correct |
+| `capacity-vs-population` | `clinical` committed clinic/staff capacity cannot cover `revenue`'s covered-population / contract volume | Tom Callahan (Revenue; ticket owner) after Compliance confirms no PHI issue | Reduce covered population or add sites; force revision on `revenue` and/or `clinical`                      |
+
+Wire these trigger ids into your arbitration node. Agents may **surface** a conflict; they must not **resolve** it by free-form consensus. Compliance always wins on PHI / regulatory triggers.

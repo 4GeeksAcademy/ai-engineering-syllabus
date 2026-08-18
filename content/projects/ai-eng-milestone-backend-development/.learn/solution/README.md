@@ -4,7 +4,7 @@ This README is the canonical reference for **"Milestone 5 — Backend: Inventory
 
 ## Alignment with company context
 
-Entity names, extra fields, validation rules, and seed data must follow the student's assigned **CONTEXT-company.md** under `content/contexts/05-backend-development/`. The README uses generic names (`Product`, `InboundOrder`, `OutboundOrder`); each CONTEXT file maps those to company-specific models (e.g. TrackFlow uses `SKU`, `StockEntry`, `StockExit` with `warehouse`, `client_name`, `exit_type`, etc.). A generic implementation that ignores CONTEXT will not pass evaluation.
+Entity names, extra fields, validation rules, and seed data must follow the student's assigned **CONTEXT-company.md** under `content/contexts/05-backend-development/`. The project README already uses **product-/inbound-/outbound-equivalent** language (`Ingredient`, `SKU`, `Asset`, `MedicalSupply`, …). Snippets below use placeholders like `<ProductEquivalent>` — replace them with CONTEXT names. A generic `Product` implementation that ignores CONTEXT will not pass evaluation.
 
 ## Solution architecture
 
@@ -13,9 +13,9 @@ Entity names, extra fields, validation rules, and seed data must follow the stud
 │                     FastAPI application                     │
 ├──────────────────────────┬──────────────────────────────────┤
 │  TinyDB (existing)       │  Supabase / PostgreSQL (new)     │
-│  • users                 │  • Product / SKU                 │
-│  • auth tokens           │  • InboundOrder / StockEntry     │
-│  • get_current_user()    │  • OutboundOrder / StockExit    │
+│  • users                 │  • <ProductEquivalent>           │
+│  • auth tokens           │  • <InboundEquivalent>           │
+│  • get_current_user()    │  • <OutboundEquivalent>          │
 └──────────────────────────┴──────────────────────────────────┘
          ▲                              ▲
          │ JWT / session lookup         │ SQLModel session per request
@@ -93,26 +93,28 @@ Acceptable for learning; production would use Alembic migrations instead.
 
 Minimum models (names may differ per CONTEXT):
 
-| README name     | Typical CONTEXT alias | Required fields (minimum)                                      |
-| --------------- | --------------------- | -------------------------------------------------------------- |
-| `Product`       | `SKU`, `Item`, etc.   | `id`, `name`, `sku` + company-specific fields from CONTEXT     |
-| `InboundOrder`  | `StockEntry`, etc.    | `id`, `product_id` (FK), `quantity`, `created_at`, `user_uuid` |
-| `OutboundOrder` | `StockExit`, etc.     | `id`, `product_id` (FK), `quantity`, `created_at`, `user_uuid` |
+| README name            | Typical CONTEXT alias | Required fields (minimum)                                          |
+| ---------------------- | --------------------- | ------------------------------------------------------------------ |
+| Placeholder (replace)  | CONTEXT examples      | Minimum fields                                                     |
+| ---------------------  | --------------------- | ------------------------------------------------------------------ |
+| `<ProductEquivalent>`  | `SKU`, `Ingredient`…  | `id`, `name`, `sku` + company-specific fields from CONTEXT         |
+| `<InboundEquivalent>`  | `StockEntry`, …       | `id`, `<fk>_id`, `quantity`, `created_at`, `user_uuid`             |
+| `<OutboundEquivalent>` | `StockExit`, …        | `id`, `<fk>_id`, `quantity`, `created_at`, `user_uuid`             |
 
 Rules:
 
 - Use `SQLModel, table=True` — not raw SQLAlchemy declarative models.
-- Declare FK with `Field(foreign_key="product.id")` (adjust table name to match model).
+- Declare FK with `Field(foreign_key="<product_table>.id")` (CONTEXT table name).
 - `user_uuid` is `str`, no FK to a users table in Supabase.
 - **Do not** add a stored `current_stock` column on the product table.
 
 ## Pydantic schemas (`schemas.py`)
 
-Separate request and response schemas from ORM models:
+Separate request and response schemas from ORM models — use CONTEXT names:
 
-- `ProductCreate`, `ProductRead` (with computed `current_stock`)
-- `InboundOrderCreate`, `InboundOrderRead`
-- `OutboundOrderCreate`, `OutboundOrderRead`
+- `<Product>Create`, `<Product>Read` (with computed `current_stock`)
+- `<Inbound>Create`, `<Inbound>Read`
+- `<Outbound>Create`, `<Outbound>Read`
 - Combined list item for `GET /inventory/orders` (order + nested product summary + `user_uuid`)
 
 Never return a raw SQLModel instance from an endpoint — map ORM → schema explicitly.
@@ -121,14 +123,14 @@ Never return a raw SQLModel instance from an endpoint — map ORM → schema exp
 
 Register with `prefix="/inventory"` and include in `main.py`.
 
-| Method | Path                         | Auth     | Description                                       |
-| ------ | ---------------------------- | -------- | ------------------------------------------------- |
-| `GET`  | `/inventory/products`        | Public   | List products with computed `current_stock`       |
-| `POST` | `/inventory/products`        | Required | Create product (starts at zero stock)             |
-| `GET`  | `/inventory/products/{id}`   | Public   | Single product with `current_stock`               |
-| `POST` | `/inventory/orders/inbound`  | Required | Register inbound order; increases stock           |
-| `POST` | `/inventory/orders/outbound` | Required | Register outbound order; decreases stock          |
-| `GET`  | `/inventory/orders`          | Public   | List all orders with product data and `user_uuid` |
+| Method | Path                         | Auth                                | Description                                       |
+| ------ | ---------------------------- | ----------------------------------- | ------------------------------------------------- |
+| `GET`  | `/inventory/products`        | Public unless CONTEXT requires auth | List products with computed `current_stock`       |
+| `POST` | `/inventory/products`        | Required                            | Create product (starts at zero stock)             |
+| `GET`  | `/inventory/products/{id}`   | Public unless CONTEXT requires auth | Single product with `current_stock`               |
+| `POST` | `/inventory/orders/inbound`  | Required                            | Register inbound order; increases stock           |
+| `POST` | `/inventory/orders/outbound` | Required                            | Register outbound order; decreases stock          |
+| `GET`  | `/inventory/orders`          | Public unless CONTEXT requires auth | List all orders with product data and `user_uuid` |
 
 Protected routes use the existing `get_current_user` dependency from prior milestones. Persist `current_user.uuid` (or equivalent) into `user_uuid` on order creation.
 
@@ -137,17 +139,21 @@ Protected routes use the existing `get_current_user` dependency from prior miles
 `current_stock` is **always computed**, never stored:
 
 ```python
-def compute_stock(session: Session, product_id: int) -> int:
+def compute_stock(session: Session, product_id: int) -> float:
+    # Use CONTEXT entity names (<InboundEquivalent>, <OutboundEquivalent>, <fk>_id)
+    # and numeric type from CONTEXT (int or float — e.g. Brasaland quantities are float).
     inbound = session.exec(
-        select(func.coalesce(func.sum(InboundOrder.quantity), 0))
-        .where(InboundOrder.product_id == product_id)
+        select(func.coalesce(func.sum(InboundEquivalent.quantity), 0))
+        .where(InboundEquivalent.product_fk_id == product_id)
     ).one()
     outbound = session.exec(
-        select(func.coalesce(func.sum(OutboundOrder.quantity), 0))
-        .where(OutboundOrder.product_id == product_id)
+        select(func.coalesce(func.sum(OutboundEquivalent.quantity), 0))
+        .where(OutboundEquivalent.product_fk_id == product_id)
     ).one()
     return inbound - outbound
 ```
+
+> Replace `InboundEquivalent` / `OutboundEquivalent` / `product_fk_id` with CONTEXT names (`StockEntry` / `sku_id`, `IngredientEntry` / `ingredient_id`, …).
 
 When CONTEXT requires per-warehouse stock (e.g. TrackFlow), filter both sums by `warehouse` before subtracting.
 
@@ -223,14 +229,16 @@ For `GET /inventory/orders`, eager-load product data in one query (e.g. `selecti
 
 - [ ] Two DB connections active: TinyDB for auth, Supabase/SQLModel for inventory.
 - [ ] All inventory routes under `/inventory` via dedicated `APIRouter`.
-- [ ] SQLModel FK: inbound/outbound `product_id` → product table.
+- [ ] SQLModel FK: inbound/outbound → product-equivalent entity named in CONTEXT.md.
 - [ ] `current_stock` computed from orders — no direct stock mutation endpoint.
+- [ ] Stock calculation respects CONTEXT.md scoping (global vs per-partition / per-warehouse).
 - [ ] Outbound exceeding stock returns `400` **before** any write.
 - [ ] Each order stores authenticated `user_uuid` from TinyDB.
 - [ ] `models.py` and `schemas.py` are separate; endpoints return Pydantic schemas only.
 - [ ] `get_db` injected per request; no global session.
 - [ ] Connection strings in `.env`; `.env` in `.gitignore`.
 - [ ] Entity and field names match the student's CONTEXT.md.
+- [ ] CONTEXT.md seed data is present; `GET /inventory/products` reflects net stock from those seeds.
 
 ## Key implementation decisions
 
