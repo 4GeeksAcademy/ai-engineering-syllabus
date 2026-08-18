@@ -47,7 +47,8 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 13. **[Incidents file analysis](./incidents-file-analysis)** — CSV schemas, categories, and expected analyzer output.
 14. **[Centralized incident manager](./centralized-incident-manager)** — Live incident manager fields, branches, and seed values.
 15. **[Roles and permissions](./roles-permissions)** — Exact role codes, departments, capability matrix, and seed users per company (`CONTEXT-<company>.en.md` / `.es.md`).
-16. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.
+16. **[Federated authentication](./federated-authentication)** — Required IdP (Google / Microsoft / LinkedIn), linking audience, OAuth env, seed users, and audit events per company.
+17. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.
 
 ## Contributors
 

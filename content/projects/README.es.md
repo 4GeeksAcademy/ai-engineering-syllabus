@@ -228,6 +228,9 @@ No forman parte de la secuencia del temario. Se mantienen aquí como referencia 
 - **[Plataforma – Roles y Permisos](./ai-eng-roles-permissions)**  
   Ejes independientes de rol y departamento en la plataforma de la empresa: 403 centralizado, datos con alcance departamental y vista Admin solo para roles/departamentos.
 
+- **[Plataforma – Autenticación Federada](./ai-eng-federated-authentication)**  
+  Vincular Google / Microsoft / LinkedIn solo desde un perfil existente: el login federado nunca crea cuentas; OAuth `state` + `redirect_uri`; auditar intentos rechazados.
+
 ---
 
 Cada proyecto tiene instrucciones detalladas en su carpeta (`README.md` y, si existe, `README.es.md`). Para empezar, abre la carpeta del proyecto y sigue el README.

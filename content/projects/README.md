@@ -228,6 +228,9 @@ Not part of the syllabus sequence. Kept here for reference or optional use.
 - **[Platform – Roles and Permissions](./ai-eng-roles-permissions)**  
   Independent role and department axes on the company platform: centralized 403 enforcement, department-scoped data, and an Admin-only roles/departments view.
 
+- **[Platform – Federated Authentication](./ai-eng-federated-authentication)**  
+  Link Google / Microsoft / LinkedIn from an existing profile only: federated login never creates accounts; OAuth `state` + `redirect_uri`; audit rejected attempts.
+
 ---
 
 Each project has detailed instructions in its folder (`README.md` and, if present, `README.es.md`). To get started, open the project folder and follow the README.
