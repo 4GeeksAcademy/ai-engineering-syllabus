@@ -48,7 +48,8 @@ _These instructions are [available in English](./README.md)_.
 4. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
 5. **[Roles y permisos](./roles-permissions)** — Códigos de rol, departamentos, matriz de capacidades y usuarios semilla por compañía (`CONTEXT-<compañía>.en.md` / `.es.md`).
 6. **[Autenticación federada](./federated-authentication)** — IdP obligatorio (Google / Microsoft / LinkedIn), audiencia de vinculación, env OAuth, usuarios semilla y eventos de auditoría por compañía.
-7. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos (`00-general-contexts/<compañía>/`) y reglas de eval del Hito 7 por compañía.
+7. **[Registro de auditoría](./audit-log)** — Inventario de eventos críticos, reglas append-only, alcance de consulta por rol/departamento y entradas semilla por compañía.
+8. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos (`00-general-contexts/<compañía>/`) y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 
