@@ -1,3 +1,5 @@
+# Plataforma – Registro de Auditoría
+
 <!-- hide -->
 
 By [@4geeksacademy](https://github.com/4geeksacademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
@@ -12,8 +14,6 @@ _These instructions are [available in English](./README.md)._
 **Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[CONTEXT-audit-log.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/audit-log)** antes de escribir una sola línea de código — ahí están los eventos críticos de tu empresa y quién debe poder consultarlos.
 
 ---
-
-# Plataforma – Registro de Auditoría
 
 ## 🎯 El Reto
 

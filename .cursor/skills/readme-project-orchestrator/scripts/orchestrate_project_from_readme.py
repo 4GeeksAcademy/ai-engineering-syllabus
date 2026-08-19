@@ -74,6 +74,32 @@ def first_heading(markdown: str) -> str:
     return "Project"
 
 
+def normalize_title_first_line(markdown: str) -> str:
+    """Move the first H1 to line 1 (syllabus convention)."""
+    lines = markdown.splitlines()
+    title_index: int | None = None
+    title_line: str | None = None
+    for index, line in enumerate(lines):
+        clean = line.strip()
+        if clean.startswith("# "):
+            title_index = index
+            title_line = clean
+            break
+    if title_index is None or title_line is None:
+        return markdown
+    if title_index == 0 and lines[0].strip() == title_line:
+        return markdown
+
+    remaining = [line for index, line in enumerate(
+        lines) if index != title_index]
+    while remaining and not remaining[0].strip():
+        remaining.pop(0)
+    body = "\n".join(remaining)
+    if body:
+        return f"{title_line}\n\n{body}"
+    return f"{title_line}\n"
+
+
 def build_fallback_description(title: str, language: str) -> str:
     if language == "es":
         return f"Completa el proyecto {title} siguiendo las instrucciones del README."
@@ -229,7 +255,7 @@ def main() -> int:
     solution_dir.mkdir(parents=True, exist_ok=True)
 
     source_name = source_readme.name.lower()
-    source_content = read_text(source_readme)
+    source_content = normalize_title_first_line(read_text(source_readme))
 
     if source_name.startswith("readme.es"):
         write_text(target_dir / "README.es.md", source_content)
@@ -237,7 +263,10 @@ def main() -> int:
         write_text(target_dir / "README.md", source_content)
 
     if source_readme_es and source_readme_es.exists():
-        write_text(target_dir / "README.es.md", read_text(source_readme_es))
+        write_text(
+            target_dir / "README.es.md",
+            normalize_title_first_line(read_text(source_readme_es)),
+        )
 
     if not (target_dir / "README.md").exists():
         # Fallback only; intended to be replaced by proper translation workflow.

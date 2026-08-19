@@ -1,3 +1,5 @@
+# Platform – Audit Log
+
 <!-- hide -->
 
 By [@4geeksacademy](https://github.com/4geeksacademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
@@ -12,8 +14,6 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 **Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[CONTEXT-audit-log.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/audit-log)** before writing any code — that's where your company's critical events and who should be able to query them live.
 
 ---
-
-# Platform – Audit Log
 
 ## 🎯 The Challenge
 

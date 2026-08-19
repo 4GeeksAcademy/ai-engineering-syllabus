@@ -1,3 +1,5 @@
+# Plataforma – Endurecimiento de Seguridad
+
 <!-- hide -->
 
 By [@4geeksacademy](https://github.com/4geeksacademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
@@ -10,8 +12,6 @@ _These instructions are [available in English](./README.md)._
 <!-- endhide -->
 
 ---
-
-# Plataforma – Endurecimiento de Seguridad
 
 ## 🎯 El Reto
 

@@ -231,6 +231,15 @@ Not part of the syllabus sequence. Kept here for reference or optional use.
 - **[Platform – Federated Authentication](./ai-eng-federated-authentication)**  
   Link Google / Microsoft / LinkedIn from an existing profile only: federated login never creates accounts; OAuth `state` + `redirect_uri`; audit rejected attempts.
 
+- **[Platform – Audit Log](./ai-eng-audit-log)**  
+  Append-only auditable event trail with tamper evidence, process-vs-human attribution, and role/department-scoped querying.
+
+- **[Platform – Asynchronous Processing](./ai-eng-async-processing)**  
+  Move one external-provider operation off the request cycle: worker queue, exponential backoff, DLQ, idempotency keys, and queryable task status.
+
+- **[Platform – Security Hardening](./ai-eng-security-hardening)**  
+  Guided OWASP audit on your monorepo app: ≥3 real findings with before/after proof, rate limits on sensitive endpoints, and secrets rotation documentation.
+
 ---
 
 Each project has detailed instructions in its folder (`README.md` and, if present, `README.es.md`). To get started, open the project folder and follow the README.

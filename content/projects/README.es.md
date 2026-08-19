@@ -231,6 +231,15 @@ No forman parte de la secuencia del temario. Se mantienen aquí como referencia 
 - **[Plataforma – Autenticación Federada](./ai-eng-federated-authentication)**  
   Vincular Google / Microsoft / LinkedIn solo desde un perfil existente: el login federado nunca crea cuentas; OAuth `state` + `redirect_uri`; auditar intentos rechazados.
 
+- **[Plataforma – Registro de Auditoría](./ai-eng-audit-log)**  
+  Rastro de eventos auditable append-only con evidencia de alteración, atribución proceso-vs-humano y consulta con alcance por rol/departamento.
+
+- **[Plataforma – Procesamiento Asíncrono](./ai-eng-async-processing)**  
+  Saca una operación con proveedor externo del ciclo request: cola + worker, backoff exponencial, DLQ, claves de idempotencia y estado consultable.
+
+- **[Plataforma – Endurecimiento de Seguridad](./ai-eng-security-hardening)**  
+  Auditoría OWASP guiada sobre tu app del monorepo: ≥3 hallazgos reales con prueba antes/después, rate limits en endpoints sensibles y documentación de rotación de secretos.
+
 ---
 
 Cada proyecto tiene instrucciones detalladas en su carpeta (`README.md` y, si existe, `README.es.md`). Para empezar, abre la carpeta del proyecto y sigue el README.
