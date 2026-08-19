@@ -1,0 +1,41 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Platform – Asynchronous Processing",
+    "es": "Plataforma – Procesamiento Asíncrono"
+  },
+  "description": {
+    "en": "Complete the Platform – Asynchronous Processing project following the README instructions.",
+    "es": "Completa el proyecto Plataforma – Procesamiento Asíncrono siguiendo las instrucciones del README."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-async-processing",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "celery",
+    "fastapi",
+    "redis",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-async-processing/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-async-processing/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Platform – Asynchronous Processing with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-async-processing #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #celery",
+      "es": "Acabo de completar Plataforma – Procesamiento Asíncrono con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-async-processing #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #celery"
+    },
+    {
+      "en": "Built and shipped: Platform – Asynchronous Processing. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-async-processing #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #celery",
+      "es": "Construido y publicado: Plataforma – Procesamiento Asíncrono. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-async-processing #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #celery"
+    }
+  ]
+}
