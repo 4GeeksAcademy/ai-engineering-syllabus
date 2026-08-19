@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 Your CTO opens a **ticket** after an external provider (a notification gateway, a third-party service, whatever your system already integrates with) went down for a few minutes. During that time, several operations that depended on that provider simply failed and were lost — nobody found out until a customer asked why they never received a confirmation.
 
-> *"I can't keep having operations that depend on an external service run inside the same request-response cycle as the user. If that service is slow or fails, I want the operation to retry on its own, without getting lost and without the user noticing anything. And if after several attempts it's still failing, I want to know — I don't want it to disappear silently."*
+> _"I can't keep having operations that depend on an external service run inside the same request-response cycle as the user. If that service is slow or fails, I want the operation to retry on its own, without getting lost and without the user noticing anything. And if after several attempts it's still failing, I want to know — I don't want it to disappear silently."_
 >
 > — CTO
 

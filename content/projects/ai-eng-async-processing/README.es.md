@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 Tu CTO abre un **ticket** después de que un proveedor externo (pasarela de notificación, servicio de terceros, lo que tu sistema ya integre) tuvo una caída de unos minutos. Durante ese tiempo, varias operaciones que dependían de ese proveedor simplemente fallaron y se perdieron — nadie se enteró hasta que un cliente preguntó por qué nunca recibió una confirmación.
 
-> *"No puedo seguir teniendo operaciones que dependen de un servicio externo ejecutándose dentro del mismo ciclo de petición-respuesta del usuario. Si ese servicio tarda o falla, quiero que la operación se reintente sola, sin perderse y sin que el usuario tenga que notar nada. Y si después de varios intentos sigue fallando, quiero saberlo — no quiero que desaparezca en silencio."*
+> _"No puedo seguir teniendo operaciones que dependen de un servicio externo ejecutándose dentro del mismo ciclo de petición-respuesta del usuario. Si ese servicio tarda o falla, quiero que la operación se reintente sola, sin perderse y sin que el usuario tenga que notar nada. Y si después de varios intentos sigue fallando, quiero saberlo — no quiero que desaparezca en silencio."_
 >
 > — CTO
 

@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 Antes de exponer cualquier superficie nueva de cara al público, tu CTO exige una auditoría de seguridad sobre lo que ya existe. Te lo plantea como un **ticket** de prioridad bloqueante: nada nuevo se despliega hasta que esto quede resuelto.
 
-> *"No voy a autorizar que expongamos más superficie pública hasta que sepamos qué vulnerabilidades tiene lo que ya construimos. Quiero que audites la aplicación como lo haría un atacante externo, documentes qué encontraste, lo corrijas, y me entregues evidencia de que estaba roto y ahora no lo está. No me sirve un checklist marcado de memoria — quiero encontrar problemas reales."*
+> _"No voy a autorizar que expongamos más superficie pública hasta que sepamos qué vulnerabilidades tiene lo que ya construimos. Quiero que audites la aplicación como lo haría un atacante externo, documentes qué encontraste, lo corrijas, y me entregues evidencia de que estaba roto y ahora no lo está. No me sirve un checklist marcado de memoria — quiero encontrar problemas reales."_
 >
 > — CTO
 

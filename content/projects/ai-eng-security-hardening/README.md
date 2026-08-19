@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 Before any new public-facing surface goes live, your CTO requires a security audit of what already exists. It comes to you as a blocking-priority **ticket**: nothing new gets deployed until this is resolved.
 
-> *"I'm not going to authorize exposing more public surface until we know what vulnerabilities exist in what we've already built. I want you to audit the application the way an external attacker would, document what you find, fix it, and give me evidence that it was broken and now isn't. A checklist ticked off from memory doesn't work for me — I want real findings."*
+> _"I'm not going to authorize exposing more public surface until we know what vulnerabilities exist in what we've already built. I want you to audit the application the way an external attacker would, document what you find, fix it, and give me evidence that it was broken and now isn't. A checklist ticked off from memory doesn't work for me — I want real findings."_
 >
 > — CTO
 
