@@ -1,0 +1,41 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Platform – Security Hardening",
+    "es": "Plataforma – Endurecimiento de Seguridad"
+  },
+  "description": {
+    "en": "Complete the Platform – Security Hardening project following the README instructions.",
+    "es": "Completa el proyecto Plataforma – Endurecimiento de Seguridad siguiendo las instrucciones del README."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-security-hardening",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "owasp",
+    "security",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-security-hardening/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-security-hardening/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Platform – Security Hardening with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-security-hardening #AIEngineering #LearnPack #4GeeksAcademy #owasp #security #fastapi",
+      "es": "Acabo de completar Plataforma – Endurecimiento de Seguridad con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-security-hardening #AIEngineering #LearnPack #4GeeksAcademy #owasp #security #fastapi"
+    },
+    {
+      "en": "Built and shipped: Platform – Security Hardening. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-security-hardening #AIEngineering #LearnPack #4GeeksAcademy #owasp #security #fastapi",
+      "es": "Construido y publicado: Plataforma – Endurecimiento de Seguridad. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-security-hardening #AIEngineering #LearnPack #4GeeksAcademy #owasp #security #fastapi"
+    }
+  ]
+}
