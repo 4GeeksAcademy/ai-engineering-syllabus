@@ -11,15 +11,15 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 <!-- endhide -->
 
+**Before you start**: read your company briefing in [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) and copy it into `CONTEXT.md` at the root of your monorepo before writing any code — that is where your company's identity, constraints, and roadmap live.
+
 ---
 
 ## 🎯 Your challenge
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-You have three milestones behind you: the public website, the business logic in TypeScript, and the first AI-generated components. You have pieces. What you don't have yet is the system that connects them and will grow alongside them.
-
-From this milestone on, the monorepo stops being a collection of separate projects and becomes the technical core of your company. Everything you build from here — APIs, agents, automations — will live in this same space. That's why, before adding more code, you need to build the infrastructure that will make that code coherent, maintainable, and AI-ready.
+This is where your company project begins. You have a template repository and a company scenario — but no coherent system yet. Everything you build from here — interfaces, APIs, agents, automations — will live in this same space. Before adding features, you need the infrastructure that keeps that code coherent, maintainable, and AI-ready.
 
 Your tech lead has had a ticket sitting on the board for two weeks:
 
@@ -27,7 +27,7 @@ Your tech lead has had a ticket sitting on the board for two weeks:
 >
 > Hi,
 >
-> I've reviewed the state of the repo and we're accumulating code without any supporting structure. If I drop an agent on this right now it's going to make mistakes that will cost us triple the time to fix.
+> I've reviewed the state of the repo and we're starting without any supporting structure. If I drop an agent on this right now it's going to make mistakes that will cost us triple the time to fix.
 >
 > I need the repository to have clear, persistent context before we keep adding features: what the company is, what we're building, what the project rules are. That goes into the memory bank. The agent has to read it before touching anything — and it has to include both business context and technical context, not just one of the two.
 >
@@ -35,9 +35,9 @@ Your tech lead has had a ticket sitting on the board for two weeks:
 >
 > For more specific rules we'll use the `.agents/` folder. Think about what conventions the agent needs to know to not break what we already have, and document them there with the correct scope.
 >
-> Finally, I want us to formalise at least one skill that captures a recurring task in our workflow — something the agent can execute consistently and that we can reuse in upcoming milestones. It needs explicit acceptance criteria: if it can't be verified, it doesn't count.
+> Finally, I want us to formalise at least one skill that captures a recurring task in our workflow — something the agent can execute consistently and that we can reuse as the project grows. It needs explicit acceptance criteria: if it can't be verified, it doesn't count.
 >
-> As for the app, the public website needs to live in `./uis/website` as a Next.js app — not as a copy, but as an improved version with reusable components. In parallel, create `./uis/backoffice` to host all internal company logic with its own layout and entry view, and integrate the TypeScript script from the business logic module (Milestone) there so we have something visible from day one. Any APIs must be created under `/services`.
+> For the application layer, follow the monorepo template structure: the public website under `./uis/website` and the internal applications under `./uis/backoffice` with its own layout and entry view so we have something visible from day one. Any backend services belong under `/services`.
 >
 > When you're done, open a PR and let me know.
 >
@@ -60,7 +60,7 @@ The expected structure for agent configuration in the monorepo is the following:
 └─ <context>.md
 ```
 
-> ⚠️ **Attention:** Do not confuse `.agents/` with the `/agents` and `/skills` folders you will see in the monorepo. `.agents/` is the configuration directory for coding agents (Cursor, Windsurf, Claude Code…) — this is where the rules and skills that teach the agent how to work in this repository go. The `/agents` and `/skills` folders are for the agents and integrations you will build for the company starting in later milestones. They are different things: one configures how your development tool works, the other is product code.
+> ⚠️ **Attention:** Do not confuse `.agents/` with the `/agents` and `/skills` folders you will see in the monorepo. `.agents/` is the configuration directory for coding agents (Cursor, Windsurf, Claude Code…) — this is where the rules and skills that teach the agent how to work in this repository go. The `/agents` and `/skills` folders are for the agents and integrations you will build for the company in later modules. They are different things: one configures how your development tool works, the other is product code.
 
 Before creating any new folder, review the `README.md` inside each folder of the monorepo — the template repository includes instructions on what should go in each space. Following them will prevent duplication and keep a structure the agent can navigate without ambiguity.
 
@@ -72,7 +72,7 @@ An **agent skill** is a structured, reusable instruction: more concrete than a g
 
 ## 🌱 How to Start the Project
 
-Read the `CONTEXT.md` at the **root of your monorepo** before doing anything else. That file must be your company briefing from [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.en.md`), copied into the monorepo during the choose-company milestone — not the empty template placeholder. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
+Read the `CONTEXT.md` at the **root of your monorepo** before doing anything else. That file must be your company briefing from [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.en.md`) — not the empty template placeholder. The memory bank you are going to build must describe the company and project from your specific scenario — not a generic fictional company.
 
 1. Fork the template repository: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Open your fork in **GitHub Codespaces** or clone it locally, then review the existing structure before creating new folders
@@ -101,20 +101,17 @@ Read the `CONTEXT.md` at the **root of your monorepo** before doing anything els
 
 ⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints in your monorepo's `CONTEXT.md` (your company briefing). A generic infrastructure — or one built against the unreplaced template placeholder — will not be accepted.
 
-### Next.js + TypeScript Application
+### Application Structure
 
 - [ ] Initialise the frontend structure under `/uis` inside the monorepo following the template repository structure
-- [ ] Create the public web project in `./uis/website` (Next.js + TypeScript)
-- [ ] Migrate and improve the corporate website from Milestone in `./uis/website` as the home route (`/`):
-  - [ ] All sections from Milestone present and complete
-  - [ ] Implemented with reusable React components and correct TypeScript typing
-  - [ ] Styles consistent with the visual identity established in Milestone
+- [ ] Create the public-facing project in `./uis/website`:
+  - [ ] Home route (`/`) renders a corporate website aligned with your company briefing in `CONTEXT.md`
+  - [ ] Content is built with reusable components and consistent styling for your company's visual identity
 - [ ] Create the internal app in `./uis/backoffice`:
-  - [ ] Route `/` in `./uis/backoffice` accessible with a basic entry view (welcome screen or empty dashboard structure)
-  - [ ] Its own layout, separate from the public corporate website layout in `./uis/website`
-- [ ] Integrate the TypeScript script from the business logic module (Milestone) inside `./uis/backoffice`:
-  - [ ] Code is imported from its original location in the monorepo — not copied
-  - [ ] The output of the business logic is visible in the interface (not just in the console)
+  - [ ] Route `/` accessible with a basic entry view (welcome screen or empty dashboard structure)
+  - [ ] Its own layout, separate from the public website layout in `./uis/website`
+  - [ ] At least one piece of company-relevant logic or data from `CONTEXT.md` visible in the interface — not only in the console or terminal
+- [ ] Place any backend services under `/services`, following the monorepo template conventions
 
 ---
 
@@ -124,11 +121,11 @@ Read the `CONTEXT.md` at the **root of your monorepo** before doing anything els
 - [ ] `AGENTS.md` specifies a workflow with at least 4 ordered steps before the commit
 - [ ] The `.agents/` folder contains at least one rule with an explicit scope of application
 - [ ] The implemented skill has a single objective, documented inputs, and verifiable acceptance criteria
-- [ ] The public web in `./uis/website` starts without errors with `npm run dev`
-- [ ] The `/` route in `./uis/website` renders the complete corporate website with TypeScript components
+- [ ] The public interface in `./uis/website` starts without errors using the project's dev command
+- [ ] The `/` route in `./uis/website` renders a complete corporate website aligned with `CONTEXT.md`
 - [ ] `./uis/backoffice` exists, has its own layout, and renders without errors
-- [ ] The TypeScript script (Milestone) is integrated in `./uis/backoffice` and produces visible output on screen
-- [ ] No business logic code is duplicated — it is imported from its original location in the monorepo
+- [ ] `./uis/backoffice` shows company-relevant output on screen — not only in the console
+- [ ] Application code follows the monorepo folder conventions without unnecessary duplication
 
 ---
 
@@ -139,7 +136,7 @@ Read the `CONTEXT.md` at the **root of your monorepo** before doing anything els
 3. Open a Pull Request targeting the `main` branch of your fork
 4. In the PR description include:
    - Screenshot of the corporate website rendered from `./uis/website`
-   - Screenshot of `./uis/backoffice` with the TypeScript script (Milestone) visible on screen
+   - Screenshot of `./uis/backoffice` with company-relevant content visible on screen
    - Direct link to your `AGENTS.md`
 5. Submit the link to your PR on the 4Geeks campus
 

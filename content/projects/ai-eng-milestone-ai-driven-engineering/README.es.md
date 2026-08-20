@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-Por [@4GeeksAcademy](https://github.com/4GeeksAcademy) y [otros colaboradores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [otros colaboradores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -11,15 +11,15 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
+**Antes de empezar**: lee el briefing de tu empresa en [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) y cópialo en `CONTEXT.md` en la raíz de tu monorepo antes de escribir una sola línea de código — ahí están la identidad, las restricciones y la hoja de ruta de tu empresa.
+
 ---
 
 ## 🎯 Tu reto
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Ya tienes tres hitos construidos: la web pública, la lógica de negocio en TypeScript y los primeros componentes generados con IA. Tienes piezas. Lo que aún no tienes es el sistema que las une y que va a crecer con ellas.
-
-A partir de este hito, el monorepo deja de ser un repositorio de proyectos separados y se convierte en el núcleo técnico de tu empresa. Todo lo que construyas de aquí en adelante — APIs, agentes, automatizaciones — vivirá en este mismo espacio. Por eso, antes de añadir más código, hay que construir la infraestructura que hará que ese código sea coherente, mantenible y AI-ready.
+Aquí empieza tu proyecto de empresa. Tienes un repositorio de plantilla y un escenario de compañía — pero aún no hay un sistema coherente. Todo lo que construyas de aquí en adelante — interfaces, APIs, agentes, automatizaciones — vivirá en este mismo espacio. Antes de añadir features, hay que construir la infraestructura que hará que ese código sea coherente, mantenible y AI-ready.
 
 Tu tech lead ha dejado una tarea pendiente en el tablero desde hace dos semanas:
 
@@ -27,7 +27,7 @@ Tu tech lead ha dejado una tarea pendiente en el tablero desde hace dos semanas:
 >
 > Hola,
 >
-> He revisado el estado del repo y veo que estamos acumulando código sin estructura de soporte. Si meto un agente sobre esto ahora mismo va a cometer errores que nos van a costar el triple de tiempo.
+> He revisado el estado del repo y estamos empezando sin estructura de soporte. Si meto un agente sobre esto ahora mismo va a cometer errores que nos van a costar el triple de tiempo.
 >
 > Necesito que el repositorio tenga un contexto claro y persistente antes de que sigamos añadiendo features: qué es la empresa, qué estamos construyendo, cuáles son las reglas del proyecto. Eso va al banco de memoria. El agente tiene que leerlo antes de tocar nada — y tiene que incluir tanto el contexto de negocio como el técnico, no solo uno de los dos.
 >
@@ -35,9 +35,9 @@ Tu tech lead ha dejado una tarea pendiente en el tablero desde hace dos semanas:
 >
 > Para las reglas más específicas usaremos la carpeta `.agents/`. Piensa en qué convenciones necesita conocer el agente para no romper lo que ya tenemos, y documéntalas ahí con el alcance correcto.
 >
-> Por último, quiero que formalicemos al menos una skill que capture una tarea recurrente de nuestro flujo de trabajo — algo que el agente pueda ejecutar de forma consistente y que podamos reutilizar en los próximos hitos. Que tenga criterios de aceptación explícitos: si no se puede verificar, no vale.
+> Por último, quiero que formalicemos al menos una skill que capture una tarea recurrente de nuestro flujo de trabajo — algo que el agente pueda ejecutar de forma consistente y que podamos reutilizar a medida que el proyecto crezca. Que tenga criterios de aceptación explícitos: si no se puede verificar, no vale.
 >
-> En cuanto a la app, la web pública tiene que vivir en `./uis/website` como app Next.js — no como copia, sino como una versión mejorada con componentes reutilizables. En paralelo, crea `./uis/backoffice` para desarrollar toda la lógica interna de la empresa con su propio layout y vista de entrada, e integra ahí el script de TypeScript del módulo de lógica de negocio (Hito) para tener algo visible desde el primer día. Cualquier API debe crearse dentro de `/services`.
+> En cuanto a la capa de aplicación, sigue la estructura del monorepo de plantilla: el website de cara al público en `./uis/website` y las aplicaciones internas en `./uis/backoffice` con su propio layout y vista de entrada para tener algo visible desde el primer día. Cualquier servicio backend va dentro de `/services`.
 >
 > Cuando termines, PR y avísame.
 >
@@ -60,7 +60,7 @@ La estructura esperada para la configuración de agentes en el monorepo es la si
 └─ <context>.md
 ```
 
-> ⚠️ **Atención:** No confundas `.agents/` con las carpetas `/agents` y `/skills` que verás en el monorepo. `.agents/` es el directorio de configuración para los agentes de código (Cursor, Windsurf, Claude Code…) — aquí van las reglas y skills que le enseñan al agente cómo trabajar en este repositorio. Las carpetas `/agents` y `/skills` son para los agentes e integraciones que construirás para la empresa a partir de hitos posteriores. Son cosas distintas: una configura cómo trabaja tu herramienta de desarrollo, la otra es código de producto.
+> ⚠️ **Atención:** No confundas `.agents/` con las carpetas `/agents` y `/skills` que verás en el monorepo. `.agents/` es el directorio de configuración para los agentes de código (Cursor, Windsurf, Claude Code…) — aquí van las reglas y skills que le enseñan al agente cómo trabajar en este repositorio. Las carpetas `/agents` y `/skills` son para los agentes e integraciones que construirás para la empresa en módulos posteriores. Son cosas distintas: una configura cómo trabaja tu herramienta de desarrollo, la otra es código de producto.
 
 Antes de crear ninguna carpeta nueva, revisa el `README.md` de cada carpeta del monorepo — el repositorio de plantilla incluye instrucciones sobre qué debe ir en cada espacio. Siguiéndolas evitarás duplicidades y mantendrás una estructura que el agente pueda navegar sin ambigüedad.
 
@@ -72,7 +72,7 @@ Una **skill de agente** es una instrucción estructurada y reutilizable: más co
 
 ## 🌱 Cómo iniciar el proyecto
 
-Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese archivo debe ser el briefing de tu empresa de [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.es.md` / `.en.md`), copiado al monorepo en el hito choose-company — no el placeholder vacío de la plantilla. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
+Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese archivo debe ser el briefing de tu empresa de [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.es.md` / `.en.md`) — no el placeholder vacío de la plantilla. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
 
 1. Haz fork del repositorio de plantilla: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Ábrelo en **GitHub Codespaces** o clónalo localmente y revisa la estructura existente antes de crear carpetas nuevas
@@ -101,20 +101,17 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
 
 ⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones del `CONTEXT.md` de tu monorepo (el briefing de tu empresa). Una infraestructura genérica — o construida sobre el placeholder de plantilla sin reemplazar — no será aceptada.
 
-### Aplicación Next.js + TypeScript
+### Estructura de aplicación
 
 - [ ] Inicializar la estructura frontend dentro de `/uis` en el monorepo siguiendo la estructura del repositorio de plantilla
-- [ ] Crear el proyecto web público en `./uis/website` (Next.js + TypeScript)
-- [ ] Migrar y mejorar la web corporativa del Hito en `./uis/website` como ruta de inicio (`/`):
-  - [ ] Todas las secciones del Hito presentes y completas
-  - [ ] Implementada con componentes React reutilizables y tipado TypeScript correcto
-  - [ ] Estilos consistentes con la identidad visual establecida en el Hito
+- [ ] Crear el proyecto de cara al público en `./uis/website`:
+  - [ ] La ruta de inicio (`/`) renderiza una web corporativa alineada con el briefing de tu empresa en `CONTEXT.md`
+  - [ ] El contenido se construye con componentes reutilizables y estilos coherentes con la identidad visual de la empresa
 - [ ] Crear la aplicación interna en `./uis/backoffice`:
-  - [ ] Ruta `/` de `./uis/backoffice` accesible con una vista de entrada básica (pantalla de bienvenida o estructura vacía de dashboard)
-  - [ ] Layout propio, separado del layout público de la web corporativa en `./uis/website`
-- [ ] Integrar el script de TypeScript del módulo de lógica de negocio (Hito) dentro de `./uis/backoffice`:
-  - [ ] El código se importa desde su ubicación original en el monorepo — no se copia
-  - [ ] El resultado de la lógica de negocio es visible en la interfaz (no solo en consola)
+  - [ ] Ruta `/` accesible con una vista de entrada básica (pantalla de bienvenida o estructura vacía de dashboard)
+  - [ ] Layout propio, separado del layout de la web pública en `./uis/website`
+  - [ ] Al menos un fragmento de lógica o datos relevantes para la empresa, tomados de `CONTEXT.md`, visible en la interfaz — no solo en consola o terminal
+- [ ] Colocar cualquier servicio backend bajo `/services`, siguiendo las convenciones del monorepo de plantilla
 
 ---
 
@@ -124,11 +121,11 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
 - [ ] `AGENTS.md` especifica un flujo de trabajo con al menos 4 pasos ordenados antes del commit
 - [ ] La carpeta `.agents/` contiene al menos una regla con alcance de aplicación explícito
 - [ ] La skill implementada tiene objetivo único, inputs documentados y criterios de aceptación verificables
-- [ ] La web pública en `./uis/website` arranca sin errores con `npm run dev`
-- [ ] La ruta `/` en `./uis/website` renderiza el contenido completo de la web corporativa con componentes TypeScript
+- [ ] La interfaz pública en `./uis/website` arranca sin errores con el comando de desarrollo del proyecto
+- [ ] La ruta `/` en `./uis/website` renderiza una web corporativa completa alineada con `CONTEXT.md`
 - [ ] `./uis/backoffice` existe, tiene layout propio y renderiza sin errores
-- [ ] El script de TypeScript (Hito) está integrado en `./uis/backoffice` y produce output visible en pantalla
-- [ ] No hay código de lógica de negocio duplicado — se importa desde su ubicación original en el monorepo
+- [ ] `./uis/backoffice` muestra contenido relevante para la empresa en pantalla — no solo en consola
+- [ ] El código de aplicación sigue las convenciones de carpetas del monorepo sin duplicación innecesaria
 
 ---
 
@@ -139,7 +136,7 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
 3. Abre una Pull Request hacia la rama `main` de tu fork
 4. En la descripción de la PR incluye:
    - Captura de pantalla de la web corporativa renderizada desde `./uis/website`
-   - Captura de pantalla de `./uis/backoffice` con el script de TypeScript (Hito) visible en pantalla
+   - Captura de pantalla de `./uis/backoffice` con contenido relevante para la empresa visible en pantalla
    - Enlace directo a tu `AGENTS.md`
 5. Entrega el enlace a tu PR en el campus de 4Geeks
 
