@@ -45,7 +45,7 @@ This project does not require forking a template repo. All work happens inside y
 > ⚠️ **IMPORTANT:** Your student token is a credential. Store it using OpenClaw's secure configuration mechanism — never paste it directly into a skill file or commit it to a repository.
 
 **Student API (BreatheCode)**  
-Use the endpoint map while designing skills: [Student API calls (English)](./STUDENT_API_CALLS_REFERENCE.md) · [Llamadas API (español)](./STUDENT_API_CALLS_REFERENCE.es.md).
+Use the endpoint map while designing skills: [Student API calls (English)](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.md) · [Llamadas API (español)](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.es.md).
 
 ---
 

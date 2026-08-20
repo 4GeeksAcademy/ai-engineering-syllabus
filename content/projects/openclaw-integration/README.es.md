@@ -45,7 +45,7 @@ Este proyecto no requiere hacer fork de un repositorio plantilla. Todo el trabaj
 > ⚠️ **IMPORTANTE:** Tu token de estudiante es una credencial. Almacénala usando el mecanismo de configuración segura de OpenClaw — nunca la pegues directamente en un archivo de skill ni la incluyas en un repositorio de código.
 
 **API de estudiantes (BreatheCode)**  
-Usa el mapa de endpoints mientras diseñas skills: [Llamadas API (español)](./STUDENT_API_CALLS_REFERENCE.es.md) · [Student API calls (English)](./STUDENT_API_CALLS_REFERENCE.md).
+Usa el mapa de endpoints mientras diseñas skills: [Llamadas API (español)](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.es.md) · [Student API calls (English)](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.md).
 
 ---
 

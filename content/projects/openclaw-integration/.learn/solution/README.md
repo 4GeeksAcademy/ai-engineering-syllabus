@@ -58,4 +58,4 @@ Each skill should be a thin wrapper around **one** API action (or a tightly rela
 
 - Confirm at least six documented skills (four core + two extended) with tests.
 - Confirm the conversational process is reflected in the log (iterations, refinements).
-- Cross-check a sample response against the [student API calls reference](../../STUDENT_API_CALLS_REFERENCE.md) for the cohort’s base URL and query parameters.
+- Cross-check a sample response against the [student API calls reference](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/openclaw-integration/STUDENT_API_CALLS_REFERENCE.md) for the cohort’s base URL and query parameters.
