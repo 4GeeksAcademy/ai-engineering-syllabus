@@ -228,6 +228,9 @@ No forman parte de la secuencia del temario. Se mantienen aquí como referencia 
 - **[Backoffice de Operaciones – Gestor Centralizado de Incidencias](./ai-eng-centralized-incident-manager-for-devs)**  
   Proyecto aislado de stewardship + feature: deriva convenciones del monorepo a `.agents/rules` y `memory-bank`, y entrega un gestor de incidencias guiado por CONTEXT con ciclo de vida y trazabilidad (`contexts/centralized-incident-manager-for-devs`).
 
+- **[Backoffice de Operaciones – Gestor de Inventario](./ai-eng-inventory-manager-for-devs)**  
+  Proyecto aislado SDD: `spec` / `plan` / `tasks` en EARS, inventario con stock derivado de movimientos, tests mapeados a criterios, cambio de requisito vía spec-first (`contexts/inventory-manager-for-devs`).
+
 - **[Plataforma – Roles y Permisos](./ai-eng-roles-permissions)**  
   Ejes independientes de rol y departamento en la plataforma de la empresa: 403 centralizado, datos con alcance departamental y vista Admin solo para roles/departamentos.
 

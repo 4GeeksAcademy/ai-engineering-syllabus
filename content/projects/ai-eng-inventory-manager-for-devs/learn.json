@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Operations Backoffice – Inventory Manager",
+    "es": "Backoffice de Operaciones – Gestor de Inventario"
+  },
+  "description": {
+    "en": "Practice Spec Driven Development on the company monorepo: write EARS specs, plan, and tasks for an inventory manager where stock is derived from movements, then implement, verify, and absorb a mid-stream requirement change via the spec first.",
+    "es": "Practica Spec Driven Development sobre el monorepo de la empresa: escribe specs EARS, plan y tareas para un gestor de inventario donde el stock se deriva de movimientos; implementa, verifica y absorbe un cambio de requisito editando el spec primero."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-inventory-manager-for-devs",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "nextjs",
+    "ai",
+    "documentation",
+    "spec-driven-development",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-inventory-manager-for-devs/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-inventory-manager-for-devs/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Operations Backoffice – Inventory Manager with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-inventory-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Backoffice de Operaciones – Gestor de Inventario con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-inventory-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    },
+    {
+      "en": "Built and shipped: Operations Backoffice – Inventory Manager. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-inventory-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Backoffice de Operaciones – Gestor de Inventario. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-inventory-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    }
+  ]
+}

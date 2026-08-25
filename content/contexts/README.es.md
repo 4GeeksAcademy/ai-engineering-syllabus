@@ -47,10 +47,11 @@ _These instructions are [available in English](./README.md)_.
 3. **[Análisis de archivos de incidentes](./incidents-file-analysis)** — Esquemas CSV, categorías y salida esperada del analizador.
 4. **[Gestor centralizado de incidentes](./centralized-incident-manager)** — Campos, sedes y valores semilla del gestor en vivo.
 5. **[Gestor centralizado de incidencias (for devs)](./centralized-incident-manager-for-devs)** — Canales de entrada, tipos, severidades, áreas responsables, ciclo de vida y reglas de seed para el proyecto de stewardship + gestor del backoffice de ops.
-6. **[Roles y permisos](./roles-permissions)** — Códigos de rol, departamentos, matriz de capacidades y usuarios semilla por compañía (`CONTEXT-<compañía>.en.md` / `.es.md`).
-7. **[Autenticación federada](./federated-authentication)** — IdP obligatorio (Google / Microsoft / LinkedIn), audiencia de vinculación, env OAuth, usuarios semilla y eventos de auditoría por compañía.
-8. **[Registro de auditoría](./audit-log)** — Inventario de eventos críticos, reglas append-only, alcance de consulta por rol/departamento y entradas semilla por compañía.
-9. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos (`00-general-contexts/<compañía>/`) y reglas de eval del Hito 7 por compañía.
+6. **[Gestor de inventario (for devs)](./inventory-manager-for-devs)** — Unidades, categorías, ubicaciones/lotes, puntos de reorden y reglas de movimiento para el gestor de inventario con Spec Driven Development.
+7. **[Roles y permisos](./roles-permissions)** — Códigos de rol, departamentos, matriz de capacidades y usuarios semilla por compañía (`CONTEXT-<compañía>.en.md` / `.es.md`).
+8. **[Autenticación federada](./federated-authentication)** — IdP obligatorio (Google / Microsoft / LinkedIn), audiencia de vinculación, env OAuth, usuarios semilla y eventos de auditoría por compañía.
+9. **[Registro de auditoría](./audit-log)** — Inventario de eventos críticos, reglas append-only, alcance de consulta por rol/departamento y entradas semilla por compañía.
+10. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos (`00-general-contexts/<compañía>/`) y reglas de eval del Hito 7 por compañía.
 
 ## Colaboradores
 
