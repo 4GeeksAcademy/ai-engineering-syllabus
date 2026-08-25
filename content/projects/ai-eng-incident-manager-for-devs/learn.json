@@ -1,0 +1,43 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Operations Backoffice – Incident Manager",
+    "es": "Backoffice de Operaciones – Gestor de Incidencias"
+  },
+  "description": {
+    "en": "Derive monorepo conventions into .agents/rules and a memory-bank, then build the centralized incident manager using your assigned CONTEXT catalogues, lifecycle, and change traceability.",
+    "es": "Deriva las convenciones del monorepo a .agents/rules y un memory-bank, y luego construye el gestor centralizado de incidencias con los catálogos, ciclo de vida y trazabilidad de tu CONTEXT asignado."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-centralized-incident-manager-for-devs",
+  "difficulty": "intermediate",
+  "duration": 4,
+  "technologies": [
+    "architecture",
+    "backend-design",
+    "fastapi",
+    "nextjs",
+    "ai",
+    "documentation",
+    "governance",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-centralized-incident-manager-for-devs/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-centralized-incident-manager-for-devs/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Operations Backoffice – Centralized Incident Manager with LearnPack @4GeeksAcademy: agent rules, memory-bank, and a CONTEXT-driven incident manager. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-centralized-incident-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Acabo de completar Backoffice de Operaciones – Gestor Centralizado de Incidencias con LearnPack @4GeeksAcademy: reglas de agente, memory-bank y gestor de incidencias guiado por CONTEXT. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-centralized-incident-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    },
+    {
+      "en": "Built and shipped: Operations Backoffice – Centralized Incident Manager. Rules, memory-bank, and incident lifecycle with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-centralized-incident-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi",
+      "es": "Construido y publicado: Backoffice de Operaciones – Gestor Centralizado de Incidencias. Reglas, memory-bank y ciclo de vida de incidencias con @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-centralized-incident-manager-for-devs #AIEngineering #LearnPack #4GeeksAcademy #architecture #backenddesign #fastapi"
+    }
+  ]
+}
