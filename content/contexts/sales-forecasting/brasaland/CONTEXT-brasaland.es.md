@@ -1,12 +1,12 @@
 # CONTEXT — Brasaland
 
-## Modelo de regresión para predicción de ventas
+## Modelo de pronóstico de series de tiempo para predicción de ventas
 
 ---
 
 ### 1. Por qué esto le importa a Brasaland
 
-Mariana (CEO) quiere saber si, antes de invertir en un dashboard ejecutivo completo, es posible predecir con un margen razonable cuánto va a vender la cadena en los próximos meses. Felipe (Operaciones) necesita anticipar compras de insumos según la tendencia esperada, y Lucía (Procurement) quiere anticipar variaciones de precio de la carne según el volumen proyectado. Un modelo de regresión sobre las ventas históricas es el primer paso concreto hacia ese dashboard.
+Mariana (CEO) quiere saber si, antes de invertir en un dashboard ejecutivo completo, es posible predecir con un margen razonable cuánto va a vender la cadena en los próximos meses. Felipe (Operaciones) necesita anticipar compras de insumos según la tendencia esperada, y Lucía (Procurement) quiere anticipar variaciones de precio de la carne según el volumen proyectado. Un modelo de pronóstico de series de tiempo sobre las ventas históricas — que aprenda de lags, tendencias rodantes y patrones estacionales, no solo de las columnas crudas — es el primer paso concreto hacia ese dashboard.
 
 ---
 
@@ -60,6 +60,7 @@ El dataset se generó con una semilla aleatoria fija (`random_state=42`), por lo
 ### 6. Entregables esperados
 
 - Script de entrenamiento en `scripts/` que cargue `data/raw/brasaland_sales.csv`, separe los primeros 8 años como entrenamiento y los últimos 2 como prueba.
+- Features causales de lag, estadísticas rodantes y calendario/estacionalidad construidos a partir de la serie (validados contra el patrón de crecimiento y estacionalidad descrito arriba), sin fuga de información desde filas futuras.
 - Modelo entrenado (XGBoost o Random Forest) con las 4 métricas (MSE, PSI, Gini, K2 Score) calculadas sobre el conjunto de prueba.
 - Visualización con la predicción y su rango de variabilidad frente a los datos reales de los 2 años de prueba.
 - Prueba unitaria en `tests/pipelines/` que valide el split 8/2 años.

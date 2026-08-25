@@ -1,6 +1,6 @@
 # Evaluating a Regression Model — Reference Solution
 
-This reference solution describes the expected architecture, deliverables, and validation evidence for a complete submission. Students continue on their company **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** fork, building on the regression model and 8-year/2-year temporal split from the previous sales forecasting project.
+This reference solution describes the expected architecture, deliverables, and validation evidence for a complete submission. Students continue on their company **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** fork, building on the forecasting model (trained on causal lag/rolling/calendar features) and 8-year/2-year temporal split from the previous sales forecasting project.
 
 ---
 
@@ -28,7 +28,7 @@ flowchart LR
   CV --> REPORT
 ```
 
-**Critical rule:** Use **temporal** cross-validation (`TimeSeriesSplit`), not `KFold` with shuffle. Shuffling time-series data leaks future information into training folds and invalidates the stability assessment.
+**Critical rule:** Use **temporal** cross-validation (`TimeSeriesSplit`), not `KFold` with shuffle. Shuffling time-series data leaks future information into training folds and invalidates the stability assessment. This also applies to the lag/rolling features carried over from the previous project — recompute or re-verify them per fold so a fold's validation window never contributes to its own lag features.
 
 ---
 
@@ -113,6 +113,7 @@ def test_temporal_cv_preserves_chronological_order():
 ## Validation checklist
 
 - [ ] `TimeSeriesSplit` with ≥ 5 folds on training set only — no shuffle
+- [ ] Lag/rolling features carry no leakage across fold boundaries
 - [ ] Primary metric reported as mean ± standard deviation across folds
 - [ ] Learning curve saved to `data/eval/learning_curve.png` with explicit interpretation
 - [ ] MAE and RMSE calculated for train and validation

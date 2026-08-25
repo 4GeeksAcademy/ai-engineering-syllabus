@@ -5,8 +5,8 @@
     "es": "Evaluación de un Modelo de Regresión"
   },
   "description": {
-    "en": "Formally evaluate your company's sales regression model before staging: run temporal cross-validation (≥5 folds, mean ± std), generate learning curves, compare MAE and RMSE with business justification from CONTEXT.md, write an evidence-backed diagnosis (well fitted / underfitting / overfitting), and propose a specific corrective action.",
-    "es": "Evalúa formalmente tu modelo de regresión de ventas antes de staging: ejecuta validación cruzada temporal (≥5 folds, media ± desviación estándar), genera curvas de aprendizaje, compara MAE y RMSE con justificación de negocio desde CONTEXT.md, redacta un diagnóstico respaldado por evidencia (bien ajustado / underfitting / overfitting) y propón una acción correctiva específica."
+    "en": "Formally evaluate your company's sales forecasting model (built on time-based lag/rolling/calendar features) before staging: run temporal cross-validation (≥5 folds, mean ± std) with no lag-feature leakage across folds, generate learning curves, compare MAE and RMSE with business justification from CONTEXT.md, write an evidence-backed diagnosis (well fitted / underfitting / overfitting), and propose a specific corrective action.",
+    "es": "Evalúa formalmente tu modelo de pronóstico de ventas (construido sobre features de lag/rolling/calendario conscientes del tiempo) antes de staging: ejecuta validación cruzada temporal (≥5 folds, media ± desviación estándar) sin fuga de features de lag entre folds, genera curvas de aprendizaje, compara MAE y RMSE con justificación de negocio desde CONTEXT.md, redacta un diagnóstico respaldado por evidencia (bien ajustado / underfitting / overfitting) y propón una acción correctiva específica."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
