@@ -225,6 +225,9 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 
 No forman parte de la secuencia del temario. Se mantienen aquí como referencia o uso opcional.
 
+- **[Backoffice de Operaciones – Gestor Centralizado de Incidencias](./ai-eng-centralized-incident-manager-for-devs)**  
+  Proyecto aislado de stewardship + feature: deriva convenciones del monorepo a `.agents/rules` y `memory-bank`, y entrega un gestor de incidencias guiado por CONTEXT con ciclo de vida y trazabilidad (`contexts/centralized-incident-manager-for-devs`).
+
 - **[Plataforma – Roles y Permisos](./ai-eng-roles-permissions)**  
   Ejes independientes de rol y departamento en la plataforma de la empresa: 403 centralizado, datos con alcance departamental y vista Admin solo para roles/departamentos.
 

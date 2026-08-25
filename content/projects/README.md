@@ -225,6 +225,9 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 
 Not part of the syllabus sequence. Kept here for reference or optional use.
 
+- **[Operations Backoffice – Centralized Incident Manager](./ai-eng-centralized-incident-manager-for-devs)**  
+  Isolated steward + feature project: derive monorepo conventions into `.agents/rules` and a `memory-bank`, then ship a CONTEXT-driven incident manager with lifecycle and change traceability (`contexts/centralized-incident-manager-for-devs`).
+
 - **[Platform – Roles and Permissions](./ai-eng-roles-permissions)**  
   Independent role and department axes on the company platform: centralized 403 enforcement, department-scoped data, and an Admin-only roles/departments view.
 
