@@ -7,7 +7,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 
 _Estas instrucciones están [disponibles en español](./README.es.md)._
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager-for-devs)** before writing a single line of code — it defines the intake channels, incident types, severity levels, and responsible areas for your implementation.
+**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incident-manager-for-devs)** before writing a single line of code — it defines the intake channels, incident types, severity levels, and responsible areas for your implementation.
 
 ---
 
