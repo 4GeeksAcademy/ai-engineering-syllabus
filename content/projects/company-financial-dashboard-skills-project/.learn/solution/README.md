@@ -6,6 +6,8 @@ The goal is not to rebuild the dashboard. The goal is **targeted improvements** 
 
 Students continue the same fork with `memory-bank/` and `.agents/rules` already in place. The coding agent applies skills; the student drives, verifies outcomes, and keeps changes traceable.
 
+**Stack-agnostic here means student prior knowledge, not project technology.** The dashboard has a predefined stack (documented in the context project memory bank). Assigned community skills match that stack — students are not expected to pick alternate skills because they lack Next or a11y background.
+
 ## Expected deliverables
 
 A valid solution should include all of the following:

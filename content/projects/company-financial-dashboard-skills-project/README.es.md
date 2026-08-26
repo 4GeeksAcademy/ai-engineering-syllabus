@@ -25,7 +25,9 @@ La app funciona. Los datos cargan, los gráficos se renderizan. Tu tech lead rev
 
 Los equipos profesionales escalan calidad así: paquetes de instrucciones reutilizables cargados en agentes, aplicados de forma consistente sobre codebases heredadas — no checklists copiados de memoria.
 
-**No** necesitas conocimiento previo profundo de cada corrección que mencionan las skills. El agent aplica la skill; tú diriges, verificas resultados contra la app real y rechazas cambios que no encajen con la evidencia del repo.
+**Stack-agnostic se refiere a tu conocimiento previo, no al stack del proyecto.** Este dashboard tiene un stack predefinido — lo documentaste en el `memory-bank` del proyecto de contexto. Las skills asignadas (`accessibility`, `vercel-react-best-practices`) encajan con ese stack. **No** necesitas conocer ya Next.js, patrones de despliegue en Vercel ni APIs de accesibilidad. Carga la skill, deja que el agent la aplique y verifica resultados en la app en ejecución y en el build.
+
+El agent aplica la skill; tú diriges, verificas resultados contra la evidencia del repo y rechazas cambios que no encajen con lo que la skill y el codebase soportan.
 
 ### ¿Qué es una skill para un agente?
 

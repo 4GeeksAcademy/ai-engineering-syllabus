@@ -25,7 +25,9 @@ The app runs. Data loads, charts render. Your tech lead reviewed your stewardshi
 
 Professional teams scale quality this way: reusable instruction packs loaded into agents, applied consistently on inherited codebases — not checklists copied from memory.
 
-You do **not** need deep prior knowledge of every fix the skills mention. The agent applies the skill; you drive, verify outcomes against the real app, and reject changes that do not match repo evidence.
+**Stack-agnostic means your prior knowledge, not the project's stack.** This dashboard has a predefined stack — you documented it in the context project `memory-bank`. The assigned skills (`accessibility`, `vercel-react-best-practices`) match that stack. You do **not** need to already know Next.js, Vercel deployment patterns, or accessibility APIs. Load the skill, let the agent apply it, and verify outcomes in the running app and build.
+
+The agent applies the skill; you drive, verify results against repo evidence, and reject changes that do not match what the skill and codebase support.
 
 ### What is an agent skill?
 
