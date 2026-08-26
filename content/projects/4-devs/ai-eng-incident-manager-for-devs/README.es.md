@@ -7,7 +7,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 
 _These instructions are [available in English](./README.md)._
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incident-manager-for-devs)** antes de escribir una sola línea de código — define los canales de entrada, los tipos de incidencia, los niveles de severidad y las áreas responsables de tu implementación.
+**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** antes de escribir una sola línea de código — define los canales de entrada, los tipos de incidencia, los niveles de severidad y las áreas responsables de tu implementación.
 
 ---
 

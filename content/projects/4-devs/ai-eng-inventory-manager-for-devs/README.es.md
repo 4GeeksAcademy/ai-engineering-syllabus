@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/inventory-manager-for-devs)** antes de escribir una sola línea de spec — define las unidades de medida, categorías, lotes y puntos de reorden concretos de tu implementación.
+**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/inventory-manager-for-devs)** antes de escribir una sola línea de spec — define las unidades de medida, categorías, lotes y puntos de reorden concretos de tu implementación.
 
 ---
 

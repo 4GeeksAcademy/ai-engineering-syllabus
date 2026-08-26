@@ -5,7 +5,7 @@
 Two deliverables, in order:
 
 1. **Repository stewardship** — conventions already in the monorepo become explicit `.agents/rules` + a company-specific `memory-bank/`.
-2. **Incident manager** — CRUD + lifecycle + assignment + change history, catalogues from `content/contexts/centralized-incident-manager-for-devs/`.
+2. **Incident manager** — CRUD + lifecycle + assignment + change history, catalogues from `content/contexts/4-devs/incident-manager-for-devs/`.
 
 Not an auth project. Field names, channels, types, severities, areas, and lifecycle come from the student's `CONTEXT-company.md` — generic placeholders fail review.
 

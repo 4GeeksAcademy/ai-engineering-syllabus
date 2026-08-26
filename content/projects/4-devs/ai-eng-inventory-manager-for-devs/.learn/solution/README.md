@@ -4,7 +4,7 @@
 
 Spec Driven Development on the company monorepo: **spec → plan → tasks → implement → verify**, then absorb a mid-stream requirement change by editing the spec first.
 
-Domain catalogues (units, categories, locations/lots, reorder rules) come from `content/contexts/inventory-manager-for-devs/`. Generic inventory that ignores CONTEXT fails review.
+Domain catalogues (units, categories, locations/lots, reorder rules) come from `content/contexts/4-devs/inventory-manager-for-devs/`. Generic inventory that ignores CONTEXT fails review.
 
 Builds on existing `.agents/rules` and `memory-bank/` — specs must not restate them; they extend them.
 
