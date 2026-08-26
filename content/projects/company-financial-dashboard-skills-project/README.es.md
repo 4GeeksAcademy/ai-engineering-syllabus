@@ -17,27 +17,39 @@ _Estas instrucciones están [disponibles en inglés](./README.md)._
 
 ## 🎯 Tu reto
 
-El dashboard financiero que entregaste recientemente está funcionando. Los datos cargan, los gráficos se renderizan, el layout aguanta. Tu tech lead revisó el pull request y dejó un comentario:
+Continúas en el **mismo dashboard financiero heredado** del proyecto de contexto. Ya lo dejaste listo para agentes: un `memory-bank` verificado, reglas en `.agents/rules` y un setup local que descubriste con tu coding agent.
 
-> _"Buen trabajo. Antes de hacer merge, quiero que subas el nivel en dos frentes: accesibilidad y buenas prácticas de despliegue. Te comparto dos skills que puedes cargar directamente en tu agente de código — te guiarán para hacer las mejoras correctas sin que tengas que memorizar cada regla desde cero. Una vez aplicadas, explora el ecosistema de skills y mira qué más vale la pena añadir. Luego documenta lo que aprendiste."_
+La app funciona. Los datos cargan, los gráficos se renderizan. Tu tech lead revisó tu trabajo de stewardship y dejó un comentario:
 
-Así es como los equipos profesionales escalan la calidad: no memorizando cada checklist, sino construyendo conocimiento reutilizable que se puede cargar en cualquier agente y aplicar de forma consistente en cualquier codebase.
+> _"Buena base. Antes de hacer merge de los próximos cambios, sube el nivel en dos frentes: accesibilidad y buenas prácticas de despliegue. Te comparto dos skills que puedes cargar directamente en tu coding agent — guiarán la auditoría y las correcciones sin que memorices cada regla. Una vez aplicadas, explora el ecosistema de skills y mira qué encaja en este repo. Luego captura una skill interna que el equipo reutilizará aquí — commits, despliegue, testing, o algo específico de este dashboard. Documenta lo que aprendiste."_
+
+Los equipos profesionales escalan calidad así: paquetes de instrucciones reutilizables cargados en agentes, aplicados de forma consistente sobre codebases heredadas — no checklists copiados de memoria.
+
+**No** necesitas conocimiento previo profundo de cada corrección que mencionan las skills. El agent aplica la skill; tú diriges, verificas resultados contra la app real y rechazas cambios que no encajen con la evidencia del repo.
 
 ### ¿Qué es una skill para un agente?
 
-Una skill para un agente es un conjunto de instrucciones estructuradas y autocontenidas que le dice al agente de código _cómo_ realizar una tarea específica — qué buscar, qué patrones aplicar, qué evitar y cómo verificar el resultado. Las skills son componibles: puedes combinar varias skills pequeñas y enfocadas para obtener una mejora compuesta sin necesidad de escribir un prompt masivo.
+Una skill para un agente es un conjunto de instrucciones estructuradas y autocontenidas que le dice al coding agent _cómo_ realizar una tarea específica — qué buscar, qué patrones aplicar, qué evitar y cómo verificar el resultado. Las skills son componibles: combina varias skills pequeñas y enfocadas para una mejora compuesta sin un prompt masivo.
 
-El ecosistema en [skills.sh](https://skills.sh) aloja skills mantenidas por la comunidad listas para cargar. Pero el punto clave es este: **una skill solo es tan buena como la claridad con la que define su objetivo, sus inputs, sus outputs y sus criterios de aceptación.** Hoy lo vas a experimentar en primera persona.
+El ecosistema en [skills.sh](https://skills.sh) aloja skills mantenidas por la comunidad listas para cargar. **Una skill solo es tan buena como la claridad con la que define objetivo, inputs, outputs y criterios de aceptación.** Hoy lo experimentarás — también cuando escribas la tuya.
+
+### Cómo trabajas (en cada fase)
+
+1. Carga la skill, luego deja que el agent audite y proponga cambios — no corrijas a mano solo siguiendo este README.
+2. Pide al agent que cite archivos y explique cada cambio antes de aceptarlo.
+3. Verifica resultados en la app en ejecución y con el comando de build/test que documente tu `memory-bank` o los scripts del repo.
+4. Mantén los cambios trazables a una skill (mensaje de commit o notas del PR).
+5. Actualiza el `memory-bank` cuando cambie la línea base de calidad o el flujo de trabajo del repo.
 
 > Tu tech lead ha compartido las siguientes instrucciones:
 >
 > #### Accesibilidad (`accessibility`)
 >
-> Aplica la skill `accessibility` al dashboard. El objetivo es garantizar que las personas que utilizan tecnologías de asistencia — lectores de pantalla, navegación por teclado, modos de alto contraste — puedan usar el producto sin fricción. La skill guiará al agente para auditar y corregir los problemas más comunes: atributos `aria-label` faltantes, gestión deficiente del foco, texto `alt` ausente y elementos interactivos con bajo contraste.
+> Aplica la skill `accessibility` al dashboard. Objetivo: personas que usan tecnologías de asistencia — lectores de pantalla, navegación por teclado, modos de alto contraste — puedan usar el producto sin fricción. La skill guía al agent para auditar y corregir problemas comunes: atributos `aria-label` faltantes, gestión deficiente del foco, texto `alt` ausente y elementos interactivos con bajo contraste.
 >
 > #### Vercel + React Best Practices (`vercel-react-best-practices`)
 >
-> Aplica la skill `vercel-react-best-practices`. Cubre patrones listos para despliegue: uso correcto de `next/image`, `next/font`, evitar layout shift, metadatos correctos por página y evitar anti-patrones que afectan los scores de Lighthouse en despliegues de Vercel.
+> Aplica la skill `vercel-react-best-practices`. Cubre patrones listos para despliegue: uso correcto de `next/image`, `next/font`, evitar layout shift, metadatos correctos por página y anti-patrones que afectan los scores de Lighthouse en despliegues de Vercel.
 >
 > #### Explorar el ecosistema
 >
@@ -49,20 +61,21 @@ El ecosistema en [skills.sh](https://skills.sh) aloja skills mantenidas por la c
 >
 > Por ejemplo: `npx skills find forms`, `npx skills find performance`, `npx skills find seo`. Revisa lo que aparece y decide si alguna skill vale la pena aplicar a este proyecto.
 
-Al terminar esta sesión tendrás un codebase mejorado _y_ una skill documentada propia — un artefacto transferible que puedes llevar a cualquier proyecto futuro.
+Terminarás con un codebase mejorado, al menos una skill comunitaria adicional aplicada y **una skill interna del proyecto** que el equipo pueda recargar en este repo.
 
 ---
 
 ## 🌱 Cómo iniciar el proyecto
 
-Continuarás trabajando en el **mismo repositorio** que utilizaste en la sesión anterior. No hagas fork de un nuevo repo.
+Continúa en el **mismo repositorio** del proyecto de contexto. No hagas fork de un nuevo repo.
 
-1. Abre tu repositorio existente del dashboard financiero (tu fork de [**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) en GitHub Codespaces o clónalo localmente.
-2. Asegúrate de que tu memory bank (`memory-bank/`) y las reglas de contexto (`.cursor/rules/` o equivalente) de la sesión anterior están commiteadas y actualizadas.
-3. Haz pull de los últimos cambios si trabajas en equipo: `git pull origin main`.
-4. Crea una rama nueva para el trabajo de hoy: `git switch -c feature/agent-skills`.
+1. Abre tu fork del dashboard financiero ([**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) en tu coding agent.
+2. Confirma que `memory-bank/` y `.agents/rules` del proyecto de contexto están commiteados y actualizados.
+3. Pide al agent que confirme cómo ejecutar la app y qué comando de build valida el frontend — usa evidencia del repo, no suposiciones.
+4. Haz pull de los últimos cambios si trabajas en equipo: `git pull origin main`.
+5. Crea una rama: `git switch -c feature/agent-skills`.
 
-Si necesitas repasar la configuración del proyecto: [cómo iniciar un proyecto de código](https://4geeks.com/lesson/how-to-start-a-project).
+Si necesitas repasar la configuración: [cómo iniciar un proyecto de código](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---
 
@@ -72,53 +85,53 @@ Si necesitas repasar la configuración del proyecto: [cómo iniciar un proyecto 
 
 - [ ] Ejecuta `npx skills find accessibility` y revisa qué cubre la skill antes de aplicarla.
 - [ ] Ejecuta `npx skills find vercel-react-best-practices` y revísala.
-- [ ] Carga ambas skills en tu agente de código y lee qué instrucciones le dan al agente.
+- [ ] Carga ambas skills en tu coding agent y lee qué instrucciones le dan al agent.
 
-### 2. Aplicar la skill `accessibility`
+### 2. Aplicar la skill `accessibility` (agent al mando, tú verificas)
 
-- [ ] Usa el agente con la skill `accessibility` cargada para auditar el dashboard.
-- [ ] Corrige todos los problemas de `aria-label` y `role` identificados por el agente.
-- [ ] Asegúrate de que todos los elementos interactivos (botones, enlaces, inputs) sean alcanzables por teclado (`Tab` / `Enter` / `Space`).
-- [ ] Añade o corrige el texto `alt` en todas las imágenes e iconos.
-- [ ] Verifica que no existan problemas de contraste de color en textos y elementos interactivos.
+- [ ] Con la skill cargada, pide al agent que audite el dashboard y proponga correcciones.
+- [ ] Revisa cada propuesta; acepta solo cambios que puedas ligar a un archivo real e instrucción de la skill.
+- [ ] Verifica resultados: accesibilidad por teclado en elementos interactivos, `aria-*` / `role` correctos donde haga falta, `alt` en imágenes/iconos, contraste básico en textos y controles.
+- [ ] Commit con mensaje que referencie la skill `accessibility`.
 
-### 3. Aplicar la skill `vercel-react-best-practices`
+### 3. Aplicar la skill `vercel-react-best-practices` (agent al mando, tú verificas)
 
-- [ ] Reemplaza las etiquetas `<img>` estándar por `next/image` donde corresponda.
-- [ ] Asegúrate de que todas las páginas tienen `<title>` y `<meta description>` correctos mediante la API de metadata de Next.js.
-- [ ] Elimina los anti-patrones identificados por la skill (p. ej. estilos que causan layout shift, importaciones de fuentes no optimizadas).
-- [ ] Verifica que el build pase en local: `npm run build`.
+- [ ] Con la skill cargada, pide al agent que audite patrones frontend orientados a despliegue y aplique correcciones.
+- [ ] Revisa propuestas contra la skill — p. ej. `next/image` donde corresponda, metadata de página, anti-patrones de layout shift y fuentes que la skill señale.
+- [ ] Ejecuta el comando de build del frontend documentado en este repo; confirma que pasa sin advertencias nuevas injustificadas.
+- [ ] Commit con mensaje que referencie la skill `vercel-react-best-practices`.
 
 ### 4. Explorar el ecosistema
 
-- [ ] Ejecuta `npx skills find <tema>` sobre al menos dos temas relevantes para este proyecto (p. ej. `performance`, `seo`, `forms`, `typescript`).
-- [ ] Aplica al menos una skill adicional que consideres valiosa para el dashboard. Justifica tu elección en un comentario o en el memory bank.
+- [ ] Ejecuta `npx skills find <tema>` sobre al menos dos temas relevantes (p. ej. `performance`, `seo`, `forms`, `typescript`, `testing`).
+- [ ] Aplica al menos una skill adicional que consideres valiosa. Justifica la elección en el memory bank o notas del PR.
 
-### 5. Escribe tu propia skill
+### 5. Escribir una skill interna del proyecto
 
-- [ ] Identifica algo específico de este dashboard financiero que no esté cubierto por las skills existentes — un patrón, una restricción, una convención de nombrado, una regla de formateo de datos.
-- [ ] Escribe un fichero de skill para ello siguiendo la estructura vista en clase: objetivo claro, inputs definidos, output esperado, criterios de aceptación.
-- [ ] Guárdalo en la carpeta `.skills/` del proyecto y cárgalo en el agente para verificar que produce la guía esperada.
+- [ ] Con el agent, identifica un gap **específico de este repo heredado** que las skills comunitarias no cubren bien — p. ej. convenciones de commits, pasos de despliegue de este dashboard, checks de testing/QA antes del merge, reglas de formateo de datos, patrones de uso de API o convenciones UI del dashboard descubiertas en el codebase.
+- [ ] Haz que el agent redacte el archivo de skill; tú lo refinas a la estructura de clase: objetivo claro, inputs definidos, output esperado, criterios de aceptación.
+- [ ] Guárdalo en `.skills/` y cárgalo en el agent para verificar que produce guía accionable en una tarea real de este repo.
 
 ### 6. Actualizar el memory bank
 
-- [ ] Actualiza `memory-bank/progress.md` (o equivalente) para reflejar las skills aplicadas, los cambios realizados y la skill que has creado.
+- [ ] Actualiza `memory-bank/progress.md` (o equivalente) con: skills aplicadas, cambios verificados, skill del ecosistema elegida (y por qué) y la skill interna que creaste.
 
-⚠️ **IMPORTANTE:** No reescribas el dashboard desde cero. El objetivo es una _mejora dirigida_ usando skills — no una reconstrucción total. Cada cambio debe ser trazable a una instrucción específica de una skill.
+⚠️ **IMPORTANTE:** No reescribas el dashboard desde cero. Mejora dirigida vía skills — cada cambio trazable a una instrucción de skill. Tú verificas; el agent implementa.
 
 ---
 
 ## ✅ Qué vamos a evaluar
 
-- [ ] Las skills `accessibility` y `vercel-react-best-practices` fueron cargadas y aplicadas correctamente — las mejoras son visibles y trazables a las instrucciones de cada skill.
-- [ ] Los problemas de accesibilidad están resueltos: la navegación por teclado funciona, los atributos `aria-*` son correctos, el texto `alt` está presente, el contraste supera comprobaciones básicas.
-- [ ] El build pasa (`npm run build`) sin nuevas advertencias introducidas.
-- [ ] Al menos una skill adicional fue descubierta con `npx skills find` y aplicada con una justificación escrita.
-- [ ] Existe un fichero de skill propia en `.skills/`, está bien estructurado (objetivo, inputs, outputs, criterios de aceptación) y contiene guía específica y significativa del proyecto — no relleno genérico.
+- [ ] Las skills `accessibility` y `vercel-react-best-practices` fueron cargadas y aplicadas — mejoras visibles y trazables a las instrucciones de cada skill.
+- [ ] Resultados de accesibilidad verificados: navegación por teclado funciona, atributos `aria-*` correctos donde haga falta, `alt` presente, contraste pasa comprobaciones básicas.
+- [ ] El build del frontend pasa usando el comando documentado en este repo, sin advertencias nuevas injustificadas.
+- [ ] Al menos una skill adicional descubierta con `npx skills find` y aplicada con justificación escrita.
+- [ ] Existe una skill interna en `.skills/`, bien estructurada (objetivo, inputs, outputs, criterios de aceptación), con guía **específica del proyecto** — commits, despliegue, testing/QA u otro tema derivado del repo; no relleno genérico.
 - [ ] El memory bank refleja con precisión el trabajo de la sesión.
-- [ ] Los cambios están commiteados en una rama de feature con mensajes claros y descriptivos — lo ideal es un commit por skill aplicada.
+- [ ] Cambios en `feature/agent-skills` con commits claros — lo ideal es un commit por skill aplicada.
+- [ ] El trabajo se lee como mejora impulsada por agent sobre un codebase heredado que tú verificaste — no ediciones masivas sin revisar.
 
-> **Nota:** La calidad de la skill propia se evaluará por su claridad y especificidad, no por su longitud. Una skill corta y precisa vale más que una larga y vaga.
+> **Nota:** La calidad de la skill interna se evalúa por claridad y especificidad, no por longitud. Una skill corta y precisa vale más que una larga y vaga.
 
 ---
 

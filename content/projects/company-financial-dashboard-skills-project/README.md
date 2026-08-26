@@ -17,27 +17,39 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 ## 🎯 Your challenge
 
-The financial dashboard you shipped recently is working. The data loads, the charts render, the layout holds up. Your tech lead reviewed the pull request and left a comment:
+You continue on the **same inherited financial dashboard** from the context project. You already left it agent-ready: a verified `memory-bank`, rules under `.agents/rules`, and a working local setup you discovered with your coding agent.
 
-> _"Good work. Before we merge, I want you to raise the bar on two fronts: accessibility and deployment best practices. I'm sharing two skills you can load directly into your coding agent — they'll guide it to make the right improvements without you having to remember every rule from scratch. Once you've applied them, explore the skills ecosystem and see what else is worth adding. Then document what you learned."_
+The app runs. Data loads, charts render. Your tech lead reviewed your stewardship work and left a comment:
 
-This is how professional teams scale quality: not by memorizing every checklist, but by building reusable knowledge that can be loaded into any agent and applied consistently across any codebase.
+> _"Good foundation. Before we merge the next changes, raise the bar on two fronts: accessibility and deployment best practices. I'm sharing two skills you can load directly into your coding agent — they'll guide the audit and fixes without you memorizing every rule. Once applied, explore the skills ecosystem and see what else fits this repo. Then capture one internal skill the team will reuse here — commits, deployment, testing, or something specific to this dashboard. Document what you learned."_
+
+Professional teams scale quality this way: reusable instruction packs loaded into agents, applied consistently on inherited codebases — not checklists copied from memory.
+
+You do **not** need deep prior knowledge of every fix the skills mention. The agent applies the skill; you drive, verify outcomes against the real app, and reject changes that do not match repo evidence.
 
 ### What is an agent skill?
 
-An agent skill is a structured, self-contained instruction set that tells a coding agent _how_ to perform a specific task — what to look for, what patterns to apply, what to avoid, and how to verify the result. Skills are composable: you can combine several small, focused skills to get a compound improvement without writing one massive prompt.
+An agent skill is a structured, self-contained instruction set that tells a coding agent _how_ to perform a specific task — what to look for, what patterns to apply, what to avoid, and how to verify the result. Skills are composable: combine several small, focused skills for compound improvement without one massive prompt.
 
-The ecosystem at [skills.sh](https://skills.sh) hosts community-maintained skills ready to load. But the key insight is this: **a skill is only as good as how clearly it defines its objective, inputs, outputs, and acceptance criteria.** You will experience that first-hand today.
+The ecosystem at [skills.sh](https://skills.sh) hosts community-maintained skills ready to load. **A skill is only as good as how clearly it defines objective, inputs, outputs, and acceptance criteria.** You will experience that today — including when you author your own.
+
+### How you work (every phase)
+
+1. Load the skill, then let the agent audit and propose changes — do not hand-fix from this README alone.
+2. Ask the agent to cite files and explain each change before accepting it.
+3. Verify outcomes in the running app and with the build/test command your `memory-bank` or repo scripts document.
+4. Keep changes traceable to a skill (commit message or PR notes).
+5. Update `memory-bank` when the repo's quality baseline or workflow changes.
 
 > Your tech lead has shared the following instructions:
 >
 > #### Accessibility (`accessibility`)
 >
-> Apply the `accessibility` skill to the dashboard. The goal is to ensure people using assistive technologies — screen readers, keyboard navigation, high-contrast modes — can use the product without friction. The skill will guide the agent to audit and fix the most common issues: missing `aria-label` attributes, poor focus management, missing `alt` text, and low-contrast interactive elements.
+> Apply the `accessibility` skill to the dashboard. Goal: people using assistive technologies — screen readers, keyboard navigation, high-contrast modes — can use the product without friction. The skill guides the agent to audit and fix common issues: missing `aria-label` attributes, poor focus management, missing `alt` text, and low-contrast interactive elements.
 >
 > #### Vercel + React Best Practices (`vercel-react-best-practices`)
 >
-> Apply the `vercel-react-best-practices` skill. This covers deployment-ready patterns: correct use of `next/image`, `next/font`, avoiding layout shift, proper metadata per page, and avoiding anti-patterns that hurt Lighthouse scores on Vercel deployments.
+> Apply the `vercel-react-best-practices` skill. Covers deployment-ready patterns: correct use of `next/image`, `next/font`, avoiding layout shift, proper metadata per page, and anti-patterns that hurt Lighthouse scores on Vercel deployments.
 >
 > #### Exploring the ecosystem
 >
@@ -49,20 +61,21 @@ The ecosystem at [skills.sh](https://skills.sh) hosts community-maintained skill
 >
 > For example: `npx skills find forms`, `npx skills find performance`, `npx skills find seo`. Browse what comes back and decide if any skill is worth applying to this project.
 
-You will leave this session with an improved codebase _and_ a documented skill of your own — a transferable artifact you can take to any future project.
+You will leave with an improved codebase, at least one additional community skill applied, and **one internal project skill** your team can reload on this repo.
 
 ---
 
 ## 🌱 How to Start the Project
 
-You will continue working on the **same repository** you used in the previous session. Do not fork a new repo.
+Continue on the **same repository** from the context project. Do not fork a new repo.
 
-1. Open your existing financial dashboard repository (your fork of [**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) in GitHub Codespaces or clone it locally.
-2. Make sure your memory bank (`memory-bank/`) and context rules (`.cursor/rules/` or equivalent) from the previous session are committed and up to date.
-3. Pull the latest changes if you are working in a team: `git pull origin main`.
-4. Create a new branch for today's work: `git switch -c feature/agent-skills`.
+1. Open your financial dashboard fork ([**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) in your coding agent.
+2. Confirm `memory-bank/` and `.agents/rules` from the context project are committed and current.
+3. Ask the agent to confirm how to run the app and which build command validates the frontend — use repo evidence, not assumptions.
+4. Pull latest if working in a team: `git pull origin main`.
+5. Create a branch: `git switch -c feature/agent-skills`.
 
-If you need a refresher on project setup: [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project).
+If you need a refresher: [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project).
 
 ---
 
@@ -72,53 +85,53 @@ If you need a refresher on project setup: [how to start a coding project](https:
 
 - [ ] Run `npx skills find accessibility` and review what the skill covers before applying it.
 - [ ] Run `npx skills find vercel-react-best-practices` and review it.
-- [ ] Load both skills into your coding agent and read through what they instruct the agent to do.
+- [ ] Load both skills into your coding agent and read what they instruct the agent to do.
 
-### 2. Apply the `accessibility` skill
+### 2. Apply the `accessibility` skill (agent-led, you verify)
 
-- [ ] Use the agent with the `accessibility` skill loaded to audit the dashboard.
-- [ ] Fix all `aria-label` and `role` issues flagged by the agent.
-- [ ] Ensure every interactive element (buttons, links, inputs) is reachable via keyboard (`Tab` / `Enter` / `Space`).
-- [ ] Add or correct `alt` text on all images and icons.
-- [ ] Verify there are no color contrast issues on text and interactive elements.
+- [ ] With the skill loaded, ask the agent to audit the dashboard and propose fixes.
+- [ ] Review each proposal; accept only changes you can tie to a real file and skill instruction.
+- [ ] Verify outcomes: keyboard reachability on interactive elements, correct `aria-*` / `role` where needed, `alt` text on images/icons, basic contrast on text and controls.
+- [ ] Commit with a message that references the `accessibility` skill.
 
-### 3. Apply the `vercel-react-best-practices` skill
+### 3. Apply the `vercel-react-best-practices` skill (agent-led, you verify)
 
-- [ ] Replace any standard `<img>` tags with `next/image` where appropriate.
-- [ ] Ensure all pages have correct `<title>` and `<meta description>` via Next.js metadata API.
-- [ ] Remove any anti-patterns flagged by the skill (e.g. layout-shift-causing styles, unoptimized font imports).
-- [ ] Verify the build passes locally: `npm run build`.
+- [ ] With the skill loaded, ask the agent to audit deployment-oriented frontend patterns and apply fixes.
+- [ ] Review proposals against the skill — e.g. `next/image` where appropriate, page metadata, layout-shift and font anti-patterns the skill flags.
+- [ ] Run the frontend build command documented in this repo; confirm it passes without new unjustified warnings.
+- [ ] Commit with a message that references the `vercel-react-best-practices` skill.
 
 ### 4. Explore the ecosystem
 
-- [ ] Run `npx skills find <topic>` for at least two topics relevant to this project (e.g. `performance`, `seo`, `forms`, `typescript`).
-- [ ] Apply at least one additional skill you consider valuable for the dashboard. Justify your choice in a comment or in the memory bank.
+- [ ] Run `npx skills find <topic>` for at least two topics relevant to this project (e.g. `performance`, `seo`, `forms`, `typescript`, `testing`).
+- [ ] Apply at least one additional skill you consider valuable. Justify the choice in the memory bank or PR notes.
 
-### 5. Write your own skill
+### 5. Write an internal project skill
 
-- [ ] Identify something specific to this financial dashboard that is not covered by existing skills — a pattern, a constraint, a naming convention, a data-formatting rule.
-- [ ] Write a skill file for it following the structure learned in class: clear objective, defined inputs, expected output, acceptance criteria.
-- [ ] Save it in the `.skills/` folder of the project and load it into the agent to verify it produces the expected guidance.
+- [ ] With the agent, identify a gap **specific to this inherited repo** that community skills do not cover well — e.g. commit message conventions, deployment steps for this dashboard, testing/QA checks before merge, data-formatting rules, API usage patterns, or dashboard-specific UI conventions discovered in the codebase.
+- [ ] Have the agent draft a skill file; you refine it to class structure: clear objective, defined inputs, expected output, acceptance criteria.
+- [ ] Save it under `.skills/` and load it into the agent to verify it produces actionable guidance for a real task on this repo.
 
 ### 6. Update the memory bank
 
-- [ ] Update `memory-bank/progress.md` (or equivalent) to reflect the skills applied, changes made, and the skill you authored.
+- [ ] Update `memory-bank/progress.md` (or equivalent) with: skills applied, verified changes, ecosystem skill chosen (and why), and the internal skill you authored.
 
-⚠️ **IMPORTANT:** Do not rewrite the entire dashboard from scratch. The goal is _targeted improvement_ using skills — not a full rebuild. Every change must be traceable to a specific skill instruction.
+⚠️ **IMPORTANT:** Do not rewrite the dashboard from scratch. Targeted improvement via skills — every change traceable to a skill instruction. You verify; the agent implements.
 
 ---
 
 ## ✅ What We Will Evaluate
 
-- [ ] Both `accessibility` and `vercel-react-best-practices` skills were correctly loaded and applied — improvements are visible and traceable to the skill's instructions.
-- [ ] Accessibility issues are resolved: keyboard navigation works, `aria-*` attributes are correctly set, `alt` text is present, contrast passes basic checks.
-- [ ] Build passes (`npm run build`) with no new warnings introduced.
-- [ ] At least one additional skill was discovered via `npx skills find` and applied with a written justification.
-- [ ] A custom skill file exists in `.skills/`, is well-structured (objective, inputs, outputs, acceptance criteria), and contains meaningful, project-specific guidance — not generic filler.
-- [ ] Memory bank reflects the session's work accurately.
-- [ ] Changes are committed on a feature branch with clear, descriptive commit messages — one skill application per commit is ideal.
+- [ ] Both `accessibility` and `vercel-react-best-practices` skills were loaded and applied — improvements visible and traceable to skill instructions.
+- [ ] Accessibility outcomes verified: keyboard navigation works, `aria-*` attributes correct where needed, `alt` text present, contrast passes basic checks.
+- [ ] Frontend build passes using this repo's documented command, without new unjustified warnings.
+- [ ] At least one additional skill discovered via `npx skills find` and applied with written justification.
+- [ ] An internal skill exists in `.skills/`, well-structured (objective, inputs, outputs, acceptance criteria), with meaningful **project-specific** guidance — commits, deployment, testing/QA, or another repo-derived topic; not generic filler.
+- [ ] Memory bank reflects the session accurately.
+- [ ] Changes on `feature/agent-skills` with clear commits — one skill application per commit is ideal.
+- [ ] Work reads as agent-driven improvement on an inherited codebase that you verified — not unchecked bulk edits.
 
-> **Note:** The quality of the custom skill will be evaluated on its clarity and specificity, not on its length. A short, precise skill beats a long, vague one.
+> **Note:** Custom skill quality is judged on clarity and specificity, not length. A short, precise skill beats a long, vague one.
 
 ---
 

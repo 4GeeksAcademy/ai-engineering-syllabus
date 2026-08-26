@@ -1,6 +1,6 @@
 # Ejemplo en Clase: Mejorando el Catálogo de Biblioteca con Agent Skills
 
-> **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio continúa con la app de catálogo de biblioteca comunitaria de la sesión de contexto anterior — mismo flujo de trabajo de cargar, aplicar y crear agent skills, con una base de código más accesible que el dashboard financiero.
+> **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio continúa con la app de catálogo de biblioteca comunitaria del proyecto de contexto — mismo flujo agent-first de cargar, aplicar y crear skills sobre un codebase heredado, con un repo más pequeño que el dashboard financiero.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -8,9 +8,9 @@ _These instructions are also available in [English](./README.md)._
 
 ### Nota de alcance
 
-Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo flujo agent-first y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
 
-La app del catálogo de biblioteca está funcionando, pero tu tech lead ha señalado dos áreas antes de que la rama pueda fusionarse: accesibilidad y buenas prácticas de despliegue. Han compartido dos agent skills para guiar a tu asistente de IA. Después de aplicarlas, explorarás el ecosistema de skills y escribirás una skill personalizada específica para el catálogo.
+Continúas en el **repo heredado del catálogo de biblioteca** del proyecto de contexto. Tu `memory-bank/` y `.agents/rules` ya están en su sitio. La app funciona, pero tu tech lead quiere subir el nivel en dos frentes antes del merge: accesibilidad y buenas prácticas de despliegue. Compartieron dos agent skills para tu coding agent. Después de aplicarlas (agent al mando, tú verificas), explora el ecosistema de skills y escribe una **skill interna del proyecto** — commits, despliegue, testing, o algo específico del catálogo descubierto en el codebase.
 
 ---
 
@@ -18,24 +18,26 @@ La app del catálogo de biblioteca está funcionando, pero tu tech lead ha seña
 
 | Concepto                            | Dónde se aplica                                                                         |
 | ----------------------------------- | --------------------------------------------------------------------------------------- |
-| Agent skills                        | Cargar conjuntos de instrucciones estructurados en un agente de código                  |
+| Aplicación agent-first de skills    | El agent audita y propone; el estudiante verifica antes del commit                      |
 | Skill `accessibility`               | Auditar y corregir aria labels, alt text, navegación por teclado                        |
 | Skill `vercel-react-best-practices` | `next/image`, API de metadata, build sin advertencias                                   |
 | `npx skills find`                   | Descubrir skills de la comunidad por tema                                               |
-| Creación de skill personalizada     | Escribir una skill específica del proyecto con objetivo claro y criterios de aceptación |
-| Actualización del memory bank       | Reflejar los cambios de la sesión en `memory-bank/status.md`                            |
+| Skill interna del proyecto          | Skill específica del repo (commits, despliegue, QA o reglas de dominio) con criterios de aceptación |
+| Actualización del memory bank       | Reflejar cambios verificados en `memory-bank/status.md`                                  |
 
 ---
 
 ## Punto de Partida
 
-Continúa desde el proyecto de ejemplo local usado en la sesión anterior.
+Continúa desde el proyecto de ejemplo local usado en el proyecto de contexto. Confirma que existen `memory-bank/` y `.agents/rules`.
 
 Crea una nueva rama antes de empezar:
 
 ```bash
 git switch -c feature/agent-skills
 ```
+
+Pide al agent cómo ejecutar la app y qué comando de build valida el frontend.
 
 ---
 
@@ -45,35 +47,35 @@ git switch -c feature/agent-skills
 
 - [ ] Ejecuta `npx skills find accessibility` y lee en qué consiste la skill antes de cargarla
 - [ ] Ejecuta `npx skills find vercel-react-best-practices` y léela también
-- [ ] Carga ambas skills en tu agente de código y confirma que el agente entiende sus instrucciones
+- [ ] Carga ambas skills en tu coding agent y confirma que el agent entiende sus instrucciones
 
-### 2. Aplicar la skill `accessibility`
+### 2. Aplicar la skill `accessibility` (agent al mando, tú verificas)
 
-- [ ] Pide al agente (con la skill `accessibility` cargada) que audite el frontend del catálogo de biblioteca
-- [ ] Corrige todos los problemas de `aria-label` y `role` detectados
-- [ ] Verifica que las tarjetas de libros, el input de búsqueda y los enlaces de navegación son accesibles por teclado (`Tab` / `Enter`)
-- [ ] Añade o corrige el atributo `alt` en las imágenes de portadas de libros o iconos
-- [ ] Comprueba que el contraste del texto y los botones cumple los estándares básicos de legibilidad
+- [ ] Pide al agent (con la skill `accessibility` cargada) que audite el frontend del catálogo y proponga correcciones
+- [ ] Revisa cada propuesta; acepta solo cambios ligados a un archivo e instrucción de la skill
+- [ ] Verifica resultados: tarjetas de libros, búsqueda y navegación por teclado; `alt`; contraste básico
+- [ ] Commit referenciando la skill `accessibility`
 
-### 3. Aplicar la skill `vercel-react-best-practices`
+### 3. Aplicar la skill `vercel-react-best-practices` (agent al mando, tú verificas)
 
-- [ ] Sustituye las etiquetas `<img>` que muestran portadas de libros por `next/image`
-- [ ] Asegúrate de que la página del catálogo y la página de detalle del libro tienen `<title>` y `<meta description>` correctos mediante la API de metadata de Next.js
-- [ ] Elimina los anti-patrones detectados por la skill
-- [ ] Confirma que el build pasa: `pnpm build`
+- [ ] Pide al agent que audite patrones orientados a despliegue y aplique correcciones que la skill señale
+- [ ] Revisa propuestas — p. ej. `next/image` en portadas, metadata en catálogo y detalle
+- [ ] Confirma que el comando de build del repo pasa sin advertencias nuevas injustificadas
+- [ ] Commit referenciando la skill `vercel-react-best-practices`
 
 ### 4. Explorar el ecosistema
 
-- [ ] Ejecuta `npx skills find <tema>` para al menos dos temas relevantes para la app de biblioteca (sugerencias: `forms`, `seo`, `typescript`)
-- [ ] Aplica al menos una skill adicional que consideres valiosa — añade una justificación de una frase en `memory-bank/status.md`
+- [ ] Ejecuta `npx skills find <tema>` para al menos dos temas relevantes (sugerencias: `forms`, `seo`, `typescript`, `testing`)
+- [ ] Aplica al menos una skill adicional — añade una justificación de una frase en `memory-bank/status.md`
 
-### 5. Escribir una skill personalizada
+### 5. Escribir una skill interna del proyecto
 
-Identifica algo específico de este catálogo de biblioteca que no esté cubierto por las skills existentes. Buenas opciones:
+Con el agent, identifica un gap específico de este repo heredado que las skills comunitarias no cubren bien. Buenas opciones:
 
-- Cómo deben mostrarse y ordenarse los resultados de búsqueda de libros
-- La convención de nombres para los parámetros de rutas de la API (p. ej., `isbn` vs `bookId`)
-- Cómo gestionar los estados vacíos cuando una búsqueda no devuelve resultados
+- Convenciones de commit o PR para este repo de equipo
+- Cómo ejecutar smoke checks antes del merge (testing/QA)
+- Cómo mostrar y ordenar resultados de búsqueda de libros
+- Gestión de estados vacíos cuando la búsqueda no devuelve resultados
 
 Escribe un archivo de skill en `.skills/library-catalog-<tema>.md` con:
 
@@ -84,16 +86,17 @@ Escribe un archivo de skill en `.skills/library-catalog-<tema>.md` con:
 | **Salida esperada**         | Cómo es una implementación que cumple los criterios |
 | **Criterios de aceptación** | 2–3 condiciones verificables                        |
 
-- [ ] Carga la skill en el agente y verifica que la orientación es específica y útil
+- [ ] Carga la skill en el agent y verifica que la orientación es específica y útil en una tarea real
 
 ### 6. Actualizar el memory bank
 
-- [ ] Actualiza `memory-bank/status.md` para reflejar: skills aplicadas, cambios realizados y la skill personalizada que creaste
+- [ ] Actualiza `memory-bank/status.md` para reflejar: skills aplicadas, cambios verificados, skill del ecosistema elegida y la skill interna que creaste
 
 ---
 
 ## Preguntas para Discusión
 
 1. ¿Cuál es la diferencia entre una skill y una regla de proyecto (en `.agents/rules`)? ¿Cuándo usarías cada una?
-2. Después de aplicar la skill `accessibility`, el agente sugirió añadir `aria-label` al botón de búsqueda. ¿Cómo verificarías que esto realmente ayuda a un usuario de lector de pantalla?
-3. Tu skill personalizada tiene pocas líneas. Un compañero dice que es "demasiado corta para ser útil". ¿Cómo defenderías que sea concisa?
+2. Después de aplicar la skill `accessibility`, el agent sugirió añadir `aria-label` al botón de búsqueda. ¿Cómo verificarías que esto realmente ayuda a un usuario de lector de pantalla?
+3. ¿Por qué escribir una skill interna para commits o testing si existen skills comunitarias?
+4. Tu skill interna tiene pocas líneas. Un compañero dice que es "demasiado corta para ser útil". ¿Cómo defenderías que sea concisa?

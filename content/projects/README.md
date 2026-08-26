@@ -78,7 +78,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Spec-first assignment on the existing financial dashboard repo: TypeScript types aligned with `/docs`, `components.md`, and a data-contract README for a date range filter, anomaly alerts table, and B2B vs B2C revenue comparison—no React implementation.
 
 23. **[Company financial dashboard skills project](./company-financial-dashboard-skills-project)**  
-    Continue on the same financial dashboard repo: apply agent skills (`accessibility`, `vercel-react-best-practices`), explore `skills.sh` with `npx skills find`, author a custom skill under `.skills/`, and update the memory bank—targeted improvements, not a full rebuild.
+    Continue on the inherited financial dashboard repo (after context project): drive a coding agent to apply `accessibility` and `vercel-react-best-practices`, discover one more skill via `npx skills find`, author an internal `.skills/` file (commits, deployment, testing/QA, or repo-specific), verify outcomes, and update the memory bank.
 
 24. **[Milestone 4 — AI-driven Engineering](./ai-eng-milestone-ai-driven-engineering)**  
     `Milestone 4` — Monorepo layout: public Next.js site, internal backoffice, services/APIs, and integration of prior milestones with an AI-assisted delivery workflow.

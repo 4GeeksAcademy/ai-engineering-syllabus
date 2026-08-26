@@ -7,17 +7,16 @@
   "status": "draft",
   "slug": "company-financial-dashboard-skills-project",
   "description": {
-    "en": "Apply agent skills (accessibility, vercel-react-best-practices) to the existing financial dashboard, explore skills.sh via npx skills find, author a custom project skill under .skills/, and update the memory bank—without rebuilding the app from scratch.",
-    "es": "Aplica skills de agente (accessibility, vercel-react-best-practices) al dashboard financiero existente, explora skills.sh con npx skills find, escribe una skill propia del proyecto en .skills/ y actualiza el memory bank—sin rehacer la app desde cero."
+    "en": "On the inherited financial dashboard repo (after context project): drive a coding agent to apply accessibility and vercel-react-best-practices skills, discover and apply one more via npx skills find, author an internal .skills/ file (commits, deployment, testing/QA, or repo-specific), verify outcomes, and update the memory bank.",
+    "es": "En el repo heredado del dashboard financiero (tras el proyecto de contexto): dirige un coding agent para aplicar skills accessibility y vercel-react-best-practices, descubre y aplica una más con npx skills find, escribe una skill interna en .skills/ (commits, despliegue, testing/QA o específica del repo), verifica resultados y actualiza el memory bank."
   },
   "difficulty": "intermediate",
   "duration": 2,
   "technologies": [
     "ai",
-    "nextjs",
-    "react",
+    "coding-agents",
+    "agent-skills",
     "accessibility",
-    "vercel",
     "documentation",
     "git"
   ],
@@ -48,8 +47,8 @@
       "es": "Acabo de completar el Enhacing development with agent skills - Financial dashboard con LearnPack @4GeeksAcademy: skills de agente para a11y y Vercel/React, exploración del ecosistema con npx skills find y una skill propia en .skills/. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #LearnPack #4GeeksAcademy #AgentSkills #Accesibilidad"
     },
     {
-      "en": "Scaled quality with composable agent skills on a real Next.js dashboard with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #skills.sh #4GeeksAcademy",
-      "es": "Escalé calidad con skills de agente componibles en un dashboard Next.js real con @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #skills.sh #4GeeksAcademy"
+      "en": "Scaled quality on an inherited dashboard with agent skills I verified—community skills plus an internal .skills/ artifact with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #skills.sh #4GeeksAcademy",
+      "es": "Escalé calidad en un dashboard heredado con skills de agente que verifiqué—skills comunitarias más un artefacto interno en .skills/ con @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-skills-project #AIEngineering #skills.sh #4GeeksAcademy"
     }
   ],
   "telemetry": {
