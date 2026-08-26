@@ -221,15 +221,19 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 70. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
     Capstone — Graba un pitch horizontal de ~5 minutos del sistema de IA de la empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con `FirstnameLastname-ProjectName.mp4`, una descripción de 1–2 frases y la cesión de imagen firmada.
 
+## Curso For Devs
+
+Track separado en [`./4-devs`](./4-devs). Contextos en [`../contexts/4-devs`](../contexts/4-devs).
+
+- **[Backoffice de Operaciones – Gestor de Incidencias](./4-devs/ai-eng-incident-manager-for-devs)**  
+  Stewardship + feature: deriva convenciones del monorepo a `.agents/rules` y `memory-bank`, y entrega un gestor de incidencias guiado por CONTEXT con ciclo de vida y trazabilidad (`contexts/4-devs/incident-manager-for-devs`).
+
+- **[Backoffice de Operaciones – Gestor de Inventario](./4-devs/ai-eng-inventory-manager-for-devs)**  
+  Spec Driven Development: `spec` / `plan` / `tasks` en EARS, inventario con stock derivado de movimientos, tests mapeados a criterios, cambio de requisito vía spec-first (`contexts/4-devs/inventory-manager-for-devs`).
+
 ## Otros proyectos
 
 No forman parte de la secuencia del temario. Se mantienen aquí como referencia o uso opcional.
-
-- **[Backoffice de Operaciones – Gestor Centralizado de Incidencias](./ai-eng-centralized-incident-manager-for-devs)**  
-  Proyecto aislado de stewardship + feature: deriva convenciones del monorepo a `.agents/rules` y `memory-bank`, y entrega un gestor de incidencias guiado por CONTEXT con ciclo de vida y trazabilidad (`contexts/centralized-incident-manager-for-devs`).
-
-- **[Backoffice de Operaciones – Gestor de Inventario](./ai-eng-inventory-manager-for-devs)**  
-  Proyecto aislado SDD: `spec` / `plan` / `tasks` en EARS, inventario con stock derivado de movimientos, tests mapeados a criterios, cambio de requisito vía spec-first (`contexts/inventory-manager-for-devs`).
 
 - **[Plataforma – Roles y Permisos](./ai-eng-roles-permissions)**  
   Ejes independientes de rol y departamento en la plataforma de la empresa: 403 centralizado, datos con alcance departamental y vista Admin solo para roles/departamentos.

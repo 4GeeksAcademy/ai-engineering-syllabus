@@ -46,12 +46,15 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 12. **[Supplier directory](./supplier-directory)** — Supplier seed data and validation rules for the TinyDB API.
 13. **[Incidents file analysis](./incidents-file-analysis)** — CSV schemas, categories, and expected analyzer output.
 14. **[Centralized incident manager](./centralized-incident-manager)** — Live incident manager fields, branches, and seed values.
-15. **[Centralized incident manager (for devs)](./centralized-incident-manager-for-devs)** — Intake channels, types, severities, responsible areas, lifecycle, and seed rules for the ops backoffice steward + manager project.
-16. **[Inventory manager (for devs)](./inventory-manager-for-devs)** — Units, categories, locations/lots, reorder points, and movement rules for the Spec Driven Development inventory manager.
-17. **[Roles and permissions](./roles-permissions)** — Exact role codes, departments, capability matrix, and seed users per company (`CONTEXT-<company>.en.md` / `.es.md`).
-18. **[Federated authentication](./federated-authentication)** — Required IdP (Google / Microsoft / LinkedIn), linking audience, OAuth env, seed users, and audit events per company.
-19. **[Audit log](./audit-log)** — Critical event inventory, append-only constraints, query scope by role/department, and seed audit entries per company.
-20. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.
+15. **[Roles and permissions](./roles-permissions)** — Exact role codes, departments, capability matrix, and seed users per company (`CONTEXT-<company>.en.md` / `.es.md`).
+16. **[Federated authentication](./federated-authentication)** — Required IdP (Google / Microsoft / LinkedIn), linking audience, OAuth env, seed users, and audit events per company.
+17. **[Audit log](./audit-log)** — Critical event inventory, append-only constraints, query scope by role/department, and seed audit entries per company.
+18. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.
+
+**For Devs course contexts** ([`./4-devs`](./4-devs))
+
+19. **[Incident manager (for devs)](./4-devs/incident-manager-for-devs)** — Intake channels, types, severities, responsible areas, lifecycle, and seed rules for the ops backoffice steward + manager project.
+20. **[Inventory manager (for devs)](./4-devs/inventory-manager-for-devs)** — Units, categories, locations/lots, reorder points, and movement rules for the Spec Driven Development inventory manager.
 
 ## Contributors
 

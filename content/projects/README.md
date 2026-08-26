@@ -221,15 +221,19 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 70. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
     Capstone — Record a ~5-minute landscape pitch of the company AI system: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with `FirstnameLastname-ProjectName.mp4`, a 1–2 sentence description, and the signed media release.
 
+## For Devs course
+
+Separate track under [`./4-devs`](./4-devs). Contexts live in [`../contexts/4-devs`](../contexts/4-devs).
+
+- **[Operations Backoffice – Incident Manager](./4-devs/ai-eng-incident-manager-for-devs)**  
+  Steward + feature: derive monorepo conventions into `.agents/rules` and a `memory-bank`, then ship a CONTEXT-driven incident manager with lifecycle and change traceability (`contexts/4-devs/incident-manager-for-devs`).
+
+- **[Operations Backoffice – Inventory Manager](./4-devs/ai-eng-inventory-manager-for-devs)**  
+  Spec Driven Development: EARS `spec` / `plan` / `tasks`, inventory where stock is derived from movements, tests mapped to criteria, mid-stream requirement change via spec-first (`contexts/4-devs/inventory-manager-for-devs`).
+
 ## Other projects
 
 Not part of the syllabus sequence. Kept here for reference or optional use.
-
-- **[Operations Backoffice – Centralized Incident Manager](./ai-eng-centralized-incident-manager-for-devs)**  
-  Isolated steward + feature project: derive monorepo conventions into `.agents/rules` and a `memory-bank`, then ship a CONTEXT-driven incident manager with lifecycle and change traceability (`contexts/centralized-incident-manager-for-devs`).
-
-- **[Operations Backoffice – Inventory Manager](./ai-eng-inventory-manager-for-devs)**  
-  Isolated SDD project: EARS `spec` / `plan` / `tasks`, inventory where stock is derived from movements, tests mapped to criteria, mid-stream requirement change via spec-first (`contexts/inventory-manager-for-devs`).
 
 - **[Platform – Roles and Permissions](./ai-eng-roles-permissions)**  
   Independent role and department axes on the company platform: centralized 403 enforcement, department-scoped data, and an Admin-only roles/departments view.
