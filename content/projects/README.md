@@ -72,7 +72,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     `Milestone 3` — Next.js App Router frontend for the recruitment API: candidate list and detail, filters and search, notes CRUD, register and edit forms, async UI states, and TypeScript types aligned with `CONTEXT-company.md`.
 
 21. **[Company financial dashboard context project](./company-financial-dashboard-context-project)**  
-    Module project focused on repository stewardship: fork an existing full-stack repo, validate AI-generated project understanding, define and test actionable rules under `.agents/rules`, and generate a `memory-bank` with product, stack, and current status.
+    Module project: drive a coding agent to understand an unfamiliar full-stack repo (no prior stack knowledge required), verify claims against code, derive and test `.agents/rules` from repo evidence, and leave a `memory-bank` (product, stack, status) so the repo is agent-ready.
 
 22. **[Company financial dashboard specs project](./company-financial-dashboard-specs-project)**  
     Spec-first assignment on the existing financial dashboard repo: TypeScript types aligned with `/docs`, `components.md`, and a data-contract README for a date range filter, anomaly alerts table, and B2B vs B2C revenue comparison—no React implementation.

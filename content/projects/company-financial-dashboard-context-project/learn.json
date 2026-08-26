@@ -7,13 +7,14 @@
   "status": "draft",
   "slug": "company-financial-dashboard-context-project",
   "description": {
-    "en": "Audit and operationalize an existing full-stack repository with AI support: validate generated understanding, define actionable rules in .agents/rules, and produce a memory-bank with product, stack, and current status.",
-    "es": "Audita y operacionaliza un repositorio full-stack existente con apoyo de IA: valida la comprensión generada, define reglas accionables en .agents/rules y crea un memory-bank con producto, stack y estado actual."
+    "en": "Make an unfamiliar full-stack repo agent-ready: drive a coding agent to discover how it runs, verify its summary against code, derive .agents/rules from repo evidence, and produce a memory-bank (product, stack, status)—no prior stack knowledge required.",
+    "es": "Deja un repo full-stack desconocido listo para agentes: dirige un coding agent para descubrir cómo se ejecuta, verifica su resumen contra el código, deriva .agents/rules desde evidencia del repo y produce un memory-bank (producto, stack, estado)—sin conocimiento previo del stack."
   },
   "difficulty": "intermediate",
   "duration": 2,
   "technologies": [
     "ai",
+    "coding-agents",
     "documentation",
     "repository-management",
     "git",
@@ -43,12 +44,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/company-financial-dashboard-context-project/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed the Building context from an existing project - Financial dashboard with LearnPack @4GeeksAcademy: repo analysis with AI, actionable rules, and a project memory-bank. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #LearnPack #4GeeksAcademy #Git #Documentation",
-      "es": "Acabo de completar el Building context from an existing project - Financial dashboard con LearnPack @4GeeksAcademy: análisis de repo con IA, reglas accionables y memory-bank del proyecto. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #LearnPack #4GeeksAcademy #Git #Documentacion"
+      "en": "I just completed the Building context from an existing project - Financial dashboard with LearnPack @4GeeksAcademy: coding-agent investigation, verified repo understanding, actionable .agents/rules, and a memory-bank. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #LearnPack #4GeeksAcademy #CodingAgents #Git",
+      "es": "Acabo de completar el Building context from an existing project - Financial dashboard con LearnPack @4GeeksAcademy: investigación con coding agent, comprensión verificada del repo, .agents/rules accionables y memory-bank. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #LearnPack #4GeeksAcademy #CodingAgents #Git"
     },
     {
-      "en": "Built and documented: Building context from an existing project - Financial dashboard. From sparse handover to clear engineering rules and memory-bank with @4GeeksAcademy. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #RepositoryStewardship #4GeeksAcademy",
-      "es": "Construido y documentado: Building context from an existing project - Financial dashboard. De un handover limitado a reglas de ingeniería claras y memory-bank con @4GeeksAcademy. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #RepositoryStewardship #4GeeksAcademy"
+      "en": "Left an unfamiliar financial dashboard agent-ready: verified context, rules from codebase evidence, and memory-bank with @4GeeksAcademy. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #RepositoryStewardship #4GeeksAcademy",
+      "es": "Dejé un dashboard financiero desconocido listo para agentes: contexto verificado, reglas desde evidencia del codebase y memory-bank con @4GeeksAcademy. https://github.com/4GeeksAcademy/company-financial-dashboard-context-project #AIEngineering #RepositoryStewardship #4GeeksAcademy"
     }
   ],
   "telemetry": {
