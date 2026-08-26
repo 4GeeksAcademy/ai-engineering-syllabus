@@ -1,6 +1,6 @@
 # Ejemplo en Clase: Desarrollo Guiado por Especificaciones para el Catálogo de Biblioteca
 
-> **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio continúa con la app de catálogo de biblioteca comunitaria — mismo flujo de trabajo guiado por especificaciones (tipos TypeScript, specs de componentes, documentación del contrato de datos, casos borde), pero con dos funcionalidades en lugar de tres y una forma de API más sencilla.
+> **Nota para el instructor:** Este es un ejemplo en clase diseñado para introducir los conceptos técnicos clave del proyecto principal en una sesión de programación en vivo de 60–90 minutos. El dominio continúa con la app de catálogo de biblioteca comunitaria del **proyecto de contexto** — mismo flujo agent-first guiado por especificaciones (explorar `/docs`, tipos TypeScript, specs de componentes, documentación del contrato de datos, casos límite), pero con dos funcionalidades en lugar de tres y una forma de API más sencilla.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -8,11 +8,11 @@ _These instructions are also available in [English](./README.md)._
 
 ### Nota de alcance
 
-Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo stack y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+Este ejemplo está acotado para una sesión en vivo en el aula. Mantiene el mismo flujo agent-first y patrones centrales que el proyecto oficial del estudiante en esta carpeta pero omite requisitos secundarios; ver la nota para instructores arriba. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
 
-El catálogo de biblioteca está en producción. Los bibliotecarios que lo usan quieren dos nuevas funcionalidades. Antes de que nadie escriba un componente React ni haga una llamada a la API, tu tech lead dice: **"Primero especificamos. Luego construimos."**
+Continúas en el **repo heredado del catálogo de biblioteca** del proyecto de contexto. Los bibliotecarios quieren dos funcionalidades nuevas. Antes de que nadie escriba un componente React, tu tech lead dice: **"Primero especificamos. Luego construimos."**
 
-Tu trabajo es escribir especificaciones precisas para ambas funcionalidades. Consulta la documentación de la API en `http://localhost:8000/docs` para entender las formas reales de las respuestas antes de escribir ningún tipo. Tus specs deben ser lo suficientemente claras para que cualquier desarrollador — o agente de IA — pueda implementar la funcionalidad sin hacer preguntas.
+Tu coding agent explora `/docs`; tú verificas tipos y reglas contra evidencia de la API en vivo. Las specs deben ser lo bastante claras para que cualquier coding agent implemente sin preguntas de seguimiento.
 
 ---
 
@@ -20,24 +20,27 @@ Tu trabajo es escribir especificaciones precisas para ambas funcionalidades. Con
 
 | Concepto                                   | Dónde se aplica                                                           |
 | ------------------------------------------ | ------------------------------------------------------------------------- |
-| Interfaces TypeScript                      | `api-types.ts` — formas de respuesta de endpoints reales de la API        |
+| Exploración agent-first de la API          | Fase 1: mapear endpoints y formas desde `/docs` con el agent              |
+| Interfaces TypeScript                      | `api-types.ts` — formas de respuesta verificadas contra OpenAPI           |
 | Tipos de parámetros de consulta TypeScript | `param-types.ts` — parámetros de petición con JSDoc                       |
 | Especificación de componentes              | `components.md` — nombres, props, renderizado condicional, estados vacíos |
-| Documentación del contrato de datos        | `frontend/specs/README.md` — endpoints, tipos, casos borde                |
-| Desarrollo guiado por especificaciones     | Escribir antes de construir para que la implementación sea inequívoca     |
+| Documentación del contrato de datos        | `frontend/specs/README.md` — endpoints, tipos, casos límite               |
+| Desarrollo guiado por especificaciones     | Especificar antes de construir para que la implementación sea inequívoca  |
 
 ---
 
 ## Punto de Partida
 
-Continúa en el mismo proyecto local de ejemplo del catálogo de biblioteca. Crea una nueva rama:
+Continúa en el mismo proyecto local de ejemplo del proyecto de contexto. Confirma que existen `memory-bank/` y `.agents/rules`.
+
+Crea una nueva rama:
 
 ```bash
 git switch -c feature/frontend-specs
 mkdir -p frontend/specs
 ```
 
-Arranca el backend y lee la documentación de la API en `http://localhost:8000/docs` antes de escribir nada.
+Pide al agent que arranque el backend y explore `/docs` antes de escribir nada.
 
 ---
 
@@ -61,60 +64,37 @@ Arranca el backend y lee la documentación de la API en `http://localhost:8000/d
 
 ## Qué Producir
 
-### Tipos TypeScript (`frontend/specs/api-types.ts`)
+### Fase 1 — Explorar `/docs` (con el agent)
 
-- [ ] `BookEntry` — un registro de libro individual (id, título, autor, género, año, disponible)
-- [ ] `BooksResponse` — lista de libros devuelta por el endpoint de búsqueda
-- [ ] `GenreEntry` — una fila de género (nombre del género, número, porcentaje)
-- [ ] `GenresSummaryResponse` — la respuesta completa del desglose de géneros
+- [ ] Mapear endpoints, formas de respuesta y parámetros de ambas funcionalidades
+- [ ] Anotar desajustes entre el wording del PM y los campos reales de la API
 
-Reglas:
+### Fase 2 — Tipos TypeScript (el agent redacta, tú verificas)
 
-- Sin `any`, sin `object`
-- Cada propiedad debe tener un comentario JSDoc que explique su significado y formato
+**`frontend/specs/api-types.ts`**
 
-### Tipos de Parámetros TypeScript (`frontend/specs/param-types.ts`)
+- [ ] `BookEntry`, `BooksResponse`, `GenreEntry`, `GenresSummaryResponse`
+- [ ] Sin `any`, sin `object`; JSDoc en cada propiedad; verificar contra `/docs`
 
-- [ ] `BookSearchParams` — el parámetro de cadena de consulta `title` opcional
-- [ ] `GenresSummaryParams` — acepta opcionalmente un filtro `title` para acotar las estadísticas de géneros
+**`frontend/specs/param-types.ts`**
 
-### Especificaciones de Componentes (`frontend/specs/components.md`)
+- [ ] `BookSearchParams`, `GenresSummaryParams`
 
-Para cada funcionalidad, documenta:
+### Fase 3 — Specs de componentes (el agent redacta, tú verificas)
 
-**Funcionalidad 1 — Filtro de búsqueda por título**
+**`frontend/specs/components.md`** — por funcionalidad: nombres, props, layout, estados vacíos, interacción del filtro entre Funcionalidad 1 y 2.
 
-- Nombre del componente y dónde se ubica en la página
-- Props (si las hay) y sus tipos
-- Qué se renderiza cuando el input está vacío vs. cuando no hay resultados
+### Fase 4 — Contrato de datos
 
-**Funcionalidad 2 — Panel de desglose por género**
+**`frontend/specs/README.md`** — endpoints, tipos, restricciones de parámetros, ≥ 2 casos límite por funcionalidad con comportamiento de UI.
 
-- Nombre del componente, props y layout
-- Qué se renderiza cuando hay menos de 3 géneros disponibles
-- Cómo reacciona el panel cuando cambia el filtro de título
-
-### Documentación del Contrato de Datos (`frontend/specs/README.md`)
-
-Para cada funcionalidad, documenta:
-
-- Qué endpoint(s) consume (verifica las rutas en `/docs`)
-- Tipos TypeScript usados para la petición y la respuesta
-- Valores válidos y restricciones para cada parámetro
-- Al menos **2 casos borde** y qué debe mostrar la interfaz en cada uno
-
-Ejemplos de casos borde a considerar:
-
-- ¿Qué pasa si `title` contiene caracteres especiales como `&` o `/`?
-- ¿Qué pasa si el endpoint de géneros devuelve un array vacío?
-- ¿Qué pasa si la lista de libros tiene solo 1 género?
-
-> ⚠️ **Importante:** No construyas componentes React ni hagas llamadas a la API. Tus entregables son los archivos `.ts` de tipos, `components.md` y `frontend/specs/README.md`.
+> ⚠️ **Importante:** No construyas componentes React ni hagas llamadas a la API. Entregables: archivos `.ts` de tipos, `components.md` y `frontend/specs/README.md`.
 
 ---
 
 ## Preguntas para Discusión
 
-1. ¿Por qué escribimos las interfaces TypeScript basándonos en la respuesta real de la API (desde `/docs`) en lugar de inferir la forma a partir de las necesidades del componente?
-2. Se supone que el panel de géneros debe mostrar estadísticas para el "subconjunto filtrado" cuando hay un filtro de título activo. ¿Qué caso borde crea esto y cómo debe abordarlo la spec?
-3. Un compañero dice: "¿Para qué molestarse con `components.md`? Con los tipos es suficiente." ¿Cuál es el argumento para escribir una especificación de componentes separada?
+1. ¿Por qué verificar interfaces TypeScript contra `/docs` en lugar de inferir la forma desde las necesidades del componente?
+2. El panel de géneros muestra estadísticas del subconjunto filtrado cuando hay filtro de título activo. ¿Qué caso límite crea?
+3. Un compañero dice: "¿Para qué molestarse con `components.md`? Con los tipos basta." ¿Cuál es el contraargumento?
+4. ¿Quién debe descubrir los nombres de campo de la API — el estudiante de memoria, o el estudiante+agent desde `/docs`?

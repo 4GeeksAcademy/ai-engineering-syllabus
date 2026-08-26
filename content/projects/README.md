@@ -75,7 +75,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Module project: drive a coding agent to understand an unfamiliar full-stack repo (no prior stack knowledge required), verify claims against code, derive and test `.agents/rules` from repo evidence, and leave a `memory-bank` (product, stack, status) so the repo is agent-ready.
 
 22. **[Company financial dashboard specs project](./company-financial-dashboard-specs-project)**  
-    Spec-first assignment on the existing financial dashboard repo: TypeScript types aligned with `/docs`, `components.md`, and a data-contract README for a date range filter, anomaly alerts table, and B2B vs B2C revenue comparison—no React implementation.
+    Continue on the inherited financial dashboard repo: drive a coding agent to explore `/docs`, draft TypeScript types, `components.md`, and a data-contract README for three PM features—verify every field against OpenAPI. No React implementation.
 
 23. **[Company financial dashboard skills project](./company-financial-dashboard-skills-project)**  
     Continue on the inherited financial dashboard repo (after context project): drive a coding agent to apply `accessibility` and `vercel-react-best-practices`, discover one more skill via `npx skills find`, author an internal `.skills/` file (commits, deployment, testing/QA, or repo-specific), verify outcomes, and update the memory bank.

@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -17,13 +17,21 @@ _Estas instrucciones están [disponibles en inglés](./README.md)._
 
 ## 🎯 Tu reto
 
-El dashboard financiero que construiste recientemente ya está en manos del equipo de finanzas del cliente, y tienen feedback. Quieren más control sobre los datos que ven, una forma de detectar gastos inusuales sin revisar filas una a una, y una vista dedicada para comparar ingresos entre sus dos líneas de negocio.
+Continúas en el **mismo dashboard financiero heredado** del proyecto de contexto. El equipo de finanzas del cliente pide tres capacidades nuevas. Antes de que nadie construya un componente, tu tech lead para al equipo:
 
-Antes de que alguien construya un solo componente, tu tech lead ha parado al equipo: **"Primero la especificación. Luego construimos."**
+> **"Primero la especificación. Luego construimos."**
 
-Una especificación bien escrita define qué ve el usuario, qué datos necesita cada componente y qué reglas rigen cada campo. Si la especificación es clara, cualquier desarrollador — o agente de IA — puede implementarla correctamente sin hacerte preguntas. Tu trabajo es producir esa especificación para tres funcionalidades concretas.
+Una especificación bien escrita define qué ve el usuario, qué datos necesita cada componente y qué reglas rigen cada campo. Si la spec es clara, cualquier desarrollador — o coding agent — puede implementarla sin hacerte preguntas.
 
-Empieza abriendo `/docs` en tu navegador con el backend en marcha. Lee las formas de respuesta y las reglas de parámetros de los endpoints relevantes antes de escribir ningún tipo ni descripción de componente. Tus especificaciones deben coincidir con lo que la API realmente devuelve.
+**Stack-agnostic se refiere a tu conocimiento previo, no al stack del proyecto.** Este repo tiene frontend y backend predefinidos. **No** necesitas dominar ya interfaces TypeScript, OpenAPI ni cada nombre de campo de la API. Tu coding agent explora `/docs` y los patrones frontend existentes; tú lo diriges, verificas cada tipo y regla contra evidencia de la API en vivo y rechazas suposiciones.
+
+### Cómo trabajas (en cada fase)
+
+1. Pide al agent que explore `/docs` y el código frontend relevante antes de redactar specs.
+2. Por funcionalidad, pasa el outcome del PM como prompt — deja que el agent proponga tipos, componentes y casos límite.
+3. Marca afirmaciones de API ✅ verificadas en `/docs` / ❌ incorrectas / ❓ sin verificar; corrige con el agent.
+4. Haz commit de artefactos de spec solo después de verificar — commits separados para tipos, componentes y contrato de datos son ideales.
+5. **No** implementes componentes React ni llamadas a la API en este proyecto.
 
 > Tu product manager compartió las siguientes solicitudes de funcionalidad:
 >
@@ -45,24 +53,25 @@ Empieza abriendo `/docs` en tu navegador con el backend en marcha. Lee las forma
 >
 > ---
 >
-> #### Funcionalidad 3 — Vista de comparativa B2B vs B2C
+> #### Funcionalidad 3 — Vista comparativa B2B vs B2C
 >
 > Crea una nueva página en el dashboard para comparar el rendimiento de ingresos entre las dos líneas de negocio: B2B y B2C. La vista tiene dos secciones en paralelo. Cada sección muestra una tabla con las 5 categorías de ingreso principales de esa línea de negocio, mostrando nombre de categoría, total de ingresos y porcentaje sobre el total del grupo. Bajo ambas secciones, un único gráfico compara visualmente el total de ingresos de B2B frente a B2C. El usuario puede filtrar la comparativa por un rango de fechas (mismo formato `YYYY-MM-DD`). Las categorías disponibles para cada grupo deben obtenerse del endpoint de facetas.
 >
 > Endpoints relevantes: `GET /api/metrics/categories/top?operation_type=income&limit=5` y `GET /api/metrics/facets`
 
-Tus especificaciones deben ser lo suficientemente precisas para que cualquier desarrollador — o agente de IA — pueda construir cada funcionalidad a partir de ellas, sin necesidad de hacerte ninguna pregunta.
+Tus especificaciones deben ser lo bastante precisas para que un coding agent construya cada funcionalidad solo con ellas — porque cada nombre de campo, parámetro y caso límite fue verificado contra `/docs`, no inventado.
 
 ---
 
 ## 🌱 Cómo iniciar el proyecto
 
-Este proyecto continúa en el mismo repositorio que usaste para el dashboard financiero. No hagas fork de un repo nuevo.
+Continúa en el **mismo repositorio** del proyecto de contexto. No hagas fork de un repo nuevo.
 
-1. Abre tu repositorio existente del dashboard financiero (tu fork de [**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) en GitHub Codespaces o clónalo localmente.
-2. Crea una nueva rama llamada `feature/frontend-specs` desde tu `main` actual.
-3. Crea una carpeta llamada `frontend/specs/` — aquí irán todos tus archivos de especificación.
-4. Arranca el backend y visita `/docs` para explorar los endpoints antes de escribir ninguna especificación.
+1. Abre tu fork del dashboard financiero ([**ai-eng-financial-dashboard-context-project**](https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-project)) en tu coding agent.
+2. Confirma que `memory-bank/` y `.agents/rules` del trabajo previo están commiteados y actualizados.
+3. Crea una rama: `git switch -c feature/frontend-specs`.
+4. Crea `frontend/specs/` — aquí irán todos los archivos de especificación.
+5. Pide al agent que arranque el backend y abra `/docs`; explora endpoints de las tres funcionalidades antes de escribir ninguna spec.
 
 Si necesitas repasar el trabajo con ramas: [cómo iniciar un proyecto de programación](https://4geeks.com/lesson/how-to-start-a-project).
 
@@ -70,72 +79,88 @@ Si necesitas repasar el trabajo con ramas: [cómo iniciar un proyecto de program
 
 ## 💻 Qué debes hacer
 
-### Tipos TypeScript
+### Fase 1 — Explorar la API (con el agent)
 
-- [ ] Crea `frontend/specs/api-types.ts` con interfaces TypeScript para las respuestas de la API usadas por las tres funcionalidades:
-  - `FacetsResponse` — usada por la referencia de rango de fechas y por la vista B2B vs B2C
-  - `AlertEntry`, `AlertsResponse` — usada por la tabla de anomalías
-  - `CategoryEntry`, `TopCategoriesResponse` — usada por la tabla comparativa B2B vs B2C
-- [ ] Crea `frontend/specs/param-types.ts` con tipos TypeScript para los parámetros de consulta enviados por cada funcionalidad:
-  - `DateRangeFilter` — los parámetros opcionales de fecha de inicio y fin compartidos entre funcionalidades (fechas como `string` en formato `YYYY-MM-DD`)
-  - `AlertsParams` — threshold más el filtro de rango de fechas
-  - `TopCategoriesParams` — tipo de operación, limit y el filtro de rango de fechas
-- [ ] Todos los tipos deben usar TypeScript estricto — sin `any`, sin `object`
-- [ ] Documenta cada propiedad con un comentario JSDoc explicando su significado, valores válidos y formato cuando corresponda
+- [ ] Con el backend en marcha, pide al agent mapear endpoints, formas de respuesta y parámetros de query de las tres funcionalidades usando `/docs`.
+- [ ] Contrasta con patrones de fetch existentes en el frontend del repo cuando ayude.
+- [ ] Anota desajustes entre el wording del PM y los campos reales de la API — resuélvelos en la spec, no en la implementación.
+- [ ] Opcional: rastro corto de verificación en mensajes de commit o `verification.md`.
 
-### Especificación de componentes
+### Fase 2 — Tipos TypeScript (el agent redacta, tú verificas)
 
-- [ ] Crea `frontend/specs/components.md` con el desglose de componentes para cada funcionalidad:
+- [ ] Haz que el agent redacte `frontend/specs/api-types.ts` con interfaces para respuestas usadas por las tres funcionalidades:
+  - `FacetsResponse` — referencia de rango de fechas y vista B2B vs B2C
+  - `AlertEntry`, `AlertsResponse` — tabla de anomalías
+  - `CategoryEntry`, `TopCategoriesResponse` — tabla comparativa B2B vs B2C
+- [ ] Haz que el agent redacte `frontend/specs/param-types.ts` con tipos de parámetros de query:
+  - `DateRangeFilter` — fechas opcionales de inicio/fin como `string` en formato `YYYY-MM-DD`
+  - `AlertsParams` — threshold más filtro de fechas
+  - `TopCategoriesParams` — tipo de operación, limit y filtro de fechas
+- [ ] Verifica cada nombre y tipo de propiedad contra `/docs`; TypeScript estricto — sin `any`, sin `object`.
+- [ ] Cada propiedad necesita JSDoc: significado, valores válidos, formato cuando aplique.
+- [ ] Commit: tipos verificados contra OpenAPI.
+
+### Fase 3 — Especificación de componentes (el agent redacta, tú verificas)
+
+- [ ] Haz que el agent redacte `frontend/specs/components.md` por funcionalidad:
 
   **Funcionalidad 1 — Filtro de rango de fechas**
-  - Nombra el/los componente/s, lista sus props y describe el layout
-  - Especifica qué ocurre cuando solo uno de los dos inputs de fecha está relleno
-  - Especifica cómo se muestra la pista del rango de fechas disponible (procedente de `FacetsResponse`)
+  - Nombre(s) de componente, props, layout
+  - Comportamiento cuando solo un input de fecha está relleno
+  - Cómo se muestra la pista del rango disponible (desde `FacetsResponse`)
 
   **Funcionalidad 2 — Tabla de alertas de anomalías**
-  - Nombra el/los componente/s y lista sus props
-  - Especifica las cuatro columnas y sus tipos de dato
-  - Especifica el estado vacío: qué se renderiza cuando el array de alertas está vacío
-  - Especifica qué ocurre cuando el input del umbral recibe un valor fuera de rango
+  - Nombre(s) de componente y props
+  - Cuatro columnas y sus tipos de dato
+  - Estado vacío cuando el array de alertas está vacío
+  - Comportamiento cuando el threshold está fuera de rango
 
   **Funcionalidad 3 — Vista comparativa B2B vs B2C**
-  - Nombra los componentes para el layout de dos paneles, la tabla top-5 y el gráfico comparativo
-  - Lista las props de cada componente
-  - Especifica qué renderiza cada panel cuando su lista top-5 está vacía
-  - Describe qué muestra el gráfico comparativo y qué representan sus dos puntos de datos
+  - Componentes del layout de dos paneles, tabla top-5, gráfico comparativo
+  - Props de cada componente
+  - Qué renderiza cada panel cuando la lista top-5 está vacía
+  - Qué muestra el gráfico comparativo y qué representan sus dos puntos de datos
 
-### Documentación del contrato de datos
+- [ ] Alinea props de componentes con tipos de la Fase 2; resuelve ambigüedades que el brief del PM dejó abiertas.
+- [ ] Commit: specs de componentes.
 
-- [ ] Crea `frontend/specs/README.md` documentando las tres funcionalidades:
-  - Qué endpoint/s consume cada funcionalidad (verifica las rutas contra `/docs`)
-  - Los tipos TypeScript usados para cada petición y respuesta
-  - Valores válidos y restricciones para cada parámetro
-  - Al menos 2 casos edge por funcionalidad y qué debe mostrar la UI en cada caso
+### Fase 4 — Documentación del contrato de datos
 
-> ⚠️ **IMPORTANTE:** Estás especificando la capa frontend, no implementándola. No construyas componentes React ni hagas llamadas a la API. Tus entregables son los tipos TypeScript, `components.md` y `frontend/specs/README.md`.
+- [ ] Haz que el agent redacte `frontend/specs/README.md` cubriendo las tres funcionalidades:
+  - Endpoint(s) que consume cada una (rutas verificadas en `/docs`)
+  - Tipos TypeScript de cada petición y respuesta
+  - Valores válidos y restricciones de cada parámetro
+  - Al menos 2 casos límite por funcionalidad y qué debe mostrar la UI
+- [ ] Léelo como si se lo entregaras a una sesión nueva del agent — corrige lo que provocaría preguntas de seguimiento.
+- [ ] Ejecuta `npx tsc --noEmit` y corrige errores de tipos.
+- [ ] Commit: README de contrato de datos.
+
+> ⚠️ **IMPORTANTE:** Estás especificando la capa frontend, no implementándola. No construyas componentes React ni conectes llamadas a la API. Entregables: tipos TypeScript, `components.md` y `frontend/specs/README.md`.
 
 ---
 
 ## ✅ Qué vamos a evaluar
 
-- [ ] Todas las interfaces de respuesta coinciden con las formas que devuelve la API (verificable en `/docs`), sin usar `any`
-- [ ] `DateRangeFilter` define ambos campos como opcionales y tipados como `string` con una anotación JSDoc `YYYY-MM-DD`
-- [ ] `AlertsParams` y `TopCategoriesParams` extienden o incluyen `DateRangeFilter`
-- [ ] `components.md` nombra cada componente, lista sus props con tipos y especifica el renderizado condicional de cada funcionalidad
-- [ ] El estado vacío de la tabla de alertas está especificado explícitamente
-- [ ] El comportamiento cuando solo un input de fecha está relleno está especificado explícitamente
-- [ ] Ambos paneles de la vista B2B vs B2C especifican qué se renderiza cuando su lista top-5 está vacía
-- [ ] `frontend/specs/README.md` cubre las tres funcionalidades con endpoints, tipos, parámetros válidos y al menos 2 casos edge cada una
-- [ ] TypeScript compila sin errores (`npx tsc --noEmit`)
-- [ ] El código está commiteado en una rama llamada `feature/frontend-specs` con mensajes de commit significativos
+- [ ] Evidencia de exploración de API: tipos y endpoints trazables a `/docs`, no nombres de campo inventados.
+- [ ] Todas las interfaces de respuesta coinciden con OpenAPI en vivo, sin `any`.
+- [ ] `DateRangeFilter` define ambos campos opcionales, tipados como `string` con JSDoc `YYYY-MM-DD`.
+- [ ] `AlertsParams` y `TopCategoriesParams` extienden o incluyen `DateRangeFilter`.
+- [ ] `components.md` nombra cada componente, lista props con tipos y especifica renderizado condicional por funcionalidad.
+- [ ] Estado vacío de la tabla de anomalías especificado explícitamente.
+- [ ] Comportamiento con un solo input de fecha especificado explícitamente.
+- [ ] Ambos paneles B2B vs B2C especifican renderizado vacío de top-5.
+- [ ] `frontend/specs/README.md` cubre las tres funcionalidades con endpoints, tipos, parámetros y ≥ 2 casos límite cada una.
+- [ ] TypeScript compila (`npx tsc --noEmit`).
+- [ ] Trabajo en `feature/frontend-specs` con commits significativos; specs se leen como trabajo asistido por agent que verificaste.
+- [ ] Sin componentes React, llamadas fetch ni cambios de backend.
 
-> Nota: Los componentes React, las llamadas a la API y la implementación del backend no se evalúan en este proyecto.
+> Nota: La implementación queda fuera de alcance. La barra es una spec lo bastante buena para que un coding agent construya sin preguntas.
 
 ---
 
 ## 📦 Cómo entregar
 
-Sube tu rama `feature/frontend-specs` a GitHub y comparte la URL del repositorio con tu instructor según lo indicado en clase. Asegúrate de que la carpeta `frontend/specs/` esté presente y de que tu rama sea visible.
+Sube tu rama `feature/frontend-specs` a GitHub y comparte la URL del repositorio con tu instructor. Asegúrate de que `frontend/specs/` esté presente y la rama sea visible.
 
 ---
 

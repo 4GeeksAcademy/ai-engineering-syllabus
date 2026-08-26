@@ -1,6 +1,6 @@
 # In-Class Example: Spec-Driven Development for the Library Catalog
 
-> **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain continues with the community library catalog app — same spec-driven workflow (TypeScript types, component specs, data contract docs, edge cases), but with two features instead of three, and a simpler API shape.
+> **Instructor note:** This is an in-class example designed to introduce the core technical concepts of the main project in a 60–90 minute live-coding session. The domain continues with the community library catalog app from the **context project** — same agent-first spec-driven workflow (explore `/docs`, TypeScript types, component specs, data contract docs, edge cases), but with two features instead of three, and a simpler API shape.
 
 _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
@@ -8,11 +8,11 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ### Scope note
 
-This example is scoped for one live classroom session. It keeps the same stack and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
+This example is scoped for one live classroom session. It keeps the same agent-first workflow and core patterns as the official student project in this folder but drops secondary requirements; see the instructor note above. Students still follow the full brief in the project root `README.md`.
 
-The library catalog is live. The librarians using it want two new features. Before anyone writes a React component or makes an API call, your tech lead says: **"We spec first. Then we build."**
+You continue on the **inherited library catalog repo** from the context project. Librarians want two new features. Before anyone writes a React component, your tech lead says: **"We spec first. Then we build."**
 
-Your job is to write precise specifications for both features. Check the API documentation at `http://localhost:8000/docs` to understand the real response shapes before writing any types. Your specs should be clear enough that any developer — or AI agent — can implement the feature without asking questions.
+Your coding agent explores `/docs`; you verify types and rules against live API evidence. Specs must be clear enough that any coding agent can implement without follow-up questions.
 
 ---
 
@@ -20,24 +20,27 @@ Your job is to write precise specifications for both features. Check the API doc
 
 | Concept                      | Where it applies                                                     |
 | ---------------------------- | -------------------------------------------------------------------- |
-| TypeScript interfaces        | `api-types.ts` — response shapes from real API endpoints             |
+| Agent-first API exploration  | Phase 1: map endpoints and shapes from `/docs` with the agent        |
+| TypeScript interfaces        | `api-types.ts` — response shapes verified against OpenAPI          |
 | TypeScript query param types | `param-types.ts` — request parameters with JSDoc                     |
 | Component specification      | `components.md` — naming, props, conditional rendering, empty states |
 | Data contract documentation  | `frontend/specs/README.md` — endpoints, types, edge cases            |
-| Spec-driven development      | Writing before building so the implementation is unambiguous         |
+| Spec-driven development      | Specify before build so implementation is unambiguous                |
 
 ---
 
 ## Starting Point
 
-Continue in the same local library catalog example project. Create a new branch:
+Continue in the same local library catalog example project from the context project. Confirm `memory-bank/` and `.agents/rules` exist.
+
+Create a new branch:
 
 ```bash
 git switch -c feature/frontend-specs
 mkdir -p frontend/specs
 ```
 
-Start the backend and read the API docs at `http://localhost:8000/docs` before writing anything.
+Ask the agent to start the backend and explore `/docs` before writing anything.
 
 ---
 
@@ -61,60 +64,37 @@ Start the backend and read the API docs at `http://localhost:8000/docs` before w
 
 ## What to Produce
 
-### TypeScript Types (`frontend/specs/api-types.ts`)
+### Phase 1 — Explore `/docs` (with the agent)
 
-- [ ] `BookEntry` — a single book record (id, title, author, genre, year, available)
-- [ ] `BooksResponse` — list of books returned by the search endpoint
-- [ ] `GenreEntry` — a single genre row (genre name, count, percentage)
-- [ ] `GenresSummaryResponse` — the full genre breakdown response
+- [ ] Map endpoints, response shapes, and parameters for both features
+- [ ] Note mismatches between PM wording and actual API fields
 
-Rules:
+### Phase 2 — TypeScript types (agent drafts, you verify)
 
-- No `any`, no `object`
-- Every property must have a JSDoc comment explaining its meaning and format
+**`frontend/specs/api-types.ts`**
 
-### TypeScript Param Types (`frontend/specs/param-types.ts`)
+- [ ] `BookEntry`, `BooksResponse`, `GenreEntry`, `GenresSummaryResponse`
+- [ ] No `any`, no `object`; JSDoc on every property; verify against `/docs`
 
-- [ ] `BookSearchParams` — the optional `title` query string parameter
-- [ ] `GenresSummaryParams` — optionally accepts a `title` filter to scope the genre stats
+**`frontend/specs/param-types.ts`**
 
-### Component Specifications (`frontend/specs/components.md`)
+- [ ] `BookSearchParams`, `GenresSummaryParams`
 
-For each feature, document:
+### Phase 3 — Component specs (agent drafts, you verify)
 
-**Feature 1 — Title search filter**
+**`frontend/specs/components.md`** — for each feature: component names, props, layout, empty states, filter interaction between Feature 1 and 2.
 
-- Component name and where it lives in the page
-- Props (if any) and their types
-- What renders when the input is empty vs. when there are no results
+### Phase 4 — Data contract
 
-**Feature 2 — Genre breakdown panel**
+**`frontend/specs/README.md`** — endpoints, types, parameter constraints, ≥ 2 edge cases per feature with UI behavior.
 
-- Component name, props, and layout
-- What renders when fewer than 3 genres are available
-- How the panel reacts when the title filter changes
-
-### Data Contract Documentation (`frontend/specs/README.md`)
-
-For each feature, document:
-
-- Which endpoint(s) it calls (verify paths against `/docs`)
-- TypeScript types used for request and response
-- Valid values and constraints for each parameter
-- At least **2 edge cases** and what the UI must show in each case
-
-Example edge cases to consider:
-
-- What if `title` contains special characters like `&` or `/`?
-- What if the genres endpoint returns an empty array?
-- What if the book list has only 1 genre?
-
-> ⚠️ **Important:** Do not build React components or make API calls. Your deliverables are `.ts` type files, `components.md`, and `frontend/specs/README.md`.
+> ⚠️ **Important:** Do not build React components or make API calls. Deliverables: `.ts` type files, `components.md`, and `frontend/specs/README.md`.
 
 ---
 
 ## Discussion Questions
 
-1. Why do we write TypeScript interfaces based on the actual API response (from `/docs`) rather than guessing the shape from the component's needs?
-2. The genre panel is supposed to show stats for the "filtered subset" when a title filter is active. What edge case does this create, and how should the spec address it?
-3. A teammate says: "Why bother with `components.md`? The types are enough." What is the argument for writing a separate component spec?
+1. Why verify TypeScript interfaces against `/docs` instead of guessing from component needs?
+2. The genre panel shows stats for the filtered subset when a title filter is active. What edge case does this create?
+3. A teammate says: "Why bother with `components.md`? The types are enough." What's the counter-argument?
+4. Who should discover API field names — the student from memory, or the student+agent from `/docs`?

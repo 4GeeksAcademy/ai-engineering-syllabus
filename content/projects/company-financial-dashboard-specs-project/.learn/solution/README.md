@@ -1,8 +1,22 @@
-# Applying Spec Driven Development - Financial dashboard — Solución de referencia
+# Applying Spec Driven Development - Financial dashboard — Reference solution
+
+This README defines what a correct reference delivery should include for **Applying Spec Driven Development - Financial dashboard**, aligned with the [main project README](../README.md).
+
+The goal is **not** to implement React or HTTP calls. The goal is specification artifacts that match the live API (`/docs`) and let a coding agent implement without follow-up questions.
+
+Students continue the inherited fork from the context project. The coding agent drafts specs; the student drives, verifies every field against OpenAPI, and rejects guesses.
+
+**Stack-agnostic here means student prior knowledge, not project technology.** The dashboard has a predefined stack. Students are not expected to know every TypeScript or OpenAPI detail upfront — they verify agent output against `/docs`.
+
+> **Note:** Field names in the TypeScript snippets below follow the reference financial dashboard backend (e.g. `outcome_total`, `baseline_average`, `increase_ratio`). Students must **confirm every property in their own `/docs`** before submitting.
+
+---
+
+# Solución de referencia (detalle pedagógico)
 
 Este README describe qué debe incluir una entrega sólida y ofrece **ejemplos de especificaciones en lenguaje humano** (el tipo de instrucciones que se le darían a una IA o a otro desarrollador), alineadas con el [README principal del proyecto](../README.md).
 
-El objetivo **no** es implementar React ni llamadas HTTP. El objetivo es producir artefactos de especificación que coincidan con la API real (`/docs`) y que permitan implementar sin preguntas pendientes.
+El objetivo **no** es implementar React ni llamadas HTTP. El objetivo es producir artefactos de especificación que coincidan con la API real (`/docs`) y que permitan implementar sin preguntas pendientes — redactados con apoyo del agent y verificados por el estudiante.
 
 > **Nota:** Los nombres de campos en los fragmentos TypeScript siguen el backend de referencia del dashboard financiero (p. ej. `outcome_total`, `baseline_average`, `increase_ratio`). El alumno debe **confirmar cada propiedad en `/docs`** de su propio entorno antes de entregar.
 
@@ -195,12 +209,15 @@ El alumno debe nombrar componentes reales de su diseño; aquí va un patrón **v
 
 ## Lista de comprobación (revisores)
 
+- [ ] Evidencia de exploración de `/docs` con el agent; tipos trazables a OpenAPI, no campos inventados.
 - [ ] `npx tsc --noEmit` pasa en estricto (sin `any`, sin `object` genérico para payloads).
 - [ ] Cada propiedad relevante tiene JSDoc (significado, formato, valores válidos).
 - [ ] Los ejemplos anteriores se entienden como **referencia pedagógica**; la entrega del alumno debe **cuadrar con su `/docs`**.
-- [ ] Commits en `feature/frontend-specs` con mensajes claros (tipos → componentes → contrato).
+- [ ] Commits en `feature/frontend-specs` con mensajes claros (exploración/tipos → componentes → contrato).
+- [ ] Specs se leen como borradores del agent verificados por el estudiante — no pegado sin revisar.
 
 ## Notas para revisores
 
 - No evaluar componentes React, `fetch` ni cambios de backend en este proyecto.
-- Priorizar coherencia con OpenAPI y completitud de casos límite descritos en el README principal.
+- Priorizar coherencia con OpenAPI, completitud de casos límite y calidad de verificación (correcciones respecto a `/docs`).
+- Penalizar interfaces copiadas del README de solución sin confirmar en el entorno del alumno.
