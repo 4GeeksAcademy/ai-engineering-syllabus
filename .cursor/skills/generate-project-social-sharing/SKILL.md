@@ -60,7 +60,7 @@ python3 ai-engineering-syllabus/.cursor/skills/generate-project-social-sharing/s
 
 - Cover template path: `assets/cover/cover-template.html`
 - Images path: `assets/cover/images`
-- Projects path: `content/projects`
+- Projects path: `content/projects` (also discovers nested tracks such as `content/projects/4-devs/<slug>`)
 - Output image path per project: `.learn/preview.png`
 - `learn.json` key updated by default: `preview`
 - `preview` is always written as absolute URL based on `--absolute-base-url`

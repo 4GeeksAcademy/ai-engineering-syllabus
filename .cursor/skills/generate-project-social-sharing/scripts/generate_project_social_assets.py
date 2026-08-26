@@ -404,7 +404,8 @@ def main() -> int:
         print(f"Projects directory not found: {projects_dir}")
         return 1
 
-    learn_files = sorted(projects_dir.glob("*/learn.json"))
+    # Include nested course tracks (e.g. content/projects/4-devs/<slug>/learn.json)
+    learn_files = sorted(projects_dir.rglob("learn.json"))
     if args.slug:
         learn_files = [
             f for f in learn_files if f.parent.name == args.slug.strip()
