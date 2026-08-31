@@ -17,7 +17,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 ## 🎯 Your challenge
 
-The plumbing is done. Your OpenClaw agent is installed, your Composio connection is active — Google Docs, Google Calendar, Gmail, Google Drive, Google Tasks, GitHub, and more are all reachable — and Telegram lets you talk to it from your phone. You built this for yourself.
+The plumbing is done. Your OpenClaw agent is installed, your Zapier connection is active — Google Docs, Google Calendar, Gmail, Google Drive, Google Tasks, GitHub, and more are all reachable — and Telegram lets you talk to it from your phone. You built this for yourself.
 
 But right now the agent is generic. Every time you want it to do something useful, you're typing the same long instructions from scratch. It doesn't know your patterns, your style, or what "useful" even means to you specifically.
 
@@ -45,7 +45,7 @@ Fill them in as if you were briefing a real assistant on their first day. Be spe
 
 ### What tools your agent can use
 
-Through Composio, your agent can reach any of these services:
+Through Zapier, your agent can reach any of these services:
 
 - **Google Docs** — create, update, and read documents
 - **Google Calendar** — create events, check your schedule, find free slots
@@ -96,10 +96,10 @@ Commit this file before starting implementation. It is part of the deliverable a
 
 ## 🌱 How to Start the Project
 
-1. Keep working in the **same environment** where you already installed OpenClaw and finished the earlier syllabus projects (Composio, Telegram, Drive/Calendar, etc.): your VPS, local machine, or Codespace. This assignment extends that setup—you are not reinstalling OpenClaw from scratch.
+1. Keep working in the **same environment** where you already installed OpenClaw and finished the earlier syllabus projects (Zapier, Telegram, Drive/Calendar, etc.): your VPS, local machine, or Codespace. This assignment extends that setup—you are not reinstalling OpenClaw from scratch.
 2. Use your **existing Git repository** for that agent if you already have one. If your tree is missing paths this project expects (for example the five Markdown files under `.openclaw` and a place for custom skills), create or add them following your instructor’s brief and the official [OpenClaw](https://github.com/openclaw/openclaw) documentation—without relying on an external starter repository.
 3. Open that workspace the way you already do (**GitHub Codespaces**, local clone, or SSH to your VPS).
-4. Run `openclaw doctor` to confirm your existing setup — Composio connections and Telegram — is still healthy before touching anything.
+4. Run `openclaw doctor` to confirm your existing setup — Zapier connections and Telegram — is still healthy before touching anything.
 5. Read the [how to start a coding project](https://4geeks.com/lesson/how-to-start-a-project) guide if needed.
 
 ---
@@ -112,7 +112,7 @@ Commit this file before starting implementation. It is part of the deliverable a
 - [ ] Write `SOUL.md` with enough specificity that the agent's personality is actually different from default — include how it handles uncertainty, whether it asks or acts first, and what kind of tone it uses with you.
 - [ ] Set the hard limits in `AGENTS.md` — at minimum, one rule about privacy and one about when the agent should stop and ask rather than act.
 - [ ] Fill in `USER.md` with your real context: name, current projects, tools you use, goals, anything the agent should always know about you.
-- [ ] Fill in `TOOLS.md` with the services your agent can reach through Composio, when to use each one, and any defaults (which calendar, which Drive folder, how to sign off in Gmail, etc.).
+- [ ] Fill in `TOOLS.md` with the services your agent can reach through Zapier, when to use each one, and any defaults (which calendar, which Drive folder, how to sign off in Gmail, etc.).
 - [ ] Run `openclaw doctor` after editing all five. Zero errors before moving on.
 
 ### Document your design
@@ -124,7 +124,7 @@ Commit this file before starting implementation. It is part of the deliverable a
 
 - [ ] Implement at least two custom skills as proper OpenClaw skills — not raw terminal prompts.
 - [ ] Each skill must visibly draw on the configuration in the five files — the output should feel different from what the agent would produce without your setup.
-- [ ] At least one skill must produce verified output in a Composio-connected service (Google Docs, Google Calendar, Gmail, Google Tasks, Google Drive) or send a message via Telegram.
+- [ ] At least one skill must produce verified output in a Zapier-connected service (Google Docs, Google Calendar, Gmail, Google Tasks, Google Drive) or send a message via Telegram.
 - [ ] Test each skill with a real, personal input — not a placeholder.
 
 > ⚠️ **IMPORTANT:** All skills must work with your currently connected tools. Do not configure a new API, OAuth flow, or external service as part of this project — that is tomorrow's topic. Any skill requiring a new connection setup will not be accepted.

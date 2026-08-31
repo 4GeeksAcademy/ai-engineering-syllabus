@@ -33,7 +33,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
    Proyecto solo de configuración: canal Telegram, Zapier MCP, acciones de Google Drive y Calendar, y flujo end-to-end confirmado con capturas (después de tener OpenClaw en marcha).
 
 8. **[Mi agente, a mi manera: enseña nuevas skills a tu asistente](./openclaw-skills)**  
-   Continúa en tu entorno OpenClaw y repo de tareas previas: completa los cinco archivos de briefing `.openclaw`, commitea `SKILLS_DESIGN.md` e implementa al menos dos skills OpenClaw usando solo integraciones Composio que ya tengas (Google apps, GitHub, Telegram).
+   Continúa en tu entorno OpenClaw y repo de tareas previas: completa los cinco archivos de briefing `.openclaw`, commitea `SKILLS_DESIGN.md` e implementa al menos dos skills OpenClaw usando solo integraciones Zapier que ya tengas (Google apps, GitHub, Telegram).
 
 9. **[Mi asistente 4Geeks — OpenClaw sigue tu progreso](./openclaw-integration)**  
    Conecta OpenClaw a la API de 4Geeks con tu token para que el agente reporte proyectos pendientes, progreso del curso y datos LearnPack relacionados.

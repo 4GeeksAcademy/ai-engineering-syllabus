@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This document describes what a **complete submission** looks like for this assignment: personalized agent configuration, documented skill design, and at least two working OpenClaw skills that use **only** tools already connected via Composio (and Telegram where applicable).
+This document describes what a **complete submission** looks like for this assignment: personalized agent configuration, documented skill design, and at least two working OpenClaw skills that use **only** tools already connected via Zapier (and Telegram where applicable).
 
 ## Expected repository layout
 
@@ -22,7 +22,7 @@ This document describes what a **complete submission** looks like for this assig
 - `SKILLS_DESIGN.md` committed before skill implementation work.
 - At least two custom skills; each output should visibly reflect `SOUL.md`, `USER.md`, and related config.
 - At least one skill produces **verifiable** output in a connected service (Google Docs, Calendar, Gmail, Tasks, Drive) **or** a Telegram message.
-- No new external API, OAuth app, or Composio connection added for this project only — skills must use existing integrations.
+- No new external API, OAuth app, or Zapier connection added for this project only — skills must use existing integrations.
 
 ## Validation evidence (what instructors look for)
 

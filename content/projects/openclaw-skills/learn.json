@@ -5,8 +5,8 @@
     "es": "Mi Agente, A Mi Manera: Enseñando Nuevas Skills a Tu Asistente Personal"
   },
   "description": {
-    "en": "Personalize your OpenClaw agent with the five `.openclaw` briefing files, document skill designs in `SKILLS_DESIGN.md`, and ship at least two custom skills using your existing Composio tools.",
-    "es": "Personaliza tu agente OpenClaw con los cinco archivos de briefing en `.openclaw`, documenta el diseño de las skills en `SKILLS_DESIGN.md` y entrega al menos dos skills personalizadas usando tus herramientas de Composio ya conectadas."
+    "en": "Personalize your OpenClaw agent with the five `.openclaw` briefing files, document skill designs in `SKILLS_DESIGN.md`, and ship at least two custom skills using your existing Zapier tools.",
+    "es": "Personaliza tu agente OpenClaw con los cinco archivos de briefing en `.openclaw`, documenta el diseño de las skills en `SKILLS_DESIGN.md` y entrega al menos dos skills personalizadas usando tus herramientas de Zapier ya conectadas."
   },
   "status": "draft",
   "template_url": "https://github.com/openclaw/openclaw",
@@ -15,7 +15,7 @@
   "duration": 3,
   "technologies": [
     "openclaw",
-    "composio",
+    "zapier",
     "agent-skills",
     "markdown",
     "technical-documentation"
@@ -32,12 +32,12 @@
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/openclaw-skills/.learn/preview.png",
   "sharing": [
     {
-      "en": "I just completed My Agent, My Way: Teaching Your Personal Assistant New Skills with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #composio #agentskills",
-      "es": "Acabo de completar Mi Agente, A Mi Manera: Enseñando Nuevas Skills a Tu Asistente Personal con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #composio #agentskills"
+      "en": "I just completed My Agent, My Way: Teaching Your Personal Assistant New Skills with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #zapier #agentskills",
+      "es": "Acabo de completar Mi Agente, A Mi Manera: Enseñando Nuevas Skills a Tu Asistente Personal con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #zapier #agentskills"
     },
     {
-      "en": "Built and shipped: My Agent, My Way: Teaching Your Personal Assistant New Skills. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #composio #agentskills",
-      "es": "Construido y publicado: Mi Agente, A Mi Manera: Enseñando Nuevas Skills a Tu Asistente Personal. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #composio #agentskills"
+      "en": "Built and shipped: My Agent, My Way: Teaching Your Personal Assistant New Skills. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #zapier #agentskills",
+      "es": "Construido y publicado: Mi Agente, A Mi Manera: Enseñando Nuevas Skills a Tu Asistente Personal. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/openclaw-skills #AIEngineering #LearnPack #4GeeksAcademy #openclaw #zapier #agentskills"
     }
   ]
 }
