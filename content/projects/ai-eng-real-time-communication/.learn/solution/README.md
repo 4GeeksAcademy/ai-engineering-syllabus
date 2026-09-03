@@ -1,6 +1,6 @@
 # Real-Time Systems Part 2 — WebSocket Chat Streaming — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Agent ids, session fields, and event names below are **indicative** — students must align with their assigned `CONTEXT-company.md` under `content/contexts/10-realtime/communication/` (Part 2 only). Part 1 RFP/SSE schemas live under `10-realtime/notification/` and must not be mixed into this WebSocket contract.
+Reference quality bar for the student's company monorepo fork. Agent ids, session fields, and event names below are **indicative** — students must align with their assigned `CONTEXT-company.md` under `content/contexts/real-time-communication/` (Part 2 only). Part 1 RFP/SSE schemas live under `real-time-notification/` and must not be mixed into this WebSocket contract.
 
 ---
 

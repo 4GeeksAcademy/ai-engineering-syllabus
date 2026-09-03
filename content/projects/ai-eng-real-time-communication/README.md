@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** before writing any code — it defines which agent you're connecting, the chat session fields, and the WebSocket event contract for this part. Part 1 SSE / RFP notification details live under [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), not in this CONTEXT.
+**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-communication)** before writing any code — it defines which agent you're connecting, the chat session fields, and the WebSocket event contract for this part. Part 1 SSE / RFP notification details live under [`real-time-notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-notification), not in this CONTEXT.
 
 ---
 
@@ -39,7 +39,7 @@ Keep working on the fork of your company's monorepo you've been using throughout
 
 1. Create a new branch from your main branch: `feature/websocket-chat`.
 2. Locate the endpoint or function that currently invokes your support agent with a traditional request/response pattern — extend that path; do not create a parallel app or a delivery folder.
-3. Check your `CONTEXT-company.md` (under `10-realtime/communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
+3. Check your `CONTEXT-company.md` (under `real-time-communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
 4. Review how your agent exposes streaming (LangGraph's `messages`, `values`, `updates`, or `custom` modes) before deciding which one you need to transmit tokens.
 5. Implement under the existing layout: WebSocket in `services/`, chat UI in `uis/`, tests in `tests/`.
 

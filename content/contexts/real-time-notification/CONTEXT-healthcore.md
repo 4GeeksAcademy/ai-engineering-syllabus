@@ -41,4 +41,4 @@ If you'd rather implement the agent escalation case instead, be especially caref
 
 - Field names must exactly match what you already used in the RFP system — don't invent new names for the same entities.
 - No payload in this part may contain PHI, no exceptions — review every field before emitting it.
-- Part 2 (WebSocket chat) lives under `10-realtime/communication/` — do **not** copy the RFP `Ticket` schema into that CONTEXT; reuse naming discipline only.
+- Part 2 (WebSocket chat) lives under `real-time-communication/` — do **not** copy the RFP `Ticket` schema into that CONTEXT; reuse naming discipline only.

@@ -1,6 +1,6 @@
 # Real-Time Systems Part 1 — SSE Notifications — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Field names and optional second events below are **indicative** — students must align payload shape and domain values with their assigned `CONTEXT-company.md` under `content/contexts/10-realtime/notification/`.
+Reference quality bar for the student's company monorepo fork. Field names and optional second events below are **indicative** — students must align payload shape and domain values with their assigned `CONTEXT-company.md` under `content/contexts/real-time-notification/`.
 
 ---
 

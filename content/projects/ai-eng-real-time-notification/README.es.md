@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification)** antes de escribir código — ahí se definen los eventos operativos, nombres de campos y restricciones específicas de tu empresa para esta parte.
+**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-notification)** antes de escribir código — ahí se definen los eventos operativos, nombres de campos y restricciones específicas de tu empresa para esta parte.
 
 ---
 

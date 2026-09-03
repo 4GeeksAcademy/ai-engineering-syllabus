@@ -37,4 +37,4 @@ If you decide to implement the README's optional case, here are two starting poi
 ## 5. Constraints
 
 - Field names must exactly match what you already used in the RFP system — don't invent new names for the same entities.
-- Part 2 (WebSocket chat) lives under `10-realtime/communication/` — do **not** copy the RFP `Ticket` schema into that CONTEXT; reuse naming discipline only.
+- Part 2 (WebSocket chat) lives under `real-time-communication/` — do **not** copy the RFP `Ticket` schema into that CONTEXT; reuse naming discipline only.

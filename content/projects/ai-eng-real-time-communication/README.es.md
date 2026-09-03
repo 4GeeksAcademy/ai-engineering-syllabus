@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** antes de escribir código — ahí se define qué agente vas a conectar, los campos de la sesión de chat y el contrato de eventos WebSocket de esta parte. Los detalles SSE / notificación RFP de la Parte 1 viven en [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), no en este CONTEXT.
+**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-communication)** antes de escribir código — ahí se define qué agente vas a conectar, los campos de la sesión de chat y el contrato de eventos WebSocket de esta parte. Los detalles SSE / notificación RFP de la Parte 1 viven en [`real-time-notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-notification), no en este CONTEXT.
 
 ---
 
@@ -39,7 +39,7 @@ Sigue trabajando en el fork del monorepo de tu empresa que has usado durante tod
 
 1. Crea una rama nueva desde tu rama principal: `feature/websocket-chat`.
 2. Ubica el endpoint o función que hoy invoca a tu agente de soporte con un patrón de petición/respuesta tradicional — extiende esa ruta; no crees una app paralela ni una carpeta de entrega.
-3. Revisa tu `CONTEXT-company.md` (en `10-realtime/communication/`) para confirmar qué agente vas a conectar y los nombres de sesión / eventos de esta parte — reutiliza la _disciplina_ de nombres de la Parte 1, no los esquemas RFP/SSE de la Parte 1.
+3. Revisa tu `CONTEXT-company.md` (en `real-time-communication/`) para confirmar qué agente vas a conectar y los nombres de sesión / eventos de esta parte — reutiliza la _disciplina_ de nombres de la Parte 1, no los esquemas RFP/SSE de la Parte 1.
 4. Repasa cómo tu agente expone el streaming (modos `messages`, `values`, `updates` o `custom` de LangGraph) antes de decidir cuál necesitas para transmitir tokens.
 5. Implementa en el layout existente: WebSocket en `services/`, UI de chat en `uis/`, pruebas en `tests/`.
 

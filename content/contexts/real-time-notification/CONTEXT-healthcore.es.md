@@ -41,4 +41,4 @@ Si en cambio prefieres el caso de escalamiento de agente, ten especial cuidado: 
 
 - Los nombres de campos deben coincidir exactamente con los que ya usaste en el sistema de RFPs — no inventes nombres nuevos para las mismas entidades.
 - Ningún payload de esta parte puede contener PHI, sin excepción — revisa cada campo antes de emitirlo.
-- La Parte 2 (chat WebSocket) vive en `10-realtime/communication/` — **no** copies el esquema RFP `Ticket` a ese CONTEXT; reutiliza solo la disciplina de nombres.
+- La Parte 2 (chat WebSocket) vive en `real-time-communication/` — **no** copies el esquema RFP `Ticket` a ese CONTEXT; reutiliza solo la disciplina de nombres.

@@ -37,4 +37,4 @@ Si decides implementar el caso opcional del README, aquí tienes dos puntos de p
 ## 5. Restricciones
 
 - Los nombres de campos deben coincidir exactamente con los que ya usaste en el sistema de RFPs — no inventes nombres nuevos para las mismas entidades.
-- La Parte 2 (chat WebSocket) vive en `10-realtime/communication/` — **no** copies el esquema RFP `Ticket` a ese CONTEXT; reutiliza solo la disciplina de nombres.
+- La Parte 2 (chat WebSocket) vive en `real-time-communication/` — **no** copies el esquema RFP `Ticket` a ese CONTEXT; reutiliza solo la disciplina de nombres.
