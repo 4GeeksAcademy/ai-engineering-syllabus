@@ -1,37 +1,35 @@
 {
-    "slug": "ai-eng-milestone-real-time-notification-es",
-    "title": {
-        "es": "Sistemas en Tiempo Real: Notificaciones SSE (Parte 1 de 2)",
-        "us": "Real-Time Systems: SSE Notifications (Part 1 of 2)"
-    },
-    "description": {
-        "es": "Empuja notificaciones de tickets RFP al dashboard de la empresa v\u00eda SSE: evento nombrado + payload estructurado del CONTEXT, headers keep-alive, consumo con fetch + ReadableStream, reconexi\u00f3n con backoff progresivo sin duplicados \u2014 solo capa de comunicaci\u00f3n, sin llamadas a modelo o agente.",
-        "us": "Push RFP ticket notifications to the company dashboard over SSE: named event + structured payload from CONTEXT, keep-alive headers, fetch + ReadableStream consumption, progressive backoff reconnect without duplicates \u2014 communication layer only, no model or agent calls."
-    },
-    "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-notification/.learn/preview.png",
-    "difficulty": "INTERMEDIATE",
-    "duration": 2,
-    "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
-    "gitpod": true,
-    "technologies": [
-        "python",
-        "fastapi",
-        "sse",
-        "javascript",
-        "fetch-api",
-        "readable-stream",
-        "testing"
-    ],
-    "projectType": "project",
-    "solution": {
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-notification/.learn/solution/README.md",
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-notification/.learn/solution/README.md"
-    },
-    "delivery": {
-        "instructions": "",
-        "formats": [
-            "url"
-        ],
-        "regex": ""
-    }
+  "slug": "ai-eng-real-time-notification",
+  "title": {
+    "es": "Sistemas en Tiempo Real: Notificaciones SSE (Parte 1 de 2)",
+    "us": "Real-Time Systems: SSE Notifications (Part 1 of 2)"
+  },
+  "description": {
+    "es": "Empuja notificaciones de tickets RFP al dashboard de la empresa v\u00eda SSE: evento nombrado + payload estructurado del CONTEXT, headers keep-alive, consumo con fetch + ReadableStream, reconexi\u00f3n con backoff progresivo sin duplicados \u2014 solo capa de comunicaci\u00f3n, sin llamadas a modelo o agente.",
+    "us": "Push RFP ticket notifications to the company dashboard over SSE: named event + structured payload from CONTEXT, keep-alive headers, fetch + ReadableStream consumption, progressive backoff reconnect without duplicates \u2014 communication layer only, no model or agent calls."
+  },
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-real-time-notification/.learn/preview.png",
+  "difficulty": "INTERMEDIATE",
+  "duration": 2,
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "gitpod": true,
+  "technologies": [
+    "python",
+    "fastapi",
+    "sse",
+    "javascript",
+    "fetch-api",
+    "readable-stream",
+    "testing"
+  ],
+  "projectType": "project",
+  "solution": {
+    "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-notification/.learn/solution/README.md",
+    "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-notification/.learn/solution/README.md"
+  },
+  "delivery": {
+    "instructions": "",
+    "formats": ["url"],
+    "regex": ""
+  }
 }

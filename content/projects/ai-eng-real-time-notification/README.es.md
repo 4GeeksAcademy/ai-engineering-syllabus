@@ -1,4 +1,4 @@
-# Hito — Sistemas en Tiempo Real: Notificaciones SSE (Parte 1 de 2)
+# Sistemas en Tiempo Real: Notificaciones SSE (Parte 1 de 2)
 
 <!-- hide -->
 
@@ -33,7 +33,7 @@ Algunos requisitos quedan implícitos en este encargo y tendrás que identificar
 
 ## 🌱 Cómo Empezar el Proyecto
 
-Sigue trabajando en el fork del monorepo de tu empresa que has usado desde el Hito. Si por alguna razón aún no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Sigue trabajando en el fork del monorepo de tu empresa que has usado a lo largo del programa. Si por alguna razón aún no tienes tu fork, créalo ahora desde el [monorepo base](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Crea una rama nueva desde tu rama principal: `feature/sse-notifications`.
 2. Ubica el servicio y la vista de dashboard que hoy dependen de polling — vas a extender esas rutas, no crear una app paralela ni una carpeta de entrega.
@@ -106,7 +106,7 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 
 ## 📦 Cómo Entregar Este Proyecto
 
-Esta es la Parte 1 de 2 del Hito. Entrégala con su propio Pull Request contra tu rama principal — no esperes a tener la Parte 2 lista.
+Esta es la Parte 1 de 2. Entrégala con su propio Pull Request contra tu rama principal — no esperes a tener la Parte 2 lista.
 
 1. Haz commit y push de tu rama `feature/sse-notifications` (el código vive en `services/`, `uis/` y `tests/` — **no** crees una carpeta de entrega aparte)
 2. Abre un Pull Request describiendo qué implementaste y cómo probar el stream SSE
