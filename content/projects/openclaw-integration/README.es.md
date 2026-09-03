@@ -39,7 +39,11 @@ Este proyecto no requiere hacer fork de un repositorio plantilla. Todo el trabaj
 
 1. Asegúrate de que tu instancia de OpenClaw esté activa y accesible.
 2. Abre una conversación con tu agente.
-3. Ten a mano tu token de estudiante de 4Geeks — puedes encontrarlo en la [configuración de tu cuenta de 4Geeks](https://4geeks.com).
+3. Obtén tu token de estudiante de 4Geeks:
+  - Inicia sesión en [learn.4geeks.com](https://learn.4geeks.com).
+  - Abre las herramientas de desarrollo de tu navegador y selecciona la pestaña **Application**.
+  - En **Storage**, abre **Cookies** y luego selecciona `https://learn.4geeks.com`.
+  - Filtra por `4g_tok` y copia su valor.
 4. Documenta cada skill que crees y cada conversación que la originó en un archivo llamado `SKILL_LOG.md` — este es tu entregable.
 
 > ⚠️ **IMPORTANTE:** Tu token de estudiante es una credencial. Almacénala usando el mecanismo de configuración segura de OpenClaw — nunca la pegues directamente en un archivo de skill ni la incluyas en un repositorio de código.

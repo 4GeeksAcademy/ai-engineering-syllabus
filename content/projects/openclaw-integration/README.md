@@ -39,7 +39,11 @@ This project does not require forking a template repo. All work happens inside y
 
 1. Make sure your OpenClaw instance is running and accessible.
 2. Open a conversation with your agent.
-3. Have your 4Geeks student token ready — you can find it in your [4Geeks account settings](https://4geeks.com).
+3. Retrieve your 4Geeks student token:
+  - Sign in to [learn.4geeks.com](https://learn.4geeks.com).
+  - Open your browser's developer tools and select the **Application** tab.
+  - Under **Storage**, open **Cookies**, then select `https://learn.4geeks.com`.
+  - Filter for `4g_tok` and copy its value.
 4. Document every skill you create and every conversation that led to it in a file called `SKILL_LOG.md` — this is your deliverable.
 
 > ⚠️ **IMPORTANT:** Your student token is a credential. Store it using OpenClaw's secure configuration mechanism — never paste it directly into a skill file or commit it to a repository.
