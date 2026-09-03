@@ -1,4 +1,4 @@
-# Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2)
+# Milestone — Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2)
 
 <!-- hide -->
 
@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-communication)** before writing any code — it defines which agent you're connecting, the chat session fields, and the WebSocket event contract for this part. Part 1 SSE / RFP notification details live under [`real-time-notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/real-time-notification), not in this CONTEXT.
+**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** before writing any code — it defines which agent you're connecting, the chat session fields, and the WebSocket event contract for this part. Part 1 SSE / RFP notification details live under [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), not in this CONTEXT.
 
 ---
 
@@ -35,11 +35,11 @@ Some requirements are left implicit, and you'll need to identify them carefully:
 
 ## 🌱 How to Start the Project
 
-Keep working on the fork of your company's monorepo you've been using throughout the program (and Part 1 of this project). If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
+Keep working on the fork of your company's monorepo that you've been using since Milestone (and Part 1 of this milestone). If for some reason you don't have your fork yet, create it now from the [base monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo).
 
 1. Create a new branch from your main branch: `feature/websocket-chat`.
 2. Locate the endpoint or function that currently invokes your support agent with a traditional request/response pattern — extend that path; do not create a parallel app or a delivery folder.
-3. Check your `CONTEXT-company.md` (under `real-time-communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
+3. Check your `CONTEXT-company.md` (under `10-realtime/communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
 4. Review how your agent exposes streaming (LangGraph's `messages`, `values`, `updates`, or `custom` modes) before deciding which one you need to transmit tokens.
 5. Implement under the existing layout: WebSocket in `services/`, chat UI in `uis/`, tests in `tests/`.
 
@@ -100,7 +100,7 @@ Before considering your implementation done, think through and document your ans
 
 ## 📦 How to Submit This Project
 
-This is Part 2 of 2. Submit it with its own Pull Request against your main branch — independent from Part 1.
+This is Part 2 of 2 of Milestone. Submit it with its own Pull Request against your main branch — independent from Part 1.
 
 1. Commit and push your `feature/websocket-chat` branch (code lives in `services/`, `uis/`, and `tests/` — do **not** create a separate delivery folder)
 2. Open a Pull Request describing what you implemented and how to test token streaming and interrupt
