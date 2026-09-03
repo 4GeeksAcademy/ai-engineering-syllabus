@@ -38,7 +38,7 @@ _These instructions are [available in English](./README.md)_.
 7. **[Entrenamiento y RAG](./07-trainning-rag)** — Archivos CONTEXT del Hito 7. El corpus Markdown fuente vive en `00-general-contexts/<compañía>/`.
 8. **[Ingeniería de agentes](./08-agent-engineering)** — Reservado para módulos de agentes (placeholder).
 9. **[Workflows y automatización](./09-workflows-automation)** — Reservado para módulos de workflows (placeholder).
-10. **[Tiempo real](./10-realtime)** — Reservado para módulos realtime (placeholder).
+10. **[Tiempo real](./10-realtime)** — CONTEXT del Hito 10: observabilidad de agentes (`agent-observability/`) para [`ai-eng-milestone-real-time-agent-observability`](../projects/ai-eng-milestone-real-time-agent-observability) y control de agentes (`agent-control/`) para [`ai-eng-milestone-real-time-agent-control`](../projects/ai-eng-milestone-real-time-agent-control). Los contextos de notificación SSE y chat WebSocket viven en las carpetas independientes de abajo (proyectos adicionales post-graduación).
 
 **Contextos de proyectos independientes**
 
@@ -50,11 +50,13 @@ _These instructions are [available in English](./README.md)_.
 6. **[Autenticación federada](./federated-authentication)** — IdP obligatorio (Google / Microsoft / LinkedIn), audiencia de vinculación, env OAuth, usuarios semilla y eventos de auditoría por compañía.
 7. **[Registro de auditoría](./audit-log)** — Inventario de eventos críticos, reglas append-only, alcance de consulta por rol/departamento y entradas semilla por compañía.
 8. **[Base de conocimiento RAG](./07-trainning-rag)** — Nombres de colección Qdrant, esquema de payload, rutas de documentos (`00-general-contexts/<compañía>/`) y reglas de eval del Hito 7 por compañía.
+9. **[Notificaciones en tiempo real](./real-time-notification)** — Eventos SSE nombrados, payload de ticket RFP y reglas de reconexión por compañía (proyecto adicional post-graduación).
+10. **[Comunicación en tiempo real](./real-time-communication)** — Campos de sesión de chat WebSocket, contrato de eventos y reglas de abort del stream por compañía (proyecto adicional post-graduación).
 
 **Contextos del curso For Devs** ([`./4-devs`](./4-devs))
 
-9. **[Gestor de incidencias (for devs)](./4-devs/incident-manager-for-devs)** — Canales de entrada, tipos, severidades, áreas responsables, ciclo de vida y reglas de seed para el proyecto de stewardship + gestor del backoffice de ops.
-10. **[Gestor de inventario (for devs)](./4-devs/inventory-manager-for-devs)** — Unidades, categorías, ubicaciones/lotes, puntos de reorden y reglas de movimiento para el gestor de inventario con Spec Driven Development.
+11. **[Gestor de incidencias (for devs)](./4-devs/incident-manager-for-devs)** — Canales de entrada, tipos, severidades, áreas responsables, ciclo de vida y reglas de seed para el proyecto de stewardship + gestor del backoffice de ops.
+12. **[Gestor de inventario (for devs)](./4-devs/inventory-manager-for-devs)** — Unidades, categorías, ubicaciones/lotes, puntos de reorden y reglas de movimiento para el gestor de inventario con Spec Driven Development.
 
 ## Colaboradores
 

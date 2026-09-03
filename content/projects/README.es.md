@@ -212,7 +212,13 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 67. **[Hito — Flujo Agéntico de RFPs: Aprobación y Cierre (Parte 3 de 3)](./ai-eng-milestone-agentic-workflows-produce)**  
     `Hito 9` Parte 3 — Interrupt/resume human-in-the-loop por departamento, ramas en paralelo bajo interrupt, árbitro de conflicto del CONTEXT, síntesis automática del documento final y continuidad E2E desde las Partes 1–2.
 
-68. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
+68. **[Hito — Sistemas en Tiempo Real: Observabilidad de Agentes (Parte 1 de 2)](./ai-eng-milestone-real-time-agent-observability)**  
+    `Hito 10` Parte 1 — Persiste Agente / Flujo / Tarea con cadenas de disparo, eventos SSE nombrados (`agent_step`, `agent_status_changed`), panel backoffice con JWT (listado/detalle en vivo + historial paginado) para el agente conversacional y el pipeline de RFP — solo observar; el control es la Parte 2. CONTEXT: [`10-realtime/agent-observability`](../contexts/10-realtime/agent-observability).
+
+69. **[Hito — Sistemas en Tiempo Real: Control de Agentes (Parte 2 de 2)](./ai-eng-milestone-real-time-agent-control)**  
+    `Hito 10` Parte 2 — Conecta las available-actions de la Parte 1 a `pause` / `resume` / `cancel` reales vía WebSocket: reutiliza checkpoints de LangGraph, fan-out pub/sub, auditoría con `actor_id` del JWT, cancel terminal vs pause reanudable — kill switch, no aprobación de negocio. CONTEXT: [`10-realtime/agent-control`](../contexts/10-realtime/agent-control).
+
+70. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
     Capstone — Graba un pitch horizontal de ~5 minutos del sistema de IA de la empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con `FirstnameLastname-ProjectName.mp4`, una descripción de 1–2 frases y la cesión de imagen firmada.
 
 ## Curso For Devs
@@ -245,10 +251,10 @@ No forman parte de la secuencia del temario. Se mantienen aquí como referencia 
   Auditoría OWASP guiada sobre tu app del monorepo: ≥3 hallazgos reales con prueba antes/después, rate limits en endpoints sensibles y documentación de rotación de secretos.
 
 - **[Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE](./ai-eng-real-time-notification)**  
-  Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del CONTEXT, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente).
+  Extra post-graduación — Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del CONTEXT, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente). No es el hito de observabilidad de agentes (`ai-eng-milestone-real-time-agent-observability`).
 
 - **[Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket](./ai-eng-real-time-communication)**  
-  WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente.
+  Extra post-graduación — WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente. No es el hito de control de agentes (`ai-eng-milestone-real-time-agent-control`).
 
 ---
 

@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone — Real-Time Systems: Agent Observability (Part 1 of 2)",
+    "es": "Hito — Sistemas en Tiempo Real: Observabilidad de Agentes (Parte 1 de 2)"
+  },
+  "description": {
+    "en": "Instrument existing company agents (conversational + multi-agent RFP) for production observability: persist Agent/Flow/Task with trigger chains, SSE named events, JWT-protected backoffice panel with live agent list/detail plus paginated history — look, don't control.",
+    "es": "Instrumenta los agentes existentes de la empresa (conversacional + RFP multiagente) para observabilidad en producción: persiste Agente/Flujo/Tarea con cadenas de disparo, eventos SSE nombrados, panel backoffice protegido con JWT (listado/detalle en vivo + historial paginado) — mirar, no controlar."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-real-time-agent-observability",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "fastapi",
+    "sse",
+    "javascript",
+    "fetch",
+    "readable-stream",
+    "agent-observability",
+    "testing"
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-agent-observability/.learn/preview.png",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-agent-observability/.learn/solution/README.md",
+  "sharing": [
+    {
+      "en": "I just completed Milestone — Real-Time Systems: Agent Observability (Part 1 of 2) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-observability #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse",
+      "es": "Acabo de completar Hito — Sistemas en Tiempo Real: Observabilidad de Agentes (Parte 1 de 2) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-observability #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse"
+    },
+    {
+      "en": "Built and shipped: Milestone — Real-Time Systems: Agent Observability (Part 1 of 2). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-observability #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse",
+      "es": "Construido y publicado: Hito — Sistemas en Tiempo Real: Observabilidad de Agentes (Parte 1 de 2). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-observability #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #sse"
+    }
+  ]
+}

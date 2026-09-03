@@ -1,0 +1,44 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Milestone — Real-Time Systems: Agent Control (Part 2 of 2)",
+    "es": "Hito — Sistemas en Tiempo Real: Control de Agentes (Parte 2 de 2)"
+  },
+  "description": {
+    "en": "Wire Part 1 available-actions into real pause/resume/cancel over WebSocket: reuse LangGraph checkpoints, pub/sub fan-out, JWT-derived actor audit in Task history, terminal cancel vs resumable pause — kill switch, not business approval.",
+    "es": "Conecta las available-actions de la Parte 1 a pause/resume/cancel reales vía WebSocket: reutiliza checkpoints de LangGraph, fan-out pub/sub, auditoría con actor del JWT en el historial de Tarea, cancel terminal vs pause reanudable — kill switch, no aprobación de negocio."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-milestone-real-time-agent-control",
+  "coverImage": "workflow.svg",
+  "difficulty": "intermediate",
+  "duration": 3,
+  "technologies": [
+    "python",
+    "fastapi",
+    "websocket",
+    "javascript",
+    "langgraph",
+    "checkpointing",
+    "pubsub",
+    "testing"
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-agent-control/.learn/preview.png",
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-agent-control/.learn/solution/README.md",
+  "sharing": [
+    {
+      "en": "I just completed Milestone — Real-Time Systems: Agent Control (Part 2 of 2) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-control #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket",
+      "es": "Acabo de completar Hito — Sistemas en Tiempo Real: Control de Agentes (Parte 2 de 2) con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-control #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket"
+    },
+    {
+      "en": "Built and shipped: Milestone — Real-Time Systems: Agent Control (Part 2 of 2). Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-control #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket",
+      "es": "Construido y publicado: Hito — Sistemas en Tiempo Real: Control de Agentes (Parte 2 de 2). Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-control #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket"
+    }
+  ]
+}

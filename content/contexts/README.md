@@ -38,7 +38,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 7. **[Training & RAG](./07-trainning-rag)** — Milestone 7 CONTEXT files. Source Markdown corpora live in `00-general-contexts/<company>/`.
 8. **[Agent engineering](./08-agent-engineering)** — Reserved for agent modules (placeholder).
 9. **[Workflows & automation](./09-workflows-automation)** — Reserved for workflow modules (placeholder).
-10. **[Realtime](./10-realtime)** — Reserved for realtime modules (placeholder).
+10. **[Realtime](./10-realtime)** — Milestone 10 CONTEXT: agent observability (`agent-observability/`) for [`ai-eng-milestone-real-time-agent-observability`](../projects/ai-eng-milestone-real-time-agent-observability) and agent control (`agent-control/`) for [`ai-eng-milestone-real-time-agent-control`](../projects/ai-eng-milestone-real-time-agent-control). SSE notification and WebSocket chat contexts live in the standalone folders below (post-graduation additional projects).
 
 **Standalone project contexts**
 
@@ -50,11 +50,13 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 16. **[Federated authentication](./federated-authentication)** — Required IdP (Google / Microsoft / LinkedIn), linking audience, OAuth env, seed users, and audit events per company.
 17. **[Audit log](./audit-log)** — Critical event inventory, append-only constraints, query scope by role/department, and seed audit entries per company.
 18. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.
+19. **[Real-time notifications](./real-time-notification)** — SSE named events, RFP ticket payload, and reconnect constraints per company (post-graduation additional project).
+20. **[Real-time communication](./real-time-communication)** — WebSocket chat session fields, event contract, and stream-abort rules per company (post-graduation additional project).
 
 **For Devs course contexts** ([`./4-devs`](./4-devs))
 
-19. **[Incident manager (for devs)](./4-devs/incident-manager-for-devs)** — Intake channels, types, severities, responsible areas, lifecycle, and seed rules for the ops backoffice steward + manager project.
-20. **[Inventory manager (for devs)](./4-devs/inventory-manager-for-devs)** — Units, categories, locations/lots, reorder points, and movement rules for the Spec Driven Development inventory manager.
+21. **[Incident manager (for devs)](./4-devs/incident-manager-for-devs)** — Intake channels, types, severities, responsible areas, lifecycle, and seed rules for the ops backoffice steward + manager project.
+22. **[Inventory manager (for devs)](./4-devs/inventory-manager-for-devs)** — Units, categories, locations/lots, reorder points, and movement rules for the Spec Driven Development inventory manager.
 
 ## Contributors
 
