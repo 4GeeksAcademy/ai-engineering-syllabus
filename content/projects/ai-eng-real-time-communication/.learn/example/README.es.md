@@ -1,6 +1,6 @@
 # Lighthouse Desk — Chat de Ayuda con Streaming (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-real-time-communication`. Misma columna vertebral (WebSocket, stream de tokens, interrupción real, pub/sub por sesión, reconexión con backoff). Dominio distinto a los agentes CONTEXT de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-real-time-communication`. Misma columna vertebral (WebSocket, stream de tokens, interrupción real, pub/sub por sesión, reconexión con backoff). Dominio distinto a los agentes CONTEXT de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -12,7 +12,7 @@ _These instructions are also available in [English](./README.md)._
 
 ### Nota de alcance
 
-| Proyecto evaluado (`ai-eng-milestone-real-time-communication`) | Este ejemplo de clase                                         |
+| Proyecto evaluado (`ai-eng-real-time-communication`) | Este ejemplo de clase                                         |
 | -------------------------------------------------------------- | ------------------------------------------------------------- |
 | Monorepo de empresa + agente de soporte existente              | Stub “bot” que emite tokens falsos (o una llamada LLM mínima) |
 | Abort del stream (cancelar tarea); HITL `interrupt()` opcional | `asyncio` cancel + turno nuevo con nuevo prompt               |

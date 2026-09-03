@@ -212,13 +212,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 67. **[Hito — Flujo Agéntico de RFPs: Aprobación y Cierre (Parte 3 de 3)](./ai-eng-milestone-agentic-workflows-produce)**  
     `Hito 9` Parte 3 — Interrupt/resume human-in-the-loop por departamento, ramas en paralelo bajo interrupt, árbitro de conflicto del CONTEXT, síntesis automática del documento final y continuidad E2E desde las Partes 1–2.
 
-68. **[Hito 10 — Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE](./ai-eng-milestone-real-time-notification)**  
-    `Hito 10` Parte 1 — Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del CONTEXT, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente).
-
-69. **[Hito 10 — Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket](./ai-eng-milestone-real-time-communication)**  
-    `Hito 10` Parte 2 — WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente.
-
-70. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
+68. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
     Capstone — Graba un pitch horizontal de ~5 minutos del sistema de IA de la empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con `FirstnameLastname-ProjectName.mp4`, una descripción de 1–2 frases y la cesión de imagen firmada.
 
 ## Curso For Devs
@@ -249,6 +243,12 @@ No forman parte de la secuencia del temario. Se mantienen aquí como referencia 
 
 - **[Plataforma – Endurecimiento de Seguridad](./ai-eng-security-hardening)**  
   Auditoría OWASP guiada sobre tu app del monorepo: ≥3 hallazgos reales con prueba antes/después, rate limits en endpoints sensibles y documentación de rotación de secretos.
+
+- **[Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE](./ai-eng-real-time-notification)**  
+  Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del CONTEXT, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente).
+
+- **[Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket](./ai-eng-real-time-communication)**  
+  WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente.
 
 ---
 

@@ -212,13 +212,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 67. **[Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)](./ai-eng-milestone-agentic-workflows-produce)**  
     `Milestone 9` Part 3 — Human-in-the-loop interrupt/resume per department, parallel branches under interrupt, CONTEXT conflict arbiter, automatic final-document synthesis, and E2E continuity from Parts 1–2.
 
-68. **[Milestone 10 — Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-milestone-real-time-notification)**  
-    `Milestone 10` Part 1 — Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent).
-
-69. **[Milestone 10 — Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-milestone-real-time-communication)**  
-    `Milestone 10` Part 2 — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic.
-
-70. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
+68. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
     Capstone — Record a ~5-minute landscape pitch of the company AI system: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with `FirstnameLastname-ProjectName.mp4`, a 1–2 sentence description, and the signed media release.
 
 ## For Devs course
@@ -249,6 +243,12 @@ Not part of the syllabus sequence. Kept here for reference or optional use.
 
 - **[Platform – Security Hardening](./ai-eng-security-hardening)**  
   Guided OWASP audit on your monorepo app: ≥3 real findings with before/after proof, rate limits on sensitive endpoints, and secrets rotation documentation.
+
+- **[Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-real-time-notification)**  
+  Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent).
+
+- **[Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-real-time-communication)**  
+  Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic.
 
 ---
 

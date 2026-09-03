@@ -1,6 +1,6 @@
 # Harbor Desk — Live Ticket Board (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-real-time-notification`. Same spine (SSE named event, structured payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-real-time-notification`. Same spine (SSE named event, structured payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -12,7 +12,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 ### Scope note
 
-| Graded project (`ai-eng-milestone-real-time-notification`) | This class example                                        |
+| Graded project (`ai-eng-real-time-notification`) | This class example                                        |
 | ---------------------------------------------------------- | --------------------------------------------------------- |
 | Company monorepo + RFP ticket from CONTEXT                 | Harbor Desk marina board only                             |
 | Hook into existing RFP registration path                   | Stub `POST /tickets` that publishes the event             |

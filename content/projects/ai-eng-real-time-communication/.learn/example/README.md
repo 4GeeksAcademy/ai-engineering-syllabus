@@ -1,6 +1,6 @@
 # Lighthouse Desk — Streaming Help Chat (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-real-time-communication`. Same spine (WebSocket, token stream, true interrupt, pub/sub per session, backoff reconnect). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-real-time-communication`. Same spine (WebSocket, token stream, true interrupt, pub/sub per session, backoff reconnect). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -12,7 +12,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 ### Scope note
 
-| Graded project (`ai-eng-milestone-real-time-communication`) | This class example                                      |
+| Graded project (`ai-eng-real-time-communication`) | This class example                                      |
 | ----------------------------------------------------------- | ------------------------------------------------------- |
 | Company monorepo + existing support agent                   | Stub “bot” that yields fake tokens (or a tiny LLM call) |
 | Stream abort (cancel task); HITL `interrupt()` optional     | `asyncio` cancel + new turn with new prompt             |

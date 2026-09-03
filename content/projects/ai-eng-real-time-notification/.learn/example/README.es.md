@@ -1,6 +1,6 @@
 # Harbor Desk — Tablero de Tickets en Vivo (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-real-time-notification`. Misma columna vertebral (evento SSE nombrado, payload estructurado, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff progresivo). Dominio distinto a los agentes CONTEXT de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-real-time-notification`. Misma columna vertebral (evento SSE nombrado, payload estructurado, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff progresivo). Dominio distinto a los agentes CONTEXT de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -12,7 +12,7 @@ _These instructions are also available in [English](./README.md)._
 
 ### Nota de alcance
 
-| Proyecto evaluado (`ai-eng-milestone-real-time-notification`)    | Este ejemplo de clase                                     |
+| Proyecto evaluado (`ai-eng-real-time-notification`)    | Este ejemplo de clase                                     |
 | ---------------------------------------------------------------- | --------------------------------------------------------- |
 | Monorepo de empresa + ticket RFP del CONTEXT                     | Solo tablero marina Harbor Desk                           |
 | Enganchar al path de registro RFP existente                      | Stub `POST /tickets` que publica el evento                |
