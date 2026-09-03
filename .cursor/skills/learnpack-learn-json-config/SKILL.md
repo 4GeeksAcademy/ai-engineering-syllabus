@@ -1,6 +1,6 @@
 ---
 name: learnpack-learn-json-config
-description: Configure and validate LearnPack `learn.json` files for 4Geeks/learnpack repositories, including `projectType`, `grading`, `localhostOnly`, `gitpod`, delivery, editor, and metadata fields, plus mapping to BreatheCode asset behavior (`interactive`, `gitpod`, modal/iframe flows). Use when asked to create, update, review, or troubleshoot `learn.json` configuration.
+description: Configure and validate LearnPack `learn.json` files for 4Geeks/learnpack repositories, including `projectType`, `grading`, `localhostOnly`, `gitpod`, delivery, editor, `telemetry.batch`, `preview`, and metadata fields, plus mapping to BreatheCode asset behavior (`interactive`, `gitpod`, modal/iframe flows). Use when asked to create, update, review, or troubleshoot `learn.json` configuration.
 ---
 
 # LearnPack `learn.json` Configuration (4Geeks + LearnPack)
@@ -41,7 +41,7 @@ When creating/updating `learn.json`, prioritize these keys:
 - `repository` (recommended, especially for cloud provisioning and Codespaces links)
 - `autoPlay` (optional behavior control)
 - `sharing` (recommended social copy in multilingual assets)
-- `telemetry` (BreatheCode): object that contains `batch`, the assignment telemetry endpoint URL (typically `https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=` with the asset id appended when known). **Do not** put `batch` at the root of `learn.json`; it belongs only under `telemetry`.
+- `telemetry` (BreatheCode): object that contains `batch`, the assignment telemetry endpoint URL (typically `https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=` with the asset id empty, only appended if known). **Do not** put `batch` at the root of `learn.json`; it belongs only under `telemetry`. Mandatory for BreatheCode assets event if asset id is not known yet.
 
 Keep language objects consistent when multilingual content exists (for example `title.en`/`title.es`).
 
@@ -66,6 +66,7 @@ These fields are recommended for both asset types:
 - `gitpod` (optional explicit override)
 - `editor`
 - `delivery` (if submission constraints are required)
+- `telemetry.batch`
 
 ### Project-only recommended additions
 

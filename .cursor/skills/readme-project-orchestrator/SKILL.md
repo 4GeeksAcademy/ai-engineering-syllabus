@@ -34,6 +34,7 @@ The script bootstraps Phases 0–4 and invokes `generate-project-social-sharing`
 - Writing `README.md`, `learn.json`, and solution files without running the orchestrator script first.
 - Setting `learn.json.preview` to a GitHub raw URL without generating the local `preview.png` file.
 - Marking the task done when Phase 4 was never executed.
+- Shipping `learn.json` **without** `telemetry.batch` (including “waiting for `asset_id`” — empty `asset_id=` is required instead).
 
 Manual phases below are **fallback only** when the script fails or needs enrichment (solution quality, classroom brief, translation pass).
 
@@ -119,9 +120,11 @@ Required fields baseline:
 - `translations: ["es", "en"]`
 - `solution`
 - `preview`
-- `telemetry.batch` (BreatheCode assignment telemetry URL; must live under a `telemetry` object, not as a top-level `batch` key)
+- `telemetry` (**mandatory** — see below)
 
-Example:
+### Telemetry (mandatory at scaffold time)
+
+Always write:
 
 ```json
 "telemetry": {
@@ -129,7 +132,12 @@ Example:
 }
 ```
 
-Keep values consistent with README scope and rubric.
+- The `telemetry` attribute is **required** on every new project `learn.json`.
+- A numeric BreatheCode `asset_id` is **not** expected when creating the project. Do not ask for it, invent it, or omit `telemetry` while waiting for one.
+- Empty `asset_id=` is the correct default. A filled id later is fine; leave existing numeric ids untouched unless asked.
+- Never put `batch` at the root of `learn.json`.
+
+Keep other values consistent with README scope and rubric.
 
 ### Phase 4 - Social sharing + preview
 
@@ -204,7 +212,7 @@ Notes:
 - [ ] Orchestrator script ran successfully (or social-sharing script ran after manual fallback).
 - [ ] `README.md` and `README.es.md` both exist and are aligned.
 - [ ] `.learn/solution/README.md` exists and matches project requirements.
-- [ ] `learn.json` is valid JSON and includes `solution`, `preview`, and `telemetry.batch` (not a top-level `batch`).
+- [ ] `learn.json` is valid JSON and includes `solution`, `preview`, and mandatory `telemetry.batch` (empty `asset_id=` OK; not a top-level `batch`).
 - [ ] **`.learn/preview.png` exists on disk** and is not an empty file — a `preview` URL alone is insufficient.
 - [ ] `learn.json.sharing` exists with bilingual (`en`, `es`) messages.
 - [ ] All URLs in `learn.json` point to `content/projects/<target_slug>/...`.

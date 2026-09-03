@@ -320,6 +320,9 @@ def main() -> int:
     )
     learn_data["translations"] = ["es", "en"]
     learn_data["projectType"] = "project"
+    # telemetry is mandatory on every learn.json.
+    # asset_id is NOT an authoring-time parameter — empty "?asset_id=" is the default.
+    # Never omit telemetry while waiting for a numeric id; preserve an existing filled id.
     default_batch = (
         "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
     )
