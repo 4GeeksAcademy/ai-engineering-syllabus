@@ -24,13 +24,13 @@
     "pubsub",
     "testing"
   ],
-  "translations": [
-    "es",
-    "en"
-  ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-agent-control/.learn/preview.png",
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-agent-control/.learn/solution/README.md",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3949"
+  },
   "sharing": [
     {
       "en": "I just completed Milestone — Real-Time Systems: Agent Control (Part 2 of 2) with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-eng-milestone-real-time-agent-control #AIEngineering #LearnPack #4GeeksAcademy #python #fastapi #websocket",
