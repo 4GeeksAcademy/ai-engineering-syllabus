@@ -1,12 +1,12 @@
 {
-    "slug": "ai-eng-milestone-real-time-communication",
+    "slug": "ai-eng-milestone-real-time-communication-es",
     "title": {
-        "us": "Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2)",
-        "es": "Hito \u2014 Sistemas en Tiempo Real: Streaming de Chat por WebSocket (Parte 2 de 2)"
+        "es": "Hito \u2014 Sistemas en Tiempo Real: Streaming de Chat por WebSocket (Parte 2 de 2)",
+        "us": "Real-Time Systems: WebSocket Chat Streaming (Part 2 of 2)"
     },
     "description": {
-        "us": "Bidirectional WebSocket channel for the existing support agent: token-by-token streaming, mid-response stream abort (not HITL-only), keep interrupted partial + new turn, pub/sub fan-out per chat session, session_id handshake + checkpoint/history rehydrate on reconnect \u2014 Part 2 CONTEXT only; do not rewrite agent logic or tools.",
-        "es": "Canal WebSocket bidireccional para el agente de soporte existente: streaming token a token, abort real del stream a mitad de respuesta (no solo HITL), conservar parcial interrupted + turno nuevo, fan-out pub/sub por sesi\u00f3n, handshake con session_id + rehidrataci\u00f3n desde checkpoint/historial al reconectar \u2014 solo CONTEXT Parte 2; no reescribas l\u00f3gica ni herramientas del agente."
+        "es": "Canal WebSocket bidireccional para el agente de soporte existente: streaming token a token, abort real del stream a mitad de respuesta (no solo HITL), conservar parcial interrupted + turno nuevo, fan-out pub/sub por sesi\u00f3n, handshake con session_id + rehidrataci\u00f3n desde checkpoint/historial al reconectar \u2014 solo CONTEXT Parte 2; no reescribas l\u00f3gica ni herramientas del agente.",
+        "us": "Bidirectional WebSocket channel for the existing support agent: token-by-token streaming, mid-response stream abort (not HITL-only), keep interrupted partial + new turn, pub/sub fan-out per chat session, session_id handshake + checkpoint/history rehydrate on reconnect \u2014 Part 2 CONTEXT only; do not rewrite agent logic or tools."
     },
     "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-real-time-communication/.learn/preview.png",
     "difficulty": "INTERMEDIATE",
@@ -25,8 +25,8 @@
     ],
     "projectType": "project",
     "solution": {
-        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-communication/.learn/solution/README.md",
-        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-milestone-real-time-communication/.learn/solution/README.md"
+        "es": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-communication/.learn/solution/README.md",
+        "us": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-real-time-communication/.learn/solution/README.md"
     },
     "delivery": {
         "instructions": "",
