@@ -31,7 +31,7 @@ When creating/updating `learn.json`, prioritize these keys:
 - `slug`, `title`, `description`, `preview`
 - `projectType` (`tutorial`, `exercise`, or `project` according to repo intent)
 - `grading` (`incremental` or `isolated`)
-- `localhostOnly`
+- `localhostOnly` (always `false` if a value was not provided)
 - `gitpod` (optional explicit override)
 - `technologies`
 - `difficulty`
