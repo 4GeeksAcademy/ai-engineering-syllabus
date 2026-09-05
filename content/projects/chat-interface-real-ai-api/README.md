@@ -29,7 +29,7 @@ You'll be using [Groq](https://groq.com/), a platform that provides ultra-fast i
 >
 > - A chat UI where the user can type messages and receive AI responses
 > - An account on [Groq](https://console.groq.com/) with an API Key stored as an environment variable
-> - Use the **Llama 3 model by Meta** available on Groq's free tier
+> - Use the **qwen/qwen3.6-27b** available on Groq's free tier
 > - Each Groq response includes a `usage` object — track and display token consumption (prompt tokens, completion tokens, cumulative totals) across the full session
 > - At least one additional metric from the response must appear in the UI: model name, response time, or tokens per second are all valid choices
 > - The conversation history must survive a page refresh — the user shouldn't lose their session just because they accidentally reloaded the tab
