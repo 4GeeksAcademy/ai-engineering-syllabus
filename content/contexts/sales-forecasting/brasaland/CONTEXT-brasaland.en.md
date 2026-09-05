@@ -1,12 +1,12 @@
 # CONTEXT — Brasaland
 
-## Regression model for sales prediction
+## Time series forecasting model for sales prediction
 
 ---
 
 ### 1. Why this matters to Brasaland
 
-Mariana (CEO) wants to know whether, before investing in a full executive dashboard, it's possible to predict how much the chain will sell in the coming months within a reasonable margin. Felipe (Operations) needs to anticipate ingredient purchases based on the expected trend, and Lucía (Procurement) wants to anticipate meat price fluctuations based on projected volume. A regression model over historical sales is the first concrete step toward that dashboard.
+Mariana (CEO) wants to know whether, before investing in a full executive dashboard, it's possible to predict how much the chain will sell in the coming months within a reasonable margin. Felipe (Operations) needs to anticipate ingredient purchases based on the expected trend, and Lucía (Procurement) wants to anticipate meat price fluctuations based on projected volume. A time series forecasting model over historical sales — one that learns from lags, rolling trends, and seasonal patterns, not just raw columns — is the first concrete step toward that dashboard.
 
 ---
 
@@ -60,6 +60,7 @@ The dataset was generated with a fixed random seed (`random_state=42`), so it's 
 ### 6. Expected deliverables
 
 - Training script in `scripts/` that loads `data/raw/brasaland_sales.csv`, splitting the first 8 years as training and the last 2 as test.
+- Causal lag, rolling-statistic, and calendar/seasonal features engineered from the series (validated against the growth and seasonality pattern described above), with no leakage from future rows.
 - A trained model (XGBoost or Random Forest) with all 4 metrics (MSE, PSI, Gini, K2 Score) calculated on the test set.
 - A visualization showing the prediction and its variability range against the real data from the 2 test years.
 - A unit test in `tests/pipelines/` validating the 8/2-year split.

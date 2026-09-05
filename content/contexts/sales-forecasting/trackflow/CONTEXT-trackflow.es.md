@@ -1,6 +1,6 @@
 # CONTEXT — TrackFlow
 
-## Modelo de regresión para predicción de ventas
+## Modelo de pronóstico de series de tiempo para predicción de ventas
 
 ---
 
@@ -60,6 +60,7 @@ El dataset se generó con una semilla aleatoria fija (`random_state=42`), por lo
 ### 6. Entregables esperados
 
 - Script de entrenamiento en `scripts/` que cargue `data/raw/trackflow_sales.csv`, separe los primeros 8 años como entrenamiento y los últimos 2 como prueba.
+- Features causales de lag, estadísticas rodantes y calendario/estacionalidad construidos a partir de la serie (validados contra el patrón de crecimiento y estacionalidad descrito arriba), sin fuga de información desde filas futuras.
 - Modelo entrenado (XGBoost o Random Forest) con las 4 métricas (MSE, PSI, Gini, K2 Score) calculadas sobre el conjunto de prueba.
 - Visualización con la predicción y su rango de variabilidad frente a los datos reales de los 2 años de prueba.
 - Prueba unitaria en `tests/pipelines/` que valide el split 8/2 años.
