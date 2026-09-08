@@ -1,0 +1,17 @@
+# After optimization — report for CTO
+# Status: VPS ready for company application deployments
+# date: 2026-09-08
+# host: company-vps
+
+=== OS ===
+NAME="Ubuntu"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+
+=== Memory (free -h) ===
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       220Mi       1.4Gi       1.0Mi       320Mi       1.5Gi
+Swap:             0B          0B          0B
+
+=== Disk (df -h) ===
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1        25G  3.1G   21G  13% /
