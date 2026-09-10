@@ -49,7 +49,7 @@ Un café de barrio tiene un servidor Ubuntu en la nube solo para una página de 
 
 - [ ] Aplicar la lista segura de la lección con `systemctl disable --now ...`
 - [ ] Decidir en vivo con la clase si tocar Snap / multipath
-- [ ] Confirmar que SSH sigue
+- [ ] Confirmar que SSH sigue funcionando
 
 ### 4. Capturar evidencia after
 

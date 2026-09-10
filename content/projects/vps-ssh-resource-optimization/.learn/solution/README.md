@@ -25,7 +25,7 @@ A correct TXT deliverable looks like this (numbers will differ per VPS):
 ```text
 # After optimization — report for CTO
 # Status: VPS ready for company application deployments
-# date: 2026-09-08
+# date: YYYY-MM-DD
 # host: company-vps
 
 === OS ===
