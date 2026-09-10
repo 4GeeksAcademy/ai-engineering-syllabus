@@ -26,7 +26,7 @@
   "projectType": "project",
   "grading": "incremental",
   "telemetry": {
-    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id=3965"
   },
   "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/vps-ssh-resource-optimization/.learn/solution/README.md",
   "delivery": {
