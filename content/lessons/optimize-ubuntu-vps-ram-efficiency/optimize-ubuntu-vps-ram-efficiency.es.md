@@ -106,7 +106,7 @@ Agrupados por el motivo por el que existen. En la mayoría de servidores cloud p
 | Servicio              | Qué hace                                 | Compromiso                                                                                                                                                 |
 | --------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `snapd`               | Ejecuta paquetes Snap                    | Consume mucha RAM/CPU. Si instalas software con `apt`, repos oficiales o gestores de versión (por ejemplo NVM para Node), a menudo no necesitas Snap.      |
-| `unattended-upgrades` | Aplica actualizaciones de seguridad solo | Cómodo, pero puede disparar CPU/RAM en momentos raros. Más seguro al aprender: apágalo y ejecuta tú `sudo apt update` / `sudo apt upgrade` cuando quieras. |
+| `unattended-upgrades` | Aplica actualizaciones de seguridad automáticamente | Cómodo, pero puede disparar CPU/RAM en momentos raros. Más seguro al aprender: apágalo y ejecuta tú `sudo apt update` / `sudo apt upgrade` cuando quieras. |
 
 ### Diagnóstico y telemetría
 
