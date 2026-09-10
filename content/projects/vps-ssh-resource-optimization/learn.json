@@ -1,0 +1,48 @@
+{
+  "slug": "vps-ssh-resource-optimization",
+  "title": {
+    "en": "SSH into a VPS, audit resources, and optimize RAM",
+    "es": "Conectar por SSH a un VPS, auditar recursos y optimizar RAM"
+  },
+  "description": {
+    "en": "Connect to an Ubuntu VPS over SSH, inventory OS/RAM/disk, disable unused services, and deliver a TXT report of resources after optimization.",
+    "es": "Conéctate por SSH a un VPS Ubuntu, inventaria SO/RAM/disco, desactiva servicios inútiles y entrega un informe TXT de recursos tras la optimización."
+  },
+  "status": "draft",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/vps-ssh-resource-optimization/.learn/preview.png",
+  "difficulty": "beginner",
+  "duration": 2,
+  "gitpod": false,
+  "localhostOnly": false,
+  "technologies": [
+    "bash",
+    "linux",
+    "ssh",
+    "ubuntu",
+    "systemctl",
+    "technical-documentation"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "grading": "incremental",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/vps-ssh-resource-optimization/.learn/solution/README.md",
+  "delivery": {
+    "instructions": "Share a GitHub repository URL that contains resources-after.txt with free -h / df -h after optimization and a ready statement for the CTO.",
+    "formats": ["url"],
+    "regex": ""
+  },
+  "repository": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/vps-ssh-resource-optimization",
+  "sharing": [
+    {
+      "en": "I just completed SSH into a VPS, audit resources, and optimize RAM with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/vps-ssh-resource-optimization #AIEngineering #LearnPack #4GeeksAcademy #bash #linux #ssh",
+      "es": "Acabo de completar Conectar por SSH a un VPS, auditar recursos y optimizar RAM con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/vps-ssh-resource-optimization #AIEngineering #LearnPack #4GeeksAcademy #bash #linux #ssh"
+    },
+    {
+      "en": "Built and shipped: SSH into a VPS, audit resources, and optimize RAM. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/vps-ssh-resource-optimization #AIEngineering #LearnPack #4GeeksAcademy #bash #linux #ssh",
+      "es": "Construido y publicado: Conectar por SSH a un VPS, auditar recursos y optimizar RAM. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/vps-ssh-resource-optimization #AIEngineering #LearnPack #4GeeksAcademy #bash #linux #ssh"
+    }
+  ]
+}
