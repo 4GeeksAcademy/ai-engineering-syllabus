@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Ya entrenaste un modelo de regresión para predecir las ventas de tu empresa y ajustaste sus hiperparámetros. Pero un modelo entrenado no es lo mismo que un modelo confiable: tu tech lead ha abierto un **ticket** pidiendo una **evaluación técnica formal** antes de aprobar su paso a staging. Nadie va a promover un modelo a producción solo porque "el error final se ve bien".
+Ya entrenaste un modelo de pronóstico — construido sobre features conscientes del tiempo (lags, estadísticas rodantes, señales de calendario/estacionalidad) — para predecir las ventas de tu empresa, y ajustaste sus hiperparámetros. Pero un modelo entrenado no es lo mismo que un modelo confiable: tu tech lead ha abierto un **ticket** pidiendo una **evaluación técnica formal** antes de aprobar su paso a staging. Nadie va a promover un modelo a producción solo porque "el error final se ve bien".
 
 El ticket es específico y trae tres preguntas que tu reporte debe responder sin ambigüedad:
 
@@ -45,7 +45,7 @@ No existe una curva "correcta" universal — lo que importa es el patrón relati
 
 1. Continúa en tu copia existente del [monorepo de la empresa](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo) que te fue asignada al inicio del curso (si aún no tienes una, haz fork del repositorio).
 2. Trabaja este proyecto en tu fork usando GitHub Codespaces y crea una rama para este trabajo: `git switch -c feature/regression-model-eval`; en caso de trabajar en local, puedes clonar el repositorio en tu computadora.
-3. Confirma que el modelo entrenado y el split temporal (8 años entrenamiento / 2 años prueba) de tu proyecto anterior siguen disponibles y son reproducibles.
+3. Confirma que el modelo de pronóstico entrenado, sus features conscientes del tiempo (lags, estadísticas rodantes, señales de calendario) y el split temporal (8 años entrenamiento / 2 años prueba) de tu proyecto anterior siguen disponibles y son reproducibles.
 4. Instala cualquier dependencia adicional con `uv add` — nunca uses `pip install` ni `pipenv`.
 5. Lee tu `CONTEXT-empresa.md` para entender qué error es más costoso para tu negocio: sobreestimar ventas o subestimarlas.
 
@@ -57,6 +57,7 @@ No existe una curva "correcta" universal — lo que importa es el patrón relati
 
 - [ ] Implementa una estrategia de validación cruzada temporal (por ejemplo `TimeSeriesSplit`) con al menos 5 folds sobre el set de entrenamiento.
 - [ ] Verifica explícitamente que ningún fold mezcla o baraja los datos — el orden cronológico debe preservarse en cada fold.
+- [ ] Verifica que tus features de lag/rolling tampoco tengan fuga de información entre los límites de cada fold — un feature de lag calculado sobre la serie completa antes de dividir puede seguir asomándose a un fold futuro si no cuidas dónde empieza la ventana de cada fold.
 - [ ] Reporta la métrica elegida como **media ± desviación estándar** a través de los folds, no solo un número agregado.
 
 **Curva de aprendizaje:**
@@ -85,7 +86,7 @@ No existe una curva "correcta" universal — lo que importa es el patrón relati
 ## ✅ Qué Evaluaremos
 
 - [ ] La curva de aprendizaje está generada correctamente y su patrón (underfitting / overfitting / buen ajuste) está interpretado de forma explícita en el reporte.
-- [ ] La validación cruzada temporal no baraja los datos y reporta media ± desviación estándar.
+- [ ] La validación cruzada temporal no baraja los datos, no tiene fuga de features de lag/rolling entre folds, y reporta media ± desviación estándar.
 - [ ] Se calculan y comparan al menos dos métricas de regresión, con una justificación de negocio para la elegida como principal.
 - [ ] El reporte da un diagnóstico explícito (bien ajustado / underfitting / overfitting) respaldado por evidencia, no solo una afirmación.
 - [ ] La acción correctiva propuesta es específica y coherente con el diagnóstico dado — no una recomendación genérica.
