@@ -1,14 +1,14 @@
-# AI Engineering — Program modules
+# AI Engineering from scratch — Program modules
 
-_Este contenido también está disponible en [espanol](./README.es.md)._
+_Este contenido también está disponible en [espanol](./AIE-from-scratch.es.md)._
 
 ## AI Engineering Course Introduction
 
-This program is designed for **software engineers who are ready to make the leap into AI Engineering** — professionals who already know how to build and ship software, and now want to apply that foundation to the systems shaping the next decade of the industry.
+This program is designed for **people starting from zero or with little prior technical knowledge** — career changers, beginners, and anyone who wants to enter AI Engineering without already being a software engineer.
 
-The curriculum assumes you bring working knowledge of **frontend development** (React, Next.js, JavaScript / TypeScript) and **backend development** (FastAPI or Flask). You will not spend time on the basics of web development or API design — instead, you will move directly into the AI-specific layer: agents, LLMs, retrieval systems, multi-agent orchestration, agentic infrastructure, and the security practices that production AI applications demand.
+You will build the foundations as you go: **programming** (logic, algorithms, data structures, and OOP with TypeScript and Python — so you can understand and improve AI-generated code), **frontend development** (React, Next.js, JavaScript / TypeScript), **backend development** (FastAPI or Flask), and the infrastructure around them. From that base you move into the AI-specific layer: agents, LLMs, retrieval systems, multi-agent orchestration, agentic infrastructure, and the security practices that production AI applications demand.
 
-If you have been building software professionally and want to reposition yourself at the frontier of the discipline — this is the program for you.
+If you want to learn AI Engineering from scratch and grow into a professional who can build and ship these systems — this is the program for you.
 
 ---
 

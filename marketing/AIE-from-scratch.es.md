@@ -1,14 +1,14 @@
-# AI Engineering — Módulos del programa
+# AI Engineering desde cero — Módulos del programa
 
-_This content is also available in [English](./README.md)._
+_This content is also available in [English](./AIE-from-scratch.md)._
 
 ## Introducción al curso de AI Engineering
 
-Este programa está diseñado para **ingenieros de software que están listos para dar el salto a la Ingeniería de IA** — profesionales que ya saben construir y entregar software, y que ahora quieren aplicar esa base a los sistemas que están definiendo la próxima década de la industria.
+Este programa está diseñado para **personas que parten desde cero o con poco conocimiento técnico previo** — quien cambia de carrera, principiantes y cualquiera que quiera entrar en Ingeniería de IA sin ser ya ingeniero de software.
 
-El currículo asume que tienes conocimientos sólidos de **desarrollo frontend** (React, Next.js, JavaScript / TypeScript) y de **desarrollo backend** (FastAPI o Flask). No dedicarás tiempo a los fundamentos del desarrollo web ni al diseño de APIs — en cambio, entrarás directamente en la capa específica de IA: agentes, LLMs, sistemas de recuperación de información, orquestación multi-agente, infraestructura agéntica y las prácticas de seguridad que exigen las aplicaciones de IA en producción.
+Construirás los fundamentos a medida que avanzas: **programación** (lógica, algoritmos, estructuras de datos y POO con TypeScript y Python — para entender y mejorar código generado por IA), **desarrollo frontend** (React, Next.js, JavaScript / TypeScript), **desarrollo backend** (FastAPI o Flask) y la infraestructura que los rodea. Desde esa base pasarás a la capa específica de IA: agentes, LLMs, sistemas de recuperación de información, orquestación multi-agente, infraestructura agéntica y las prácticas de seguridad que exigen las aplicaciones de IA en producción.
 
-Si llevas años construyendo software de forma profesional y quieres reposicionarte en la frontera de la disciplina — este es tu programa.
+Si quieres aprender Ingeniería de IA desde cero y crecer hasta poder construir y entregar estos sistemas de forma profesional — este es tu programa.
 
 ---
 
