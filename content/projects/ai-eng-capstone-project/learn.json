@@ -5,8 +5,8 @@
     "es": "Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos"
   },
   "description": {
-    "en": "Record a ~5-minute landscape pitch of the AI system you built for your company: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with the MP4, a 1–2 sentence description, and the signed media release.",
-    "es": "Graba un pitch horizontal de ~5 minutos del sistema de IA que construiste para tu empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y un Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con el MP4, una descripción de 1–2 frases y la cesión de imagen firmada."
+    "en": "Record a ~5-minute landscape pitch of the AI system you built for your company: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive folder with the MP4, a 1–2 sentence description, and the signed media release (videos often exceed GitHub’s file size limit).",
+    "es": "Graba un pitch horizontal de ~5 minutos del sistema de IA que construiste para tu empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y un Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive con el MP4, una descripción de 1–2 frases y la cesión de imagen firmada (los vídeos suelen superar el límite de tamaño de GitHub)."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
@@ -24,7 +24,7 @@
   "translations": ["es", "en"],
   "projectType": "project",
   "delivery": {
-    "instructions": "Submit a Google Drive (or similar) folder link with FirstnameLastname-ProjectName.mp4 (MP4, 1080p if possible), FirstnameLastname-ProjectName-description.txt (1–2 sentences), and the signed media release. Anyone with the link must be able to view.",
+    "instructions": "Submit a Google Drive folder link with FirstnameLastname-ProjectName.mp4 (MP4, 1080p if possible), FirstnameLastname-ProjectName-description.txt (1–2 sentences), and the signed media release. Do not use GitHub (file size limit). Anyone with the link must be able to view.",
     "formats": ["url"],
     "regex": ""
   },

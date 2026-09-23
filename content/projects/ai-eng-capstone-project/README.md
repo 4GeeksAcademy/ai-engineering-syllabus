@@ -38,19 +38,11 @@ This is not a syllabus walkthrough. Do not narrate weeks or tickets. Pitch the p
 > >
 > > Close on camera with the three Q&A questions exactly as written. Complete sentences that include the question. Two full seconds of silence before and after each answer — editors need a clean cut.
 > >
-> > **Acceptance criteria:** ~5 minutes, landscape, audible, demo of _your_ company system, all five sections present, Q&A usable as standalone clips, files named and packaged as specified, delivered as a Google Drive (or similar) link.
+> > **Acceptance criteria:** ~5 minutes, landscape, audible, demo of _your_ company system, all five sections present, Q&A usable as standalone clips, files named and packaged as specified, delivered as a Google Drive link.
 > >
 > > — Head of Talent, with sign-off from your tech lead
 
-### Recording quality checklist
-
-A few minimums so the video looks and sounds professional:
-
-- Horizontal (landscape) orientation — no vertical video
-- Good lighting — face a window or lamp; don't sit with a bright light behind you
-- Clean audio — a headset or earbud mic is fine; your laptop mic from across the room is not. Record in a quiet space.
-- Readable screen recordings — record your demo at full resolution and zoom in on the parts that matter
-- Look at the camera during the introduction and the Q&A section at the end (during the demo, it's fine to look at your screen)
+Before you record, follow the **Recording quality checklist** under _What You Need to Do_. Lighting, audio, and framing decide whether the pitch looks professional.
 
 ### Presentation tips
 
@@ -63,17 +55,6 @@ A few minimums so the video looks and sounds professional:
 
 The goal is not just to show what you created, but to demonstrate that you can communicate the value of an AI solution — the skill that gets you hired.
 
-### File requirements
-
-Your Drive (or similar) folder must contain **all** of these files:
-
-| File                | Spec                                                                                                                                                                                                                                                                                                                                         |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Video               | **MP4** preferred, **1080p** if possible, approximately **5 minutes**, landscape                                                                                                                                                                                                                                                             |
-| Video filename      | `FirstnameLastname-ProjectName.mp4` — no spaces in the basename if the platform mangles them; keep this exact pattern                                                                                                                                                                                                                        |
-| Written description | A **1–2 sentence** written description of your project (for showcasing). File: `FirstnameLastname-ProjectName-description.txt` (plain text or `.md`)                                                                                                                                                                                         |
-| Media release       | Your **signed** media release form (PDF or image), named `FirstnameLastname-media-release.pdf` (or `.jpg` / `.png`). If you opt out of public featuring, still upload the form with the opt-out marked, or a one-line `FirstnameLastname-media-release.txt` that states the video stays cohort-private. Opting out does not affect the grade |
-
 ---
 
 ## 🌱 How to Start the Project
@@ -82,9 +63,9 @@ You record the system that already lives in your company monorepo. You are not c
 
 1. Confirm the application you will screen-record is running (local or deployed). Cold-start the demo once before you record so you are not debugging on camera.
 2. Sketch the five sections with times. Practice the full talk **out loud at least twice**.
-3. Record landscape, with the quality checklist above.
+3. Record landscape, following the **Recording quality checklist** under _What You Need to Do_.
 4. Export the MP4, write the 1–2 sentence description file, and add the signed media release.
-5. Upload **all three files** to a Google Drive folder (Dropbox, OneDrive, or equivalent is fine) and copy a shareable link.
+5. Upload **all three files** to a Google Drive folder and copy a shareable link (see _How to Submit_).
 
 ---
 
@@ -92,7 +73,7 @@ You record the system that already lives in your company monorepo. You are not c
 
 ⚠️ **IMPORTANT:** Field names, entity names, KPIs, and the workflow you demo must match your CONTEXT.md. A generic demo that ignores the company you have been building will not be accepted.
 
-### Recording quality
+### Recording quality checklist
 
 - [ ] Horizontal (landscape) video — no vertical video
 - [ ] Good lighting — face a window or lamp; don't sit with a bright light behind you
@@ -188,13 +169,6 @@ The questions (answer all three):
 - [ ] You pause 2 full seconds before and after each answer
 - [ ] You look directly at the lens for this whole section
 
-### 💾 Files
-
-- [ ] Video is **MP4**, **1080p** if possible, approximately **5 minutes**
-- [ ] Video filename is `FirstnameLastname-ProjectName.mp4`
-- [ ] `FirstnameLastname-ProjectName-description.txt` contains a 1–2 sentence written description of the project
-- [ ] Signed media release is included (`FirstnameLastname-media-release.pdf` / image, or a written cohort-private opt-out)
-
 ---
 
 ## ✅ What We Will Evaluate
@@ -209,7 +183,7 @@ The questions (answer all three):
 - [ ] File is MP4, 1080p if possible, named `FirstnameLastname-ProjectName.mp4`
 - [ ] Written 1–2 sentence project description file is present
 - [ ] Signed media release (or explicit cohort-private opt-out) is present
-- [ ] Submission is a working Google Drive (or similar) link that opens the folder and all required files without a request-access wall for the instructor
+- [ ] Submission is a working Google Drive link that opens the folder and all required files without a request-access wall for the instructor
 
 > Note: Cinematic editing, music, and motion graphics are not required. Clarity of the story and a working demo beat polish.
 
@@ -219,16 +193,23 @@ The questions (answer all three):
 
 **Deadline:** set by your instructor — typically **one week before Graduation Day**.
 
-Delivery is a **Google Drive link** (Dropbox, OneDrive, or another file-hosting platform with a shareable folder link is acceptable). Do not submit the MP4 as a GitHub file, a PR, or an email attachment.
+Delivery is a **Google Drive folder link**. Capstone videos are often larger than GitHub’s file size limit — do **not** submit the MP4 via GitHub, a PR, or email.
 
-1. Put these files in **one folder**:
+### Required files
 
-- `FirstnameLastname-ProjectName.mp4`
-- `FirstnameLastname-ProjectName-description.txt`
-- `FirstnameLastname-media-release.pdf` (or image / opt-out text)
+Put **all** of these in **one** Google Drive folder:
 
-1. Share the folder with **anyone with the link can view** (or explicitly with your instructor's email). Confirm the link opens while you are logged out or in a private window.
-2. Submit **that folder URL** in the LMS assignment field your instructor names.
+| File                                            | Spec                                                                                                                                                                                                                                                           |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FirstnameLastname-ProjectName.mp4`             | **MP4** preferred, **1080p** if possible, ~**5 minutes**, landscape. No spaces in the basename if the platform mangles them.                                                                                                                                   |
+| `FirstnameLastname-ProjectName-description.txt` | **1–2 sentence** written description (plain text or `.md`).                                                                                                                                                                                                    |
+| `FirstnameLastname-media-release.pdf`           | **Signed** media release (PDF or `.jpg` / `.png`). Opt-out of public featuring: upload the form with opt-out marked, or a one-line `FirstnameLastname-media-release.txt` that states the video stays cohort-private. Opting out does **not** affect the grade. |
+
+- [ ] Folder has the three files above, named exactly as specified
+- [ ] Folder shared so **anyone with the link can view** (or explicitly with your instructor’s email)
+- [ ] ⚠️ You get the URL from Drive **Share → Copy link** (not from the browser address bar)
+- [ ] Link opens while you are logged out or in a private window
+- [ ] You submit **that folder URL** in the LMS assignment field your instructor names.
 
 ### 🎉 Graduation Day — GeekTalk
 
@@ -240,6 +221,8 @@ During the final class, we celebrate by watching the project videos together. Yo
 - Hear from special guests and industry professionals
 
 This project is a reflection of the skills, creativity, and problem-solving mindset you developed throughout the program. Have fun with it, and be proud of what you built.
+
+Remember to add the Google Drive folder link to the README of **your company monorepo** so potential hirers can find and watch your video from your portfolio repo.
 
 ---
 

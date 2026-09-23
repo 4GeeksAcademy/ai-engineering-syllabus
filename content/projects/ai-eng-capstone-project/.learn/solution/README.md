@@ -1,12 +1,12 @@
 # Capstone — Final Project Video — Reference solution
 
-This is an **explanatory** reference. There is no single correct video. A passing submission is a ~5-minute landscape pitch of **the student's own company system**, delivered as a **Google Drive (or similar) folder link** with the required files.
+This is an **explanatory** reference. There is no single correct video. A passing submission is a ~5-minute landscape pitch of **the student's own company system**, delivered as a **Google Drive folder link** with the required files.
 
 Do not treat the sample names below as a company students may copy. They illustrate shape, timing, and voice. The student's CONTEXT supplies the real entities.
 
 ## Expected deliverable set
 
-The student uploads **one shared folder** (Google Drive, Dropbox, OneDrive, or equivalent). Anyone with the link can view. The folder contains:
+The student uploads **one shared Google Drive folder**. Capstone videos often exceed GitHub’s file size limit — do not accept a GitHub PR or repo file as delivery. Anyone with the link can view. The folder contains:
 
 | File                                                       | Spec                                                                                                                                                           |
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -79,19 +79,19 @@ The product architecture lives in the monorepo. The video only needs enough of i
 
 ## Common failures vs acceptable
 
-| Fail                                                      | Pass                                                              |
-| --------------------------------------------------------- | ----------------------------------------------------------------- |
-| “Hi, my name is…” as first line                           | Problem or metric first, name second                              |
-| Vertical phone video                                      | Landscape                                                         |
-| Laptop mic, echo, music bed drowning speech               | Headset/close mic, quiet room                                     |
-| Slides of boxes, no running UI                            | Screen recording of the real workflow                             |
-| Generic chatbot unrelated to CONTEXT                      | Same entities, fields, and constraints as CONTEXT.md              |
-| Tool laundry list (FastAPI, Next, Qdrant, LangGraph…)     | One sentence on the AI piece that makes the workflow work         |
-| “I learned a lot this bootcamp” in section 4              | “I chose X over Y because…”                                       |
-| Q&A answers that cannot stand alone                       | Question restated in a full sentence, eyes on lens                |
-| GitHub PR / YouTube-only / missing description or release | Drive (or similar) folder with MP4 + description + signed release |
-| `video.mp4` or spaces/`final video.mp4`                   | `FirstnameLastname-ProjectName.mp4`                               |
-| Link set to “restricted” / request access                 | Anyone-with-the-link can view (or instructor explicitly added)    |
+| Fail                                                      | Pass                                                           |
+| --------------------------------------------------------- | -------------------------------------------------------------- |
+| “Hi, my name is…” as first line                           | Problem or metric first, name second                           |
+| Vertical phone video                                      | Landscape                                                      |
+| Laptop mic, echo, music bed drowning speech               | Headset/close mic, quiet room                                  |
+| Slides of boxes, no running UI                            | Screen recording of the real workflow                          |
+| Generic chatbot unrelated to CONTEXT                      | Same entities, fields, and constraints as CONTEXT.md           |
+| Tool laundry list (FastAPI, Next, Qdrant, LangGraph…)     | One sentence on the AI piece that makes the workflow work      |
+| “I learned a lot this bootcamp” in section 4              | “I chose X over Y because…”                                    |
+| Q&A answers that cannot stand alone                       | Question restated in a full sentence, eyes on lens             |
+| GitHub PR / YouTube-only / missing description or release | Google Drive folder with MP4 + description + signed release    |
+| `video.mp4` or spaces/`final video.mp4`                   | `FirstnameLastname-ProjectName.mp4`                            |
+| Link set to “restricted” / request access                 | Anyone-with-the-link can view (or instructor explicitly added) |
 
 ## Reviewer checklist
 
@@ -103,8 +103,8 @@ The product architecture lives in the monorepo. The video only needs enough of i
 - [ ] MP4 named `FirstnameLastname-ProjectName.mp4`, 1080p if possible
 - [ ] 1–2 sentence description file present
 - [ ] Signed media release or explicit cohort-private opt-out present
-- [ ] Google Drive (or similar) folder link opens without an access request
+- [ ] Google Drive folder link opens without an access request
 
 ## Notes for reviewers
 
-Grade the **communication of value** and evidence that the system is real. Do not fail a video for missing color grading or a fancy intro bumper. Do fail a video that recites the syllabus, ignores CONTEXT, delivers Q&A as one-word replies, or is missing required files / a working Drive-style link.
+Grade the **communication of value** and evidence that the system is real. Do not fail a video for missing color grading or a fancy intro bumper. Do fail a video that recites the syllabus, ignores CONTEXT, delivers Q&A as one-word replies, or is missing required files / a working Google Drive folder link.
