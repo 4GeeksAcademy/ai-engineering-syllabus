@@ -1,5 +1,7 @@
 # Backoffice de Operaciones – Centralizado de Incidencias
 
+<!-- hide -->
+
 By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
 
 ![build by developers](https://img.shields.io/badge/build_by-Developers-blue)
@@ -8,6 +10,8 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 _These instructions are [available in English](./README.md)._
 
 **Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** antes de escribir una sola línea de código — define los canales de entrada, los tipos de incidencia, los niveles de severidad y las áreas responsables de tu implementación.
+
+<!-- endhide -->
 
 ---
 
