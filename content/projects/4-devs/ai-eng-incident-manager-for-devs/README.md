@@ -1,5 +1,7 @@
 # Operations Backoffice – Incident Manager
 
+<!-- hide -->
+
 By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
 
 ![build by developers](https://img.shields.io/badge/build_by-Developers-blue)
@@ -8,6 +10,8 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 **Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** before writing a single line of code — it defines the intake channels, incident types, severity levels, and responsible areas for your implementation.
+
+<!-- endhide -->
 
 ---
 
