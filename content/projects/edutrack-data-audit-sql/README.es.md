@@ -49,7 +49,7 @@ Este tipo de auditoría aparece constantemente en startups. Cuanto más limpia e
 
 ## 🌱 Cómo iniciar el proyecto
 
-Este proyecto no parte de una plantilla de código: creas un repositorio vacío y dentro los dos archivos desde cero.
+Este proyecto no parte de una plantilla de código: creas un repositorio vacío y dentro un archivo SQL con tus consultas y un informe en Markdown con tus hallazgos.
 
 1. Descarga el archivo [edutrack.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql/edutrack.sql) desde este enlace.
 2. Inicia sesión en [Supabase](https://supabase.com) y crea un nuevo proyecto.
