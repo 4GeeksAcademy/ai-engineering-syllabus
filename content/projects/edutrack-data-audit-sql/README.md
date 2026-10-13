@@ -49,7 +49,7 @@ This is the kind of audit task that comes up constantly in startups. The cleaner
 
 ## 🌱 How to Start the Project
 
-This project does not start from a code template: you create an empty repository and write both files inside it from scratch.
+This project does not start from a code template: you create an empty repository and, inside it, a SQL file with your queries and a Markdown report with your findings.
 
 1. Download the provided [edutrack.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql/edutrack.sql) file.
 2. Log in to [Supabase](https://supabase.com) and create a new project.
