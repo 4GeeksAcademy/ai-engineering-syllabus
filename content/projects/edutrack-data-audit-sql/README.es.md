@@ -49,14 +49,14 @@ Este tipo de auditoría aparece constantemente en startups. Cuanto más limpia e
 
 ## 🌱 Cómo iniciar el proyecto
 
-Este proyecto no requiere un repositorio de código — tu entregable es un archivo SQL con tus consultas y un informe en Markdown con tus hallazgos.
+Este proyecto no parte de una plantilla de código: creas un repositorio vacío y dentro un archivo SQL con tus consultas y un informe en Markdown con tus hallazgos.
 
-1. Descarga el archivo [edutrack.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql/edutrack.sql) desde la plataforma.
+1. Descarga el archivo [edutrack.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql/edutrack.sql) desde este enlace.
 2. Inicia sesión en [Supabase](https://supabase.com) y crea un nuevo proyecto.
 3. Ve al **SQL Editor** y ejecuta el contenido completo de `edutrack.sql` para crear y poblar la base de datos.
 4. Verifica que la importación fue exitosa ejecutando `SELECT * FROM enrollments LIMIT 5;`.
-5. Crea un nuevo archivo llamado `queries.sql` donde escribirás y guardarás todas tus consultas.
-6. Crea un nuevo archivo llamado `analysis_report.md` donde documentarás tus hallazgos.
+5. Crea un repositorio vacío en GitHub y agrega en su raíz dos archivos: `queries.sql` (tus consultas) y `analysis_report.md` (tus resultados). Supabase no guarda archivos: úsalo solo para ejecutar y probar las consultas.
+6. Cada vez que una consulta funcione en Supabase, cópiala a `queries.sql` con un comentario que indique su número (ej. `-- Q6: inscripción faltante`.) y anota el resultado en `analysis_report.md`.
 
 > 💡 Consejo: Antes de ejecutar cualquier UPDATE o DELETE, ejecuta siempre un SELECT con la misma condición WHERE para confirmar que estás apuntando a las filas correctas.
 
@@ -68,40 +68,41 @@ Este proyecto no requiere un repositorio de código — tu entregable es un arch
 
 - [ ] Importar `edutrack.sql` en un proyecto de Supabase correctamente
 - [ ] Verificar que las tablas `enrollments`, `students` y `courses` existen y contienen datos
+- [ ] Ejecuta las consultas **en orden (Q1 → Q12)**. Las agregaciones (Q9–Q12) deben calcularse **después** de las correcciones (Q6–Q8), porque sus resultados cambian si se agregan o borran registros.
 
 ### Consultas — Lectura y filtrado
 
-- [ ] Listar todas las inscripciones del curso `'Intro to Python'`, mostrando nombre del estudiante, email y porcentaje de completado
-- [ ] Obtener todas las inscripciones donde `completion_percentage` sea menor que 10 — estos son posibles abandonos
-- [ ] Encontrar todas las inscripciones donde el campo instructor sea `NULL`
-- [ ] Listar los 5 estudiantes con mayor `completion_percentage` que todavía **no han aprobado** (`passed = false`)
-- [ ] Mostrar todas las inscripciones creadas en el último año, ordenadas por `enrollment_date` descendente
+- [ ] **Q1.** Listar todas las inscripciones del curso `'Intro to Python'`, mostrando nombre del estudiante, email y porcentaje de completado
+- [ ] **Q2.** Obtener todas las inscripciones donde `completion_percentage` sea menor que 10 — estos son posibles abandonos
+- [ ] **Q3.** Encontrar todas las inscripciones donde el campo instructor sea `NULL`
+- [ ] **Q4.** Listar los 5 estudiantes con mayor `completion_percentage` que todavía **no han aprobado** (`passed = false`)
+- [ ] **Q5.** Mostrar todas las inscripciones con `enrollment_date` desde el `'2024-07-01'`, ordenadas por `enrollment_date` descendente
 
 ### Consultas — Corrección de datos
 
-- [ ] **INSERT** del registro de inscripción faltante indicado en el brief (el nombre del estudiante, email, curso, fecha y valores iniciales están especificados en los comentarios del archivo `edutrack.sql`)
-- [ ] **UPDATE** de todas las inscripciones donde `instructor` sea `NULL` — asignar el valor por defecto `'Pending assignment'`
-- [ ] **DELETE** de todas las inscripciones ligadas a las cuentas de prueba importadas (`@test.com`) — confirmar las filas afectadas con un SELECT previo
+- [ ] **Q6.** **INSERT** del registro de inscripción faltante indicado en el brief (el nombre del estudiante, email, curso, fecha y valores iniciales están especificados en los comentarios del archivo `edutrack.sql`)
+- [ ] **Q7.** **UPDATE** de todas las inscripciones donde `instructor` sea `NULL` — asignar el valor por defecto `'Pending assignment'`
+- [ ] **Q8.** **DELETE** de todas las inscripciones ligadas a las cuentas de prueba importadas (`@test.com`) — confirmar las filas afectadas con un SELECT previo
 
 ### Consultas — Agregación e informe
 
-- [ ] Contar el número de inscripciones agrupado por `category`
-- [ ] Calcular el promedio de `completion_percentage` agrupado por `course_title`, ordenado de menor a mayor
-- [ ] Mostrar únicamente los cursos con **más de 3 inscripciones** (usar `HAVING`)
-- [ ] Calcular los ingresos totales (`SUM` de `monthly_fee_paid`) agrupados por `category`, ordenados de mayor a menor
+- [ ] **Q9.** Contar el número de inscripciones agrupado por `category`
+- [ ] **Q10.** Calcular el promedio de `completion_percentage` agrupado por `course_title`, ordenado de menor a mayor
+- [ ] **Q11.** Mostrar únicamente los cursos con **más de 3 inscripciones** (usar `HAVING`)
+- [ ] **Q12.** Calcular los ingresos totales (`SUM` de `monthly_fee_paid`) agrupados por `category`, ordenados de mayor a menor
 
 ### Informe de análisis
 
-- [ ] Completar el archivo `analysis_report.md` incluido en el repositorio, rellenando el resultado de cada consulta en la sección correspondiente
+- [ ] Escribir en `analysis_report.md` una sección por cada consulta (Q1 a Q12) con el resultado real que devolvió
 
 El informe sigue una estructura fija — una sección por consulta. Tu tarea es escribir los números y listas que devolvió tu SQL. Ejemplo del formato esperado:
 
 ```markdown
-## Inscripciones en 'Intro to Python'
+## Q1 - Inscripciones en 'Intro to Python'
 
 Resultado: 10
 
-## Inscripciones por categoría
+## Q9 - Inscripciones por categoría
 
 Resultado:
 
@@ -132,9 +133,9 @@ Resultado:
 
 ## 📦 Cómo entregar
 
-1. Sube `queries.sql` y `analysis_report.md` a un repositorio de GitHub.
-2. Comparte el enlace del repositorio con tu instructor siguiendo sus instrucciones.
-3. Asegúrate de que ambos archivos estén en la raíz del repositorio y que el repo sea público.
+1. Asegúrate de que la versión final de `queries.sql` y `analysis_report.md` esté guardada (commit y push) en tu repositorio.
+2. Asegúrate de que ambos archivos estén en la raíz del repositorio y que el repo sea público.
+3. Entrega el enlace en esta vista.
 
 ---
 
