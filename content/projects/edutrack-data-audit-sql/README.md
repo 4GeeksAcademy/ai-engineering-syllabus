@@ -49,14 +49,14 @@ This is the kind of audit task that comes up constantly in startups. The cleaner
 
 ## 🌱 How to Start the Project
 
-This project does not require a code repository — your deliverable is a SQL file with your queries and a Markdown report with your findings.
+This project does not start from a code template: you create an empty repository and write both files inside it from scratch.
 
-1. Download the provided [edutrack.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql/edutrack.sql) file from the platform.
+1. Download the provided [edutrack.sql](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/refs/heads/main/content/projects/edutrack-data-audit-sql/edutrack.sql) file.
 2. Log in to [Supabase](https://supabase.com) and create a new project.
 3. Go to **SQL Editor** and run the full contents of `edutrack.sql` to create and populate the database.
 4. Verify the import succeeded by running `SELECT * FROM enrollments LIMIT 5;`.
-5. Create a new file called `queries.sql` where you'll write and save all your queries.
-6. Create a new file called `analysis_report.md` where you'll document your findings.
+5. Create an empty repository on GitHub and add two files at its root: `queries.sql` (your queries) and `analysis_report.md` (your results). Supabase does not store files: use it only to run and test your queries.
+6. Every time a query works in Supabase, copy it into `queries.sql` with a comment indicating its number (e.g. `-- Q6: missing enrollment`), and write down the result in `analysis_report.md`.
 
 > 💡 Tip: Before running any UPDATE or DELETE, always run a SELECT with the same WHERE clause first to confirm you're targeting the right rows.
 
@@ -64,31 +64,32 @@ This project does not require a code repository — your deliverable is a SQL fi
 
 ## 💻 What You Need to Do
 
+> Run the queries **in order (Q1 → Q12)**. The aggregations (Q9–Q12) must be calculated **after** the data corrections (Q6–Q8), because their results change when records are added or deleted.
+
 ### Database Setup
 
 - [ ] Import `edutrack.sql` into a Supabase project successfully
 - [ ] Verify that the `enrollments`, `students`, and `courses` tables exist and contain data
 
+
 ### Queries — Reading and Filtering
-
-- [ ] List all enrollments for the course `'Intro to Python'`, showing student name, email, and completion percentage
-- [ ] Retrieve all enrollments where `completion_percentage` is less than 10 — these are potential dropouts
-- [ ] Find all enrollments where the instructor field is `NULL`
-- [ ] List the 5 students with the highest `completion_percentage` who have **not** yet passed (`passed = false`)
-- [ ] Show all enrollments created in the last year, ordered by `enrollment_date` descending
-
+ 
+- [ ] **Q1.** List all enrollments for the course `'Intro to Python'`, showing student name, email, and completion percentage
+- [ ] **Q2.** Retrieve all enrollments where `completion_percentage` is less than 10 — these are potential dropouts
+- [ ] **Q3.** Find all enrollments where the instructor field is `NULL`
+- [ ] **Q4.** List the 5 students with the highest `completion_percentage` who have **not** yet passed (`passed = false`)
+- [ ] **Q5.** Show all enrollments with an `enrollment_date` on or after `'2024-07-01'`, ordered by `enrollment_date` descending
 ### Queries — Data Corrections
-
-- [ ] **INSERT** the missing enrollment record provided in the brief (student name, email, course, date, and initial values are specified in the `edutrack.sql` comments)
-- [ ] **UPDATE** all enrollments where `instructor` is `NULL` — assign the default value `'Pending assignment'`
-- [ ] **DELETE** all enrollments tied to the imported test accounts (`@test.com`) — confirm the affected rows with a SELECT first
-
+ 
+- [ ] **Q6.** **INSERT** the missing enrollment record provided in the brief (student name, email, course, date, and initial values are specified in the comments of `edutrack.sql`)
+- [ ] **Q7.** **UPDATE** all enrollments where `instructor` is `NULL` — assign the default value `'Pending assignment'`
+- [ ] **Q8.** **DELETE** all enrollments tied to the imported test accounts (`@test.com`) — confirm the affected rows with a SELECT first
 ### Queries — Aggregation and Reporting
-
-- [ ] Count the number of enrollments grouped by `category`
-- [ ] Calculate the average `completion_percentage` grouped by `course_title`, ordered from lowest to highest
-- [ ] Show only the courses with **more than 3 enrollments** (use `HAVING`)
-- [ ] Calculate total revenue (`SUM` of `monthly_fee_paid`) grouped by `category`, ordered from highest to lowest
+ 
+- [ ] **Q9.** Count the number of enrollments grouped by `category`
+- [ ] **Q10.** Calculate the average `completion_percentage` grouped by `course_title`, ordered from lowest to highest
+- [ ] **Q11.** Show only the courses with **more than 3 enrollments** (use `HAVING`)
+- [ ] **Q12.** Calculate total revenue (`SUM` of `monthly_fee_paid`) grouped by `category`, ordered from highest to lowest
 
 ### Analysis Report
 
@@ -97,11 +98,11 @@ This project does not require a code repository — your deliverable is a SQL fi
 The report follows a fixed structure — one section per query. Your job is to fill in the numbers and lists that your SQL returned. Example of the expected format:
 
 ```markdown
-## Enrollments in 'Intro to Python'
+## Q1 — Enrollments in 'Intro to Python'
 
 Result: 10
 
-## Enrollments by category
+## Q9 — Enrollments by category
 
 Result:
 
@@ -132,9 +133,9 @@ Result:
 
 ## 📦 How to Submit
 
-1. Push `queries.sql` and `analysis_report.md` to a GitHub repository.
-2. Share the repository link with your instructor following their instructions.
-3. Make sure both files are at the root of the repository and that the repo is public.
+1. Make sure the final version of `queries.sql` and `analysis_report.md` is saved (commit and push) in your repository.
+2. Make sure both files are at the root of the repository and that the repo is public.
+3. Submit the repository link in this view.
 
 ---
 
