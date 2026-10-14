@@ -23,13 +23,15 @@ The infrastructure team has raised an internal RFP to the squad: every time a ne
 
 Your tech lead has assigned the ticket to the squad. The brief is direct: dockerize the entire monorepo for development. Both frontends — the public-facing site (`/uis/website`) and the internal admin panel (`/uis/backoffice`) — must run from a **single UI container**. The FastAPI service goes in its own container. Both must start with hot reloading, read configuration from environment variables, and communicate with each other by service name inside the Docker network — not by `localhost`.
 
+Local Compose is not enough. Once the containers work, you must also **deploy them to production** on the **VPS you already have** from earlier in the program — the same server you use for other company infrastructure. The monorepo stack must be reachable there, not only on your laptop.
+
 > **Technical brief — Ticket #infra-40**
 >
 > > The team needs reproducible development environments. Every time someone new clones the repository, onboarding turns into a dependency debugging session.
 > >
-> > **Scope**: dockerize `/uis` (website + backoffice in a single UI container with hot reloading) and `/services` (FastAPI with `--reload`). Orchestration is managed with Docker Compose.
+> > **Scope**: dockerize `/uis` (website + backoffice in a single UI container with hot reloading) and `/services` (FastAPI with `--reload`). Orchestration is managed with Docker Compose. Then deploy those containers to **production on your existing VPS**.
 > >
-> > **Acceptance criteria**: any team member can run `docker compose up` from the repository root and have the full platform running without additional steps.
+> > **Acceptance criteria**: any team member can run `docker compose up` from the repository root and have the full platform running without additional steps; the same stack is also **running in production on your VPS**.
 > >
 > > Services communicate with each other **by Docker service name**, not by `localhost`. Review all inter-service connection URLs before sign-off.
 
@@ -46,6 +48,7 @@ Your tech lead has assigned the ticket to the squad. The brief is direct: docker
 
 3. Review the current monorepo structure. You will need to create `Dockerfile` and `.dockerignore` files in `/uis/` and in `/services/`. The `docker-compose.yml` file goes in the repository root.
 4. Create a `.env` file at the root before writing any `docker-compose.yml`. The environment variable names for your project are already familiar — you have been working with them for weeks.
+5. Confirm SSH access to the **VPS you already have** — you will deploy the monorepo containers there for production after local Compose works.
 
 ---
 
@@ -73,6 +76,11 @@ Your tech lead has assigned the ticket to the squad. The brief is direct: docker
 - [ ] Define all environment variables for each service via a `.env` file at the repository root (not hardcoded in the YAML).
 - [ ] Confirm that `.env` is in the repository's `.gitignore`.
 
+### Production deploy (your VPS)
+
+- [ ] Deploy the monorepo containers to **production on your VPS**.
+- [ ] On the VPS, the UI and backend containers are running and reachable (same Compose stack idea as local; production env vars live on the VPS, not in Git).
+
 ---
 
 ## ✅ What We Will Evaluate
@@ -84,6 +92,7 @@ Your tech lead has assigned the ticket to the squad. The brief is direct: docker
 - [ ] No secrets, API keys, or passwords are hardcoded in any `Dockerfile` or in `docker-compose.yml`.
 - [ ] The `.env` file is in `.gitignore` and does not appear in the commit history.
 - [ ] `.dockerignore` files exist in `/uis/` and in `/services/`.
+- [ ] Monorepo containers are **deployed and running in production on your existing VPS** (not only on your laptop).
 
 ---
 
@@ -91,8 +100,9 @@ Your tech lead has assigned the ticket to the squad. The brief is direct: docker
 
 1. Push all changes to your branch on GitHub.
 2. Open a Pull Request from your branch to `main`.
-3. Include in the PR description a screenshot showing the running containers (`docker compose ps` or the output of `docker compose up`).
-4. Share the PR link with your tech lead for final sign-off.
+3. Include in the PR description a screenshot showing the running containers locally (`docker compose ps` or the output of `docker compose up`).
+4. Include evidence that the same stack is **running on your VPS in production** (e.g. `docker compose ps` over SSH, or a URL / screenshot of the live apps).
+5. Share the PR link with your tech lead for final sign-off.
 
 ---
 

@@ -23,13 +23,15 @@ El equipo de infraestructura ha elevado una RFP interna al squad: cada vez que u
 
 Tu tech lead ha asignado el ticket al squad. El brief es directo: dockerizar el monorepo completo para desarrollo. Los dos frontends — el sitio público (`/uis/website`) y el panel interno (`/uis/backoffice`) — deben ejecutarse desde un **único contenedor de interfaces**. El servicio FastAPI va en su propio contenedor. Ambos tienen que arrancar con recarga en caliente, leer su configuración de variables de entorno, y comunicarse entre sí por nombre de servicio dentro de la red Docker — no por `localhost`.
 
+Compose en local no basta. Cuando los contenedores funcionen, también debes **desplegarlos a producción** en el **VPS que ya tienes** de etapas anteriores del programa — el mismo servidor que usas para otra infraestructura de la empresa. El stack del monorepo tiene que estar accesible ahí, no solo en tu portátil.
+
 > **Brief técnico — Ticket #infra-40**
 >
 > > El equipo necesita entornos de desarrollo reproducibles. Cada vez que alguien nuevo clona el repositorio, la puesta en marcha se convierte en una sesión de depuración de dependencias.
 > >
-> > **Alcance**: dockerizar `/uis` (website + backoffice en un único contenedor de interfaces con recarga en caliente) y `/services` (FastAPI con `--reload`). La orquestación se gestiona con Docker Compose.
+> > **Alcance**: dockerizar `/uis` (website + backoffice en un único contenedor de interfaces con recarga en caliente) y `/services` (FastAPI con `--reload`). La orquestación se gestiona con Docker Compose. Después despliega esos contenedores a **producción en tu VPS existente**.
 > >
-> > **Criterio de aceptación**: cualquier miembro del equipo puede ejecutar `docker compose up` desde la raíz del repositorio y tener toda la plataforma operativa sin pasos adicionales.
+> > **Criterio de aceptación**: cualquier miembro del equipo puede ejecutar `docker compose up` desde la raíz del repositorio y tener toda la plataforma operativa sin pasos adicionales; el mismo stack también está **en producción en tu VPS**.
 > >
 > > Los servicios se comunican entre sí **por nombre de servicio Docker**, no por `localhost`. Revisa todas las URLs de conexión entre servicios antes del sign-off.
 
@@ -46,6 +48,7 @@ Tu tech lead ha asignado el ticket al squad. El brief es directo: dockerizar el 
 
 3. Revisa la estructura actual del monorepo. Deberás crear archivos `Dockerfile` y `.dockerignore` en `/uis/` y en `/services/`. El archivo `docker-compose.yml` va en la raíz del repositorio.
 4. Crea un archivo `.env` en la raíz antes de escribir ningún `docker-compose.yml`. Las variables de entorno concretas de tu proyecto ya las conoces — llevas semanas trabajando con ellas.
+5. Confirma acceso SSH al **VPS que ya tienes** — ahí desplegarás los contenedores del monorepo a producción cuando Compose funcione en local.
 
 ---
 
@@ -73,6 +76,11 @@ Tu tech lead ha asignado el ticket al squad. El brief es directo: dockerizar el 
 - [ ] Define todas las variables de entorno de cada servicio mediante un archivo `.env` en la raíz del repositorio (no hardcodeadas en el YAML).
 - [ ] Confirma que `.env` está en el `.gitignore` del repositorio.
 
+### Despliegue a producción (tu VPS)
+
+- [ ] Despliega los contenedores del monorepo a **producción en tu VPS**.
+- [ ] En el VPS, los contenedores de interfaces y backend están en marcha y accesibles (misma idea de stack Compose que en local; las variables de producción viven en el VPS, no en Git).
+
 ---
 
 ## ✅ Lo que evaluaremos
@@ -84,6 +92,7 @@ Tu tech lead ha asignado el ticket al squad. El brief es directo: dockerizar el 
 - [ ] No hay secretos, API keys ni contraseñas hardcodeadas en ningún `Dockerfile` ni en `docker-compose.yml`.
 - [ ] El archivo `.env` está en el `.gitignore` y no aparece en el historial de commits.
 - [ ] Existen archivos `.dockerignore` en `/uis/` y en `/services/`.
+- [ ] Los contenedores del monorepo están **desplegados y en producción en tu VPS existente** (no solo en tu portátil).
 
 ---
 
@@ -91,8 +100,9 @@ Tu tech lead ha asignado el ticket al squad. El brief es directo: dockerizar el 
 
 1. Sube todos los cambios a tu rama en GitHub.
 2. Abre un Pull Request desde tu rama hacia `main`.
-3. Incluye en la descripción del PR una captura de pantalla mostrando los contenedores en ejecución (`docker compose ps` o la salida de `docker compose up`).
-4. Comparte el enlace del PR con tu tech lead para el sign-off final.
+3. Incluye en la descripción del PR una captura de pantalla mostrando los contenedores en local (`docker compose ps` o la salida de `docker compose up`).
+4. Incluye evidencia de que el mismo stack está **en producción en tu VPS** (p. ej. `docker compose ps` por SSH, o una URL / captura de las apps en vivo).
+5. Comparte el enlace del PR con tu tech lead para el sign-off final.
 
 ---
 
