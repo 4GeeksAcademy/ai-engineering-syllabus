@@ -38,7 +38,7 @@ Esto no es un recorrido del temario. No narres semanas ni tickets. Vende el prod
 > >
 > > Cierra a cámara con las tres preguntas de Q&A exactamente como están escritas. Frases completas que incluyan la pregunta. Dos segundos enteros de silencio antes y después de cada respuesta — edición necesita un corte limpio.
 > >
-> > **Criterios de aceptación:** ~5 minutos, horizontal, audible, demo _de tu_ sistema de empresa, las cinco secciones presentes, Q&A usable como clips independientes, archivos nombrados y empaquetados como se indica, entregados como enlace de Google Drive.
+> > **Criterios de aceptación:** ~5 minutos, horizontal, audible, demo _de tu_ sistema de empresa, las cinco secciones presentes, Q&A usable como clips independientes, archivos nombrados y empaquetados como se indica, entregados como enlace de carpeta **permanente** de Google Drive, Microsoft OneDrive o similar.
 > >
 > > — Head of Talent, con sign-off de tu tech lead
 
@@ -65,7 +65,7 @@ Grabas el sistema que ya vive en el monorepo de tu empresa. No clones una planti
 2. Esboza las cinco secciones con tiempos. Practica la charla completa **en voz alta al menos dos veces**.
 3. Graba en horizontal, siguiendo la **Lista de calidad de grabación** en _Qué debes hacer_.
 4. Exporta el MP4, escribe el archivo de descripción de 1–2 frases y añade la cesión firmada.
-5. Sube **los tres archivos** a una carpeta de Google Drive y copia un enlace compartible (ver _Cómo entregar_).
+5. Sube **los tres archivos** a una carpeta de Google Drive, Microsoft OneDrive o similar y copia un enlace compartible **permanente** (ver _Cómo entregar_).
 
 ---
 
@@ -183,7 +183,7 @@ Las preguntas (responde las tres):
 - [ ] El archivo es MP4, 1080p si es posible, con nombre `FirstnameLastname-ProjectName.mp4`
 - [ ] Está el archivo de descripción escrita de 1–2 frases
 - [ ] Está la cesión de imagen firmada (o un opt-out explícito solo para la cohorte)
-- [ ] La entrega es un enlace de Google Drive que abre la carpeta y todos los archivos requeridos sin un muro de “pedir acceso” para el instructor
+- [ ] La entrega es un enlace **permanente** de Google Drive, Microsoft OneDrive o similar que abre la carpeta y todos los archivos requeridos sin un muro de “pedir acceso” para el instructor
 
 > Nota: No se exige edición cinematográfica, música ni motion graphics. La claridad de la historia y una demo que funciona ganan al barniz.
 
@@ -193,11 +193,11 @@ Las preguntas (responde las tres):
 
 **Fecha:** la fija tu instructor — en general **una semana antes del Graduation Day**.
 
-La entrega es un **enlace de carpeta de Google Drive**. Los vídeos del capstone suelen superar el límite de tamaño de GitHub — **no** entregues el MP4 por GitHub, un PR ni un adjunto de email.
+La entrega es un **enlace de carpeta permanente** de **Google Drive**, **Microsoft OneDrive** u otro host similar. Los vídeos del capstone suelen superar el límite de tamaño de GitHub — **no** entregues el MP4 por GitHub, un PR ni un adjunto de email. **No** uses enlaces temporales o con fecha de caducidad.
 
 ### Archivos requeridos
 
-Pon **todos** estos archivos en **una** carpeta de Google Drive:
+Pon **todos** estos archivos en **una** carpeta de Google Drive, Microsoft OneDrive o similar:
 
 | Archivo                                         | Especificación                                                                                                                                                                                                                                                                          |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -207,7 +207,8 @@ Pon **todos** estos archivos en **una** carpeta de Google Drive:
 
 - [ ] La carpeta tiene los tres archivos de arriba, con los nombres exactos
 - [ ] Carpeta compartida para que **cualquiera con el enlace pueda ver** (o explícitamente con el email de tu instructor)
-- [ ] ⚠️ Obtienes la URL desde Drive **Compartir → Copiar enlace** (no desde la barra de dirección del navegador)
+- [ ] ⚠️ Obtienes la URL desde **Compartir → Copiar enlace** (no desde la barra de dirección del navegador)
+- [ ] ⚠️ El enlace es **permanente** (sin caducidad / “acceso temporal”) — los enlaces temporales fallan la revisión cuando mueren
 - [ ] El enlace abre en una ventana privada o sin tu sesión
 - [ ] Entregas **esa URL de carpeta** en el campo de la assignment del LMS que nombre tu instructor.
 
@@ -222,7 +223,7 @@ En la clase final celebramos viendo juntos los vídeos de proyecto. Tendrás la 
 
 Este proyecto refleja las skills, la creatividad y la forma de resolver problemas que desarrollaste a lo largo del programa. Pásatelo bien, y siéntete orgulloso de lo que construiste.
 
-Recuerda añadir el enlace de la carpeta de Google Drive al README del **monorepo de tu empresa** para que potenciales contratadores puedan encontrar y ver tu vídeo desde tu repo de portfolio.
+Recuerda añadir el enlace permanente de la carpeta de Google Drive, Microsoft OneDrive o similar al README del **monorepo de tu empresa** para que potenciales contratadores puedan encontrar y ver tu vídeo desde tu repo de portfolio.
 
 ---
 

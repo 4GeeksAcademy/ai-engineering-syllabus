@@ -38,7 +38,7 @@ This is not a syllabus walkthrough. Do not narrate weeks or tickets. Pitch the p
 > >
 > > Close on camera with the three Q&A questions exactly as written. Complete sentences that include the question. Two full seconds of silence before and after each answer — editors need a clean cut.
 > >
-> > **Acceptance criteria:** ~5 minutes, landscape, audible, demo of _your_ company system, all five sections present, Q&A usable as standalone clips, files named and packaged as specified, delivered as a Google Drive link.
+> > **Acceptance criteria:** ~5 minutes, landscape, audible, demo of _your_ company system, all five sections present, Q&A usable as standalone clips, files named and packaged as specified, delivered as a **permanent** Google Drive, Microsoft OneDrive, or similar folder link.
 > >
 > > — Head of Talent, with sign-off from your tech lead
 
@@ -65,7 +65,7 @@ You record the system that already lives in your company monorepo. You are not c
 2. Sketch the five sections with times. Practice the full talk **out loud at least twice**.
 3. Record landscape, following the **Recording quality checklist** under _What You Need to Do_.
 4. Export the MP4, write the 1–2 sentence description file, and add the signed media release.
-5. Upload **all three files** to a Google Drive folder and copy a shareable link (see _How to Submit_).
+5. Upload **all three files** to a Google Drive, Microsoft OneDrive, or similar folder and copy a **permanent** shareable link (see _How to Submit_).
 
 ---
 
@@ -183,7 +183,7 @@ The questions (answer all three):
 - [ ] File is MP4, 1080p if possible, named `FirstnameLastname-ProjectName.mp4`
 - [ ] Written 1–2 sentence project description file is present
 - [ ] Signed media release (or explicit cohort-private opt-out) is present
-- [ ] Submission is a working Google Drive link that opens the folder and all required files without a request-access wall for the instructor
+- [ ] Submission is a working **permanent** Google Drive, Microsoft OneDrive, or similar link that opens the folder and all required files without a request-access wall for the instructor
 
 > Note: Cinematic editing, music, and motion graphics are not required. Clarity of the story and a working demo beat polish.
 
@@ -193,11 +193,11 @@ The questions (answer all three):
 
 **Deadline:** set by your instructor — typically **one week before Graduation Day**.
 
-Delivery is a **Google Drive folder link**. Capstone videos are often larger than GitHub’s file size limit — do **not** submit the MP4 via GitHub, a PR, or email.
+Delivery is a **permanent folder link** from **Google Drive**, **Microsoft OneDrive**, or a similar file host. Capstone videos are often larger than GitHub’s file size limit — do **not** submit the MP4 via GitHub, a PR, or email. Do **not** use temporary or expiring links.
 
 ### Required files
 
-Put **all** of these in **one** Google Drive folder:
+Put **all** of these in **one** Google Drive, Microsoft OneDrive, or similar folder:
 
 | File                                            | Spec                                                                                                                                                                                                                                                           |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -207,7 +207,8 @@ Put **all** of these in **one** Google Drive folder:
 
 - [ ] Folder has the three files above, named exactly as specified
 - [ ] Folder shared so **anyone with the link can view** (or explicitly with your instructor’s email)
-- [ ] ⚠️ You get the URL from Drive **Share → Copy link** (not from the browser address bar)
+- [ ] ⚠️ You get the URL from **Share → Copy link** (not from the browser address bar)
+- [ ] ⚠️ The link is **permanent** (no expiry / “temporary access”) — temporary links will fail review when they die
 - [ ] Link opens while you are logged out or in a private window
 - [ ] You submit **that folder URL** in the LMS assignment field your instructor names.
 
@@ -222,7 +223,7 @@ During the final class, we celebrate by watching the project videos together. Yo
 
 This project is a reflection of the skills, creativity, and problem-solving mindset you developed throughout the program. Have fun with it, and be proud of what you built.
 
-Remember to add the Google Drive folder link to the README of **your company monorepo** so potential hirers can find and watch your video from your portfolio repo.
+Remember to add the permanent Google Drive, Microsoft OneDrive, or similar folder link to the README of **your company monorepo** so potential hirers can find and watch your video from your portfolio repo.
 
 ---
 
