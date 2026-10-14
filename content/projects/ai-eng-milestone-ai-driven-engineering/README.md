@@ -37,7 +37,7 @@ Your tech lead has had a ticket sitting on the board for two weeks:
 >
 > Finally, I want us to formalise at least one skill that captures a recurring task in our workflow — something the agent can execute consistently and that we can reuse as the project grows. It needs explicit acceptance criteria: if it can't be verified, it doesn't count.
 >
-> For the application layer, follow the monorepo template structure: the public website under `./uis/website` and the internal applications under `./uis/backoffice` with its own layout and entry view so we have something visible from day one. Any backend services belong under `/services`.
+> For the application layer, do **not** invent a parallel tree. When apps are created, they belong in the monorepo folders already mapped by the template — public site under `./uis/website`, internal app under `./uis/backoffice`, APIs under `/services`. Read each folder's README before putting anything there.
 >
 > When you're done, open a PR and let me know.
 >
@@ -101,17 +101,16 @@ Read the `CONTEXT.md` at the **root of your monorepo** before doing anything els
 
 ⚠️ **IMPORTANT:** The memory bank, rules, and skill must be aligned with the data, processes, and constraints in your monorepo's `CONTEXT.md` (your company briefing). A generic infrastructure — or one built against the unreplaced template placeholder — will not be accepted.
 
-### Application Structure
+### Monorepo folders (application layer)
 
-- [ ] Initialise the frontend structure under `/uis` inside the monorepo following the template repository structure
-- [ ] Create the public-facing project in `./uis/website`:
-  - [ ] Home route (`/`) renders a corporate website aligned with your company briefing in `CONTEXT.md`
-  - [ ] Content is built with reusable components and consistent styling for your company's visual identity
-- [ ] Create the internal app in `./uis/backoffice`:
-  - [ ] Route `/` accessible with a basic entry view (welcome screen or empty dashboard structure)
-  - [ ] Its own layout, separate from the public website layout in `./uis/website`
-  - [ ] At least one piece of company-relevant logic or data from `CONTEXT.md` visible in the interface — not only in the console or terminal
-- [ ] Place any backend services under `/services`, following the monorepo template conventions
+This milestone does **not** ask you to create the apps. Clarify in your memory bank / agent rules where product code belongs when those folders are used later (or if the template already has them). Follow the template READMEs inside each path — do not create a second frontend or API tree elsewhere.
+
+| Path               | What goes here when created                                                                |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| `/uis`             | Frontend projects for the company                                                          |
+| `./uis/website`    | Public-facing corporate website (home route `/`, brand and copy aligned with `CONTEXT.md`) |
+| `./uis/backoffice` | Internal company app (own layout, separate from the public site; entry view on `/`)        |
+| `/services`        | Backend APIs and services                                                                  |
 
 ---
 
@@ -121,11 +120,7 @@ Read the `CONTEXT.md` at the **root of your monorepo** before doing anything els
 - [ ] `AGENTS.md` specifies a workflow with at least 4 ordered steps before the commit
 - [ ] The `.agents/` folder contains at least one rule with an explicit scope of application
 - [ ] The implemented skill has a single objective, documented inputs, and verifiable acceptance criteria
-- [ ] The public interface in `./uis/website` starts without errors using the project's dev command
-- [ ] The `/` route in `./uis/website` renders a complete corporate website aligned with `CONTEXT.md`
-- [ ] `./uis/backoffice` exists, has its own layout, and renders without errors
-- [ ] `./uis/backoffice` shows company-relevant output on screen — not only in the console
-- [ ] Application code follows the monorepo folder conventions without unnecessary duplication
+- [ ] Memory bank and/or agent rules state where `/uis/website`, `/uis/backoffice`, and `/services` fit — no invented parallel app folders
 
 ---
 
@@ -134,10 +129,7 @@ Read the `CONTEXT.md` at the **root of your monorepo** before doing anything els
 1. Make sure your working branch is named `feature/agent-memory-bank`
 2. Run the delivery workflow defined in your `AGENTS.md` before the final commit
 3. Open a Pull Request targeting the `main` branch of your fork
-4. In the PR description include:
-   - Screenshot of the corporate website rendered from `./uis/website`
-   - Screenshot of `./uis/backoffice` with company-relevant content visible on screen
-   - Direct link to your `AGENTS.md`
+4. In the PR description include a direct link to your `AGENTS.md`
 5. Submit the link to your PR on the 4Geeks campus
 
 ---

@@ -51,35 +51,18 @@ Example categories that fit this milestone: “run delivery checklist before PR�
 
 ---
 
-## Part B — Next.js + TypeScript application
+## Part B — Monorepo folder map (no app bootstrap in this milestone)
 
-Work happens inside the monorepo with this expected structure:
+This milestone does **not** require creating Next.js apps. A correct delivery documents (in `memory-bank/` and/or agent rules) where product code belongs when those folders are used:
 
-- Frontend projects under `/uis`
-- Public website in `./uis/website`
-- Internal company application in `./uis/backoffice`
-- APIs under `/services`
+| Path               | What goes here when created                                  |
+| ------------------ | ------------------------------------------------------------ |
+| `/uis`             | Frontend projects                                            |
+| `./uis/website`    | Public corporate website (home `/`, brand/copy from CONTEXT) |
+| `./uis/backoffice` | Internal app (own layout; entry view on `/`)                 |
+| `/services`        | Backend APIs and services                                    |
 
-### Public site (`./uis/website`)
-
-- Full corporate website from Milestone 1 is present on the **home route** `/` of `./uis/website`.
-- Implemented with **reusable React components** and sound **TypeScript** typing (no large copy-paste blocks of JSX across pages).
-- Visual identity remains consistent with Milestone 1 (colors, typography, spacing—not necessarily pixel-perfect, but clearly the same brand).
-
-### Internal app (`./uis/backoffice`)
-
-- `./uis/backoffice` exists and renders without runtime errors.
-- **Dedicated layout** for the internal app, separate from the public marketing layout in `./uis/website`.
-- Entry view on `/` in `./uis/backoffice`: welcome screen or empty dashboard shell—enough structure that the next milestone can add features without restructuring.
-
-### Milestone 2 TypeScript integration
-
-- Business logic from Milestone 2 is **imported** from its **original package/path** in the monorepo (no duplicated copy-paste of the same module into the Next.js tree).
-- Output of that logic is **visible in the UI** inside `./uis/backoffice` (not only `console.log`).
-
-### API location
-
-- Any API service required for the milestone is placed under `/services`.
+Students must not invent a parallel frontend or API tree. Prefer the template’s own folder READMEs over generic examples.
 
 ---
 
@@ -97,23 +80,19 @@ Use this checklist against student submissions:
 - [ ] `.agents/rules/` contains at least one scoped, actionable rule.
 - [ ] At least one skill exists with one objective, documented inputs, and verifiable acceptance criteria.
 
-### Application
+### Folder conventions
 
-- [ ] `./uis/website` starts without errors using the documented dev command.
-- [ ] `/` in `./uis/website` shows the complete Milestone 1 corporate site as React/TS components.
-- [ ] `./uis/backoffice` loads with its own layout and a clear entry view.
-- [ ] Milestone 2 logic is consumed via **import from original location**; UI in `./uis/backoffice` shows a meaningful result.
-- [ ] API services are located under `/services`.
-- [ ] No unjustified duplication of business logic source files.
+- [ ] Memory bank and/or agent rules state where `/uis/website`, `/uis/backoffice`, and `/services` fit.
+- [ ] No invented parallel app folders outside the monorepo map.
 
 ### Delivery
 
 - [ ] Branch name is `feature/agent-memory-bank` (per project instructions).
-- [ ] PR targets `main` on the student fork and includes screenshots plus link to `AGENTS.md` as required.
+- [ ] PR targets `main` on the student fork and includes a link to `AGENTS.md` as required.
 
 ---
 
 ## Notes for reviewers
 
-- The rubric prioritizes **governance artifacts** (memory bank, agent protocol, rules, skill) and **correct monorepo integration** over visual novelty.
-- If the template repository’s folder names for the Next.js app differ from generic examples in this document, evaluate against the **template’s own README** and the student’s documented decisions in `techContext.md`.
+- The rubric prioritizes **governance artifacts** (memory bank, agent protocol, rules, skill) and **correct folder mapping** — not shipping UI in this milestone.
+- If the template repository’s folder names differ from the table above, evaluate against the **template’s own README** and the student’s documented decisions in `techContext.md`.

@@ -5,8 +5,8 @@
     "en": "Milestone — AI-driven Engineering"
   },
   "description": {
-    "es": "Construye la base del monorepo de tu empresa para un delivery asistido por IA: crea un memory-bank accionable, define flujo y reglas en AGENTS.md, implementa una skill reutilizable de agente y levanta las interfaces pública e interna siguiendo la estructura del monorepo.",
-    "en": "Build your company monorepo foundation for AI-assisted delivery: create an actionable memory-bank, define AGENTS.md workflow and rules, implement a reusable agent skill, and bootstrap the public and internal interfaces following the monorepo structure."
+    "es": "Construye la base del monorepo de tu empresa para un desarrollo asistido por IA: crea un memory-bank accionable, define flujo y reglas en AGENTS.md, implementa una skill reutilizable de agente y documenta dónde viven website, backoffice y services en el monorepo.",
+    "en": "Build your company monorepo foundation for AI-assisted development: create an actionable memory-bank, define AGENTS.md workflow and rules, implement a reusable agent skill, and document where website, backoffice, and services belong in the monorepo."
   },
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-ai-driven-engineering/.learn/preview.png",
   "difficulty": "INTERMEDIATE",

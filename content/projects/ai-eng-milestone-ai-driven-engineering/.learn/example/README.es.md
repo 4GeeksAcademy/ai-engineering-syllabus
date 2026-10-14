@@ -70,15 +70,16 @@ Crea `.agents/skills/add-page-section/SKILL.md` para una tarea recurrente: añad
 - [ ] **Pasos:** Lista numerada de acciones que realiza el agente.
 - [ ] **Criterios de aceptación:** Al menos 3 condiciones verificables (p. ej., _"La sección aparece en la posición correcta al ejecutar el comando de desarrollo del proyecto"_).
 
-### Paso 5 — Arranca la estructura de aplicación
+### Paso 5 — Aclara las carpetas del monorepo (no crees las apps)
 
-- [ ] Crea `uis/website/` — app de cara al público para la escuela de cocina.
-  - [ ] La ruta `/` renderiza una página de inicio simple (nombre de la escuela, eslogan, un placeholder de sección).
-- [ ] Crea `uis/backoffice/` — app interna para el equipo.
-  - [ ] La ruta `/` renderiza una shell básica de dashboard (encabezado + contenido placeholder).
-  - [ ] Al menos un dato relevante para la empresa (p. ej., precios de cursos o horarios del memory bank) visible en pantalla — no solo en consola.
+Este paso es solo documentación — **no** scaffolds `uis/website` ni `uis/backoffice` aquí.
 
-> Ambas apps deben arrancar sin errores con el comando de desarrollo del proyecto.
+- [ ] En `techContext.md` (o una regla de agente), indica dónde va el código de producto cuando se cree:
+  - `/uis` — frontends
+  - `uis/website/` — sitio público de la escuela de cocina
+  - `uis/backoffice/` — app interna del equipo
+  - `/services` — APIs backend
+- [ ] Confirma que no inventarás un árbol de apps paralelo fuera de ese mapa.
 
 ---
 
@@ -96,10 +97,9 @@ Crea `.agents/skills/add-page-section/SKILL.md` para una tarea recurrente: añad
 │   └── skills/
 │       └── add-page-section/
 │           └── SKILL.md
-└── uis/
-    ├── website/        ← sitio público
-    └── backoffice/     ← app interna
 ```
+
+(Mapa de carpetas para más adelante: `uis/website`, `uis/backoffice`, `services` — documentado, no arrancado en este ejemplo.)
 
 ---
 
@@ -109,8 +109,7 @@ Crea `.agents/skills/add-page-section/SKILL.md` para una tarea recurrente: añad
 - [ ] `AGENTS.md` especifica al menos 4 pasos pre-commit ordenados.
 - [ ] `.agents/rules/no-hardcoded-copy.md` tiene un alcance explícito y una justificación.
 - [ ] `.agents/skills/add-page-section/SKILL.md` tiene objetivo, entradas, pasos y criterios de aceptación.
-- [ ] `uis/website/` arranca sin errores y renderiza una página de inicio en `/`.
-- [ ] `uis/backoffice/` arranca sin errores y muestra contenido relevante para la empresa en pantalla.
+- [ ] El mapa de carpetas para `uis/website`, `uis/backoffice` y `services` está documentado — no se requieren apps en esta sesión.
 
 ---
 

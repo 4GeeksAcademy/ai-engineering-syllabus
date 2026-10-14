@@ -70,15 +70,16 @@ Create `.agents/skills/add-page-section/SKILL.md` for a recurring task: adding a
 - [ ] **Steps:** Numbered list of actions the agent takes.
 - [ ] **Acceptance criteria:** At least 3 verifiable conditions (e.g., _"The section appears in the correct position when running the project's dev command"_).
 
-### Step 5 — Bootstrap the application structure
+### Step 5 — Clarify monorepo folders (do not create the apps)
 
-- [ ] Create `uis/website/` — public-facing app for the cooking school.
-  - [ ] Route `/` renders a simple homepage (school name, tagline, one section placeholder).
-- [ ] Create `uis/backoffice/` — internal app for staff use.
-  - [ ] Route `/` renders a basic dashboard shell (heading + placeholder content).
-  - [ ] At least one piece of company-relevant data (e.g., course pricing or schedule from your memory bank) visible on screen — not only in the console.
+This step is documentation only — **do not** scaffold `uis/website` or `uis/backoffice` here.
 
-> Both apps must start without errors using the project's dev command.
+- [ ] In `techContext.md` (or an agent rule), state where product code belongs when created:
+  - `/uis` — frontends
+  - `uis/website/` — public cooking-school site
+  - `uis/backoffice/` — internal staff app
+  - `/services` — backend APIs
+- [ ] Confirm you will not invent a parallel app tree outside that map.
 
 ---
 
@@ -96,10 +97,9 @@ Create `.agents/skills/add-page-section/SKILL.md` for a recurring task: adding a
 │   └── skills/
 │       └── add-page-section/
 │           └── SKILL.md
-└── uis/
-    ├── website/        ← public site
-    └── backoffice/     ← internal app
 ```
+
+(Folder map for later: `uis/website`, `uis/backoffice`, `services` — documented, not bootstrapped in this example.)
 
 ---
 
@@ -109,8 +109,7 @@ Create `.agents/skills/add-page-section/SKILL.md` for a recurring task: adding a
 - [ ] `AGENTS.md` specifies at least 4 ordered pre-commit steps.
 - [ ] `.agents/rules/no-hardcoded-copy.md` has an explicit scope and rationale.
 - [ ] `.agents/skills/add-page-section/SKILL.md` has objective, inputs, steps, and acceptance criteria.
-- [ ] `uis/website/` starts without errors and renders a homepage at `/`.
-- [ ] `uis/backoffice/` starts without errors and shows company-relevant content on screen.
+- [ ] Folder map for `uis/website`, `uis/backoffice`, and `services` is documented — apps not required in this session.
 
 ---
 

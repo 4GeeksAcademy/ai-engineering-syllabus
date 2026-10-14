@@ -37,7 +37,7 @@ Tu tech lead ha dejado una tarea pendiente en el tablero desde hace dos semanas:
 >
 > Por último, quiero que formalicemos al menos una skill que capture una tarea recurrente de nuestro flujo de trabajo — algo que el agente pueda ejecutar de forma consistente y que podamos reutilizar a medida que el proyecto crezca. Que tenga criterios de aceptación explícitos: si no se puede verificar, no vale.
 >
-> En cuanto a la capa de aplicación, sigue la estructura del monorepo de plantilla: el website de cara al público en `./uis/website` y las aplicaciones internas en `./uis/backoffice` con su propio layout y vista de entrada para tener algo visible desde el primer día. Cualquier servicio backend va dentro de `/services`.
+> En cuanto a la capa de aplicación, **no** inventes un árbol paralelo. Cuando se creen las apps, van en las carpetas que ya mapea la plantilla — sitio público en `./uis/website`, app interna en `./uis/backoffice`, APIs en `/services`. Lee el README de cada carpeta antes de poner nada ahí.
 >
 > Cuando termines, PR y avísame.
 >
@@ -101,17 +101,16 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
 
 ⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones del `CONTEXT.md` de tu monorepo (el briefing de tu empresa). Una infraestructura genérica — o construida sobre el placeholder de plantilla sin reemplazar — no será aceptada.
 
-### Estructura de aplicación
+### Carpetas del monorepo (capa de aplicación)
 
-- [ ] Inicializar la estructura frontend dentro de `/uis` en el monorepo siguiendo la estructura del repositorio de plantilla
-- [ ] Crear el proyecto de cara al público en `./uis/website`:
-  - [ ] La ruta de inicio (`/`) renderiza una web corporativa alineada con el briefing de tu empresa en `CONTEXT.md`
-  - [ ] El contenido se construye con componentes reutilizables y estilos coherentes con la identidad visual de la empresa
-- [ ] Crear la aplicación interna en `./uis/backoffice`:
-  - [ ] Ruta `/` accesible con una vista de entrada básica (pantalla de bienvenida o estructura vacía de dashboard)
-  - [ ] Layout propio, separado del layout de la web pública en `./uis/website`
-  - [ ] Al menos un fragmento de lógica o datos relevantes para la empresa, tomados de `CONTEXT.md`, visible en la interfaz — no solo en consola o terminal
-- [ ] Colocar cualquier servicio backend bajo `/services`, siguiendo las convenciones del monorepo de plantilla
+Este hito **no** te pide crear las apps. Aclara en el banco de memoria / reglas de agente dónde debe vivir el código de producto cuando se usen esas carpetas más adelante (o si la plantilla ya las trae). Sigue los README de la plantilla en cada ruta — no crees un segundo árbol de frontend o API en otro sitio.
+
+| Ruta               | Qué va aquí cuando se cree                                                                     |
+| ------------------ | ---------------------------------------------------------------------------------------------- |
+| `/uis`             | Proyectos frontend de la empresa                                                               |
+| `./uis/website`    | Web corporativa de cara al público (ruta `/`, marca y copy alineados con `CONTEXT.md`)         |
+| `./uis/backoffice` | App interna de la empresa (layout propio, separado del sitio público; vista de entrada en `/`) |
+| `/services`        | APIs y servicios backend                                                                       |
 
 ---
 
@@ -121,11 +120,7 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
 - [ ] `AGENTS.md` especifica un flujo de trabajo con al menos 4 pasos ordenados antes del commit
 - [ ] La carpeta `.agents/` contiene al menos una regla con alcance de aplicación explícito
 - [ ] La skill implementada tiene objetivo único, inputs documentados y criterios de aceptación verificables
-- [ ] La interfaz pública en `./uis/website` arranca sin errores con el comando de desarrollo del proyecto
-- [ ] La ruta `/` en `./uis/website` renderiza una web corporativa completa alineada con `CONTEXT.md`
-- [ ] `./uis/backoffice` existe, tiene layout propio y renderiza sin errores
-- [ ] `./uis/backoffice` muestra contenido relevante para la empresa en pantalla — no solo en consola
-- [ ] El código de aplicación sigue las convenciones de carpetas del monorepo sin duplicación innecesaria
+- [ ] El banco de memoria y/o las reglas de agente dejan claro dónde encajan `/uis/website`, `/uis/backoffice` y `/services` — sin carpetas de app paralelas inventadas
 
 ---
 
@@ -134,10 +129,7 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
 1. Asegúrate de que tu rama de trabajo tenga el nombre `feature/agent-memory-bank`
 2. Ejecuta el flujo de entrega definido en tu `AGENTS.md` antes del commit final
 3. Abre una Pull Request hacia la rama `main` de tu fork
-4. En la descripción de la PR incluye:
-   - Captura de pantalla de la web corporativa renderizada desde `./uis/website`
-   - Captura de pantalla de `./uis/backoffice` con contenido relevante para la empresa visible en pantalla
-   - Enlace directo a tu `AGENTS.md`
+4. En la descripción de la PR incluye un enlace directo a tu `AGENTS.md`
 5. Entrega el enlace a tu PR en el campus de 4Geeks
 
 ---
