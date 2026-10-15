@@ -73,7 +73,7 @@ Causas habituales que los estudiantes pasan por alto: imágenes sin optimizar, r
 Este proyecto no utiliza una nueva plantilla de inicio. Trabajas dentro de tu monorepo de empresa existente.
 
 1. Abre tu monorepo en Codespaces o clónalo localmente.
-2. Asegúrate de que tanto el sitio corporativo como el backoffice estén ejecutándose (`npm run dev` o el comando equivalente en cada aplicación).
+2. Compila y sirve **ambos** frontends en **modo producción** antes de cualquier ejecución de Lighthouse. En cada aplicación (o con los scripts del monorepo), ejecuta el build de producción y arranca el servidor de producción — normalmente `npm run build` y después `npm run start` (o el equivalente del monorepo). **No** audites con `npm run dev` / `next dev`: el modo desarrollo sesga las métricas (sin minify real, Strict Mode, HMR, etc.) y oculta mejoras reales. Next.js indica que los informes precisos requieren una compilación de producción.
 3. Abre Chrome o Brave — Lighthouse está disponible de forma nativa en las DevTools (pestaña Lighthouse).
 4. Toma tus primeras capturas de pantalla antes de modificar nada.
 
@@ -82,6 +82,8 @@ Este proyecto no utiliza una nueva plantilla de inicio. Trabajas dentro de tu mo
 ## 💻 Qué debes hacer
 
 ### Medición inicial
+
+⚠️ **IMPORTANTE:** Todas las ejecuciones de Lighthouse (antes y después) deben hacerse contra el servidor de **producción** (`build` + `start`). Un informe tomado con `npm run dev` no es válido para este proyecto.
 
 - [ ] Ejecuta Lighthouse en el sitio corporativo en modo **escritorio y móvil** — como mínimo en la página de inicio, más cualquier otra vista que consideres suficientemente compleja para auditar. Registra las cuatro puntuaciones por página y por modo.
 - [ ] Ejecuta Lighthouse en el backoffice — como mínimo en el dashboard principal o la vista con más elementos. Registra las cuatro puntuaciones por página.
@@ -124,7 +126,7 @@ Este proyecto no utiliza una nueva plantilla de inicio. Trabajas dentro de tu mo
 
 ## ✅ Qué vamos a evaluar
 
-- [ ] Lighthouse se ejecutó en ambos frontends antes y después, con capturas de pantalla con commit en el repositorio.
+- [ ] Lighthouse se ejecutó en ambos frontends antes y después **en modo producción** (`build` + `start`, no `dev`), con capturas de pantalla con commit en el repositorio.
 - [ ] `AUDIT.md` identifica problemas concretos con razonamiento sobre causa raíz — no solo una lista de lo que Lighthouse marcó.
 - [ ] Al menos un componente reutilizable o Custom Hook fue extraído e integrado en el codebase.
 - [ ] `REPORT.md` muestra una mejora medible en al menos una puntuación de Lighthouse por frontend.

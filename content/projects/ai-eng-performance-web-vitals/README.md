@@ -73,7 +73,7 @@ Common root causes students overlook: unoptimised images, render-blocking resour
 This project does not use a new starter template. You work inside your existing company monorepo.
 
 1. Open your monorepo in Codespaces or clone it locally.
-2. Make sure both your corporate site and backoffice are running (`npm run dev` or the equivalent command in each app).
+2. Build and serve **both** frontends in **production mode** before any Lighthouse run. In each app (or via your monorepo scripts), run the production build and start the production server — typically `npm run build` then `npm run start` (or the monorepo equivalent). Do **not** audit with `npm run dev` / `next dev`: development mode skews metrics (no real minify, Strict Mode, HMR, etc.) and hides real wins. Next.js documents that accurate reports require a production build.
 3. Open Chrome or Brave — Lighthouse is available natively in the DevTools (Lighthouse tab).
 4. Take your first screenshots before making any changes.
 
@@ -82,6 +82,8 @@ This project does not use a new starter template. You work inside your existing 
 ## 💻 What You Need to Do
 
 ### Measurement
+
+⚠️ **IMPORTANT:** Every Lighthouse run (before and after) must hit the **production** server (`build` + `start`). A report taken with `npm run dev` is not valid for this project.
 
 - [ ] Run Lighthouse on the corporate site in both **desktop and mobile** modes — at minimum on the home page, plus any other view you consider complex enough to audit. Record all four scores per page and per mode.
 - [ ] Run Lighthouse on the backoffice — at minimum on the main dashboard or the most element-heavy view. Record all four scores per page.
@@ -124,7 +126,7 @@ This project does not use a new starter template. You work inside your existing 
 
 ## ✅ What We Will Evaluate
 
-- [ ] Lighthouse was run on both frontends before and after, with screenshots committed to the repo.
+- [ ] Lighthouse was run on both frontends before and after in **production mode** (`build` + `start`, not `dev`), with screenshots committed to the repo.
 - [ ] `AUDIT.md` identifies concrete issues with root-cause reasoning — not just a list of what Lighthouse flagged.
 - [ ] At least one reusable component or Custom Hook was extracted and integrated into the codebase.
 - [ ] `REPORT.md` shows a measurable improvement in at least one Lighthouse score per frontend.

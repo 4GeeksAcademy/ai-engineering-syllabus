@@ -55,7 +55,7 @@ Anotar las cuatro puntuaciones por ejecución: Performance, Accessibility, Best 
 - [ ] Existen ambas carpetas `audit/` en el repo con imágenes commiteadas.
 - [ ] `AUDIT.md` incluye una frase de causa raíz para la corrección elegida (no solo etiquetas de Lighthouse).
 - [ ] El hook compartido se importa en código real (no código muerto).
-- [ ] Las apps siguen arrancando con `npm run dev` (o el comando del monorepo).
+- [ ] Las apps siguen sirviendo en modo producción (`npm run build` + `npm run start`, o el comando del monorepo); las capturas de Lighthouse deben salir de ese servidor, no de `npm run dev`.
 
 ---
 

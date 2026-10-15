@@ -153,7 +153,7 @@ If installed (`core-web-vitals`, `performance`, `web-perf`), log in `AUDIT.md` o
 - [ ] At least one shared component or Custom Hook integrated
 - [ ] `REPORT.md` shows measurable improvement on ≥1 score per frontend
 - [ ] No architectural rewrite; targeted changes only
-- [ ] Monorepo still runs (`npm run dev` or project equivalent)
+- [ ] Both apps serve in production mode (`npm run build` + `npm run start`, or monorepo equivalent); Lighthouse evidence must come from that server, not `npm run dev`
 
 ## What we do **not** require
 

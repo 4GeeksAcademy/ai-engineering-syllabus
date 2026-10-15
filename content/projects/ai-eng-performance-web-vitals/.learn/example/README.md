@@ -55,7 +55,7 @@ Record four scores per run: Performance, Accessibility, Best Practices, SEO (SEO
 - [ ] Both `audit/` folders exist in the repo with committed images.
 - [ ] `AUDIT.md` has a root-cause sentence for the chosen fix (not copy-paste Lighthouse labels only).
 - [ ] Shared hook is imported somewhere real (not dead code).
-- [ ] Apps still start with `npm run dev` (or your monorepo command).
+- [ ] Apps still serve in production mode (`npm run build` + `npm run start`, or your monorepo command); Lighthouse screenshots must come from that server, not `npm run dev`.
 
 ---
 
