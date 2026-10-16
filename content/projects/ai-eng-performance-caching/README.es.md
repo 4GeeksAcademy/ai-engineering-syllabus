@@ -110,6 +110,8 @@ Con pocos registros, casi todo el API responde rápido y los logs de timing no r
 
 > ⚠️ No implementes caché en todo lo lento: primero mide, luego prioriza los casos donde coste × frecuencia × estabilidad justifican el intercambio frescura/rendimiento.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo iniciar el proyecto

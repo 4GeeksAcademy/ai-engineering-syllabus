@@ -54,6 +54,8 @@ A **harness** is everything that wraps around the model to turn it into a reliab
 
 A single guardrail is never enough — each type of failure needs its own layer of protection.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

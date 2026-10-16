@@ -39,19 +39,18 @@ One pattern you must be aware of before writing any query: the **N+1 problem**. 
 
 ### Brief from your tech lead
 
-> > **From:** Tech Lead
-> > **Subject:** Milestone — dual database architecture + inventory ORM
-> >
-> > The **PRD** is ready. Here is what the system must do:
-> >
-> > 1. The FastAPI app connects to **two databases simultaneously**: TinyDB (existing, for users and auth) and Supabase (new, for inventory and orders).
-> > 2. Products and stock quantities live in Supabase. Stock **must not be a directly editable column** — it is always derived from the order history.
-> > 3. **Inbound orders** increase stock; **outbound orders** decrease it. Both are stored in Supabase and reference the user UUID from TinyDB — no user table is replicated in Supabase.
-> > 4. ORM models use **SQLModel**. Pydantic schemas for request and response are in a separate file from ORM models — never return a raw ORM object from an endpoint.
-> > 5. All inventory routes must be registered under the `/inventory` prefix using a dedicated `APIRouter`.
-> > 6. Check your CONTEXT.md — entity names, field constraints, and business rules are company-specific.
-> >
-> > **Acceptance criteria**: all endpoints functional under `/inventory`, FK relationships enforced at database level, no direct stock mutation, both DB connections active and correctly used.
+> **From:** Tech Lead
+> **Subject:** Milestone — dual database architecture + inventory ORM
+>
+> The **PRD** is ready. Here is what the system must do:
+>
+> 1. The FastAPI app connects to **two databases simultaneously**: TinyDB (existing, for users and auth) and Supabase (new, for inventory and orders).
+> 2. Products and stock quantities live in Supabase. Stock **must not be a directly editable column** — it is always derived from the order history.
+> 3. **Inbound orders** increase stock; **outbound orders** decrease it. Both are stored in Supabase and reference the user UUID from TinyDB — no user table is replicated in Supabase.
+> 4. ORM models use **SQLModel**. Pydantic schemas for request and response are in a separate file from ORM models — never return a raw ORM object from an endpoint.
+> 5. All inventory routes must be registered under the `/inventory` prefix using a dedicated `APIRouter`.
+> 6. Check your CONTEXT.md — entity names, field constraints, and business rules are company-specific.
+>    > **Acceptance criteria**: all endpoints functional under `/inventory`, FK relationships enforced at database level, no direct stock mutation, both DB connections active and correctly used.
 
 ---
 

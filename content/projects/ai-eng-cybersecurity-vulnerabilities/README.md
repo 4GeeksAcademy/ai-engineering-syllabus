@@ -32,6 +32,8 @@ A security **ticket** has come in: before any of the company's applications rece
 >
 > **Acceptance criteria:** The server doesn't allow direct root login; a firewall exposes only the necessary ports; every OWASP Top 10 category was explicitly evaluated against your application, with a finding (applies / doesn't apply) and evidence; every vulnerability marked critical is fixed and demonstrated.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

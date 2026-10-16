@@ -27,7 +27,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 > **From the Academic Team:**
 >
-> > "This is not a throwaway choice. The company you select will appear in your portfolio, in your job interviews, and in the context of every project brief you receive during the course. You will become a mini-expert on their operations. Students who invest in understanding their company early — before Week 1 even starts — consistently build better projects and present more confidently at the end. Take the time to read the context document thoroughly."
+> "This is not a throwaway choice. The company you select will appear in your portfolio, in your job interviews, and in the context of every project brief you receive during the course. You will become a mini-expert on their operations. Students who invest in understanding their company early — before Week 1 even starts — consistently build better projects and present more confidently at the end. Take the time to read the context document thoroughly."
 
 ---
 

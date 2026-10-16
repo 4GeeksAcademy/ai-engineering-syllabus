@@ -68,6 +68,8 @@ Las **reglas de desarrollo** (`AGENTS.md` y `.agents/rules/`) son el protocolo q
 
 Una **skill de agente** es una instrucción estructurada y reutilizable: más concreta que una regla genérica, con inputs definidos, output esperado y criterios de aceptación verificables. Una buena skill tiene un único objetivo y puede testearse de forma independiente.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo iniciar el proyecto

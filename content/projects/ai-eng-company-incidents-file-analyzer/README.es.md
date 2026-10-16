@@ -31,6 +31,8 @@ Tu responsable técnico ha decidido proceder en dos fases. Primero, un script en
 
 Los datos reales siempre tienen problemas. Para este proyecto, un registro se considera **inválido** si le falta al menos uno de los campos obligatorios definidos en tu CONTEXT, o si contiene un valor en un campo que no está dentro del conjunto de valores permitidos (estados y categorías). La lógica debe detectarlos, contarlos y excluirlos del análisis principal — pero nunca ignorarlos en silencio.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

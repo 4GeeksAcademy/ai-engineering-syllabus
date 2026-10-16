@@ -42,6 +42,8 @@ With that representation stored in a vector database (or an extension that suppo
 
 You do not need to implement any of this in the current delivery. The point is to see how the incident manager you are building today is a solid foundation: once descriptions live in the database, embeddings are a natural next step when the product needs search and intelligence beyond exact filters.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

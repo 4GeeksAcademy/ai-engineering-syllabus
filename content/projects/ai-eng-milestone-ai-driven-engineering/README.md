@@ -68,6 +68,8 @@ Before creating any new folder, review the `README.md` inside each folder of the
 
 An **agent skill** is a structured, reusable instruction: more concrete than a generic rule, with defined inputs, expected output, and verifiable acceptance criteria. A good skill has a single objective and can be tested independently.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

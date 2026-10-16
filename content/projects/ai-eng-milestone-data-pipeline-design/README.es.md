@@ -23,13 +23,13 @@ En las últimas semanas capturaste eventos de telemetría, los almacenaste en `t
 
 Hoy tu tech lead te pide algo distinto: un pipeline de datos **nuevo**, diseñado desde cero, cuyo único trabajo es convertir esa misma telemetría en datos que describan cómo está funcionando el negocio — el tipo de números que leería un gerente de departamento o el CEO, no el tipo que usa un ingeniero para depurar un servicio.
 
-> > **Brief Técnico — Pipeline de Desempeño de Negocio (Fase de Diseño)**
-> >
-> > Antes de escribir una sola línea de código de orquestación, necesito que documentes el diseño de un nuevo pipeline de datos. Este no es para nosotros — es para el lado de negocio: el equipo de liderazgo que ha estado pidiendo un reporte de verdad en lugar de un PDF que alguien arma a mano con la cadencia del CONTEXT de tu empresa.
-> >
-> > Este es un pipeline **nuevo**, construido sobre la telemetría que ya tienes. Tu reporte técnico y el endpoint `GET /telemetry/report` siguen sirviendo a ingeniería exactamente igual que antes. `telemetry_events` sigue siendo la **fuente** (nunca el destino de este pipeline). Se permiten campos aditivos de payload que tu CONTEXT de data-pipelines exija en tipos de evento ya existentes. Lo que vas a construir ahora lee de esa fuente pero produce un tipo de salida distinto: números sobre los que un stakeholder no técnico puede actuar.
-> >
-> > Entregable: un documento de diseño en Markdown, commiteado al monorepo. Todavía no hay código de orquestación — primero el diseño, después la implementación.
+> **Brief Técnico — Pipeline de Desempeño de Negocio (Fase de Diseño)**
+>
+> Antes de escribir una sola línea de código de orquestación, necesito que documentes el diseño de un nuevo pipeline de datos. Este no es para nosotros — es para el lado de negocio: el equipo de liderazgo que ha estado pidiendo un reporte de verdad en lugar de un PDF que alguien arma a mano con la cadencia del CONTEXT de tu empresa.
+>
+> Este es un pipeline **nuevo**, construido sobre la telemetría que ya tienes. Tu reporte técnico y el endpoint `GET /telemetry/report` siguen sirviendo a ingeniería exactamente igual que antes. `telemetry_events` sigue siendo la **fuente** (nunca el destino de este pipeline). Se permiten campos aditivos de payload que tu CONTEXT de data-pipelines exija en tipos de evento ya existentes. Lo que vas a construir ahora lee de esa fuente pero produce un tipo de salida distinto: números sobre los que un stakeholder no técnico puede actuar.
+>
+> Entregable: un documento de diseño en Markdown, commiteado al monorepo. Todavía no hay código de orquestación — primero el diseño, después la implementación.
 
 ### ¿Qué hace robusto a un pipeline de datos?
 

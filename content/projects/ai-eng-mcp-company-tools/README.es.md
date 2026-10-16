@@ -41,6 +41,8 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 - Qué información exponer en el discovery (nombres, descripciones y esquemas de las tools) para que un agente externo, sin contexto humano previo, entienda qué puede y qué no puede hacer.
 - Cómo reemplazar, dentro del grafo del agente, el nodo que llamaba directamente al Incidents Manager por tools del MCP Server vía `langchain-mcp-adapters` — sin romper el enrutamiento entre RAG y tools que ya tenías funcionando.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

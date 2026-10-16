@@ -47,6 +47,8 @@ As an AI Engineering student, use the **models provided by 4Geeks** (included wi
 
 </details>
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

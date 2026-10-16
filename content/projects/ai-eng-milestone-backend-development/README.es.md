@@ -39,19 +39,18 @@ Antes de escribir cualquier consulta, debes conocer el **problema N+1**. Si carg
 
 ### Brief de tu tech lead
 
-> > **De:** Tech Lead
-> > **Asunto:** Hito — arquitectura de doble base de datos + ORM de inventario
-> >
-> > El **PRD** está listo. Esto es lo que debe hacer el sistema:
-> >
-> > 1. La aplicación FastAPI conecta a **dos bases de datos simultáneamente**: TinyDB (existente, para usuarios y autenticación) y Supabase (nueva, para inventario y órdenes).
-> > 2. Los productos y el stock viven en Supabase. El stock **no debe ser una columna editable directamente** — siempre se deriva del historial de órdenes.
-> > 3. Las **órdenes de entrada** incrementan el stock; las **órdenes de salida** lo reducen. Ambas se almacenan en Supabase y referencian el UUID del usuario de TinyDB — ninguna tabla de usuarios se replica en Supabase.
-> > 4. Los modelos ORM usan **SQLModel**. Los schemas Pydantic para request y response están en un archivo separado de los modelos ORM — nunca devuelvas un objeto ORM directamente desde un endpoint.
-> > 5. Todas las rutas de inventario deben registrarse bajo el prefijo `/inventory` usando un `APIRouter` dedicado.
-> > 6. Revisa tu CONTEXT.md — los nombres de entidades, las restricciones de campos y las reglas de negocio son específicas de tu empresa.
-> >
-> > **Criterios de aceptación**: todos los endpoints funcionales bajo `/inventory`, relaciones FK aplicadas a nivel de base de datos, sin mutación directa de stock, ambas conexiones activas y usadas correctamente.
+> **De:** Tech Lead
+> **Asunto:** Hito — arquitectura de doble base de datos + ORM de inventario
+>
+> El **PRD** está listo. Esto es lo que debe hacer el sistema:
+>
+> 1. La aplicación FastAPI conecta a **dos bases de datos simultáneamente**: TinyDB (existente, para usuarios y autenticación) y Supabase (nueva, para inventario y órdenes).
+> 2. Los productos y el stock viven en Supabase. El stock **no debe ser una columna editable directamente** — siempre se deriva del historial de órdenes.
+> 3. Las **órdenes de entrada** incrementan el stock; las **órdenes de salida** lo reducen. Ambas se almacenan en Supabase y referencian el UUID del usuario de TinyDB — ninguna tabla de usuarios se replica en Supabase.
+> 4. Los modelos ORM usan **SQLModel**. Los schemas Pydantic para request y response están en un archivo separado de los modelos ORM — nunca devuelvas un objeto ORM directamente desde un endpoint.
+> 5. Todas las rutas de inventario deben registrarse bajo el prefijo `/inventory` usando un `APIRouter` dedicado.
+> 6. Revisa tu CONTEXT.md — los nombres de entidades, las restricciones de campos y las reglas de negocio son específicas de tu empresa.
+>    > **Criterios de aceptación**: todos los endpoints funcionales bajo `/inventory`, relaciones FK aplicadas a nivel de base de datos, sin mutación directa de stock, ambas conexiones activas y usadas correctamente.
 
 ---
 

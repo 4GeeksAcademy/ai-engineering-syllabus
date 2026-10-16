@@ -31,6 +31,8 @@ Some requirements are left implicit, and you'll need to identify them carefully:
 
 **Out of scope for this part:** you're not building a new agent or changing its tools or memory. The support agent you already have stays the same — what changes is how it communicates with the user.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

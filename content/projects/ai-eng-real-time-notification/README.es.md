@@ -29,6 +29,8 @@ Algunos requisitos quedan implícitos en este encargo y tendrás que identificar
 
 **Fuera de alcance en esta parte:** esta entrega no requiere ninguna llamada a un modelo o agente. Es una capa de comunicación, no una capa de IA — eso llega en la Parte 2.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

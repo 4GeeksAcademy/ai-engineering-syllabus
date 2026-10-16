@@ -23,16 +23,16 @@ The design document is approved. Now it's time to build it — a pipeline that r
 
 There is a fundamental difference between a script that works on your machine and a pipeline that can run in production unattended: resilience.
 
-> > **Implementation Ticket — Resilient Business Performance Pipeline**
-> >
-> > The design is approved. Leadership wants to see this pipeline running, not just documented. Non-negotiable requirements before handoff to production:
-> >
-> > — The pipeline must tolerate partial failures without interrupting the entire execution.
-> > — Tasks that touch external services must have retries configured.
-> > — The pipeline must be runnable as a script from the command line.
-> > — If a task has already run successfully in the last hour, it must not repeat unnecessarily.
-> >
-> > Starting point: your `data/pipelines/PIPELINE_DESIGN.md` from the previous day. Implement what you designed — reading from telemetry, writing to the new business reporting table you scoped, nothing about the existing technical report changes.
+> **Implementation Ticket — Resilient Business Performance Pipeline**
+>
+> The design is approved. Leadership wants to see this pipeline running, not just documented. Non-negotiable requirements before handoff to production:
+>
+> — The pipeline must tolerate partial failures without interrupting the entire execution.
+> — Tasks that touch external services must have retries configured.
+> — The pipeline must be runnable as a script from the command line.
+> — If a task has already run successfully in the last hour, it must not repeat unnecessarily.
+>
+> Starting point: your `data/pipelines/PIPELINE_DESIGN.md` from the previous day. Implement what you designed — reading from telemetry, writing to the new business reporting table you scoped, nothing about the existing technical report changes.
 
 ### What makes a pipeline resilient?
 

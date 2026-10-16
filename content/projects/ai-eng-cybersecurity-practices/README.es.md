@@ -36,6 +36,8 @@ El **brief** es directo: no se trata solo de "que funcione", sino de demostrar q
 
 NIST organiza la gestión de ciberseguridad en seis funciones: **Govern** (política y responsabilidades), **Identify** (inventario y evaluación de riesgo), **Protect** (controles preventivos), **Detect** (monitoreo y alertas), **Respond** (plan de incidentes) y **Recover** (restauración de servicio). No necesitas implementar las seis a nivel enterprise — necesitas mapear tu sistema actual contra cada función y priorizar lo que falta. Es la misma lógica de un checklist de calidad, aplicada a seguridad.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

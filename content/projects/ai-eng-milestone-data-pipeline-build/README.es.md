@@ -23,16 +23,16 @@ El documento de diseño está aprobado. Ahora toca construirlo — un pipeline q
 
 Hay una diferencia fundamental entre un script que funciona en tu máquina y un pipeline que puede correr desatendido en producción: la resiliencia.
 
-> > **Ticket de Implementación — Pipeline de Desempeño de Negocio Resiliente**
-> >
-> > El diseño está aprobado. El liderazgo quiere ver este pipeline corriendo, no solo documentado. Requisitos no negociables antes de entregarlo a producción:
-> >
-> > — El pipeline debe tolerar fallos parciales sin interrumpir toda la ejecución.
-> > — Las tasks que tocan servicios externos deben tener reintentos configurados.
-> > — El pipeline debe poder correrse como script desde la línea de comandos.
-> > — Si una task ya corrió exitosamente en la última hora, no debe repetirse innecesariamente.
-> >
-> > Punto de partida: tu `data/pipelines/PIPELINE_DESIGN.md` del día anterior. Implementa lo que diseñaste — leyendo de telemetría, escribiendo en la nueva tabla de reporting de negocio que acotaste, sin que nada del reporte técnico existente cambie.
+> **Ticket de Implementación — Pipeline de Desempeño de Negocio Resiliente**
+>
+> El diseño está aprobado. El liderazgo quiere ver este pipeline corriendo, no solo documentado. Requisitos no negociables antes de entregarlo a producción:
+>
+> — El pipeline debe tolerar fallos parciales sin interrumpir toda la ejecución.
+> — Las tasks que tocan servicios externos deben tener reintentos configurados.
+> — El pipeline debe poder correrse como script desde la línea de comandos.
+> — Si una task ya corrió exitosamente en la última hora, no debe repetirse innecesariamente.
+>
+> Punto de partida: tu `data/pipelines/PIPELINE_DESIGN.md` del día anterior. Implementa lo que diseñaste — leyendo de telemetría, escribiendo en la nueva tabla de reporting de negocio que acotaste, sin que nada del reporte técnico existente cambie.
 
 ### ¿Qué hace resiliente a un pipeline?
 

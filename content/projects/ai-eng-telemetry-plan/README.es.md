@@ -40,13 +40,15 @@ Dos conceptos que necesitarás aplicar hoy:
 
 > Tu tech lead te envió este mensaje:
 >
-> > "Llevamos semanas con el sistema de inventario corriendo y el equipo de operaciones empieza a preguntar cosas que no podemos responder: ¿cuántas órdenes de salida se registran por día? ¿Qué productos acumulan más errores de validación? ¿Hay usuarios intentando modificar el stock directamente y siendo rechazados por el sistema? ¿Cuándo se disparan más las alertas de stock mínimo?
-> >
-> > Y no es solo el inventario. El backoffice tiene otras secciones que hoy son cajas negras: ¿cuántos intentos de login fallidos hay por día? ¿Qué secciones visitan más los operadores? ¿Hay flujos que se abandonan a la mitad? Cualquier parte de la aplicación que alguien —humano o proceso— toque es una oportunidad de dato.
-> >
-> > Antes de instrumentar nada, necesito un documento de diseño. No te limites a un puñado de métricas de negocio: quiero el catálogo más completo que puedas construir, cubriendo tanto la salud técnica del sistema como las preguntas de negocio, incluso si hoy no sabemos exactamente para qué las vamos a usar. Ya te dejé en tu CONTEXT las métricas que necesitamos sí o sí desde ya — impleméntalas sin falta, y a partir de ahí, sigue explorando. No escribas código todavía — escribe el plan que el equipo va a implementar mañana."
-> >
-> > El entregable es un **Plan de Telemetría** en Markdown más un archivo de esquema JSON. Lo revisamos el viernes."
+> "Llevamos semanas con el sistema de inventario corriendo y el equipo de operaciones empieza a preguntar cosas que no podemos responder: ¿cuántas órdenes de salida se registran por día? ¿Qué productos acumulan más errores de validación? ¿Hay usuarios intentando modificar el stock directamente y siendo rechazados por el sistema? ¿Cuándo se disparan más las alertas de stock mínimo?
+>
+> Y no es solo el inventario. El backoffice tiene otras secciones que hoy son cajas negras: ¿cuántos intentos de login fallidos hay por día? ¿Qué secciones visitan más los operadores? ¿Hay flujos que se abandonan a la mitad? Cualquier parte de la aplicación que alguien —humano o proceso— toque es una oportunidad de dato.
+>
+> Antes de instrumentar nada, necesito un documento de diseño. No te limites a un puñado de métricas de negocio: quiero el catálogo más completo que puedas construir, cubriendo tanto la salud técnica del sistema como las preguntas de negocio, incluso si hoy no sabemos exactamente para qué las vamos a usar. Ya te dejé en tu CONTEXT las métricas que necesitamos sí o sí desde ya — impleméntalas sin falta, y a partir de ahí, sigue explorando. No escribas código todavía — escribe el plan que el equipo va a implementar mañana."
+>
+> El entregable es un **Plan de Telemetría** en Markdown más un archivo de esquema JSON. Lo revisamos el viernes."
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

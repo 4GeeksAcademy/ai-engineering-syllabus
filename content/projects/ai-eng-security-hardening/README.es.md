@@ -33,6 +33,8 @@ Tres exigencias del brief que conviene aclarar antes de empezar:
 
 El OWASP Top 10 es una lista de las categorías de vulnerabilidad más comunes y de mayor impacto en aplicaciones web — cosas como control de acceso roto, fallos criptográficos, inyección, configuración de seguridad incorrecta, o componentes con vulnerabilidades conocidas. Es un buen punto de partida porque es la lista que cualquier revisor técnico espera que conozcas, pero no es exhaustiva: una aplicación puede pasar las diez categorías y seguir teniendo problemas específicos de su propia lógica de negocio (por ejemplo, un endpoint que expone más datos de los que debería aunque la autenticación esté bien implementada). El objetivo de este proyecto es pensar como atacante sobre tu aplicación concreta, no solo marcar una lista genérica.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

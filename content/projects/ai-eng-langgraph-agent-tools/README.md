@@ -36,6 +36,8 @@ Two requirements are implied in that brief and are easy to miss: (1) the tools m
 
 It's tempting to solve this by indexing tickets into the same vector store as the RAG. Don't: tickets change status in real time, and the RAG is meant for relatively stable knowledge (policies, procedures). A **tool** that calls the incident manager's endpoint directly always gives you the current value; an indexed copy of a ticket goes stale the moment someone changes its status. This is the difference between "knowledge" (RAG) and "live operational data" (tool call).
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start

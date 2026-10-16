@@ -74,6 +74,8 @@ Then choose how to serialize:
 
 **General vs explicit:** mapping a model with `from_attributes=True` is convenient when every listed field is intentional. When in doubt — lists, auth flows, or mixed consumers — prefer **naming each attribute** in the schema so the audit doc can state exactly what leaves the API. Record that target field list in `docs/serialization-audit.md` for every endpoint you change.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

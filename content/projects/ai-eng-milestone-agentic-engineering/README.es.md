@@ -39,6 +39,8 @@ La memoria de un agente no es un solo componente — se organiza por alcance tem
 
 ⚠️ **Aviso — Memoria core en producción:** En una empresa real, la **memoria core** no la edita libremente cualquier agente o desarrollador. Los cambios pasan por **tickets de solicitud de modificación** y los revisa/aplica un equipo dedicado que posee esa cadena de control. **Para este proyecto**, esa gobernanza se **omite a propósito** para que el hito sea viable y alcanzable — implementas propuesta → confirmación del usuario → escritura/consolidación directamente en el flujo del agente.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

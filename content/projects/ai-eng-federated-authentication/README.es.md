@@ -35,6 +35,8 @@ Léelo con atención porque cambia el flujo que probablemente tenías en mente:
 
 Permitir que el login federado cree cuentas automáticamente parece más simple, pero traslada la decisión de "quién puede entrar a mi sistema" a un proveedor externo que no controlas. Si el flujo permite crear cuenta con solo aparecer con un correo válido, alguien podría registrarse con un correo que técnicamente no le pertenece de forma verificable para tu negocio, o suplantar el patrón de correo corporativo si no hay una validación explícita detrás. Exigir que la vinculación se haga desde una sesión ya autenticada garantiza que siempre hay un humano con una identidad ya verificada por tu sistema tomando esa decisión — el proveedor externo nunca es, por sí solo, la puerta de entrada.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

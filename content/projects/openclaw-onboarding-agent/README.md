@@ -90,13 +90,13 @@ flowchart TD
 
 ### Tech lead brief
 
-> > **Ticket #onb-016 — Onboarding agent with persistent memory**
-> >
-> > **Workspace:** create a new workspace completely isolated from the personal workspace. The onboarding agent must not share configuration, context, or channels with the personal agent. This is a separation-of-concerns requirement, not a preference.
-> >
-> > **Critical security point:** OpenClaw's pairing mechanism requires manual approval by default. This is not viable in this flow — we cannot ask HR to manually approve every Telegram account that messages the bot. The solution is a skill containing a script that automatically approves pending pairings **if and only if** it receives the correct verification code as an argument. The script runs on the server, not from the chat — this is intentional and must not be changed.
-> >
-> > **Main acceptance criterion:** the agent must be able to resume any active onboarding process after a restart without losing the state of any employee. If this does not work, the agent is not production-ready.
+> **Ticket #onb-016 — Onboarding agent with persistent memory**
+>
+> **Workspace:** create a new workspace completely isolated from the personal workspace. The onboarding agent must not share configuration, context, or channels with the personal agent. This is a separation-of-concerns requirement, not a preference.
+>
+> **Critical security point:** OpenClaw's pairing mechanism requires manual approval by default. This is not viable in this flow — we cannot ask HR to manually approve every Telegram account that messages the bot. The solution is a skill containing a script that automatically approves pending pairings **if and only if** it receives the correct verification code as an argument. The script runs on the server, not from the chat — this is intentional and must not be changed.
+>
+> **Main acceptance criterion:** the agent must be able to resume any active onboarding process after a restart without losing the state of any employee. If this does not work, the agent is not production-ready.
 
 ---
 
@@ -128,7 +128,7 @@ flowchart TD
 ### Memory configuration
 
 - [ ] Create a `MEMORY-DECISION.md` file justifying the chosen OpenClaw memory type (`Memory.md` or `/memory`), the retrieval strategy adopted (exact, text-based, or semantic via QMD), and why both decisions are consistent with the use case
-- [ ] In `MEMORY-DECISION.md`, include a **Context amnesia** section: answer *"What should the agent remember if it reboots tomorrow?"*, list what you persist, where each item is stored, how QMD retrieves it, and how you verified recovery after a restart
+- [ ] In `MEMORY-DECISION.md`, include a **Context amnesia** section: answer _"What should the agent remember if it reboots tomorrow?"_, list what you persist, where each item is stored, how QMD retrieves it, and how you verified recovery after a restart
 - [ ] Install and configure **QMD** as the memory search method, with keyword search, semantic similarity, and reranking enabled; document at least one test query and its result in `MEMORY-DECISION.md`
 - [ ] Configure the agent's memory to record each employee's onboarding state: name, email address, current status, received deliverables, and process start date
 - [ ] Implement the logic that classifies each process into one of three states — **not started**, **active**, or **completed** — and keeps that classification updated in memory so the daily summary reflects it correctly
@@ -145,7 +145,7 @@ flowchart TD
 
 ### Optional deliverable — mem0 reflection
 
-- [ ] *(Optional)* Add a `MEM0-REFLECTION.md` file (or a dedicated section in `MEMORY-DECISION.md`) explaining how an external memory layer such as **mem0** could improve this onboarding solution — what problems it would solve better than `Memory.md` + `/memory` + QMD, and what trade-offs it would introduce
+- [ ] _(Optional)_ Add a `MEM0-REFLECTION.md` file (or a dedicated section in `MEMORY-DECISION.md`) explaining how an external memory layer such as **mem0** could improve this onboarding solution — what problems it would solve better than `Memory.md` + `/memory` + QMD, and what trade-offs it would introduce
 
 ⚠️ **IMPORTANT:** HR roles, employee fields, onboarding instructions, and required deliverables must match exactly what is specified in your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**. A generic implementation that ignores the context will not be accepted.
 

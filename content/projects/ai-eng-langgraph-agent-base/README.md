@@ -31,6 +31,8 @@ A "naive" agent is simply a Python `while` loop: call the model, if it requests 
 
 LangGraph formalizes that same loop as a state machine: each step is a **node**, each decision about where to go next is an **edge**, and the compiled set is the **graph**. This is what lets you, in Part 2, add a new tool without touching the rest of the flow: you just add a node and a conditional edge that decides when to use it.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start

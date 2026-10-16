@@ -39,6 +39,8 @@ Un modelo con **underfitting** falla incluso con los datos de entrenamiento: no 
 
 No existe una curva "correcta" universal — lo que importa es el patrón relativo entre las dos líneas.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

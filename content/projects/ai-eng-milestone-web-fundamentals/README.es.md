@@ -66,6 +66,8 @@ Este sitio debe funcionar en cualquier dispositivo, cumplir con estándares de a
 > Saludos,  
 > Tu Manager
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Comenzar este Proyecto

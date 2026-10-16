@@ -32,6 +32,8 @@ Ha llegado un **ticket** de seguridad: antes de que cualquier aplicación de la 
 >
 > **Acceptance criteria:** El servidor no permite login directo como root; existe un firewall con solo los puertos necesarios abiertos; cada categoría del OWASP Top 10 fue evaluada explícitamente contra tu aplicación, con hallazgo (aplica / no aplica) y evidencia; toda vulnerabilidad marcada como crítica está corregida y demostrada.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

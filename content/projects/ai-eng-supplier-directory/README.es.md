@@ -31,7 +31,9 @@ Tu tech lead ha decidido construir una API de gestión de proveedores usando **F
 
 > **Nota de tu tech lead:**
 >
-> > _"Necesito el directorio operativo antes del jueves. Usa TinyDB — ya migraremos a Postgres cuando tengamos el ORM listo. El seeder tiene que cargar todos los proveedores del CONTEXT desde el arranque; no quiero ver una base de datos vacía en la demo. Pydantic valida todo lo que entra: si un proveedor no tiene país o su estado no es uno de los dos valores permitidos, la API lo rechaza con un 422 antes de que toque la base de datos. Dos endpoints de búsqueda imprescindibles: filtrar por país y filtrar por categoría de producto. Y cuando se actualice una tarifa, quiero que quede registrado el timestamp del cambio — ese dato lo va a necesitar el equipo para auditorías."_
+> _"Necesito el directorio operativo antes del jueves. Usa TinyDB — ya migraremos a Postgres cuando tengamos el ORM listo. El seeder tiene que cargar todos los proveedores del CONTEXT desde el arranque; no quiero ver una base de datos vacía en la demo. Pydantic valida todo lo que entra: si un proveedor no tiene país o su estado no es uno de los dos valores permitidos, la API lo rechaza con un 422 antes de que toque la base de datos. Dos endpoints de búsqueda imprescindibles: filtrar por país y filtrar por categoría de producto. Y cuando se actualice una tarifa, quiero que quede registrado el timestamp del cambio — ese dato lo va a necesitar el equipo para auditorías."_
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

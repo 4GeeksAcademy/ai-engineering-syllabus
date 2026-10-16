@@ -46,6 +46,8 @@ Once you understand the shape of the series, translate that into features a regr
 
 **Complementary knowledge: Random Forest vs. XGBoost.** Random Forest trains many decision trees on different subsets of the data and averages their results — it's simpler to explain and a good starting point. XGBoost trains trees sequentially, where each one corrects the errors of the previous one — it usually predicts better but is harder to explain and needs more tuning. Choose based on what your stakeholder actually needs: explainability or maximum accuracy.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

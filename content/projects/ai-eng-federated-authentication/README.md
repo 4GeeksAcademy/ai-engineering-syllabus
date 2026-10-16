@@ -35,6 +35,8 @@ Read this carefully, because it changes the flow you were probably picturing:
 
 Letting federated login create accounts automatically seems simpler, but it hands over the decision of "who can enter my system" to an external provider you don't control. If the flow allows account creation just by showing up with a valid email, someone could register with an email that isn't verifiably theirs for your business, or impersonate a corporate email pattern if there's no explicit validation behind it. Requiring linking to happen from an already-authenticated session guarantees there's always a human with an identity your system has already verified making that decision — the external provider is never, by itself, the door in.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

@@ -32,15 +32,15 @@ The second trap is writing a purely technical context. A memory bank that explai
 > **From:** your CTO
 > **Subject:** first backoffice development — incidents
 >
-> > Before we start adding features, I need the repository to stop depending on the memory of whoever set it up.
-> >
-> > Split the brief into two parts. First: go through the codebase, understand the conventions that are already in place, and write them down as project rules. Don't change them because you don't like them — if you think one is wrong, log it as a proposal and we'll discuss it; overwriting a team convention out of personal preference is the fastest way to break a shared monorepo.
-> >
-> > Second: build the incident manager. Operations stakeholders need to log an incident regardless of which channel it came in through, classify it, assign it to a responsible area, and know what state it's in. Types, severities, and channels come from your CONTEXT, not from your imagination.
-> >
-> > One thing that's not negotiable: when an incident changes state or owner, I need to be able to reconstruct afterward who moved it and when. If that isn't recorded, the manager isn't worth having.
-> >
-> > Acceptance criteria are the ones on the checklist. I sign off on the Pull Request myself, and I'll be reading the commit history: if I see one single commit with everything bundled in, I'm sending it back unreviewed.
+> Before we start adding features, I need the repository to stop depending on the memory of whoever set it up.
+>
+> Split the brief into two parts. First: go through the codebase, understand the conventions that are already in place, and write them down as project rules. Don't change them because you don't like them — if you think one is wrong, log it as a proposal and we'll discuss it; overwriting a team convention out of personal preference is the fastest way to break a shared monorepo.
+>
+> Second: build the incident manager. Operations stakeholders need to log an incident regardless of which channel it came in through, classify it, assign it to a responsible area, and know what state it's in. Types, severities, and channels come from your CONTEXT, not from your imagination.
+>
+> One thing that's not negotiable: when an incident changes state or owner, I need to be able to reconstruct afterward who moved it and when. If that isn't recorded, the manager isn't worth having.
+>
+> Acceptance criteria are the ones on the checklist. I sign off on the Pull Request myself, and I'll be reading the commit history: if I see one single commit with everything bundled in, I'm sending it back unreviewed.
 >
 > — Handoff to the operations team as soon as the feature is verified.
 
@@ -51,6 +51,8 @@ A **memory bank** is a set of documents versioned in the repository itself that 
 A useful memory bank covers, at minimum, three layers: **product context** (what the company is, who it serves, what problem this area solves), **technical stack** (what's set up and what you're working with), and **current state** (what's done, what's in progress, what decisions are closed). It's curated, concrete content: if it rambles or repeats what the agent can already read from the code, it costs tokens without adding signal.
 
 **Rules** are different from the memory bank: memory describes the project, rules constrain how you work on it.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

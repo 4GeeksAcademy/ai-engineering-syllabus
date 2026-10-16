@@ -19,19 +19,18 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 Your company has a data pipeline and an API with instrumented telemetry. The problem is that someone has to run the pipeline every night. Your tech lead has filed the following ticket:
 
-> > **Ticket #DEV-53 — Nightly Telemetry Script**
-> >
-> > We need a script that runs automatically every night without manual intervention. The script must export the previous day's telemetry data to CSV (if not already done), trigger the data pipeline, and record in the database what happened and when.
-> >
-> > **Acceptance criteria:**
-> >
-> > - The script is a fully independent process from the API — it must not block any endpoint or run on FastAPI's main thread.
-> > - If the script is already running when the next cycle fires, the second instance must abort silently. No two parallel executions.
-> > - If the script fails, that run's record in the database must end up as `failed`, not `processing`. No record may remain as a zombie.
-> > - The script must be idempotent: running it twice on the same day must produce the same result as running it once.
-> > - Every execution is logged with a timestamp, status (`pending` → `processing` → `completed` | `failed`), and, on error, the exception message.
-> >
-> > Put the script in `scripts/` and the status logic in `services/`. The trigger goes in crontab or the framework scheduler — your call, justify it in the PR.
+> **Ticket #DEV-53 — Nightly Telemetry Script**
+>
+> We need a script that runs automatically every night without manual intervention. The script must export the previous day's telemetry data to CSV (if not already done), trigger the data pipeline, and record in the database what happened and when.
+>
+> **Acceptance criteria:**
+>
+> - The script is a fully independent process from the API — it must not block any endpoint or run on FastAPI's main thread.
+> - If the script is already running when the next cycle fires, the second instance must abort silently. No two parallel executions.
+> - If the script fails, that run's record in the database must end up as `failed`, not `processing`. No record may remain as a zombie.
+> - The script must be idempotent: running it twice on the same day must produce the same result as running it once.
+> - Every execution is logged with a timestamp, status (`pending` → `processing` → `completed` | `failed`), and, on error, the exception message.
+>   > Put the script in `scripts/` and the status logic in `services/`. The trigger goes in crontab or the framework scheduler — your call, justify it in the PR.
 
 ### 📚 Complementary Knowledge — Background Task Lifecycle
 
@@ -77,6 +76,8 @@ The nightly script writes to `job_runs`. The pipeline subprocess writes to `pipe
 ```bash
 python -m data.pipelines.telemetry_kpi_daily.run --no-prefect
 ```
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

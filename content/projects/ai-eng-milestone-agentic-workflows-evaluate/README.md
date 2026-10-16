@@ -23,19 +23,18 @@ In Part 1 you already have a flow that classifies each RFP and opens a ticket fo
 
 > **Ticket — RFP response generation and evaluation**
 >
-> > **Context:** Part 1 tells us what needs to be answered in each RFP, but putting together the draft of the pricing proposal is still manual and slow. I need the system to generate a first draft per department and have that draft self-evaluate before it reaches a human.
-> >
-> > **What I need you to build:**
-> >
-> > - A generator agent per department that receives the metadata and summary produced in Part 1, and drafts the corresponding section of the pricing proposal.
-> > - Several evaluator agents running in parallel over each generated section: readability (again, `py-readability-metrics` works for this), relevance to what the RFP is asking for, and compliance with our company guidelines.
-> > - If a section fails evaluation, it should go back to the corresponding generator with concrete feedback on what to fix — it shouldn't get stuck, and the ticket shouldn't be discarded entirely.
-> > - An iteration limit on that generator-evaluator loop, so it doesn't repeat indefinitely if a generator can't pass evaluation. If a section hits that limit without passing, keep the last draft and its evaluation result, mark it `needs_human_review`, and still include it in the Part 3 handoff — never discard the whole ticket.
-> > - _Optional:_ if you already have the semantic knowledge base set up, give the generator access to it — drafting with our real policies and tone instead of improvising them makes it much more likely to pass the compliance check on the first try. Not required for this part, but use it if you have it.
-> >
-> > **Acceptance criteria:** The handoff to Part 3 must include, for every department, both the generated content and a structured evaluation result (see schema below). Sections that exhausted the iteration limit ship with `needs_human_review` — they are not dropped.
-> >
-> > — Your tech lead
+> **Context:** Part 1 tells us what needs to be answered in each RFP, but putting together the draft of the pricing proposal is still manual and slow. I need the system to generate a first draft per department and have that draft self-evaluate before it reaches a human.
+>
+> **What I need you to build:**
+>
+> - A generator agent per department that receives the metadata and summary produced in Part 1, and drafts the corresponding section of the pricing proposal.
+> - Several evaluator agents running in parallel over each generated section: readability (again, `py-readability-metrics` works for this), relevance to what the RFP is asking for, and compliance with our company guidelines.
+> - If a section fails evaluation, it should go back to the corresponding generator with concrete feedback on what to fix — it shouldn't get stuck, and the ticket shouldn't be discarded entirely.
+> - An iteration limit on that generator-evaluator loop, so it doesn't repeat indefinitely if a generator can't pass evaluation. If a section hits that limit without passing, keep the last draft and its evaluation result, mark it `needs_human_review`, and still include it in the Part 3 handoff — never discard the whole ticket.
+> - _Optional:_ if you already have the semantic knowledge base set up, give the generator access to it — drafting with our real policies and tone instead of improvising them makes it much more likely to pass the compliance check on the first try. Not required for this part, but use it if you have it.
+>   > **Acceptance criteria:** The handoff to Part 3 must include, for every department, both the generated content and a structured evaluation result (see schema below). Sections that exhausted the iteration limit ship with `needs_human_review` — they are not dropped.
+>   >
+>   > — Your tech lead
 
 ### 📚 Complementary Knowledge: guideline compliance
 
@@ -57,6 +56,8 @@ Do **not** invent Part 3 statuses (`waiting_for_approval`, `done`) in this part.
 This stretch of the workflow takes the **defined workstream structure** from Part 1, maps tasks to departments via an **assignment orchestrator**, runs department-scoped generation in parallel, then a **synthesizer** consolidates outputs into department-specific assignment tickets ready for evaluation / approval:
 
 ![Departmental mapping and deliverable finalization: assignment orchestrator maps workstreams to Sales, Legal & Compliance, and Operations & Delivery, then synthesizer produces department assignment tickets](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-evaluate/.learn/departmental-mapping-deliverable-finalization.jpg)
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

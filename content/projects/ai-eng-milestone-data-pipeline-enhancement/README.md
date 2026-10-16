@@ -21,22 +21,23 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 This is **Part 3 of this Milestone — Telemetry and Data Pipelines**. Your business performance pipeline already works: it reads from `telemetry_events` and produces the KPIs leadership asked for — the ones named in your `CONTEXT-company.md` — without touching the existing technical telemetry system. Today you bring it to production level: you refactor the main flow into reusable subflows, add unit tests that validate the behaviour of transformation tasks, ensure the pipeline runs directly from the command line, and — this is the part leadership actually cares about — put those KPIs in front of a dashboard someone can read.
 
-> > **Enhancement Ticket — Pipeline to Production**
-> >
-> > The basic pipeline is ready. Before the final handoff to the operations team, I need four more things:
-> >
-> > 1. The main flow is growing — refactor it into subflows so that each phase is independent, testable, and reusable.
-> > 2. I need unit tests for the transformation tasks. If a test fails, I want to know before the pipeline reaches production, not after.
-> > 3. After the subflow refactor, the pipeline must still be runnable as a script: `python data/pipelines/pipeline.py` completes without errors (keep the Part 2 entrypoint).
-> > 4. I need a dashboard. Nobody on the leadership team is going to query an endpoint — put the KPIs somewhere they can actually look at them.
-> >
-> > Starting point: `data/pipelines/pipeline.py` from the previous session.
+> **Enhancement Ticket — Pipeline to Production**
+>
+> The basic pipeline is ready. Before the final handoff to the operations team, I need four more things:
+>
+> 1. The main flow is growing — refactor it into subflows so that each phase is independent, testable, and reusable.
+> 2. I need unit tests for the transformation tasks. If a test fails, I want to know before the pipeline reaches production, not after.
+> 3. After the subflow refactor, the pipeline must still be runnable as a script: `python data/pipelines/pipeline.py` completes without errors (keep the Part 2 entrypoint).
+> 4. I need a dashboard. Nobody on the leadership team is going to query an endpoint — put the KPIs somewhere they can actually look at them.
+>    > Starting point: `data/pipelines/pipeline.py` from the previous session.
 
 ### Why subflows
 
 Parts 1–2 required **one main flow** with at least three tasks. **This part raises that bar:** you split those stages into **at least three subflows** (`@flow`) coordinated by the main flow — that topology is new to Part 3 and is what we evaluate here.
 
 A flow that grows without structure ends up being as hard to maintain as the script it replaced. Subflows apply the DRY principle at the orchestration level: each phase of the pipeline (extraction, transformation, load) becomes an independent flow that can be executed, monitored, and reused separately. The main flow coordinates them but does not contain their logic.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

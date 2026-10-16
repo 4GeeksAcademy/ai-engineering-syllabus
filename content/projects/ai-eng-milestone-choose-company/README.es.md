@@ -27,7 +27,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 > **Del equipo académico:**
 >
-> > "Esta no es una elección sin importancia. La empresa que selecciones aparecerá en tu portfolio, en tus entrevistas de trabajo y en el contexto de cada brief de proyecto que recibas durante el curso. Te convertirás en un mini-experto en sus operaciones. Los estudiantes que invierten en entender su empresa desde el principio — antes incluso de que empiece la Semana 1 — construyen sistemáticamente mejores proyectos y se presentan con más confianza al final. Tómate el tiempo de leer el documento de contexto a fondo."
+> "Esta no es una elección sin importancia. La empresa que selecciones aparecerá en tu portfolio, en tus entrevistas de trabajo y en el contexto de cada brief de proyecto que recibas durante el curso. Te convertirás en un mini-experto en sus operaciones. Los estudiantes que invierten en entender su empresa desde el principio — antes incluso de que empiece la Semana 1 — construyen sistemáticamente mejores proyectos y se presentan con más confianza al final. Tómate el tiempo de leer el documento de contexto a fondo."
 
 ---
 

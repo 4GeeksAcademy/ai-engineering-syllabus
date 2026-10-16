@@ -39,6 +39,8 @@ An agent's memory isn't a single component — it's organized by temporal scope.
 
 ⚠️ **Disclaimer — Core memory in production:** In a real company, **core memory** is not edited freely by any agent or developer. Changes go through **modification request tickets** and are reviewed/applied by a dedicated team that owns that control chain. **For this project**, that governance path is **omitted on purpose** so the milestone stays viable and achievable — you implement proposal → user confirmation → write/consolidate directly in your agent flow.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

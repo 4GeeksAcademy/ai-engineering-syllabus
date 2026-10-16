@@ -54,6 +54,8 @@ Los **guardrails** existen porque los agentes fallan de tres formas distintas, y
 
 Un único guardrail nunca es suficiente — cada tipo de fallo necesita su propia capa de protección.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

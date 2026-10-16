@@ -46,6 +46,8 @@ Una vez que entiendes la forma de la serie, tradúcela en features que un regres
 
 **Conocimiento complementario: Random Forest vs. XGBoost.** Random Forest entrena muchos árboles de decisión sobre subconjuntos distintos de datos y promedia sus resultados — es más simple de explicar y un buen punto de partida. XGBoost entrena árboles de forma secuencial, donde cada uno corrige los errores del anterior — suele predecir mejor pero es más difícil de explicar y requiere más ajuste. Elige según qué necesita realmente tu stakeholder: explicabilidad o máxima precisión.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

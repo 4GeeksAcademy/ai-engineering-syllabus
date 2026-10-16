@@ -74,6 +74,8 @@ Luego elige cómo serializar:
 
 **General vs explícito:** mapear un modelo con `from_attributes=True` es cómodo cuando cada campo listado es intencional. Ante la duda — listados, flujos de auth o consumidores distintos — conviene **nombrar cada atributo** en el esquema para que la auditoría diga exactamente qué sale de la API. Registra esa lista objetivo en `docs/serialization-audit.md` en cada endpoint que modifiques.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo iniciar el proyecto

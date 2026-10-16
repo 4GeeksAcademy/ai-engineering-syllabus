@@ -46,6 +46,8 @@ Once the API returns a token at login, the frontend's job is: store it, send it,
 
 > **Note:** The temporary frontend breakage from the previous delivery ends here. By the end of this project, all protected views should be working end-to-end with real authentication.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

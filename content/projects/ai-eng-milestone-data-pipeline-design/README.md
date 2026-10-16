@@ -23,13 +23,13 @@ Over the past weeks you captured telemetry events, stored them in `telemetry_eve
 
 Today your tech lead is asking for something different: a **new** data pipeline, designed from scratch, whose only job is to turn that same telemetry into data that describes how the business is performing — the kind of numbers a department head or the CEO would read, not the kind an engineer uses to debug a service.
 
-> > **Technical Brief — Business Performance Data Pipeline (Design Phase)**
-> >
-> > Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand on your company's CONTEXT cadence.
-> >
-> > This is a **new** pipeline, built on top of the telemetry you already have. Your technical report and the `GET /telemetry/report` endpoint keep serving engineering exactly as before. `telemetry_events` remains the **source** (never this pipeline's destination). Additive payload fields required by your data-pipelines CONTEXT on existing event types are allowed. What you're building now reads from that source but produces a different kind of output: numbers a non-technical stakeholder can act on.
-> >
-> > Deliverable: a design document in Markdown, committed to the monorepo. No orchestration code yet — design first, implementation next.
+> **Technical Brief — Business Performance Data Pipeline (Design Phase)**
+>
+> Before writing a single line of orchestration code, I need you to document the design of a new data pipeline. This one isn't for us — it's for the business side: the leadership team that's been asking for a real report instead of a PDF someone assembles by hand on your company's CONTEXT cadence.
+>
+> This is a **new** pipeline, built on top of the telemetry you already have. Your technical report and the `GET /telemetry/report` endpoint keep serving engineering exactly as before. `telemetry_events` remains the **source** (never this pipeline's destination). Additive payload fields required by your data-pipelines CONTEXT on existing event types are allowed. What you're building now reads from that source but produces a different kind of output: numbers a non-technical stakeholder can act on.
+>
+> Deliverable: a design document in Markdown, committed to the monorepo. No orchestration code yet — design first, implementation next.
 
 ### What makes a data pipeline robust?
 

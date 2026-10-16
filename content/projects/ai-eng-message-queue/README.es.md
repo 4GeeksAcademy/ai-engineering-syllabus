@@ -19,19 +19,19 @@ _These instructions are [available in English](./README.md)._
 
 Tu empresa tiene una API en producción y un pipeline de datos que ya funciona. Pero hay operaciones que aún bloquean el ciclo de request-response: procesar un lote de registros, generar un informe, enviar notificaciones masivas. Mientras esas operaciones corren, la API no responde a otros usuarios. Tu tech lead ha abierto el siguiente ticket:
 
-> > **Ticket #DEV-55 — Cola de tareas asíncronas con Redis y Celery**
-> >
-> > Necesitamos desacoplar las operaciones pesadas de la API. Cuando un endpoint reciba una solicitud que implique trabajo de larga duración, debe encolar la tarea y devolver inmediatamente un `task_id` al cliente. Un worker independiente procesa la cola. El cliente puede consultar el estado de su tarea en cualquier momento.
-> >
-> > **Criterios de aceptación:**
-> >
-> > - Redis corre como broker en Docker. La API y los workers se conectan al mismo broker.
-> > - Al menos una operación existente en tu API —la que más tarde en responder— se convierte en tarea asíncrona mediante Celery.
-> > - El endpoint que recibe la solicitud devuelve `202 Accepted` con un `task_id` inmediatamente, sin esperar a que la tarea termine.
-> > - Existe un endpoint `GET /tasks/{task_id}` que devuelve el estado actual de la tarea (`pending`, `started`, `success`, `failure`) y el resultado cuando esté disponible.
-> > - Si una tarea falla hasta tres veces, pasa a una Dead Letter Queue (DLQ). El fallo queda registrado con `task_id`, número de intento y mensaje de error.
-> > - Los workers corren como procesos separados, no dentro del proceso de FastAPI.
-> > - Flower está levantado y accesible para monitorear la cola durante el desarrollo.
+> **Ticket #DEV-55 — Cola de tareas asíncronas con Redis y Celery**
+>
+> Necesitamos desacoplar las operaciones pesadas de la API. Cuando un endpoint reciba una solicitud que implique trabajo de larga duración, debe encolar la tarea y devolver inmediatamente un `task_id` al cliente. Un worker independiente procesa la cola. El cliente puede consultar el estado de su tarea en cualquier momento.
+>
+> **Criterios de aceptación:**
+>
+> - Redis corre como broker en Docker. La API y los workers se conectan al mismo broker.
+> - Al menos una operación existente en tu API —la que más tarde en responder— se convierte en tarea asíncrona mediante Celery.
+> - El endpoint que recibe la solicitud devuelve `202 Accepted` con un `task_id` inmediatamente, sin esperar a que la tarea termine.
+> - Existe un endpoint `GET /tasks/{task_id}` que devuelve el estado actual de la tarea (`pending`, `started`, `success`, `failure`) y el resultado cuando esté disponible.
+> - Si una tarea falla hasta tres veces, pasa a una Dead Letter Queue (DLQ). El fallo queda registrado con `task_id`, número de intento y mensaje de error.
+> - Los workers corren como procesos separados, no dentro del proceso de FastAPI.
+> - Flower está levantado y accesible para monitorear la cola durante el desarrollo.
 
 ### 📚 Conocimiento complementario — El patrón Productor / Consumidor
 
@@ -50,6 +50,8 @@ Tres reglas que aplican siempre en este patrón:
 1. **Los mensajes son ligeros.** Nunca pongas en el mensaje un blob completo (imagen, documento, lote de datos). Pasa el `id` o la ruta — el worker lo recupera él mismo.
 2. **ACK solo tras éxito.** El mensaje se confirma como procesado únicamente cuando el worker termina correctamente. Si el worker falla antes, el mensaje vuelve a la cola para reintento.
 3. **Toda tarea tiene timeout.** Un worker que no termina nunca bloquea el pool. Define siempre un tiempo máximo de ejecución.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

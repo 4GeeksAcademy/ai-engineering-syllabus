@@ -27,13 +27,13 @@ El entregable es un pipeline de análisis en Python y un endpoint que sirve el r
 
 > Tu tech lead te envió este mensaje:
 >
-> > "Tenemos datos. Ahora necesito visibilidad técnica sobre el sistema.
-> >
-> > Escribe el pipeline de análisis. Para cada dimensión operacional relevante, una función de Python que cargue los eventos correspondientes, los transforme con Pandas, y devuelva un resultado serializable. Luego un endpoint `GET /telemetry/report` que los sirva juntos.
-> >
-> > Dos reglas no negociables: primero, no calcules nada dentro del endpoint en cada request — el pipeline va aparte y el endpoint lo llama, con cache. Segundo, convierte los timestamps a `datetime` antes de cualquier agrupación — si no lo haces, vas a obtener grupos incorrectos sin ningún error visible, y vas a perder horas encontrando el bug.
-> >
-> > Una aclaración importante: esto **no** es el reporte para el CEO. Nada de tasas de conversión ni ingresos — eso lo vamos a construir con los pipelines de datos más adelante. Hoy quiero saber qué tan sano está el sistema: volumen de eventos, tasa de errores, latencia, qué tipos de evento dominan. Métricas con dimensión temporal real, no un número global sin contexto."
+> "Tenemos datos. Ahora necesito visibilidad técnica sobre el sistema.
+>
+> Escribe el pipeline de análisis. Para cada dimensión operacional relevante, una función de Python que cargue los eventos correspondientes, los transforme con Pandas, y devuelva un resultado serializable. Luego un endpoint `GET /telemetry/report` que los sirva juntos.
+>
+> Dos reglas no negociables: primero, no calcules nada dentro del endpoint en cada request — el pipeline va aparte y el endpoint lo llama, con cache. Segundo, convierte los timestamps a `datetime` antes de cualquier agrupación — si no lo haces, vas a obtener grupos incorrectos sin ningún error visible, y vas a perder horas encontrando el bug.
+>
+> Una aclaración importante: esto **no** es el reporte para el CEO. Nada de tasas de conversión ni ingresos — eso lo vamos a construir con los pipelines de datos más adelante. Hoy quiero saber qué tan sano está el sistema: volumen de eventos, tasa de errores, latencia, qué tipos de evento dominan. Métricas con dimensión temporal real, no un número global sin contexto."
 
 ---
 
@@ -79,6 +79,8 @@ MÉTRICA = AGREGACIÓN(columna) agrupada por DIMENSIÓN
 **Servir** el resultado como una lista de dicts con `.reset_index().to_dict(orient='records')` — directamente serializable a JSON.
 
 **Qué NO hacer:** calcular el reporte dentro del endpoint en cada request. Si el dato no cambia cada segundo, el cálculo va en una función separada, llamada una vez, con el resultado en cache.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

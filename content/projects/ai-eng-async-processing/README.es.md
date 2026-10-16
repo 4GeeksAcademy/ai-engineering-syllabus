@@ -33,6 +33,8 @@ Tres exigencias del brief que definen el proyecto:
 
 Cuando una operación se reintenta automáticamente, existe un riesgo silencioso: que el intento anterior sí haya tenido éxito del lado del proveedor externo, pero la confirmación nunca llegó a tiempo — y el sistema, al no saberlo, reintenta y ejecuta la misma operación dos veces. Si esa operación es "enviar una notificación", el resultado es molesto. Si es "cobrar a un cliente" o "descontar inventario", el resultado es un incidente. La idempotencia es la propiedad que evita esto: diseñar la operación de forma que ejecutarla dos veces con la misma clave produzca el mismo resultado que ejecutarla una sola vez, normalmente mediante una clave de idempotencia única por operación que el sistema verifica antes de procesar.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

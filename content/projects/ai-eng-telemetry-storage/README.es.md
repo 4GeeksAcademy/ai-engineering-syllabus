@@ -27,11 +27,11 @@ El entregable es un solo cambio en el backend — pero un cambio que transforma 
 
 > Tu tech lead te envió este mensaje:
 >
-> > "El stub ya cumplió su función — sé que los eventos llegan con el formato correcto. Ahora necesito que los guardes.
-> >
-> > Crea la tabla en Supabase y reemplaza el stub por el endpoint real. El modelo Pydantic que definiste en la fase anterior es el contrato — úsalo para validar. Los eventos que no cumplan el contrato se rechazan individualmente, pero el resto del lote se persiste igual.
-> >
-> > El frontend no toca nada. La URL del endpoint es la misma — solo cambia lo que pasa dentro del backend cuando llega el lote. Si el frontend necesita cambiar algo para que esto funcione, el diseño está mal."
+> "El stub ya cumplió su función — sé que los eventos llegan con el formato correcto. Ahora necesito que los guardes.
+>
+> Crea la tabla en Supabase y reemplaza el stub por el endpoint real. El modelo Pydantic que definiste en la fase anterior es el contrato — úsalo para validar. Los eventos que no cumplan el contrato se rechazan individualmente, pero el resto del lote se persiste igual.
+>
+> El frontend no toca nada. La URL del endpoint es la misma — solo cambia lo que pasa dentro del backend cuando llega el lote. Si el frontend necesita cambiar algo para que esto funcione, el diseño está mal."
 
 ---
 
@@ -68,6 +68,8 @@ Usa **parseo por evento** en su lugar:
 | Parseo por evento (`model_validate` en un loop) | Los eventos válidos se guardan; los inválidos se cuentan en `rejected` |
 
 El modelo se reutiliza sin cambios desde la Fase 2 — lo usas como **validador por item**, no como el tipo del body completo.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

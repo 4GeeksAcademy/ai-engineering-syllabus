@@ -36,6 +36,8 @@ The **brief** is direct: this isn't just about "it works," it's about proving th
 
 NIST organizes cybersecurity management into six functions: **Govern** (policy and accountability), **Identify** (inventory and risk assessment), **Protect** (preventive controls), **Detect** (monitoring and alerts), **Respond** (incident plan), and **Recover** (service restoration). You don't need to implement all six at enterprise scale — you need to map your current system against each function and prioritize what's missing. It's the same logic as a quality checklist, applied to security.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

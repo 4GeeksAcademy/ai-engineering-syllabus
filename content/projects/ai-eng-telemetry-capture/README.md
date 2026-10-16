@@ -27,13 +27,13 @@ Every event in your catalogue — mandatory or identified by you — must be cap
 
 > Your tech lead sent you this message:
 >
-> > "I want to see events flowing before we build the storage layer. Create the `TelemetryService` in the backoffice and instrument, at a minimum, every mandatory metric from your CONTEXT — plus as much of the rest of your catalogue as you can get to today, prioritising coverage across different categories (technical and business) over depth in a single one.
-> >
-> > So you can verify the payload is arriving correctly, add a stub endpoint in the backend — validate the format and return 200, without writing to the database yet.
-> >
-> > One important thing: configure the endpoint URL as an environment variable from the start. In the next phase we will replace the stub with the real implementation and the frontend should not need to change anything.
-> >
-> > I don't want tracking scattered across every component. Everything goes through a single `track()` function — nothing else."
+> "I want to see events flowing before we build the storage layer. Create the `TelemetryService` in the backoffice and instrument, at a minimum, every mandatory metric from your CONTEXT — plus as much of the rest of your catalogue as you can get to today, prioritising coverage across different categories (technical and business) over depth in a single one.
+>
+> So you can verify the payload is arriving correctly, add a stub endpoint in the backend — validate the format and return 200, without writing to the database yet.
+>
+> One important thing: configure the endpoint URL as an environment variable from the start. In the next phase we will replace the stub with the real implementation and the frontend should not need to change anything.
+>
+> I don't want tracking scattered across every component. Everything goes through a single `track()` function — nothing else."
 
 ---
 
@@ -50,6 +50,8 @@ The frontend capture service does not fire an HTTP call for every event — that
 **The endpoint as an environment variable:** in real environments, frontend and backend teams work in parallel. The frontend points to `NEXT_PUBLIC_TELEMETRY_ENDPOINT` — today that variable points to the stub; tomorrow it will point to the real endpoint with persistence. The frontend does not change.
 
 **The profile/usage separation:** user data (name, role, preferences) is persistent state that lives in the main database. Usage data is `append-only` events that go to telemetry. Never mix the two.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

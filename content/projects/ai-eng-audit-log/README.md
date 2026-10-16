@@ -35,6 +35,8 @@ Three requirements from the brief are easy to implement halfway if you don't rea
 
 A technical log (errors, latency, traces) and an audit record aren't the same thing, even though both "record things." The audit record exists to answer accountability and compliance questions — who did what to which resource — and that's why its design prioritizes three properties a technical log usually doesn't need: **immutability** (can't be altered once written), **completeness** (covers every sensitive action, not just errors), and **clear attribution** (there's always an identified actor, human or system). A common technique to reinforce immutability is hash chaining: each entry includes the hash of the previous entry, so altering a past record visibly breaks the chain.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

@@ -45,6 +45,8 @@ Ya viste esta distinción en la Parte 1, pero ahora es donde realmente importa: 
 
 **Fuera de alcance para esta parte:** no dupliques ni reemplaces la lógica de aprobación de negocio que ya existe en tu flujo multiagente — tus nuevas acciones de control conviven con ella, no la sustituyen.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

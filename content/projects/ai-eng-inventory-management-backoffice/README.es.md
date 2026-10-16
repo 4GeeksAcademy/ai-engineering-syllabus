@@ -29,21 +29,20 @@ Dos requisitos del brief que es fácil pasar por alto: el formulario de orden de
 
 ### Brief del responsable de operaciones
 
-> > **De:** Responsable de Operaciones
-> > **Para:** Unidad Tecnológica
-> >
-> > El equipo de backend entregó la API de inventario el sprint pasado — buen trabajo. Ahora necesito la interfaz. Mi equipo no puede usar Postman para registrar entregas.
-> >
-> > Esto es lo que necesito en el backoffice:
-> >
-> > 1. Una página que muestre todos los productos con su stock actual. Usa código de color — quiero ver de un vistazo qué está bajo.
-> > 2. Un formulario para registrar una orden de entrada (una entrega recibida).
-> > 3. Un formulario para registrar una orden de salida (un consumo o salida). Debe mostrar cuánto stock hay disponible antes de que yo envíe, para no registrar más de lo que tenemos.
-> > 4. Una página de sólo lectura con todas las órdenes — entradas y salidas — con el nombre del producto y quién creó cada una.
-> >
-> > Todas estas páginas requieren inicio de sesión. Si un usuario no está autenticado, redirígelo a la página de login.
-> >
-> > **Criterios de aceptación**: las cuatro vistas funcionales, autenticadas, consumiendo datos reales de la API, con gestión correcta de errores en fallos de la API.
+> **De:** Responsable de Operaciones
+> **Para:** Unidad Tecnológica
+>
+> El equipo de backend entregó la API de inventario el sprint pasado — buen trabajo. Ahora necesito la interfaz. Mi equipo no puede usar Postman para registrar entregas.
+>
+> Esto es lo que necesito en el backoffice:
+>
+> 1. Una página que muestre todos los productos con su stock actual. Usa código de color — quiero ver de un vistazo qué está bajo.
+> 2. Un formulario para registrar una orden de entrada (una entrega recibida).
+> 3. Un formulario para registrar una orden de salida (un consumo o salida). Debe mostrar cuánto stock hay disponible antes de que yo envíe, para no registrar más de lo que tenemos.
+> 4. Una página de sólo lectura con todas las órdenes — entradas y salidas — con el nombre del producto y quién creó cada una.
+>    > Todas estas páginas requieren inicio de sesión. Si un usuario no está autenticado, redirígelo a la página de login.
+>    >
+>    > **Criterios de aceptación**: las cuatro vistas funcionales, autenticadas, consumiendo datos reales de la API, con gestión correcta de errores en fallos de la API.
 
 ---
 

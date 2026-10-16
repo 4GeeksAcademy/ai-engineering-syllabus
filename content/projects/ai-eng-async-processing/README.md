@@ -33,6 +33,8 @@ Three requirements from the brief define the project:
 
 When an operation is retried automatically, there's a silent risk: the previous attempt may have actually succeeded on the external provider's side, but the confirmation never arrived in time — and the system, not knowing that, retries and executes the same operation twice. If that operation is "send a notification," the result is annoying. If it's "charge a customer" or "deduct inventory," the result is an incident. Idempotency is the property that prevents this: designing the operation so that executing it twice with the same key produces the same result as executing it once, typically through a unique idempotency key per operation that the system checks before processing.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

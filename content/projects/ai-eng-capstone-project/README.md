@@ -30,17 +30,17 @@ This is not a syllabus walkthrough. Do not narrate weeks or tickets. Pitch the p
 
 > **Brief — Final handoff from Talent & the Academic Team**
 >
-> > We need a client-ready demo of the system, not a student presentation of the course.
-> >
-> > Open with the problem or the result in one sentence — not your name. Then introduce yourself, the project name, the process you automated, and a one-line overview of what you built.
-> >
-> > Walk a hiring manager through the live workflow. Zoom in on the parts that matter. Talk like an engineer: name a hard problem, the trade-off you chose, and why. “I had to get retrieval accuracy up, so I tested three embedding models and switched to X” beats “I learned how embeddings work.”
-> >
-> > Close on camera with the three Q&A questions exactly as written. Complete sentences that include the question. Two full seconds of silence before and after each answer — editors need a clean cut.
-> >
-> > **Acceptance criteria:** ~5 minutes, landscape, audible, demo of _your_ company system, all five sections present, Q&A usable as standalone clips, files named and packaged as specified, delivered as a **permanent** Google Drive, Microsoft OneDrive, or similar folder link.
-> >
-> > — Head of Talent, with sign-off from your tech lead
+> We need a client-ready demo of the system, not a student presentation of the course.
+>
+> Open with the problem or the result in one sentence — not your name. Then introduce yourself, the project name, the process you automated, and a one-line overview of what you built.
+>
+> Walk a hiring manager through the live workflow. Zoom in on the parts that matter. Talk like an engineer: name a hard problem, the trade-off you chose, and why. “I had to get retrieval accuracy up, so I tested three embedding models and switched to X” beats “I learned how embeddings work.”
+>
+> Close on camera with the three Q&A questions exactly as written. Complete sentences that include the question. Two full seconds of silence before and after each answer — editors need a clean cut.
+>
+> **Acceptance criteria:** ~5 minutes, landscape, audible, demo of _your_ company system, all five sections present, Q&A usable as standalone clips, files named and packaged as specified, delivered as a **permanent** Google Drive, Microsoft OneDrive, or similar folder link.
+>
+> — Head of Talent, with sign-off from your tech lead
 
 Before you record, follow the **Recording quality checklist** under _What You Need to Do_. Lighting, audio, and framing decide whether the pitch looks professional.
 
@@ -54,6 +54,8 @@ Before you record, follow the **Recording quality checklist** under _What You Ne
 - It doesn't need to be perfect — it needs to be you, clearly explaining real work
 
 The goal is not just to show what you created, but to demonstrate that you can communicate the value of an AI solution — the skill that gets you hired.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

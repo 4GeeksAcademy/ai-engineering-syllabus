@@ -25,21 +25,20 @@ The Sales team receives dozens of RFPs (_Requests for Proposal_) in PDF every we
 
 > **Ticket — Agentic workflow for RFP intake and routing**
 >
-> > **Context:** Sales is missing deadlines because nobody knows, when an RFP comes in, which departments to involve or what each one needs. We need to automate that first analysis before we even touch generating the proposal itself (that's the next part).
-> >
-> > **What I need you to build:**
-> >
-> > - A ticket-mode interface where the team uploads the RFP (always PDF) and sees status in real time. Upload goes through the **existing** company backend — **no new API service**. Store the PDF under `data/raw/` as part of the intake process.
-> > - Persist the ticket, RFP metadata, and per-department key aspects in **PostgreSQL (Supabase)** — same DB stack you already use for inventory — not TinyDB and not JSON-only files as the source of truth.
-> > - Put the LangGraph (or equivalent) pipeline under `data/pipelines/` (e.g. `data/pipelines/rfp_intake/`). Routers in `services/` only trigger and query; they do not own the agent graph. Standalone CLI helpers belong in `scripts/`.
-> > - PDF RFPs are heavy on tokens. Convert to Markdown as soon as they arrive — **MarkItDown** (or an equivalent PDF→Markdown step you document) — before any agent reads them.
-> > - A classifier agent that decides whether the document is a legitimate RFP; if it isn't, stop the flow and mark the ticket `discarded`.
-> > - For each valid RFP, extract metadata and readability metrics (`py-readability-metrics` works) so Sales can anticipate processing cost.
-> > - Split analysis by department with orchestrator-worker-synthesizer — not one agent doing everything. Use a **dedicated `rfp_intake` graph**; do not bolt RFP nodes onto the CX / knowledge-agent graph.
-> >
-> > **Acceptance criteria:** Sales should be able to look at the result of a processed RFP and know, without reading the original document, what's needed from each department and who to ask.
-> >
-> > — Your tech lead
+> **Context:** Sales is missing deadlines because nobody knows, when an RFP comes in, which departments to involve or what each one needs. We need to automate that first analysis before we even touch generating the proposal itself (that's the next part).
+>
+> **What I need you to build:**
+>
+> - A ticket-mode interface where the team uploads the RFP (always PDF) and sees status in real time. Upload goes through the **existing** company backend — **no new API service**. Store the PDF under `data/raw/` as part of the intake process.
+> - Persist the ticket, RFP metadata, and per-department key aspects in **PostgreSQL (Supabase)** — same DB stack you already use for inventory — not TinyDB and not JSON-only files as the source of truth.
+> - Put the LangGraph (or equivalent) pipeline under `data/pipelines/` (e.g. `data/pipelines/rfp_intake/`). Routers in `services/` only trigger and query; they do not own the agent graph. Standalone CLI helpers belong in `scripts/`.
+> - PDF RFPs are heavy on tokens. Convert to Markdown as soon as they arrive — **MarkItDown** (or an equivalent PDF→Markdown step you document) — before any agent reads them.
+> - A classifier agent that decides whether the document is a legitimate RFP; if it isn't, stop the flow and mark the ticket `discarded`.
+> - For each valid RFP, extract metadata and readability metrics (`py-readability-metrics` works) so Sales can anticipate processing cost.
+> - Split analysis by department with orchestrator-worker-synthesizer — not one agent doing everything. Use a **dedicated `rfp_intake` graph**; do not bolt RFP nodes onto the CX / knowledge-agent graph.
+>   > **Acceptance criteria:** Sales should be able to look at the result of a processed RFP and know, without reading the original document, what's needed from each department and who to ask.
+>   >
+>   > — Your tech lead
 
 ### 📚 Complementary Knowledge: PDFs, readability, tickets, and async intake
 
@@ -60,6 +59,8 @@ PDF→Markdown + classifier + parallel workers can take minutes. **`POST` upload
 This part of the workflow starts with rapid triage (is this an RFP / complex enough?), then an **orchestrator** decomposes the primary document into parallel workstreams (sections / departments), workers process them independently, and a **synthesizer** consolidates everything into a defined workstream structure with meta-info:
 
 ![Initial analysis and workstream isolation: triage router, RFP filter, orchestrator-worker decomposition into parallel sections, then synthesizer into defined workstream structure](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-orchestrate/.learn/rfp-intake-workstream-isolation.jpg)
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

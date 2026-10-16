@@ -29,6 +29,8 @@ Some requirements are left implicit in this brief, and you'll need to identify t
 
 **Out of scope for this part:** this deliverable requires no calls to a model or agent. This is a communication layer, not an AI layer — that comes in Part 2.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

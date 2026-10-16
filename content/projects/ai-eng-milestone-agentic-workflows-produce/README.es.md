@@ -23,22 +23,21 @@ En la Parte 2 cada departamento ya genera y autoevalúa su sección de la propue
 
 > **Ticket — Aprobación humana y cierre del documento**
 >
-> > **Contexto:** Ya generamos y autoevaluamos cada sección de la propuesta, pero nadie va a firmar una propuesta económica sin que un humano de cada departamento le dé el visto bueno. Esta es la última pieza del flujo que empezamos en la Parte 1 — y tiene que sentirse como una sola experiencia, no como tres proyectos pegados con cinta.
-> >
-> > **Qué necesito que construyas:**
-> >
-> > - Antes de dar por aprobada la sección de un departamento, el flujo debe pasar por un punto de aprobación humana real — un _human-in-the-loop_, no solo un evaluador automático más.
-> > - El flujo debe detenerse justo antes de esa acción irreversible, guardar el estado con un checkpointer, y poder reanudarse exactamente donde quedó cuando llegue la aprobación — no reiniciar desde cero.
-> > - Esa pausa debe afectar solo la rama del departamento que está esperando aprobación; los demás departamentos que ya tengan su sección lista deben poder seguir avanzando en paralelo, no bloquearse entre sí.
-> > - Define un límite de iteraciones y un nodo de arbitraje explícito para los desacuerdos entre departamentos. Conéctalo a los triggers de conflicto y al árbitro fijo de tu CONTEXT (reglas o un humano nombrado — no un LLM “votando” entre agentes).
-> > - Cuando todos los departamentos den su _sign-off_, el documento final debe generarse solo, consolidando las secciones aprobadas.
-> > - Quiero poder ver, para cualquier ejecución, qué agente hizo qué y en qué orden, porque cuando algo salga mal en producción no vamos a tener tiempo de adivinar.
-> >
-> > Cuando termines, corre el flujo completo de principio a fin — desde que se sube la RFP en la Parte 1 hasta que se genera el documento final aquí — y revisa que se sienta como un solo proceso: sin saltos de estado raros, sin mensajes que no coincidan entre partes, sin pasos que se rompan en la transición de una parte a otra.
-> >
-> > **Acceptance criteria:** Una RFP puede recorrer las tres partes de punta a punta, pausarse para aprobación humana por departamento sin bloquear a los demás, y terminar en un documento final generado automáticamente, con trazabilidad completa de cada paso.
-> >
-> > — Tu tech lead
+> **Contexto:** Ya generamos y autoevaluamos cada sección de la propuesta, pero nadie va a firmar una propuesta económica sin que un humano de cada departamento le dé el visto bueno. Esta es la última pieza del flujo que empezamos en la Parte 1 — y tiene que sentirse como una sola experiencia, no como tres proyectos pegados con cinta.
+>
+> **Qué necesito que construyas:**
+>
+> - Antes de dar por aprobada la sección de un departamento, el flujo debe pasar por un punto de aprobación humana real — un _human-in-the-loop_, no solo un evaluador automático más.
+> - El flujo debe detenerse justo antes de esa acción irreversible, guardar el estado con un checkpointer, y poder reanudarse exactamente donde quedó cuando llegue la aprobación — no reiniciar desde cero.
+> - Esa pausa debe afectar solo la rama del departamento que está esperando aprobación; los demás departamentos que ya tengan su sección lista deben poder seguir avanzando en paralelo, no bloquearse entre sí.
+> - Define un límite de iteraciones y un nodo de arbitraje explícito para los desacuerdos entre departamentos. Conéctalo a los triggers de conflicto y al árbitro fijo de tu CONTEXT (reglas o un humano nombrado — no un LLM “votando” entre agentes).
+> - Cuando todos los departamentos den su _sign-off_, el documento final debe generarse solo, consolidando las secciones aprobadas.
+> - Quiero poder ver, para cualquier ejecución, qué agente hizo qué y en qué orden, porque cuando algo salga mal en producción no vamos a tener tiempo de adivinar.
+>   > Cuando termines, corre el flujo completo de principio a fin — desde que se sube la RFP en la Parte 1 hasta que se genera el documento final aquí — y revisa que se sienta como un solo proceso: sin saltos de estado raros, sin mensajes que no coincidan entre partes, sin pasos que se rompan en la transición de una parte a otra.
+>   >
+>   > **Acceptance criteria:** Una RFP puede recorrer las tres partes de punta a punta, pausarse para aprobación humana por departamento sin bloquear a los demás, y terminar en un documento final generado automáticamente, con trazabilidad completa de cada paso.
+>   >
+>   > — Tu tech lead
 
 ### 📚 Conocimiento complementario: cuándo interrumpir y cuándo poner un guardrail
 
@@ -59,6 +58,8 @@ No todo control debe pausar el flujo para un humano. Los guardrails (validacione
 Cuando los tickets de asignación por departamento de la Parte 2 están **totalmente aprobados**, un **ultimate document synthesizer** compila el documento final acordado y lo entrega a Ventas — las ramas por departamento aprueban de forma independiente y luego convergen:
 
 ![Aprobación y cierre del documento: tickets de asignación por departamento con estado de aprobación convergen en el ultimate document synthesizer, que produce el documento final acordado para el equipo de Ventas](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-produce/.learn/approval-document-completion.jpg)
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

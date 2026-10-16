@@ -36,6 +36,8 @@ Dos requisitos quedan implícitos en ese brief y son fáciles de pasar por alto:
 
 Es tentador resolver esto indexando los tickets en el mismo vector store del RAG. No lo hagas: los tickets cambian de estado en tiempo real, y el RAG está pensado para conocimiento relativamente estable (políticas, procedimientos). Una **tool** que llama directamente al endpoint del gestor de incidentes siempre te da el dato actual; una copia indexada del ticket queda desactualizada en el momento en que alguien cambia su estado. Esta es la diferencia entre "conocimiento" (RAG) y "datos operativos en vivo" (tool call).
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar

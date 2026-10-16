@@ -46,6 +46,8 @@ Es fácil confundir tres cosas distintas. **Observabilidad** es simplemente pode
 
 **Fuera de alcance para esta parte:** puedes _mostrar_ qué acciones estarían disponibles según el estado del agente (por ejemplo, una etiqueta "pausa disponible" o "requiere aprobación"), pero no implementes que esas acciones realmente se ejecuten — eso es la [Parte 2](../ai-eng-milestone-real-time-agent-control). Tampoco toques la lógica interna de aprobación que ya existe en tu flujo multiagente; este panel la observa desde afuera, no la reemplaza.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

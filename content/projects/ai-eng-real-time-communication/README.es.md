@@ -31,6 +31,8 @@ Algunos requisitos quedan implícitos y tendrás que identificarlos con cuidado:
 
 **Fuera de alcance en esta parte:** no vas a construir un agente nuevo ni a cambiar sus herramientas o su memoria. El agente de soporte que ya tienes es el mismo — lo que cambia es cómo se comunica con el usuario.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

@@ -90,13 +90,13 @@ flowchart TD
 
 ### Brief del tech lead
 
-> > **Ticket #onb-016 — Agente de onboarding con memoria persistente**
-> >
-> > **Workspace:** crear un workspace nuevo, completamente aislado del workspace personal. El agente de onboarding no debe compartir configuración, contexto ni canales con el agente personal. Esto es un requisito de separación de responsabilidades, no una preferencia.
-> >
-> > **Punto crítico de seguridad:** el mecanismo de pairing de OpenClaw requiere aprobación manual por defecto. Esto es inviable en este flujo: no podemos pedir a RRHH que apruebe manualmente cada Telegram que escriba al bot. La solución es un skill con un script que apruebe automáticamente los pairings pendientes **si y solo si** recibe el código de verificación correcto como argumento. El script corre en el servidor, no desde el chat — esto es intencional y no debe cambiarse.
-> >
-> > **Criterio de aceptación principal:** el agente debe ser capaz de retomar cualquier proceso de onboarding activo tras un reinicio sin perder el estado de ningún empleado. Si esto no funciona, el agente no está listo para producción.
+> **Ticket #onb-016 — Agente de onboarding con memoria persistente**
+>
+> **Workspace:** crear un workspace nuevo, completamente aislado del workspace personal. El agente de onboarding no debe compartir configuración, contexto ni canales con el agente personal. Esto es un requisito de separación de responsabilidades, no una preferencia.
+>
+> **Punto crítico de seguridad:** el mecanismo de pairing de OpenClaw requiere aprobación manual por defecto. Esto es inviable en este flujo: no podemos pedir a RRHH que apruebe manualmente cada Telegram que escriba al bot. La solución es un skill con un script que apruebe automáticamente los pairings pendientes **si y solo si** recibe el código de verificación correcto como argumento. El script corre en el servidor, no desde el chat — esto es intencional y no debe cambiarse.
+>
+> **Criterio de aceptación principal:** el agente debe ser capaz de retomar cualquier proceso de onboarding activo tras un reinicio sin perder el estado de ningún empleado. Si esto no funciona, el agente no está listo para producción.
 
 ---
 
@@ -128,7 +128,7 @@ flowchart TD
 ### Configuración de memoria
 
 - [ ] Crear un archivo `MEMORY-DECISION.md` que justifique el tipo de memoria de OpenClaw elegido (`Memory.md` o `/memory`), la estrategia de búsqueda adoptada (exacta, textual o semántica vía QMD) y por qué ambas decisiones son coherentes con el caso de uso
-- [ ] En `MEMORY-DECISION.md`, incluir una sección de **Amnesia de contexto**: responder *«¿Qué debe recordar el agente si reinicia mañana?»*, listar qué persistes, dónde se guarda cada dato, cómo QMD lo recupera y cómo verificaste la recuperación tras un reinicio
+- [ ] En `MEMORY-DECISION.md`, incluir una sección de **Amnesia de contexto**: responder _«¿Qué debe recordar el agente si reinicia mañana?»_, listar qué persistes, dónde se guarda cada dato, cómo QMD lo recupera y cómo verificaste la recuperación tras un reinicio
 - [ ] Instalar y configurar **QMD** como método de búsqueda de memoria, con búsqueda por palabras clave, similitud semántica y reranking activados; documentar al menos una consulta de prueba y su resultado en `MEMORY-DECISION.md`
 - [ ] Configurar la memoria del agente para registrar el estado de onboarding de cada empleado: nombre, correo electrónico, estado actual, entregables recibidos y fecha de inicio del proceso
 - [ ] Implementar la lógica que clasifica cada proceso en uno de tres estados — **no iniciado**, **activo** o **terminado** — y mantiene esa clasificación actualizada en memoria para que el resumen matutino la refleje correctamente
@@ -145,7 +145,7 @@ flowchart TD
 
 ### Entregable opcional — reflexión sobre mem0
 
-- [ ] *(Opcional)* Añadir un archivo `MEM0-REFLECTION.md` (o una sección dedicada en `MEMORY-DECISION.md`) que explique cómo una capa de memoria externa como **mem0** podría mejorar esta solución de onboarding: qué problemas resolvería mejor que `Memory.md` + `/memory` + QMD y qué trade-offs introduciría
+- [ ] _(Opcional)_ Añadir un archivo `MEM0-REFLECTION.md` (o una sección dedicada en `MEMORY-DECISION.md`) que explique cómo una capa de memoria externa como **mem0** podría mejorar esta solución de onboarding: qué problemas resolvería mejor que `Memory.md` + `/memory` + QMD y qué trade-offs introduciría
 
 ⚠️ **IMPORTANTE:** Los roles de RRHH, los campos del empleado, las instrucciones de onboarding y los entregables requeridos deben corresponderse exactamente con lo especificado en tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**. Una implementación genérica que ignore el contexto no será aceptada.
 

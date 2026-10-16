@@ -27,13 +27,13 @@ Cada evento de tu catálogo — obligatorio o identificado por ti — debe captu
 
 > Tu tech lead te envió este mensaje:
 >
-> > "Quiero ver eventos fluyendo antes de construir la capa de almacenamiento. Crea el `TelemetryService` en el backoffice e instrumenta, como mínimo, todas las métricas obligatorias de tu CONTEXT — y tantas del resto de tu catálogo como te alcance el día, priorizando cubrir distintas categorías (técnicas y de negocio) antes que profundizar en una sola.
-> >
-> > Para verificar que el payload llega bien, agrega un endpoint stub en el backend — valida el formato y devuelve 200, sin escribir en base de datos todavía.
-> >
-> > Una cosa importante: configura la URL del endpoint como variable de entorno desde el inicio. En la siguiente fase vamos a reemplazar el stub por la implementación real y el frontend no debería necesitar ningún cambio.
-> >
-> > No quiero tracking disperso en cada componente. Todo pasa por una única función `track()` — nada más."
+> "Quiero ver eventos fluyendo antes de construir la capa de almacenamiento. Crea el `TelemetryService` en el backoffice e instrumenta, como mínimo, todas las métricas obligatorias de tu CONTEXT — y tantas del resto de tu catálogo como te alcance el día, priorizando cubrir distintas categorías (técnicas y de negocio) antes que profundizar en una sola.
+>
+> Para verificar que el payload llega bien, agrega un endpoint stub en el backend — valida el formato y devuelve 200, sin escribir en base de datos todavía.
+>
+> Una cosa importante: configura la URL del endpoint como variable de entorno desde el inicio. En la siguiente fase vamos a reemplazar el stub por la implementación real y el frontend no debería necesitar ningún cambio.
+>
+> No quiero tracking disperso en cada componente. Todo pasa por una única función `track()` — nada más."
 
 ---
 
@@ -50,6 +50,8 @@ El servicio de captura del frontend no dispara una llamada HTTP por cada evento 
 **El endpoint como variable de entorno:** en entornos reales, los equipos de frontend y backend trabajan en paralelo. El frontend apunta a `NEXT_PUBLIC_TELEMETRY_ENDPOINT` — hoy esa variable apunta al stub; mañana apuntará al endpoint real con persistencia. El frontend no cambia.
 
 **La separación perfil/uso:** los datos del usuario (nombre, rol, preferencias) son estado persistente que vive en la base de datos principal. Los datos de uso son eventos `append-only` que van a telemetría. Nunca mezcles ambos.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

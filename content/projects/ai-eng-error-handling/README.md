@@ -38,6 +38,8 @@ Your task is to audit the entire existing repository and apply a consistent erro
 
 This is a cross-cutting engineering task — not a new feature. The deliverable is a cleaner, more resilient version of the codebase you've already built. By the end of this project, any user who encounters a problem in your platform will know what happened and what to do next.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

@@ -34,17 +34,17 @@ The opposite trap is writing 20 pages of spec for a CRUD. Spec formality should 
 > **From:** your CTO
 > **Subject:** first business requirement — inventory
 >
-> > Before the agent writes a single line of code for this module, I want to see the spec. Not the code — the spec. That's the artifact I'm going to review and approve, and only after approval do we move to implementation.
-> >
-> > The requirement, in one sentence: the operations team needs to register inventory items, log their inbound, outbound, and adjustment movements, and know at all times what's below the reorder point. Entity names, units of measure, and domain values come from your CONTEXT, not from your imagination.
-> >
-> > There's one thing that's not negotiable, and I want it as an explicit acceptance criterion, not a side note: an item's stock is calculated from its movements. There is no endpoint, no form field, and no operation that edits stock directly. If your spec doesn't say that with that level of clarity, the agent is going to get it wrong, and it won't be its fault.
-> >
-> > Write the acceptance criteria in EARS format — I want verifiable sentences, not descriptions. Break the work into tasks small enough that each one can be verified independently; the bigger the unit you hand the agent, the more it diverges from what you asked for.
-> >
-> > Once spec, plan, and tasks are approved, here's what happens next: I'm going to send you a requirement change mid-stream, like always happens. When it lands, the spec gets edited first and the affected tasks get regenerated from there — never the other way around. If I find you patching code without having touched the spec first, that part gets discarded and redone.
-> >
-> > Every task needs to stay connected to the acceptance criterion it verifies and the commit that implements it. I want to be able to go from a requirement to its test and from a test to its commit without having to ask you anything.
+> Before the agent writes a single line of code for this module, I want to see the spec. Not the code — the spec. That's the artifact I'm going to review and approve, and only after approval do we move to implementation.
+>
+> The requirement, in one sentence: the operations team needs to register inventory items, log their inbound, outbound, and adjustment movements, and know at all times what's below the reorder point. Entity names, units of measure, and domain values come from your CONTEXT, not from your imagination.
+>
+> There's one thing that's not negotiable, and I want it as an explicit acceptance criterion, not a side note: an item's stock is calculated from its movements. There is no endpoint, no form field, and no operation that edits stock directly. If your spec doesn't say that with that level of clarity, the agent is going to get it wrong, and it won't be its fault.
+>
+> Write the acceptance criteria in EARS format — I want verifiable sentences, not descriptions. Break the work into tasks small enough that each one can be verified independently; the bigger the unit you hand the agent, the more it diverges from what you asked for.
+>
+> Once spec, plan, and tasks are approved, here's what happens next: I'm going to send you a requirement change mid-stream, like always happens. When it lands, the spec gets edited first and the affected tasks get regenerated from there — never the other way around. If I find you patching code without having touched the spec first, that part gets discarded and redone.
+>
+> Every task needs to stay connected to the acceptance criterion it verifies and the commit that implements it. I want to be able to go from a requirement to its test and from a test to its commit without having to ask you anything.
 >
 > — Handoff to the operations team as soon as the verification suite is green.
 
@@ -61,6 +61,8 @@ The opposite trap is writing 20 pages of spec for a CRUD. Spec formality should 
 The **three layers** of a spec don't belong in a single document: mixing them is a recognized anti-pattern. The _spec_ describes behavior, contracts, and invariants — the what. The _plan_ translates that into architectural decisions — the how. The _tasks_ break the plan down into atomic units, independently testable — the order. When a requirement changes, the spec gets edited, and only the affected tasks get regenerated from there — you never patch the code first and adjust the spec afterward to match.
 
 The spec doesn't replace the test suite — it originates it. The code remains the executable truth; the tests are the mechanism that checks that truth fulfills what the spec promised.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

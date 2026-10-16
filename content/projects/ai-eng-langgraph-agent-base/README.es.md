@@ -31,6 +31,8 @@ Un agente "ingenuo" es simplemente un `while` en Python: llamas al modelo, si pi
 
 LangGraph formaliza ese mismo loop como una máquina de estados: cada paso es un **nodo**, cada decisión sobre a dónde ir después es una **arista (edge)**, y el conjunto compilado es el **grafo**. Esto es lo que te permite, en la Parte 2, agregar una tool nueva sin tocar el resto del flujo: solo agregas un nodo y una arista condicional que decide cuándo usarla.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar

@@ -34,17 +34,17 @@ La segunda trampa es la contraria: escribir 20 páginas de spec para un CRUD. La
 > **De:** tu CTO
 > **Asunto:** primer requisito de negocio — inventario
 >
-> > Antes de que el agente escriba una sola línea de código de este módulo, quiero ver el spec. No el código — el spec. Ese es el artefacto que voy a revisar y aprobar, y solo después de aprobarlo se pasa a implementación.
-> >
-> > El requisito, en una frase: el equipo de operaciones necesita dar de alta artículos de inventario, registrar sus movimientos de entrada, salida y ajuste, y saber en todo momento qué está por debajo del punto de reorden. Los nombres de las entidades, las unidades de medida y los valores de dominio salen de tu CONTEXT, no de tu imaginación.
-> >
-> > Hay una cosa que no es negociable, y quiero que quede como criterio de aceptación explícito, no como una nota al margen: el stock de un artículo se calcula a partir de sus movimientos. No existe un endpoint, un campo de formulario ni una operación que edite el stock directamente. Si tu spec no lo dice con esa claridad, el agente lo va a hacer mal, y no será culpa suya.
-> >
-> > Escribe los criterios de aceptación en formato EARS — quiero frases verificables, no descripciones. Divide el trabajo en tareas lo bastante pequeñas como para que cada una se pueda verificar por separado; cuanto más grande la unidad que le entregas al agente, más diverge de lo que pediste.
-> >
-> > Una vez tengas spec, plan y tareas aprobados, seguimos con esto: te voy a mandar un cambio de requisito sobre la marcha, como pasa siempre. Cuando llegue, el spec se edita primero y las tareas afectadas se regeneran desde ahí — nunca al revés. Si te encuentro parcheando código sin haber tocado antes el spec, esa parte se descarta y se rehace.
-> >
-> > Cada tarea debe quedar conectada con el criterio de aceptación que verifica y con el commit que la implementa. Quiero poder ir de un requisito a su test y de un test a su commit sin tener que preguntarte nada.
+> Antes de que el agente escriba una sola línea de código de este módulo, quiero ver el spec. No el código — el spec. Ese es el artefacto que voy a revisar y aprobar, y solo después de aprobarlo se pasa a implementación.
+>
+> El requisito, en una frase: el equipo de operaciones necesita dar de alta artículos de inventario, registrar sus movimientos de entrada, salida y ajuste, y saber en todo momento qué está por debajo del punto de reorden. Los nombres de las entidades, las unidades de medida y los valores de dominio salen de tu CONTEXT, no de tu imaginación.
+>
+> Hay una cosa que no es negociable, y quiero que quede como criterio de aceptación explícito, no como una nota al margen: el stock de un artículo se calcula a partir de sus movimientos. No existe un endpoint, un campo de formulario ni una operación que edite el stock directamente. Si tu spec no lo dice con esa claridad, el agente lo va a hacer mal, y no será culpa suya.
+>
+> Escribe los criterios de aceptación en formato EARS — quiero frases verificables, no descripciones. Divide el trabajo en tareas lo bastante pequeñas como para que cada una se pueda verificar por separado; cuanto más grande la unidad que le entregas al agente, más diverge de lo que pediste.
+>
+> Una vez tengas spec, plan y tareas aprobados, seguimos con esto: te voy a mandar un cambio de requisito sobre la marcha, como pasa siempre. Cuando llegue, el spec se edita primero y las tareas afectadas se regeneran desde ahí — nunca al revés. Si te encuentro parcheando código sin haber tocado antes el spec, esa parte se descarta y se rehace.
+>
+> Cada tarea debe quedar conectada con el criterio de aceptación que verifica y con el commit que la implementa. Quiero poder ir de un requisito a su test y de un test a su commit sin tener que preguntarte nada.
 >
 > — Handoff al equipo de operaciones en cuanto la suite de verificación esté en verde.
 
@@ -61,6 +61,8 @@ La segunda trampa es la contraria: escribir 20 páginas de spec para un CRUD. La
 Las **tres capas** de un spec no van en un único documento: mezclarlas es un antipatrón reconocido. El _spec_ describe comportamiento, contratos e invariantes — el qué. El _plan_ traduce eso en decisiones de arquitectura — el cómo. Las _tareas_ descomponen el plan en unidades atómicas, testeables por separado — el orden. Cuando cambia un requisito, se edita el spec, y desde ahí se regeneran solo las tareas afectadas — nunca se parchea el código primero y se ajusta el spec después para que cuadre.
 
 El spec no sustituye a la suite de tests, la origina. El código sigue siendo la verdad ejecutable; los tests son el mecanismo que comprueba que esa verdad cumple lo que el spec prometió.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

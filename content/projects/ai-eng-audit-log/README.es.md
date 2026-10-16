@@ -35,6 +35,8 @@ Tres exigencias del brief que se prestan a implementarse a medias si no las lees
 
 Un log técnico (errores, latencia, trazas) y un registro de auditoría no son lo mismo, aunque ambos "registran cosas". El registro de auditoría existe para responder preguntas de responsabilidad y cumplimiento — quién hizo qué sobre qué recurso — y por eso su diseño prioriza tres propiedades que un log técnico normalmente no necesita: **inmutabilidad** (no se puede alterar después de escrito), **completitud** (cubre toda acción sensible, no solo errores) y **atribución clara** (siempre hay un actor identificado, humano o de sistema). Una técnica común para reforzar la inmutabilidad es el encadenamiento por hash: cada entrada incluye el hash de la entrada anterior, de forma que alterar un registro pasado rompe visiblemente la cadena.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

@@ -49,6 +49,8 @@ If you haven't implemented JWT auth before, here's the mental model: when a user
 
 In FastAPI, this flow is implemented as a dependency. You write a function that extracts the token from the request, validates it, and returns the user object. Any route that declares that function as a dependency will automatically require authentication.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

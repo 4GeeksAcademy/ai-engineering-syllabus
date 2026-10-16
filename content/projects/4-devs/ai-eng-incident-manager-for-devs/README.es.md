@@ -32,15 +32,15 @@ La segunda trampa es escribir un contexto exclusivamente técnico. Un banco de m
 > **De:** tu CTO
 > **Asunto:** primer desarrollo del backoffice — incidencias
 >
-> > Antes de que empecemos a meter funcionalidad, necesito que el repositorio deje de depender de la memoria de quien lo montó.
-> >
-> > Tómate el brief en dos partes. La primera: recorre el código base, entiende las convenciones que ya están tomadas y déjalas escritas como reglas del proyecto. No las cambies porque no te gusten — si crees que alguna está mal, la anotas como propuesta y la discutimos; sobrescribir una convención de equipo por preferencia personal es la forma más rápida de romper un monorepo compartido.
-> >
-> > La segunda: monta el gestor de incidencias. Los stakeholders de operaciones necesitan registrar una incidencia venga del canal que venga, clasificarla, asignarla a un área responsable y saber en qué estado está. Los tipos, las severidades y los canales salen de tu CONTEXT, no de tu imaginación.
-> >
-> > Una cosa que no es negociable: cuando una incidencia cambia de estado o de responsable, quiero poder reconstruir después quién la movió y cuándo. Si eso no queda registrado, no hay gestor que valga.
-> >
-> > Los criterios de aceptación son los del checklist. El sign-off lo doy yo sobre el Pull Request, y voy a leer el historial de commits: si veo un único commit con todo dentro, lo devuelvo sin revisar.
+> Antes de que empecemos a meter funcionalidad, necesito que el repositorio deje de depender de la memoria de quien lo montó.
+>
+> Tómate el brief en dos partes. La primera: recorre el código base, entiende las convenciones que ya están tomadas y déjalas escritas como reglas del proyecto. No las cambies porque no te gusten — si crees que alguna está mal, la anotas como propuesta y la discutimos; sobrescribir una convención de equipo por preferencia personal es la forma más rápida de romper un monorepo compartido.
+>
+> La segunda: monta el gestor de incidencias. Los stakeholders de operaciones necesitan registrar una incidencia venga del canal que venga, clasificarla, asignarla a un área responsable y saber en qué estado está. Los tipos, las severidades y los canales salen de tu CONTEXT, no de tu imaginación.
+>
+> Una cosa que no es negociable: cuando una incidencia cambia de estado o de responsable, quiero poder reconstruir después quién la movió y cuándo. Si eso no queda registrado, no hay gestor que valga.
+>
+> Los criterios de aceptación son los del checklist. El sign-off lo doy yo sobre el Pull Request, y voy a leer el historial de commits: si veo un único commit con todo dentro, lo devuelvo sin revisar.
 >
 > — Handoff al equipo de operaciones en cuanto la funcionalidad esté verificada.
 
@@ -51,6 +51,8 @@ Un **banco de memoria** es un conjunto de documentos versionados en el propio re
 Un banco de memoria útil cubre, como mínimo, tres capas: **contexto de producto** (qué es la empresa, a quién sirve, qué problema resuelve esta área), **stack tecnológico** (qué hay montado y con qué se trabaja) y **estado actual** (qué está hecho, qué está en curso, qué decisiones quedaron cerradas). Es contenido curado y concreto: si divaga o repite lo que el agente ya puede leer del código, cuesta tokens sin aportar señal.
 
 Las **reglas** son distintas del banco de memoria: la memoria describe el proyecto, las reglas restringen cómo se trabaja sobre él.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

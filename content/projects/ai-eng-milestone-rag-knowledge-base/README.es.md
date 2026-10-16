@@ -47,6 +47,8 @@ Como estudiante de AI Engineering, usa los **modelos que proporciona 4Geeks** (i
 
 </details>
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar

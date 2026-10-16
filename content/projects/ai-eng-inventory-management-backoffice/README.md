@@ -29,21 +29,20 @@ Two requirements are embedded in the brief that are easy to miss: the outbound o
 
 ### Brief from your manager
 
-> > **From:** Operations Manager
-> > **To:** Technology Unit
-> >
-> > The backend team shipped the inventory API last sprint — great work. Now I need the interface. My team can't use Postman to log deliveries.
-> >
-> > Here's what I need in the backoffice:
-> >
-> > 1. A page that shows all products with their current stock. Color-code it — I want to see at a glance what is low.
-> > 2. A form to register an inbound order (a delivery we received).
-> > 3. A form to register an outbound order (a consumption or exit). It must show how much stock is available before I submit, so I don't accidentally log more than we have.
-> > 4. A read-only page showing all orders — entries and exits — with the product name and who created each one.
-> >
-> > All of these pages require login. If a user is not authenticated, redirect them to the login page.
-> >
-> > **Acceptance criteria**: all four views functional, authenticated, consuming live API data, with correct error handling on API failures.
+> **From:** Operations Manager
+> **To:** Technology Unit
+>
+> The backend team shipped the inventory API last sprint — great work. Now I need the interface. My team can't use Postman to log deliveries.
+>
+> Here's what I need in the backoffice:
+>
+> 1. A page that shows all products with their current stock. Color-code it — I want to see at a glance what is low.
+> 2. A form to register an inbound order (a delivery we received).
+> 3. A form to register an outbound order (a consumption or exit). It must show how much stock is available before I submit, so I don't accidentally log more than we have.
+> 4. A read-only page showing all orders — entries and exits — with the product name and who created each one.
+>    > All of these pages require login. If a user is not authenticated, redirect them to the login page.
+>    >
+>    > **Acceptance criteria**: all four views functional, authenticated, consuming live API data, with correct error handling on API failures.
 
 ---
 

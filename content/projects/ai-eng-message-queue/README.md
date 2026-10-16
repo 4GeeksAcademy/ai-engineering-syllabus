@@ -19,19 +19,19 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 Your company has a production API and a working data pipeline. But some operations still block the request-response cycle: processing a batch of records, generating a report, sending bulk notifications. While those operations run, the API cannot respond to other users. Your tech lead has filed the following ticket:
 
-> > **Ticket #DEV-55 — Async Task Queue with Redis and Celery**
-> >
-> > We need to decouple heavy operations from the API. When an endpoint receives a request that involves long-running work, it must enqueue the task and immediately return a `task_id` to the client. An independent worker processes the queue. The client can check the status of their task at any time.
-> >
-> > **Acceptance criteria:**
-> >
-> > - Redis runs as a broker in Docker. The API and workers connect to the same broker.
-> > - At least one existing operation in your API — the slowest one — is converted into an async task via Celery.
-> > - The endpoint that receives the request returns `202 Accepted` with a `task_id` immediately, without waiting for the task to finish.
-> > - A `GET /tasks/{task_id}` endpoint exists that returns the current task status (`pending`, `started`, `success`, `failure`) and the result when available.
-> > - If a task fails three times, it moves to a Dead Letter Queue (DLQ). The failure is recorded with `task_id`, attempt number, and error message.
-> > - Workers run as separate processes, not inside the FastAPI process.
-> > - Flower is running and accessible for monitoring the queue during development.
+> **Ticket #DEV-55 — Async Task Queue with Redis and Celery**
+>
+> We need to decouple heavy operations from the API. When an endpoint receives a request that involves long-running work, it must enqueue the task and immediately return a `task_id` to the client. An independent worker processes the queue. The client can check the status of their task at any time.
+>
+> **Acceptance criteria:**
+>
+> - Redis runs as a broker in Docker. The API and workers connect to the same broker.
+> - At least one existing operation in your API — the slowest one — is converted into an async task via Celery.
+> - The endpoint that receives the request returns `202 Accepted` with a `task_id` immediately, without waiting for the task to finish.
+> - A `GET /tasks/{task_id}` endpoint exists that returns the current task status (`pending`, `started`, `success`, `failure`) and the result when available.
+> - If a task fails three times, it moves to a Dead Letter Queue (DLQ). The failure is recorded with `task_id`, attempt number, and error message.
+> - Workers run as separate processes, not inside the FastAPI process.
+> - Flower is running and accessible for monitoring the queue during development.
 
 ### 📚 Complementary Knowledge — The Producer / Consumer Pattern
 
@@ -50,6 +50,8 @@ Three rules that always apply in this pattern:
 1. **Keep messages lightweight.** Never put a full blob (image, document, data batch) in the message. Pass the `id` or the path — the worker fetches it itself.
 2. **ACK only after success.** The message is confirmed as processed only when the worker finishes successfully. If the worker fails first, the message goes back to the queue for retry.
 3. **Every task has a timeout.** A worker that never finishes blocks the pool. Always define a maximum execution time.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

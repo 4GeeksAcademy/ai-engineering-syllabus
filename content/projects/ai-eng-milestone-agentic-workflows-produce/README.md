@@ -23,22 +23,21 @@ In Part 2 each department already generates and self-evaluates its section of th
 
 > **Ticket — Human approval and document completion**
 >
-> > **Context:** We already generate and self-evaluate every section of the proposal, but nobody is going to sign a pricing proposal without a human from each department giving the green light. This is the last piece of the flow we started in Part 1 — and it needs to feel like one continuous experience, not three projects taped together.
-> >
-> > **What I need you to build:**
-> >
-> > - Before a department's section is considered approved, the flow must go through a real human approval point — an actual human-in-the-loop, not just one more automatic evaluator.
-> > - The flow must pause right before that irreversible action, persist its state with a checkpointer, and be able to resume exactly where it left off once the approval comes in — not restart from scratch.
-> > - That pause should only affect the branch for the department that's waiting on approval; the other departments whose sections are already ready should be able to keep moving in parallel, not get blocked by each other.
-> > - Define an iteration limit and an explicit arbitration node for disagreements between departments. Wire it to the conflict triggers and fixed arbiter in your CONTEXT (rules or a named human — not an LLM “voting” among agents).
-> > - Once every department has given its sign-off, the final document should generate itself, consolidating the approved sections.
-> > - I want to be able to see, for any run, which agent did what and in what order, because when something breaks in production we won't have time to guess.
-> >
-> > Once you're done, run the complete flow end to end — from uploading the RFP in Part 1 to generating the final document here — and check that it feels like a single process: no weird state jumps, no messages that don't match up between parts, no steps that break in the handoff from one part to the next.
-> >
-> > **Acceptance criteria:** An RFP can travel through all three parts end to end, pause for human approval per department without blocking the others, and finish with a final document generated automatically, with full traceability of every step.
-> >
-> > — Your tech lead
+> **Context:** We already generate and self-evaluate every section of the proposal, but nobody is going to sign a pricing proposal without a human from each department giving the green light. This is the last piece of the flow we started in Part 1 — and it needs to feel like one continuous experience, not three projects taped together.
+>
+> **What I need you to build:**
+>
+> - Before a department's section is considered approved, the flow must go through a real human approval point — an actual human-in-the-loop, not just one more automatic evaluator.
+> - The flow must pause right before that irreversible action, persist its state with a checkpointer, and be able to resume exactly where it left off once the approval comes in — not restart from scratch.
+> - That pause should only affect the branch for the department that's waiting on approval; the other departments whose sections are already ready should be able to keep moving in parallel, not get blocked by each other.
+> - Define an iteration limit and an explicit arbitration node for disagreements between departments. Wire it to the conflict triggers and fixed arbiter in your CONTEXT (rules or a named human — not an LLM “voting” among agents).
+> - Once every department has given its sign-off, the final document should generate itself, consolidating the approved sections.
+> - I want to be able to see, for any run, which agent did what and in what order, because when something breaks in production we won't have time to guess.
+>   > Once you're done, run the complete flow end to end — from uploading the RFP in Part 1 to generating the final document here — and check that it feels like a single process: no weird state jumps, no messages that don't match up between parts, no steps that break in the handoff from one part to the next.
+>   >
+>   > **Acceptance criteria:** An RFP can travel through all three parts end to end, pause for human approval per department without blocking the others, and finish with a final document generated automatically, with full traceability of every step.
+>   >
+>   > — Your tech lead
 
 ### 📚 Complementary Knowledge: when to interrupt and when to use a guardrail
 
@@ -59,6 +58,8 @@ Do **not** invent orphan statuses; keep earlier Part 1/2 values on the same row 
 Once department assignment tickets from Part 2 are **fully approved**, an **ultimate document synthesizer** compiles the final agreed-upon document and delivers it to Sales — parallel department branches approve independently, then converge:
 
 ![Approval and document completion: department assignment tickets with approval status converge into ultimate document synthesizer, producing the final agreed-upon document for the Sales team](https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-agentic-workflows-produce/.learn/approval-document-completion.jpg)
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

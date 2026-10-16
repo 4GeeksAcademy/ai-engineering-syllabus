@@ -110,6 +110,8 @@ With only a handful of rows, almost every endpoint looks fast — timing logs wi
 
 > ⚠️ Do not cache everything that looks slow: measure first, then prioritise cases where cost × frequency × stability justify the freshness/performance tradeoff.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

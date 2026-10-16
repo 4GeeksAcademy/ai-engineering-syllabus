@@ -40,13 +40,15 @@ Two concepts you will need to apply today:
 
 > Your tech lead sent you this message:
 >
-> > "We've had the inventory system running for weeks and the operations team is starting to ask things we can't answer: how many outbound orders are registered per day? Which products accumulate the most validation errors? Are there users attempting to modify stock directly and getting rejected by the system? When do the minimum stock threshold alerts fire the most?
-> >
-> > And it's not just the inventory. The backoffice has other sections that are black boxes today: how many failed login attempts happen per day? Which sections do operators visit most? Are there flows that get abandoned halfway through? Any part of the application a user — or a process — touches is a data opportunity.
-> >
-> > Before we instrument anything, I need a design document. Don't limit yourself to a handful of business metrics: I want the most complete catalogue you can build, covering both the technical health of the system and the business questions — even if we don't know exactly what we'll use them for yet. I've already left you the metrics we need no matter what in your CONTEXT — implement those without fail, and keep exploring from there. Don't write code yet — write the plan the team will implement tomorrow."
-> >
-> > The deliverable is a **Telemetry Plan** in Markdown plus a JSON schema file. We review on Friday."
+> "We've had the inventory system running for weeks and the operations team is starting to ask things we can't answer: how many outbound orders are registered per day? Which products accumulate the most validation errors? Are there users attempting to modify stock directly and getting rejected by the system? When do the minimum stock threshold alerts fire the most?
+>
+> And it's not just the inventory. The backoffice has other sections that are black boxes today: how many failed login attempts happen per day? Which sections do operators visit most? Are there flows that get abandoned halfway through? Any part of the application a user — or a process — touches is a data opportunity.
+>
+> Before we instrument anything, I need a design document. Don't limit yourself to a handful of business metrics: I want the most complete catalogue you can build, covering both the technical health of the system and the business questions — even if we don't know exactly what we'll use them for yet. I've already left you the metrics we need no matter what in your CONTEXT — implement those without fail, and keep exploring from there. Don't write code yet — write the plan the team will implement tomorrow."
+>
+> The deliverable is a **Telemetry Plan** in Markdown plus a JSON schema file. We review on Friday."
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

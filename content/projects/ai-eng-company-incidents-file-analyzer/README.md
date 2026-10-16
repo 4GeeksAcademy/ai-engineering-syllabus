@@ -31,6 +31,8 @@ Your tech lead has decided to proceed in two phases. First, a Python script to q
 
 Real-world data always has problems. For this project, a record is considered **invalid** if it is missing at least one of the required fields defined in your CONTEXT, or if it contains a value in a field that is not within the allowed set (statuses and categories). The logic must detect them, count them, and exclude them from the main analysis — but never silently ignore them.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

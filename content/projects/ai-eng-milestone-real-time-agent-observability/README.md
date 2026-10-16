@@ -46,6 +46,8 @@ It's easy to conflate three different things. **Observability** is simply being 
 
 **Out of scope for this part:** you can _display_ which actions would be available given the agent's current status (e.g., a "pause available" or "requires approval" tag), but don't implement actually executing those actions — that's [Part 2](../ai-eng-milestone-real-time-agent-control). Don't touch the existing internal approval logic in your multi-agent flow either; this panel observes it from the outside, it doesn't replace it.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

@@ -27,11 +27,11 @@ The deliverable is a single change in the backend — but a change that transfor
 
 > Your tech lead sent you this message:
 >
-> > "The stub has done its job — I know the events arrive with the correct format. Now I need you to save them.
-> >
-> > Create the table in Supabase and replace the stub with the real endpoint. The Pydantic model you defined in the previous phase is the contract — use it to validate. Events that don't meet the contract are rejected individually, but the rest of the batch is persisted regardless.
-> >
-> > The frontend doesn't touch anything. The endpoint URL is the same — only what happens inside the backend when the batch arrives changes. If the frontend needs to change anything for this to work, the design is wrong."
+> "The stub has done its job — I know the events arrive with the correct format. Now I need you to save them.
+>
+> Create the table in Supabase and replace the stub with the real endpoint. The Pydantic model you defined in the previous phase is the contract — use it to validate. Events that don't meet the contract are rejected individually, but the rest of the batch is persisted regardless.
+>
+> The frontend doesn't touch anything. The endpoint URL is the same — only what happens inside the backend when the batch arrives changes. If the frontend needs to change anything for this to work, the design is wrong."
 
 ---
 
@@ -68,6 +68,8 @@ Use **per-event parsing** instead:
 | Per-event parsing (`model_validate` in a loop) | Valid events stored; invalid ones counted in `rejected` |
 
 The model is reused unchanged from Phase 2 — you use it as a **per-item validator**, not as the type of the full request body.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

@@ -45,6 +45,8 @@ You already saw this distinction in Part 1, but now it really matters: the contr
 
 **Out of scope for this part:** don't duplicate or replace the existing business-approval logic in your multi-agent flow — your new control actions coexist with it, they don't replace it.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

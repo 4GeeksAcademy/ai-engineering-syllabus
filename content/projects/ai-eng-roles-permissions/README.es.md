@@ -37,6 +37,8 @@ Tres requisitos quedan implícitos en ese brief y **debes identificarlos leyendo
 
 Es fácil confundir estos dos conceptos porque ambos "restringen" algo, pero restringen cosas distintas. El **rol** responde a la pregunta _"¿qué puede hacer esta persona en el sistema?"_ — es sobre capacidades y responsabilidad (crear, aprobar, eliminar, administrar usuarios). El **departamento** responde a _"¿qué información le compete a esta persona?"_ — es sobre alcance de datos (ver reportes de su área, no de todas). Un diseño correcto evalúa ambos ejes en cada decisión de acceso: primero si el rol permite la acción, después si el departamento permite ver ese dato concreto.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Empezar el Proyecto

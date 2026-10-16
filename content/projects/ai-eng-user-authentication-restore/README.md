@@ -66,6 +66,8 @@ The flow has three steps and two separate moments in time:
 
 **Token expiry and reuse.** A reset token should last 15–60 minutes and must be unusable after one successful reset. A JWT with only an `exp` claim cannot be invalidated after use. Persist server-side state: a hashed token row, a used-token record, or a `password_changed_at` timestamp that rejects tokens issued before that moment. Encoding expiry in the JWT payload is not enough.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

@@ -83,6 +83,8 @@ src/
 You can include a simple HTML page with Tailwind CSS to manually test your functions if you wish, but the main focus is on the TypeScript logic.
 At minimum, your project must include a clear command to validate or execute the TypeScript code during development, such as `npx tsc --noEmit`, `npm run typecheck`, or `npx tsx src/demo.ts`.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

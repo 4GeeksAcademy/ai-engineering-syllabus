@@ -27,13 +27,13 @@ The deliverable is a Python analysis pipeline and an endpoint that serves the re
 
 > Your tech lead sent you this message:
 >
-> > "We have data. Now I need technical visibility into the system.
-> >
-> > Write the analysis pipeline. For each relevant operational dimension, one Python function that loads the relevant events, transforms them with Pandas, and returns a serialisable result. Then a `GET /telemetry/report` endpoint that serves them together.
-> >
-> > Two non-negotiable rules: first, don't calculate anything inside the endpoint on every request — the pipeline goes separately and the endpoint calls it, with cache. Second, convert timestamps to `datetime` before any grouping — if you don't, you'll get incorrect groups with no visible error, and you'll spend hours finding the bug.
-> >
-> > One important clarification: this is **not** the report for the CEO. No conversion rates, no revenue — we're going to build that with the data pipelines later. Today I want to know how healthy the system is: event volume, error rate, latency, which event types dominate. Metrics with a real temporal dimension, not a global number with no context."
+> "We have data. Now I need technical visibility into the system.
+>
+> Write the analysis pipeline. For each relevant operational dimension, one Python function that loads the relevant events, transforms them with Pandas, and returns a serialisable result. Then a `GET /telemetry/report` endpoint that serves them together.
+>
+> Two non-negotiable rules: first, don't calculate anything inside the endpoint on every request — the pipeline goes separately and the endpoint calls it, with cache. Second, convert timestamps to `datetime` before any grouping — if you don't, you'll get incorrect groups with no visible error, and you'll spend hours finding the bug.
+>
+> One important clarification: this is **not** the report for the CEO. No conversion rates, no revenue — we're going to build that with the data pipelines later. Today I want to know how healthy the system is: event volume, error rate, latency, which event types dominate. Metrics with a real temporal dimension, not a global number with no context."
 
 ---
 
@@ -79,6 +79,8 @@ METRIC = AGGREGATION(column) grouped by DIMENSION
 **Serve** the result as a list of dicts with `.reset_index().to_dict(orient='records')` — directly serialisable to JSON.
 
 **What not to do:** calculate the report inside the endpoint on every request. If the data does not change every second, the calculation goes in a separate function called once, with the result cached.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

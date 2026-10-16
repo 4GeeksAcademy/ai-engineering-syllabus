@@ -37,6 +37,8 @@ Three requirements are left implicit in that brief and **you need to catch them 
 
 It's easy to confuse these two concepts because both "restrict" something — but they restrict different things. **Role** answers _"what can this person do in the system?"_ — it's about capabilities and responsibility (create, approve, delete, manage users). **Department** answers _"what information concerns this person?"_ — it's about data scope (see their area's reports, not everyone's). A correct design evaluates both axes on every access decision: first whether the role allows the action, then whether the department allows visibility into that specific data.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

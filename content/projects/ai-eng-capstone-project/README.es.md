@@ -30,17 +30,17 @@ Esto no es un recorrido del temario. No narres semanas ni tickets. Vende el prod
 
 > **Brief — Handoff final de Talent y el equipo académico**
 >
-> > Necesitamos una demo lista para cliente del sistema, no una presentación de estudiante sobre el curso.
-> >
-> > Abre con el problema o el resultado en una frase — no con tu nombre. Después preséntate, el nombre del proyecto, el proceso que automatizaste y una línea de qué construiste.
-> >
-> > Lleva a un hiring manager por el flujo en vivo. Haz zoom en lo que importa. Habla como ingeniero: nombra un problema duro, el trade-off que elegiste y por qué. “Tuve que subir la precisión del retrieval, así que probé tres modelos de embeddings y me pasé a X” gana a “aprendí cómo funcionan los embeddings”.
-> >
-> > Cierra a cámara con las tres preguntas de Q&A exactamente como están escritas. Frases completas que incluyan la pregunta. Dos segundos enteros de silencio antes y después de cada respuesta — edición necesita un corte limpio.
-> >
-> > **Criterios de aceptación:** ~5 minutos, horizontal, audible, demo _de tu_ sistema de empresa, las cinco secciones presentes, Q&A usable como clips independientes, archivos nombrados y empaquetados como se indica, entregados como enlace de carpeta **permanente** de Google Drive, Microsoft OneDrive o similar.
-> >
-> > — Head of Talent, con sign-off de tu tech lead
+> Necesitamos una demo lista para cliente del sistema, no una presentación de estudiante sobre el curso.
+>
+> Abre con el problema o el resultado en una frase — no con tu nombre. Después preséntate, el nombre del proyecto, el proceso que automatizaste y una línea de qué construiste.
+>
+> Lleva a un hiring manager por el flujo en vivo. Haz zoom en lo que importa. Habla como ingeniero: nombra un problema duro, el trade-off que elegiste y por qué. “Tuve que subir la precisión del retrieval, así que probé tres modelos de embeddings y me pasé a X” gana a “aprendí cómo funcionan los embeddings”.
+>
+> Cierra a cámara con las tres preguntas de Q&A exactamente como están escritas. Frases completas que incluyan la pregunta. Dos segundos enteros de silencio antes y después de cada respuesta — edición necesita un corte limpio.
+>
+> **Criterios de aceptación:** ~5 minutos, horizontal, audible, demo _de tu_ sistema de empresa, las cinco secciones presentes, Q&A usable como clips independientes, archivos nombrados y empaquetados como se indica, entregados como enlace de carpeta **permanente** de Google Drive, Microsoft OneDrive o similar.
+>
+> — Head of Talent, con sign-off de tu tech lead
 
 Antes de grabar, sigue la **Lista de calidad de grabación** en _Qué debes hacer_. Luz, audio y encuadre deciden si el pitch se ve profesional.
 
@@ -54,6 +54,8 @@ Antes de grabar, sigue la **Lista de calidad de grabación** en _Qué debes hace
 - No tiene que ser perfecto — tiene que ser tú, explicando trabajo real con claridad
 
 El objetivo no es solo mostrar lo que creaste, sino demostrar que sabes comunicar el valor de una solución de IA — la skill que te contrata.
+
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
 ---
 

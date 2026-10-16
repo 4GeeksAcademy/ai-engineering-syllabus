@@ -39,6 +39,8 @@ A model with **underfitting** fails even on the training data: it didn't capture
 
 There is no universal "correct" curve — what matters is the relative pattern between the two lines.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

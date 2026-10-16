@@ -66,6 +66,8 @@ This site must work on any device, meet web accessibility standards, be optimize
 > Best,  
 > Your Manager
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start This Project

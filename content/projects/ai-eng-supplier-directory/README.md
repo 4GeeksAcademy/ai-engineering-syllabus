@@ -31,7 +31,9 @@ Your tech lead has decided to build a supplier management API using **FastAPI + 
 
 > **Note from your tech lead:**
 >
-> > _"I need the directory operational by Thursday. Use TinyDB — we'll migrate to Postgres once we have the ORM ready. The seeder must load all suppliers from the CONTEXT on startup; I don't want to see an empty database in the demo. Pydantic validates everything that comes in: if a supplier has no country or its status is not one of the two allowed values, the API rejects it with a 422 before it ever touches the database. Two search endpoints are non-negotiable: filter by country and filter by product category. And when a rate is updated, I want the timestamp of the change recorded — the team will need that for audits."_
+> _"I need the directory operational by Thursday. Use TinyDB — we'll migrate to Postgres once we have the ORM ready. The seeder must load all suppliers from the CONTEXT on startup; I don't want to see an empty database in the demo. Pydantic validates everything that comes in: if a supplier has no country or its status is not one of the two allowed values, the API rejects it with a 422 before it ever touches the database. Two search endpoints are non-negotiable: filter by country and filter by product category. And when a rate is updated, I want the timestamp of the change recorded — the team will need that for audits."_
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

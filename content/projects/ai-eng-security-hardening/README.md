@@ -33,6 +33,8 @@ Three requirements from the brief are worth clarifying before you start:
 
 The OWASP Top 10 is a list of the most common, highest-impact vulnerability categories in web applications — things like broken access control, cryptographic failures, injection, security misconfiguration, or components with known vulnerabilities. It's a good starting point because it's the list any technical reviewer expects you to know, but it isn't exhaustive: an application can pass all ten categories and still have problems specific to its own business logic (for example, an endpoint that exposes more data than it should, even with authentication correctly implemented). The goal of this project is to think like an attacker about your specific application, not just check off a generic list.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project

@@ -27,13 +27,15 @@ Local Compose is not enough. Once the containers work, you must also **deploy th
 
 > **Technical brief — Ticket #infra-40**
 >
-> > The team needs reproducible development environments. Every time someone new clones the repository, onboarding turns into a dependency debugging session.
-> >
-> > **Scope**: dockerize `/uis` (website + backoffice in a single UI container with hot reloading) and `/services` (FastAPI with `--reload`). Orchestration is managed with Docker Compose. Then deploy those containers to **production on your existing VPS**.
-> >
-> > **Acceptance criteria**: any team member can run `docker compose up` from the repository root and have the full platform running without additional steps; the same stack is also **running in production on your VPS**.
-> >
-> > Services communicate with each other **by Docker service name**, not by `localhost`. Review all inter-service connection URLs before sign-off.
+> The team needs reproducible development environments. Every time someone new clones the repository, onboarding turns into a dependency debugging session.
+>
+> **Scope**: dockerize `/uis` (website + backoffice in a single UI container with hot reloading) and `/services` (FastAPI with `--reload`). Orchestration is managed with Docker Compose. Then deploy those containers to **production on your existing VPS**.
+>
+> **Acceptance criteria**: any team member can run `docker compose up` from the repository root and have the full platform running without additional steps; the same stack is also **running in production on your VPS**.
+>
+> Services communicate with each other **by Docker service name**, not by `localhost`. Review all inter-service connection URLs before sign-off.
+
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
 ---
 

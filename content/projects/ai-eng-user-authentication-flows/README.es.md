@@ -46,6 +46,8 @@ Una vez que la API devuelve un token en el login, el trabajo del frontend es: al
 
 > **Nota:** La rotura temporal del frontend de la entrega anterior termina aquí. Al finalizar este proyecto, todas las vistas protegidas deben funcionar de extremo a extremo con autenticación real.
 
+> 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
+
 ---
 
 ## 🌱 Cómo Iniciar el Proyecto

@@ -41,6 +41,8 @@ As part of the challenge, your implementation must resolve — without being tol
 - What information to expose in discovery (tool names, descriptions, and schemas) so an external agent, with no prior human context, understands what it can and cannot do.
 - How to replace, inside the agent's graph, the node that called the Incidents Manager directly with tools from the MCP Server via `langchain-mcp-adapters` — without breaking the existing routing between RAG and tools.
 
+> 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
+
 ---
 
 ## 🌱 How to Start the Project
