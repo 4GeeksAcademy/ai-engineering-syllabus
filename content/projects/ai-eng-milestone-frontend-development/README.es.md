@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en inglés](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/03-frontend-development)** antes de escribir ningún código — define los datos específicos de tu empresa, los nombres de campos, valores del dominio y restricciones que debes respetar en tu implementación.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/03-frontend-development)** antes de escribir ningún código — define los datos específicos de tu empresa, los nombres de campos, valores del dominio y restricciones que debes respetar en tu implementación.
 
 ---
 
@@ -121,7 +121,7 @@ Si necesitas un recordatorio sobre cómo iniciar un proyecto, consulta [cómo in
 - [ ] Organiza el proyecto con una estructura de carpetas clara: `/components`, `/hooks` (si aplica), `/types`, `/lib` o `/services`.
 - [ ] Define tipos TypeScript para todas las estructuras de datos recibidas de la API.
 
-⚠️ **IMPORTANTE:** Los nombres de campos, etiquetas visibles, estados y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu **CONTEXT.md**. Por ejemplo, si tu empresa es TrackFlow, la interfaz debe sentirse como una herramienta interna del equipo de People & Talent de TrackFlow, aunque los nombres de campos de la API sigan siendo los definidos por el tracker backend. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, etiquetas visibles, estados y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu **BRIEFING.md**. Por ejemplo, si tu empresa es TrackFlow, la interfaz debe sentirse como una herramienta interna del equipo de People & Talent de TrackFlow, aunque los nombres de campos de la API sigan siendo los definidos por el tracker backend. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
 
 ⚠️ **IMPORTANTE:** Usa únicamente Next.js (App Router), React y TypeScript. No uses librerías externas de gestión de estado (Redux, Zustand, Jotai, etc.). El estado a nivel de componente con hooks es suficiente para este hito.
 

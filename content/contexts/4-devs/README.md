@@ -1,6 +1,6 @@
 # For Devs course — contexts
 
-Company CONTEXT files for projects under [`../../projects/4-devs`](../../projects/4-devs).
+Company BRIEFING files for projects under [`../../projects/4-devs`](../../projects/4-devs).
 
 | Folder                                                     | Used by                             |
 | ---------------------------------------------------------- | ----------------------------------- |

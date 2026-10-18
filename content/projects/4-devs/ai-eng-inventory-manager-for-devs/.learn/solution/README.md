@@ -4,7 +4,7 @@
 
 Spec Driven Development on the company monorepo: **spec → plan → tasks → implement → verify**, then absorb a mid-stream requirement change by editing the spec first.
 
-Domain catalogues (units, categories, locations/lots, reorder rules) come from `content/contexts/4-devs/inventory-manager-for-devs/`. Generic inventory that ignores CONTEXT fails review.
+Domain catalogues (units, categories, locations/lots, reorder rules) come from `content/contexts/4-devs/inventory-manager-for-devs/`. Generic inventory that ignores BRIEFING fails review.
 
 Builds on existing `.agents/rules` and `memory-bank/` — specs must not restate them; they extend them.
 
@@ -42,7 +42,7 @@ Branch: `feature/inventory-manager`. One commit per implemented task (reference 
 
 ### Implementation
 
-- Item CRUD with CONTEXT fields.
+- Item CRUD with BRIEFING fields.
 - Movements: inbound, outbound, adjustment — each with reason + timestamp.
 - Available stock = calculation from movements (no direct stock write path).
 - Reorder point per item; backoffice visibly flags below-reorder items.
@@ -75,7 +75,7 @@ Exact ids/wording are student-owned; presence of invariant + unwanted cases is n
 - [ ] EARS criteria with unique ids; stock invariant explicit + tested
 - [ ] Unwanted: negative stock, missing item/lot — criteria + tests
 - [ ] Tasks ↔ criterion ids; commits ↔ task ids
-- [ ] Items + inbound/outbound/adjustment; CONTEXT domain values
+- [ ] Items + inbound/outbound/adjustment; BRIEFING domain values
 - [ ] Below-reorder visible in backoffice
 - [ ] Requirement change: spec-first, partial task regen documented in PR
 - [ ] Commit history split by tasks

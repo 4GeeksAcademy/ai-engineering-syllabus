@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 **Antes de empezar**: necesitas el `TelemetryService` funcionando en el frontend y enviando lotes al stub del proyecto anterior. Si los eventos no llegan al stub con respuesta 200, resuelve eso antes de continuar — hoy construyes el destino real de esos eventos.
 
-Tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** explica qué campos del envelope y qué dimensiones de `tags` importan para el análisis de tu compañía — confirma que los campos opcionales que guardes en `tags` coinciden con lo documentado en `telemetry-plan.md`.
+Tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** explica qué campos del envelope y qué dimensiones de `tags` importan para el análisis de tu compañía — confirma que los campos opcionales que guardes en `tags` coinciden con lo documentado en `telemetry-plan.md`.
 
 ---
 
@@ -76,7 +76,7 @@ El modelo se reutiliza sin cambios desde la Fase 2 — lo usas como **validador 
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Abre tu copia del monorepo y ubica `services/` (backend FastAPI).
-2. Ten a mano tu `docs/telemetry/event-schemas.json` y `telemetry-plan.md` — confirma que el mapeo a `tags` preserva las dimensiones específicas de tu CONTEXT (almacén, oficina, etc.) definidas en tu plan.
+2. Ten a mano tu `docs/telemetry/event-schemas.json` y `telemetry-plan.md` — confirma que el mapeo a `tags` preserva las dimensiones específicas de tu BRIEFING (almacén, oficina, etc.) definidas en tu plan.
 3. El frontend no se toca. Verifica que `NEXT_PUBLIC_TELEMETRY_ENDPOINT` siga apuntando al mismo endpoint — solo cambia lo que pasa dentro del backend.
 4. Sigue el orden: tabla en Supabase → endpoint real → verificación end-to-end.
 
@@ -142,7 +142,7 @@ El modelo se reutiliza sin cambios desde la Fase 2 — lo usas como **validador 
 - [ ] El modelo Pydantic `TelemetryEvent` no fue modificado desde el proyecto anterior — se reutiliza tal cual
 - [ ] El frontend no cambió ni una línea — la sustitución stub → real es completamente transparente
 - [ ] Los eventos aparecen en `telemetry_events` con `event_type`, `timestamp` y `tags` correctamente poblados, tanto para eventos técnicos como de negocio
-- [ ] El `tags` guardado preserva los allowlists de propiedades y las dimensiones específicas del CONTEXT documentadas en `telemetry-plan.md`
+- [ ] El `tags` guardado preserva los allowlists de propiedades y las dimensiones específicas del BRIEFING documentadas en `telemetry-plan.md`
 - [ ] El insert es una sola operación por lote, no un INSERT por evento
 
 ---

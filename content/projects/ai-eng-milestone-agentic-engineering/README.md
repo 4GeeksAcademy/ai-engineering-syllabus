@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/08-agent-engineering/memory)** — it defines what information must never enter your agent's memory, and what kinds of facts are actually worth remembering at your company.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/08-agent-engineering/memory)** — it defines what information must never enter your agent's memory, and what kinds of facts are actually worth remembering at your company.
 
 ---
 
@@ -19,7 +19,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 > 📌 You are building on **your own fork** of the company's **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** selected at the beginning of the course — not on a new repository.
 
-Your company already has a **RAG knowledge base** from an earlier milestone — a document store the model can consult. That is **not** the same product as this agent. The agent you extend here has its own identity (see your CONTEXT: manager support, CX, compliance, first-line support, …). It may **call** RAG as a tool; it does not become the commercial Q&A UI. The problem is that every conversation still starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
+Your company already has a **RAG knowledge base** from an earlier milestone — a document store the model can consult. That is **not** the same product as this agent. The agent you extend here has its own identity (see your BRIEFING: manager support, CX, compliance, first-line support, …). It may **call** RAG as a tool; it does not become the commercial Q&A UI. The problem is that every conversation still starts from zero: it doesn't remember that a similar escalation was resolved yesterday, or that a user already corrected a piece of data last week. Your tech lead opened a **ticket** after two different clients had to repeat the same correction three times in the same week.
 
 ### 🧠 Complementary Knowledge: Memory Architectures
 
@@ -65,7 +65,7 @@ git switch -c feature/agent-memory
 - [ ] **Do not write memory into the company RAG collections** (`*_knowledge` / company Qdrant knowledge store). RAG stays a **read-only tool**. Memory uses a separate store or a clearly named non-knowledge collection (e.g. Redis, KV, or `*_agent_memory`). Mixing episodic/approved facts into curated docs breaks retrieval evals and poison controls.
 - [ ] Implement an explicit read/write memory interface — the agent must not accumulate state by simply appending everything to the system prompt.
 
-⚠️ **IMPORTANT:** Which facts are memorable and which are strictly forbidden to store must match exactly what's specified in your CONTEXT-company.md. A generic implementation that ignores those restrictions will not be accepted.
+⚠️ **IMPORTANT:** Which facts are memorable and which are strictly forbidden to store must match exactly what's specified in your company-BRIEFING.md. A generic implementation that ignores those restrictions will not be accepted.
 
 ### Self-Evaluation and Memory Proposal
 
@@ -98,7 +98,7 @@ git switch -c feature/agent-memory
 As part of the challenge, your implementation must resolve — without being told explicitly in a checklist — the following decisions:
 
 - What kind(s) of memory (episodic, semantic/vector, knowledge graph) does your company actually need, and why did you rule out the other options?
-- What information should never enter the agent's memory, no matter who asks for it? Check your CONTEXT — some companies have non-negotiable restrictions here.
+- What information should never enter the agent's memory, no matter who asks for it? Check your BRIEFING — some companies have non-negotiable restrictions here.
 - How does the agent decide what to forget, and what happens to a pending proposal if the user never responds?
 - How do you prevent a malicious user from "poisoning" the agent's memory with false information presented as a legitimate correction?
 - Why doesn't this require a multi-agent architecture to solve self-evaluation and the memory proposal? Justify your answer with what you implemented.
@@ -117,7 +117,7 @@ As part of the challenge, your implementation must resolve — without being tol
 - [ ] Every proposal and its outcome are logged in an auditable way, regardless of whether it was approved or rejected.
 - [ ] There's a documented, functional consolidation/cleanup mechanism.
 - [ ] At least two complete evidence cycles are delivered (one approved, one rejected).
-- [ ] The design decisions explicitly address the restrictions in your CONTEXT-company.md, especially what must never be remembered.
+- [ ] The design decisions explicitly address the restrictions in your company-BRIEFING.md, especially what must never be remembered.
 
 ---
 

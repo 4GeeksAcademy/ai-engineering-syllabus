@@ -62,7 +62,7 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 - [ ] Instrument the graph so that **every run produces a trace**: which nodes ran, in what order, and what each one produced. You can use a tracing tool (e.g., LangSmith) or your own structured log if you don't have access to one — what matters is that the trace is queryable after the run, not just printed to the console.
 - [ ] Write at least 3 **evals**: test cases with an input question and a verifiable criterion about the answer or the trace (for example: "for this question, the `retrieve` node must run before `query`"). Evals run against the trace, not against a live execution every time.
 - [ ] Evals must live in `tests/pipelines/` and be runnable with a single command.
-- [ ] At least one eval must assert the answer stays **grounded** in your existing RAG knowledge base (e.g. a known policy question returns the expected entity/fact from `CONTEXT-company.md`). Trace/routing correctness does **not** replace answer grounding: your agent evals are **in addition to** your existing RAG tests, which must still pass. Grounding remains an acceptance gate — a run with a perfect trace but an answer that ignores CONTEXT policies is a failure.
+- [ ] At least one eval must assert the answer stays **grounded** in your existing RAG knowledge base (e.g. a known policy question returns the expected entity/fact from `company-BRIEFING.md`). Trace/routing correctness does **not** replace answer grounding: your agent evals are **in addition to** your existing RAG tests, which must still pass. Grounding remains an acceptance gate — a run with a perfect trace but an answer that ignores BRIEFING policies is a failure.
 
 ### Endpoint (`services/`)
 
@@ -81,7 +81,7 @@ LangGraph formalizes that same loop as a state machine: each step is a **node**,
 - [ ] The graph is explicitly compiled before execution and fails with a clear error on a structural problem.
 - [ ] There is verifiable checkpointing on at least one state transition.
 - [ ] Every run produces a queryable trace, not just a final answer.
-- [ ] There are at least 3 runnable evals in `tests/pipelines/`, with verifiable criteria on the trace or the answer, and at least one asserts the answer stays grounded in the CONTEXT knowledge base.
+- [ ] There are at least 3 runnable evals in `tests/pipelines/`, with verifiable criteria on the trace or the answer, and at least one asserts the answer stays grounded in the BRIEFING knowledge base.
 - [ ] Existing RAG tests still pass — agent evals extend, not replace, answer grounding as an acceptance gate.
 - [ ] The endpoint invokes the graph without duplicating business logic and handles errors without exposing internal details.
 - [ ] Nodes call `retrieve` and the generation step separately — no single node re-wraps the monolithic `query()` (retrieve + generate).

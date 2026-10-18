@@ -1,6 +1,6 @@
 # Real-Time Systems Part 2 — WebSocket Chat Streaming — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Agent ids, session fields, and event names below are **indicative** — students must align with their assigned `CONTEXT-company.md` under `content/contexts/real-time-communication/` (Part 2 only). Part 1 RFP/SSE schemas live under `real-time-notification/` and must not be mixed into this WebSocket contract.
+Reference quality bar for the student's company monorepo fork. Agent ids, session fields, and event names below are **indicative** — students must align with their assigned `company-BRIEFING.md` under `content/contexts/real-time-communication/` (Part 2 only). Part 1 RFP/SSE schemas live under `real-time-notification/` and must not be mixed into this WebSocket contract.
 
 ---
 
@@ -49,7 +49,7 @@ flowchart LR
 
 ---
 
-## Event contract (indicative — match CONTEXT)
+## Event contract (indicative — match BRIEFING)
 
 ```json
 {"event": "token_chunk", "data": {"session_id": "chat_0044", "token": "For", "sequence": 12}}
@@ -58,7 +58,7 @@ flowchart LR
 {"event": "generation_completed", "data": {"session_id": "chat_0044", "message_id": "msg_0091"}}
 ```
 
-Session status (CONTEXT): `active` → `interrupted` → `active` / `closed`.
+Session status (BRIEFING): `active` → `interrupted` → `active` / `closed`.
 
 **Acceptable:** FastAPI WebSocket (or stack equivalent) + LangGraph stream mode that yields tokens; one producer task per generation with a cancel handle; subscribers receive identical frames; JWT validated on connect (same secret/dependency as backoffice).
 
@@ -170,7 +170,7 @@ UI: live typing. Interrupt keeps partial bubble marked interrupted; redirected r
 | Abort behavior   | Mid-stream interrupt → no further `token_chunk` from original task; partial marked interrupted; next output is new turn with `new_input` |
 | Reconnect        | Drop WS → reconnect same `session_id` → history/checkpoint restored (not empty chat)                                                     |
 | Fan-out          | Two subscribers on same session see same tokens; agent invoked once                                                                      |
-| CONTEXT fidelity | Chat session / agent fields match Part 2 CONTEXT — not Part 1 RFP payloads                                                               |
+| BRIEFING fidelity | Chat session / agent fields match Part 2 BRIEFING — not Part 1 RFP payloads                                                               |
 
 ---
 
@@ -186,5 +186,5 @@ UI: live typing. Interrupt keeps partial bubble marked interrupted; redirected r
 | Reconnect without `session_id` / empty UI | Must rehydrate thread                                            |
 | Generic WS `message` only                 | Rubric requires named structured events                          |
 | Agent call per WebSocket                  | Breaks supervisor fan-out; must pub/sub                          |
-| Mixing Part 1 RFP/SSE schemas             | Wrong CONTEXT folder / wrong contract                            |
+| Mixing Part 1 RFP/SSE schemas             | Wrong BRIEFING folder / wrong contract                            |
 | Delivery folder `parte-2-*`               | Work stays in `services/` / `uis/` / `tests/`                    |

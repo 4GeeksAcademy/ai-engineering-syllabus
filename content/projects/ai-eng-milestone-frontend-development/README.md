@@ -11,7 +11,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/03-frontend-development)** before writing any code — it defines the specific company scenario, terminology, and framing you must apply to your implementation.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/03-frontend-development)** before writing any code — it defines the specific company scenario, terminology, and framing you must apply to your implementation.
 
 ---
 
@@ -121,7 +121,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 - [ ] Organize the project with a clear folder structure: `/components`, `/hooks` (if applicable), `/types`, `/lib` or `/services`.
 - [ ] Define TypeScript types for all data structures received from the API.
 
-⚠️ **IMPORTANT:** The terminology, labels, and framing visible in your UI must reflect your company's context as described in your **CONTEXT.md**. For example, if your company is TrackFlow, the interface should feel like an internal TrackFlow People & Talent tool, even though the API field names remain those defined by the tracker backend. A generic implementation that ignores the company scenario will not be accepted.
+⚠️ **IMPORTANT:** The terminology, labels, and framing visible in your UI must reflect your company's context as described in your **BRIEFING.md**. For example, if your company is TrackFlow, the interface should feel like an internal TrackFlow People & Talent tool, even though the API field names remain those defined by the tracker backend. A generic implementation that ignores the company scenario will not be accepted.
 
 ⚠️ **IMPORTANT:** Use only Next.js (App Router), React, and TypeScript. Do not use external state management libraries (Redux, Zustand, Jotai, etc.). Component-level state with hooks is sufficient for this milestone.
 
@@ -142,7 +142,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 - [ ] The folder structure separates components, types, and data access logic.
 - [ ] Next.js App Router is used correctly for navigation and dynamic routes.
 - [ ] No prop drilling — component state is scoped appropriately.
-- [ ] The UI reflects the company scenario from the assigned CONTEXT.md (labels, terminology, framing).
+- [ ] The UI reflects the company scenario from the assigned BRIEFING.md (labels, terminology, framing).
 
 > Note: Visual design and styling will not be formally evaluated in this milestone, but the interface must be usable and display all required information clearly.
 

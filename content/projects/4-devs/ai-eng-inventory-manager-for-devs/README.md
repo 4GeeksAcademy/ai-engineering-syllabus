@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/inventory-manager-for-devs)** before writing a single spec — it defines the units of measure, categories, lots, and reorder points concrete to your implementation.
+**Before you start**: read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/inventory-manager-for-devs)** before writing a single spec — it defines the units of measure, categories, lots, and reorder points concrete to your implementation.
 
 ---
 
@@ -36,7 +36,7 @@ The opposite trap is writing 20 pages of spec for a CRUD. Spec formality should 
 >
 > Before the agent writes a single line of code for this module, I want to see the spec. Not the code — the spec. That's the artifact I'm going to review and approve, and only after approval do we move to implementation.
 >
-> The requirement, in one sentence: the operations team needs to register inventory items, log their inbound, outbound, and adjustment movements, and know at all times what's below the reorder point. Entity names, units of measure, and domain values come from your CONTEXT, not from your imagination.
+> The requirement, in one sentence: the operations team needs to register inventory items, log their inbound, outbound, and adjustment movements, and know at all times what's below the reorder point. Entity names, units of measure, and domain values come from your BRIEFING, not from your imagination.
 >
 > There's one thing that's not negotiable, and I want it as an explicit acceptance criterion, not a side note: an item's stock is calculated from its movements. There is no endpoint, no form field, and no operation that edits stock directly. If your spec doesn't say that with that level of clarity, the agent is going to get it wrong, and it won't be its fault.
 >
@@ -98,7 +98,7 @@ The spec doesn't replace the test suite — it originates it. The code remains t
 ### Phase 4 — Implement
 
 - [ ] Implement the tasks in the defined order, without skipping the plan or improvising new scope directly with the agent.
-- [ ] Implement creation, editing, listing, and deletion of inventory items, with the fields defined in your CONTEXT.
+- [ ] Implement creation, editing, listing, and deletion of inventory items, with the fields defined in your BRIEFING.
 - [ ] Implement stock movement logging: inbound, outbound, and adjustment, each with its reason and timestamp.
 - [ ] An item's available stock is calculated from its movements — no operation edits it directly.
 - [ ] Implement a reorder point per item and a visible signal in the backoffice when stock falls below it.
@@ -125,7 +125,7 @@ The spec doesn't replace the test suite — it originates it. The code remains t
 - [ ] Criteria and tests exist for unwanted behavior: a movement that would leave stock negative, a movement on a nonexistent item or lot.
 - [ ] Each task in `tasks.md` references the acceptance criterion it implements, and each implementation commit references its task.
 - [ ] The test suite verifies the spec's acceptance criteria, not just the happy path.
-- [ ] The inventory manager allows registering items and logging inbound, outbound, and adjustment movements, with the entity names and domain values from the assigned company's CONTEXT.
+- [ ] The inventory manager allows registering items and logging inbound, outbound, and adjustment movements, with the entity names and domain values from the assigned company's BRIEFING.
 - [ ] The backoffice visibly flags items below the reorder point.
 - [ ] The requirement change was resolved by editing the spec first and regenerating only the affected tasks — there's no evidence of code patches without an updated spec.
 - [ ] Commit history separates the development tasks; there is no single commit bundling all the work.

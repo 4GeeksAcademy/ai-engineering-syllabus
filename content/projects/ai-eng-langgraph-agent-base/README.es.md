@@ -62,7 +62,7 @@ LangGraph formaliza ese mismo loop como una máquina de estados: cada paso es un
 - [ ] Instrumenta el grafo para que **cada corrida produzca un trace**: qué nodos se ejecutaron, en qué orden, y qué produjo cada uno. Puedes usar una herramienta de tracing (por ejemplo, LangSmith) o tu propio log estructurado si no tienes acceso a una — lo que importa es que el trace sea consultable después de la corrida, no solo impreso en consola.
 - [ ] Escribe al menos 3 **evals**: casos de prueba con una pregunta de entrada y un criterio verificable sobre la respuesta o sobre el trace (por ejemplo: "para esta pregunta, el nodo `retrieve` debe ejecutarse antes que `query`"). Los evals corren contra el trace, no contra una ejecución en vivo cada vez.
 - [ ] Los evals deben vivir en `tests/pipelines/` y ser ejecutables con un solo comando.
-- [ ] Al menos un eval debe verificar que la respuesta sigue **anclada** en tu base de conocimiento RAG existente (p. ej. una pregunta de política conocida devuelve la entidad/dato esperado de `CONTEXT-company.md`). La corrección del trace/enrutamiento **no** reemplaza el anclaje de la respuesta: tus evals del agente son **adicionales** a tus tests RAG existentes, que deben seguir pasando. El anclaje sigue siendo criterio de aceptación — una corrida con un trace perfecto pero una respuesta que ignora las políticas del CONTEXT es un fallo.
+- [ ] Al menos un eval debe verificar que la respuesta sigue **anclada** en tu base de conocimiento RAG existente (p. ej. una pregunta de política conocida devuelve la entidad/dato esperado de `company-BRIEFING.md`). La corrección del trace/enrutamiento **no** reemplaza el anclaje de la respuesta: tus evals del agente son **adicionales** a tus tests RAG existentes, que deben seguir pasando. El anclaje sigue siendo criterio de aceptación — una corrida con un trace perfecto pero una respuesta que ignora las políticas del BRIEFING es un fallo.
 
 ### Endpoint (`services/`)
 
@@ -81,7 +81,7 @@ LangGraph formaliza ese mismo loop como una máquina de estados: cada paso es un
 - [ ] El grafo se compila explícitamente antes de ejecutarse y falla con un error claro ante un problema estructural.
 - [ ] Existe checkpointing verificable en al menos una transición de estado.
 - [ ] Cada corrida produce un trace consultable, no solo una respuesta final.
-- [ ] Hay al menos 3 evals ejecutables en `tests/pipelines/`, con criterios verificables sobre el trace o la respuesta, y al menos uno verifica que la respuesta sigue anclada en la base de conocimiento del CONTEXT.
+- [ ] Hay al menos 3 evals ejecutables en `tests/pipelines/`, con criterios verificables sobre el trace o la respuesta, y al menos uno verifica que la respuesta sigue anclada en la base de conocimiento del BRIEFING.
 - [ ] Los tests RAG existentes siguen pasando — los evals del agente extienden, no reemplazan, el anclaje de la respuesta como criterio de aceptación.
 - [ ] El endpoint invoca el grafo sin duplicar lógica de negocio y maneja errores sin exponer detalles internos.
 - [ ] Los nodos llaman a `retrieve` y al paso de generación por separado — ningún nodo re-envuelve el `query()` monolítico (retrieve + generación).

@@ -1,6 +1,6 @@
 ---
 name: transversal-project-orchestrator
-description: Orchestrates the generation of all artifacts for a 4Geeks Academy transversal project milestone — the universal project statement and the company-specific context files. Use this skill when a user wants to generate everything for a milestone at once, or when it is unclear whether they need only the README, only the CONTEXT files, or both. Trigger on phrases like "generate milestone N", "create all the files for hito X", "set up milestone N for these companies", or any request that involves a milestone number and one or more company descriptions without specifying which artifact they want. For targeted requests ("only generate the README", "only generate the context"), this skill will detect the intent and delegate accordingly. Always use this skill as the entry point when the scope of the request is ambiguous.
+description: Orchestrates the generation of all artifacts for a 4Geeks Academy transversal project milestone — the universal project statement and the company-specific briefing files. Use this skill when a user wants to generate everything for a milestone at once, or when it is unclear whether they need only the README, only the BRIEFING files, or both. Trigger on phrases like "generate milestone N", "create all the files for hito X", "set up milestone N for these companies", or any request that involves a milestone number and one or more company descriptions without specifying which artifact they want. For targeted requests ("only generate the README", "only generate the context"), this skill will detect the intent and delegate accordingly. Always use this skill as the entry point when the scope of the request is ambiguous.
 ---
 
 # 4Geeks Academy — Transversal Project Generator (Orchestrator)
@@ -13,12 +13,12 @@ This skill is the single entry point for transversal project generation. It dete
 
 Before asking for any inputs, determine which artifacts the request requires:
 
-| Situation                           | What to generate           | Skills to invoke                                                                      |
-| ----------------------------------- | -------------------------- | ------------------------------------------------------------------------------------- |
-| No README exists for this milestone | README + all CONTEXT files | `transversal-project-readme-generator` → then `transversal-project-context-generator` |
-| README exists, new company needed   | CONTEXT file(s) only       | `transversal-project-context-generator`                                               |
-| README exists, needs rewrite        | README only                | `transversal-project-readme-generator`                                                |
-| Explicit "everything" request       | README + all CONTEXT files | Both skills in order                                                                  |
+| Situation                           | What to generate            | Skills to invoke                                                                      |
+| ----------------------------------- | --------------------------- | ------------------------------------------------------------------------------------- |
+| No README exists for this milestone | README + all BRIEFING files | `transversal-project-readme-generator` → then `transversal-project-context-generator` |
+| README exists, new company needed   | BRIEFING file(s) only       | `transversal-project-context-generator`                                               |
+| README exists, needs rewrite        | README only                 | `transversal-project-readme-generator`                                                |
+| Explicit "everything" request       | README + all BRIEFING files | Both skills in order                                                                  |
 
 If the situation is ambiguous, ask one clarifying question before proceeding:
 
@@ -44,29 +44,29 @@ Collect only the inputs needed for the detected scope. Never ask for inputs that
 | `template_repo`      | Starter repo URL                        | `https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo` |
 | `authors`            | GitHub username(s)                      | — Must ask —                                                               |
 
-**If CONTEXT files need to be generated**, collect:
+**If BRIEFING files need to be generated**, collect:
 
-| Input               | Description                                        | Default                               |
-| ------------------- | -------------------------------------------------- | ------------------------------------- |
-| `existing_readme`   | The milestone README — read it in full             | — Must ask if not already available — |
-| `company_scenarios` | Company descriptions to generate CONTEXT files for | — Must ask —                          |
-| `reference_context` | An existing CONTEXT file for parity calibration    | Optional                              |
+| Input               | Description                                         | Default                               |
+| ------------------- | --------------------------------------------------- | ------------------------------------- |
+| `existing_readme`   | The milestone README — read it in full              | — Must ask if not already available — |
+| `company_scenarios` | Company descriptions to generate BRIEFING files for | — Must ask —                          |
+| `reference_context` | An existing BRIEFING file for parity calibration    | Optional                              |
 
-> If both README and CONTEXT are needed, collect all inputs together in a single round before generating anything.
+> If both README and BRIEFING are needed, collect all inputs together in a single round before generating anything.
 
 ---
 
 ## Step 3 — Execute in Order
 
-When both artifacts are needed, always generate the README first and the CONTEXT files second. The CONTEXT generator requires a completed README as input — it reads the README to extract the implied CONTEXT structure before writing anything.
+When both artifacts are needed, always generate the README first and the BRIEFING files second. The BRIEFING generator requires a completed README as input — it reads the README to extract the implied BRIEFING structure before writing anything.
 
 ### Generating the README
 
 Read and follow `.cursor/skills/transversal-project-readme-generator/SKILL.md` in full before writing any README content.
 
-### Generating the CONTEXT files
+### Generating the BRIEFING files
 
-Once the README is complete (either just generated or provided as input), read and follow `.cursor/skills/transversal-project-context-generator/SKILL.md` in full before writing any CONTEXT content.
+Once the README is complete (either just generated or provided as input), read and follow `.cursor/skills/transversal-project-context-generator/SKILL.md` in full before writing any BRIEFING content.
 
 Pass the completed README as the `existing_readme` input to the context generator — even when it was just generated in the same session. The context generator must read it to extract the implied structure.
 
@@ -78,7 +78,7 @@ Deliver files in this order:
 
 1. `README.md` (if generated)
 2. `README.es.md` (if generated)
-3. `CONTEXT-[slug].md` for each company variant (if generated)
+3. `<slug>-BRIEFING.en.md` / `<slug>-BRIEFING.es.md` for each company variant (if generated)
 
 If only one type of artifact was generated, deliver only those files. Do not deliver placeholder or empty files for artifacts that were not requested.
 
@@ -89,7 +89,7 @@ If only one type of artifact was generated, deliver only those files. Do not del
 - [ ] Scope was detected before collecting any inputs
 - [ ] Only inputs relevant to the detected scope were requested
 - [ ] README generator skill was read before generating the README
-- [ ] Context generator skill was read before generating CONTEXT files
-- [ ] When both were generated, README was completed before CONTEXT generation began
-- [ ] CONTEXT generator received the completed README as input
+- [ ] Context generator skill was read before generating BRIEFING files
+- [ ] When both were generated, README was completed before BRIEFING generation began
+- [ ] BRIEFING generator received the completed README as input
 - [ ] All files delivered in the correct order

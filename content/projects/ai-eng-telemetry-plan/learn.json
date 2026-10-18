@@ -5,8 +5,8 @@
     "es": "Diseño del plan de telemetría de tu compañía"
   },
   "description": {
-    "en": "Respond to an RFI with a Telemetry Plan: fold CONTEXT mandatory metrics into an exhaustive catalogue, map inventory and backoffice instrumentation points, define a standard Event Envelope, design all mandatory events plus at least eight additional ones with property allowlists, export event-schemas.json, and justify stream vs batch — before writing instrumentation code.",
-    "es": "Responde a un RFI con un Plan de Telemetría: integra las métricas obligatorias del CONTEXT en un catálogo exhaustivo, mapea puntos de instrumentación de inventario y backoffice, define un Event Envelope estándar, diseña todos los eventos obligatorios más al menos ocho adicionales con allowlists de propiedades, exporta event-schemas.json y justifica stream vs batch — antes de escribir código de instrumentación."
+    "en": "Respond to an RFI with a Telemetry Plan: fold BRIEFING mandatory metrics into an exhaustive catalogue, map inventory and backoffice instrumentation points, define a standard Event Envelope, design all mandatory events plus at least eight additional ones with property allowlists, export event-schemas.json, and justify stream vs batch — before writing instrumentation code.",
+    "es": "Responde a un RFI con un Plan de Telemetría: integra las métricas obligatorias del BRIEFING en un catálogo exhaustivo, mapea puntos de instrumentación de inventario y backoffice, define un Event Envelope estándar, diseña todos los eventos obligatorios más al menos ocho adicionales con allowlists de propiedades, exporta event-schemas.json y justifica stream vs batch — antes de escribir código de instrumentación."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",

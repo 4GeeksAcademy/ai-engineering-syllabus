@@ -2,19 +2,19 @@
 
 ## Purpose
 
-Reference quality bar for the TypeScript **data-processing utilities** milestone. Students implement company-specific logic from their `CONTEXT-*.md` in `02-coding-fundamentals` — not a generic demo.
+Reference quality bar for the TypeScript **data-processing utilities** milestone. Students implement company-specific logic from their `*-BRIEFING.md` in `02-coding-fundamentals` — not a generic demo.
 
 ## Expected File Structure
 
 ```text
 src/
 ├── types/
-│   └── models.ts          # Interfaces from CONTEXT
+│   └── models.ts          # Interfaces from BRIEFING
 ├── utils/
 │   ├── collections.ts     # filter, sort, group
 │   ├── search.ts          # linearSearch, binarySearch
 │   ├── transformations.ts # aggregations and reports
-│   └── validations.ts     # business rules from CONTEXT
+│   └── validations.ts     # business rules from BRIEFING
 ├── demo.ts                # optional: console demos
 └── index.html             # optional: manual test page
 ```
@@ -27,17 +27,17 @@ npx tsc --noEmit
 
 ## Required Coverage (From README)
 
-- Interfaces model **all main entities** named in the student's CONTEXT.
+- Interfaces model **all main entities** named in the student's BRIEFING.
 - **Filter** and **sort** functions with explicit parameter/return types.
 - **Linear search** on unsorted arrays; **binary search** on sorted arrays (return index or `-1`).
 - **Aggregations**: count by category, sum, average, min, max — typed returns.
-- **Validations** enforce CONTEXT business rules before processing.
+- **Validations** enforce BRIEFING business rules before processing.
 - Pure functions — no global mutable state.
 - Edge cases: empty arrays, not found, invalid input.
 
-## Indicative Interface Pattern (Adapt to CONTEXT)
+## Indicative Interface Pattern (Adapt to BRIEFING)
 
-Entity names, fields, and rules must come from the company CONTEXT — this Brasaland-style sketch shows structure only:
+Entity names, fields, and rules must come from the company BRIEFING — this Brasaland-style sketch shows structure only:
 
 ```typescript
 // src/types/models.ts
@@ -143,18 +143,18 @@ export function validateMenuItem(item: MenuItem): string[] {
 }
 ```
 
-## CONTEXT Adaptation Rules
+## BRIEFING Adaptation Rules
 
-- Replace entity names (`MenuItem`, `SaleTransaction`, etc.) with those in **your** CONTEXT file.
-- Validation messages and thresholds must match CONTEXT rules exactly.
-- Reports listed in CONTEXT (e.g. location performance, waste totals) must have corresponding aggregation functions.
+- Replace entity names (`MenuItem`, `SaleTransaction`, etc.) with those in **your** BRIEFING file.
+- Validation messages and thresholds must match BRIEFING rules exactly.
+- Reports listed in BRIEFING (e.g. location performance, waste totals) must have corresponding aggregation functions.
 
 ## Evaluation Checklist
 
-- [ ] Interfaces match CONTEXT entities, fields, and types.
+- [ ] Interfaces match BRIEFING entities, fields, and types.
 - [ ] Filter, sort, linear search, and binary search behave correctly on edge cases.
 - [ ] Aggregations return correct totals, averages, counts, min/max.
-- [ ] Validations reject invalid objects per CONTEXT rules.
+- [ ] Validations reject invalid objects per BRIEFING rules.
 - [ ] `npx tsc --noEmit` (or equivalent) passes with no errors.
 - [ ] Code split by responsibility; functions are pure and single-purpose.
 

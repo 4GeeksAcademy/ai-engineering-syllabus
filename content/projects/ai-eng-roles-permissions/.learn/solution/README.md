@@ -22,9 +22,9 @@ flowchart LR
   DeptCheck --> Handler[route handler]
 ```
 
-## Required Coverage (From README + CONTEXT)
+## Required Coverage (From README + BRIEFING)
 
-- At least three roles with an explicit rank: `employee` < `supervisor` < `admin` (codes from CONTEXT).
+- At least three roles with an explicit rank: `employee` < `supervisor` < `admin` (codes from BRIEFING).
 - Department as its own entity; user can change department without losing role, and vice versa.
 - Centralized permission dependency (not per-endpoint copies).
 - Role restriction on every sensitive endpoint; department restriction on scoped data.
@@ -52,7 +52,7 @@ Map existing supplier/incident/inventory writes onto the same `require_role` / `
 - **Admin still has a department.** Cross-department visibility is a rank privilege (`admin`), not a null `department_id`.
 - **403 vs filter.** Missing capability or fetching another department's record by id → 403. List endpoints may filter to own department.
 - **Centralize rank comparison** (`user.role.rank >= required.rank`) so adding a fourth role later does not fork every route.
-- Seed **exactly** the CONTEXT users and the two-department report pair used in evaluation.
+- Seed **exactly** the BRIEFING users and the two-department report pair used in evaluation.
 
 ## Indicative Examples
 
@@ -112,7 +112,7 @@ Lucía remains `supervisor`. Only `department_id` changes.
 
 ## Validation Notes
 
-- Login as CONTEXT Employee, Supervisor (dept A), Supervisor (dept B), and Admin.
+- Login as BRIEFING Employee, Supervisor (dept A), Supervisor (dept B), and Admin.
 - Direct API call (not only UI): Employee → Supervisor route = 403; Supervisor → `GET /roles` = 403.
 - Supervisor A cannot `GET` Supervisor B's report by id.
 - Assignment PATCH of one axis leaves the other unchanged (assert both fields).

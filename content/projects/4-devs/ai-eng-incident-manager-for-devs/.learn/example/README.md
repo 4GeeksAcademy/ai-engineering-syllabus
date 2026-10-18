@@ -10,7 +10,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 ### Scope note
 
-Live-session scope only. Same patterns as the official student project; secondary CONTEXT catalogues and monorepo depth are reduced. Students still follow the full brief in the project root `README.md`.
+Live-session scope only. Same patterns as the official student project; secondary BRIEFING catalogues and monorepo depth are reduced. Students still follow the full brief in the project root `README.md`.
 
 A small café chain runs three locations. Shift leads report equipment and staffing issues by WhatsApp or phone; nothing is centralized. The ops lead wants a tiny backoffice board: log an incident, assign an area, move status, and see who changed what.
 

@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** antes de escribir código — te recuerda qué aplicaciones y servicios forman parte de tu monorepo y qué categorías OWASP importan más para tu sistema agéntico.
+**Antes de empezar**: Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** antes de escribir código — te recuerda qué aplicaciones y servicios forman parte de tu monorepo y qué categorías OWASP importan más para tu sistema agéntico.
 
 ---
 
@@ -65,7 +65,7 @@ Ha llegado un **ticket** de seguridad: antes de que cualquier aplicación de la 
 - [ ] Corrige todas las vulnerabilidades marcadas como críticas en tu auditoría.
 - [ ] Para cada corrección, deja evidencia reproducible (un test, un screenshot del escaneo, o un comando que demuestre el antes/después).
 
-⚠️ **IMPORTANTE:** Revisa tu `CONTEXT-empresa.md` para confirmar qué aplicaciones y servicios de tu monorepo deben incluirse en el alcance de la auditoría.
+⚠️ **IMPORTANTE:** Revisa tu `empresa-BRIEFING.md` para confirmar qué aplicaciones y servicios de tu monorepo deben incluirse en el alcance de la auditoría.
 
 ---
 

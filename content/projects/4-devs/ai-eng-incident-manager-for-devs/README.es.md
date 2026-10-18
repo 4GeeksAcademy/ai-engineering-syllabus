@@ -9,7 +9,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 
 _These instructions are [available in English](./README.md)._
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** antes de escribir una sola línea de código — define los canales de entrada, los tipos de incidencia, los niveles de severidad y las áreas responsables de tu implementación.
+**Antes de empezar**: lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** antes de escribir una sola línea de código — define los canales de entrada, los tipos de incidencia, los niveles de severidad y las áreas responsables de tu implementación.
 
 <!-- endhide -->
 
@@ -36,7 +36,7 @@ La segunda trampa es escribir un contexto exclusivamente técnico. Un banco de m
 >
 > Tómate el brief en dos partes. La primera: recorre el código base, entiende las convenciones que ya están tomadas y déjalas escritas como reglas del proyecto. No las cambies porque no te gusten — si crees que alguna está mal, la anotas como propuesta y la discutimos; sobrescribir una convención de equipo por preferencia personal es la forma más rápida de romper un monorepo compartido.
 >
-> La segunda: monta el gestor de incidencias. Los stakeholders de operaciones necesitan registrar una incidencia venga del canal que venga, clasificarla, asignarla a un área responsable y saber en qué estado está. Los tipos, las severidades y los canales salen de tu CONTEXT, no de tu imaginación.
+> La segunda: monta el gestor de incidencias. Los stakeholders de operaciones necesitan registrar una incidencia venga del canal que venga, clasificarla, asignarla a un área responsable y saber en qué estado está. Los tipos, las severidades y los canales salen de tu BRIEFING, no de tu imaginación.
 >
 > Una cosa que no es negociable: cuando una incidencia cambia de estado o de responsable, quiero poder reconstruir después quién la movió y cuándo. Si eso no queda registrado, no hay gestor que valga.
 >
@@ -90,20 +90,20 @@ Las **reglas** son distintas del banco de memoria: la memoria describe el proyec
 - [ ] Incluye un plan de implementación para el gestor de incidencias, construido con el agente antes de escribir código.
 - [ ] Mantén el banco de memoria actualizado al cerrar el desarrollo: el estado actual del final del proyecto no puede ser el del principio.
 
-⚠️ **IMPORTANTE:** el contexto de producto, los nombres de entidades y los valores de dominio deben corresponderse con lo especificado en tu CONTEXT.md. Un banco de memoria genérico, que serviría igual para cualquier empresa, no será aceptado.
+⚠️ **IMPORTANTE:** el contexto de producto, los nombres de entidades y los valores de dominio deben corresponderse con lo especificado en tu BRIEFING.md. Un banco de memoria genérico, que serviría igual para cualquier empresa, no será aceptado.
 
 ### Gestor de incidencias en el backoffice
 
-- [ ] Implementa el registro, edición, listado y consulta de incidencias, con los campos definidos en tu CONTEXT.
-- [ ] Toda incidencia debe registrar su canal de entrada, su tipo y su nivel de severidad, tomados de los catálogos de tu CONTEXT.
-- [ ] Implementa la asignación de una incidencia a un área responsable de las definidas en tu CONTEXT.
+- [ ] Implementa el registro, edición, listado y consulta de incidencias, con los campos definidos en tu BRIEFING.
+- [ ] Toda incidencia debe registrar su canal de entrada, su tipo y su nivel de severidad, tomados de los catálogos de tu BRIEFING.
+- [ ] Implementa la asignación de una incidencia a un área responsable de las definidas en tu BRIEFING.
 - [ ] Implementa el ciclo de estados de la incidencia, desde su apertura hasta su cierre.
 - [ ] Cada cambio de estado y cada cambio de responsable debe quedar registrado con su marca temporal y su autor, de forma consultable desde la ficha de la incidencia.
 - [ ] Añade filtrado del listado por estado, severidad y área responsable.
 - [ ] Ofrece una vista que permita ver de un vistazo el volumen de incidencias abiertas por severidad.
 - [ ] Respeta el stack y las convenciones que ya trae el monorepo. No introduzcas librerías, gestores de dependencias ni patrones nuevos sin que exista una regla que lo justifique.
 
-⚠️ **IMPORTANTE:** los nombres de campos, identificadores de entidad y valores de dominio de tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** los nombres de campos, identificadores de entidad y valores de dominio de tu implementación deben coincidir con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 ### Verificación
 
@@ -127,7 +127,7 @@ Las **reglas** son distintas del banco de memoria: la memoria describe el proyec
 - [ ] Los cambios de estado y de responsable son consultables con marca temporal y autor desde la ficha de la incidencia.
 - [ ] El listado permite filtrar por estado, severidad y área responsable.
 - [ ] Existe una vista con el volumen de incidencias abiertas por severidad.
-- [ ] Los catálogos de canales, tipos, severidades y áreas coinciden con los del CONTEXT de la empresa asignada.
+- [ ] Los catálogos de canales, tipos, severidades y áreas coinciden con los del BRIEFING de la empresa asignada.
 - [ ] No se han introducido dependencias ni patrones ajenos a las convenciones del monorepo.
 - [ ] El historial de commits separa los pasos del desarrollo; no existe un commit único que agrupe todo el trabajo.
 

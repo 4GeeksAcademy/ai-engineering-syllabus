@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** antes de escribir código — ahí se define qué agente vas a conectar, los campos de la sesión de chat y el contrato de eventos WebSocket de esta parte. Los detalles SSE / notificación RFP de la Parte 1 viven en [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), no en este CONTEXT.
+**Antes de empezar**: lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** antes de escribir código — ahí se define qué agente vas a conectar, los campos de la sesión de chat y el contrato de eventos WebSocket de esta parte. Los detalles SSE / notificación RFP de la Parte 1 viven en [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), no en este BRIEFING.
 
 ---
 
@@ -41,7 +41,7 @@ Sigue trabajando en el fork del monorepo de tu empresa que has usado a lo largo 
 
 1. Crea una rama nueva desde tu rama principal: `feature/websocket-chat`.
 2. Ubica el endpoint o función que hoy invoca a tu agente de soporte con un patrón de petición/respuesta tradicional — extiende esa ruta; no crees una app paralela ni una carpeta de entrega.
-3. Revisa tu `CONTEXT-company.md` (en `10-realtime/communication/`) para confirmar qué agente vas a conectar y los nombres de sesión / eventos de esta parte — reutiliza la _disciplina_ de nombres de la Parte 1, no los esquemas RFP/SSE de la Parte 1.
+3. Revisa tu `company-BRIEFING.md` (en `10-realtime/communication/`) para confirmar qué agente vas a conectar y los nombres de sesión / eventos de esta parte — reutiliza la _disciplina_ de nombres de la Parte 1, no los esquemas RFP/SSE de la Parte 1.
 4. Repasa cómo tu agente expone el streaming (modos `messages`, `values`, `updates` o `custom` de LangGraph) antes de decidir cuál necesitas para transmitir tokens.
 5. Implementa en el layout existente: WebSocket en `services/`, UI de chat en `uis/`, pruebas en `tests/`.
 
@@ -61,7 +61,7 @@ Si necesitas un repaso de cómo montar un proyecto, mira [cómo empezar un proye
 - [ ] Tras el abort: marca el mensaje parcial del asistente como `interrupted` (conserva los tokens ya mostrados), acepta la nueva entrada del usuario y arranca un **turno nuevo** del asistente — no borres ni sobrescribas en el sitio el mensaje interrumpido
 - [ ] Desacopla la producción de eventos del agente de las conexiones WebSocket que los consumen usando un patrón pub/sub — no es obligatorio un backplane externo como Redis para esta entrega, pero el patrón productor/consumidor sí es evaluado
 
-⚠️ **IMPORTANTE:** los nombres de campos y entidades del chat deben coincidir con tu CONTEXT de la Parte 2. Una implementación genérica que ignore el contexto no será aceptada. No mezcles los payloads de notificación RFP de la Parte 1 en este contrato WebSocket.
+⚠️ **IMPORTANTE:** los nombres de campos y entidades del chat deben coincidir con tu BRIEFING de la Parte 2. Una implementación genérica que ignore el contexto no será aceptada. No mezcles los payloads de notificación RFP de la Parte 1 en este contrato WebSocket.
 
 **Frontend (`uis/`)**
 
@@ -96,7 +96,7 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 - [ ] Enviar una interrupción a mitad de una respuesta aborta de forma medible la generación original (sin más tokens), conserva el mensaje parcial marcado como `interrupted`, y la siguiente respuesta del agente es un turno nuevo que refleja la nueva entrada
 - [ ] El WebSocket se reconecta tras una caída con el mismo `session_id` / `thread_id` y rehidrata desde checkpoint o historial — el hilo de conversación no se pierde
 - [ ] La producción de eventos del agente está desacoplada de los consumidores WebSocket vía un patrón pub/sub (o productor/consumidor equivalente); los eventos están nombrados y estructurados, no son un único tipo de mensaje genérico
-- [ ] Los nombres de campos y entidades coinciden con los definidos en el CONTEXT.md de la Parte 2 de tu empresa
+- [ ] Los nombres de campos y entidades coinciden con los definidos en el BRIEFING.md de la Parte 2 de tu empresa
 
 ---
 

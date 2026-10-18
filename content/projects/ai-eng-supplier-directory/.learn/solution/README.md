@@ -15,7 +15,7 @@ The expected implementation is split into two clear modules:
 - `services/api`: FastAPI + Pydantic + TinyDB for persistence and domain validation.
 - `uis/backoffice`: UI that consumes the API, supports filtering, creation, and inline updates.
 
-Key principle: all supplier rules from `CONTEXT-company.md` are source of truth.  
+Key principle: all supplier rules from `company-BRIEFING.md` are source of truth.  
 Do not hardcode generic values that do not match the assigned context.
 
 ---
@@ -50,7 +50,7 @@ Implementation details to enforce:
 
 Expected behavior:
 
-- Loads initial suppliers from the assigned company context.
+- Loads initial suppliers from the assigned company briefing.
 - Executable with `uv run seed`.
 - Idempotent: running multiple times does not duplicate existing suppliers.
 - Prints inserted count in terminal at the end.
@@ -196,7 +196,7 @@ Frontend checks should verify:
 
 ## 6) Common Pitfalls to Avoid
 
-- Using status values that do not match `CONTEXT-company.md`.
+- Using status values that do not match `company-BRIEFING.md`.
 - Allowing zero/negative rates in any layer.
 - Forgetting to update `updated_at` on rate change.
 - Implementing filters only in frontend (must be API-backed).

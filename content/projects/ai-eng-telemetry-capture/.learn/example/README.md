@@ -16,8 +16,8 @@ In one session: stub receiver + frontend capture service + instrument **mandator
 
 | Graded project (`ai-eng-telemetry-capture`)                                | This class example                             |
 | -------------------------------------------------------------------------- | ---------------------------------------------- |
-| Company CONTEXT + Phase 1 schemas                                          | Mini library event contract (below)            |
-| All CONTEXT mandatory metrics + technical baseline + prioritised catalogue | 2 mandatory desk events + 1 technical + 1 auth |
+| Company BRIEFING + Phase 1 schemas                                          | Mini library event contract (below)            |
+| All BRIEFING mandatory metrics + technical baseline + prioritised catalogue | 2 mandatory desk events + 1 technical + 1 auth |
 | Batch 10s / 20 events                                                      | Batch 5s / 10 events (demo speed)              |
 | PR to student fork                                                         | Local demo only                                |
 

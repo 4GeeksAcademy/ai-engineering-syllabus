@@ -14,7 +14,7 @@ SCOPE (choose one; default --all):
   --project SLUG              single project
   --projects a,b,c            explicit list
   --group-prefix openclaw     all projects whose slug starts with prefix
-  --group-context brasaland   all projects whose linked context folder has CONTEXT-<company>.*
+  --group-briefing brasaland   all projects whose linked context folder has <company>-BRIEFING.*
   --all                       every project folder
 
 Output: JSON to stdout. Never writes files.
@@ -43,12 +43,12 @@ SECTION_KEYS = (
 
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*)$")
 CHECKBOX_RE = re.compile(r"^\s*[-*]\s*\[( |x|X)\]\s+(.*)$")
-# Context-file references are always uppercase (CONTEXT-brasaland.md). Case-sensitive
+# Briefing-file references end with -BRIEFING (brasaland-BRIEFING.md). Case-sensitive
 # on purpose so lowercase project-name suffixes (e.g. "...-context-project") don't match.
-CONTEXT_REF_RE = re.compile(r"CONTEXT-[A-Za-z0-9_]+")
-# CONTEXT-<company>.<lang>.md  OR  CONTEXT-<company>.md
-CONTEXT_FILE_RE = re.compile(
-    r"^CONTEXT-([A-Za-z0-9_]+?)(?:\.([a-z]{2}))?\.md$")
+BRIEFING_REF_RE = re.compile(r"[A-Za-z0-9_-]+-BRIEFING")
+# <company>-BRIEFING.<lang>.md  OR  <company>-BRIEFING.md
+BRIEFING_FILE_RE = re.compile(
+    r"^([A-Za-z0-9_-]+)-BRIEFING(?:\.([a-z]{2}))?\.md$")
 # project slug prefixes stripped when matching a topic-based context folder
 SLUG_PREFIXES = ("ai-eng-", "openclaw-")
 
@@ -79,7 +79,7 @@ def parse_markdown(path):
     current = None
 
     for line in lines:
-        for m in CONTEXT_REF_RE.findall(line):
+        for m in BRIEFING_REF_RE.findall(line):
             context_refs.add(m)
 
         hm = HEADING_RE.match(line.rstrip("\n"))
@@ -132,7 +132,7 @@ def discover_context(repo_root, slug):
     """Return {folder, matched_by, companies[], files[]} for the project's context folder.
 
     Tries exact slug, then slug with course prefix stripped. Companies come from
-    CONTEXT-<company>[.lang].md files and from per-company subdirectories.
+    <company>-BRIEFING[.lang].md files and from per-company subdirectories.
     """
     base = os.path.join(repo_root, "content", "contexts")
     for cand in _context_candidates(slug):
@@ -143,7 +143,7 @@ def discover_context(repo_root, slug):
         files = []
         for fn in sorted(os.listdir(ctx_dir)):
             files.append(fn)
-            cm = CONTEXT_FILE_RE.match(fn)
+            cm = BRIEFING_FILE_RE.match(fn)
             if cm:
                 companies.add(cm.group(1))
             elif os.path.isdir(os.path.join(ctx_dir, fn)) and not fn.startswith("."):
@@ -158,7 +158,7 @@ def discover_context(repo_root, slug):
 
 
 def is_english_md(fn):
-    """English files only: CONTEXT-x.en.md or no-language CONTEXT-x.md. Exclude *.es.md."""
+    """English files only: x-BRIEFING.en.md or no-language x-BRIEFING.md. Exclude *.es.md."""
     if not fn.endswith(".md"):
         return False
     return not fn.endswith(".es.md")
@@ -251,10 +251,11 @@ def _structural_checks(p):
         issues.append({"id": "INTRA-STRUCT", "severity": "warning",
                        "msg": "evals section has no checkbox items — deliverables cannot be traced to evaluation"})
 
-    # context reference vs existence. "CONTEXT-company" is the template placeholder,
+    # context reference vs existence. "company-BRIEFING" is the template placeholder,
     # not a real company reference, so it does not by itself imply a missing folder.
     refs = rd.get("context_refs", [])
     real_refs = [r for r in refs if r.lower() not in (
+        "company-briefing", "companyname-briefing",
         "context-company", "context-companyname")]
     ctx = p.get("context")
     if real_refs and not ctx:
@@ -262,7 +263,7 @@ def _structural_checks(p):
                        "msg": f"README references {real_refs} but no matching content/contexts/ folder found"})
     if ctx and not refs:
         issues.append({"id": "CTX-STRUCT", "severity": "cosmetic",
-                       "msg": f"context folder {ctx['folder']} exists but README.md has no CONTEXT-* reference"})
+                       "msg": f"context folder {ctx['folder']} exists but README.md has no *-BRIEFING reference"})
 
     if not p["solution"]["exists"]:
         issues.append({"id": "SOL-STRUCT", "severity": "warning",
@@ -286,8 +287,8 @@ def resolve_scope(repo_root, args):
         return [s.strip() for s in args.projects.split(",") if s.strip()]
     if args.group_prefix:
         return [s for s in list_all_projects(repo_root) if s.startswith(args.group_prefix)]
-    if args.group_context:
-        target = args.group_context.lower()
+    if args.group_briefing:
+        target = args.group_briefing.lower()
         out = []
         for slug in list_all_projects(repo_root):
             ctx = discover_context(repo_root, slug)
@@ -310,7 +311,7 @@ def _slug_group_key(slug):
 def build_groups(projects, include_prefix=False):
     """Cross-project grouping metadata for XPROJ.
 
-    by_context_company (always) groups projects sharing a CONTEXT company.
+    by_context_company (always) groups projects sharing a BRIEFING company.
     by_slug_prefix (opt-in via include_prefix) groups by course prefix; it is
     coarse and off by default because it lumps many unrelated projects together.
     """
@@ -343,7 +344,7 @@ def main():
     g.add_argument("--project")
     g.add_argument("--projects")
     g.add_argument("--group-prefix")
-    g.add_argument("--group-context")
+    g.add_argument("--group-briefing")
     g.add_argument("--all", action="store_true")
     ap.add_argument("--no-context-bodies", action="store_true",
                     help="omit full context/solution text to save tokens")

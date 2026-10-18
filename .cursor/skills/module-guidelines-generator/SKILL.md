@@ -170,7 +170,7 @@ Use when:
 **Do NOT use this skill to:**
 
 - Generate project READMEs (use `module-project-readme-generator` or `transversal-project-readme-generator`).
-- Generate CONTEXT files (use `transversal-project-context-generator`).
+- Generate BRIEFING files (use `transversal-project-context-generator`).
 
 ---
 

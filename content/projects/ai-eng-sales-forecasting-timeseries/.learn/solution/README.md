@@ -1,6 +1,6 @@
 # Sales Forecasting with Time Series Feature Engineering — Reference Solution
 
-This reference solution describes the expected architecture, deliverables, and validation evidence for a complete submission. Students train and evaluate a forecasting model on their company's historical sales CSV already included in `data/raw/<company>_sales.csv` inside their fork of the company **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** — column names and format must match their `CONTEXT-company.md`. No dataset generation or simulation is required.
+This reference solution describes the expected architecture, deliverables, and validation evidence for a complete submission. Students train and evaluate a forecasting model on their company's historical sales CSV already included in `data/raw/<company>_sales.csv` inside their fork of the company **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** — column names and format must match their `company-BRIEFING.md`. No dataset generation or simulation is required.
 
 ---
 
@@ -9,7 +9,7 @@ This reference solution describes the expected architecture, deliverables, and v
 | File                                    | Purpose                                                                       |
 | --------------------------------------- | ------------------------------------------------------------------------------ |
 | `pyproject.toml` (managed by `uv`)      | Pinned dependencies (`scikit-learn`, `xgboost`, `pandas`, `matplotlib`, `statsmodels`) |
-| `data/raw/<company>_sales.csv`          | Pre-included historical sales dataset per `CONTEXT.md` — load, don't generate  |
+| `data/raw/<company>_sales.csv`          | Pre-included historical sales dataset per `BRIEFING.md` — load, don't generate  |
 | `pipelines/decompose_series.py`         | Trend/seasonality/residual decomposition, saved as a diagnostic plot          |
 | `pipelines/build_features.py`           | Causal lag, rolling, and calendar feature engineering                         |
 | `pipelines/train_sales_model.py`        | Loads data, splits by year, builds features, trains, evaluates, plots         |
@@ -43,7 +43,7 @@ flowchart LR
 
 ## Series decomposition (diagnostic step)
 
-Before engineering features, decompose the series to confirm the pattern documented in `CONTEXT-company.md` actually shows up in the data:
+Before engineering features, decompose the series to confirm the pattern documented in `company-BRIEFING.md` actually shows up in the data:
 
 ```python
 from statsmodels.tsa.seasonal import seasonal_decompose
@@ -155,7 +155,7 @@ def test_lag_feature_is_causal():
 
 ## Validation checklist
 
-- [ ] Series decomposed into trend/seasonality/residual and checked against `CONTEXT.md`
+- [ ] Series decomposed into trend/seasonality/residual and checked against `BRIEFING.md`
 - [ ] At least one lag, one rolling statistic, and one calendar feature engineered
 - [ ] Lag/rolling features computed causally (shift before rolling), verified by unit test
 - [ ] Split is chronological: first 8 years train, last 2 years test — no random shuffle
@@ -165,7 +165,7 @@ def test_lag_feature_is_causal():
 - [ ] Seed fixed (`random_state`/`seed`) for reproducibility
 - [ ] MSE, PSI, Gini, K2 Score reported on the **test** set with explanations
 - [ ] Visualization shows forecast + variability band vs. actual test-year data
-- [ ] Dataset loaded from `data/raw/<company>_sales.csv` with columns/format matching `CONTEXT.md` — no alterations that break seasonality or growth pattern
+- [ ] Dataset loaded from `data/raw/<company>_sales.csv` with columns/format matching `BRIEFING.md` — no alterations that break seasonality or growth pattern
 - [ ] `tests/pipelines/` split and feature-causality tests both pass
 
 ---

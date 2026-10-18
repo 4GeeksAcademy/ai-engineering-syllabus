@@ -1,6 +1,6 @@
 # Support Agent with LangGraph — Part 2 of 2: Tools Outside the RAG — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align field names, routes, and service URLs with their assigned `CONTEXT-company.md` and the incident/inventory services they built in earlier projects.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align field names, routes, and service URLs with their assigned `company-BRIEFING.md` and the incident/inventory services they built in earlier projects.
 
 ---
 

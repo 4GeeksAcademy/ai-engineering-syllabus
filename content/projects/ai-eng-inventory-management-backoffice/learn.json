@@ -8,8 +8,8 @@
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "slug": "ai-eng-inventory-management-backoffice",
   "description": {
-    "en": "Build the inventory section of the internal backoffice on top of the course inventory API: product list with stock indicators, inbound and outbound order forms with reactive stock display and readable API errors, read-only order history, centralized API module, and route protection — aligned with CONTEXT-company.md.",
-    "es": "Construye la sección de inventario del backoffice interno sobre la API de inventario del curso: listado de productos con indicadores de stock, formularios de órdenes de entrada y salida con stock reactivo y errores legibles de la API, historial de órdenes de solo lectura, módulo centralizado de API y protección de rutas — alineado con CONTEXT-company.md."
+    "en": "Build the inventory section of the internal backoffice on top of the course inventory API: product list with stock indicators, inbound and outbound order forms with reactive stock display and readable API errors, read-only order history, centralized API module, and route protection — aligned with company-BRIEFING.md.",
+    "es": "Construye la sección de inventario del backoffice interno sobre la API de inventario del curso: listado de productos con indicadores de stock, formularios de órdenes de entrada y salida con stock reactivo y errores legibles de la API, historial de órdenes de solo lectura, módulo centralizado de API y protección de rutas — alineado con company-BRIEFING.md."
   },
   "difficulty": "intermediate",
   "duration": 3,

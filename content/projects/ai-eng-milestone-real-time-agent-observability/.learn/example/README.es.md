@@ -1,6 +1,6 @@
 # Signal Yard — Tablero de Vigilancia de Agentes (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-real-time-agent-observability`. Misma columna vertebral (Agente / Flujo / Tarea, persistir-luego-SSE, eventos nombrados `agent_step` / `agent_status_changed`, auth JWT opcional en demo, acciones disponibles solo informativas, cadena de tarea trazable). Dominio distinto a los agentes CONTEXT de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-real-time-agent-observability`. Misma columna vertebral (Agente / Flujo / Tarea, persistir-luego-SSE, eventos nombrados `agent_step` / `agent_status_changed`, auth JWT opcional en demo, acciones disponibles solo informativas, cadena de tarea trazable). Dominio distinto a los agentes BRIEFING de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -19,10 +19,10 @@ Demo de esta noche: un tablero que lista ambos agentes, abre el detalle (último
 
 | Proyecto evaluado (`ai-eng-milestone-real-time-agent-observability`) | Este ejemplo de clase                           |
 | -------------------------------------------------------------- | ----------------------------------------------- |
-| Monorepo de empresa + agentes / `action_type` del CONTEXT      | Solo Signal Yard                                |
+| Monorepo de empresa + agentes / `action_type` del BRIEFING      | Solo Signal Yard                                |
 | Instrumentar LangGraph / pipeline RFP real                     | Runners stub que emiten tareas                  |
 | `uis/backoffice` completo + JWT de empresa                     | Un tablero HTML/JS; token demo OK               |
-| Reglas CONTEXT de `needs_intervention`                         | Simple: atascado > 20s en `query` sin `deliver` |
+| Reglas BRIEFING de `needs_intervention`                         | Simple: atascado > 20s en `query` sin `deliver` |
 | PR de empresa + preguntas de diseño                            | Demo en vivo + 5 tests automatizados            |
 
 ---
@@ -108,5 +108,5 @@ data: {"agent_id":"yard_desk","flow_id":"chat_03","status":"running"}
 ## Fuera de alcance del ejemplo
 
 - Pausa / reanudar / kill (Parte 2)
-- Empresas del CONTEXT (Brasaland, HealthCore, Nexova, TrackFlow)
+- Empresas del BRIEFING (Brasaland, HealthCore, Nexova, TrackFlow)
 - Pipeline RFP real ni reescritura del agente RAG

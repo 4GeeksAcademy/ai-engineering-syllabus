@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/08-agent-engineering/memory)** — define qué información nunca debe entrar en la memoria de tu agente y qué tipo de hechos sí vale la pena que recuerde en tu empresa.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/08-agent-engineering/memory)** — define qué información nunca debe entrar en la memoria de tu agente y qué tipo de hechos sí vale la pena que recuerde en tu empresa.
 
 ---
 
@@ -19,7 +19,7 @@ _These instructions are [available in English](./README.md)._
 
 > 📌 Estás construyendo sobre **tu copia** del **[monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)** de la empresa seleccionada al inicio del curso — no en un repositorio nuevo.
 
-Tu empresa ya tiene una **base de conocimiento RAG** de un hito anterior — un almacén de documentos que el modelo puede consultar. Eso **no** es el mismo producto que este agente. El agente que extiendes aquí tiene su propia identidad (ver tu CONTEXT: soporte a managers, CX, compliance, soporte de primera línea, …). Puede **llamar** al RAG como herramienta; no se convierte en la UI de Q&A comercial. El problema es que cada conversación sigue empezando de cero: no recuerda que ayer se resolvió una escalación parecida, ni que un usuario ya corrigió un dato la semana pasada. Tu tech lead abrió un **ticket** después de que dos clientes distintos tuvieron que repetir la misma corrección tres veces en la misma semana.
+Tu empresa ya tiene una **base de conocimiento RAG** de un hito anterior — un almacén de documentos que el modelo puede consultar. Eso **no** es el mismo producto que este agente. El agente que extiendes aquí tiene su propia identidad (ver tu BRIEFING: soporte a managers, CX, compliance, soporte de primera línea, …). Puede **llamar** al RAG como herramienta; no se convierte en la UI de Q&A comercial. El problema es que cada conversación sigue empezando de cero: no recuerda que ayer se resolvió una escalación parecida, ni que un usuario ya corrigió un dato la semana pasada. Tu tech lead abrió un **ticket** después de que dos clientes distintos tuvieron que repetir la misma corrección tres veces en la misma semana.
 
 ### 🧠 Conocimiento Complementario: Arquitecturas de Memoria
 
@@ -65,7 +65,7 @@ git switch -c feature/agent-memory
 - [ ] **No escribas memoria en las colecciones RAG de la empresa** (`*_knowledge` / almacén Qdrant de conocimiento de la empresa). El RAG sigue siendo herramienta de **solo lectura**. La memoria usa un store aparte o una colección claramente no-knowledge (p. ej. Redis, KV, o `*_agent_memory`). Mezclar hechos episódicos/aprobados con docs curados rompe evals de retrieval y controles de poison.
 - [ ] Implementa una interfaz explícita de lectura/escritura de memoria — el agente no debe acumular estado simplemente agregando todo al system prompt.
 
-⚠️ **IMPORTANTE:** Qué tipo de hechos son memorizables y cuáles están terminantemente prohibidos de guardar debe corresponder exactamente a lo especificado en tu CONTEXT-company.md. Una implementación genérica que ignore esas restricciones no será aceptada.
+⚠️ **IMPORTANTE:** Qué tipo de hechos son memorizables y cuáles están terminantemente prohibidos de guardar debe corresponder exactamente a lo especificado en tu company-BRIEFING.md. Una implementación genérica que ignore esas restricciones no será aceptada.
 
 ### Auto-evaluación y Propuesta de Memoria
 
@@ -98,7 +98,7 @@ git switch -c feature/agent-memory
 Como parte del reto, tu implementación debe resolver — sin que se te diga explícitamente en un checklist — las siguientes decisiones:
 
 - ¿Qué tipo(s) de memoria (episódica, semántica/vectorial, knowledge graph) necesita realmente tu empresa, y por qué descartaste las otras opciones?
-- ¿Qué información nunca debería entrar en la memoria del agente, sin importar quién lo pida? Revisa tu CONTEXT — algunas empresas tienen restricciones no negociables en este punto.
+- ¿Qué información nunca debería entrar en la memoria del agente, sin importar quién lo pida? Revisa tu BRIEFING — algunas empresas tienen restricciones no negociables en este punto.
 - ¿Cómo decide el agente qué olvidar, y qué pasa con una propuesta pendiente si el usuario nunca responde?
 - ¿Cómo evitas que un usuario malicioso "envenene" la memoria del agente con información falsa presentada como una corrección legítima?
 - ¿Por qué no hace falta una arquitectura multi-agente para resolver la auto-evaluación y la propuesta de memoria? Justifica tu respuesta con lo que implementaste.
@@ -117,7 +117,7 @@ Como parte del reto, tu implementación debe resolver — sin que se te diga exp
 - [ ] Cada propuesta y su resultado quedan registrados de forma auditable, sin importar si fue aprobada o rechazada.
 - [ ] Existe un mecanismo de consolidación/limpieza documentado y funcional.
 - [ ] Se entregan al menos dos ciclos completos de evidencia (uno aprobado, uno rechazado).
-- [ ] Las decisiones de diseño responden explícitamente a las restricciones de tu CONTEXT-company.md, en especial qué no debe recordarse jamás.
+- [ ] Las decisiones de diseño responden explícitamente a las restricciones de tu company-BRIEFING.md, en especial qué no debe recordarse jamás.
 
 ---
 

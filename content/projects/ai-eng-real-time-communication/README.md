@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** before writing any code — it defines which agent you're connecting, the chat session fields, and the WebSocket event contract for this part. Part 1 SSE / RFP notification details live under [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), not in this CONTEXT.
+**Before you start**: read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/communication)** before writing any code — it defines which agent you're connecting, the chat session fields, and the WebSocket event contract for this part. Part 1 SSE / RFP notification details live under [`10-realtime/notification/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification), not in this BRIEFING.
 
 ---
 
@@ -41,7 +41,7 @@ Keep working on the fork of your company's monorepo that you've been using throu
 
 1. Create a new branch from your main branch: `feature/websocket-chat`.
 2. Locate the endpoint or function that currently invokes your support agent with a traditional request/response pattern — extend that path; do not create a parallel app or a delivery folder.
-3. Check your `CONTEXT-company.md` (under `10-realtime/communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
+3. Check your `company-BRIEFING.md` (under `10-realtime/communication/`) to confirm which agent you're connecting and the chat session / event names for this part — reuse naming _discipline_ from Part 1, not Part 1's RFP/SSE schemas.
 4. Review how your agent exposes streaming (LangGraph's `messages`, `values`, `updates`, or `custom` modes) before deciding which one you need to transmit tokens.
 5. Implement under the existing layout: WebSocket in `services/`, chat UI in `uis/`, tests in `tests/`.
 
@@ -61,7 +61,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 - [ ] After abort: mark the partial assistant message as `interrupted` (keep tokens already shown), accept new user input, and start a **new** assistant turn — do not delete or overwrite the interrupted message in place
 - [ ] Decouple the agent's event production from the WebSocket connections consuming it using a pub/sub pattern — an external backplane like Redis isn't required for this deliverable, but the producer/consumer pattern itself is evaluated
 
-⚠️ **IMPORTANT:** chat field names and entities must match your Part 2 CONTEXT. A generic implementation that ignores the context will not be accepted. Do not mix Part 1 RFP notification payloads into this WebSocket contract.
+⚠️ **IMPORTANT:** chat field names and entities must match your Part 2 BRIEFING. A generic implementation that ignores the context will not be accepted. Do not mix Part 1 RFP notification payloads into this WebSocket contract.
 
 **Frontend (`uis/`)**
 
@@ -96,7 +96,7 @@ Before considering your implementation done, think through and document your ans
 - [ ] Sending an interrupt mid-response measurably aborts the original generation (no further tokens), keeps the partial message marked `interrupted`, and the agent's next response is a new turn that reflects the new input
 - [ ] The WebSocket reconnects after a drop with the same `session_id` / `thread_id` and rehydrates from checkpoint or history — conversation thread is not lost
 - [ ] Agent event production is decoupled from WebSocket consumers via a pub/sub (or equivalent producer/consumer) pattern; events are named and structured, not a single generic message type
-- [ ] Field and entity names match what's defined in your company's Part 2 CONTEXT.md
+- [ ] Field and entity names match what's defined in your company's Part 2 BRIEFING.md
 
 ---
 

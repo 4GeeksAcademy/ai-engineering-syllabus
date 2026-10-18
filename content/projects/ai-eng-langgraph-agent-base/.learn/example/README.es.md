@@ -16,7 +16,7 @@ Objetivo del demo en vivo: envolver las funciones existentes `retrieve` y `query
 
 | Proyecto evaluable (`ai-eng-langgraph-agent-base`) | Este ejemplo de clase                               |
 | -------------------------------------------------- | --------------------------------------------------- |
-| Fork completo del monorepo + `CONTEXT-company.md`  | Mini `library-api` + corpus `maple_knowledge`       |
+| Fork completo del monorepo + `company-BRIEFING.md`  | Mini `library-api` + corpus `maple_knowledge`       |
 | LangSmith o tracing de producción                  | Lista de trace en memoria + export JSON opcional    |
 | Checkpointing con almacén durable                  | Solo checkpointer `MemorySaver`                     |
 | PR con captura de trace + salida de evals          | Demo local + `pytest tests/pipelines/`              |

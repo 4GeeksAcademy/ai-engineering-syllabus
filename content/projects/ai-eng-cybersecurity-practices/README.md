@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** before writing any code — it defines the applicable regulatory framework, company data, and the specific constraints for your implementation.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** before writing any code — it defines the applicable regulatory framework, company data, and the specific constraints for your implementation.
 
 ---
 
@@ -43,7 +43,7 @@ NIST organizes cybersecurity management into six functions: **Govern** (policy a
 ## 🌱 How to Start the Project
 
 1. `git pull` your monorepo fork and create a new branch for this work: `git switch -c feature/nist-security-practices`.
-2. Read your `CONTEXT-company.md` to identify the regulatory framework that applies to your company and the AI systems you've already built in prior milestones.
+2. Read your `company-BRIEFING.md` to identify the regulatory framework that applies to your company and the AI systems you've already built in prior milestones.
 3. Review `.env.example` and confirm how credentials and API keys are currently managed.
 4. Before touching any code, sketch or list (in your own report's README) every point where a language model receives external input — from a user, from a document in your semantic knowledge base, or from an MCP tool.
 
@@ -56,7 +56,7 @@ NIST organizes cybersecurity management into six functions: **Govern** (policy a
 - [ ] Document a complete inventory of the company's AI systems built so far (agents, RAG, MCP, workflows), with an assigned owner per component.
 - [ ] For each component, identify who is responsible for the control when the model or tool is provided by a third party.
 
-⚠️ **IMPORTANT:** The applicable regulatory framework (which regulation governs, what notification deadlines apply, which data is restricted) depends on your CONTEXT.md. A generic report that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** The applicable regulatory framework (which regulation governs, what notification deadlines apply, which data is restricted) depends on your BRIEFING.md. A generic report that ignores your company's context will not be accepted.
 
 **Security by design (backend and agents)**
 
@@ -69,7 +69,7 @@ NIST organizes cybersecurity management into six functions: **Govern** (policy a
 - [ ] Add logging and traceability of what action each agent took and why, for at least one existing agentic flow.
 - [ ] Confirm that irreversible actions (deleting data, sending communications, approving processes) require explicit human confirmation.
 
-⚠️ **IMPORTANT:** Your company's specific values — what counts as an irreversible action, which data is sensitive, what response SLA applies to an incident — are defined in your CONTEXT.md.
+⚠️ **IMPORTANT:** Your company's specific values — what counts as an irreversible action, which data is sensitive, what response SLA applies to an incident — are defined in your BRIEFING.md.
 
 **NIST report**
 
@@ -87,7 +87,7 @@ NIST organizes cybersecurity management into six functions: **Govern** (policy a
 - [ ] There is verifiable logging of at least one agent's decisions and actions.
 - [ ] Identified irreversible actions require human confirmation before executing.
 - [ ] The NIST report covers all six functions with at least one concrete action per function.
-- [ ] The report explicitly references your CONTEXT.md's regulatory framework, not generic regulation.
+- [ ] The report explicitly references your BRIEFING.md's regulatory framework, not generic regulation.
 
 ---
 

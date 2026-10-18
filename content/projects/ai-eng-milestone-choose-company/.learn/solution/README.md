@@ -6,7 +6,7 @@ This README describes what a correct reference submission should include for the
 
 No code is required in this milestone.
 
-The student must create (and commit) a `company-choice.md` file in the root of their repository, based on the four company profiles available in `CONTEXT-*.md` within the template repository.
+The student must create (and commit) a `company-choice.md` file in the root of their repository, based on the four company profiles available in `*-BRIEFING.md` within the template repository.
 
 ## What a correct `company-choice.md` must contain
 
@@ -17,7 +17,7 @@ The student must create (and commit) a `company-choice.md` file in the root of t
 ### 2) Clear justification (minimum 3 sentences)
 
 - The written justification must be at least 3 sentences.
-- It must reference specific details from the chosen company’s context file (not only the company name or sector).
+- It must reference specific details from the chosen company’s briefing file (not only the company name or sector).
 
 ### 3) Department discovery (minimum 2 departments)
 
@@ -41,7 +41,7 @@ The student must create (and commit) a `company-choice.md` file in the root of t
 
 - [ ] `company-choice.md` exists in the root of the submitted repository.
 - [ ] A specific company has been selected.
-- [ ] The justification is at least 3 sentences and references the context file with concrete details.
+- [ ] The justification is at least 3 sentences and references the briefing file with concrete details.
 - [ ] Two or more departments are identified with short explanations.
 - [ ] At least one specific milestone / automation challenge is named.
 - [ ] The submission includes a `## My AI Agent Idea` section with a 2–4 sentence agent proposal.
@@ -49,5 +49,5 @@ The student must create (and commit) a `company-choice.md` file in the root of t
 
 ## Notes for reviewers
 
-- “Correct” here means _evidence of thorough reading_ of the relevant `CONTEXT-*.md` document.
+- “Correct” here means _evidence of thorough reading_ of the relevant `*-BRIEFING.md` document.
 - Generic reasoning that could apply to any company should be treated as incomplete.

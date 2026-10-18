@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-observability)** antes de escribir una sola línea de código — ahí se define qué agentes de tu empresa vas a observar, los nombres de eventos y los campos específicos para tu implementación.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-observability)** antes de escribir una sola línea de código — ahí se define qué agentes de tu empresa vas a observar, los nombres de eventos y los campos específicos para tu implementación.
 
 ---
 
@@ -57,7 +57,7 @@ Continúa sobre el fork del monorepo de tu empresa que has usado desde el inicio
 1. Crea una rama nueva desde tu rama principal: `feature/agent-observability-sse`.
 2. Antes de escribir código, dibuja (aunque sea en papel) el modelo de datos: qué es un **agente**, qué es un **flujo/ejecución**, qué es una **tarea/paso**, y cómo se relacionan entre sí. La mayoría de los errores en este proyecto vienen de no separar bien estas tres entidades.
 3. Ubica los puntos de tu backend donde tus agentes ya emiten pasos, tool calls o cambios de estado — vas a extender esos puntos, no vas a reescribir la lógica de los agentes.
-4. Revisa tu `CONTEXT-company.md` en `content/contexts/10-realtime/agent-observability/` para confirmar qué agentes y flujos debes observar.
+4. Revisa tu `company-BRIEFING.md` en `content/contexts/10-realtime/agent-observability/` para confirmar qué agentes y flujos debes observar.
 5. Agrega nuevas dependencias con `uv add` — nunca con `pip install` o `pipenv`.
 6. Implementa bajo la estructura existente: SSE + persistencia en `services/`, panel en `uis/backoffice`, tests en `tests/`.
 
@@ -69,7 +69,7 @@ Continúa sobre el fork del monorepo de tu empresa que has usado desde el inicio
 
 - [ ] Define una entidad **Agente**: identificador, nombre, flujo(s) en los que puede participar, estado actual, indicador de si necesita intervención
 - [ ] Define una entidad **Flujo/Ejecución**: identificador, tipo de flujo, estado, qué la disparó (`triggered_by`), agentes participantes
-- [ ] Define una entidad **Tarea/Paso**: identificador, a qué flujo y agente pertenece, `action_type` (`query`, `write`, `draft_start`, `tool_call`, `deliver`, u otro definido en tu CONTEXT), qué la inició (`trigger` — tarea anterior o evento externo), tareas derivadas de ella, referencia al paso anterior y al paso siguiente
+- [ ] Define una entidad **Tarea/Paso**: identificador, a qué flujo y agente pertenece, `action_type` (`query`, `write`, `draft_start`, `tool_call`, `deliver`, u otro definido en tu BRIEFING), qué la inició (`trigger` — tarea anterior o evento externo), tareas derivadas de ella, referencia al paso anterior y al paso siguiente
 - [ ] Toda tarea debe quedar **persistida** de forma que su cadena completa (disparador → tarea → derivadas → siguiente paso) sea reconstruible después de que el flujo terminó
 
 **Backend — API y stream (`services/`)**
@@ -83,7 +83,7 @@ Continúa sobre el fork del monorepo de tu empresa que has usado desde el inicio
 - [ ] Endpoint: **listado de flujos ejecutados**, y detalle de un flujo con sus agentes participantes, estado de cada uno y acciones realizadas
 - [ ] Protege todos los endpoints y el stream con el mismo JWT que usa el backoffice
 
-⚠️ **IMPORTANTE:** los nombres de eventos, agentes, `action_type` y campos deben coincidir con lo especificado en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** los nombres de eventos, agentes, `action_type` y campos deben coincidir con lo especificado en tu `company-BRIEFING.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Frontend (`uis/backoffice`)**
 
@@ -130,7 +130,7 @@ Continúa sobre el fork del monorepo de tu empresa que has usado desde el inicio
 - [ ] El esquema funciona para al menos dos agentes con arquitecturas distintas (conversacional simple y multiagente)
 - [ ] Todos los endpoints y el stream requieren el mismo JWT que el resto del backoffice
 - [ ] No se implementó ejecución real de ninguna acción de control en esta parte — solo se muestra qué estaría disponible
-- [ ] Nombres de eventos, agentes, flujos y `action_type` coinciden con `CONTEXT-company.md`
+- [ ] Nombres de eventos, agentes, flujos y `action_type` coinciden con `company-BRIEFING.md`
 
 ---
 

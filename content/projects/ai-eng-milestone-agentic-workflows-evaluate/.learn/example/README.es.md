@@ -14,7 +14,7 @@ La Parte 1 ya le dijo al mostrador de subvenciones **qué** deben responder Prog
 
 | Proyecto evaluado (`ai-eng-milestone-agentic-workflows-evaluate`) | Este ejemplo de clase                        |
 | ----------------------------------------------------------------- | -------------------------------------------- |
-| Monorepo de empresa + reglas de lineamientos del CONTEXT          | Solo mostrador Maple Street                  |
+| Monorepo de empresa + reglas de lineamientos del BRIEFING          | Solo mostrador Maple Street                  |
 | Reuso completo del pipeline de la Parte 1                         | JSON fixture del synthesizer de Parte 1      |
 | Evaluadores paralelos legibilidad / pertinencia / lineamientos    | Tres evaluadores stub + lista fija de reglas |
 | Actualizaciones completas de UI de tickets                        | Transiciones de estado en JSON               |
@@ -36,7 +36,7 @@ La Parte 1 ya le dijo al mostrador de subvenciones **qué** deben responder Prog
 
 ---
 
-## Lineamientos semilla (indicativo — no es CONTEXT)
+## Lineamientos semilla (indicativo — no es BRIEFING)
 
 ```text
 [G1] Toda sección debe nombrar un importe en dólares o "TBD with Finance".

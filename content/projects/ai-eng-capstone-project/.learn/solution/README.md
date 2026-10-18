@@ -2,7 +2,7 @@
 
 This is an **explanatory** reference. There is no single correct video. A passing submission is a ~5-minute landscape pitch of **the student's own company system**, delivered as a **permanent** Google Drive, Microsoft OneDrive, or similar folder link with the required files.
 
-Do not treat the sample names below as a company students may copy. They illustrate shape, timing, and voice. The student's CONTEXT supplies the real entities.
+Do not treat the sample names below as a company students may copy. They illustrate shape, timing, and voice. The student's BRIEFING supplies the real entities.
 
 ## Expected deliverable set
 
@@ -85,7 +85,7 @@ The product architecture lives in the monorepo. The video only needs enough of i
 | Vertical phone video                                      | Landscape                                                                              |
 | Laptop mic, echo, music bed drowning speech               | Headset/close mic, quiet room                                                          |
 | Slides of boxes, no running UI                            | Screen recording of the real workflow                                                  |
-| Generic chatbot unrelated to CONTEXT                      | Same entities, fields, and constraints as CONTEXT.md                                   |
+| Generic chatbot unrelated to BRIEFING                      | Same entities, fields, and constraints as BRIEFING.md                                   |
 | Tool laundry list (FastAPI, Next, Qdrant, LangGraph…)     | One sentence on the AI piece that makes the workflow work                              |
 | “I learned a lot this bootcamp” in section 4              | “I chose X over Y because…”                                                            |
 | Q&A answers that cannot stand alone                       | Question restated in a full sentence, eyes on lens                                     |
@@ -107,4 +107,4 @@ The product architecture lives in the monorepo. The video only needs enough of i
 
 ## Notes for reviewers
 
-Grade the **communication of value** and evidence that the system is real. Do not fail a video for missing color grading or a fancy intro bumper. Do fail a video that recites the syllabus, ignores CONTEXT, delivers Q&A as one-word replies, or is missing required files / a working permanent Drive-or-OneDrive-style folder link.
+Grade the **communication of value** and evidence that the system is real. Do not fail a video for missing color grading or a fancy intro bumper. Do fail a video that recites the syllabus, ignores BRIEFING, delivers Q&A as one-word replies, or is missing required files / a working permanent Drive-or-OneDrive-style folder link.

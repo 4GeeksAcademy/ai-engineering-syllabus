@@ -7,7 +7,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 
 _These instructions are [available in English](./README.md)._
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** y confirma que el sistema que construiste arranca de verdad. Este vídeo es el **cierre** de ese trabajo.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** y confirma que el sistema que construiste arranca de verdad. Este vídeo es el **cierre** de ese trabajo.
 
 > Este proyecto es un reflejo de las habilidades, creatividad y mentalidad de resolución de problemas que desarrollaste a lo largo del programa. 😀 Disfrútalo y siéntete orgulloso de lo que lograste construir.
 
@@ -73,7 +73,7 @@ Grabas el sistema que ya vive en el monorepo de tu empresa. No clones una planti
 
 ## 💻 Qué debes hacer
 
-⚠️ **IMPORTANTE:** Los nombres de campos, entidades, KPIs y el flujo que demuestras deben coincidir con tu CONTEXT.md. Una demo genérica que ignore la empresa que has estado construyendo no se aceptará.
+⚠️ **IMPORTANTE:** Los nombres de campos, entidades, KPIs y el flujo que demuestras deben coincidir con tu BRIEFING.md. Una demo genérica que ignore la empresa que has estado construyendo no se aceptará.
 
 ### Lista de calidad de grabación
 

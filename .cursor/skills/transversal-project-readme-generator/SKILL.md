@@ -8,7 +8,7 @@ description: >-
   milestone needs a new README from scratch, or when an existing README needs to
   be rewritten. Trigger on "write the README for milestone N", "create the
   project statement for hito X", or "rewrite the milestone README". Do NOT use
-  for CONTEXT files — use transversal-project-context-generator instead.
+  for BRIEFING files — use transversal-project-context-generator instead.
 ---
 
 # 4Geeks Academy — Transversal README Generator
@@ -67,9 +67,9 @@ The challenge narrative and the CTO/manager brief must use the vocabulary that r
 
 Place at least one of these terms in the CTO/manager brief blockquote and at least one in the opening paragraph of the challenge narrative.
 
-### The CONTEXT anchor — mandatory
+### The BRIEFING anchor — mandatory
 
-The README must reference `CONTEXT-company.md` (link to <https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts>) in exactly two places:
+The README must reference `company-BRIEFING.md` (link to <https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts>) in exactly two places:
 
 1. **In the hidden metadata block** — a note before the student starts.
 2. **In the task checklist** — a `⚠️ IMPORTANT` warning that a generic implementation ignoring the context will not be accepted.
@@ -165,15 +165,15 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the specific company data, field names, KPIs, and constraints for your implementation.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the specific company data, field names, KPIs, and constraints for your implementation.
 ```
 
-### CONTEXT warning for the task checklist
+### BRIEFING warning for the task checklist
 
 Place this after any checklist group whose implementation depends on context data:
 
 ```markdown
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your BRIEFING.md. A generic implementation that ignores the context will not be accepted.
 ```
 
 ### Checklist format
@@ -223,7 +223,7 @@ Each file must link to its counterpart, written in the language of the target do
 - [ ] Company monorepo callout present as the first element inside the 🎯 Your challenge section (both language versions)
 - [ ] No sector name, company name, or industry reference anywhere in the README
 - [ ] At least one in-company communication term (RFI, RFP, brief, PRD, ticket, stakeholder, acceptance criteria, handoff, or sign-off) appears in both the challenge narrative opening and the CTO/manager brief
-- [ ] CONTEXT anchor present in both the metadata block and the task checklist
+- [ ] BRIEFING anchor present in both the metadata block and the task checklist
 - [ ] At least two or three requirements embedded in the challenge narrative (not only in checklists)
 - [ ] Prior milestone continuity sentence present (if not milestone 1)
 - [ ] Complementary knowledge subsection present if the milestone requires context not in lessons

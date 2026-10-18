@@ -11,7 +11,7 @@ This reference solution describes the expected architecture, implementation scop
 - `app/services/federated_auth.py` — **link** and **login** as two functions. Login never calls user-create.
 - `app/routes/auth.py` — `/auth/{provider}/start`, `/auth/{provider}/callback` with a `intent=link|login` (or separate paths).
 - `app/routes/profile.py` — link/unlink only with `get_current_user`.
-- Audit log (existing audit table or `audit_events`) for the four CONTEXT event names.
+- Audit log (existing audit table or `audit_events`) for the four BRIEFING event names.
 - `tests/` — unlinked login does not insert a user; link requires auth; unique provider identity; unlink last-method blocked.
 
 ```mermaid
@@ -32,7 +32,7 @@ flowchart TB
 
 Login and linking share the provider SDK. They do **not** share the success path.
 
-## Required Coverage (From README + CONTEXT)
+## Required Coverage (From README + BRIEFING)
 
 - Zero, one, or many providers per user (`IdentityLink` rows).
 - Store provider identifiers only — no plaintext long-lived tokens.
@@ -54,7 +54,7 @@ Login and linking share the provider SDK. They do **not** share the success path
 - `DELETE /auth/me/identity-links/{provider}` — authenticated; 409 if last access method
 - Existing `POST /auth/login` unchanged
 
-Provider path segment is the CONTEXT code: `google` | `microsoft` | `linkedin`.
+Provider path segment is the BRIEFING code: `google` | `microsoft` | `linkedin`.
 
 ## Key Implementation Decisions
 
@@ -118,5 +118,5 @@ Token TTL and revoke list match `POST /auth/login`.
 - Test: same `provider_user_id` cannot attach to two users.
 - Test: unlink last method → 409 + warning payload the UI can show.
 - Test: forged `state` or unknown `redirect_uri` → reject.
-- Confirm CONTEXT provider only (do not ship Google for HealthCore).
+- Confirm BRIEFING provider only (do not ship Google for HealthCore).
 - Confirm audit rows for link, unlink, and rejected login.

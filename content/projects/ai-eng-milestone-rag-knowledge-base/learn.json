@@ -5,8 +5,8 @@
     "es": "Hito — RAG y Base de Conocimiento"
   },
   "description": {
-    "en": "Build a modular RAG knowledge base in your company monorepo: chunk and index CONTEXT documents in Qdrant with setup() and embed(), implement retrieve() with similarity threshold and query() with a generation LLM (no LangChain), expose POST /knowledge/query via FastAPI, add a minimal query UI, and unit-test retrieve() and query() — answers always model-generated from retrieved context, never raw vector hits.",
-    "es": "Construye una base de conocimiento RAG modular en el monorepo de tu empresa: fragmenta e indexa documentos del CONTEXT en Qdrant con setup() y embed(), implementa retrieve() con umbral de similitud y query() con un LLM de generación (sin LangChain), expón POST /knowledge/query vía FastAPI, añade una UI mínima de consulta y prueba unitariamente retrieve() y query() — respuestas siempre generadas por modelo desde contexto recuperado, nunca hits vectoriales crudos."
+    "en": "Build a modular RAG knowledge base in your company monorepo: chunk and index BRIEFING documents in Qdrant with setup() and embed(), implement retrieve() with similarity threshold and query() with a generation LLM (no LangChain), expose POST /knowledge/query via FastAPI, add a minimal query UI, and unit-test retrieve() and query() — answers always model-generated from retrieved context, never raw vector hits.",
+    "es": "Construye una base de conocimiento RAG modular en el monorepo de tu empresa: fragmenta e indexa documentos del BRIEFING en Qdrant con setup() y embed(), implementa retrieve() con umbral de similitud y query() con un LLM de generación (sin LangChain), expón POST /knowledge/query vía FastAPI, añade una UI mínima de consulta y prueba unitariamente retrieve() y query() — respuestas siempre generadas por modelo desde contexto recuperado, nunca hits vectoriales crudos."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",

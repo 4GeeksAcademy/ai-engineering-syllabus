@@ -6,15 +6,15 @@ This reference solution defines the expected quality bar for deliverables in the
 - `services/reporting/` — API endpoints that query or trigger the pipeline
 - CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
 - Execution metadata persisted per run
-- Idempotent writes into the CONTEXT destination table (`reporting.*`)
+- Idempotent writes into the BRIEFING destination table (`reporting.*`)
 
-The deliverable is **runnable orchestration code** that implements the student's approved `data/pipelines/PIPELINE_DESIGN.md` and the company **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
+The deliverable is **runnable orchestration code** that implements the student's approved `data/pipelines/PIPELINE_DESIGN.md` and the company **[data-pipelines BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
 
 **Hard constraint:** do not modify `telemetry_events` write paths, `services/telemetry/analysis.py`, or `GET /telemetry/report`.
 
 ---
 
-> **Indicative examples** use Brasaland's `reporting.weekly_location_performance`. Substitute your CONTEXT Destination table and paths.
+> **Indicative examples** use Brasaland's `reporting.weekly_location_performance`. Substitute your BRIEFING Destination table and paths.
 
 ## Solution architecture
 
@@ -61,7 +61,7 @@ flowchart TD
 
 | Layer                               | Responsibility                                                                                   |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `data/pipelines/pipeline.py`        | Prefect `@flow` / `@task`, resilience config, idempotent load into the CONTEXT destination table |
+| `data/pipelines/pipeline.py`        | Prefect `@flow` / `@task`, resilience config, idempotent load into the BRIEFING destination table |
 | `services/reporting/`               | HTTP surface — imports flows/functions from `data/pipelines/`; no duplicated ETL logic           |
 | `pipeline_runs` (or structured log) | Per-run metadata: start, end, rows processed, status, errors                                     |
 
@@ -144,7 +144,7 @@ def transform_business_kpis(rows: list[dict], ...) -> list[dict]:
 
 ## Idempotency and execution log
 
-**Load phase** must use the strategy from `PIPELINE_DESIGN.md` + CONTEXT unique constraint — typical pattern:
+**Load phase** must use the strategy from `PIPELINE_DESIGN.md` + BRIEFING unique constraint — typical pattern:
 
 - Upsert on business grain into `reporting.weekly_location_performance` (e.g. `(report_date, location_id)`)
 - `ON CONFLICT DO UPDATE` for KPI columns
@@ -175,13 +175,13 @@ if __name__ == "__main__":
 python data/pipelines/pipeline.py
 ```
 
-Document schedule + run command in `PIPELINE_DESIGN.md` (aligned with CONTEXT reporting cadence).
+Document schedule + run command in `PIPELINE_DESIGN.md` (aligned with BRIEFING reporting cadence).
 
 ---
 
 ## Expected API surface (`services/reporting/`)
 
-Endpoints follow existing monorepo auth and RESPONSE shape from CONTEXT.
+Endpoints follow existing monorepo auth and RESPONSE shape from BRIEFING.
 
 ### Last run metadata
 
@@ -209,7 +209,7 @@ Must call the flow from `data/pipelines/pipeline.py` — not re-implement ETL in
 
 ### KPI query (required — Part 3 dashboard consumes this)
 
-Read-only query over the CONTEXT destination table. Response shape must match the CONTEXT contract (column names, grain, KPIs). Do not invent a generic `reporting.business_metrics` path unless CONTEXT uses that name.
+Read-only query over the BRIEFING destination table. Response shape must match the BRIEFING contract (column names, grain, KPIs). Do not invent a generic `reporting.business_metrics` path unless BRIEFING uses that name.
 
 ---
 
@@ -217,7 +217,7 @@ Read-only query over the CONTEXT destination table. Response shape must match th
 
 - Writing into `telemetry_events` or changing `GET /telemetry/report`
 - Endpoints under `services/telemetry/` instead of `services/reporting/`
-- KPI names that diverge from CONTEXT "KPIs to Measure"
+- KPI names that diverge from BRIEFING "KPIs to Measure"
 - Single script without `@flow` / `@task`
 - Retries missing on DB/API tasks, or no justification comment
 - Optional step fails and stops entire flow
@@ -235,15 +235,15 @@ Read-only query over the CONTEXT destination table. Response shape must match th
 - [ ] ≥1 task has `retries > 0` with justification comment
 - [ ] ≥1 optional task invoked with `return_state=True`; flow continues on its failure
 - [ ] ≥1 transform task has `cache_key_fn` + `cache_expiration` with comment
-- [ ] Load is idempotent into the CONTEXT destination table — no duplicates on second run
+- [ ] Load is idempotent into the BRIEFING destination table — no duplicates on second run
 - [ ] Each run logs ≥5 metadata fields (start, end, records, status, errors)
 - [ ] `python data/pipelines/pipeline.py` runs the full ETL flow without errors
 - [ ] Run command documented in `PIPELINE_DESIGN.md` or inline comments
 - [ ] `telemetry_events` and `services/telemetry/analysis.py` untouched
 - [ ] `services/reporting/` endpoint returns last run metadata
 - [ ] `services/reporting/` endpoint triggers manual run via import from `data/pipelines/`
-- [ ] `services/reporting/` endpoint returns KPI rows from the CONTEXT destination table
-- [ ] KPI values match CONTEXT "KPIs to Measure"
+- [ ] `services/reporting/` endpoint returns KPI rows from the BRIEFING destination table
+- [ ] KPI values match BRIEFING "KPIs to Measure"
 - [ ] Implementation matches `PIPELINE_DESIGN.md`
 - [ ] Commit message `feat: implement resilient business performance pipeline`
 

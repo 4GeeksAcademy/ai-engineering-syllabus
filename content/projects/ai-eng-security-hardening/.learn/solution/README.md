@@ -4,7 +4,7 @@
 
 Reference for an **application-level** security audit on the company monorepo fork: real findings in _your_ code, before/after proof, rate limits on sensitive routes, secrets hygiene, rotation runbook.
 
-Not the same as **Web Vulnerability Audit (OWASP Top 10)** (`ai-eng-cybersecurity-vulnerabilities`) — that module adds **server hardening** (SSH, firewall, non-root) and agent-lane CONTEXT. This Platform ticket scopes **your app only** — no third-party infra you don't control.
+Not the same as **Web Vulnerability Audit (OWASP Top 10)** (`ai-eng-cybersecurity-vulnerabilities`) — that module adds **server hardening** (SSH, firewall, non-root) and agent-lane BRIEFING. This Platform ticket scopes **your app only** — no third-party infra you don't control.
 
 ## Solution Structure
 

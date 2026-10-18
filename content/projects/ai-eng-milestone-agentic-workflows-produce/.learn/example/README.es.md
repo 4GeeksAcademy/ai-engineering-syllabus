@@ -16,7 +16,7 @@ Pausa solo la rama que espera. Persiste con checkpointer. Reanuda sin reiniciar.
 
 | Proyecto evaluado (`ai-eng-milestone-agentic-workflows-produce`) | Este ejemplo de clase                     |
 | ---------------------------------------------------------------- | ----------------------------------------- |
-| Monorepo de empresa + aprobadores CONTEXT / arbitraje §7         | Solo mostrador Maple Street               |
+| Monorepo de empresa + aprobadores BRIEFING / arbitraje §7         | Solo mostrador Maple Street               |
 | Pipeline completo Partes 1–2                                     | Fixtures de tickets de asignación Parte 2 |
 | Checkpointer SQLite/Postgres                                     | Checkpointer SQLite en archivo            |
 | UI completa de aprobación en `uis/backoffice`                    | CLI approve/reject + ticket JSON          |

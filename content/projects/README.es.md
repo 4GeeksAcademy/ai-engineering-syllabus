@@ -12,7 +12,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
    Proyecto final en n8n: webhook de código de barras → Open Food Facts → reglas de semáforo + Nutri-Score → veredicto Groq con tono adaptable, con diagrama, README, pruebas y CHANGELOG.
 
 1. **[Hito de empresa: Elige tu compañía](./ai-eng-milestone-choose-company)**  
-   `Hito 0` — Elige tu empresa ficticia, captúrala en `CONTEXT.md` y prepara la narrativa y los datos que reutilizarás en hitos posteriores.
+   `Hito 0` — Elige tu empresa ficticia, captúrala en `BRIEFING.md` y prepara la narrativa y los datos que reutilizarás en hitos posteriores.
 
 2. **[Landing de artista: HTML, CSS, SEO y accesibilidad](./html-css-artist-landing-seo-access)**  
    Landing accesible y optimizada para SEO de un artista usando HTML semántico y CSS.
@@ -21,7 +21,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
    Dashboard responsive con HTML y Tailwind mostrando KPIs, drivers y detalles operativos (sin React).
 
 4. **[Hito de empresa: Fundamentos web](./ai-eng-milestone-web-fundamentals)**  
-   `Hito 1` — Sitio público de tu empresa: landing más formulario de registro con HTML5 semántico, Tailwind, Schema.org y validación JavaScript. Sigue `CONTEXT.md` para datos y campos del formulario.
+   `Hito 1` — Sitio público de tu empresa: landing más formulario de registro con HTML5 semántico, Tailwind, Schema.org y validación JavaScript. Sigue `BRIEFING.md` para datos y campos del formulario.
 
 5. **[Proyecto colaborativo: tienda online con HTML y Tailwind](./collaborative-project-html-tailwind-online-store)**  
    Prototipo e-commerce colaborativo (mín. 5 páginas: Home, Catálogo, Producto, Carrito, Checkout) con HTML y Tailwind, trabajo en equipo con ramas y pull requests.
@@ -42,7 +42,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Configura tipos de memoria OpenClaw (episódica, semántica, procedimental), reestructura archivos del workspace y valida que el contexto persiste entre sesiones.
 
 11. **[Agente de onboarding con memoria](./openclaw-onboarding-agent)**  
-    Construye un flujo de onboarding empresarial: agente OpenClaw con memoria que lee plantillas HR y envía email de bienvenida personalizado desde tu `CONTEXT-empresa.md`.
+    Construye un flujo de onboarding empresarial: agente OpenClaw con memoria que lee plantillas HR y envía email de bienvenida personalizado desde tu `empresa-BRIEFING.md`.
 
 12. **[Gestor de asientos de cine (TypeScript)](./seats-management-typescript)**  
     Sistema de reserva de asientos en terminal con array 2D: reservar, contar y buscar asientos adyacentes.
@@ -69,7 +69,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Clon UI Next.js 16 + TypeScript + Tailwind desde brief de producto: layout, componentes reutilizables y datos tipados.
 
 20. **[Hito de empresa: Talent Pipeline Tracker](./ai-eng-milestone-frontend-development)**  
-    `Hito 3` — Frontend Next.js App Router para la API de reclutamiento: listado y detalle de candidatos, filtros, CRUD de notas, formularios y estados async alineados con `CONTEXT-empresa.md`.
+    `Hito 3` — Frontend Next.js App Router para la API de reclutamiento: listado y detalle de candidatos, filtros, CRUD de notas, formularios y estados async alineados con `empresa-BRIEFING.md`.
 
 21. **[Proyecto de contexto — dashboard financiero empresarial](./company-financial-dashboard-context-project)**  
     Stewardship del repo: fork de repo full-stack, valida comprensión generada por IA, define reglas en `.agents/rules` y genera `memory-bank` con producto, stack y estado actual.
@@ -96,7 +96,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     API FastAPI de inventario más agent loop Python que usa endpoints como tools, registra interacciones en CSV y soporta operaciones de stock en lenguaje natural.
 
 29. **[Directorio de proveedores — API de almacenamiento ligero](./ai-eng-supplier-directory)**  
-    API FastAPI + TinyDB + Pydantic: datos sembrados desde `CONTEXT`, validación, CRUD y filtros por país y categoría.
+    API FastAPI + TinyDB + Pydantic: datos sembrados desde `BRIEFING`, validación, CRUD y filtros por país y categoría.
 
 30. **[Asegurando la API: autenticación y restricción de rutas en FastAPI](./ai-eng-user-authentication-api)**  
     Auth JWT en la API de proveedores: registro, login, rutas protegidas, hash de contraseñas y checks de ownership.
@@ -111,7 +111,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Suite de tests unitarios en la API de autenticación: lógica de tokens, casos límite de validación y comportamiento de endpoints.
 
 34. **[Gestor centralizado de incidentes](./ai-eng-centralized-incident-manager)**  
-    Integra gestor de incidentes en tiempo real en el monorepo: registrar, consultar y rastrear incidentes desde el navegador con `CONTEXT-empresa.md`.
+    Integra gestor de incidentes en tiempo real en el monorepo: registrar, consultar y rastrear incidentes desde el navegador con `empresa-BRIEFING.md`.
 
 35. **[Manejo de errores](./ai-eng-error-handling)**  
     Audita y corrige manejo de errores en el monorepo: fallos de API, estados de carga, mensajes al usuario y salida de scripts antes del siguiente hito.
@@ -123,7 +123,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     SQL multi-tabla en esquema EduTrack normalizado: JOINs, métricas cruzadas y respuestas que relacionan estudiantes, cursos e inscripciones.
 
 38. **[Hito de empresa: Backend — Gestión de inventario](./ai-eng-milestone-backend-development)**  
-    `Hito 5` (backend) — API FastAPI + SQLModel de inventario en Supabase: dual-database, órdenes entrantes/salientes y reglas de negocio desde `CONTEXT-empresa.md`.
+    `Hito 5` (backend) — API FastAPI + SQLModel de inventario en Supabase: dual-database, órdenes entrantes/salientes y reglas de negocio desde `empresa-BRIEFING.md`.
 
 39. **[Hito de empresa: Backoffice — Gestión de inventario](./ai-eng-inventory-management-backoffice)**  
     `Hito 5` (frontend) — UI backoffice para operaciones de inventario conectada a la API del Hito 5.
@@ -144,10 +144,10 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Perfila hot paths frontend y API, implementa caché justificada (TTL, `useMemo`, caché FastAPI) y documenta trade-offs en informe técnico.
 
 45. **[Diseño del plan de telemetría de tu compañía](./ai-eng-telemetry-plan)**  
-    Diseña `telemetry-plan.md` y `event-schemas.json` desde métricas obligatorias del CONTEXT más un catálogo amplio de oportunidades antes de instrumentar código.
+    Diseña `telemetry-plan.md` y `event-schemas.json` desde métricas obligatorias del BRIEFING más un catálogo amplio de oportunidades antes de instrumentar código.
 
 46. **[Telemetría de tu compañía – Captura en el frontend](./ai-eng-telemetry-capture)**  
-    Stub `POST /telemetry/events` + `TelemetryService` (cola, batch/debounce, `sendBeacon`, reintentos) instrumentando métricas obligatorias del CONTEXT y un piso técnico vía `track()` única.
+    Stub `POST /telemetry/events` + `TelemetryService` (cola, batch/debounce, `sendBeacon`, reintentos) instrumentando métricas obligatorias del BRIEFING y un piso técnico vía `track()` única.
 
 47. **[Telemetría de tu compañía – Almacenamiento](./ai-eng-telemetry-storage)**  
     Sustituye stub por Supabase `telemetry_events`: validación por evento, bulk insert, `{ received, stored, rejected }`, frontend intacto.
@@ -186,7 +186,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Ajusta un clasificador de churn en el dataset estilo telecom de StreamLoop: Pipeline sklearn con preprocesado interno, baseline por defecto, RandomizedSearchCV → GridSearchCV solo en train, métrica alineada al negocio, revisión de estabilidad en `cv_results_` y `tuning_report.md`.
 
 59. **[Hito 7 — RAG y Base de Conocimiento](./ai-eng-milestone-rag-knowledge-base)**  
-    `Hito 7` — RAG modular en el monorepo: fragmenta e indexa documentos del CONTEXT en Qdrant (`setup`, `embed`), recupera con umbral de similitud, genera respuestas con voz comercial (`query`), expone `POST /knowledge/query` vía FastAPI, UI mínima de consulta y tests unitarios — sin LangChain; nunca devolver hits vectoriales crudos.
+    `Hito 7` — RAG modular en el monorepo: fragmenta e indexa documentos del BRIEFING en Qdrant (`setup`, `embed`), recupera con umbral de similitud, genera respuestas con voz comercial (`query`), expone `POST /knowledge/query` vía FastAPI, UI mínima de consulta y tests unitarios — sin LangChain; nunca devolver hits vectoriales crudos.
 
 60. **[Agente de Soporte con LangGraph — Parte 1: Migración y Flujo del Agente](./ai-eng-langgraph-agent-base)**  
     `Parte 1 de 2` — Envuelve el RAG del Hito 7 en un LangGraph compilado con estado mínimo, nodos de responsabilidad única, aristas condicionales, checkpointing, traces consultables, evals en `tests/pipelines/` y `POST /agent/query` — reutiliza `data/pipelines/` sin duplicar.
@@ -198,25 +198,25 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
     Expón el Incidents Manager y el inventario de solo lectura como un servidor FastMCP autenticado (API Key, mínimo privilegio, esquemas de discovery, logs de invocación), valídalo con un cliente MCP y migra el agente LangGraph para consumir incidentes vía MCP en lugar de tools HTTP directas.
 
 63. **[Hito 8 — Memoria y Auto-mejora de Agentes (Parte 1 de 2)](./ai-eng-milestone-agentic-engineering)**  
-    `Hito 8` Parte 1 — Extiende el agente LangGraph de la empresa (RAG + MCP) con memoria persistente: interfaz explícita de lectura/escritura, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar — solo hechos permitidos por CONTEXT, nunca escrituras silenciosas. Misma identidad de agente que la Parte 2.
+    `Hito 8` Parte 1 — Extiende el agente LangGraph de la empresa (RAG + MCP) con memoria persistente: interfaz explícita de lectura/escritura, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar — solo hechos permitidos por BRIEFING, nunca escrituras silenciosas. Misma identidad de agente que la Parte 2.
 
 64. **[Hito 8 — Aseguramiento de Agentes: Harness y Guardrails (Parte 2 de 2)](./ai-eng-agent-harness)**  
-    `Hito 8` Parte 2 — Cierra el **mismo** agente de la empresa después de memoria: system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests **deterministas** del harness — defensas en capas, no un único filtro ni solo un LLM vivo.
+    `Hito 8` Parte 2 — Cierra el **mismo** agente de la empresa después de memoria: system prompt seguro alineado al BRIEFING, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, observabilidad de guardrails y tests **deterministas** del harness — defensas en capas, no un único filtro ni solo un LLM vivo.
 
 65. **[Hito — Flujo Agéntico de RFPs: Recepción y Enrutamiento (Parte 1 de 3)](./ai-eng-milestone-agentic-workflows-orchestrate)**  
-    `Hito 9` Parte 1 — Ingesta agéntica de RFPs: router de triage, filtro de RFP, descomposición orchestrator-worker en workstreams paralelos y synthesizer hacia la estructura definida en el CONTEXT.
+    `Hito 9` Parte 1 — Ingesta agéntica de RFPs: router de triage, filtro de RFP, descomposición orchestrator-worker en workstreams paralelos y synthesizer hacia la estructura definida en el BRIEFING.
 
 66. **[Hito — Flujo Agéntico de RFPs: Generación de Respuestas (Parte 2 de 3)](./ai-eng-milestone-agentic-workflows-evaluate)**  
     `Hito 9` Parte 2 — Mapea workstreams a departamentos, genera y autoevalúa cada sección y produce tickets de asignación — misma fila de ticket que la Parte 1.
 
 67. **[Hito — Flujo Agéntico de RFPs: Aprobación y Cierre (Parte 3 de 3)](./ai-eng-milestone-agentic-workflows-produce)**  
-    `Hito 9` Parte 3 — Interrupt/resume human-in-the-loop por departamento, ramas en paralelo bajo interrupt, árbitro de conflicto del CONTEXT, síntesis automática del documento final y continuidad E2E desde las Partes 1–2.
+    `Hito 9` Parte 3 — Interrupt/resume human-in-the-loop por departamento, ramas en paralelo bajo interrupt, árbitro de conflicto del BRIEFING, síntesis automática del documento final y continuidad E2E desde las Partes 1–2.
 
 68. **[Hito — Sistemas en Tiempo Real: Observabilidad de Agentes (Parte 1 de 2)](./ai-eng-milestone-real-time-agent-observability)**  
-    `Hito 10` Parte 1 — Persiste Agente / Flujo / Tarea con cadenas de disparo, eventos SSE nombrados (`agent_step`, `agent_status_changed`), panel backoffice con JWT (listado/detalle en vivo + historial paginado) para el agente conversacional y el pipeline de RFP — solo observar; el control es la Parte 2. CONTEXT: [`10-realtime/agent-observability`](../contexts/10-realtime/agent-observability).
+    `Hito 10` Parte 1 — Persiste Agente / Flujo / Tarea con cadenas de disparo, eventos SSE nombrados (`agent_step`, `agent_status_changed`), panel backoffice con JWT (listado/detalle en vivo + historial paginado) para el agente conversacional y el pipeline de RFP — solo observar; el control es la Parte 2. BRIEFING: [`10-realtime/agent-observability`](../contexts/10-realtime/agent-observability).
 
 69. **[Hito — Sistemas en Tiempo Real: Control de Agentes (Parte 2 de 2)](./ai-eng-milestone-real-time-agent-control)**  
-    `Hito 10` Parte 2 — Conecta las available-actions de la Parte 1 a `pause` / `resume` / `cancel` reales vía WebSocket: reutiliza checkpoints de LangGraph, fan-out pub/sub, auditoría con `actor_id` del JWT, cancel terminal vs pause reanudable — kill switch, no aprobación de negocio. CONTEXT: [`10-realtime/agent-control`](../contexts/10-realtime/agent-control).
+    `Hito 10` Parte 2 — Conecta las available-actions de la Parte 1 a `pause` / `resume` / `cancel` reales vía WebSocket: reutiliza checkpoints de LangGraph, fan-out pub/sub, auditoría con `actor_id` del JWT, cancel terminal vs pause reanudable — kill switch, no aprobación de negocio. BRIEFING: [`10-realtime/agent-control`](../contexts/10-realtime/agent-control).
 
 70. **[Entrega final — Vídeo del proyecto final: pitch de IA en 5 minutos](./ai-eng-capstone-project)**  
     Capstone — Graba un pitch horizontal de ~5 minutos del sistema de IA de la empresa: gancho, problema, demo en vivo, trade-offs de ingeniería y Q&A de 4Geeks listo para cortar. Entrega una carpeta de Google Drive (o similar) con `FirstnameLastname-ProjectName.mp4`, una descripción de 1–2 frases y la cesión de imagen firmada.
@@ -226,7 +226,7 @@ Los proyectos siguen un orden pedagógico: desde fundamentos web (HTML, CSS, SEO
 Track separado en [`./4-devs`](./4-devs). Contextos en [`../contexts/4-devs`](../contexts/4-devs).
 
 - **[Backoffice de Operaciones – Gestor de Incidencias](./4-devs/ai-eng-incident-manager-for-devs)**  
-  Stewardship + feature: deriva convenciones del monorepo a `.agents/rules` y `memory-bank`, y entrega un gestor de incidencias guiado por CONTEXT con ciclo de vida y trazabilidad (`contexts/4-devs/incident-manager-for-devs`).
+  Stewardship + feature: deriva convenciones del monorepo a `.agents/rules` y `memory-bank`, y entrega un gestor de incidencias guiado por BRIEFING con ciclo de vida y trazabilidad (`contexts/4-devs/incident-manager-for-devs`).
 
 - **[Backoffice de Operaciones – Gestor de Inventario](./4-devs/ai-eng-inventory-manager-for-devs)**  
   Spec Driven Development: `spec` / `plan` / `tasks` en EARS, inventario con stock derivado de movimientos, tests mapeados a criterios, cambio de requisito vía spec-first (`contexts/4-devs/inventory-manager-for-devs`).
@@ -251,7 +251,7 @@ No forman parte de la secuencia del temario. Se mantienen aquí como referencia 
   Auditoría OWASP guiada sobre tu app del monorepo: ≥3 hallazgos reales con prueba antes/después, rate limits en endpoints sensibles y documentación de rotación de secretos.
 
 - **[Sistemas en Tiempo Real (Parte 1 de 2): Notificaciones SSE](./ai-eng-real-time-notification)**  
-  Extra post-graduación — Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del CONTEXT, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente). No es el hito de observabilidad de agentes (`ai-eng-milestone-real-time-agent-observability`).
+  Extra post-graduación — Empuja notificaciones de tickets RFP al dashboard por SSE: evento nombrado + payload del BRIEFING, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff sin duplicados — solo capa de comunicación (sin modelo/agente). No es el hito de observabilidad de agentes (`ai-eng-milestone-real-time-agent-observability`).
 
 - **[Sistemas en Tiempo Real (Parte 2 de 2): Streaming de Chat por WebSocket](./ai-eng-real-time-communication)**  
   Extra post-graduación — WebSocket bidireccional para el agente de soporte existente: streaming de tokens, interrupt a mitad de respuesta + checkpointing, pub/sub por sesión, UI de escritura en vivo, reconexión con backoff — reutiliza el naming de eventos de la Parte 1; no reescribas la lógica del agente. No es el hito de control de agentes (`ai-eng-milestone-real-time-agent-control`).

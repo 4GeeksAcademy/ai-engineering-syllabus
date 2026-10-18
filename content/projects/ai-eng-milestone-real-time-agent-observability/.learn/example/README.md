@@ -1,6 +1,6 @@
 # Signal Yard — Agent Watch Board (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-real-time-agent-observability`. Same spine (Agent / Flow / Task, persist-then-SSE, named `agent_step` / `agent_status_changed`, JWT-style auth optional in demo, informational available-actions, traceable task chain). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-real-time-agent-observability`. Same spine (Agent / Flow / Task, persist-then-SSE, named `agent_step` / `agent_status_changed`, JWT-style auth optional in demo, informational available-actions, traceable task chain). Different domain than company BRIEFING agents. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -19,10 +19,10 @@ Tonight’s demo: a watch board that lists both agents, opens an agent detail (l
 
 | Graded project (`ai-eng-milestone-real-time-agent-observability`) | This class example                               |
 | ----------------------------------------------------------- | ------------------------------------------------ |
-| Company monorepo + CONTEXT agents / `action_type`           | Signal Yard only                                 |
+| Company monorepo + BRIEFING agents / `action_type`           | Signal Yard only                                 |
 | Instrument real LangGraph / RFP pipeline                    | Stub runners that emit tasks                     |
 | Full `uis/backoffice` + company JWT                         | One HTML/JS board; demo token OK                 |
-| CONTEXT `needs_intervention` rules                          | Simple: stuck > 20s on `query` without `deliver` |
+| BRIEFING `needs_intervention` rules                          | Simple: stuck > 20s on `query` without `deliver` |
 | Company PR + design questions                               | Live demo + 5 automated tests                    |
 
 ---
@@ -108,5 +108,5 @@ data: {"agent_id":"yard_desk","flow_id":"chat_03","status":"running"}
 ## Out of scope for the example
 
 - Pause / resume / kill (Part 2)
-- Company CONTEXT companies (Brasaland, HealthCore, Nexova, TrackFlow)
+- Company BRIEFING companies (Brasaland, HealthCore, Nexova, TrackFlow)
 - Real RFP PDF pipeline or RAG agent rewrite

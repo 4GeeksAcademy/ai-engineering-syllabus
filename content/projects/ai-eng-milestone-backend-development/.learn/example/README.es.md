@@ -20,7 +20,7 @@ Construye esto sobre el **mismo servicio FastAPI** que los estudiantes ya usan p
 
 | Se mantiene (mismo eje que el proyecto evaluado)      | Simplificado para clase                                            |
 | ----------------------------------------------------- | ------------------------------------------------------------------ |
-| Conexión dual TinyDB + Supabase                       | Sin CONTEXT.md — `Product` genérico (`id`, `name`, `sku`)          |
+| Conexión dual TinyDB + Supabase                       | Sin BRIEFING.md — `Product` genérico (`id`, `name`, `sku`)          |
 | Modelos SQLModel + schemas Pydantic separados         | Sin campos específicos de empresa (`warehouse`, `exit_type`, etc.) |
 | Router `/inventory` con los 6 endpoints               | Sin script de datos semilla obligatorio en clase                   |
 | `current_stock` calculado desde órdenes               | Una sola ubicación — sin stock por almacén                         |

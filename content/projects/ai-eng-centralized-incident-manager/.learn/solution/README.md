@@ -4,14 +4,14 @@
 
 This is an **incident manager** delivery (model + seed + REST + three UI panels). It is **not** an auth project. Do not document JWT, password hashing, login responses, or `get_current_user` here — those live in the user-authentication projects.
 
-Field names, categories, branch values, and CSV → model maps come from the student's `CONTEXT-company.md` under `content/contexts/centralized-incident-manager/`.
+Field names, categories, branch values, and CSV → model maps come from the student's `company-BRIEFING.md` under `content/contexts/centralized-incident-manager/`.
 
 ## Expected layout
 
 ```text
 scripts/
   seed_incidents.py
-  incidents-COMPANY.csv          # from the analyzer project / CONTEXT
+  incidents-COMPANY.csv          # from the analyzer project / BRIEFING
 packages/shared/                 # CSV validation reused from analyzer
 services/api/                    # FastAPI incident routes
 uis/backoffice/                  # registration, list, summary
@@ -21,16 +21,16 @@ uis/backoffice/                  # registration, list, summary
 
 ### Model
 
-`Incident` with: `id`, `title`, `description`, `category` (CONTEXT set), `status` (`open` | `in_progress` | `resolved` | `discarded`), `origin` (`customer` | `branch` | `internal`), `branch` (CONTEXT values including `central`), `created_at`, `updated_at`. Constraints on required fields and allowed enums.
+`Incident` with: `id`, `title`, `description`, `category` (BRIEFING set), `status` (`open` | `in_progress` | `resolved` | `discarded`), `origin` (`customer` | `branch` | `internal`), `branch` (BRIEFING values including `central`), `created_at`, `updated_at`. Constraints on required fields and allowed enums.
 
 ### Seed (`scripts/seed_incidents.py`)
 
 - Read the analyzer CSV; assign `origin: "customer"` to every inserted row.
-- Apply CONTEXT maps **before** insert: status, category, `description` → `title`, `date` → `created_at`, location → `branch`.
+- Apply BRIEFING maps **before** insert: status, category, `description` → `title`, `date` → `created_at`, location → `branch`.
 - Reuse analyzer validation from `packages/shared/` — invalid rows are skipped and printed at the end.
 - Idempotent: a second run does not duplicate (match on a stable CSV identity field).
 
-After seed, `GET /api/incidents/summary` totals by **model** `status` and `category` must match the transformed expected values in CONTEXT (same valid-record set as the analyzer).
+After seed, `GET /api/incidents/summary` totals by **model** `status` and `category` must match the transformed expected values in BRIEFING (same valid-record set as the analyzer).
 
 ### Backend
 
@@ -48,7 +48,7 @@ After seed, `GET /api/incidents/summary` totals by **model** `status` and `categ
 
 **Registration form**
 
-- All model fields; `branch` always visible/required; options = CONTEXT values with **display labels** (not raw slugs).
+- All model fields; `branch` always visible/required; options = BRIEFING values with **display labels** (not raw slugs).
 - When `origin` is `branch`, visually highlight the `branch` field.
 - Loading: disable submit; field-level plain-language errors; success clears the form.
 
@@ -75,7 +75,7 @@ After seed, `GET /api/incidents/summary` totals by **model** `status` and `categ
 }
 ```
 
-Totals must match CONTEXT after the CSV → model transform. Do not copy the numbers above.
+Totals must match BRIEFING after the CSV → model transform. Do not copy the numbers above.
 
 ### Invalid status transition
 
@@ -96,7 +96,7 @@ Totals must match CONTEXT after the CSV → model transform. Do not copy the num
 
 ## Reviewer checklist
 
-- [ ] Model + enums match CONTEXT
+- [ ] Model + enums match BRIEFING
 - [ ] Seed transforms CSV → model; invalid rows reported; idempotent
 - [ ] Five endpoints + lifecycle + no stack traces
 - [ ] Form, list (3 states), summary; branch highlight when `origin=branch`

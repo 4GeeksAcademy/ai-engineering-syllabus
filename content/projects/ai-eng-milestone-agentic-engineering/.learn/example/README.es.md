@@ -1,6 +1,6 @@
 # Agente de Mostrador Maple Street Library — Memoria y Auto-mejora (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-agentic-engineering` (**Hito 8 Parte 1**). Misma columna vertebral (interfaz explícita de memoria, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar). Dominio distinto a los agentes CONTEXT de empresa. La narrativa Maple Street empieza aquí; el ejemplo de harness (**Parte 2**) envuelve este agente después. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-milestone-agentic-engineering` (**Hito 8 Parte 1**). Misma columna vertebral (interfaz explícita de memoria, `memory_proposal` estructurado, proponer en conversación → confirmar clasificado → auditar → consolidar). Dominio distinto a los agentes BRIEFING de empresa. La narrativa Maple Street empieza aquí; el ejemplo de harness (**Parte 2**) envuelve este agente después. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -16,8 +16,8 @@ En una sesión: añade un bucle mínimo **proponer–confirmar–recordar** para
 
 | Proyecto evaluado (`ai-eng-milestone-agentic-engineering`) | Este ejemplo de clase                                 |
 | ---------------------------------------------------------- | ----------------------------------------------------- |
-| Monorepo de empresa + reglas de memoria del CONTEXT        | Solo mostrador Maple Street                           |
-| Redis / VectorDB / híbrido justificado desde CONTEXT       | Dict en memoria + JSON opcional                       |
+| Monorepo de empresa + reglas de memoria del BRIEFING        | Solo mostrador Maple Street                           |
+| Redis / VectorDB / híbrido justificado desde BRIEFING       | Dict en memoria + JSON opcional                       |
 | Stack completo LangGraph + MCP (harness en Parte 2)        | Agente stub: retrieve FAQ + hooks de memoria          |
 | Lista never-store de empresa                               | Nunca guardar: teléfonos de socios, importes de multa |
 | PR completo + dos ciclos de evidencia                      | Demo en vivo + 4 tests automatizados                  |

@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** antes de escribir ningún código — define las entidades específicas, los nombres de campos y las restricciones de negocio para tu implementación.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** antes de escribir ningún código — define las entidades específicas, los nombres de campos y las restricciones de negocio para tu implementación.
 
 ---
 
@@ -49,7 +49,7 @@ Antes de escribir cualquier consulta, debes conocer el **problema N+1**. Si carg
 > 3. Las **órdenes de entrada** incrementan el stock; las **órdenes de salida** lo reducen. Ambas se almacenan en Supabase y referencian el UUID del usuario de TinyDB — ninguna tabla de usuarios se replica en Supabase.
 > 4. Los modelos ORM usan **SQLModel**. Los schemas Pydantic para request y response están en un archivo separado de los modelos ORM — nunca devuelvas un objeto ORM directamente desde un endpoint.
 > 5. Todas las rutas de inventario deben registrarse bajo el prefijo `/inventory` usando un `APIRouter` dedicado.
-> 6. Revisa tu CONTEXT.md — los nombres de entidades, las restricciones de campos y las reglas de negocio son específicas de tu empresa.
+> 6. Revisa tu BRIEFING.md — los nombres de entidades, las restricciones de campos y las reglas de negocio son específicas de tu empresa.
 >    > **Criterios de aceptación**: todos los endpoints funcionales bajo `/inventory`, relaciones FK aplicadas a nivel de base de datos, sin mutación directa de stock, ambas conexiones activas y usadas correctamente.
 
 ---
@@ -65,7 +65,7 @@ Este hito extiende el servicio FastAPI de tu monorepo. No crearás un nuevo serv
    uv add sqlmodel psycopg2-binary
    ```
 4. Añade tu cadena de conexión de Supabase a `.env`. Deja intacta la configuración TinyDB de auth — no la modifiques.
-5. Lee tu **CONTEXT-company.md** antes de definir cualquier modelo — los nombres de entidades y las restricciones de campos están especificados allí.
+5. Lee tu **company-BRIEFING.md** antes de definir cualquier modelo — los nombres de entidades y las restricciones de campos están especificados allí.
 
 ### Conexión con Supabase
 
@@ -87,16 +87,16 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 
 ### Modelos ORM — `models.py`
 
-- [ ] Define la entidad **equivalente a producto** de tu CONTEXT.md (p. ej. `Ingredient`, `SKU`, `Asset`, `MedicalSupply`) con `SQLModel, table=True`, con al menos: `id`, `name`, `sku` y cualquier campo específico de CONTEXT.md.
-- [ ] Define el modelo **equivalente a entrada** (p. ej. `IngredientEntry`, `StockEntry`) con: `id`, una FK a la entidad equivalente a producto (`ingredient_id` / `sku_id` / … según CONTEXT.md), `quantity`, `created_at`, `user_uuid` (cadena — referencia al usuario de TinyDB; sin FK, sin replicación de tabla de usuarios), y cualquier otro campo que CONTEXT.md exija.
-- [ ] Define el modelo **equivalente a salida** (p. ej. `IngredientExit`, `StockExit`) con el mismo patrón de FK, más `quantity`, `created_at`, `user_uuid` y los campos que CONTEXT.md exija.
+- [ ] Define la entidad **equivalente a producto** de tu BRIEFING.md (p. ej. `Ingredient`, `SKU`, `Asset`, `MedicalSupply`) con `SQLModel, table=True`, con al menos: `id`, `name`, `sku` y cualquier campo específico de BRIEFING.md.
+- [ ] Define el modelo **equivalente a entrada** (p. ej. `IngredientEntry`, `StockEntry`) con: `id`, una FK a la entidad equivalente a producto (`ingredient_id` / `sku_id` / … según BRIEFING.md), `quantity`, `created_at`, `user_uuid` (cadena — referencia al usuario de TinyDB; sin FK, sin replicación de tabla de usuarios), y cualquier otro campo que BRIEFING.md exija.
+- [ ] Define el modelo **equivalente a salida** (p. ej. `IngredientExit`, `StockExit`) con el mismo patrón de FK, más `quantity`, `created_at`, `user_uuid` y los campos que BRIEFING.md exija.
 - [ ] Llama a `SQLModel.metadata.create_all(engine)` al inicio de la aplicación para inicializar el esquema en Supabase.
 
   > ⚠️ `create_all()` es aceptable en contextos de desarrollo y aprendizaje. En un sistema en producción, los cambios de esquema se gestionan siempre mediante archivos de migración (p. ej., Alembic) que mantienen un historial versionado de cada cambio. Nunca uses `create_all()` contra una base de datos compartida o de producción.
 
 ### Schemas Pydantic — `schemas.py`
 
-- [ ] Define schemas de request y response para las entidades equivalentes a producto, entrada y salida como modelos Pydantic independientes — separados de los modelos ORM. Usa los nombres de CONTEXT.md.
+- [ ] Define schemas de request y response para las entidades equivalentes a producto, entrada y salida como modelos Pydantic independientes — separados de los modelos ORM. Usa los nombres de BRIEFING.md.
 - [ ] El schema de respuesta de la entidad equivalente a producto debe incluir un campo `current_stock` (calculado, no almacenado).
 - [ ] Los modelos ORM y los schemas Pydantic deben estar en **archivos separados**. Son clases distintas, aunque algunos campos coincidan.
 
@@ -114,20 +114,20 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 | `POST` | `/inventory/orders/outbound` | Registra una orden de salida (requiere autenticación)        |
 | `GET`  | `/inventory/orders`          | Lista todas las órdenes con datos del producto y `user_uuid` |
 
-> **Auth en GET:** las escrituras de producto y órdenes **siempre** requieren autenticación. Si los `GET` son públicos o autenticados lo define tu CONTEXT.md (p. ej. HealthCore exige acceso autenticado en las rutas de inventario).
+> **Auth en GET:** las escrituras de producto y órdenes **siempre** requieren autenticación. Si los `GET` son públicos o autenticados lo define tu BRIEFING.md (p. ej. HealthCore exige acceso autenticado en las rutas de inventario).
 
 ### Reglas de negocio
 
-- [ ] `current_stock` se calcula siempre como `SUMA(cantidades de entradas) − SUMA(cantidades de salidas)` para cada entidad equivalente a producto, **acotado por cualquier clave de partición que defina tu CONTEXT.md** (p. ej. warehouse). Nunca se almacena como una columna que pueda modificarse directamente.
+- [ ] `current_stock` se calcula siempre como `SUMA(cantidades de entradas) − SUMA(cantidades de salidas)` para cada entidad equivalente a producto, **acotado por cualquier clave de partición que defina tu BRIEFING.md** (p. ej. warehouse). Nunca se almacena como una columna que pueda modificarse directamente.
 - [ ] Una entidad equivalente a producto comienza con stock cero al crearse y solo puede acumular stock a través de registros de entrada.
 - [ ] Cada endpoint de creación de órdenes requiere autenticación. El UUID del usuario autenticado (de TinyDB) debe almacenarse en el campo `user_uuid` de la orden.
-- [ ] Un registro de salida que resultaría en stock negativo (dentro del alcance que define CONTEXT.md) debe rechazarse **antes de persistir el registro**, devolviendo `HTTP 400` con un mensaje de error descriptivo.
+- [ ] Un registro de salida que resultaría en stock negativo (dentro del alcance que define BRIEFING.md) debe rechazarse **antes de persistir el registro**, devolviendo `HTTP 400` con un mensaje de error descriptivo.
 
-⚠️ **IMPORTANTE:** Los nombres de entidades, nombres de campos y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de entidades, nombres de campos y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 ### Datos semilla
 
-- [ ] Siembra las tablas de inventario con los registros mínimos listados en tu CONTEXT.md (equivalentes a producto, entradas y salidas) antes de la demo. El stock sembrado debe coincidir con neto entradas − salidas.
+- [ ] Siembra las tablas de inventario con los registros mínimos listados en tu BRIEFING.md (equivalentes a producto, entradas y salidas) antes de la demo. El stock sembrado debe coincidir con neto entradas − salidas.
 
 ---
 
@@ -135,16 +135,16 @@ En el panel de Supabase (**Connect → Direct**), elige **Transaction pooler** c
 
 - [ ] Dos conexiones de base de datos están presentes y se usan correctamente: TinyDB para autenticación y consultas de usuario; Supabase (SQLModel) para todas las entidades de inventario.
 - [ ] Todos los endpoints de inventario están agrupados bajo `/inventory` mediante un `APIRouter` dedicado.
-- [ ] Los modelos ORM SQLModel declaran correctamente las relaciones FK: los modelos de entrada/salida referencian la entidad equivalente a producto nombrada en CONTEXT.md (no un `Product` genérico salvo que CONTEXT.md lo diga).
+- [ ] Los modelos ORM SQLModel declaran correctamente las relaciones FK: los modelos de entrada/salida referencian la entidad equivalente a producto nombrada en BRIEFING.md (no un `Product` genérico salvo que BRIEFING.md lo diga).
 - [ ] `current_stock` se calcula a partir de órdenes — ningún endpoint permite modificar directamente un campo de stock en la entidad equivalente a producto.
-- [ ] El cálculo de stock respeta el alcance de CONTEXT.md (global vs por partición / por warehouse cuando aplique).
+- [ ] El cálculo de stock respeta el alcance de BRIEFING.md (global vs por partición / por warehouse cuando aplique).
 - [ ] Un registro de salida que supera el stock disponible (dentro de ese alcance) se rechaza con `HTTP 400` antes de que ocurra cualquier escritura.
 - [ ] Cada orden almacena el `user_uuid` del creador autenticado (obtenido de TinyDB).
 - [ ] Los modelos ORM (`models.py`) y los schemas Pydantic (`schemas.py`) están en archivos separados y son estructuralmente distintos — ningún endpoint devuelve un objeto SQLModel directamente.
 - [ ] La sesión SQLModel se inyecta por petición mediante `Depends()` — no existe ninguna sesión global en el código.
 - [ ] Todos los parámetros de conexión están en `.env`; `.env` aparece en `.gitignore`.
-- [ ] Los nombres de entidades y campos coinciden con la especificación del CONTEXT.md del estudiante.
-- [ ] Los datos semilla de CONTEXT.md están presentes; `GET /inventory/products` refleja el stock neto de esas semillas.
+- [ ] Los nombres de entidades y campos coinciden con la especificación del BRIEFING.md del estudiante.
+- [ ] Los datos semilla de BRIEFING.md están presentes; `GET /inventory/products` refleja el stock neto de esas semillas.
 
 ---
 

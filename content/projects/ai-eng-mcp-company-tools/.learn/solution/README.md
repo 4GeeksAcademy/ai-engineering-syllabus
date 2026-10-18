@@ -1,6 +1,6 @@
 # MCP Server: Connecting Your Agent to the Company's Tools — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align field names, routes, and service URLs with their assigned `CONTEXT-company.md` and the incident/inventory services they built in earlier projects.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align field names, routes, and service URLs with their assigned `company-BRIEFING.md` and the incident/inventory services they built in earlier projects.
 
 ---
 
@@ -56,7 +56,7 @@ Students must justify their choice in the PR description.
 
 - **Name:** `manage_incident_ticket`
 - **Description:** Create, update, or query status of an incident ticket in the company Incidents Manager. Requires a valid OAuth access token.
-- **Input schema:** `ticket_id`, `action` (`create` \| `update` \| `get_status`), payload fields aligned with `CONTEXT-company.md`. For `update`, send only the target `status` — the Incidents Manager validates lifecycle transitions.
+- **Input schema:** `ticket_id`, `action` (`create` \| `update` \| `get_status`), payload fields aligned with `company-BRIEFING.md`. For `update`, send only the target `status` — the Incidents Manager validates lifecycle transitions.
 - **Output schema:** Structured ticket fields or explicit error with code.
 
 ### HTTP integration

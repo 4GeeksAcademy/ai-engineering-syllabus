@@ -10,7 +10,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 ### Scope note
 
-Live-session scope only. Same SDD patterns as the official student project; CONTEXT catalogues and monorepo depth are reduced. Students still follow the full brief in the project root `README.md`.
+Live-session scope only. Same SDD patterns as the official student project; BRIEFING catalogues and monorepo depth are reduced. Students still follow the full brief in the project root `README.md`.
 
 A coworking kitchen tracks coffee, milk, and snacks. People used to edit a `stock` number in a spreadsheet. Ops lead wants a tiny board: register items, log movements, never touch stock directly — and flag anything below reorder.
 

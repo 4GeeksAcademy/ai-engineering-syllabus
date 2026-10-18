@@ -16,7 +16,7 @@ Especificación de partida: el mini diseño de abajo sustituye a `PIPELINE_DESIG
 
 | Proyecto evaluable (`ai-eng-milestone-data-pipeline-build`) | Este ejemplo de clase               |
 | ----------------------------------------------------------- | ----------------------------------- |
-| CONTEXT de empresa + monorepo de inventario                 | CONTEXT ficticio GreenPatch (abajo) |
+| BRIEFING de empresa + monorepo de inventario                 | BRIEFING ficticio GreenPatch (abajo) |
 | Ticket completo del CTO + ejecución por script              | Mismas fases, dataset más pequeño   |
 | Commit al fork del monorepo del estudiante                  | Solo demo local                     |
 

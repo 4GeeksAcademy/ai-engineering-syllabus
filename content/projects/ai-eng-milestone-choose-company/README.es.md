@@ -27,7 +27,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 > **Del equipo académico:**
 >
-> "Esta no es una elección sin importancia. La empresa que selecciones aparecerá en tu portfolio, en tus entrevistas de trabajo y en el contexto de cada brief de proyecto que recibas durante el curso. Te convertirás en un mini-experto en sus operaciones. Los estudiantes que invierten en entender su empresa desde el principio — antes incluso de que empiece la Semana 1 — construyen sistemáticamente mejores proyectos y se presentan con más confianza al final. Tómate el tiempo de leer el documento de contexto a fondo."
+> "Esta no es una elección sin importancia. La empresa que selecciones aparecerá en tu portfolio, en tus entrevistas de trabajo y en el contexto de cada brief de proyecto que recibas durante el curso. Te convertirás en un mini-experto en sus operaciones. Los estudiantes que invierten en entender su empresa desde el principio — antes incluso de que empiece la Semana 1 — construyen sistemáticamente mejores proyectos y se presentan con más confianza al final. Tómate el tiempo de leer el documento de briefing a fondo."
 
 ---
 
@@ -35,7 +35,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 1. Crea tu copia del [repositorio plantilla](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo): haz clic en **Use this template** en GitHub (recomendado) o haz fork a tu cuenta.
 2. Abre tu repositorio en GitHub Codespaces (recomendado) o clónalo en tu máquina local.
-3. Lee los cuatro perfiles de empresa disponibles en los [archivos de contexto general `CONTEXT-company.md` de este repositorio](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova y TrackFlow. Cada uno describe un escenario de empresa real con problemas por departamento, estructuras de datos, personajes y un milestone map.
+3. Lee los cuatro perfiles de empresa disponibles en los [archivos de briefing general `company-BRIEFING.md` de este repositorio](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova y TrackFlow. Cada uno describe un escenario de empresa real con problemas por departamento, estructuras de datos, personajes y un milestone map.
 4. Completa el entregable que se describe a continuación.
 
 ---
@@ -48,9 +48,9 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
   - Indica claramente: qué empresa elegiste y por qué (mínimo 3-5 frases).
   - Identifica al menos dos departamentos cuyos problemas encuentres más interesantes.
   - Identifica un reto de automatización o IA del milestone map que más ganas tengas de construir.
-- [ ] **Copia el briefing de tu empresa en la raíz del monorepo como `CONTEXT.md`:**
-  - Fuente: [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) → `CONTEXT-<company>-briefing.es.md` (o `.en.md` si tu cohorte trabaja en inglés).
-  - Sustituye por completo el placeholder de la plantilla en `CONTEXT.md` — no dejes el stub "Replace this file".
+- [ ] **Copia el briefing de tu empresa en la raíz del monorepo como `BRIEFING.md`:**
+  - Fuente: [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) → `<company>-BRIEFING.es.md` (o `.en.md` si tu cohorte trabaja en inglés).
+  - Sustituye por completo el placeholder de la plantilla en `BRIEFING.md` — no dejes el stub "Replace this file".
 - [ ] **Configura tu entorno de trabajo:**
   - Abre el repositorio en GitHub Codespaces (recomendado) y verifica que todo carga correctamente.
   - Confirma que tienes acceso a GitHub Codespaces.
@@ -62,7 +62,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
   - Añade esto a tu archivo `company-choice.md` bajo una sección titulada `## Mi idea de Agente de IA`.
 - [ ] **Entrega la URL de tu repositorio** a través de la plataforma de 4Geeks según las instrucciones.
 
-⚠️ **IMPORTANTE:** Una entrega genérica o incompleta no será aceptada — tu razonamiento debe reflejar una lectura real del documento de contexto. La empresa que registres en `company-choice.md` quedará bloqueada al inicio de la Semana 1.
+⚠️ **IMPORTANTE:** Una entrega genérica o incompleta no será aceptada — tu razonamiento debe reflejar una lectura real del documento de briefing. La empresa que registres en `company-choice.md` quedará bloqueada al inicio de la Semana 1.
 
 ---
 
@@ -70,8 +70,8 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 - [ ] El archivo `company-choice.md` existe en la raíz del repositorio entregado.
 - [ ] Se ha seleccionado una empresa concreta (no una afirmación genérica ni "aún no lo he decidido").
-- [ ] `CONTEXT.md` en la raíz del monorepo contiene el briefing de la empresa asignada (placeholder de plantilla sustituido).
-- [ ] La justificación escrita tiene al menos 3 frases y hace referencia a detalles específicos del archivo de contexto de la empresa — no solo el nombre del sector.
+- [ ] `BRIEFING.md` en la raíz del monorepo contiene el briefing de la empresa asignada (placeholder de plantilla sustituido).
+- [ ] La justificación escrita tiene al menos 3 frases y hace referencia a detalles específicos del archivo de briefing de la empresa — no solo el nombre del sector.
 - [ ] Se han identificado dos o más departamentos con una breve explicación de por qué resultan interesantes.
 - [ ] Se ha nombrado al menos un milestone o reto de automatización concreto.
 - [ ] `company-choice.md` incluye una sección `## My AI Agent Idea` que describe qué haría el agente, qué información necesita y qué produciría o activaría.
@@ -82,7 +82,7 @@ Al elegir, piensa más allá del sector que te resulte más familiar. Considera:
 
 ## 📦 Cómo entregar
 
-1. Asegúrate de que tu `company-choice.md` y el `CONTEXT.md` actualizado están commiteados y pusheados a tu repositorio.
+1. Asegúrate de que tu `company-choice.md` y el `BRIEFING.md` actualizado están commiteados y pusheados a tu repositorio.
 2. Copia la URL de tu repositorio en GitHub.
 3. Entrega esa URL a través de la tarea del Milestone en la plataforma de 4Geeks.
 

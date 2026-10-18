@@ -11,7 +11,7 @@ _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** before writing any component — it defines the entity names, field labels, business constraints, and domain vocabulary that must appear in the UI.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** before writing any component — it defines the entity names, field labels, business constraints, and domain vocabulary that must appear in the UI.
 
 ---
 
@@ -60,7 +60,7 @@ The backoffice frontend already exists in your monorepo. You are adding the inve
    ```
    NEXT_PUBLIC_INVENTORY_API_URL=http://localhost:8000
    ```
-5. Read your **CONTEXT-company.md** — entity names, field labels, and domain vocabulary must match what is in the API and in the UI.
+5. Read your **company-BRIEFING.md** — entity names, field labels, and domain vocabulary must match what is in the API and in the UI.
 6. Make sure the backend service (`services/`) is running locally before testing the frontend.
 
 ---
@@ -76,7 +76,7 @@ The backoffice frontend already exists in your monorepo. You are adding the inve
 ### Products page — `/backoffice/inventory/products`
 
 - [ ] Fetch and display all products from `GET /inventory/products`.
-- [ ] Show the `current_stock` value for each product alongside the entity-specific fields defined in your CONTEXT.md.
+- [ ] Show the `current_stock` value for each product alongside the entity-specific fields defined in your BRIEFING.md.
 - [ ] Apply visual stock-level indicators: use colour or iconography to distinguish healthy stock from low stock. Define your own thresholds — document them in a comment.
 - [ ] Include a clearly labelled link or button from each product row to create an inbound or outbound order for that product.
 
@@ -105,7 +105,7 @@ The backoffice frontend already exists in your monorepo. You are adding the inve
 
 - [ ] All four inventory pages must redirect unauthenticated users to the login page. Use the same auth check pattern already in place in the backoffice.
 
-⚠️ **IMPORTANT:** Entity names, field labels, and vocabulary in the UI must match what is specified in your CONTEXT.md — use your company's domain language, not the generic terms in this README.
+⚠️ **IMPORTANT:** Entity names, field labels, and vocabulary in the UI must match what is specified in your BRIEFING.md — use your company's domain language, not the generic terms in this README.
 
 ---
 
@@ -120,7 +120,7 @@ The backoffice frontend already exists in your monorepo. You are adding the inve
 - [ ] A `400` response from the outbound endpoint surfaces the API's error message visibly in the UI.
 - [ ] The orders history page displays all orders with inbound/outbound distinction, product name, quantity, date, and `user_uuid`.
 - [ ] All four pages redirect unauthenticated users to login.
-- [ ] Entity names and field labels in the UI match the CONTEXT.md specification.
+- [ ] Entity names and field labels in the UI match the BRIEFING.md specification.
 
 ---
 

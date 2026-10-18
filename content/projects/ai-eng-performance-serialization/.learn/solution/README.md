@@ -92,7 +92,7 @@ Legend: ✅ serialized · ⚠️ partial · ❌ raw document / untyped dict
 ### GET /inventory/products — ❌ Not serialized (SQLModel example)
 
 - **Today:** Returns SQLModel rows (or dicts) with internal columns.
-- **Target:** CONTEXT-named product-equivalent schema with computed `current_stock`. This is the ORM/`from_attributes` example — **not** User.
+- **Target:** named-BRIEFING product-equivalent schema with computed `current_stock`. This is the ORM/`from_attributes` example — **not** User.
 
 ## Decisions log
 
@@ -115,7 +115,7 @@ services/
 ├── schemas/
 │   ├── user.py          # UserCreate, UserPublic, UserListItem, TokenResponse, MeResponse
 │   ├── profile.py       # ProfileRead, ProfileUpdate
-│   └── inventory.py     # product/inbound/outbound schemas from CONTEXT.md
+│   └── inventory.py     # product/inbound/outbound schemas from BRIEFING.md
 ├── routers/
 │   ├── auth.py
 │   ├── users.py
@@ -163,7 +163,7 @@ def list_products(db: Session = Depends(get_db)):
     return rows  # FastAPI serializes via ProductRead
 ```
 
-`ProductEquivalent` is the CONTEXT entity (`Ingredient`, `SKU`, …). `id` types follow CONTEXT (usually `int` PK), distinct from TinyDB user UUID strings.
+`ProductEquivalent` is the BRIEFING entity (`Ingredient`, `SKU`, …). `id` types follow BRIEFING (usually `int` PK), distinct from TinyDB user UUID strings.
 
 ### Sensitive field exclusion
 

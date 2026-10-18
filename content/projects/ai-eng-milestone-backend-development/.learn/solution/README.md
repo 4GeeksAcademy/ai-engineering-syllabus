@@ -2,9 +2,9 @@
 
 This README is the canonical reference for **"Milestone 5 — Backend: Inventory Management with ORM & Dual Database"**. It describes how a correct implementation should be structured in the student monorepo (`services/`), how dual-database access should work, and what reviewers should verify. The actual code lives in the student's fork of `ai-engineering-company-project-monorepo`; this folder documents the expected design only.
 
-## Alignment with company context
+## Alignment with company briefing
 
-Entity names, extra fields, validation rules, and seed data must follow the student's assigned **CONTEXT-company.md** under `content/contexts/05-backend-development/`. The project README already uses **product-/inbound-/outbound-equivalent** language (`Ingredient`, `SKU`, `Asset`, `MedicalSupply`, …). Snippets below use placeholders like `<ProductEquivalent>` — replace them with CONTEXT names. A generic `Product` implementation that ignores CONTEXT will not pass evaluation.
+Entity names, extra fields, validation rules, and seed data must follow the student's assigned **company-BRIEFING.md** under `content/contexts/05-backend-development/`. The project README already uses **product-/inbound-/outbound-equivalent** language (`Ingredient`, `SKU`, `Asset`, `MedicalSupply`, …). Snippets below use placeholders like `<ProductEquivalent>` — replace them with BRIEFING names. A generic `Product` implementation that ignores BRIEFING will not pass evaluation.
 
 ## Solution architecture
 
@@ -91,26 +91,26 @@ Acceptable for learning; production would use Alembic migrations instead.
 
 ## ORM models (`models.py`)
 
-Minimum models (names may differ per CONTEXT):
+Minimum models (names may differ per BRIEFING):
 
-| README name            | Typical CONTEXT alias | Required fields (minimum)                                          |
+| README name            | Typical BRIEFING alias | Required fields (minimum)                                          |
 | ---------------------- | --------------------- | ------------------------------------------------------------------ |
-| Placeholder (replace)  | CONTEXT examples      | Minimum fields                                                     |
+| Placeholder (replace)  | BRIEFING examples      | Minimum fields                                                     |
 | ---------------------  | --------------------- | ------------------------------------------------------------------ |
-| `<ProductEquivalent>`  | `SKU`, `Ingredient`…  | `id`, `name`, `sku` + company-specific fields from CONTEXT         |
+| `<ProductEquivalent>`  | `SKU`, `Ingredient`…  | `id`, `name`, `sku` + company-specific fields from BRIEFING         |
 | `<InboundEquivalent>`  | `StockEntry`, …       | `id`, `<fk>_id`, `quantity`, `created_at`, `user_uuid`             |
 | `<OutboundEquivalent>` | `StockExit`, …        | `id`, `<fk>_id`, `quantity`, `created_at`, `user_uuid`             |
 
 Rules:
 
 - Use `SQLModel, table=True` — not raw SQLAlchemy declarative models.
-- Declare FK with `Field(foreign_key="<product_table>.id")` (CONTEXT table name).
+- Declare FK with `Field(foreign_key="<product_table>.id")` (BRIEFING table name).
 - `user_uuid` is `str`, no FK to a users table in Supabase.
 - **Do not** add a stored `current_stock` column on the product table.
 
 ## Pydantic schemas (`schemas.py`)
 
-Separate request and response schemas from ORM models — use CONTEXT names:
+Separate request and response schemas from ORM models — use BRIEFING names:
 
 - `<Product>Create`, `<Product>Read` (with computed `current_stock`)
 - `<Inbound>Create`, `<Inbound>Read`
@@ -125,12 +125,12 @@ Register with `prefix="/inventory"` and include in `main.py`.
 
 | Method | Path                         | Auth                                | Description                                       |
 | ------ | ---------------------------- | ----------------------------------- | ------------------------------------------------- |
-| `GET`  | `/inventory/products`        | Public unless CONTEXT requires auth | List products with computed `current_stock`       |
+| `GET`  | `/inventory/products`        | Public unless BRIEFING requires auth | List products with computed `current_stock`       |
 | `POST` | `/inventory/products`        | Required                            | Create product (starts at zero stock)             |
-| `GET`  | `/inventory/products/{id}`   | Public unless CONTEXT requires auth | Single product with `current_stock`               |
+| `GET`  | `/inventory/products/{id}`   | Public unless BRIEFING requires auth | Single product with `current_stock`               |
 | `POST` | `/inventory/orders/inbound`  | Required                            | Register inbound order; increases stock           |
 | `POST` | `/inventory/orders/outbound` | Required                            | Register outbound order; decreases stock          |
-| `GET`  | `/inventory/orders`          | Public unless CONTEXT requires auth | List all orders with product data and `user_uuid` |
+| `GET`  | `/inventory/orders`          | Public unless BRIEFING requires auth | List all orders with product data and `user_uuid` |
 
 Protected routes use the existing `get_current_user` dependency from prior milestones. Persist `current_user.uuid` (or equivalent) into `user_uuid` on order creation.
 
@@ -140,8 +140,8 @@ Protected routes use the existing `get_current_user` dependency from prior miles
 
 ```python
 def compute_stock(session: Session, product_id: int) -> float:
-    # Use CONTEXT entity names (<InboundEquivalent>, <OutboundEquivalent>, <fk>_id)
-    # and numeric type from CONTEXT (int or float — e.g. Brasaland quantities are float).
+    # Use BRIEFING entity names (<InboundEquivalent>, <OutboundEquivalent>, <fk>_id)
+    # and numeric type from BRIEFING (int or float — e.g. Brasaland quantities are float).
     inbound = session.exec(
         select(func.coalesce(func.sum(InboundEquivalent.quantity), 0))
         .where(InboundEquivalent.product_fk_id == product_id)
@@ -153,9 +153,9 @@ def compute_stock(session: Session, product_id: int) -> float:
     return inbound - outbound
 ```
 
-> Replace `InboundEquivalent` / `OutboundEquivalent` / `product_fk_id` with CONTEXT names (`StockEntry` / `sku_id`, `IngredientEntry` / `ingredient_id`, …).
+> Replace `InboundEquivalent` / `OutboundEquivalent` / `product_fk_id` with BRIEFING names (`StockEntry` / `sku_id`, `IngredientEntry` / `ingredient_id`, …).
 
-When CONTEXT requires per-warehouse stock (e.g. TrackFlow), filter both sums by `warehouse` before subtracting.
+When BRIEFING requires per-warehouse stock (e.g. TrackFlow), filter both sums by `warehouse` before subtracting.
 
 ### Outbound validation
 
@@ -229,20 +229,20 @@ For `GET /inventory/orders`, eager-load product data in one query (e.g. `selecti
 
 - [ ] Two DB connections active: TinyDB for auth, Supabase/SQLModel for inventory.
 - [ ] All inventory routes under `/inventory` via dedicated `APIRouter`.
-- [ ] SQLModel FK: inbound/outbound → product-equivalent entity named in CONTEXT.md.
+- [ ] SQLModel FK: inbound/outbound → product-equivalent entity named in BRIEFING.md.
 - [ ] `current_stock` computed from orders — no direct stock mutation endpoint.
-- [ ] Stock calculation respects CONTEXT.md scoping (global vs per-partition / per-warehouse).
+- [ ] Stock calculation respects BRIEFING.md scoping (global vs per-partition / per-warehouse).
 - [ ] Outbound exceeding stock returns `400` **before** any write.
 - [ ] Each order stores authenticated `user_uuid` from TinyDB.
 - [ ] `models.py` and `schemas.py` are separate; endpoints return Pydantic schemas only.
 - [ ] `get_db` injected per request; no global session.
 - [ ] Connection strings in `.env`; `.env` in `.gitignore`.
-- [ ] Entity and field names match the student's CONTEXT.md.
-- [ ] CONTEXT.md seed data is present; `GET /inventory/products` reflects net stock from those seeds.
+- [ ] Entity and field names match the student's BRIEFING.md.
+- [ ] BRIEFING.md seed data is present; `GET /inventory/products` reflects net stock from those seeds.
 
 ## Key implementation decisions
 
 - Reuse existing auth layer — do not rebuild user management in Supabase.
 - Keep inventory logic in the router or a thin service module; stock calculation should be a single reusable function.
 - Validate outbound stock in the same transaction boundary as the insert attempt (check-then-write, or rely on application-level guard before `session.add`).
-- Document any CONTEXT-specific validation (e.g. `tracking_number` required for dispatch exits) in code and tests.
+- Document any specific-BRIEFING validation (e.g. `tracking_number` required for dispatch exits) in code and tests.

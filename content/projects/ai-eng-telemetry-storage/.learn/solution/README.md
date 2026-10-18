@@ -2,9 +2,9 @@
 
 This reference solution defines the expected quality bar for Phase 3 in the student's company monorepo fork. The frontend from Phase 2 must remain **unchanged** — only the backend `POST /telemetry/events` implementation and Supabase schema are in scope.
 
-## Alignment with company context
+## Alignment with company briefing
 
-The `tags` mapping and any optional envelope fields persisted for analytics must match what the student documented in `telemetry-plan.md`, grounded in **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Grade property keys and segment dimensions against that plan — not hardcoded examples in this document.
+The `tags` mapping and any optional envelope fields persisted for analytics must match what the student documented in `telemetry-plan.md`, grounded in **company-BRIEFING.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Grade property keys and segment dimensions against that plan — not hardcoded examples in this document.
 
 Stored rows must include both **business** and **technical** events from the student's catalogue (errors, failed login, etc.) — not inventory-only.
 
@@ -206,7 +206,7 @@ Expected: `{ "received": 2, "stored": 1, "rejected": 1 }` and one new row in `te
 - [ ] `TelemetryEvent` model reused unchanged from Phase 2
 - [ ] Zero frontend diffs
 - [ ] Supabase rows show `event_type`, `timestamp`, `tags` for technical **and** business events
-- [ ] `tags` mapping preserves CONTEXT-specific dimensions from student's telemetry-plan.md
+- [ ] `tags` mapping preserves specific-BRIEFING dimensions from student's telemetry-plan.md
 - [ ] PR title `feat: telemetry event storage` with required evidence (mixed batch JSON + screenshot including tech + business)
 
 ---

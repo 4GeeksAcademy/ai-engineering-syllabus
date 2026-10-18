@@ -1,6 +1,6 @@
 # Plataforma de Escuela de Cocina — Configuración de Monorepo con IA (Ejemplo en Clase)
 
-> **Nota para el instructor:** Ejemplo simplificado en clase para el módulo "AI-Driven Engineering". Usa este escenario para introducir el patrón de memory bank, `AGENTS.md`, reglas de agente y skills en un monorepo pequeño — completable en 1–2 horas. El proyecto oficial del estudiante en la raíz del proyecto aplica los mismos patrones a plena escala con la empresa asignada en `CONTEXT.md`.
+> **Nota para el instructor:** Ejemplo simplificado en clase para el módulo "AI-Driven Engineering". Usa este escenario para introducir el patrón de memory bank, `AGENTS.md`, reglas de agente y skills en un monorepo pequeño — completable en 1–2 horas. El proyecto oficial del estudiante en la raíz del proyecto aplica los mismos patrones a plena escala con la empresa asignada en `BRIEFING.md`.
 
 _These instructions are also available in [English](./README.md)._
 

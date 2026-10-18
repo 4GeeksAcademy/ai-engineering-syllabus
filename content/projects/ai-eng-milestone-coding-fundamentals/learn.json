@@ -8,8 +8,8 @@
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "slug": "ai-eng-milestone-coding-fundamentals",
   "description": {
-    "en": "Build your company's first internal logic layer in TypeScript: reusable, well-typed utilities to manage, filter, sort, search, validate, and aggregate business data based on your CONTEXT-company.md. Focus on arrays, objects, interfaces, linear and binary search, functional transformations, and business validations that can be reused by future systems.",
-    "es": "Construye la primera capa lógica interna de tu empresa en TypeScript: utilidades reutilizables y bien tipadas para gestionar, filtrar, ordenar, buscar, validar y agregar datos de negocio basados en tu CONTEXT-company.md. Enfócate en arrays, objetos, interfaces, búsqueda lineal y binaria, transformaciones funcionales y validaciones de negocio que otros sistemas puedan reutilizar en el futuro."
+    "en": "Build your company's first internal logic layer in TypeScript: reusable, well-typed utilities to manage, filter, sort, search, validate, and aggregate business data based on your company-BRIEFING.md. Focus on arrays, objects, interfaces, linear and binary search, functional transformations, and business validations that can be reused by future systems.",
+    "es": "Construye la primera capa lógica interna de tu empresa en TypeScript: utilidades reutilizables y bien tipadas para gestionar, filtrar, ordenar, buscar, validar y agregar datos de negocio basados en tu company-BRIEFING.md. Enfócate en arrays, objetos, interfaces, búsqueda lineal y binaria, transformaciones funcionales y validaciones de negocio que otros sistemas puedan reutilizar en el futuro."
   },
   "difficulty": "beginner",
   "duration": 2,

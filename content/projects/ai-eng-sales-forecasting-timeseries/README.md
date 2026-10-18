@@ -11,7 +11,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** before writing any code — it documents what each column means and the seasonality pattern of your company's historical sales, which is already included as a CSV in `content/contexts/sales-forecasting/<company>/<company>_sales.csv` in this repository.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** before writing any code — it documents what each column means and the seasonality pattern of your company's historical sales, which is already included as a CSV in `content/contexts/sales-forecasting/<company>/<company>_sales.csv` in this repository.
 
 ---
 
@@ -56,7 +56,7 @@ Once you understand the shape of the series, translate that into features a regr
 2. From `main` in your fork, create a new branch for this project: `git switch -c feature/sales-forecast-model` (in Codespaces or in your local environment).
 3. Verify that `uv` is installed with `uv --version`; if you don't have it, install it with `curl -LsSf https://astral.sh/uv/install.sh | sh` and, at the project root, initialize the environment with `uv init` (only if `pyproject.toml` does not already exist). Then add dependencies with `uv add` (for example `scikit-learn`, `xgboost`, `pandas`, `matplotlib`, `statsmodels`) — never use `pip install` or `pipenv`.
 4. Use your company's historical sales dataset already provided: in the monorepo it is located at `data/raw/<company>_sales.csv`, and in this reference repository at `content/contexts/sales-forecasting/<company>/<company>_sales.csv`; do not generate or simulate it.
-5. Read your full `CONTEXT-company.md` before writing code: it contains each column's meaning, the date range, and the seasonality pattern the dataset already reflects.
+5. Read your full `company-BRIEFING.md` before writing code: it contains each column's meaning, the date range, and the seasonality pattern the dataset already reflects.
 
 ---
 
@@ -64,9 +64,9 @@ Once you understand the shape of the series, translate that into features a regr
 
 **Data preparation**
 
-- [ ] Load your company's historical sales dataset from the path that matches your working environment: `data/raw/<company>_sales.csv` in your monorepo or `content/contexts/sales-forecasting/<company>/<company>_sales.csv` in this reference repository, and verify the columns match those described in your `CONTEXT-company.md`.
+- [ ] Load your company's historical sales dataset from the path that matches your working environment: `data/raw/<company>_sales.csv` in your monorepo or `content/contexts/sales-forecasting/<company>/<company>_sales.csv` in this reference repository, and verify the columns match those described in your `company-BRIEFING.md`.
 - [ ] Handle null or empty values before training.
-- [ ] Decompose the series (trend / seasonality / residual) with `statsmodels.tsa.seasonal_decompose` (or equivalent) and briefly note in a comment or your report whether the pattern matches what `CONTEXT-company.md` describes.
+- [ ] Decompose the series (trend / seasonality / residual) with `statsmodels.tsa.seasonal_decompose` (or equivalent) and briefly note in a comment or your report whether the pattern matches what `company-BRIEFING.md` describes.
 - [ ] Engineer time-aware features: at least one lag feature (e.g. `t-1`, `t-12`), one rolling statistic (mean or std over a window), and a calendar/seasonal feature (month, quarter, or cyclical encoding).
 - [ ] Compute every lag and rolling feature **causally** (only past values, e.g. `shift(1)` before `rolling()`) — a feature that peeks at the current or future row invalidates the whole forecast.
 - [ ] Split the dataset into **training** (the first 8 years) and **checking/test** (the 2 most recent years), so the model never sees the test years during training.
@@ -86,7 +86,7 @@ Once you understand the shape of the series, translate that into features a regr
 
 - [ ] Generate a visualization showing the model's prediction along with the variability area of the result, compared against the real data from the 2 test years.
 
-⚠️ **IMPORTANT:** Column names, dataset format, and specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** Column names, dataset format, and specific values in your implementation must match what is specified in your BRIEFING.md. A generic implementation that ignores your company's context will not be accepted.
 
 **Testing**
 
@@ -103,7 +103,7 @@ Once you understand the shape of the series, translate that into features a regr
 - [ ] The trained model is XGBoost or Random Forest, with the choice explicitly justified.
 - [ ] All four metrics (MSE, PSI, Gini, K2 Score) are calculated and reported on the test set, not the training set.
 - [ ] There is a visualization showing the prediction along with its variability range, not just a point estimate.
-- [ ] The dataset used is the one provided in `data/raw/<company>_sales.csv`, with no alterations that break the seasonality and growth pattern described in the company's CONTEXT.md.
+- [ ] The dataset used is the one provided in `data/raw/<company>_sales.csv`, with no alterations that break the seasonality and growth pattern described in the company's BRIEFING.md.
 - [ ] The random seed (`random_state`/`seed`) is fixed so the experiment is reproducible.
 - [ ] Both unit tests (split rule and no-leakage-in-features) pass correctly.
 

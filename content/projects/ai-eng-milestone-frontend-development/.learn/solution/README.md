@@ -2,9 +2,9 @@
 
 This README is the canonical reference for **"Milestone 3 — Talent Pipeline Tracker"**. It describes how a correct implementation should be structured, how it should talk to the course REST API, and what reviewers should verify. The actual app lives in the student monorepo under `uis/talent-pipeline-tracker/`; this folder documents the expected design only.
 
-## Alignment with company context
+## Alignment with company briefing
 
-All user-visible labels, option values for status/stage, and field copy must follow the student’s assigned **CONTEXT-company.md** (and related CONTEXT files). The API field names and enums are defined by the backend documentation; the UI should map those to the terminology required by the scenario (not generic placeholders like “Status 1”).
+All user-visible labels, option values for status/stage, and field copy must follow the student’s assigned **company-BRIEFING.md** (and related BRIEFING files). The API field names and enums are defined by the backend documentation; the UI should map those to the terminology required by the scenario (not generic placeholders like “Status 1”).
 
 ## Recommended solution structure
 
@@ -89,7 +89,7 @@ Adjust if the real API uses a different envelope (e.g. `{ data: [...] }`).
 
 **Data:** `GET /records/:id` and `GET /records/:id/notes` (can run in parallel with `Promise.all`).
 
-**Display:** All fields required by the project brief (name, email, phone, position, LinkedIn, CV link, years of experience, status, stage, application date)—use exact API property names in types; map to labels from CONTEXT.
+**Display:** All fields required by the project brief (name, email, phone, position, LinkedIn, CV link, years of experience, status, stage, application date)—use exact API property names in types; map to labels from BRIEFING.
 
 **Updates:**
 
@@ -126,7 +126,7 @@ Use this checklist against student submissions:
 - [ ] Loading, success, and error states are visible for async operations.
 - [ ] No external global state libraries; navigation uses Next.js App Router (`Link`, dynamic segments).
 - [ ] Folder layout separates components, types, and API access; types match API structures.
-- [ ] Terminology and labels reflect the assigned company CONTEXT, not a generic HR template.
+- [ ] Terminology and labels reflect the assigned company BRIEFING, not a generic HR template.
 
 ## Notes for reviewers
 

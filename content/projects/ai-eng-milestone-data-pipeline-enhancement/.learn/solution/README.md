@@ -4,16 +4,16 @@ This reference solution defines the expected quality bar for deliverables in the
 
 - `data/pipelines/pipeline.py` — main flow orchestrating extract, transform, and load subflows
 - `tests/pipelines/test_pipeline.py` — isolated unit tests for KPI transformation tasks
-- `uis/backoffice/` reporting dashboard — every CONTEXT KPI, labeled for a non-technical stakeholder
+- `uis/backoffice/` reporting dashboard — every BRIEFING KPI, labeled for a non-technical stakeholder
 - CLI entry point so the pipeline runs via `python data/pipelines/pipeline.py`
 
-The deliverable is **production-ready orchestration + leadership-facing UI** built on the Part 2 pipeline and the company **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
+The deliverable is **production-ready orchestration + leadership-facing UI** built on the Part 2 pipeline and the company **[data-pipelines BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)**.
 
 **Hard constraint:** `telemetry_events` and `services/telemetry/analysis.py` remain unmodified. Dashboard reads from `services/reporting/`, not the technical telemetry report.
 
 ---
 
-> **Indicative examples** use Brasaland's `reporting.weekly_location_performance`. Substitute your CONTEXT Destination table and paths.
+> **Indicative examples** use Brasaland's `reporting.weekly_location_performance`. Substitute your BRIEFING Destination table and paths.
 
 ## Solution architecture
 
@@ -65,7 +65,7 @@ flowchart TD
 | Subflows (`@flow`)           | One per phase — explicit I/O, independently runnable             |
 | `data/process/`              | Pure transform helpers (testable without Prefect runtime)        |
 | `tests/pipelines/`           | Unit tests with in-memory fixtures shaped like company telemetry |
-| `uis/backoffice/`            | Business dashboard labeling every CONTEXT KPI                    |
+| `uis/backoffice/`            | Business dashboard labeling every BRIEFING KPI                    |
 | `services/reporting/`        | Already built in Part 2 — dashboard consumer                     |
 
 ---
@@ -116,7 +116,7 @@ def business_performance_etl_flow():
     return records
 ```
 
-Subflows must pass data through return values — not module-level globals. Name subflows after company KPIs / stages from CONTEXT, not `extract_data`.
+Subflows must pass data through return values — not module-level globals. Name subflows after company KPIs / stages from BRIEFING, not `extract_data`.
 
 ---
 
@@ -129,7 +129,7 @@ import pytest
 from data.process.transforms import compute_waste_ratio, normalize_event_payload
 
 def test_compute_waste_ratio_for_known_inputs():
-    # Hand-calculated: waste 20 / purchase 100 = 0.20 (CONTEXT Waste Ratio definition)
+    # Hand-calculated: waste 20 / purchase 100 = 0.20 (BRIEFING Waste Ratio definition)
     assert compute_waste_ratio(purchase_cost=100, waste_cost=20) == 0.20
 
 def test_compute_purchase_cost_aggregates_location_week():
@@ -149,7 +149,7 @@ def test_rejects_malformed_timestamp_raises_or_returns_none():
 python -m pytest tests/pipelines/test_pipeline.py -v
 ```
 
-Must include: ≥3 transform tests, ≥1 defensive/malformed input test, ≥1 hand-calculated KPI vs CONTEXT definition.
+Must include: ≥3 transform tests, ≥1 defensive/malformed input test, ≥1 hand-calculated KPI vs BRIEFING definition.
 
 ---
 
@@ -157,9 +157,9 @@ Must include: ≥3 transform tests, ≥1 defensive/malformed input test, ≥1 ha
 
 - Page under `uis/backoffice/` (e.g. `/reporting`)
 - Fetches `services/reporting/` — real data from `reporting.weekly_location_performance`
-- Renders **every** KPI from CONTEXT "KPIs to Measure", labeled with exact CONTEXT names
-- Shows period (week/month per CONTEXT cadence)
-- Legible to the stakeholder named in CONTEXT (CEO / ops lead) — not a raw JSON dump
+- Renders **every** KPI from BRIEFING "KPIs to Measure", labeled with exact BRIEFING names
+- Shows period (week/month per BRIEFING cadence)
+- Legible to the stakeholder named in BRIEFING (CEO / ops lead) — not a raw JSON dump
 
 ---
 
@@ -183,7 +183,7 @@ Document in `PIPELINE_DESIGN.md`. Optional: note any design-question enhancement
 - Main flow still contains all ETL inline — no subflows
 - Subflows share globals instead of explicit parameters
 - Tests hit production DB instead of in-memory fixtures
-- No hand-calculated KPI assertion against CONTEXT definition
+- No hand-calculated KPI assertion against BRIEFING definition
 - Missing dashboard, or dashboard shows technical metrics (volume/error/latency)
 - Dashboard queries `GET /telemetry/report` instead of `services/reporting/`
 - Generic names (`extract_data`, `test_transform`)
@@ -198,12 +198,12 @@ Document in `PIPELINE_DESIGN.md`. Optional: note any design-question enhancement
 - [ ] Each subflow has explicit inputs/outputs and can run independently
 - [ ] `tests/pipelines/test_pipeline.py` has ≥3 transform unit tests
 - [ ] ≥1 defensive test against invalid/malformed input
-- [ ] ≥1 test validates KPI vs CONTEXT definition with hand-calculated input
+- [ ] ≥1 test validates KPI vs BRIEFING definition with hand-calculated input
 - [ ] `python -m pytest tests/pipelines/test_pipeline.py` passes
 - [ ] `python data/pipelines/pipeline.py` runs full ETL without errors
 - [ ] Run command documented
-- [ ] Names reflect CONTEXT KPI / domain vocabulary
+- [ ] Names reflect BRIEFING KPI / domain vocabulary
 - [ ] `telemetry_events` and `services/telemetry/analysis.py` unmodified
-- [ ] Backoffice dashboard shows every CONTEXT KPI, correctly labeled, from `services/reporting/`
+- [ ] Backoffice dashboard shows every BRIEFING KPI, correctly labeled, from `services/reporting/`
 - [ ] Dashboard legible to non-technical stakeholder
 - [ ] Commit message `feat: refactor business performance pipeline into subflows, add unit tests, and add reporting dashboard`

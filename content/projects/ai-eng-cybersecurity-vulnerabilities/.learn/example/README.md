@@ -1,6 +1,6 @@
 # Maple Street Library — OWASP Top 10 Audit (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-cybersecurity-vulnerabilities`. Same spine (server hardening checklist, OWASP matrix for backend / frontend / agent, critical fix + before/after proof). Different domain than company CONTEXT audits. Builds on the Maple Street Library narrative from earlier class examples. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-cybersecurity-vulnerabilities`. Same spine (server hardening checklist, OWASP matrix for backend / frontend / agent, critical fix + before/after proof). Different domain than company BRIEFING audits. Builds on the Maple Street Library narrative from earlier class examples. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -14,7 +14,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 | Graded project (`ai-eng-cybersecurity-vulnerabilities`) | This class example                              |
 | ------------------------------------------------------- | ----------------------------------------------- |
-| Company monorepo + CONTEXT-company.md                   | Maple Street desk API + agent only              |
+| Company monorepo + company-BRIEFING.md                   | Maple Street desk API + agent only              |
 | Full server hardening on prod VM                        | Documented hardening steps on classroom VM      |
 | 10 OWASP categories × 3 lanes                           | Short matrix + focus on A01, A02, A05 for agent |
 | PR to company fork                                      | Local checklist + demo commands                 |
@@ -83,4 +83,4 @@ Audit scope: **desk FAQ API + waive agent** — not the whole library ERP.
 
 1. Why audit the agent separately if it calls the same API?
 2. Which OWASP category is DEBUG=true — and why isn't logging enough?
-3. How would Maple Street's open port list differ from a CONTEXT company's SSE/MCP ports?
+3. How would Maple Street's open port list differ from a BRIEFING company's SSE/MCP ports?

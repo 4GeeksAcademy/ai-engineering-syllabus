@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** before writing any code — it reminds you which applications and services are part of your monorepo and which OWASP categories matter most for your agentic system.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** before writing any code — it reminds you which applications and services are part of your monorepo and which OWASP categories matter most for your agentic system.
 
 ---
 
@@ -65,7 +65,7 @@ A security **ticket** has come in: before any of the company's applications rece
 - [ ] Fix every vulnerability your audit marked as critical.
 - [ ] For each fix, leave reproducible evidence (a test, a scan screenshot, or a command demonstrating the before/after).
 
-⚠️ **IMPORTANT:** Check your `CONTEXT-company.md` to confirm which applications and services in your monorepo should be included in the audit's scope.
+⚠️ **IMPORTANT:** Check your `company-BRIEFING.md` to confirm which applications and services in your monorepo should be included in the audit's scope.
 
 ---
 

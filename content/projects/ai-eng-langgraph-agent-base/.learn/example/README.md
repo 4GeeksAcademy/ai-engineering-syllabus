@@ -16,7 +16,7 @@ Your live demo goal: wrap the existing `retrieve` and `query` functions in a **c
 
 | Graded project (`ai-eng-langgraph-agent-base`)    | This class example                            |
 | ------------------------------------------------- | --------------------------------------------- |
-| Full company monorepo fork + `CONTEXT-company.md` | Mini `library-api` + `maple_knowledge` corpus |
+| Full company monorepo fork + `company-BRIEFING.md` | Mini `library-api` + `maple_knowledge` corpus |
 | LangSmith or production-grade tracing             | In-memory trace list + optional JSON export   |
 | Checkpointing with durable store                  | `MemorySaver` checkpointer only               |
 | PR with trace screenshot + eval output            | Local demo + `pytest tests/pipelines/`        |

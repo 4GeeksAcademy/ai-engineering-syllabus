@@ -1,6 +1,6 @@
 # Harbor Desk — Tablero de Tickets en Vivo (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-real-time-notification`. Misma columna vertebral (evento SSE nombrado, payload estructurado, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff progresivo). Dominio distinto a los agentes CONTEXT de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-real-time-notification`. Misma columna vertebral (evento SSE nombrado, payload estructurado, keep-alive, `fetch` + `ReadableStream`, reconexión con backoff progresivo). Dominio distinto a los agentes BRIEFING de empresa. El alumnado sigue el brief completo del `README.md` en la raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -14,10 +14,10 @@ _These instructions are also available in [English](./README.md)._
 
 | Proyecto evaluado (`ai-eng-real-time-notification`)    | Este ejemplo de clase                                     |
 | ---------------------------------------------------------------- | --------------------------------------------------------- |
-| Monorepo de empresa + ticket RFP del CONTEXT                     | Solo tablero marina Harbor Desk                           |
+| Monorepo de empresa + ticket RFP del BRIEFING                     | Solo tablero marina Harbor Desk                           |
 | Enganchar al path de registro RFP existente                      | Stub `POST /tickets` que publica el evento                |
 | Refactor completo del dashboard de empresa                       | Una sola página HTML/JS de tablero                        |
-| Fidelidad de campos CONTEXT (cliente, location, service_type, …) | Campos demo fijos: `ticket_id`, `slip`, `issue`, `status` |
+| Fidelidad de campos BRIEFING (cliente, location, service_type, …) | Campos demo fijos: `ticket_id`, `slip`, `issue`, `status` |
 | PR de empresa + preguntas de diseño                              | Demo en vivo + 2 tests automatizados                      |
 
 ---
@@ -81,4 +81,4 @@ data: {"ticket_id":"mnt_0042","slip":"B-17","issue":"pump_out_clogged","status":
 
 - WebSockets / chat bidireccional (Parte 2)
 - Agentes LLM, RAG o pipelines de RFP
-- Empresas del CONTEXT (Brasaland, HealthCore, …)
+- Empresas del BRIEFING (Brasaland, HealthCore, …)

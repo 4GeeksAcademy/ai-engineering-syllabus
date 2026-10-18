@@ -1,6 +1,6 @@
 # Maple Street Library Desk Agent — Harness & Guardrails (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-agent-harness` (**Milestone 8 Part 2**). Same spine (secure system prompt, content/scope guardrails, anti-injection, untrusted RAG isolation, output checks, failure-type logs, **deterministic** jailbreak tests). Different domain than company CONTEXT agents. Continues Maple Street Library narrative from the **memory** class example (Part 1). Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-agent-harness` (**Milestone 8 Part 2**). Same spine (secure system prompt, content/scope guardrails, anti-injection, untrusted RAG isolation, output checks, failure-type logs, **deterministic** jailbreak tests). Different domain than company BRIEFING agents. Continues Maple Street Library narrative from the **memory** class example (Part 1). Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -16,7 +16,7 @@ In one session: wrap the desk agent with a **minimal harness** so abuse fails lo
 
 | Graded project (`ai-eng-agent-harness`) | This class example                                        |
 | --------------------------------------- | --------------------------------------------------------- |
-| Company monorepo + CONTEXT-company.md   | Maple Street desk FAQ only                                |
+| Company monorepo + company-BRIEFING.md   | Maple Street desk FAQ only                                |
 | Full RAG + MCP client path              | 3–5 hard-coded FAQ snippets (fake retrieve)               |
 | Company-specific never-reveal rules     | One secret: internal overdue-waiver code `WAIVE-INTERNAL` |
 | Observability endpoint in prod agent    | In-memory counters + `print` / tiny CLI summary           |

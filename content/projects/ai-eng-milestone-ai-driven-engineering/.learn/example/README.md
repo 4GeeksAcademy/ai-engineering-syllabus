@@ -1,6 +1,6 @@
 # Cooking School Platform — AI-Driven Monorepo Setup (In-Class Example)
 
-> **Instructor note:** Simplified in-class example for the "AI-Driven Engineering" module. Use this scenario to introduce the memory bank pattern, `AGENTS.md`, agent rules, and skills in a small monorepo — completable in 1–2 hours. The official student project in the project root applies the same patterns at full scope with the student's assigned company from `CONTEXT.md`.
+> **Instructor note:** Simplified in-class example for the "AI-Driven Engineering" module. Use this scenario to introduce the memory bank pattern, `AGENTS.md`, agent rules, and skills in a small monorepo — completable in 1–2 hours. The official student project in the project root applies the same patterns at full scope with the student's assigned company from `BRIEFING.md`.
 
 _Estas instrucciones tambien estan disponibles en [espanol](./README.es.md)._
 

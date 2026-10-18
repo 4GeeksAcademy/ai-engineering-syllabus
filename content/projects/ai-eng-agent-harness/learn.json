@@ -5,8 +5,8 @@
     "es": "Hito 8 — Aseguramiento de Agentes: Harness y Guardrails (Parte 2 de 2)"
   },
   "description": {
-    "en": "Part 2 of Milestone 8: harden the same company agent from Part 1 (memory) with a multi-layer harness — secure CONTEXT-aligned system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, structured guardrail logs, and deterministic automated tests (fixtures/mocks) that fail the build if abusive inputs are treated as allowed.",
-    "es": "Parte 2 del Hito 8: blinda el mismo agente de empresa de la Parte 1 (memoria) con un harness multicapa — system prompt seguro alineado al CONTEXT, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, logs estructurados de guardrails y tests automatizados deterministas (fixtures/mocks) que fallen el build si inputs abusivos se tratan como permitidos."
+    "en": "Part 2 of Milestone 8: harden the same company agent from Part 1 (memory) with a multi-layer harness — secure aligned-BRIEFING system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, structured guardrail logs, and deterministic automated tests (fixtures/mocks) that fail the build if abusive inputs are treated as allowed.",
+    "es": "Parte 2 del Hito 8: blinda el mismo agente de empresa de la Parte 1 (memoria) con un harness multicapa — system prompt seguro alineado al BRIEFING, guardrails de contenido/alcance (bloqueo de uso personal + redirección casual), aislamiento anti-inyección de texto RAG/MCP, validación de salida, logs estructurados de guardrails y tests automatizados deterministas (fixtures/mocks) que fallen el build si inputs abusivos se tratan como permitidos."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",

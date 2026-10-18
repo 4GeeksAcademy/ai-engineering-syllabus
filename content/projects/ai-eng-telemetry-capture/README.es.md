@@ -13,7 +13,7 @@ _These instructions are [available in English](./README.md)._
 
 **Antes de empezar**: necesitas el `telemetry-plan.md` y `event-schemas.json` de la Fase 1 aprobados — son el contrato que vas a implementar hoy. Si no están aprobados, resuelve eso antes de escribir código.
 
-Ten a mano tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)**: los nombres de `event_type`, los identificadores de entidad en `properties` y los puntos de instrumentación deben usar el vocabulario de dominio de tu compañía (a través del plan aprobado), no etiquetas genéricas de este README.
+Ten a mano tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)**: los nombres de `event_type`, los identificadores de entidad en `properties` y los puntos de instrumentación deben usar el vocabulario de dominio de tu compañía (a través del plan aprobado), no etiquetas genéricas de este README.
 
 ---
 
@@ -27,7 +27,7 @@ Cada evento de tu catálogo — obligatorio o identificado por ti — debe captu
 
 > Tu tech lead te envió este mensaje:
 >
-> "Quiero ver eventos fluyendo antes de construir la capa de almacenamiento. Crea el `TelemetryService` en el backoffice e instrumenta, como mínimo, todas las métricas obligatorias de tu CONTEXT — y tantas del resto de tu catálogo como te alcance el día, priorizando cubrir distintas categorías (técnicas y de negocio) antes que profundizar en una sola.
+> "Quiero ver eventos fluyendo antes de construir la capa de almacenamiento. Crea el `TelemetryService` en el backoffice e instrumenta, como mínimo, todas las métricas obligatorias de tu BRIEFING — y tantas del resto de tu catálogo como te alcance el día, priorizando cubrir distintas categorías (técnicas y de negocio) antes que profundizar en una sola.
 >
 > Para verificar que el payload llega bien, agrega un endpoint stub en el backend — valida el formato y devuelve 200, sin escribir en base de datos todavía.
 >
@@ -58,7 +58,7 @@ El servicio de captura del frontend no dispara una llamada HTTP por cada evento 
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Abre tu copia del monorepo y ubica `uis/backoffice/` (frontend) y `services/` (backend FastAPI).
-2. Recupera tu `docs/telemetry/event-schemas.json` y crúzalo con tu `CONTEXT-empresa.md` — los nombres de entidad y las claves de propiedades deben coincidir con el vocabulario de dominio de tu compañía.
+2. Recupera tu `docs/telemetry/event-schemas.json` y crúzalo con tu `empresa-BRIEFING.md` — los nombres de entidad y las claves de propiedades deben coincidir con el vocabulario de dominio de tu compañía.
 3. Agrega `NEXT_PUBLIC_TELEMETRY_ENDPOINT` a tu `.env.local` apuntando al endpoint stub que vas a crear: `http://localhost:8000/telemetry/events`.
 4. Sigue el orden de fases: stub → servicio → instrumentación. No instrumentes antes de tener el servicio.
 
@@ -89,7 +89,7 @@ El servicio de captura del frontend no dispara una llamada HTTP por cada evento 
 
 ### Fase 3 — Instrumentación amplia: técnica y de negocio
 
-- [ ] Instrumenta, sin excepción, **todas las métricas obligatorias** de tu `CONTEXT-empresa.md` (a través de tu plan aprobado).
+- [ ] Instrumenta, sin excepción, **todas las métricas obligatorias** de tu `empresa-BRIEFING.md` (a través de tu plan aprobado).
 - [ ] Instrumenta un **piso técnico transversal**, que aplica a cualquier parte de la aplicación y no solo al inventario:
   - Errores de frontend no capturados (`window.onerror`, `unhandledrejection`, o Error Boundaries)
   - Al menos una métrica de rendimiento (tiempo de carga de página o latencia de una llamada a API relevante)
@@ -97,7 +97,7 @@ El servicio de captura del frontend no dispara una llamada HTTP por cada evento 
 - [ ] Instrumenta el resto de eventos de negocio de tu plan que priorizaste (inventario u otros flujos de tu compañía), respetando el allowlist de propiedades definido para cada evento en tu `event-schemas.json`. No agregues propiedades extra "por si acaso".
 - [ ] Verifica en las DevTools del navegador (pestaña Network) que los lotes llegan al endpoint stub con el formato correcto y que el backend responde 200.
 
-⚠️ **IMPORTANTE:** los valores de `event_type` y las claves de `properties` deben coincidir con tus esquemas aprobados en la Fase 1, fundamentados en `CONTEXT-empresa.md`. Copiar nombres de eventos genéricos de este README en lugar de tu plan no será aceptado.
+⚠️ **IMPORTANTE:** los valores de `event_type` y las claves de `properties` deben coincidir con tus esquemas aprobados en la Fase 1, fundamentados en `empresa-BRIEFING.md`. Copiar nombres de eventos genéricos de este README en lugar de tu plan no será aceptado.
 
 ### 🔵 Actividad adicional — Rendimiento y Web Vitals
 
@@ -115,9 +115,9 @@ El servicio de captura del frontend no dispara una llamada HTTP por cada evento 
 - [ ] El `TelemetryService` implementa cola local, batch+debounce (10s / 20 eventos), flush con `sendBeacon`, y reintentos con backoff
 - [ ] El servicio genera `eventId`, `sessionId`, `userId`, `timestamp`, `schemaVersion` y `requestId` automáticamente — el componente que llama a `track()` no los pasa manualmente
 - [ ] No hay llamadas directas a `fetch`/`axios` para telemetría fuera del `TelemetryService`
-- [ ] Todas las métricas obligatorias del CONTEXT están instrumentadas
+- [ ] Todas las métricas obligatorias del BRIEFING están instrumentadas
 - [ ] El piso técnico transversal (errores, rendimiento, navegación) está instrumentado, no solo el flujo de inventario
-- [ ] Los eventos instrumentados usan `event_type` y allowlists de propiedades del plan del estudiante, fundamentados en `CONTEXT-empresa.md` — no placeholders genéricos de este README
+- [ ] Los eventos instrumentados usan `event_type` y allowlists de propiedades del plan del estudiante, fundamentados en `empresa-BRIEFING.md` — no placeholders genéricos de este README
 - [ ] No hay PII (email, nombre, contraseña) en ningún evento enviado
 - [ ] La pestaña Network de DevTools muestra lotes llegando al endpoint con el formato correcto y respuesta 200
 

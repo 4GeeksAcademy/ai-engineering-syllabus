@@ -7,7 +7,7 @@ Two deliverables, in order:
 1. **Repository stewardship** — conventions already in the monorepo become explicit `.agents/rules` + a company-specific `memory-bank/`.
 2. **Incident manager** — CRUD + lifecycle + assignment + change history, catalogues from `content/contexts/4-devs/incident-manager-for-devs/`.
 
-Not an auth project. Field names, channels, types, severities, areas, and lifecycle come from the student's `CONTEXT-company.md` — generic placeholders fail review.
+Not an auth project. Field names, channels, types, severities, areas, and lifecycle come from the student's `company-BRIEFING.md` — generic placeholders fail review.
 
 ## Expected layout
 
@@ -43,16 +43,16 @@ Minimum layers:
 
 | Artifact            | Must cover                                                                                |
 | ------------------- | ----------------------------------------------------------------------------------------- |
-| Product / business  | Company, who uses backoffice, what an incident means in this operation (CONTEXT-grounded) |
+| Product / business  | Company, who uses backoffice, what an incident means in this operation (grounded-BRIEFING) |
 | Tech stack          | What the monorepo already ships                                                           |
 | Current state       | Done / in progress / closed decisions — updated at end ≠ start                            |
 | Implementation plan | Written with the agent before coding the manager                                          |
 
 ### Incident manager
 
-- Create, edit, list, detail — fields from CONTEXT.
-- Catalogues: intake channel, type, severity, responsible area — exact CONTEXT values.
-- State lifecycle through closure (and `reopened` if CONTEXT defines it).
+- Create, edit, list, detail — fields from BRIEFING.
+- Catalogues: intake channel, type, severity, responsible area — exact BRIEFING values.
+- State lifecycle through closure (and `reopened` if BRIEFING defines it).
 - Every status change and every ownership / responsible-area change → timestamped, authored history, queryable from detail.
 - List filters: state, severity, responsible area.
 - At-a-glance view: volume of **open** incidents by severity.
@@ -74,10 +74,10 @@ Exact schema may follow monorepo patterns; presence of timestamp + author + quer
 
 ## Validation notes
 
-- CONTEXT catalogues match implementation enums (channel, type, severity, area).
-- Seed / sample data satisfies CONTEXT seed rules when present.
+- BRIEFING catalogues match implementation enums (channel, type, severity, area).
+- Seed / sample data satisfies BRIEFING seed rules when present.
 - Empty list and zero open-by-severity counts do not 500.
-- Re-run or re-seed must not invent duplicate business identities if CONTEXT requires idempotency.
+- Re-run or re-seed must not invent duplicate business identities if BRIEFING requires idempotency.
 - Review agent-generated code before commit.
 
 ## Reviewer checklist
@@ -89,6 +89,6 @@ Exact schema may follow monorepo patterns; presence of timestamp + author + quer
 - [ ] Manager: channel/type/severity + area assignment + full lifecycle
 - [ ] Change history queryable from detail (timestamp + author)
 - [ ] Filters: state, severity, area; open-by-severity volume view
-- [ ] Catalogues match assigned CONTEXT
+- [ ] Catalogues match assigned BRIEFING
 - [ ] No stack/convention drift without a rule
 - [ ] Commit history split by steps; PR documents rules + discrepancies + optional improvement proposal

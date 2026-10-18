@@ -14,7 +14,7 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 | Graded project (`ai-eng-milestone-rag-knowledge-base`) | This class example              |
 | ------------------------------------------------------ | ------------------------------- |
-| Full monorepo + `CONTEXT-company.md` documents         | Mini `library-api` + 3 MD files |
+| Full monorepo + `company-BRIEFING.md` documents         | Mini `library-api` + 3 MD files |
 | Company-specific collection name                       | `maple_knowledge`               |
 | Backoffice UI integration                              | Single page under `uis/`        |
 | PR to student fork                                     | Local Qdrant via Docker         |

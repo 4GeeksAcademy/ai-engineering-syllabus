@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it contains the concrete guidelines your evaluator agents must validate against.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it contains the concrete guidelines your evaluator agents must validate against.
 
 ---
 
@@ -38,9 +38,9 @@ In Part 1 you already have a flow that classifies each RFP and opens a ticket fo
 
 ### 📚 Complementary Knowledge: guideline compliance
 
-When the ticket asks an evaluator to check "compliance with company guidelines," it doesn't mean a free-form style judgment: your `CONTEXT-company.md` includes a concrete list of rules (tone, data that can't be missing, figures that must appear) that the evaluator must check the generated content against — not the agent's subjective opinion. If your company already has a semantic knowledge base, it's a good place for the generator to look up real policies, reference pricing, or brand language before drafting — it cuts down on how often the evaluator bounces a section for inventing something that doesn't match what the company actually says. This is a suggested improvement, not a requirement of this part.
+When the ticket asks an evaluator to check "compliance with company guidelines," it doesn't mean a free-form style judgment: your `company-BRIEFING.md` includes a concrete list of rules (tone, data that can't be missing, figures that must appear) that the evaluator must check the generated content against — not the agent's subjective opinion. If your company already has a semantic knowledge base, it's a good place for the generator to look up real policies, reference pricing, or brand language before drafting — it cuts down on how often the evaluator bounces a section for inventing something that doesn't match what the company actually says. This is a suggested improvement, not a requirement of this part.
 
-**Ticket statuses for this part** (same ticket row as Part 1 — match CONTEXT names). Full lifecycle is in CONTEXT; **here you only need:**
+**Ticket statuses for this part** (same ticket row as Part 1 — match BRIEFING names). Full lifecycle is in BRIEFING; **here you only need:**
 
 | Status               | Role              | When                                                                        |
 | -------------------- | ----------------- | --------------------------------------------------------------------------- |
@@ -68,7 +68,7 @@ Continue on the same Milestone working branch in your monorepo fork (or create `
 1. Build on top of the classification and routing flow you built in Part 1 — don't rewrite it from scratch.
 2. **Consume Part 1's routing handoff** — Part 2 must start from tickets that Part 1 marked ready (status `intake_complete` plus the queue flag / DB field / handoff contract you defined). Input = `ticket_id` + synthesizer payload (`key_aspects` / workstream structure). Do **not** re-parse the PDF or invent a parallel summary path that ignores that contract.
 3. Install any new dependencies with `uv add`.
-4. Review your `CONTEXT-company.md` again: it contains the concrete guidelines your evaluator agents must validate against.
+4. Review your `company-BRIEFING.md` again: it contains the concrete guidelines your evaluator agents must validate against.
 
 ---
 
@@ -90,7 +90,7 @@ Continue on the same Milestone working branch in your monorepo fork (or create `
 - [ ] Implement multiple evaluator agents that run in parallel over each generated section
 - [ ] At least one evaluator must check readability (suggested: `py-readability-metrics`)
 - [ ] At least one evaluator must check relevance (that the content actually answers what the RFP asks for)
-- [ ] At least one evaluator must check compliance with the guidelines defined in your `CONTEXT-company.md`
+- [ ] At least one evaluator must check compliance with the guidelines defined in your `company-BRIEFING.md`
 - [ ] Persist each section's evaluation as a structured `EvaluationResult` (field names may vary slightly; shape must be equivalent):
 
 ```text
@@ -113,12 +113,12 @@ EvaluationResult:
 
 - [ ] Update the ticket created in Part 1 (from `intake_complete`) to reflect generation and evaluation progress (`drafting`, `under_evaluation`, `needs_human_review`). Persist drafts and `evaluation_results` in PostgreSQL. Still no new API: extend the existing backend and the pipeline under `data/pipelines/`.
 
-⚠️ **IMPORTANT:** The company guidelines you evaluate generated content against, and the expected format of each section, must match what's specified in your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** The company guidelines you evaluate generated content against, and the expected format of each section, must match what's specified in your `company-BRIEFING.md`. A generic implementation that ignores the context will not be accepted.
 
 **Testing**
 
 - [ ] Include unit tests in `tests/pipelines/` for at least one generator agent and one evaluator agent, including a case where evaluation fails
-- [ ] Add one compliance-failure case tied to a rule from your `CONTEXT-company.md` (e.g. a draft that promises something the guidelines forbid → `compliance.pass == false`). Keep it small: one fixture, one assertion on fail — no full loop required for this case
+- [ ] Add one compliance-failure case tied to a rule from your `company-BRIEFING.md` (e.g. a draft that promises something the guidelines forbid → `compliance.pass == false`). Keep it small: one fixture, one assertion on fail — no full loop required for this case
 
 ---
 
@@ -140,8 +140,8 @@ EvaluationResult:
 - [ ] The ticket accurately reflects generation and evaluation progress in real time
 - [ ] Evaluation output follows the `EvaluationResult` shape (structured readability / relevance / compliance — not unstructured free text)
 - [ ] Drafts and `evaluation_results` are persisted in PostgreSQL; still one backend API under `services/` (no second HTTP service)
-- [ ] Unit tests cover success, a generic evaluation-failure case, and one CONTEXT-anchored compliance failure
-- [ ] The implementation uses the guidelines and formats defined in your company's `CONTEXT-company.md`
+- [ ] Unit tests cover success, a generic evaluation-failure case, and one anchored-BRIEFING compliance failure
+- [ ] The implementation uses the guidelines and formats defined in your company's `company-BRIEFING.md`
 
 ---
 

@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** antes de escribir cualquier línea de código — ahí se documenta el significado de cada columna y el patrón de estacionalidad del histórico de ventas de tu empresa, que ya viene incluido como CSV en `content/contexts/sales-forecasting/<empresa>/<empresa>_sales.csv` de este repositorio.
+**Antes de empezar**: Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** antes de escribir cualquier línea de código — ahí se documenta el significado de cada columna y el patrón de estacionalidad del histórico de ventas de tu empresa, que ya viene incluido como CSV en `content/contexts/sales-forecasting/<empresa>/<empresa>_sales.csv` de este repositorio.
 
 ---
 
@@ -56,7 +56,7 @@ Una vez que entiendes la forma de la serie, tradúcela en features que un regres
 2. Desde `main` de tu fork, crea una rama nueva para este proyecto: `git switch -c feature/sales-forecast-model` (en Codespaces o en tu entorno local).
 3. Valida que `uv` esté instalado con `uv --version`; si no lo tienes, instálalo con `curl -LsSf https://astral.sh/uv/install.sh | sh` y, en la raíz del proyecto, inicializa el entorno con `uv init` (solo si aún no existe `pyproject.toml`). Luego agrega las dependencias con `uv add` (por ejemplo `scikit-learn`, `xgboost`, `pandas`, `matplotlib`, `statsmodels`) — nunca uses `pip install` ni `pipenv`.
 4. Usa el dataset de ventas históricas ya provisto para tu empresa: en el monorepo está en `data/raw/<empresa>_sales.csv` y en este repositorio de referencia en `content/contexts/sales-forecasting/<empresa>/<empresa>_sales.csv`; no lo generes ni lo simules.
-5. Lee tu `CONTEXT-empresa.md` completo antes de escribir código: ahí están el significado de cada columna, el rango de fechas y el patrón de estacionalidad que el dataset ya refleja.
+5. Lee tu `empresa-BRIEFING.md` completo antes de escribir código: ahí están el significado de cada columna, el rango de fechas y el patrón de estacionalidad que el dataset ya refleja.
 
 ---
 
@@ -64,9 +64,9 @@ Una vez que entiendes la forma de la serie, tradúcela en features que un regres
 
 **Preparación de datos**
 
-- [ ] Carga el dataset de ventas históricas de tu empresa desde la ruta correspondiente al entorno donde trabajas: `data/raw/<empresa>_sales.csv` en tu monorepo o `content/contexts/sales-forecasting/<empresa>/<empresa>_sales.csv` en este repositorio de referencia, y verifica que las columnas coincidan con las descritas en tu `CONTEXT-empresa.md`.
+- [ ] Carga el dataset de ventas históricas de tu empresa desde la ruta correspondiente al entorno donde trabajas: `data/raw/<empresa>_sales.csv` en tu monorepo o `content/contexts/sales-forecasting/<empresa>/<empresa>_sales.csv` en este repositorio de referencia, y verifica que las columnas coincidan con las descritas en tu `empresa-BRIEFING.md`.
 - [ ] Trata los valores nulos o vacíos antes de entrenar.
-- [ ] Descompón la serie (tendencia / estacionalidad / residual) con `statsmodels.tsa.seasonal_decompose` (o equivalente) y anota brevemente, en un comentario o en tu reporte, si el patrón coincide con lo descrito en tu `CONTEXT-empresa.md`.
+- [ ] Descompón la serie (tendencia / estacionalidad / residual) con `statsmodels.tsa.seasonal_decompose` (o equivalente) y anota brevemente, en un comentario o en tu reporte, si el patrón coincide con lo descrito en tu `empresa-BRIEFING.md`.
 - [ ] Construye features conscientes del tiempo: al menos un feature de lag (por ejemplo `t-1`, `t-12`), una estadística rodante (media o desviación estándar sobre una ventana) y un feature de calendario/estacionalidad (mes, trimestre, o codificación cíclica).
 - [ ] Calcula cada feature de lag y rolling de forma **causal** (solo con valores pasados, por ejemplo `shift(1)` antes de `rolling()`) — un feature que se asoma a la fila actual o futura invalida todo el pronóstico.
 - [ ] Divide el dataset en **entrenamiento** (los primeros 8 años) y **comprobación/prueba** (los 2 años más recientes), de forma que el modelo nunca vea los años de prueba durante el entrenamiento.
@@ -86,7 +86,7 @@ Una vez que entiendes la forma de la serie, tradúcela en features que un regres
 
 - [ ] Genera una visualización que muestre la predicción del modelo junto con el área de variabilidad del resultado, comparada contra los datos reales de los 2 años de prueba.
 
-⚠️ **IMPORTANTE:** Los nombres de columnas, el formato del dataset y los valores específicos de tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de columnas, el formato del dataset y los valores específicos de tu implementación deben coincidir con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
 
 **Pruebas**
 
@@ -103,7 +103,7 @@ Una vez que entiendes la forma de la serie, tradúcela en features que un regres
 - [ ] El modelo entrenado es XGBoost o Random Forest, con la elección justificada explícitamente.
 - [ ] Las cuatro métricas (MSE, PSI, Gini, K2 Score) están calculadas y reportadas sobre el conjunto de prueba, no sobre el de entrenamiento.
 - [ ] Existe una visualización que muestra la predicción junto con su rango de variabilidad, no solo una línea puntual.
-- [ ] El dataset usado es el provisto en `data/raw/<empresa>_sales.csv`, sin alteraciones que rompan el patrón de estacionalidad y crecimiento descrito en el CONTEXT.md de la empresa.
+- [ ] El dataset usado es el provisto en `data/raw/<empresa>_sales.csv`, sin alteraciones que rompan el patrón de estacionalidad y crecimiento descrito en el BRIEFING.md de la empresa.
 - [ ] La semilla aleatoria (`random_state`/`seed`) está fijada para que el experimento sea reproducible.
 - [ ] Ambas pruebas unitarias (regla del split y no fuga en los features) pasan correctamente.
 

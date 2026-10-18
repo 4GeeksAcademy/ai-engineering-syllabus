@@ -1,14 +1,14 @@
-> Indicative Brasaland example — replace destination table/paths with your CONTEXT.
+> Indicative Brasaland example — replace destination table/paths with your BRIEFING.
 
 # Pipeline Design Document — Business Performance Pipeline (Reference Excerpt)
 
-> Instructor/evaluator reference only. Student deliverable: `data/pipelines/PIPELINE_DESIGN.md` in the company monorepo. KPIs and deliverable must come from the company data-pipelines CONTEXT.
+> Instructor/evaluator reference only. Student deliverable: `data/pipelines/PIPELINE_DESIGN.md` in the company monorepo. KPIs and deliverable must come from the company data-pipelines BRIEFING.
 
 ## Current State
 
 We capture inventory telemetry events (`inbound_order_created`, `outbound_order_created`, `direct_stock_edit_rejected`, `order_validation_failed`, `stock_threshold_triggered`) into `public.telemetry_events` via `POST /telemetry/events`. `services/telemetry/analysis.py` + `GET /telemetry/report` answer engineering questions (volume, errors, latency). They stay unchanged.
 
-**Gap:** no auditable business rollup for the weekly executive report scoped in CONTEXT (purchase cost, waste, stockouts per location).
+**Gap:** no auditable business rollup for the weekly executive report scoped in BRIEFING (purchase cost, waste, stockouts per location).
 
 **Limitations of ad-hoc attempts:**
 
@@ -19,7 +19,7 @@ We capture inventory telemetry events (`inbound_order_created`, `outbound_order_
 
 ## Purpose
 
-Produce the daily rollup that feeds the weekly executive location cost & waste report by computing CONTEXT KPIs into `reporting.weekly_location_performance` from mandatory telemetry metrics — without changing `telemetry_events` or `GET /telemetry/report`.
+Produce the daily rollup that feeds the weekly executive location cost & waste report by computing BRIEFING KPIs into `reporting.weekly_location_performance` from mandatory telemetry metrics — without changing `telemetry_events` or `GET /telemetry/report`.
 
 ## Extraction Format
 
@@ -36,7 +36,7 @@ Produce the daily rollup that feeds the weekly executive location cost & waste r
 flowchart TD
   A[telemetry_events] --> B[Extract since watermark]
   B --> C[Validate envelope + allowlist]
-  C --> D[Aggregate by date / location to CONTEXT KPIs]
+  C --> D[Aggregate by date / location to BRIEFING KPIs]
   D --> E[Upsert reporting.weekly_location_performance]
   E --> F[services/reporting endpoints]
 ```
@@ -76,7 +76,7 @@ Dedup/idempotency enforced at **E** via upsert keys. Watermark advanced only aft
 | Flow    | `business_performance_etl_flow`  | Scheduled orchestration                                |
 | Flow    | `backfill_weekly_location_performance_flow` | Manual date-range reprocess                            |
 | Task    | `extract_telemetry_events`       | Query Supabase since watermark                         |
-| Task    | `transform_business_kpis`        | Validate + aggregate to CONTEXT KPI grain              |
+| Task    | `transform_business_kpis`        | Validate + aggregate to BRIEFING KPI grain              |
 | Task    | `load_weekly_location_performance`          | Transactional upsert + watermark advance               |
 | States  | Running / Completed / Failed     | Per flow run; Failed preserves checkpoint              |
 | Block   | `SupabaseCredentials`            | DB connection string + service role key                |

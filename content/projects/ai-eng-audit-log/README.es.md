@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[CONTEXT-audit-log.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/audit-log)** antes de escribir una sola línea de código — ahí están los eventos críticos de tu empresa y quién debe poder consultarlos.
+**Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/audit-log)** antes de escribir una sola línea de código — ahí están los eventos críticos de tu empresa y quién debe poder consultarlos.
 
 ---
 
@@ -42,7 +42,7 @@ Un log técnico (errores, latencia, trazas) y un registro de auditoría no son l
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Haz `pull` de los últimos cambios de tu fork del monorepo.
-2. Lee `COMPANY-BRIEF.md` y `CONTEXT-audit-log.md` completos antes de tocar código.
+2. Lee `COMPANY-BRIEF.md` y `company-BRIEFING.md` completos antes de tocar código.
 3. Crea una rama nueva: `feature/audit-log`.
 4. Haz un inventario de las acciones sensibles que ya existen en tu sistema (creación, modificación, eliminación de recursos críticos, cambios de permisos, accesos a datos restringidos).
 5. Diseña primero el esquema de la entrada de auditoría (actor, acción, recurso, timestamp, origen) antes de decidir dónde se dispara cada registro.
@@ -70,7 +70,7 @@ Un log técnico (errores, latencia, trazas) y un registro de auditoría no son l
 - [ ] Restringe el acceso al visor según los roles y departamentos ya definidos en tu plataforma — no todo Admin debe ver necesariamente todo el registro sin restricción, según lo que indique tu contexto de empresa
 - [ ] Implementa paginación o límites de consulta razonables para que el visor sea usable con volúmenes de datos reales
 
-⚠️ **IMPORTANTE:** los eventos considerados críticos para tu empresa y las reglas de quién puede consultarlos deben corresponder exactamente a lo especificado en tu `CONTEXT-audit-log.md`. Una implementación genérica que ignore ese contexto no será aceptada.
+⚠️ **IMPORTANTE:** los eventos considerados críticos para tu empresa y las reglas de quién puede consultarlos deben corresponder exactamente a lo especificado en tu `company-BRIEFING.md`. Una implementación genérica que ignore ese contexto no será aceptada.
 
 ---
 

@@ -98,7 +98,7 @@ At minimum, your project must include a clear command to validate or execute the
    cd transversal-project
    ```
 
-3. Read your **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/02-coding-fundamentals)** file completely before writing code. There you will find:
+3. Read your **[BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/02-coding-fundamentals)** file completely before writing code. There you will find:
    - The specific entities you must model (products, customers, orders, etc.)
    - The exact field names and their types
    - Your company's specific validation rules
@@ -124,22 +124,22 @@ At minimum, your project must include a clear command to validate or execute the
 
 ## 💻 What You Need to Do
 
-Implement the following functionalities in TypeScript. All entity names, fields, and rules must match exactly what is specified in your CONTEXT.md.
+Implement the following functionalities in TypeScript. All entity names, fields, and rules must match exactly what is specified in your BRIEFING.md.
 
 ### Backend / Logic
 
-- [ ] Define the **TypeScript interfaces** for all main entities of your company specified in your CONTEXT.md
+- [ ] Define the **TypeScript interfaces** for all main entities of your company specified in your BRIEFING.md
 - [ ] Implement **filtering** functions that allow searching for elements by one or more criteria (e.g., filter by category, price range, status)
 - [ ] Implement **sorting** functions that sort arrays according to different criteria (ascending, descending, by multiple fields)
 - [ ] Implement **linear search** to find elements in unsorted arrays
 - [ ] Implement **binary search** to find elements in previously sorted arrays
 - [ ] Create **aggregation** functions that generate reports: count elements by category, calculate totals, averages, maximums, and minimums
-- [ ] Implement **business validations** that verify objects comply with the rules in your CONTEXT.md before being processed
+- [ ] Implement **business validations** that verify objects comply with the rules in your BRIEFING.md before being processed
 - [ ] All functions must have **explicit types** in parameters and return values
 - [ ] The code must follow the **single responsibility principle**: each function does one thing
 - [ ] The project includes a clear command to validate or execute the TypeScript code during development
 
-⚠️ **IMPORTANT:** Field names, entity types, and validation rules in your implementation must match exactly what is specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity types, and validation rules in your implementation must match exactly what is specified in your BRIEFING.md. A generic implementation that ignores the context will not be accepted.
 
 ### Frontend / Testing (Optional)
 
@@ -168,13 +168,13 @@ npx http-server . -p 3000 -a 0.0.0.0
 
 ### Technical correctness
 
-- [ ] TypeScript interfaces correctly model the entities specified in CONTEXT.md with all their fields and types
+- [ ] TypeScript interfaces correctly model the entities specified in BRIEFING.md with all their fields and types
 - [ ] Filtering functions correctly return elements that meet the specified criteria
 - [ ] Sorting works correctly in ascending and descending order
 - [ ] Linear search finds elements in unsorted arrays without errors
 - [ ] Binary search works correctly on sorted arrays and returns the correct index or -1 if not found
 - [ ] Aggregations correctly calculate totals, averages, counts, and extreme values
-- [ ] Validations reject data that does not comply with the business rules in CONTEXT.md
+- [ ] Validations reject data that does not comply with the business rules in BRIEFING.md
 - [ ] There are no TypeScript compilation errors in any file
 - [ ] There is a documented command to run TypeScript validation or execution locally (`npx tsc --noEmit`, `npm run typecheck`, etc.)
 
@@ -186,9 +186,9 @@ npx http-server . -p 3000 -a 0.0.0.0
 
 ### Context adaptation
 
-- [ ] All entity names, fields, and types match exactly those specified in CONTEXT.md
-- [ ] Implemented validations correspond to the business rules defined in CONTEXT.md
-- [ ] Generated reports respond to the specific needs described in CONTEXT.md
+- [ ] All entity names, fields, and types match exactly those specified in BRIEFING.md
+- [ ] Implemented validations correspond to the business rules defined in BRIEFING.md
+- [ ] Generated reports respond to the specific needs described in BRIEFING.md
 
 ### Code quality
 

@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** before writing a single line — it defines the mandatory metrics, entities, and key processes of your company that this plan is built on.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** before writing a single line — it defines the mandatory metrics, entities, and key processes of your company that this plan is built on.
 
 ---
 
@@ -29,7 +29,7 @@ Telemetry is not generated just to have data: it is generated to answer question
 
 **The golden rule:** if you cannot complete this sentence, the event does not exist — _"We capture `[event_type]` because we need to know `[hypothesis]`, which allows us to make the decision `[concrete decision]`."_
 
-Your `CONTEXT-company.md` includes a set of **mandatory metrics** — specific indicators your company needs to measure from day one. These are folded into your plan as a floor, not a ceiling: around them, you must keep identifying every additional opportunity, technical and business, that you consider valuable.
+Your `company-BRIEFING.md` includes a set of **mandatory metrics** — specific indicators your company needs to measure from day one. These are folded into your plan as a floor, not a ceiling: around them, you must keep identifying every additional opportunity, technical and business, that you consider valuable.
 
 Two concepts you will need to apply today:
 
@@ -44,7 +44,7 @@ Two concepts you will need to apply today:
 >
 > And it's not just the inventory. The backoffice has other sections that are black boxes today: how many failed login attempts happen per day? Which sections do operators visit most? Are there flows that get abandoned halfway through? Any part of the application a user — or a process — touches is a data opportunity.
 >
-> Before we instrument anything, I need a design document. Don't limit yourself to a handful of business metrics: I want the most complete catalogue you can build, covering both the technical health of the system and the business questions — even if we don't know exactly what we'll use them for yet. I've already left you the metrics we need no matter what in your CONTEXT — implement those without fail, and keep exploring from there. Don't write code yet — write the plan the team will implement tomorrow."
+> Before we instrument anything, I need a design document. Don't limit yourself to a handful of business metrics: I want the most complete catalogue you can build, covering both the technical health of the system and the business questions — even if we don't know exactly what we'll use them for yet. I've already left you the metrics we need no matter what in your BRIEFING — implement those without fail, and keep exploring from there. Don't write code yet — write the plan the team will implement tomorrow."
 >
 > The deliverable is a **Telemetry Plan** in Markdown plus a JSON schema file. We review on Friday."
 
@@ -55,7 +55,7 @@ Two concepts you will need to apply today:
 ## 🌱 How to Start the Project
 
 1. Open your fork of your assigned company's monorepo.
-2. Read your `CONTEXT-company.md` in full and locate the **mandatory metrics**, the inventory system entities (products, orders), and the business constraints defined for your company.
+2. Read your `company-BRIEFING.md` in full and locate the **mandatory metrics**, the inventory system entities (products, orders), and the business constraints defined for your company.
 3. Create the `docs/telemetry/` folder inside the monorepo.
 4. Work on both deliverables inside that folder: `telemetry-plan.md` and `event-schemas.json`.
 
@@ -67,18 +67,18 @@ There is no new server to spin up today. The deliverable is design documentation
 
 ### Phase 1 — Exhaustive Catalogue of Data Opportunities
 
-- [ ] Review your `CONTEXT-company.md` and identify the **mandatory metrics** your company requires from day one. These are a floor, not a ceiling — they must be in your plan no matter what.
+- [ ] Review your `company-BRIEFING.md` and identify the **mandatory metrics** your company requires from day one. These are a floor, not a ceiling — they must be in your plan no matter what.
 - [ ] Map the **inventory management flow** in your application: from when an authenticated user accesses the system to when they complete an inbound or outbound order. Identify at least **5 instrumentation points** in that flow — including direct stock modification attempts (which the system rejects), failed validations, and minimum threshold activations.
 - [ ] Explore, without capping yourself at a minimum count, other backoffice sections that can also provide valuable data: authentication (login attempts, expired sessions, credential failures), performance (API response times, load times), uncaught frontend errors, and navigation (which sections operators visit most, which flows get abandoned). The goal is a broad catalogue, not a minimum list checked off as a formality.
 - [ ] For each opportunity you identify, complete the sentence: _"We capture `[event_type]` because we need to know `[hypothesis]`, which allows us to make the decision `[decision]`."_ If you cannot complete it, discard the point.
-- [ ] Classify every event in your catalogue into two groups: **mandatory** (comes from your CONTEXT) or **identified opportunity** (you proposed it). This gives the team visibility into what is baseline and what is exploration.
+- [ ] Classify every event in your catalogue into two groups: **mandatory** (comes from your BRIEFING) or **identified opportunity** (you proposed it). This gives the team visibility into what is baseline and what is exploration.
 
-⚠️ **IMPORTANT:** The mandatory metrics, entities, and identifiers in your plan must match exactly what your `CONTEXT-company.md` specifies. In addition, the catalogue of additional opportunities is expected to be broad and well-grounded — a plan that only covers the mandatory minimum, without exploring the rest of the application, will not be accepted.
+⚠️ **IMPORTANT:** The mandatory metrics, entities, and identifiers in your plan must match exactly what your `company-BRIEFING.md` specifies. In addition, the catalogue of additional opportunities is expected to be broad and well-grounded — a plan that only covers the mandatory minimum, without exploring the rest of the application, will not be accepted.
 
 ### Phase 2 — Event Envelope Design
 
 - [ ] Define the **standard Event Envelope** your company will use: the mandatory fields every event must include (`eventId`, `timestamp` in ISO 8601, `sessionId`, `userId`, `event_type`, `schemaVersion`, `requestId` for correlation, and `properties` for event-specific payload).
-- [ ] Design the complete schema for **all the mandatory metrics from your CONTEXT**, plus **at least 8 additional events** from your catalogue, covering at least 3 distinct categories (for example: business/inventory, authentication, performance, errors, navigation). Each `event_type` must follow the `entity_action` taxonomy with consistent verbs (e.g. `inbound_order_created`, `stock_threshold_triggered`, `direct_stock_edit_rejected`, `session_expired`, `api_latency_recorded`).
+- [ ] Design the complete schema for **all the mandatory metrics from your BRIEFING**, plus **at least 8 additional events** from your catalogue, covering at least 3 distinct categories (for example: business/inventory, authentication, performance, errors, navigation). Each `event_type` must follow the `entity_action` taxonomy with consistent verbs (e.g. `inbound_order_created`, `stock_threshold_triggered`, `direct_stock_edit_rejected`, `session_expired`, `api_latency_recorded`).
 - [ ] For each event, define a **property allowlist**: an explicit list of the permitted keys for that event. Nothing outside the allowlist should be included — this prevents accidental data leakage.
 - [ ] For each event, specify: `event_type`, description, `properties` (name, type, required/optional, description), and whether it contains sensitive data or PII — in which case document how it is anonymised or sanitised before the event is emitted.
 - [ ] Export the schemas to the `event-schemas.json` file with a validatable structure (you may use JSON Schema draft-07 or a documented custom structure).
@@ -93,7 +93,7 @@ There is no new server to spin up today. The deliverable is design documentation
 
 ## ✅ What We Will Evaluate
 
-- [ ] Every mandatory metric from `CONTEXT-company.md` is present and correctly identified in the plan
+- [ ] Every mandatory metric from `company-BRIEFING.md` is present and correctly identified in the plan
 - [ ] The plan covers both **technical** opportunities (errors, performance, authentication, navigation) and **business** ones, broadly — not limited to a minimum count checked off as a formality
 - [ ] Every event has a hypothesis and a business or operational decision that justifies it — no "just in case" events
 - [ ] The Event Envelope is consistent across all events and contains at least: `eventId`, `timestamp` (ISO 8601), `sessionId`, `userId`, `event_type` in `entity_action` format, `schemaVersion`, `requestId`, and `properties`
@@ -111,7 +111,7 @@ There is no new server to spin up today. The deliverable is design documentation
 1. Make sure the files `docs/telemetry/telemetry-plan.md` and `docs/telemetry/event-schemas.json` are in your fork.
 2. Create a Pull Request against the main branch of the monorepo with the title: `docs: telemetry design plan`.
 3. In the PR description, include:
-   - The total number of events designed, and how many are mandatory (from CONTEXT) vs. identified by you
+   - The total number of events designed, and how many are mandatory (from BRIEFING) vs. identified by you
    - The categories covered (business, authentication, performance, errors, navigation, etc.)
    - One sentence explaining the hardest design decision you made
 

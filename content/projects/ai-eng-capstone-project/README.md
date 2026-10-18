@@ -7,7 +7,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 
 _Estas instrucciones están [disponibles en español](./README.es.md)._
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** and confirm the system you built actually runs. This video is a **handoff** of that work.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** and confirm the system you built actually runs. This video is a **handoff** of that work.
 
 > This project is a reflection of the skills, creativity, and problem-solving mindset you developed throughout the program. 😀 Have fun with it, and be proud of what you built!
 
@@ -73,7 +73,7 @@ You record the system that already lives in your company monorepo. You are not c
 
 ## 💻 What You Need to Do
 
-⚠️ **IMPORTANT:** Field names, entity names, KPIs, and the workflow you demo must match your CONTEXT.md. A generic demo that ignores the company you have been building will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity names, KPIs, and the workflow you demo must match your BRIEFING.md. A generic demo that ignores the company you have been building will not be accepted.
 
 ### Recording quality checklist
 

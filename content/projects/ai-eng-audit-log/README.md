@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[CONTEXT-audit-log.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/audit-log)** before writing any code — that's where your company's critical events and who should be able to query them live.
+**Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/audit-log)** before writing any code — that's where your company's critical events and who should be able to query them live.
 
 ---
 
@@ -42,7 +42,7 @@ A technical log (errors, latency, traces) and an audit record aren't the same th
 ## 🌱 How to Start the Project
 
 1. `pull` the latest changes from your fork of the monorepo.
-2. Read `COMPANY-BRIEF.md` and `CONTEXT-audit-log.md` in full before touching any code.
+2. Read `COMPANY-BRIEF.md` and `company-BRIEFING.md` in full before touching any code.
 3. Create a new branch: `feature/audit-log`.
 4. Inventory the sensitive actions that already exist in your system (creation, modification, deletion of critical resources, permission changes, access to restricted data).
 5. Design the audit entry schema first (actor, action, resource, timestamp, origin) before deciding where each record gets triggered.
@@ -67,10 +67,10 @@ A technical log (errors, latency, traces) and an audit record aren't the same th
 **Viewer and querying**
 
 - [ ] Implement a backoffice view to query the log, with filters by actor, action type, resource, and date range
-- [ ] Restrict access to the viewer according to the roles and departments already defined in your platform — not every Admin should necessarily see the entire unrestricted log, depending on what your company context specifies
+- [ ] Restrict access to the viewer according to the roles and departments already defined in your platform — not every Admin should necessarily see the entire unrestricted log, depending on what your company briefing specifies
 - [ ] Implement reasonable pagination or query limits so the viewer stays usable with real data volumes
 
-⚠️ **IMPORTANT:** the events considered critical for your company and the rules for who can query them must match exactly what's specified in your `CONTEXT-audit-log.md`. A generic implementation that ignores that context will not be accepted.
+⚠️ **IMPORTANT:** the events considered critical for your company and the rules for who can query them must match exactly what's specified in your `company-BRIEFING.md`. A generic implementation that ignores that context will not be accepted.
 
 ---
 

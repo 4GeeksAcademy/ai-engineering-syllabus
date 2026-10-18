@@ -70,7 +70,7 @@ Cuando el capstone ya está entregado, puedes seguir construyendo. Los proyectos
 
 Úsalos durante la búsqueda de empleo, la preparación de entrevistas o el autoaprendizaje. Elige el track que encaje con el rol que buscas — no intentes "terminar los extras" antes de postularte.
 
-Cada proyecto tiene su propio README, CONTEXT y evaluación. Abre la carpeta y sigue ese README. Trabaja en una rama de feature y abre un PR en **tu** fork, igual que en los hitos. Una implementación genérica que ignore la empresa no se aceptará — la misma regla que en los hitos.
+Cada proyecto tiene su propio README, BRIEFING y evaluación. Abre la carpeta y sigue ese README. Trabaja en una rama de feature y abre un PR en **tu** fork, igual que en los hitos. Una implementación genérica que ignore la empresa no se aceptará — la misma regla que en los hitos.
 
 El trabajo complementario sirve cuando lo puedes **contar como historia de ingeniería**, no como una lista de tickets extra. Deja el vídeo del capstone como enlace por defecto en las candidaturas. Señala un PR complementario cuando encaje con el rol. Una historia fuerte gana a cinco extras a medias.
 
@@ -86,7 +86,7 @@ Sigue este orden. Los ítems complementarios son opcionales; el vídeo no.
 - [ ] Vídeo grabado con tu propia voz — sin generador de voz con IA
 - [ ] Capstone entregado en el LMS antes de empezar trabajo complementario
 - [ ] Después de entregar: un proyecto complementario elegido (o ninguno) — no varios empezados en paralelo
-- [ ] El trabajo complementario se queda en el fork de la empresa, en una rama de feature con nombre, alineado con el CONTEXT de ese proyecto
+- [ ] El trabajo complementario se queda en el fork de la empresa, en una rama de feature con nombre, alineado con el BRIEFING de ese proyecto
 
 ## Conclusión
 

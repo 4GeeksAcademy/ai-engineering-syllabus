@@ -264,6 +264,6 @@ A complete submission should demonstrate:
 
 ## Reviewer notes
 
-- Telemetry table/column names vary per company CONTEXT — grade against the student's existing schema, not this document verbatim.
+- Telemetry table/column names vary per company BRIEFING — grade against the student's existing schema, not this document verbatim.
 - Pipeline subprocess command should match the student's Milestone 6 CLI entry — reference: `python -m data.pipelines.telemetry_kpi_daily.run --no-prefect`. Do not penalize different invoke strings if documented.
 - `crontab` is preferred over framework schedulers embedded in FastAPI; grade independence criterion strictly.

@@ -16,8 +16,8 @@ En una sesión: receptor stub + servicio de captura en frontend + instrumentar m
 
 | Proyecto evaluable (`ai-eng-telemetry-capture`)                                  | Este ejemplo de clase                       |
 | -------------------------------------------------------------------------------- | ------------------------------------------- |
-| CONTEXT de empresa + esquemas Fase 1                                             | Contrato mini de biblioteca (abajo)         |
-| Todas las métricas obligatorias del CONTEXT + piso técnico + catálogo priorizado | 2 eventos obligatorios + 1 técnico + 1 auth |
+| BRIEFING de empresa + esquemas Fase 1                                             | Contrato mini de biblioteca (abajo)         |
+| Todas las métricas obligatorias del BRIEFING + piso técnico + catálogo priorizado | 2 eventos obligatorios + 1 técnico + 1 auth |
 | Batch 10s / 20 eventos                                                           | Batch 5s / 10 eventos (ritmo demo)          |
 | PR al fork del estudiante                                                        | Solo demo local                             |
 

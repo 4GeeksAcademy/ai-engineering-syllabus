@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí están quién aprueba cada departamento (y cualquier aprobador extra que tu empresa exija), las reglas de arbitraje ante conflictos y el formato del documento final. **No** inventes una escalera jerárquica multi-nivel salvo que tu CONTEXT lo diga (p. ej. umbral de CEO); en la mayoría de empresas el _sign-off_ es el responsable nombrado de cada departamento **activo**.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí están quién aprueba cada departamento (y cualquier aprobador extra que tu empresa exija), las reglas de arbitraje ante conflictos y el formato del documento final. **No** inventes una escalera jerárquica multi-nivel salvo que tu BRIEFING lo diga (p. ej. umbral de CEO); en la mayoría de empresas el _sign-off_ es el responsable nombrado de cada departamento **activo**.
 
 ---
 
@@ -30,7 +30,7 @@ En la Parte 2 cada departamento ya genera y autoevalúa su sección de la propue
 > - Antes de dar por aprobada la sección de un departamento, el flujo debe pasar por un punto de aprobación humana real — un _human-in-the-loop_, no solo un evaluador automático más.
 > - El flujo debe detenerse justo antes de esa acción irreversible, guardar el estado con un checkpointer, y poder reanudarse exactamente donde quedó cuando llegue la aprobación — no reiniciar desde cero.
 > - Esa pausa debe afectar solo la rama del departamento que está esperando aprobación; los demás departamentos que ya tengan su sección lista deben poder seguir avanzando en paralelo, no bloquearse entre sí.
-> - Define un límite de iteraciones y un nodo de arbitraje explícito para los desacuerdos entre departamentos. Conéctalo a los triggers de conflicto y al árbitro fijo de tu CONTEXT (reglas o un humano nombrado — no un LLM “votando” entre agentes).
+> - Define un límite de iteraciones y un nodo de arbitraje explícito para los desacuerdos entre departamentos. Conéctalo a los triggers de conflicto y al árbitro fijo de tu BRIEFING (reglas o un humano nombrado — no un LLM “votando” entre agentes).
 > - Cuando todos los departamentos den su _sign-off_, el documento final debe generarse solo, consolidando las secciones aprobadas.
 > - Quiero poder ver, para cualquier ejecución, qué agente hizo qué y en qué orden, porque cuando algo salga mal en producción no vamos a tener tiempo de adivinar.
 >   > Cuando termines, corre el flujo completo de principio a fin — desde que se sube la RFP en la Parte 1 hasta que se genera el documento final aquí — y revisa que se sienta como un solo proceso: sin saltos de estado raros, sin mensajes que no coincidan entre partes, sin pasos que se rompan en la transición de una parte a otra.
@@ -43,7 +43,7 @@ En la Parte 2 cada departamento ya genera y autoevalúa su sección de la propue
 
 No todo control debe pausar el flujo para un humano. Los guardrails (validaciones automáticas de esquema, tipo o negocio) deben resolver solos los casos claros; reserva las interrupciones (`interrupt`) para decisiones que de verdad requieren juicio humano, como aprobar una propuesta económica antes de enviarla a un cliente. Y cuando interrumpas, hazlo de forma acotada: la interrupción debe pausar únicamente la rama del grafo que depende de esa aprobación (la sección de ese departamento y lo que dependa de ella), no el flujo completo — un departamento esperando el visto bueno de su gerente no debería frenar a los demás que ya están listos para avanzar.
 
-**Estados del ticket para esta parte** (misma fila — nombres del CONTEXT). El ciclo completo está en el CONTEXT; **aquí solo necesitas:**
+**Estados del ticket para esta parte** (misma fila — nombres del BRIEFING). El ciclo completo está en el BRIEFING; **aquí solo necesitas:**
 
 | Estado                                 | Rol             | Cuándo                                                                        |
 | -------------------------------------- | --------------- | ----------------------------------------------------------------------------- |
@@ -70,7 +70,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 1. Crea la rama `feature/rfp-approval-completion` a partir de tu rama de la Parte 2.
 2. Configura el checkpointer que corresponda a tu entorno (SQLite o Postgres — evita el checkpointer en memoria salvo en desarrollo local).
 3. Instala cualquier dependencia nueva con `uv add`.
-4. Revisa tu `CONTEXT-company.md` para conocer los aprobadores por departamento, los triggers de conflicto / árbitro fijo, y el formato del documento final.
+4. Revisa tu `company-BRIEFING.md` para conocer los aprobadores por departamento, los triggers de conflicto / árbitro fijo, y el formato del documento final.
 
 ---
 
@@ -88,7 +88,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 **Guardrails y control de flujo**
 
 - [ ] Define un límite máximo de iteraciones en cualquier ciclo restante entre departamentos
-- [ ] Implementa un nodo de arbitraje explícito que dispare ante los triggers de conflicto de tu CONTEXT y resuelva con el árbitro fijo allí (humano nombrado o regla determinista — **no** freestyle de LLM entre agentes)
+- [ ] Implementa un nodo de arbitraje explícito que dispare ante los triggers de conflicto de tu BRIEFING y resuelva con el árbitro fijo allí (humano nombrado o regla determinista — **no** freestyle de LLM entre agentes)
 - [ ] Registra en el estado, para cada ejecución de nodo, el agente, el input, el output y el timestamp (trazabilidad)
 
 **Identidad del checkpointer**
@@ -106,7 +106,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 - [ ] Entrega una ruta E2E **reproducible**: fixture + script o test de integración que ejecute la Parte 3 con aprobaciones **simuladas** (`resume` programático / equivalente) — la revisión no debe depender solo de clicks irreproducibles en la UI
 - [ ] Corrige cualquier salto, mensaje inconsistente o dato que se pierda en la transición entre partes
 
-⚠️ **IMPORTANTE:** Los aprobadores por departamento, los triggers/árbitro de arbitraje y el formato del documento final deben coincidir con tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los aprobadores por departamento, los triggers/árbitro de arbitraje y el formato del documento final deben coincidir con tu `company-BRIEFING.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Pruebas**
 
@@ -120,7 +120,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 
 - ¿Qué pasa si un departamento rechaza su sección después de la interrupción? ¿El flujo vuelve al generador de la Parte 2 o requiere una nueva ejecución?
 - ¿Qué información mínima necesita ver un humano en el punto de aprobación para decidir con confianza, sin tener que releer todo el documento?
-- ¿Cómo detectas los triggers de conflicto del CONTEXT en estado estructurado (no solo texto libre), para que el nodo de arbitraje sea real y no decorativo?
+- ¿Cómo detectas los triggers de conflicto del BRIEFING en estado estructurado (no solo texto libre), para que el nodo de arbitraje sea real y no decorativo?
 
 ---
 
@@ -131,7 +131,7 @@ Continúa sobre tu rama del Hito en el fork del monorepo de tu empresa, a partir
 - [ ] La ejecución se reanuda exactamente desde el punto de interrupción, sin reiniciar el flujo completo
 - [ ] El `thread_id` está namespaced por ticket (y departamento si aplica); ejecuciones concurrentes no comparten checkpoint
 - [ ] Existe un límite de iteraciones aplicado y verificable en el código, no solo mencionado
-- [ ] El nodo de arbitraje dispara ante los triggers de conflicto del CONTEXT y resuelve con el árbitro fijo del CONTEXT (no freestyle de LLM)
+- [ ] El nodo de arbitraje dispara ante los triggers de conflicto del BRIEFING y resuelve con el árbitro fijo del BRIEFING (no freestyle de LLM)
 - [ ] Cada ejecución de nodo queda registrada con agente, input, output y timestamp
 - [ ] El documento final se genera automáticamente solo cuando todos los departamentos han dado su aprobación
 - [ ] El ticket usa `esperando_aprobación` mientras el HITL esté pendiente y `terminado` cuando el documento final sea accesible

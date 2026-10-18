@@ -5,8 +5,8 @@
     "us": "Milestone — Choose Your Company"
   },
   "description": {
-    "es": "Elige la empresa que automatizarás con AI Engineering y registra tu decisión en company-choice.md después de leer los perfiles proporcionados CONTEXT-company.",
-    "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided CONTEXT-company profiles."
+    "es": "Elige la empresa que automatizarás con AI Engineering y registra tu decisión en company-choice.md después de leer los perfiles proporcionados company-BRIEFING.",
+    "us": "Pick the company you will automate with AI Engineering and record your decision in company-choice.md after reading the provided company-BRIEFING profiles."
   },
   "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-milestone-choose-company/.learn/preview.png",
   "difficulty": "BEGINNER",

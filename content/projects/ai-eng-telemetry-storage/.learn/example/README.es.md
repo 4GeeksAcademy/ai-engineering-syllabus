@@ -14,7 +14,7 @@ _These instructions are also available in [English](./README.md)._
 
 | Proyecto evaluable (`ai-eng-telemetry-storage`) | Este ejemplo de clase                              |
 | ----------------------------------------------- | -------------------------------------------------- |
-| CONTEXT de empresa + mapeo `tags` Fase 1        | Contrato mini de biblioteca del demo de captura    |
+| BRIEFING de empresa + mapeo `tags` Fase 1        | Contrato mini de biblioteca del demo de captura    |
 | Monorepo completo + `TelemetryEvent` Fase 2     | Mini `library-api` + servicio de captura existente |
 | Tabla 8 columnas + 3 índices                    | Mismo esquema, dataset pequeño                     |
 | E2E inventario + técnico                        | 1 préstamo + 1 `login_failed` / `page_viewed`      |

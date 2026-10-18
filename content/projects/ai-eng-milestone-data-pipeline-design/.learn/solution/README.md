@@ -8,11 +8,11 @@ The deliverable is **design documentation only** — no Prefect flows, Python sc
 
 ## Alignment with company domain
 
-All KPIs, mandatory metrics, audience, cadence, and destination names must come from the company's **[data-pipelines CONTEXT](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** and existing telemetry work. Generic placeholders that ignore sector-specific KPIs or entity naming should be treated as incomplete.
+All KPIs, mandatory metrics, audience, cadence, and destination names must come from the company's **[data-pipelines BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/data-pipelines)** and existing telemetry work. Generic placeholders that ignore sector-specific KPIs or entity naming should be treated as incomplete.
 
-**Hard constraint:** this pipeline is **new**. Do not modify `services/telemetry/analysis.py` or `GET /telemetry/report`, and do not use `telemetry_events` as the destination. Additive CONTEXT-required payload fields on existing event types are allowed. Output lives in the **destination table named in CONTEXT-company.md** (always under the `reporting` schema — never a generic `reporting.weekly_location_performance` unless CONTEXT uses that name) and is exposed via `services/reporting/` (status, trigger, **and KPI query**).
+**Hard constraint:** this pipeline is **new**. Do not modify `services/telemetry/analysis.py` or `GET /telemetry/report`, and do not use `telemetry_events` as the destination. Additive required-BRIEFING payload fields on existing event types are allowed. Output lives in the **destination table named in company-BRIEFING.md** (always under the `reporting` schema — never a generic `reporting.weekly_location_performance` unless BRIEFING uses that name) and is exposed via `services/reporting/` (status, trigger, **and KPI query**).
 
-> **Indicative examples** in this solution use Brasaland's `reporting.weekly_location_performance` and matching paths. Students must substitute the Destination table and endpoints from **their** CONTEXT.
+> **Indicative examples** in this solution use Brasaland's `reporting.weekly_location_performance` and matching paths. Students must substitute the Destination table and endpoints from **their** BRIEFING.
 
 ---
 
@@ -24,8 +24,8 @@ A complete design should include at least:
 
 | Section                     | What a strong submission covers                                                                                                                                                                   |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Current State**           | Existing telemetry events, `telemetry_events` storage, what the technical report (`GET /telemetry/report`) already answers for engineering, and the business gap from the data-pipelines CONTEXT. |
-| **Purpose**                 | One concrete sentence naming the business deliverable + KPI(s) from CONTEXT "KPIs to Measure" + mandatory telemetry metric(s) that feed them.                                                     |
+| **Current State**           | Existing telemetry events, `telemetry_events` storage, what the technical report (`GET /telemetry/report`) already answers for engineering, and the business gap from the data-pipelines BRIEFING. |
+| **Purpose**                 | One concrete sentence naming the business deliverable + KPI(s) from BRIEFING "KPIs to Measure" + mandatory telemetry metric(s) that feed them.                                                     |
 | **Extraction format**       | Source is `telemetry_events` (plus any domain tables), format, refresh frequency.                                                                                                                 |
 | **Data flow diagram**       | Mermaid or text with extract → transform → load using real company table/entity names.                                                                                                            |
 | **Update / dedup strategy** | Concrete mechanism when sources update existing records (upsert, partition key, control table).                                                                                                   |
@@ -67,7 +67,7 @@ flowchart LR
 
 - Extract uses a **watermark** (`last_processed_at` or `pipeline_runs` checkpoint) — not full-table scans every run.
 - Technical report path stays untouched; business path writes only to `reporting.*`.
-- Load is a transactional upsert keyed on the CONTEXT grain (e.g. date + location).
+- Load is a transactional upsert keyed on the BRIEFING grain (e.g. date + location).
 
 ---
 
@@ -75,7 +75,7 @@ flowchart LR
 
 **Strong:**
 
-> We capture five inventory telemetry events (`inbound_order_created`, `outbound_order_created`, `direct_stock_edit_rejected`, `order_validation_failed`, `stock_threshold_triggered`) into `public.telemetry_events`. `services/telemetry/analysis.py` and `GET /telemetry/report` answer engineering questions (daily event volume, error rate by type, latency). They do **not** answer the weekly per-location cost & waste rollup scoped in our data-pipelines CONTEXT. No execution log, no idempotent business aggregate table.
+> We capture five inventory telemetry events (`inbound_order_created`, `outbound_order_created`, `direct_stock_edit_rejected`, `order_validation_failed`, `stock_threshold_triggered`) into `public.telemetry_events`. `services/telemetry/analysis.py` and `GET /telemetry/report` answer engineering questions (daily event volume, error rate by type, latency). They do **not** answer the weekly per-location cost & waste rollup scoped in our data-pipelines BRIEFING. No execution log, no idempotent business aggregate table.
 
 **Weak (incomplete):**
 
@@ -87,7 +87,7 @@ flowchart LR
 
 **Strong:**
 
-> Produce the daily rollup that feeds the CEO's weekly location cost & waste report by computing Purchase Cost, Waste Cost, Waste Ratio, Stockout Frequency, and Price Alert Frequency into `reporting.weekly_location_performance` from mandatory telemetry metrics already defined in CONTEXT.
+> Produce the daily rollup that feeds the CEO's weekly location cost & waste report by computing Purchase Cost, Waste Cost, Waste Ratio, Stockout Frequency, and Price Alert Frequency into `reporting.weekly_location_performance` from mandatory telemetry metrics already defined in BRIEFING.
 
 **Weak (incomplete):**
 
@@ -152,7 +152,7 @@ At least **five** fields with type and justification are required by the rubric.
 
 ## Application integration (reference)
 
-> Indicative names below follow **Brasaland** CONTEXT. Other companies use their own Destination table and path (e.g. `weekly_warehouse_client_performance`, `monthly_clinic_supply_performance`).
+> Indicative names below follow **Brasaland** BRIEFING. Other companies use their own Destination table and path (e.g. `weekly_warehouse_client_performance`, `monthly_clinic_supply_performance`).
 
 | Endpoint                                     | Calls from `data/pipelines/`                                                                                           |
 | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
@@ -166,9 +166,9 @@ Keep these in `services/reporting/`, separate from `services/telemetry/`.
 
 ## Common mistakes (incomplete submissions)
 
-- Purpose names technical KPIs (volume, latency) instead of CONTEXT business KPIs.
-- Rewriting `services/telemetry/analysis.py` / `GET /telemetry/report`, or using `telemetry_events` as this pipeline's destination (additive CONTEXT-required payload fields on existing events are OK).
-- Destination in `public` instead of the CONTEXT `reporting.*` table.
+- Purpose names technical KPIs (volume, latency) instead of BRIEFING business KPIs.
+- Rewriting `services/telemetry/analysis.py` / `GET /telemetry/report`, or using `telemetry_events` as this pipeline's destination (additive required-BRIEFING payload fields on existing events are OK).
+- Destination in `public` instead of the BRIEFING `reporting.*` table.
 - Generic table names (`events`, `metrics`) instead of company-specific entity names.
 - Data flow diagram with only two stages or missing real source/destination names.
 - Idempotency described as a wish ("should be idempotent") without second-run behavior.
@@ -182,8 +182,8 @@ Keep these in `services/reporting/`, separate from `services/telemetry/`.
 ## Evaluation checklist
 
 - [ ] `data/pipelines/PIPELINE_DESIGN.md` exists; design doc only — no orchestration code.
-- [ ] Purpose is one sentence naming business deliverable + CONTEXT KPI(s).
-- [ ] Design does not modify `services/telemetry/analysis.py` or `GET /telemetry/report`, and does not write output into `telemetry_events` (additive CONTEXT payload fields OK).
+- [ ] Purpose is one sentence naming business deliverable + BRIEFING KPI(s).
+- [ ] Design does not modify `services/telemetry/analysis.py` or `GET /telemetry/report`, and does not write output into `telemetry_events` (additive BRIEFING payload fields OK).
 - [ ] Output in `reporting` schema + `services/reporting/` endpoints.
 - [ ] Diagram shows extract → transform → load with real table/entity names.
 - [ ] Update/dedup strategy uses a concrete mechanism.
@@ -191,7 +191,7 @@ Keep these in `services/reporting/`, separate from `services/telemetry/`.
 - [ ] Execution log has ≥5 fields with name, type, and justification.
 - [ ] Prefect mapping: ≥1 main flow, ≥3 tasks, states, and ≥1 block.
 - [ ] ≥3 `services/reporting/` endpoints (status, trigger, **KPI query**) naming `data/pipelines/` functions.
-- [ ] Design consistent with telemetry events and mandatory metrics from CONTEXT.
+- [ ] Design consistent with telemetry events and mandatory metrics from BRIEFING.
 - [ ] Commit message `feat: add business performance pipeline design document`.
 
 ---

@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[CONTEXT-federated-auth.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/federated-authentication)** before writing any code — that's where your company's chosen identity provider and specific security rules live.
+**Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/federated-authentication)** before writing any code — that's where your company's chosen identity provider and specific security rules live.
 
 ---
 
@@ -42,7 +42,7 @@ Letting federated login create accounts automatically seems simpler, but it hand
 ## 🌱 How to Start the Project
 
 1. `pull` the latest changes from your fork of the monorepo.
-2. Read `COMPANY-BRIEF.md` and `CONTEXT-federated-auth.md` in full before touching any code.
+2. Read `COMPANY-BRIEF.md` and `company-BRIEFING.md` in full before touching any code.
 3. Create a new branch: `feature/federated-auth`.
 4. Review the current authentication flow and existing user model before deciding how the link will be stored.
 5. Diagram the two flows separately first — linking and federated login — because they share a provider but not their logic.
@@ -74,7 +74,7 @@ Letting federated login create accounts automatically seems simpler, but it hand
 - [ ] Implement the OAuth flow with `state` and `redirect_uri` validation to prevent session fixation attacks
 - [ ] Ensure the session created after a successful federated login has the same expiration and revocation behavior as a traditional session
 
-⚠️ **IMPORTANT:** the required identity provider(s) and any additional security rules for your company must match exactly what's specified in your `CONTEXT-federated-auth.md`. A generic implementation that ignores that context will not be accepted.
+⚠️ **IMPORTANT:** the required identity provider(s) and any additional security rules for your company must match exactly what's specified in your `company-BRIEFING.md`. A generic implementation that ignores that context will not be accepted.
 
 ---
 

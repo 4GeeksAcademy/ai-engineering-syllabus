@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de comenzar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/supplier-directory)** antes de escribir una sola línea de código — define los campos exactos del proveedor, las categorías válidas, los estados permitidos y los datos iniciales que debe cargar tu seeder.
+**Antes de comenzar:** Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/supplier-directory)** antes de escribir una sola línea de código — define los campos exactos del proveedor, las categorías válidas, los estados permitidos y los datos iniciales que debe cargar tu seeder.
 
 ---
 
@@ -31,7 +31,7 @@ Tu tech lead ha decidido construir una API de gestión de proveedores usando **F
 
 > **Nota de tu tech lead:**
 >
-> _"Necesito el directorio operativo antes del jueves. Usa TinyDB — ya migraremos a Postgres cuando tengamos el ORM listo. El seeder tiene que cargar todos los proveedores del CONTEXT desde el arranque; no quiero ver una base de datos vacía en la demo. Pydantic valida todo lo que entra: si un proveedor no tiene país o su estado no es uno de los dos valores permitidos, la API lo rechaza con un 422 antes de que toque la base de datos. Dos endpoints de búsqueda imprescindibles: filtrar por país y filtrar por categoría de producto. Y cuando se actualice una tarifa, quiero que quede registrado el timestamp del cambio — ese dato lo va a necesitar el equipo para auditorías."_
+> _"Necesito el directorio operativo antes del jueves. Usa TinyDB — ya migraremos a Postgres cuando tengamos el ORM listo. El seeder tiene que cargar todos los proveedores del BRIEFING desde el arranque; no quiero ver una base de datos vacía en la demo. Pydantic valida todo lo que entra: si un proveedor no tiene país o su estado no es uno de los dos valores permitidos, la API lo rechaza con un 422 antes de que toque la base de datos. Dos endpoints de búsqueda imprescindibles: filtrar por país y filtrar por categoría de producto. Y cuando se actualice una tarifa, quiero que quede registrado el timestamp del cambio — ese dato lo va a necesitar el equipo para auditorías."_
 
 > 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
@@ -45,7 +45,7 @@ Tu tech lead ha decidido construir una API de gestión de proveedores usando **F
    https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo
    ```
 
-2. Lee tu archivo **CONTEXT-company.md** antes de escribir código. Define los campos del modelo de proveedor, las categorías válidas, los estados permitidos y los datos que debe cargar el seeder.
+2. Lee tu archivo **company-BRIEFING.md** antes de escribir código. Define los campos del modelo de proveedor, las categorías válidas, los estados permitidos y los datos que debe cargar el seeder.
 
 3. Trabaja dentro de las carpetas `/services/api` (backend) y `/uis/backoffice` (frontend) del monorepo.
 
@@ -57,14 +57,14 @@ No hay código de inicio. El proyecto parte desde cero.
 
 ### Modelo de datos
 
-- [ ] Define el modelo Pydantic `Supplier` con los campos requeridos según tu CONTEXT: nombre, país, categorías de producto, el campo de tarifa definido en tu CONTEXT, `updated_at` y estado.
-- [ ] El campo `status` debe aceptar únicamente los valores definidos en tu CONTEXT (activo / suspendido o sus equivalentes). Usa un `Enum` o un validador de campo para rechazar cualquier otro valor.
-- [ ] El campo de tarifa definido en tu CONTEXT debe ser un número positivo. Pydantic debe rechazar valores cero o negativos antes de que el dato llegue a TinyDB.
+- [ ] Define el modelo Pydantic `Supplier` con los campos requeridos según tu BRIEFING: nombre, país, categorías de producto, el campo de tarifa definido en tu BRIEFING, `updated_at` y estado.
+- [ ] El campo `status` debe aceptar únicamente los valores definidos en tu BRIEFING (activo / suspendido o sus equivalentes). Usa un `Enum` o un validador de campo para rechazar cualquier otro valor.
+- [ ] El campo de tarifa definido en tu BRIEFING debe ser un número positivo. Pydantic debe rechazar valores cero o negativos antes de que el dato llegue a TinyDB.
 - [ ] Crea modelos de entrada y de respuesta separados cuando sea necesario (por ejemplo: el campo `updated_at` lo genera el sistema, no lo envía el cliente).
 
 ### Seeder
 
-- [ ] Crea un script `seed.py` que cargue los proveedores iniciales definidos en tu CONTEXT en TinyDB.
+- [ ] Crea un script `seed.py` que cargue los proveedores iniciales definidos en tu BRIEFING en TinyDB.
 - [ ] El seeder debe poder ejecutarse con `uv run seed` sin modificar el código.
 - [ ] Si la base de datos ya tiene datos, el seeder no debe duplicarlos — verifica antes de insertar.
 - [ ] Confirma en consola cuántos registros se han insertado al finalizar.
@@ -75,18 +75,18 @@ No hay código de inicio. El proyecto parte desde cero.
 - [ ] `GET /suppliers` — Lista todos los proveedores. Admite parámetros opcionales de query para filtrar por país y por categoría de producto. Si no se pasan parámetros, devuelve todos.
 - [ ] `GET /suppliers/{id}` — Devuelve el detalle de un proveedor por su ID. Devuelve `404` si no existe.
 - [ ] `PATCH /suppliers/{id}/rate` — Actualiza la tarifa de un proveedor. Registra automáticamente el `updated_at` con la fecha y hora del cambio. No acepta tarifas iguales o menores a cero.
-- [ ] `PATCH /suppliers/{id}/status` — Activa o suspende un proveedor. Solo acepta los dos valores de estado definidos en el CONTEXT.
+- [ ] `PATCH /suppliers/{id}/status` — Activa o suspende un proveedor. Solo acepta los dos valores de estado definidos en el BRIEFING.
 - [ ] `DELETE /suppliers/{id}` — Elimina un proveedor del directorio. Devuelve `404` si el ID no existe.
 
-⚠️ **IMPORTANTE:** Los nombres de campos, categorías válidas y estados permitidos en tu implementación deben coincidir exactamente con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, categorías válidas y estados permitidos en tu implementación deben coincidir exactamente con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
 
 ### Frontend (`/uis/backoffice`)
 
 - [ ] Crea una página de directorio de proveedores accesible desde el menú de la aplicación.
-- [ ] Muestra el listado completo de proveedores en una tabla o lista con sus campos principales: nombre, país, categorías, el campo de tarifa de tu CONTEXT y estado.
+- [ ] Muestra el listado completo de proveedores en una tabla o lista con sus campos principales: nombre, país, categorías, el campo de tarifa de tu BRIEFING y estado.
 - [ ] Incluye controles de filtrado por país y por categoría que actualicen el listado sin recargar la página.
 - [ ] Implementa un formulario para registrar un proveedor nuevo que consuma el endpoint `POST /suppliers`. Muestra un mensaje de error si la API rechaza la entrada.
-- [ ] Permite actualizar el campo de tarifa definido en tu CONTEXT desde la interfaz y refleja el cambio en el listado inmediatamente.
+- [ ] Permite actualizar el campo de tarifa definido en tu BRIEFING desde la interfaz y refleja el cambio en el listado inmediatamente.
 - [ ] Permite cambiar el estado de un proveedor (activar / suspender) desde la interfaz con un control visible en cada fila o en la vista de detalle.
 - [ ] Diferencia visualmente los proveedores activos de los suspendidos (por ejemplo, con un badge de color o estilo diferenciado).
 
@@ -96,14 +96,14 @@ No hay código de inicio. El proyecto parte desde cero.
 
 ### Modelo y validación
 
-- [ ] El modelo Pydantic refleja exactamente los campos definidos en el CONTEXT.
+- [ ] El modelo Pydantic refleja exactamente los campos definidos en el BRIEFING.
 - [ ] Valores de `status` fuera del conjunto permitido son rechazados con `422` antes de llegar a TinyDB.
-- [ ] El campo de tarifa definido en tu CONTEXT: valores cero o negativos son rechazados con `422`.
+- [ ] El campo de tarifa definido en tu BRIEFING: valores cero o negativos son rechazados con `422`.
 - [ ] El campo `updated_at` es generado por el sistema, no enviado por el cliente.
 
 ### Seeder
 
-- [ ] `uv run seed` se ejecuta sin errores y carga los proveedores del CONTEXT en la base de datos.
+- [ ] `uv run seed` se ejecuta sin errores y carga los proveedores del BRIEFING en la base de datos.
 - [ ] La ejecución repetida del seeder no produce duplicados.
 - [ ] El número de registros insertados se confirma en consola al finalizar.
 
@@ -120,7 +120,7 @@ No hay código de inicio. El proyecto parte desde cero.
 
 ### Frontend
 
-- [ ] El listado de proveedores se carga desde la API y muestra los campos definidos en el CONTEXT.
+- [ ] El listado de proveedores se carga desde la API y muestra los campos definidos en el BRIEFING.
 - [ ] Los filtros por país y por categoría funcionan y actualizan el listado sin recargar la página.
 - [ ] El formulario de registro valida en cliente los campos requeridos y muestra el error de la API si el servidor rechaza la entrada.
 - [ ] La actualización de tarifa y el cambio de estado se reflejan en la interfaz tras la respuesta de la API.

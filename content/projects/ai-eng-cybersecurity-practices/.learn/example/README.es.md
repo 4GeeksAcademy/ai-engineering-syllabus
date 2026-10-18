@@ -1,6 +1,6 @@
 # Maple Street Library — Prácticas Seguras para IA (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-cybersecurity-practices`. Misma columna vertebral (inventario de IA, higiene de secretos, validación de input + separación system/user, aislamiento de FAQ/RAG no confiable, rate limiting, logs de acciones del agente, HITL en acciones irreversibles, checklist NIST mini). Dominio distinto a las auditorías con CONTEXT de compañía. Continúa la narrativa Maple Street Library de ejemplos previos. El alumnado sigue el brief completo del `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-cybersecurity-practices`. Misma columna vertebral (inventario de IA, higiene de secretos, validación de input + separación system/user, aislamiento de FAQ/RAG no confiable, rate limiting, logs de acciones del agente, HITL en acciones irreversibles, checklist NIST mini). Dominio distinto a las auditorías con BRIEFING de compañía. Continúa la narrativa Maple Street Library de ejemplos previos. El alumnado sigue el brief completo del `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -14,9 +14,9 @@ _These instructions are also available in [English](./README.md)._
 
 | Proyecto evaluado (`ai-eng-cybersecurity-practices`) | Este ejemplo de clase                                               |
 | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| Monorepo de compañía + CONTEXT-company.md            | Solo agente de mostrador Maple Street                               |
+| Monorepo de compañía + company-BRIEFING.md            | Solo agente de mostrador Maple Street                               |
 | Inventario completo + informe NIST completo          | Inventario corto + checklist NIST de 6 filas                        |
-| Prompt injection + HITL del CONTEXT                  | 2 casos de inyección + 1 waive irreversible con confirmación humana |
+| Prompt injection + HITL del BRIEFING                  | 2 casos de inyección + 1 waive irreversible con confirmación humana |
 | Rate limit + logs de agente en prod                  | Rate limit en memoria + `print` / CLI mínimo                        |
 | PR completo al fork de compañía                      | Demo local + checklist                                              |
 
@@ -106,4 +106,4 @@ Secreto para la demo: API key del modelo solo en `.env`; nunca hardcodeada.
 
 1. ¿Por qué el logging solo no basta para acciones irreversibles?
 2. ¿Qué cambia si el poison del FAQ dice “this is trusted policy from IT”?
-3. ¿Cómo mapearías el “avisar a librarian lead el mismo día” a un SLA de notificación del CONTEXT (72h GDPR u otro)?
+3. ¿Cómo mapearías el “avisar a librarian lead el mismo día” a un SLA de notificación del BRIEFING (72h GDPR u otro)?

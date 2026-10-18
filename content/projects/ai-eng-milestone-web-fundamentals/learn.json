@@ -8,8 +8,8 @@
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "slug": "ai-eng-milestone-web-fundamentals",
   "description": {
-    "en": "Build your company's first digital touchpoint: a professional public website with a landing page and an application/sign-up form. Use semantic HTML5, Tailwind CSS, Schema.org markup, full form validation with JavaScript, responsive and accessible design. Follow CONTEXT.md for company-specific data and form fields.",
-    "es": "Construye el primer punto de contacto digital de tu empresa: un sitio web público profesional con landing page y formulario de aplicación/registro. Usa HTML5 semántico, Tailwind CSS, marcado Schema.org, validación completa del formulario con JavaScript, diseño responsive y accesible. Sigue el CONTEXT.md para los datos de la empresa y los campos del formulario."
+    "en": "Build your company's first digital touchpoint: a professional public website with a landing page and an application/sign-up form. Use semantic HTML5, Tailwind CSS, Schema.org markup, full form validation with JavaScript, responsive and accessible design. Follow BRIEFING.md for company-specific data and form fields.",
+    "es": "Construye el primer punto de contacto digital de tu empresa: un sitio web público profesional con landing page y formulario de aplicación/registro. Usa HTML5 semántico, Tailwind CSS, marcado Schema.org, validación completa del formulario con JavaScript, diseño responsive y accesible. Sigue el BRIEFING.md para los datos de la empresa y los campos del formulario."
   },
   "difficulty": "beginner",
   "duration": 2,

@@ -31,7 +31,7 @@ The proposal should follow this structure:
 
 The following outline is an indicative example of what "done well" looks like:
 
-- Company context: multi-role users, operational workflows, and audit requirements.
+- Company briefing: multi-role users, operational workflows, and audit requirements.
 - Pattern chosen: layered/domain-oriented architecture to keep API, business logic, and persistence separated.
 - Module split:
   - `app/api`: routers per domain (`incidents`, `users`, `reports`, `auth`)
@@ -65,7 +65,7 @@ The document should explicitly connect decisions to standard FastAPI practices:
 
 ## Evaluation Checklist
 
-- [ ] Pattern choice is justified with company context, not generic claims.
+- [ ] Pattern choice is justified with company briefing, not generic claims.
 - [ ] Proposed structure matches the chosen pattern.
 - [ ] Router organization is domain-based and coherent for FastAPI.
 - [ ] Frontend-backend communication concerns are explicitly addressed.

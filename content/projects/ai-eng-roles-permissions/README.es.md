@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[CONTEXT-roles-permissions.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/roles-permissions)** antes de escribir una sola línea de código — ahí están los roles, departamentos y reglas de acceso concretas de tu empresa.
+**Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/roles-permissions)** antes de escribir una sola línea de código — ahí están los roles, departamentos y reglas de acceso concretas de tu empresa.
 
 ---
 
@@ -44,7 +44,7 @@ Es fácil confundir estos dos conceptos porque ambos "restringen" algo, pero res
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Haz `pull` de los últimos cambios de tu fork del monorepo.
-2. Lee `COMPANY-BRIEF.md` y `CONTEXT-roles-permissions.md` completos antes de tocar código.
+2. Lee `COMPANY-BRIEF.md` y `company-BRIEFING.md` completos antes de tocar código.
 3. Crea una rama nueva: `feature/roles-permissions`.
 4. Mapea todos los endpoints existentes en tu sistema y clasifícalos por el rol mínimo requerido para usarlos.
 5. Diseña el modelo de datos de roles, departamentos y su relación con el usuario antes de escribir la primera migración.
@@ -73,7 +73,7 @@ Es fácil confundir estos dos conceptos porque ambos "restringen" algo, pero res
 - [ ] Muestra únicamente los datos departamentales que corresponden al usuario autenticado
 - [ ] Implementa una vista de administración de roles y departamentos accesible solo para el rol Admin
 
-⚠️ **IMPORTANTE:** los nombres exactos de los roles, los departamentos existentes y las reglas de qué información compete a cada departamento deben corresponder exactamente a lo especificado en tu `CONTEXT-roles-permissions.md`. Una implementación genérica que ignore ese contexto no será aceptada.
+⚠️ **IMPORTANTE:** los nombres exactos de los roles, los departamentos existentes y las reglas de qué información compete a cada departamento deben corresponder exactamente a lo especificado en tu `company-BRIEFING.md`. Una implementación genérica que ignore ese contexto no será aceptada.
 
 ---
 

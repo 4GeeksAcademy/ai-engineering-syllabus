@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-control)** before writing a single line of code — it defines which control actions apply to each of your company's agents and which fields your implementation is expected to use. Part 1 entities and agent ids live under [`agent-observability/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-observability); this CONTEXT only adds control semantics on top of them.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-control)** before writing a single line of code — it defines which control actions apply to each of your company's agents and which fields your implementation is expected to use. Part 1 entities and agent ids live under [`agent-observability/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-observability); this BRIEFING only adds control semantics on top of them.
 
 ---
 
@@ -56,7 +56,7 @@ Continue on the same working branch of your company's monorepo. Part 1 ([Agent O
 1. Create a new branch from your main branch: `feature/agent-control-websocket`.
 2. Before writing code, decide how your Part 1 **Agent** entity will unambiguously represent the difference between "paused" (resumable) and "cancelled" (terminal) — don't merge them into a single status field without distinction.
 3. Identify where your multi-agent system already uses checkpointing to resume executions — you'll **reuse that mechanism** so pause/resume actually works, not build a new one from scratch.
-4. Check your `CONTEXT-company.md` under `content/contexts/10-realtime/agent-control/` to confirm which control actions apply to each of your company's agents.
+4. Check your `company-BRIEFING.md` under `content/contexts/10-realtime/agent-control/` to confirm which control actions apply to each of your company's agents.
 5. Add new dependencies with `uv add` — never with `pip install` or `pipenv`.
 6. Implement within the existing structure: WebSocket + control logic in `services/`, panel in `uis/backoffice`, tests in `tests/`.
 
@@ -79,7 +79,7 @@ Continue on the same working branch of your company's monorepo. Part 1 ([Agent O
 - [ ] Validate that the requested action is valid for the agent's current status (e.g., you can't "resume" an agent that was never paused) and respond with a clear error if it isn't
 - [ ] Protect the WebSocket channel with the same JWT as the rest of the backoffice, and derive `actor_id` from that identity — never trust a field sent by the client
 
-⚠️ **IMPORTANT:** action names, statuses, and fields must match what's specified in your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** action names, statuses, and fields must match what's specified in your `company-BRIEFING.md`. A generic implementation that ignores the context will not be accepted.
 
 **Frontend (`uis/backoffice`)**
 
@@ -121,7 +121,7 @@ Continue on the same working branch of your company's monorepo. Part 1 ([Agent O
 - [ ] The WebSocket channel requires the same JWT as the rest of the backoffice
 - [ ] WebSocket reconnection recovers the agent's real status, without desync
 - [ ] The existing business-approval logic was not duplicated or altered
-- [ ] Action, status, and field names match `CONTEXT-company.md`
+- [ ] Action, status, and field names match `company-BRIEFING.md`
 
 ---
 

@@ -17,7 +17,7 @@ Part 1's **Signal Yard** board already shows `yard_desk` and `inbound_wave` with
 | Company monorepo + Part 1 observability panel               | Signal Yard only                           |
 | Real LangGraph checkpointer reuse                           | In-memory stub checkpoint dict             |
 | Company JWT + eng/ops roles                                 | Demo token → fixed `actor_id`              |
-| CONTEXT cascade of pending department tasks                 | Mark child tasks `cancelled` in stub store |
+| BRIEFING cascade of pending department tasks                 | Mark child tasks `cancelled` in stub store |
 | Company PR + design questions                               | Live demo + 6 automated tests              |
 
 ---
@@ -89,5 +89,5 @@ Part 1's **Signal Yard** board already shows `yard_desk` and `inbound_wave` with
 ## Out of scope for the example
 
 - Real LangGraph / RFP HITL approval wiring
-- Company CONTEXT companies
+- Company BRIEFING companies
 - Token streaming chat WebSocket (post-grad communication project)

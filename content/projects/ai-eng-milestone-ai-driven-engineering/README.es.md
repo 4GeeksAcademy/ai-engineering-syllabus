@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee el briefing de tu empresa en [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) y cópialo en `CONTEXT.md` en la raíz de tu monorepo antes de escribir una sola línea de código — ahí están la identidad, las restricciones y la hoja de ruta de tu empresa.
+**Antes de empezar**: lee el briefing de tu empresa en [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) y cópialo en `BRIEFING.md` en la raíz de tu monorepo antes de escribir una sola línea de código — ahí están la identidad, las restricciones y la hoja de ruta de tu empresa.
 
 ---
 
@@ -74,7 +74,7 @@ Una **skill de agente** es una instrucción estructurada y reutilizable: más co
 
 ## 🌱 Cómo iniciar el proyecto
 
-Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese archivo debe ser el briefing de tu empresa de [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`CONTEXT-<company>-briefing.es.md` / `.en.md`) — no el placeholder vacío de la plantilla. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
+Lee el `BRIEFING.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese archivo debe ser el briefing de tu empresa de [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) (`<company>-BRIEFING.es.md` / `.en.md`) — no el placeholder vacío de la plantilla. El banco de memoria que vas a construir debe describir la empresa y el proyecto de tu escenario específico — no una empresa ficticia genérica.
 
 1. Haz fork del repositorio de plantilla: [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo)
 2. Ábrelo en **GitHub Codespaces** o clónalo localmente y revisa la estructura existente antes de crear carpetas nuevas
@@ -101,7 +101,7 @@ Lee el `CONTEXT.md` en la **raíz de tu monorepo** antes de hacer nada más. Ese
   - [ ] Inputs documentados
   - [ ] Criterios de aceptación explícitos y verificables
 
-⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones del `CONTEXT.md` de tu monorepo (el briefing de tu empresa). Una infraestructura genérica — o construida sobre el placeholder de plantilla sin reemplazar — no será aceptada.
+⚠️ **IMPORTANTE:** El banco de memoria, las reglas y la skill deben estar alineados con los datos, procesos y restricciones del `BRIEFING.md` de tu monorepo (el briefing de tu empresa). Una infraestructura genérica — o construida sobre el placeholder de plantilla sin reemplazar — no será aceptada.
 
 ### Carpetas del monorepo (capa de aplicación)
 
@@ -110,7 +110,7 @@ Este hito **no** te pide crear las apps. Aclara en el banco de memoria / reglas 
 | Ruta               | Qué va aquí cuando se cree                                                                     |
 | ------------------ | ---------------------------------------------------------------------------------------------- |
 | `/uis`             | Proyectos frontend de la empresa                                                               |
-| `./uis/website`    | Web corporativa de cara al público (ruta `/`, marca y copy alineados con `CONTEXT.md`)         |
+| `./uis/website`    | Web corporativa de cara al público (ruta `/`, marca y copy alineados con `BRIEFING.md`)         |
 | `./uis/backoffice` | App interna de la empresa (layout propio, separado del sitio público; vista de entrada en `/`) |
 | `/services`        | APIs y servicios backend                                                                       |
 

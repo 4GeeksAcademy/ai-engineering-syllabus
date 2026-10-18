@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** — necesitas los datos de ventas de tu empresa para poder interpretar el costo real de los errores de tu modelo.
+**Antes de empezar**: Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** — necesitas los datos de ventas de tu empresa para poder interpretar el costo real de los errores de tu modelo.
 
 ---
 
@@ -49,7 +49,7 @@ No existe una curva "correcta" universal — lo que importa es el patrón relati
 2. Trabaja este proyecto en tu fork usando GitHub Codespaces y crea una rama para este trabajo: `git switch -c feature/regression-model-eval`; en caso de trabajar en local, puedes clonar el repositorio en tu computadora.
 3. Confirma que el modelo de pronóstico entrenado, sus features conscientes del tiempo (lags, estadísticas rodantes, señales de calendario) y el split temporal (8 años entrenamiento / 2 años prueba) de tu proyecto anterior siguen disponibles y son reproducibles.
 4. Instala cualquier dependencia adicional con `uv add` — nunca uses `pip install` ni `pipenv`.
-5. Lee tu `CONTEXT-empresa.md` para entender qué error es más costoso para tu negocio: sobreestimar ventas o subestimarlas.
+5. Lee tu `empresa-BRIEFING.md` para entender qué error es más costoso para tu negocio: sobreestimar ventas o subestimarlas.
 
 ---
 
@@ -70,9 +70,9 @@ No existe una curva "correcta" universal — lo que importa es el patrón relati
 **Selección y cálculo de métricas:**
 
 - [ ] Calcula **MAE** y **RMSE** para entrenamiento y validación.
-- [ ] Justifica por escrito cuál de las dos refleja mejor el costo de negocio de tus errores, según lo que indica tu `CONTEXT-empresa.md`.
+- [ ] Justifica por escrito cuál de las dos refleja mejor el costo de negocio de tus errores, según lo que indica tu `empresa-BRIEFING.md`.
 
-⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidades y valores específicos de dominio en tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidades y valores específicos de dominio en tu implementación deben coincidir con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Diagnóstico y reporte técnico:**
 

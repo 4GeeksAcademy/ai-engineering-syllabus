@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** before writing any code — it defines the specific company data, field names, domain values, and constraints for your implementation. Also read the [instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
+**Before you start**: Read your **[BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** before writing any code — it defines the specific company data, field names, domain values, and constraints for your implementation. Also read the [instructions](https://4geeks.com/lesson/how-to-start-a-project) on how to start a coding project.
 
 ---
 
@@ -33,7 +33,7 @@ This site must work on any device, meet web accessibility standards, be optimize
 >
 > Hi,
 >
-> As you know, we've decided to make the leap to digital. We need to launch our public website as soon as possible. Check the `CONTEXT.md` to understand exactly what our company does and what information we need to capture from interested people.
+> As you know, we've decided to make the leap to digital. We need to launch our public website as soon as possible. Check the `BRIEFING.md` to understand exactly what our company does and what information we need to capture from interested people.
 >
 > The site should have two parts:
 >
@@ -48,7 +48,7 @@ This site must work on any device, meet web accessibility standards, be optimize
 > **2. Application/sign-up form** — A separate page where people can:
 >
 > - Fill in their personal details
-> - Provide the specific information we need (see `CONTEXT.md`)
+> - Provide the specific information we need (see `BRIEFING.md`)
 > - Submit their application (you don't need to connect it to anything yet, just validate the data)
 >
 > **Technical requirements you must meet:**
@@ -78,7 +78,7 @@ Do not clone this repository because we are going to use a different template.
 
 2. Once you have your own repository, open it in a Codespace or clone it locally.
 
-3. Read your [`CONTEXT.md`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals) file completely — it contains your company's specific data, the exact fields your form must include, and any domain-specific validation rules or constraints.
+3. Read your [`BRIEFING.md`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals) file completely — it contains your company's specific data, the exact fields your form must include, and any domain-specific validation rules or constraints.
 
 4. Create the basic structure of your project:
 
@@ -119,7 +119,7 @@ Do not clone this repository because we are going to use a different template.
 ### Application/Sign-up Form
 
 - [ ] Create `application.html` with a structured form
-- [ ] Include the fields specified in your `CONTEXT.md`
+- [ ] Include the fields specified in your `BRIEFING.md`
 - [ ] Use appropriate input types (`email`, `tel`, `date`, `number`, etc.)
 - [ ] Add `<label>` correctly associated with each input (using `for` attribute)
 - [ ] Group related fields using `<fieldset>` and `<legend>` where appropriate
@@ -134,7 +134,7 @@ Do not clone this repository because we are going to use a different template.
 - [ ] Prevent form submission if there are validation errors
 - [ ] Show a success message when validation is correct (simulate submission)
 
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your BRIEFING.md. A generic implementation that ignores the context will not be accepted.
 
 ---
 
@@ -169,7 +169,7 @@ Do not clone this repository because we are going to use a different template.
 
 ### Form and Validation
 
-- [ ] All fields specified in CONTEXT.md are present
+- [ ] All fields specified in BRIEFING.md are present
 - [ ] Input types are appropriate for each field
 - [ ] JavaScript validation works correctly for all fields
 - [ ] Error messages are specific and helpful (not just "invalid field")
@@ -179,9 +179,9 @@ Do not clone this repository because we are going to use a different template.
 
 ### Context Adherence
 
-- [ ] The landing page faithfully reflects the company type and sector specified in CONTEXT.md
+- [ ] The landing page faithfully reflects the company type and sector specified in BRIEFING.md
 - [ ] Content presents the company's experience and competitive advantages
-- [ ] Form fields exactly match those required in CONTEXT.md
+- [ ] Form fields exactly match those required in BRIEFING.md
 - [ ] Any domain-specific validation rules are implemented
 - [ ] Tone and content are consistent with an established company going digital
 
@@ -195,7 +195,7 @@ Do not clone this repository because we are going to use a different template.
    - `index.html`
    - `application.html`
    - `validation.js`
-   - `CONTEXT.md` (unmodified)
+   - `BRIEFING.md` (unmodified)
 
 3. Include your **public Codespaces URL** and a screenshot of PageSpeed Insights **or** Chrome DevTools Lighthouse (score ≥ 80) in the PR description
 

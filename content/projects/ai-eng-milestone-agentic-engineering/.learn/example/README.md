@@ -1,6 +1,6 @@
 # Maple Street Library Desk Agent — Memory & Self-Improvement (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-agentic-engineering` (**Milestone 8 Part 1**). Same spine (explicit memory interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate). Different domain than company CONTEXT agents. Maple Street desk narrative starts here; the harness class example (**Part 2**) wraps this agent next. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-agentic-engineering` (**Milestone 8 Part 1**). Same spine (explicit memory interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate). Different domain than company BRIEFING agents. Maple Street desk narrative starts here; the harness class example (**Part 2**) wraps this agent next. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -16,8 +16,8 @@ In one session: add a **tiny propose–confirm–remember** loop so corrected de
 
 | Graded project (`ai-eng-milestone-agentic-engineering`) | This class example                                      |
 | ------------------------------------------------------- | ------------------------------------------------------- |
-| Company monorepo + CONTEXT memory rules                 | Maple Street desk only                                  |
-| Redis / VectorDB / hybrid justified from CONTEXT        | In-memory dict + optional JSON file                     |
+| Company monorepo + BRIEFING memory rules                 | Maple Street desk only                                  |
+| Redis / VectorDB / hybrid justified from BRIEFING        | In-memory dict + optional JSON file                     |
 | Full LangGraph + MCP stack (harness comes in Part 2)    | Stub agent: FAQ retrieve + memory hooks                 |
 | Company never-store list                                | Never store: patron phone numbers, overdue amounts owed |
 | Full PR + two company evidence cycles                   | Live demo + 4 automated tests                           |

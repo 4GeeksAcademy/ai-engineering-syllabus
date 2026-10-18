@@ -2,9 +2,9 @@
 
 This README is the canonical reference for **"Milestone 5 — Backoffice: Inventory Management Interface"**. It describes how a correct backoffice implementation should be structured, how it should talk to the inventory REST API built in the backend milestone, and what reviewers should verify. The actual app lives in the student monorepo under `uis/backoffice/`; this folder documents the expected design only.
 
-## Alignment with company context
+## Alignment with company briefing
 
-All user-visible labels, entity names, and field copy must follow the student’s assigned **CONTEXT-company.md**. The API field names are defined by the backend; the UI should map those to the terminology required by the scenario (not generic placeholders like “Product” when CONTEXT says “SKU” or “Item”).
+All user-visible labels, entity names, and field copy must follow the student’s assigned **company-BRIEFING.md**. The API field names are defined by the backend; the UI should map those to the terminology required by the scenario (not generic placeholders like “Product” when BRIEFING says “SKU” or “Item”).
 
 ## Recommended solution structure
 
@@ -34,8 +34,8 @@ Assuming the API is mounted at `{NEXT_PUBLIC_INVENTORY_API_URL}`:
 | ----------------- | ------ | ---------------------------- | ------ | ------------------------------------------------- |
 | List products     | `GET`  | `/inventory/products`        | Bearer | Returns products with computed `current_stock`    |
 | Get one product   | `GET`  | `/inventory/products/{id}`   | Bearer | Used for reactive stock on outbound form          |
-| Register inbound  | `POST` | `/inventory/orders/inbound`  | Bearer | Body: `product_id`, `quantity` (+ CONTEXT fields) |
-| Register outbound | `POST` | `/inventory/orders/outbound` | Bearer | Body: `product_id`, `quantity` (+ CONTEXT fields) |
+| Register inbound  | `POST` | `/inventory/orders/inbound`  | Bearer | Body: `product_id`, `quantity` (+ BRIEFING fields) |
+| Register outbound | `POST` | `/inventory/orders/outbound` | Bearer | Body: `product_id`, `quantity` (+ BRIEFING fields) |
 | List all orders   | `GET`  | `/inventory/orders`          | Bearer | Combined inbound/outbound with product name       |
 
 Every protected call must include:
@@ -107,7 +107,7 @@ Components catch `Error` from this layer and render the message in a visible UI 
 
 **Display:**
 
-- Show `current_stock` for each product alongside entity-specific fields from CONTEXT.
+- Show `current_stock` for each product alongside entity-specific fields from BRIEFING.
 - Apply visual stock-level indicators (colour, icon, or badge). Define thresholds in a code comment, e.g.:
   - `current_stock <= 5` → low (red)
   - `current_stock <= 15` → warning (amber)
@@ -122,7 +122,7 @@ Components catch `Error` from this layer and render the message in a visible UI 
 **Form fields:**
 
 - Product selector listing products **by name** (not raw IDs).
-- Quantity (and any CONTEXT-specific fields).
+- Quantity (and any specific-BRIEFING fields).
 
 **Submit:** `POST /inventory/orders/inbound`.
 
@@ -212,4 +212,4 @@ The outbound form must render that `detail` string visibly — not a raw JSON du
 - [ ] Outbound `400` responses show the API error message inline near quantity.
 - [ ] Orders history lists all orders with inbound/outbound distinction, product name, quantity, date, and `user_uuid`.
 - [ ] All four pages redirect unauthenticated users to login.
-- [ ] UI labels and entity names match CONTEXT-company.md.
+- [ ] UI labels and entity names match company-BRIEFING.md.

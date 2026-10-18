@@ -5,8 +5,8 @@
     "es": "Hito — Diseño de un Pipeline de Desempeño de Negocio (Parte 1 de 3)"
   },
   "description": {
-    "en": "Design a new business-performance data pipeline on top of existing telemetry: document current technical-report gap, define purpose from CONTEXT KPIs, diagram extract-transform-load into reporting.business_metrics, specify idempotency and execution log, map Prefect flows/tasks/blocks, and sketch services/reporting endpoints — without changing telemetry_events or GET /telemetry/report.",
-    "es": "Diseña un pipeline nuevo de desempeño de negocio sobre la telemetría existente: documenta la brecha del reporte técnico, define el propósito desde los KPIs del CONTEXT, diagrama extracción-transformación-carga hacia reporting.business_metrics, especifica idempotencia y log de ejecución, mapea flows/tasks/bloques de Prefect, y esboza endpoints en services/reporting/ — sin modificar telemetry_events ni GET /telemetry/report."
+    "en": "Design a new business-performance data pipeline on top of existing telemetry: document current technical-report gap, define purpose from BRIEFING KPIs, diagram extract-transform-load into reporting.business_metrics, specify idempotency and execution log, map Prefect flows/tasks/blocks, and sketch services/reporting endpoints — without changing telemetry_events or GET /telemetry/report.",
+    "es": "Diseña un pipeline nuevo de desempeño de negocio sobre la telemetría existente: documenta la brecha del reporte técnico, define el propósito desde los KPIs del BRIEFING, diagrama extracción-transformación-carga hacia reporting.business_metrics, especifica idempotencia y log de ejecución, mapea flows/tasks/bloques de Prefect, y esboza endpoints en services/reporting/ — sin modificar telemetry_events ni GET /telemetry/report."
   },
   "status": "draft",
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",

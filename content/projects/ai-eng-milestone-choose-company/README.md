@@ -27,7 +27,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 > **From the Academic Team:**
 >
-> "This is not a throwaway choice. The company you select will appear in your portfolio, in your job interviews, and in the context of every project brief you receive during the course. You will become a mini-expert on their operations. Students who invest in understanding their company early — before Week 1 even starts — consistently build better projects and present more confidently at the end. Take the time to read the context document thoroughly."
+> "This is not a throwaway choice. The company you select will appear in your portfolio, in your job interviews, and in the context of every project brief you receive during the course. You will become a mini-expert on their operations. Students who invest in understanding their company early — before Week 1 even starts — consistently build better projects and present more confidently at the end. Take the time to read the briefing document thoroughly."
 
 ---
 
@@ -35,7 +35,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 1. Create your copy of the [template repository](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo): click **Use this template** on GitHub (recommended) or fork it to your account.
 2. Open your repository in GitHub Codespaces (recommended) or clone it to your local machine.
-3. Read the four company profiles available in the [general context files `CONTEXT-company.md` in this repository](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova, and TrackFlow. Each one describes a real company scenario with department problems, data structures, characters, and a milestone map.
+3. Read the four company profiles available in the [general briefing files `company-BRIEFING.md` in this repository](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova, and TrackFlow. Each one describes a real company scenario with department problems, data structures, characters, and a milestone map.
 4. Complete the deliverable described below.
 
 ---
@@ -48,9 +48,9 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
   - State clearly: which company you chose and why (3–5 sentences minimum).
   - Identify at least two departments whose problems you find most interesting.
   - Identify one automation or AI challenge from the milestone map that you are most looking forward to building.
-- [ ] **Copy your company's briefing into the monorepo root as `CONTEXT.md`:**
-  - Source: [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) → `CONTEXT-<company>-briefing.en.md` (use the Spanish `.es.md` only if your cohort works in Spanish).
-  - Replace the template placeholder in `CONTEXT.md` entirely — do not leave the "Replace this file" stub.
+- [ ] **Copy your company's briefing into the monorepo root as `BRIEFING.md`:**
+  - Source: [`00-general-contexts`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) → `<company>-BRIEFING.en.md` (use the Spanish `.es.md` only if your cohort works in Spanish).
+  - Replace the template placeholder in `BRIEFING.md` entirely — do not leave the "Replace this file" stub.
 - [ ] **Set up your working environment:**
   - Open the repository in GitHub Codespaces (recommended) and verify everything loads correctly.
   - Confirm you have access to GitHub Codespaces.
@@ -62,7 +62,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
   - Add this to your `company-choice.md` file under a section titled `## My AI Agent Idea`.
 - [ ] **Submit your repository URL** through the 4Geeks platform as instructed.
 
-⚠️ **IMPORTANT:** A generic or incomplete submission will not be accepted — your reasoning must reflect a real reading of the context document. The company you record in `company-choice.md` will be locked at the start of Week 1.
+⚠️ **IMPORTANT:** A generic or incomplete submission will not be accepted — your reasoning must reflect a real reading of the briefing document. The company you record in `company-choice.md` will be locked at the start of Week 1.
 
 ---
 
@@ -70,8 +70,8 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 - [ ] The `company-choice.md` file exists in the root of the submitted repository.
 - [ ] A specific company has been selected (not a general statement or "I haven't decided yet").
-- [ ] `CONTEXT.md` in the monorepo root contains the assigned company's briefing (template placeholder replaced).
-- [ ] The written justification is at least 3 sentences and references specific details from the company's context file — not just the company name or sector.
+- [ ] `BRIEFING.md` in the monorepo root contains the assigned company's briefing (template placeholder replaced).
+- [ ] The written justification is at least 3 sentences and references specific details from the company's briefing file — not just the company name or sector.
 - [ ] Two or more departments have been identified with a brief explanation of why they are interesting.
 - [ ] At least one specific milestone or automation challenge has been named.
 - [ ] `company-choice.md` includes a `## My AI Agent Idea` section describing what the agent would do, what information it needs, and what it would produce or trigger.
@@ -82,7 +82,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 ## 📦 How to Submit
 
-1. Make sure your `company-choice.md` and updated `CONTEXT.md` are committed and pushed to your repository.
+1. Make sure your `company-choice.md` and updated `BRIEFING.md` are committed and pushed to your repository.
 2. Copy the URL of your repository on GitHub.
 3. Submit that URL through the 4Geeks platform assignment for Milestone.
 

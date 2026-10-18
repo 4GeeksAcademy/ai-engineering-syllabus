@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Two phases, one shared core: a CLI that validates the CONTEXT CSV, then the same logic behind FastAPI + a backoffice upload page. A CLI-only submission fails the Backend/Frontend evals.
+Two phases, one shared core: a CLI that validates the BRIEFING CSV, then the same logic behind FastAPI + a backoffice upload page. A CLI-only submission fails the Backend/Frontend evals.
 
-Copy the official CSV from `content/contexts/incidents-file-analysis/` (e.g. `incidents-brasaland.csv`). Expected counts in CONTEXT must match the shipped file.
+Copy the official CSV from `content/contexts/incidents-file-analysis/` (e.g. `incidents-brasaland.csv`). Expected counts in BRIEFING must match the shipped file.
 
 ## Expected layout
 
@@ -29,14 +29,14 @@ python scripts/analyze.py scripts/incidents-COMPANY.csv
 
 Functions with single responsibilities: parse args, load CSV, validate, aggregate, print, optional export.
 
-### Validation (CONTEXT rules)
+### Validation (BRIEFING rules)
 
-Invalid when any CONTEXT constraint fails, at minimum:
+Invalid when any BRIEFING constraint fails, at minimum:
 
 - Missing required fields
 - Category/status outside the allowed set
-- Incomplete description (if CONTEXT sets a min length)
-- Closed incidents without score (if CONTEXT requires it)
+- Incomplete description (if BRIEFING sets a min length)
+- Closed incidents without score (if BRIEFING requires it)
 - Scores outside the accepted range
 
 Invalid records: counted, classified by reason, excluded from valid-only metrics, reported (never silent).
@@ -48,7 +48,7 @@ Invalid records: counted, classified by reason, excluded from valid-only metrics
 3. Breakdown by status
 4. Satisfaction for closed+scored: count, average (optional score distribution)
 
-Official sample: numeric totals must match CONTEXT **exactly**.
+Official sample: numeric totals must match BRIEFING **exactly**.
 
 ### CSV export prompt
 
@@ -90,7 +90,7 @@ Light and dark mode if the backoffice already has a design system.
 
 - [ ] `python scripts/analyze.py <csv>` works without code edits
 - [ ] Invalid records classified and shown
-- [ ] Five required metrics; official CSV matches CONTEXT
+- [ ] Five required metrics; official CSV matches BRIEFING
 - [ ] `y/n` export works
 
 ### Backend / frontend

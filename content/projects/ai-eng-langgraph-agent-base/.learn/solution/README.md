@@ -1,6 +1,6 @@
 # Support Agent with LangGraph — Part 1 — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Paths and collection names below are **indicative** — students must align with their assigned `CONTEXT-company.md` and existing RAG pipeline layout.
+Reference quality bar for the student's company monorepo fork. Paths and collection names below are **indicative** — students must align with their assigned `company-BRIEFING.md` and existing RAG pipeline layout.
 
 ---
 
@@ -155,12 +155,12 @@ Run with a single command, e.g. `uv run pytest tests/pipelines/ -q`.
 | Eval            | Input                        | Criterion                                                    |
 | --------------- | ---------------------------- | ------------------------------------------------------------ |
 | Node order      | Fixed FAQ question           | Trace shows `retrieve` before `query`                        |
-| Grounded answer | Policy question from CONTEXT | Answer mentions expected entity; not empty                   |
+| Grounded answer | Policy question from BRIEFING | Answer mentions expected entity; not empty                   |
 | Error path      | Empty question               | Trace ends without `query`; clear error in state or response |
 
 Evals assert against saved trace fixtures or checkpoint snapshots — not live LLM calls on every CI run when mocked.
 
-The "Grounded answer" eval is an **acceptance gate**, not optional color: the existing RAG tests must still pass alongside these agent evals. A submission with correct node order/routing but answers that drift from CONTEXT policies fails review.
+The "Grounded answer" eval is an **acceptance gate**, not optional color: the existing RAG tests must still pass alongside these agent evals. A submission with correct node order/routing but answers that drift from BRIEFING policies fails review.
 
 ---
 

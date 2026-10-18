@@ -1,6 +1,6 @@
 # Riverside Community Garden — Telemetry Plan (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-telemetry-plan`. Same spine (CONTEXT mandatory metrics as floor, broad opportunity catalogue, event envelope, `entity_action` events, property allowlists, stream/batch, `telemetry-plan.md` + `event-schemas.json`), different domain. Students still follow the full monorepo brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-telemetry-plan`. Same spine (BRIEFING mandatory metrics as floor, broad opportunity catalogue, event envelope, `entity_action` events, property allowlists, stream/batch, `telemetry-plan.md` + `event-schemas.json`), different domain. Students still follow the full monorepo brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -16,15 +16,15 @@ In one session, draft a **mini telemetry plan** before any instrumentation code.
 
 | Graded project (`ai-eng-telemetry-plan`)                                              | This class example                            |
 | ------------------------------------------------------------------------------------- | --------------------------------------------- |
-| Company CONTEXT + inventory monorepo                                                  | Fictional GreenPatch CONTEXT (provided below) |
-| All CONTEXT mandatory metrics + broad catalogue (≥5 inventory + auth/perf/errors/nav) | 2 mandatory + 2 identified opportunities      |
+| Company BRIEFING + inventory monorepo                                                  | Fictional GreenPatch BRIEFING (provided below) |
+| All BRIEFING mandatory metrics + broad catalogue (≥5 inventory + auth/perf/errors/nav) | 2 mandatory + 2 identified opportunities      |
 | All mandatory events + ≥8 additional (≥3 categories)                                  | 4 events with envelopes                       |
 | Full risks/exclusions rubric                                                          | Short exclusions paragraph                    |
 | PR to student monorepo                                                                | Local `docs/telemetry/` only                  |
 
 ---
 
-## Mini context (use instead of CONTEXT-company.md)
+## Mini context (use instead of company-BRIEFING.md)
 
 **Mandatory metrics (floor):**
 

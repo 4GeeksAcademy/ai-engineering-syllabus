@@ -9,7 +9,7 @@ By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](htt
 
 _Estas instrucciones están [disponibles en español](./README.es.md)._
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** before writing a single line of code — it defines the intake channels, incident types, severity levels, and responsible areas for your implementation.
+**Before you start**: read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/incident-manager-for-devs)** before writing a single line of code — it defines the intake channels, incident types, severity levels, and responsible areas for your implementation.
 
 <!-- endhide -->
 
@@ -36,7 +36,7 @@ The second trap is writing a purely technical context. A memory bank that explai
 >
 > Split the brief into two parts. First: go through the codebase, understand the conventions that are already in place, and write them down as project rules. Don't change them because you don't like them — if you think one is wrong, log it as a proposal and we'll discuss it; overwriting a team convention out of personal preference is the fastest way to break a shared monorepo.
 >
-> Second: build the incident manager. Operations stakeholders need to log an incident regardless of which channel it came in through, classify it, assign it to a responsible area, and know what state it's in. Types, severities, and channels come from your CONTEXT, not from your imagination.
+> Second: build the incident manager. Operations stakeholders need to log an incident regardless of which channel it came in through, classify it, assign it to a responsible area, and know what state it's in. Types, severities, and channels come from your BRIEFING, not from your imagination.
 >
 > One thing that's not negotiable: when an incident changes state or owner, I need to be able to reconstruct afterward who moved it and when. If that isn't recorded, the manager isn't worth having.
 >
@@ -90,20 +90,20 @@ A useful memory bank covers, at minimum, three layers: **product context** (what
 - [ ] Include an implementation plan for the incident manager, built with the agent before writing code.
 - [ ] Keep the memory bank up to date when you close the development: the current state at the end of the project can't be the same as at the start.
 
-⚠️ **IMPORTANT:** product context, entity names, and domain values must match what's specified in your CONTEXT.md. A generic memory bank that would work equally well for any company will not be accepted.
+⚠️ **IMPORTANT:** product context, entity names, and domain values must match what's specified in your BRIEFING.md. A generic memory bank that would work equally well for any company will not be accepted.
 
 ### Incident Manager in the Backoffice
 
-- [ ] Implement creation, editing, listing, and lookup of incidents, with the fields defined in your CONTEXT.
-- [ ] Every incident must record its intake channel, type, and severity level, drawn from your CONTEXT's catalogues.
-- [ ] Implement assignment of an incident to a responsible area from those defined in your CONTEXT.
+- [ ] Implement creation, editing, listing, and lookup of incidents, with the fields defined in your BRIEFING.
+- [ ] Every incident must record its intake channel, type, and severity level, drawn from your BRIEFING's catalogues.
+- [ ] Implement assignment of an incident to a responsible area from those defined in your BRIEFING.
 - [ ] Implement the incident's state lifecycle, from opening through closure.
 - [ ] Every state change and every ownership change must be recorded with its timestamp and author, queryable from the incident's detail view.
 - [ ] Add filtering of the listing by state, severity, and responsible area.
 - [ ] Provide a view that shows, at a glance, the volume of open incidents by severity.
 - [ ] Respect the stack and conventions already shipped in the monorepo. Don't introduce new libraries, dependency managers, or patterns without a rule that justifies it.
 
-⚠️ **IMPORTANT:** field names, entity identifiers, and domain values in your implementation must match what's specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** field names, entity identifiers, and domain values in your implementation must match what's specified in your BRIEFING.md. A generic implementation that ignores the context will not be accepted.
 
 ### Verification
 
@@ -127,7 +127,7 @@ A useful memory bank covers, at minimum, three layers: **product context** (what
 - [ ] State and ownership changes are queryable with timestamp and author from the incident's detail view.
 - [ ] The listing supports filtering by state, severity, and responsible area.
 - [ ] A view exists showing the volume of open incidents by severity.
-- [ ] Channel, type, severity, and area catalogues match those in the assigned company's CONTEXT.
+- [ ] Channel, type, severity, and area catalogues match those in the assigned company's BRIEFING.
 - [ ] No dependencies or patterns outside the monorepo's conventions have been introduced.
 - [ ] Commit history separates the development steps; there is no single commit bundling all the work.
 

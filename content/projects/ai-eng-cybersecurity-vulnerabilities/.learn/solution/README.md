@@ -1,6 +1,6 @@
 # Web Vulnerability Audit and Remediation (OWASP Top 10) — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align audit scope, exposed ports, agent tool permissions, and critical findings with their assigned `CONTEXT-company.md` under `content/contexts/cybersecurity-analysis/`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align audit scope, exposed ports, agent tool permissions, and critical findings with their assigned `company-BRIEFING.md` under `content/contexts/cybersecurity-analysis/`.
 
 ---
 
@@ -18,7 +18,7 @@ flowchart TD
 
 **Design invariants:**
 
-1. **CONTEXT fidelity** — audit scope, expected ports, and agent-specific OWASP focus come from the assigned company CONTEXT §7, not generic checklists.
+1. **BRIEFING fidelity** — audit scope, expected ports, and agent-specific OWASP focus come from the assigned company BRIEFING §7, not generic checklists.
 2. **Three lanes** — backend, frontend, and agentic system each get explicit OWASP rows; agent is never folded into "backend only."
 3. **Report + fixes** — an OWASP markdown alone without server hardening and critical remediations fails the rubric.
 4. **Reproducible proof** — ≥2 critical fixes need linked before/after evidence in the PR.
@@ -63,7 +63,7 @@ When "doesn't apply," cite why (e.g. no server-side redirect fetch in agent) —
 1. Dedicated non-root deploy/ops user with sudo only where needed.
 2. `PermitRootLogin no` (or equivalent) — demonstrate `ssh root@…` fails.
 3. Folder perms: code read-only for app user; logs writable; secrets not world-readable.
-4. Firewall: only app HTTP(S), SSH (optionally restricted IP), and required SSE/MCP ports from CONTEXT — document closed ports.
+4. Firewall: only app HTTP(S), SSH (optionally restricted IP), and required SSE/MCP ports from BRIEFING — document closed ports.
 
 ---
 
@@ -71,7 +71,7 @@ When "doesn't apply," cite why (e.g. no server-side redirect fetch in agent) —
 
 1. SSH root login disabled or restricted per hardening doc.
 2. Non-root operational user + explicit folder permission model.
-3. Firewall exposes only CONTEXT-aligned necessary ports.
+3. Firewall exposes only aligned-BRIEFING necessary ports.
 4. All 10 OWASP categories evaluated with finding + evidence (per lane where relevant).
 5. Agentic system audited separately — tool ACLs, secrets, misconfig noted.
 6. Every critical finding fixed with reproducible before/after evidence.
@@ -85,7 +85,7 @@ When "doesn't apply," cite why (e.g. no server-side redirect fetch in agent) —
 - [ ] Server hardening notes or scripts
 - [ ] `ssh` / `nmap` / scan output showing closed ports or blocked root SSH
 - [ ] ≥2 critical fixes: test output or command diff
-- [ ] Explicit CONTEXT company name + §7 scope cited in report intro
+- [ ] Explicit BRIEFING company name + §7 scope cited in report intro
 
 ---
 
@@ -98,10 +98,10 @@ When "doesn't apply," cite why (e.g. no server-side redirect fetch in agent) —
 | Firewall doc without verification command         | Not reproducible                    |
 | Fixed API but agent tools still over-privileged   | Agent-specific criteria             |
 | Critical fix with screenshot only, no rerun steps | Evidence not reproducible           |
-| Audit scope ignores CONTEXT inventory components  | Ignores CONTEXT                     |
+| Audit scope ignores BRIEFING inventory components  | Ignores BRIEFING                     |
 
 ## Validation notes
 
-- Grade against the student's assigned CONTEXT under `content/contexts/cybersecurity-analysis/`.
+- Grade against the student's assigned BRIEFING under `content/contexts/cybersecurity-analysis/`.
 - Spot-check §7 audit scope and agent OWASP focus for that company.
 - Confirm legitimate in-domain flows still work after remediations.

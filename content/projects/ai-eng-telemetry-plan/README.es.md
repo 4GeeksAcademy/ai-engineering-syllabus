@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** antes de escribir una sola línea — ahí encontrarás las métricas obligatorias, las entidades y los procesos clave de tu compañía sobre los que vas a construir este plan.
+**Antes de empezar**: Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/06-telemetry-data-pipelines/telemetry)** antes de escribir una sola línea — ahí encontrarás las métricas obligatorias, las entidades y los procesos clave de tu compañía sobre los que vas a construir este plan.
 
 ---
 
@@ -29,7 +29,7 @@ La telemetría no se genera solo por tenerla: se genera para responder preguntas
 
 **La regla de oro:** si no puedes completar esta frase, el evento no existe — _"Capturamos `[event_type]` porque necesitamos saber `[hipótesis]`, lo que nos permite tomar la decisión `[decisión concreta]`."_
 
-Tu `CONTEXT-empresa.md` incluye un conjunto de **métricas obligatorias** — indicadores puntuales que tu compañía necesita medir desde ya. Estas se integran a tu plan como piso, no como techo: alrededor de ellas debes seguir identificando todas las oportunidades adicionales, técnicas y de negocio, que consideres valiosas.
+Tu `empresa-BRIEFING.md` incluye un conjunto de **métricas obligatorias** — indicadores puntuales que tu compañía necesita medir desde ya. Estas se integran a tu plan como piso, no como techo: alrededor de ellas debes seguir identificando todas las oportunidades adicionales, técnicas y de negocio, que consideres valiosas.
 
 Dos conceptos que necesitarás aplicar hoy:
 
@@ -44,7 +44,7 @@ Dos conceptos que necesitarás aplicar hoy:
 >
 > Y no es solo el inventario. El backoffice tiene otras secciones que hoy son cajas negras: ¿cuántos intentos de login fallidos hay por día? ¿Qué secciones visitan más los operadores? ¿Hay flujos que se abandonan a la mitad? Cualquier parte de la aplicación que alguien —humano o proceso— toque es una oportunidad de dato.
 >
-> Antes de instrumentar nada, necesito un documento de diseño. No te limites a un puñado de métricas de negocio: quiero el catálogo más completo que puedas construir, cubriendo tanto la salud técnica del sistema como las preguntas de negocio, incluso si hoy no sabemos exactamente para qué las vamos a usar. Ya te dejé en tu CONTEXT las métricas que necesitamos sí o sí desde ya — impleméntalas sin falta, y a partir de ahí, sigue explorando. No escribas código todavía — escribe el plan que el equipo va a implementar mañana."
+> Antes de instrumentar nada, necesito un documento de diseño. No te limites a un puñado de métricas de negocio: quiero el catálogo más completo que puedas construir, cubriendo tanto la salud técnica del sistema como las preguntas de negocio, incluso si hoy no sabemos exactamente para qué las vamos a usar. Ya te dejé en tu BRIEFING las métricas que necesitamos sí o sí desde ya — impleméntalas sin falta, y a partir de ahí, sigue explorando. No escribas código todavía — escribe el plan que el equipo va a implementar mañana."
 >
 > El entregable es un **Plan de Telemetría** en Markdown más un archivo de esquema JSON. Lo revisamos el viernes."
 
@@ -55,7 +55,7 @@ Dos conceptos que necesitarás aplicar hoy:
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Abre tu copia del monorepo de la compañía asignada.
-2. Lee completo tu `CONTEXT-empresa.md` y localiza las **métricas obligatorias**, las entidades del sistema de inventario (productos, órdenes) y las restricciones de negocio definidas para tu compañía.
+2. Lee completo tu `empresa-BRIEFING.md` y localiza las **métricas obligatorias**, las entidades del sistema de inventario (productos, órdenes) y las restricciones de negocio definidas para tu compañía.
 3. Crea la carpeta `docs/telemetry/` dentro del monorepo.
 4. Trabaja ambos entregables dentro de esa carpeta: `telemetry-plan.md` y `event-schemas.json`.
 
@@ -67,18 +67,18 @@ No hay servidor nuevo que levantar hoy. El entregable es documentación de dise�
 
 ### Fase 1 — Catálogo exhaustivo de oportunidades de datos
 
-- [ ] Revisa tu `CONTEXT-empresa.md` e identifica las **métricas obligatorias** que tu compañía requiere desde ya. Estas son un piso, no un techo — deben estar en tu plan sí o sí.
+- [ ] Revisa tu `empresa-BRIEFING.md` e identifica las **métricas obligatorias** que tu compañía requiere desde ya. Estas son un piso, no un techo — deben estar en tu plan sí o sí.
 - [ ] Mapea el **flujo de gestión de inventario** de tu aplicación: desde que un usuario autenticado accede al sistema hasta que completa una orden de entrada o salida. Identifica al menos **5 puntos de instrumentación** en ese flujo — incluyendo intentos directos de modificar stock (que el sistema rechaza), validaciones fallidas y activaciones de umbral mínimo.
 - [ ] Explora, sin limitarte a un número mínimo, otras secciones del backoffice que también puedan aportar datos valiosos: autenticación (intentos de login, sesiones expiradas, fallos de credenciales), rendimiento (tiempos de respuesta de API, tiempos de carga), errores de frontend no capturados, y navegación (qué secciones visitan más los operadores, qué flujos se abandonan). El objetivo es un catálogo amplio, no una lista mínima cumplida por trámite.
 - [ ] Para cada oportunidad identificada, completa la frase: _"Capturamos `[event_type]` porque necesitamos saber `[hipótesis]`, lo que nos permite tomar la decisión `[decisión]`."_ Si no puedes completarla, descarta el punto.
-- [ ] Clasifica cada evento de tu catálogo en dos grupos: **obligatorio** (viene de tu CONTEXT) u **oportunidad identificada** (la propusiste tú). Esto le da al equipo visibilidad de qué es mínimo y qué es exploración.
+- [ ] Clasifica cada evento de tu catálogo en dos grupos: **obligatorio** (viene de tu BRIEFING) u **oportunidad identificada** (la propusiste tú). Esto le da al equipo visibilidad de qué es mínimo y qué es exploración.
 
-⚠️ **IMPORTANTE:** las métricas obligatorias, entidades e identificadores de tu plan deben coincidir exactamente con lo que especifica tu `CONTEXT-empresa.md`. Además, se espera que el catálogo de oportunidades adicionales sea amplio y esté fundamentado — un plan que solo cubra el mínimo obligatorio, sin explorar el resto de la aplicación, no será aceptado.
+⚠️ **IMPORTANTE:** las métricas obligatorias, entidades e identificadores de tu plan deben coincidir exactamente con lo que especifica tu `empresa-BRIEFING.md`. Además, se espera que el catálogo de oportunidades adicionales sea amplio y esté fundamentado — un plan que solo cubra el mínimo obligatorio, sin explorar el resto de la aplicación, no será aceptado.
 
 ### Fase 2 — Diseño del Event Envelope
 
 - [ ] Define el **Event Envelope** estándar que usará tu compañía: los campos obligatorios que todo evento debe incluir (`eventId`, `timestamp` en ISO 8601, `sessionId`, `userId`, `event_type`, `schemaVersion`, `requestId` para correlación, y `properties` para el payload específico).
-- [ ] Diseña el esquema completo de **todas las métricas obligatorias de tu CONTEXT**, más **al menos 8 eventos adicionales** de tu catálogo, cubriendo al menos 3 categorías distintas (por ejemplo: negocio/inventario, autenticación, rendimiento, errores, navegación). Cada `event_type` debe seguir la taxonomía `entidad_acción` con verbos consistentes (ej. `inbound_order_created`, `stock_threshold_triggered`, `direct_stock_edit_rejected`, `session_expired`, `api_latency_recorded`).
+- [ ] Diseña el esquema completo de **todas las métricas obligatorias de tu BRIEFING**, más **al menos 8 eventos adicionales** de tu catálogo, cubriendo al menos 3 categorías distintas (por ejemplo: negocio/inventario, autenticación, rendimiento, errores, navegación). Cada `event_type` debe seguir la taxonomía `entidad_acción` con verbos consistentes (ej. `inbound_order_created`, `stock_threshold_triggered`, `direct_stock_edit_rejected`, `session_expired`, `api_latency_recorded`).
 - [ ] Para cada evento, define un **allowlist de propiedades**: una lista explícita de las claves permitidas. Nada fuera del allowlist debe incluirse — esto previene fugas accidentales de datos.
 - [ ] Para cada evento, especifica: `event_type`, descripción, `properties` (nombre, tipo, obligatorio/opcional, descripción), y si contiene datos sensibles o PII — en cuyo caso documenta cómo se anonimiza o sanitiza antes de emitirse.
 - [ ] Exporta los esquemas al archivo `event-schemas.json` con una estructura validable (puedes usar JSON Schema draft-07 o una estructura personalizada documentada).
@@ -93,7 +93,7 @@ No hay servidor nuevo que levantar hoy. El entregable es documentación de dise�
 
 ## ✅ Qué Vamos a Evaluar
 
-- [ ] Todas las métricas obligatorias de `CONTEXT-empresa.md` están presentes y correctamente identificadas en el plan
+- [ ] Todas las métricas obligatorias de `empresa-BRIEFING.md` están presentes y correctamente identificadas en el plan
 - [ ] El plan cubre tanto oportunidades **técnicas** (errores, rendimiento, autenticación, navegación) como de **negocio**, de forma amplia — no limitada a un número mínimo cumplido por trámite
 - [ ] Cada evento tiene una hipótesis y una decisión de negocio u operativa que lo justifica — nada de eventos "por si acaso"
 - [ ] El Event Envelope es consistente en todos los eventos y contiene al menos: `eventId`, `timestamp` (ISO 8601), `sessionId`, `userId`, `event_type` en formato `entidad_acción`, `schemaVersion`, `requestId`, y `properties`
@@ -111,7 +111,7 @@ No hay servidor nuevo que levantar hoy. El entregable es documentación de dise�
 1. Asegúrate de que los archivos `docs/telemetry/telemetry-plan.md` y `docs/telemetry/event-schemas.json` estén en tu copia.
 2. Crea un Pull Request contra la rama principal del monorepo con el título: `docs: telemetry design plan`.
 3. En la descripción del PR, incluye:
-   - El número total de eventos diseñados, y cuántos son obligatorios (del CONTEXT) vs. identificados por ti
+   - El número total de eventos diseñados, y cuántos son obligatorios (del BRIEFING) vs. identificados por ti
    - Las categorías cubiertas (negocio, autenticación, rendimiento, errores, navegación, etc.)
    - Una oración explicando la decisión de diseño más difícil que tomaste
 

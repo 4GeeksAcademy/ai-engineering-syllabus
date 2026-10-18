@@ -35,7 +35,7 @@ flowchart LR
 5. **`MEMORY-DECISION.md`** — chosen memory type (`Memory.md` or `/memory`), retrieval strategy (exact / text / semantic via QMD), QMD configuration evidence (test query + result), explicit consistency argument for this use case, and a **Context amnesia** section documenting what must survive a next-day reboot, where each item is persisted, how it is retrieved, and restart-test evidence.
 6. **QMD** — installed and configured as the memory search method (keyword + semantic + reranking).
 7. ***(Optional)* `MEM0-REFLECTION.md`** — reflection on how mem0 could improve the solution and what trade-offs it would introduce.
-8. **Flow implementation** — all steps in the README mermaid diagram, aligned with the learner’s `CONTEXT-company.md` (fields, HR roles, instructions, deliverables).
+8. **Flow implementation** — all steps in the README mermaid diagram, aligned with the learner’s `company-BRIEFING.md` (fields, HR roles, instructions, deliverables).
 
 ## Memory model (indicative)
 
@@ -79,7 +79,7 @@ Regardless of mechanism, each active onboarding record should be recoverable aft
 - Persistent per-employee state across agent restarts (context amnesia solved, not chat-only)
 - Full flow: HR notify → welcome email → Telegram contact → code → HR code to bot → approve → greet + instructions → deliverables → complete
 - Daily summary: three categories + count of state changes since previous day
-- All HR roles, fields, instructions, and deliverables match `CONTEXT-company.md`
+- All HR roles, fields, instructions, and deliverables match `company-BRIEFING.md`
 
 ## Indicative daily summary (Telegram to HR)
 
@@ -113,4 +113,4 @@ Details:
 - Use test employees and test email/Telegram accounts; redact secrets in screenshots and repos.
 - Restart the agent mid-flow and confirm the same employee state reloads correctly.
 - Run the daily summary with mixed statuses to verify classification and change counter.
-- Generic onboarding copy that ignores `CONTEXT-company.md` does not meet the rubric.
+- Generic onboarding copy that ignores `company-BRIEFING.md` does not meet the rubric.

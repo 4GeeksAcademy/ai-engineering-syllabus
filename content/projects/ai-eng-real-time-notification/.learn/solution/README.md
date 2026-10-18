@@ -1,6 +1,6 @@
 # Real-Time Systems Part 1 — SSE Notifications — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Field names and optional second events below are **indicative** — students must align payload shape and domain values with their assigned `CONTEXT-company.md` under `content/contexts/real-time-notification/`.
+Reference quality bar for the student's company monorepo fork. Field names and optional second events below are **indicative** — students must align payload shape and domain values with their assigned `company-BRIEFING.md` under `content/contexts/real-time-notification/`.
 
 ---
 
@@ -19,8 +19,8 @@ flowchart LR
 
 **Design invariants:**
 
-1. **Named event, not generic `message`** — wire format uses `event: rfp_ticket_created` (or CONTEXT-equivalent name) plus JSON `data:`.
-2. **Publish on register** — emission happens in the same path that creates the RFP ticket (`status` initial value from CONTEXT, typically `analyzing`), not from a polling cron.
+1. **Named event, not generic `message`** — wire format uses `event: rfp_ticket_created` (or equivalent-BRIEFING name) plus JSON `data:`.
+2. **Publish on register** — emission happens in the same path that creates the RFP ticket (`status` initial value from BRIEFING, typically `analyzing`), not from a polling cron.
 3. **One stream, many subscribers** — each dashboard tab opens its own SSE connection; the publisher fans out to all live subscribers.
 4. **Keep-alive** — periodic comment/ping frames so proxies and browsers do not idle-close the socket.
 5. **Auth same as backoffice** — SSE requires the company JWT; client uses `fetch` + `Authorization` (not bare `EventSource`, which cannot set custom headers cleanly).
@@ -64,7 +64,7 @@ data: {"ticket_id":"tkt_0192","rfp_id":"rfp_0088","client_name":"Andes Tech Solu
 : keepalive
 ```
 
-Indicative JSON (must match CONTEXT fields — example aligned to Brasaland-style ticket):
+Indicative JSON (must match BRIEFING fields — example aligned to Brasaland-style ticket):
 
 ```json
 {
@@ -145,9 +145,9 @@ bus.publish(
     data={
         "ticket_id": ticket.id,
         "rfp_id": ticket.rfp_id,
-        "status": ticket.status,  # CONTEXT initial status
+        "status": ticket.status,  # BRIEFING initial status
         "created_at": ticket.created_at.isoformat(),
-        # + CONTEXT-required display fields
+        # + required-BRIEFING display fields
     },
 )
 ```
@@ -201,7 +201,7 @@ UI: dedicated banner/toast/list item for `rfp_ticket_created` — not the same r
 
 | Check                | Pass criteria                                                                                                                                                                                             |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SSE endpoint test    | Hit the stream (or generate frames through the handler): `Content-Type` includes `text/event-stream`; body has named `event:` + JSON `data:`; required CONTEXT keys present; status matches initial value |
+| SSE endpoint test    | Hit the stream (or generate frames through the handler): `Content-Type` includes `text/event-stream`; body has named `event:` + JSON `data:`; required BRIEFING keys present; status matches initial value |
 | Auth                 | Unauthenticated request rejected; valid JWT accepted                                                                                                                                                      |
 | Reconnect + recovery | Documented manual steps **or** automated test: drop stream → backoff → reconnect → recovery strategy applied → no duplicate UI for same `ticket_id`                                                       |
 | No AI                | Grep/review: notification path has zero model/agent invocations                                                                                                                                           |
@@ -210,7 +210,7 @@ UI: dedicated banner/toast/list item for `rfp_ticket_created` — not the same r
 
 ## Optional second event
 
-If implementing the README optional case, reuse the same SSE endpoint with a **different** `event:` name and CONTEXT-grounded payload (e.g. `sales_drop_alert`, agent escalation, inactivity). Same reconnect, recovery, auth, and keep-alive rules apply.
+If implementing the README optional case, reuse the same SSE endpoint with a **different** `event:` name and grounded-BRIEFING payload (e.g. `sales_drop_alert`, agent escalation, inactivity). Same reconnect, recovery, auth, and keep-alive rules apply.
 
 ---
 
@@ -219,7 +219,7 @@ If implementing the README optional case, reuse the same SSE endpoint with a **d
 | Mistake                                 | Why it fails                                                                            |
 | --------------------------------------- | --------------------------------------------------------------------------------------- |
 | Generic `message` only                  | Rubric requires distinguishable named RFP event                                         |
-| Inventing field names                   | Must match CONTEXT / existing RFP ticket model                                          |
+| Inventing field names                   | Must match BRIEFING / existing RFP ticket model                                          |
 | Silent disconnect / backoff only        | Must reconnect **and** recover (or explicitly handle) missed tickets without duplicates |
 | Open stream without JWT                 | Same auth as backoffice is required                                                     |
 | Bare `EventSource`                      | Cannot send `Authorization`; brief requires `fetch` + stream                            |

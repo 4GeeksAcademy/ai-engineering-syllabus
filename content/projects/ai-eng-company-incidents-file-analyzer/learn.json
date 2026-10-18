@@ -8,8 +8,8 @@
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "slug": "ai-eng-company-incidents-analysis",
   "description": {
-    "en": "Build a Python script to validate and analyze incident CSV files based on CONTEXT-company.md, report invalid records and key metrics, and optionally export results to CSV.",
-    "es": "Construye un script en Python para validar y analizar archivos CSV de incidentes según CONTEXT-company.md, reportar registros inválidos y métricas clave, y exportar resultados a CSV opcionalmente."
+    "en": "Build a Python script to validate and analyze incident CSV files based on company-BRIEFING.md, report invalid records and key metrics, and optionally export results to CSV.",
+    "es": "Construye un script en Python para validar y analizar archivos CSV de incidentes según company-BRIEFING.md, reportar registros inválidos y métricas clave, y exportar resultados a CSV opcionalmente."
   },
   "difficulty": "intermediate",
   "duration": 2,

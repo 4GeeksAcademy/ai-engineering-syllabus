@@ -1,6 +1,6 @@
 # Huerto Comunitario Riverside — Plan de Telemetría (Ejemplo de Clase)
 
-> **Para instructores:** Escenario paralelo en aula para `ai-eng-telemetry-plan`. Misma columna vertebral (métricas obligatorias del CONTEXT como piso, catálogo amplio de oportunidades, event envelope, eventos `entidad_acción`, allowlists de propiedades, stream/batch, `telemetry-plan.md` + `event-schemas.json`), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo en aula para `ai-eng-telemetry-plan`. Misma columna vertebral (métricas obligatorias del BRIEFING como piso, catálogo amplio de oportunidades, event envelope, eventos `entidad_acción`, allowlists de propiedades, stream/batch, `telemetry-plan.md` + `event-schemas.json`), dominio distinto. Los estudiantes siguen el enunciado completo del monorepo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -16,15 +16,15 @@ En una sesión, redacta un **mini plan de telemetría** antes de escribir códig
 
 | Proyecto evaluable (`ai-eng-telemetry-plan`)                                                          | Este ejemplo de clase                          |
 | ----------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| CONTEXT de empresa + monorepo de inventario                                                           | CONTEXT ficticio GreenPatch (abajo)            |
-| Todas las métricas obligatorias del CONTEXT + catálogo amplio (≥5 inventario + auth/perf/errores/nav) | 2 obligatorias + 2 oportunidades identificadas |
+| BRIEFING de empresa + monorepo de inventario                                                           | BRIEFING ficticio GreenPatch (abajo)            |
+| Todas las métricas obligatorias del BRIEFING + catálogo amplio (≥5 inventario + auth/perf/errores/nav) | 2 obligatorias + 2 oportunidades identificadas |
 | Todos los eventos obligatorios + ≥8 adicionales (≥3 categorías)                                       | 4 eventos con envelope                         |
 | Rúbrica completa de riesgos/exclusiones                                                               | Párrafo corto de exclusiones                   |
 | PR al monorepo del estudiante                                                                         | Solo `docs/telemetry/` local                   |
 
 ---
 
-## Mini contexto (usar en lugar de CONTEXT-empresa.md)
+## Mini contexto (usar en lugar de empresa-BRIEFING.md)
 
 **Métricas obligatorias (piso):**
 

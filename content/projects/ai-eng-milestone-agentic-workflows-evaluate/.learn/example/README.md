@@ -14,7 +14,7 @@ Part 1 already told the grants desk **what** Programs, Facilities, and Finance m
 
 | Graded project (`ai-eng-milestone-agentic-workflows-evaluate`) | This class example                       |
 | -------------------------------------------------------------- | ---------------------------------------- |
-| Company monorepo + CONTEXT guideline rules                     | Maple Street grant desk only             |
+| Company monorepo + BRIEFING guideline rules                     | Maple Street grant desk only             |
 | Full Part 1 pipeline reuse                                     | Fixture Part 1 synthesizer JSON          |
 | Parallel readability / relevance / guidelines evaluators       | Three stub evaluators + fixed rules list |
 | Full ticket UI updates                                         | JSON ticket status transitions           |
@@ -36,7 +36,7 @@ Part 1 already told the grants desk **what** Programs, Facilities, and Finance m
 
 ---
 
-## Seed guidelines (indicative — not CONTEXT)
+## Seed guidelines (indicative — not BRIEFING)
 
 ```text
 [G1] Every section must name a dollar amount or "TBD with Finance".

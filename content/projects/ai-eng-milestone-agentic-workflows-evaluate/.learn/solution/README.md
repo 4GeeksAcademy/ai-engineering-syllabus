@@ -1,6 +1,6 @@
 # Milestone 9 Part 2 — RFP Response Generation & Evaluation — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align section formats and guideline checks with their assigned `CONTEXT-company.md`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align section formats and guideline checks with their assigned `company-BRIEFING.md`.
 
 ---
 
@@ -31,10 +31,10 @@ flowchart LR
 
 1. **Reuse Part 1** — generators **consume** the Part 1 routing handoff (`ticket_id` + synthesizer / `key_aspects` payload via queue flag, DB field, or documented contract). Do not re-classify RFPs or re-parse the PDF as the primary path.
 2. **One generator per department** — clearly separated agents/modules.
-3. **Parallel evaluators** — readability, relevance, and CONTEXT guidelines run concurrently per section.
+3. **Parallel evaluators** — readability, relevance, and BRIEFING guidelines run concurrently per section.
 4. **Structured `EvaluationResult`** — regenerators receive concrete reasons (rule ids, missing fields), not vague “improve it”.
 5. **Bounded loop** — hard `max_iterations`; on exhaust → keep last draft + eval, set `needs_human_review`, still hand off to Part 3 (never silent discard of whole ticket).
-6. **CONTEXT fidelity** — guideline checklist comes from CONTEXT, not generic style taste.
+6. **BRIEFING fidelity** — guideline checklist comes from BRIEFING, not generic style taste.
 
 ---
 
@@ -44,15 +44,15 @@ flowchart LR
 | -------------------------------------------------------- | -------------------------------------------------- |
 | `data/pipelines/rfp_response/` (or extend `rfp_intake/`) | Generators, evaluators, loop, synthesizer          |
 | `data/pipelines/rfp_response/orchestrator.py`            | Map Part 1 workstreams → department generators     |
-| `data/pipelines/rfp_response/generators/`                | One generator module per CONTEXT department        |
+| `data/pipelines/rfp_response/generators/`                | One generator module per BRIEFING department        |
 | `data/pipelines/rfp_response/evaluators/readability.py`  | py-readability-metrics wrapper → pass/fail         |
 | `data/pipelines/rfp_response/evaluators/relevance.py`    | Section vs RFP asks                                |
-| `data/pipelines/rfp_response/evaluators/guidelines.py`   | CONTEXT rule checklist                             |
+| `data/pipelines/rfp_response/evaluators/guidelines.py`   | BRIEFING rule checklist                             |
 | `data/pipelines/rfp_response/loop.py`                    | Generator ↔ evaluators with iteration counter      |
 | `data/pipelines/rfp_response/synthesizer.py`             | Package drafts + eval results → assignment tickets |
 | `services/.../routers/rfp.py`                            | Same existing API — trigger Part 2 + GET status    |
 | `tests/pipelines/test_rfp_generator.py`                  | Generator unit tests                               |
-| `tests/pipelines/test_rfp_evaluator.py`                  | Evaluator fail path + one CONTEXT compliance fail  |
+| `tests/pipelines/test_rfp_evaluator.py`                  | Evaluator fail path + one BRIEFING compliance fail  |
 
 ---
 
@@ -178,9 +178,9 @@ If iterations were exhausted: `overall_pass` is false, ticket/section status is 
 - [ ] Iteration limit enforced; exhaust → `needs_human_review` + handoff (ticket not discarded)
 - [ ] Ticket status updates during drafting / evaluation / needs_human_review
 - [ ] Handoff includes content **and** `EvaluationResult` per department
-- [ ] Unit tests: generator success, evaluator fail path, one CONTEXT-anchored compliance fail (fixture + assert `compliance.pass == false` — no full loop required)
+- [ ] Unit tests: generator success, evaluator fail path, one anchored-BRIEFING compliance fail (fixture + assert `compliance.pass == false` — no full loop required)
 - [ ] Pass + fail section examples in PR description
-- [ ] CONTEXT guidelines used as checklist (verifiable rule ids)
+- [ ] BRIEFING guidelines used as checklist (verifiable rule ids)
 
 ---
 
@@ -192,7 +192,7 @@ If iterations were exhausted: `overall_pass` is false, ticket/section status is 
 | Free-text “looks good” evaluation              | Must follow `EvaluationResult` shape                  |
 | Infinite regenerate loop                       | Missing iteration limit                               |
 | Discarding whole ticket on one failed section  | Exhaust → `needs_human_review`, still hand off        |
-| Ignoring CONTEXT guideline list                | Company-specific rules required                       |
+| Ignoring BRIEFING guideline list                | Company-specific rules required                       |
 | Rewriting Part 1 from scratch                  | Must extend existing intake/routing                   |
 | Ignoring Part 1 routing handoff / re-parse PDF | Part 2 must consume `ticket_id` + synthesizer payload |
 
@@ -204,4 +204,4 @@ If iterations were exhausted: `overall_pass` is false, ticket/section status is 
 - Force a guidelines failure; confirm feedback names rule ids and regenerates.
 - Hit max iterations; confirm `needs_human_review` + draft still in handoff (not crash/discard).
 - Confirm evaluators for Dept A do not block Dept B completion.
-- Compliance unit test: one forbidden claim from CONTEXT → `compliance.pass == false`.
+- Compliance unit test: one forbidden claim from BRIEFING → `compliance.pass == false`.

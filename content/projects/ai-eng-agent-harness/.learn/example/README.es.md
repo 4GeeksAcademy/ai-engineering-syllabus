@@ -1,6 +1,6 @@
 # Agente de Mostrador Maple Street Library — Harness y Guardrails (Enunciado de ejemplo)
 
-> **Para instructores:** Escenario paralelo de clase para `ai-eng-agent-harness` (**Hito 8 Parte 2**). Misma columna vertebral (system prompt seguro, guardrails de contenido/alcance, anti-inyección, aislamiento de RAG no confiable, chequeos de salida, logs por tipo de fallo, tests de jailbreak **deterministas**). Dominio distinto a los agentes CONTEXT de empresa. Continúa la narrativa Maple Street Library del ejemplo de **memoria** (Parte 1). El alumnado sigue el brief completo en el `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo de clase para `ai-eng-agent-harness` (**Hito 8 Parte 2**). Misma columna vertebral (system prompt seguro, guardrails de contenido/alcance, anti-inyección, aislamiento de RAG no confiable, chequeos de salida, logs por tipo de fallo, tests de jailbreak **deterministas**). Dominio distinto a los agentes BRIEFING de empresa. Continúa la narrativa Maple Street Library del ejemplo de **memoria** (Parte 1). El alumnado sigue el brief completo en el `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -16,7 +16,7 @@ En una sesión: envuelve el agente de mostrador con un **harness mínimo** para 
 
 | Proyecto evaluable (`ai-eng-agent-harness`)  | Este enunciado de clase                                    |
 | -------------------------------------------- | ---------------------------------------------------------- |
-| Monorepo de empresa + CONTEXT-company.md     | Solo FAQ de mostrador Maple Street                         |
+| Monorepo de empresa + company-BRIEFING.md     | Solo FAQ de mostrador Maple Street                         |
 | Ruta completa RAG + cliente MCP              | 3–5 snippets FAQ hard-coded (retrieve falso)               |
 | Reglas never-reveal específicas de empresa   | Un secreto: código interno de condonación `WAIVE-INTERNAL` |
 | Endpoint de observabilidad en el agente prod | Contadores en memoria + `print` / CLI mínimo               |

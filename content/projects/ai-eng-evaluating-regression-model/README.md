@@ -11,7 +11,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** — you need your company's sales data to interpret the real cost of your model's errors.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/sales-forecasting)** — you need your company's sales data to interpret the real cost of your model's errors.
 
 ---
 
@@ -49,7 +49,7 @@ There is no universal "correct" curve — what matters is the relative pattern b
 2. Work on this project in your fork using GitHub Codespaces and create a branch for this work: `git switch -c feature/regression-model-eval`; if you work locally, you can clone the repository to your computer.
 3. Confirm that the trained forecasting model, its time-based features (lags, rolling stats, calendar signals), and the temporal split (8 years train / 2 years test) from your previous project are still available and reproducible.
 4. Install any additional dependencies with `uv add` — never use `pip install` or `pipenv`.
-5. Read your `CONTEXT-company.md` to understand which error is more costly for your business: overestimating sales or underestimating them.
+5. Read your `company-BRIEFING.md` to understand which error is more costly for your business: overestimating sales or underestimating them.
 
 ---
 
@@ -70,9 +70,9 @@ There is no universal "correct" curve — what matters is the relative pattern b
 **Metric selection and calculation:**
 
 - [ ] Calculate **MAE** and **RMSE** for training and validation.
-- [ ] Justify in writing which one better reflects the business cost of your errors, based on what your `CONTEXT-company.md` indicates.
+- [ ] Justify in writing which one better reflects the business cost of your errors, based on what your `company-BRIEFING.md` indicates.
 
-⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Field names, entity IDs, and domain-specific values in your implementation must match what is specified in your BRIEFING.md. A generic implementation that ignores the context will not be accepted.
 
 **Diagnosis and technical report:**
 

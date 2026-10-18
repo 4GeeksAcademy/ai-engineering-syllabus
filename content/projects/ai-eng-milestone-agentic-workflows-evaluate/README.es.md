@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí están los lineamientos concretos contra los que deben validar tus agentes evaluadores.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí están los lineamientos concretos contra los que deben validar tus agentes evaluadores.
 
 ---
 
@@ -38,9 +38,9 @@ En la Parte 1 ya tienes un flujo que clasifica cada RFP y abre un ticket por cad
 
 ### 📚 Conocimiento complementario: cumplimiento de lineamientos
 
-Cuando el ticket pide que un evaluador revise "cumplimiento de lineamientos de la empresa", no se refiere a un juicio de estilo libre: tu `CONTEXT-company.md` incluye una lista concreta de reglas (tono, datos que no pueden faltar, cifras que deben aparecer) contra la cual el evaluador debe verificar el contenido generado — no una opinión subjetiva del agente. Si tu empresa ya tiene una base de conocimiento semántica, es un buen lugar para que el generador busque políticas, precios de referencia o lenguaje de marca reales antes de redactar — reduce las veces que el evaluador rebota la sección por inventar algo que no coincide con lo que la empresa realmente dice. Esto es una mejora sugerida, no un requisito de esta parte.
+Cuando el ticket pide que un evaluador revise "cumplimiento de lineamientos de la empresa", no se refiere a un juicio de estilo libre: tu `company-BRIEFING.md` incluye una lista concreta de reglas (tono, datos que no pueden faltar, cifras que deben aparecer) contra la cual el evaluador debe verificar el contenido generado — no una opinión subjetiva del agente. Si tu empresa ya tiene una base de conocimiento semántica, es un buen lugar para que el generador busque políticas, precios de referencia o lenguaje de marca reales antes de redactar — reduce las veces que el evaluador rebota la sección por inventar algo que no coincide con lo que la empresa realmente dice. Esto es una mejora sugerida, no un requisito de esta parte.
 
-**Estados del ticket para esta parte** (misma fila que la Parte 1 — nombres del CONTEXT). El ciclo completo está en el CONTEXT; **aquí solo necesitas:**
+**Estados del ticket para esta parte** (misma fila que la Parte 1 — nombres del BRIEFING). El ciclo completo está en el BRIEFING; **aquí solo necesitas:**
 
 | Estado               | Rol             | Cuándo                                                                            |
 | -------------------- | --------------- | --------------------------------------------------------------------------------- |
@@ -68,7 +68,7 @@ Continúa sobre la misma rama de trabajo del Hito en tu fork del monorepo (o cre
 1. Parte del flujo de clasificación y enrutamiento que construiste en la Parte 1 — no lo reescribas desde cero.
 2. **Consume el handoff de enrutamiento de la Parte 1** — la Parte 2 debe arrancar desde tickets que la Parte 1 marcó listos (estado `analisis_completo` más el flag de cola / campo DB / contrato de handoff que definiste). Entrada = `ticket_id` + payload del synthesizer (`key_aspects` / estructura de workstreams). **No** vuelvas a parsear el PDF ni inventes un resumen paralelo que ignore ese contrato.
 3. Instala cualquier dependencia nueva con `uv add`.
-4. Revisa nuevamente tu `CONTEXT-company.md`: allí están los lineamientos concretos contra los que deben validar tus agentes evaluadores.
+4. Revisa nuevamente tu `company-BRIEFING.md`: allí están los lineamientos concretos contra los que deben validar tus agentes evaluadores.
 
 ---
 
@@ -90,7 +90,7 @@ Continúa sobre la misma rama de trabajo del Hito en tu fork del monorepo (o cre
 - [ ] Implementa múltiples agentes evaluadores que corran en paralelo sobre cada sección generada
 - [ ] Al menos un evaluador debe revisar legibilidad (se sugiere `py-readability-metrics`)
 - [ ] Al menos un evaluador debe revisar pertinencia (que el contenido responda lo que pide la RFP)
-- [ ] Al menos un evaluador debe revisar cumplimiento de los lineamientos definidos en tu `CONTEXT-company.md`
+- [ ] Al menos un evaluador debe revisar cumplimiento de los lineamientos definidos en tu `company-BRIEFING.md`
 - [ ] Persiste la evaluación de cada sección como un `EvaluationResult` estructurado (los nombres de campo pueden variar un poco; la forma debe ser equivalente):
 
 ```text
@@ -113,12 +113,12 @@ EvaluationResult:
 
 - [ ] Actualiza el ticket creado en la Parte 1 (desde `analisis_completo`) para reflejar el progreso de la generación y evaluación (`generando_borrador`, `en_evaluación`, `needs_human_review`). Persiste borradores y `evaluation_results` en PostgreSQL. Sigue sin crear un API nuevo: extiende el backend existente y el pipeline bajo `data/pipelines/`.
 
-⚠️ **IMPORTANTE:** Los lineamientos de la empresa contra los que evalúas el contenido generado, y el formato esperado de cada sección, deben coincidir con lo especificado en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los lineamientos de la empresa contra los que evalúas el contenido generado, y el formato esperado de cada sección, deben coincidir con lo especificado en tu `company-BRIEFING.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Pruebas**
 
 - [ ] Incluye pruebas unitarias en `tests/pipelines/` para al menos un agente generador y un agente evaluador, incluyendo un caso donde la evaluación falla
-- [ ] Añade un caso de fallo de compliance anclado a una regla de tu `CONTEXT-company.md` (p. ej. un borrador que promete algo que los lineamientos prohíben → `compliance.pass == false`). Manténlo pequeño: un fixture, una aserción de fallo — no hace falta el ciclo completo para este caso
+- [ ] Añade un caso de fallo de compliance anclado a una regla de tu `company-BRIEFING.md` (p. ej. un borrador que promete algo que los lineamientos prohíben → `compliance.pass == false`). Manténlo pequeño: un fixture, una aserción de fallo — no hace falta el ciclo completo para este caso
 
 ---
 
@@ -140,8 +140,8 @@ EvaluationResult:
 - [ ] El ticket refleja con precisión el progreso de generación y evaluación en tiempo real
 - [ ] La salida de evaluación sigue la forma `EvaluationResult` (legibilidad / pertinencia / compliance estructurados — no texto libre sin estructura)
 - [ ] Los borradores y `evaluation_results` se persisten en PostgreSQL; sigue habiendo un solo API backend bajo `services/` (sin un segundo servicio HTTP)
-- [ ] Existen pruebas unitarias que cubren éxito, un fallo genérico de evaluación, y un fallo de compliance anclado al CONTEXT
-- [ ] La implementación usa los lineamientos y formatos definidos en el `CONTEXT-company.md` de tu empresa
+- [ ] Existen pruebas unitarias que cubren éxito, un fallo genérico de evaluación, y un fallo de compliance anclado al BRIEFING
+- [ ] La implementación usa los lineamientos y formatos definidos en el `company-BRIEFING.md` de tu empresa
 
 ---
 

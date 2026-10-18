@@ -1,6 +1,6 @@
-# AI Engineering Milestone Contexts
+# AI Engineering Milestone Briefings
 
-The Artificial Intelligence Engineering syllabus has some milestone projects that present a scenario for a company. This repo contains the context for each company in that scenario.
+The Artificial Intelligence Engineering syllabus has some milestone projects that present a scenario for a company. This repo contains the briefing for each company in that scenario.
 
 <!-- hide -->
 
@@ -21,32 +21,32 @@ _Estas instrucciones están [disponibles en español](./README.es.md)_.
 
 - Each folder represents a milestone of the main project in the AI Engineering course identified by its number and scenario (e.g.: `03-frontend-development`)
 - Open the folder that corresponds to the milestone you are solving
-- Read the `CONTEXT-<company>.md` file that corresponds to the company you have been assigned to.
+- Read the `<company>-BRIEFING.md` file that corresponds to the company you have been assigned to.
 - Enjoy building something great!
 
-## Context folders (suggested order)
+## Briefing folders (suggested order)
 
 **Company milestones (transversal monorepo)**
 
-0. **[General company briefings](./00-general-contexts)** — Choose-your-company profiles (`CONTEXT-*-briefing.en.md` / `.es.md`) and source corpora folders (`brasaland/`, `healthcore/`, `nexova/`, `trackflow/`).
+0. **[General company briefings](./00-general-contexts)** — Choose-your-company profiles (`*-BRIEFING.en.md` / `.es.md`) and source corpora folders (`brasaland/`, `healthcore/`, `nexova/`, `trackflow/`).
 1. **[Web fundamentals](./01-web-fundamentals)** — `Milestone 1` public site and form data.
 2. **[Coding fundamentals](./02-coding-fundamentals)** — `Milestone 2` TypeScript scripts and automation inputs.
 3. **[Frontend development](./03-frontend-development)** — `Milestone 3` talent pipeline tracker UI.
-4. **[AI-driven engineering](./04-ai-driven-engineering)** — `Milestone 4` monorepo setup (placeholder; contexts may ship with the project brief).
+4. **[AI-driven engineering](./04-ai-driven-engineering)** — `Milestone 4` monorepo setup (placeholder; briefings may ship with the project brief).
 5. **[Backend development](./05-backend-development)** — `Milestone 5` inventory API entities and seed rules.
 6. **[Telemetry plan design](./06-telemetry-data-pipelines/telemetry)** — Mandatory metrics, inventory entities, and telemetry opportunities per company (Plan · Capture · Storage · Report).
-7. **[Training & RAG](./07-trainning-rag)** — Milestone 7 CONTEXT files. Source Markdown corpora live in `00-general-contexts/<company>/`.
+7. **[Training & RAG](./07-trainning-rag)** — Milestone 7 BRIEFING files. Source Markdown corpora live in `00-general-contexts/<company>/`.
 8. **[Agent engineering](./08-agent-engineering)** — Reserved for agent modules (placeholder).
 9. **[Workflows & automation](./09-workflows-automation)** — Reserved for workflow modules (placeholder).
-10. **[Realtime](./10-realtime)** — Milestone 10 CONTEXT: agent observability (`agent-observability/`) for [`ai-eng-milestone-real-time-agent-observability`](../projects/ai-eng-milestone-real-time-agent-observability) and agent control (`agent-control/`) for [`ai-eng-milestone-real-time-agent-control`](../projects/ai-eng-milestone-real-time-agent-control). SSE notification and WebSocket chat contexts live in the standalone folders below (post-graduation additional projects).
+10. **[Realtime](./10-realtime)** — Milestone 10 BRIEFING: agent observability (`agent-observability/`) for [`ai-eng-milestone-real-time-agent-observability`](../projects/ai-eng-milestone-real-time-agent-observability) and agent control (`agent-control/`) for [`ai-eng-milestone-real-time-agent-control`](../projects/ai-eng-milestone-real-time-agent-control). SSE notification and WebSocket chat briefings live in the standalone folders below (post-graduation additional projects).
 
-**Standalone project contexts**
+**Standalone project briefings**
 
 11. **[OpenClaw onboarding agent](./openclaw-onboarding-agent)** — HR onboarding fields and email templates per company.
 12. **[Supplier directory](./supplier-directory)** — Supplier seed data and validation rules for the TinyDB API.
 13. **[Incidents file analysis](./incidents-file-analysis)** — CSV schemas, categories, and expected analyzer output.
 14. **[Centralized incident manager](./centralized-incident-manager)** — Live incident manager fields, branches, and seed values.
-15. **[Roles and permissions](./roles-permissions)** — Exact role codes, departments, capability matrix, and seed users per company (`CONTEXT-<company>.en.md` / `.es.md`).
+15. **[Roles and permissions](./roles-permissions)** — Exact role codes, departments, capability matrix, and seed users per company (`<company>-BRIEFING.en.md` / `.es.md`).
 16. **[Federated authentication](./federated-authentication)** — Required IdP (Google / Microsoft / LinkedIn), linking audience, OAuth env, seed users, and audit events per company.
 17. **[Audit log](./audit-log)** — Critical event inventory, append-only constraints, query scope by role/department, and seed audit entries per company.
 18. **[RAG knowledge base](./07-trainning-rag)** — Milestone 7 Qdrant collection names, payload schema, source doc paths (`00-general-contexts/<company>/`), and eval rules per company.

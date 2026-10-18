@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incidents-file-analysis)** antes de escribir código — define los nombres exactos de los campos del CSV, las categorías válidas, los estados posibles y los valores esperados que debe producir tu implementación.
+**Antes de empezar:** Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incidents-file-analysis)** antes de escribir código — define los nombres exactos de los campos del CSV, las categorías válidas, los estados posibles y los valores esperados que debe producir tu implementación.
 
 ---
 
@@ -25,11 +25,11 @@ El problema es que **ese fichero no puede enviarse a una herramienta de IA**. Co
 
 Tu responsable técnico ha decidido proceder en dos fases. Primero, un script en Python para validar rápidamente que el proceso de análisis funciona sobre los 100 registros de prueba. Si el resultado es correcto, el script se ejecutará sobre el fichero de producción completo. Una vez confirmado que la lógica es sólida, la funcionalidad se integrará en la plataforma que tu empresa ya está construyendo: una API en el backend y una interfaz web desde la que el equipo pueda cargar el fichero, consultar el resumen y exportar los resultados.
 
-> **Nota de tu responsable técnico:** _"Empieza por el script — necesitamos confirmar que la lógica de validación y el cálculo de métricas son correctos antes de construir nada encima. Cuando el script funcione y los números cuadren con los valores esperados del CONTEXT, pásalo a la API y monta la interfaz. El objetivo final es que cualquier persona del departamento pueda subir el fichero desde el navegador, ver el resumen en pantalla y descargarlo en CSV sin tocar la terminal."_
+> **Nota de tu responsable técnico:** _"Empieza por el script — necesitamos confirmar que la lógica de validación y el cálculo de métricas son correctos antes de construir nada encima. Cuando el script funcione y los números cuadren con los valores esperados del BRIEFING, pásalo a la API y monta la interfaz. El objetivo final es que cualquier persona del departamento pueda subir el fichero desde el navegador, ver el resumen en pantalla y descargarlo en CSV sin tocar la terminal."_
 
 ### ¿Qué es un registro incompleto o corrupto?
 
-Los datos reales siempre tienen problemas. Para este proyecto, un registro se considera **inválido** si le falta al menos uno de los campos obligatorios definidos en tu CONTEXT, o si contiene un valor en un campo que no está dentro del conjunto de valores permitidos (estados y categorías). La lógica debe detectarlos, contarlos y excluirlos del análisis principal — pero nunca ignorarlos en silencio.
+Los datos reales siempre tienen problemas. Para este proyecto, un registro se considera **inválido** si le falta al menos uno de los campos obligatorios definidos en tu BRIEFING, o si contiene un valor en un campo que no está dentro del conjunto de valores permitidos (estados y categorías). La lógica debe detectarlos, contarlos y excluirlos del análisis principal — pero nunca ignorarlos en silencio.
 
 > 🔀 **PR aprobado → haz merge a `main`.** Si no, la funcionalidad no se despliega y tu siguiente rama parte de código desactualizado, lo que acaba en conflictos de merge.
 
@@ -43,7 +43,7 @@ Los datos reales siempre tienen problemas. Para este proyecto, un registro se co
    https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo
    ```
 
-2. Lee tu fichero **CONTEXT-company.md** antes de escribir ninguna línea de código. Define la estructura del CSV, los campos obligatorios, los valores válidos y los resultados esperados.
+2. Lee tu fichero **company-BRIEFING.md** antes de escribir ninguna línea de código. Define la estructura del CSV, los campos obligatorios, los valores válidos y los resultados esperados.
 3. Trabaja dentro de las carpetas correspondientes del monorepo (ver sección de entrega).
 
 No hay starter code. El proyecto parte de cero.
@@ -60,11 +60,11 @@ No hay starter code. El proyecto parte de cero.
 - [ ] Calcula las siguientes métricas sobre los **registros válidos**:
   - [ ] Cantidad total de elementos procesados (válidos e inválidos por separado).
   - [ ] Totalización por categoría de incidencia.
-  - [ ] Totalización por estado (`abierto`, `cerrado`, `descartado` — o sus equivalentes en tu CONTEXT).
+  - [ ] Totalización por estado (`abierto`, `cerrado`, `descartado` — o sus equivalentes en tu BRIEFING).
   - [ ] Índice de satisfacción medio en los casos con estado `cerrado` que tengan puntuación registrada.
 - [ ] Imprime el resumen por consola en un formato legible: usa separadores, etiquetas claras y alineación.
 - [ ] Al final de la ejecución, pregunta al usuario: `¿Deseas exportar los resultados a CSV? [s / n]`. Si elige `s`, guarda los resultados en `results.csv` (una fila por métrica).
-- [ ] Verifica que los resultados coinciden exactamente con los valores esperados de tu CONTEXT.
+- [ ] Verifica que los resultados coinciden exactamente con los valores esperados de tu BRIEFING.
 
 ### Fase 2 — Integración en la plataforma
 
@@ -85,7 +85,7 @@ Una vez validada la lógica del script, extrae esa misma lógica a servicios reu
 - [ ] Incluye un botón para descargar los resultados en CSV.
 - [ ] Informa al usuario si el fichero contiene registros inválidos y cuántos son de cada tipo.
 
-⚠️ **IMPORTANTE:** Los nombres de campos, categorías, estados y valores esperados en tu implementación deben coincidir exactamente con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, categorías, estados y valores esperados en tu implementación deben coincidir exactamente con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto de tu empresa no será aceptada.
 
 ---
 
@@ -97,7 +97,7 @@ Una vez validada la lógica del script, extrae esa misma lógica a servicios reu
 - [ ] Detecta, clasifica y muestra los registros inválidos con su tipo de problema.
 - [ ] Las cinco métricas requeridas aparecen en la salida de consola con formato legible.
 - [ ] La exportación a CSV funciona y produce un fichero bien estructurado.
-- [ ] Los resultados coinciden exactamente con los valores esperados del CONTEXT.
+- [ ] Los resultados coinciden exactamente con los valores esperados del BRIEFING.
 
 ### Backend
 
@@ -126,7 +126,7 @@ El proyecto debe estar organizado en el monorepo de la siguiente forma:
 ```text
 scripts/
   analyze.py              ← script de análisis (Fase 1)
-  incidents-COMPANY.csv   ← fichero de prueba (adjunto, ver CONTEXT)
+  incidents-COMPANY.csv   ← fichero de prueba (adjunto, ver BRIEFING)
 
 services/
   api/                    ← backend con los endpoints de análisis y exportación

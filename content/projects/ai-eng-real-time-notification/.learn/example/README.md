@@ -1,6 +1,6 @@
 # Harbor Desk — Live Ticket Board (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-real-time-notification`. Same spine (SSE named event, structured payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-real-time-notification`. Same spine (SSE named event, structured payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect). Different domain than company BRIEFING agents. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -14,10 +14,10 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 | Graded project (`ai-eng-real-time-notification`) | This class example                                        |
 | ---------------------------------------------------------- | --------------------------------------------------------- |
-| Company monorepo + RFP ticket from CONTEXT                 | Harbor Desk marina board only                             |
+| Company monorepo + RFP ticket from BRIEFING                 | Harbor Desk marina board only                             |
 | Hook into existing RFP registration path                   | Stub `POST /tickets` that publishes the event             |
 | Full company dashboard refactor                            | Single HTML/JS board page                                 |
-| CONTEXT field fidelity (client, location, service_type, …) | Fixed demo fields: `ticket_id`, `slip`, `issue`, `status` |
+| BRIEFING field fidelity (client, location, service_type, …) | Fixed demo fields: `ticket_id`, `slip`, `issue`, `status` |
 | Company PR + design questions                              | Live demo + 2 automated tests                             |
 
 ---
@@ -81,4 +81,4 @@ data: {"ticket_id":"mnt_0042","slip":"B-17","issue":"pump_out_clogged","status":
 
 - WebSockets / bidirectional chat (Part 2)
 - LLM agents, RAG, or RFP pipelines
-- Company CONTEXT companies (Brasaland, HealthCore, …)
+- Company BRIEFING companies (Brasaland, HealthCore, …)

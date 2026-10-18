@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification)** before writing any code — it defines the operational events, field names, and company-specific constraints for this part.
+**Before you start**: read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification)** before writing any code — it defines the operational events, field names, and company-specific constraints for this part.
 
 ---
 
@@ -39,7 +39,7 @@ Keep working on the fork of your company's monorepo that you've been using throu
 
 1. Create a new branch from your main branch: `feature/sse-notifications`.
 2. Locate the service and dashboard view that currently depend on polling — you will extend those paths, not create a parallel app or a delivery folder.
-3. Check your `CONTEXT-company.md` to confirm how an RFP ticket is represented (fields, initial status) — that defines what the real-time notification must carry.
+3. Check your `company-BRIEFING.md` to confirm how an RFP ticket is represented (fields, initial status) — that defines what the real-time notification must carry.
 4. Add any new dependencies with `uv add` (backend) / your UI package manager as already used in the monorepo — never with `pip install` or `pipenv`.
 5. Implement under the existing layout: SSE in `services/`, consumer UI in `uis/`, tests in `tests/`.
 
@@ -56,7 +56,7 @@ If you need a refresher on how to set up a project, check out [how to start a co
 - [ ] Correctly configure the SSE connection's headers and keep-alive so it doesn't close prematurely (`Content-Type: text/event-stream`, and keep-alive comment frames as needed)
 - [ ] Protect the stream with the **same JWT** used by the backoffice API — unauthenticated clients must not receive events
 
-⚠️ **IMPORTANT:** field names, entities, and domain values in your implementation must match what's specified in your CONTEXT.md. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** field names, entities, and domain values in your implementation must match what's specified in your BRIEFING.md. A generic implementation that ignores the context will not be accepted.
 
 **Frontend (`uis/`)**
 
@@ -68,16 +68,16 @@ If you need a refresher on how to set up a project, check out [how to start a co
 
 **Testing (`tests/`)**
 
-- [ ] Test the SSE endpoint itself: assert response headers include `text/event-stream`, the wire uses a named `event:` (e.g. `rfp_ticket_created`), and `data:` is JSON matching the required payload shape / CONTEXT fields — not only an abstract dict unit test detached from the SSE framing
+- [ ] Test the SSE endpoint itself: assert response headers include `text/event-stream`, the wire uses a named `event:` (e.g. `rfp_ticket_created`), and `data:` is JSON matching the required payload shape / BRIEFING fields — not only an abstract dict unit test detached from the SSE framing
 - [ ] Test, or documented manual verification, of reconnection + recovery after a dropped connection (backoff fires, missed tickets are recovered or explicitly handled, no duplicate UI for the same `ticket_id`)
 
 ---
 
 ## 🎁 Optional: Another Real-Time Notification Case
 
-The RFP ticket is your required deliverable. If you want extra practice (this is not required to pass this part), you can implement **a second type of push notification**, reusing the same SSE endpoint with a new event name. Pick at most one of these, whichever best fits what you've already built and your CONTEXT:
+The RFP ticket is your required deliverable. If you want extra practice (this is not required to pass this part), you can implement **a second type of push notification**, reusing the same SSE endpoint with a new event name. Pick at most one of these, whichever best fits what you've already built and your BRIEFING:
 
-- **Business metric threshold alert** — notify when a metric from your reporting pipeline crosses the critical threshold your CONTEXT defines for your company (for example, a sales drop, a no-show rate, or a billing denial rate, as applicable).
+- **Business metric threshold alert** — notify when a metric from your reporting pipeline crosses the critical threshold your BRIEFING defines for your company (for example, a sales drop, a no-show rate, or a billing denial rate, as applicable).
 - **Agent escalation** — notify when a conversation is escalated from agent to human, so whoever is supervising sees it appear on the dashboard without reloading.
 - **Operational inactivity alert** — notify when a process or location fails to register expected activity within a defined period (for example, no sales registered within a time window, or a vacancy left unfilled past the expected deadline).
 
@@ -102,7 +102,7 @@ Before considering your implementation done, think through and document your ans
 - [ ] The SSE endpoint requires the same JWT as the backoffice; the client sends it via `fetch` (not bare `EventSource`)
 - [ ] The SSE endpoint uses a named event with a structured payload for the RFP ticket, not a single generic message type; tests cover `text/event-stream`, event name, and JSON `data` shape
 - [ ] No calls to a model or agent exist anywhere in this part's implementation
-- [ ] Field and entity names match what's defined in your company's CONTEXT.md
+- [ ] Field and entity names match what's defined in your company's BRIEFING.md
 
 ---
 

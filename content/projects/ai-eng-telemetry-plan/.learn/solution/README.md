@@ -7,9 +7,9 @@ This reference solution defines the expected quality bar for deliverables in the
 
 The deliverable is **design documentation**, not executable instrumentation. Another developer should be able to implement events from these files without follow-up questions.
 
-## Alignment with company context
+## Alignment with company briefing
 
-All **mandatory metrics**, entity names, identifiers, and business constraints must come from the student's assigned **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Generic placeholders that ignore sector-specific metrics or naming should be treated as incomplete. Mandatory metrics are a **floor**, not a ceiling — a plan that only covers the CONTEXT table without exploring the rest of the application will not pass.
+All **mandatory metrics**, entity names, identifiers, and business constraints must come from the student's assigned **company-BRIEFING.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Generic placeholders that ignore sector-specific metrics or naming should be treated as incomplete. Mandatory metrics are a **floor**, not a ceiling — a plan that only covers the BRIEFING table without exploring the rest of the application will not pass.
 
 ---
 
@@ -20,11 +20,11 @@ All **mandatory metrics**, entity names, identifiers, and business constraints m
 A complete plan should include at least:
 
 1. **Executive summary** — why telemetry is needed now (operations questions the system cannot answer today).
-2. **Mandatory metrics** — every CONTEXT metric listed and labeled as **mandatory**, with data sources and system touchpoints.
+2. **Mandatory metrics** — every BRIEFING metric listed and labeled as **mandatory**, with data sources and system touchpoints.
 3. **Flow mapping** — inventory path from authenticated access through inbound/outbound order completion, with ≥5 instrumentation points (including rejected direct stock edits, validation failures, and threshold triggers).
 4. **Broad opportunity catalogue** — authentication, performance, frontend errors, navigation / abandoned flows, and other backoffice sections. Events labeled **mandatory** vs **identified opportunity**.
 5. **Event Envelope** — mandatory fields for every event.
-6. **Event catalog** — schemas for **all CONTEXT mandatory metrics** plus **≥8 additional events** covering **≥3 distinct categories**, each with hypothesis → decision, property allowlists, PII notes, and stream/batch rationale.
+6. **Event catalog** — schemas for **all BRIEFING mandatory metrics** plus **≥8 additional events** covering **≥3 distinct categories**, each with hypothesis → decision, property allowlists, PII notes, and stream/batch rationale.
 7. **High-frequency strategy** — throttle/debounce notes where applicable.
 8. **Risks and exclusions** — discarded events and data not captured (privacy, cost, low signal).
 
@@ -61,14 +61,14 @@ Every event in the plan should share this envelope:
 ```markdown
 ### Mandatory: `stock_threshold_triggered`
 
-- **Class:** mandatory (from CONTEXT)
+- **Class:** mandatory (from BRIEFING)
 - **Definition:** fires when product stock reaches the configured minimum threshold.
 - **Data components:** product id, current stock, threshold, location/warehouse.
 - **System touchpoints:** outbound order completion, stock recalculation service.
 - **Hypothesis → decision:** We capture `stock_threshold_triggered` because we need to know **when replenishment risk appears by location**, which allows us to decide **whether to reorder or redistribute stock that day**.
 ```
 
-Every CONTEXT row should follow the same pattern and appear in both the Markdown plan and `event-schemas.json`.
+Every BRIEFING row should follow the same pattern and appear in both the Markdown plan and `event-schemas.json`.
 
 ---
 
@@ -82,7 +82,7 @@ If the hypothesis or decision is missing, the event should not appear in the pla
 
 ## Indicative example — event definition
 
-### `outbound_order_created` (batch) — identified opportunity or mandatory if in CONTEXT
+### `outbound_order_created` (batch) — identified opportunity or mandatory if in BRIEFING
 
 | Property      | Type    | Required | Allowlist | PII |
 | ------------- | ------- | -------- | --------- | --- |
@@ -170,7 +170,7 @@ A passing plan typically designs:
 
 | Event                           | Domain      | Class typically         |
 | ------------------------------- | ----------- | ----------------------- |
-| CONTEXT mandatory `event_type`s | Business    | **mandatory** (all)     |
+| BRIEFING mandatory `event_type`s | Business    | **mandatory** (all)     |
 | `inbound_order_created`         | Inventory   | mandatory or identified |
 | `outbound_order_created`        | Inventory   | mandatory or identified |
 | `direct_stock_edit_rejected`    | Inventory   | identified              |
@@ -180,7 +180,7 @@ A passing plan typically designs:
 | `frontend_error_caught`         | Errors      | identified              |
 | `section_viewed`                | Navigation  | identified              |
 
-Names and `properties` must match the student's CONTEXT entities, not this table verbatim. Count requirement: **all CONTEXT mandatory events** + **≥8 additional** across **≥3 categories**.
+Names and `properties` must match the student's BRIEFING entities, not this table verbatim. Count requirement: **all BRIEFING mandatory events** + **≥8 additional** across **≥3 categories**.
 
 ---
 
@@ -200,8 +200,8 @@ Justifications must cite **business or operational decision timing**, not develo
 
 - Events without the golden-rule sentence (hypothesis + decision).
 - Properties not restricted to an explicit allowlist.
-- Only covering CONTEXT mandatory metrics with no broader catalogue.
-- Mandatory metrics renamed or omitted relative to CONTEXT-company.md.
+- Only covering BRIEFING mandatory metrics with no broader catalogue.
+- Mandatory metrics renamed or omitted relative to company-BRIEFING.md.
 - `event-schemas.json` out of sync with Markdown (missing events, different field names).
 - Stream chosen for all events without urgency rationale.
 - Capturing raw passwords, tokens, or full PII in `properties`.
@@ -210,7 +210,7 @@ Justifications must cite **business or operational decision timing**, not develo
 
 ## Evaluation checklist
 
-- [ ] Every mandatory metric from CONTEXT-company.md present and labeled mandatory.
+- [ ] Every mandatory metric from company-BRIEFING.md present and labeled mandatory.
 - [ ] Broad catalogue covering technical and business opportunities (not minimum-only).
 - [ ] ≥5 inventory-flow instrumentation points including rejections and thresholds.
 - [ ] Every event has hypothesis + decision; none are "just in case".
@@ -226,5 +226,5 @@ Justifications must cite **business or operational decision timing**, not develo
 ## Reviewer notes
 
 - Grade reasoning and precision, not code.
-- Accept different valid opportunity sets if justification and CONTEXT alignment are strong — mandatory CONTEXT events are non-negotiable.
+- Accept different valid opportunity sets if justification and BRIEFING alignment are strong — mandatory BRIEFING events are non-negotiable.
 - Treat property allowlists and PII documentation as security requirements, not optional detail.

@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[CONTEXT-federated-auth.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/federated-authentication)** antes de escribir una sola línea de código — ahí está el proveedor de identidad elegido y las reglas de seguridad específicas de tu empresa.
+**Antes de empezar**: lee tu **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** y tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/federated-authentication)** antes de escribir una sola línea de código — ahí está el proveedor de identidad elegido y las reglas de seguridad específicas de tu empresa.
 
 ---
 
@@ -42,7 +42,7 @@ Permitir que el login federado cree cuentas automáticamente parece más simple,
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Haz `pull` de los últimos cambios de tu fork del monorepo.
-2. Lee `COMPANY-BRIEF.md` y `CONTEXT-federated-auth.md` completos antes de tocar código.
+2. Lee `COMPANY-BRIEF.md` y `company-BRIEFING.md` completos antes de tocar código.
 3. Crea una rama nueva: `feature/federated-auth`.
 4. Revisa el flujo de autenticación actual y el modelo de usuario existente antes de decidir cómo se almacenará la vinculación.
 5. Diseña primero el diagrama de los dos flujos por separado — vinculación y login federado — porque comparten proveedor pero no comparten lógica.
@@ -74,7 +74,7 @@ Permitir que el login federado cree cuentas automáticamente parece más simple,
 - [ ] Implementa el flujo OAuth con validación de `state` y `redirect_uri` para prevenir ataques de fijación de sesión
 - [ ] Asegura que la sesión creada tras un login federado exitoso tiene el mismo nivel de expiración y revocación que una sesión tradicional
 
-⚠️ **IMPORTANTE:** el proveedor o proveedores de identidad exigidos y cualquier regla adicional de seguridad para tu empresa deben corresponder exactamente a lo especificado en tu `CONTEXT-federated-auth.md`. Una implementación genérica que ignore ese contexto no será aceptada.
+⚠️ **IMPORTANTE:** el proveedor o proveedores de identidad exigidos y cualquier regla adicional de seguridad para tu empresa deben corresponder exactamente a lo especificado en tu `company-BRIEFING.md`. Una implementación genérica que ignore ese contexto no será aceptada.
 
 ---
 

@@ -4,11 +4,11 @@ This reference solution defines the expected quality bar for Phase 2 implementat
 
 `event_type` values and property allowlists must match the student's approved `docs/telemetry/event-schemas.json` from Phase 1 — this document uses indicative examples only.
 
-## Alignment with company context
+## Alignment with company briefing
 
-Instrumentation must implement the student's approved `docs/telemetry/event-schemas.json`, grounded in **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Grade `event_type` values, property keys, and hook placement against that contract — not the indicative examples in this document.
+Instrumentation must implement the student's approved `docs/telemetry/event-schemas.json`, grounded in **company-BRIEFING.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`. Grade `event_type` values, property keys, and hook placement against that contract — not the indicative examples in this document.
 
-**Non-negotiable:** every **mandatory metric** from CONTEXT must be instrumented. A cross-cutting **technical baseline** (errors, performance, navigation) is also required — inventory-only capture is incomplete.
+**Non-negotiable:** every **mandatory metric** from BRIEFING must be instrumented. A cross-cutting **technical baseline** (errors, performance, navigation) is also required — inventory-only capture is incomplete.
 
 ---
 
@@ -166,13 +166,13 @@ export function track(
 
 ### Mandatory metrics (required)
 
-Wire **every** CONTEXT mandatory `event_type` through the approved plan — no exceptions. Typical inventory triggers (names must match student plan):
+Wire **every** BRIEFING mandatory `event_type` through the approved plan — no exceptions. Typical inventory triggers (names must match student plan):
 
 | Event                    | Trigger location               | Properties (allowlist only)                      |
 | ------------------------ | ------------------------------ | ------------------------------------------------ |
 | Inbound order success    | Order submit handler on 2xx    | `orderId`, `productId`, `quantity`, … per schema |
 | Outbound order success   | Order submit handler on 2xx    | same pattern                                     |
-| Threshold / stock alerts | Stock recalculation path       | per CONTEXT mandatory row                        |
+| Threshold / stock alerts | Stock recalculation path       | per BRIEFING mandatory row                        |
 | Order failed             | Validation / API error handler | `reason`, `productId`, … — no PII                |
 
 ### Cross-cutting technical baseline (required)
@@ -227,7 +227,7 @@ A complete submission should demonstrate:
 - Hardcoded telemetry URL instead of `NEXT_PUBLIC_TELEMETRY_ENDPOINT`
 - Per-event HTTP calls instead of queue + batch
 - Components passing `timestamp`, `sessionId`, `eventId`, `userId`, or `requestId` manually
-- Missing CONTEXT mandatory metrics
+- Missing BRIEFING mandatory metrics
 - Inventory-only capture with no technical baseline
 - Extra properties outside `event-schemas.json` allowlist
 - PII in `properties` (email, name, password)
@@ -242,9 +242,9 @@ A complete submission should demonstrate:
 - [ ] `TELEMETRY_ENDPOINT` / `NEXT_PUBLIC_TELEMETRY_ENDPOINT` env pattern established
 - [ ] Queue + 10s/20 batch + `sendBeacon` + retry with backoff
 - [ ] Single `track()` entry point; auto `eventId`, `sessionId`, `userId`, `timestamp`, `schemaVersion`, `requestId`
-- [ ] Every CONTEXT mandatory metric instrumented
+- [ ] Every BRIEFING mandatory metric instrumented
 - [ ] Technical baseline (errors, performance, navigation) instrumented
-- [ ] Instrumented events align with Phase 1 schemas grounded in CONTEXT-company.md
+- [ ] Instrumented events align with Phase 1 schemas grounded in company-BRIEFING.md
 - [ ] No PII in emitted events
 - [ ] Network evidence of batched payloads with 200 responses
 - [ ] PR title `feat: telemetry event capture` with mandatory vs identified event list
@@ -253,7 +253,7 @@ A complete submission should demonstrate:
 
 ## Reviewer notes
 
-- `event_type` values may differ per company CONTEXT — grade against the student's Phase 1 schemas, not this table verbatim.
+- `event_type` values may differ per company BRIEFING — grade against the student's Phase 1 schemas, not this table verbatim.
 - Stub intentionally skips persistence; do not penalize missing Supabase writes.
 - Web Vitals / auth instrumentation is bonus unless cohort rubric marks it required.
 - Category breadth matters: prefer covering errors + perf + nav + business over stacking inventory-only events.

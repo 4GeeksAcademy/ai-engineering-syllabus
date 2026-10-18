@@ -1,6 +1,6 @@
 # Milestone 8 Part 1 — Agent Memory and Self-Improvement — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align memorable facts, forbidden stores, and consolidation policy with their assigned `CONTEXT-company.md` under `content/contexts/08-agent-engineering/memory/`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align memorable facts, forbidden stores, and consolidation policy with their assigned `company-BRIEFING.md` under `content/contexts/08-agent-engineering/memory/`.
 
 ---
 
@@ -31,7 +31,7 @@ flowchart TD
 1. **Propose ≠ write** — memorable content is offered to the user first; the store is updated only after an explicit classified decision.
 2. **One pending proposal** — no second proposal while one is open; silence/ambiguity = reject by default.
 3. **Explicit memory interface** — no “append everything to the system prompt” as persistence.
-4. **CONTEXT fidelity** — never-store rules and memorable fact types come from the company CONTEXT, not a generic memory policy.
+4. **BRIEFING fidelity** — never-store rules and memorable fact types come from the company BRIEFING, not a generic memory policy.
 5. **Auditability** — every proposal and outcome (approve / reject / edit / timeout-discard) is logged with timestamp and source message.
 6. **Single agent** — self-evaluation is an extra structured field on the same model call, not a multi-agent graph.
 
@@ -53,18 +53,18 @@ flowchart TD
 
 ## Memory backend selection
 
-Document **why** the backend fits what the agent must remember (from CONTEXT). Indicative fits:
+Document **why** the backend fits what the agent must remember (from BRIEFING). Indicative fits:
 
 | Need                                        | Reasonable choice                          |
 | ------------------------------------------- | ------------------------------------------ |
 | Short facts / prefs / corrected procedures  | Redis or KV + optional TTL                 |
 | Semantic recall of similar past escalations | VectorDB (or hybrid: KV id + vector index) |
-| Explicit hierarchies / dependencies         | Knowledge graph (only if CONTEXT needs it) |
+| Explicit hierarchies / dependencies         | Knowledge graph (only if BRIEFING needs it) |
 | Parametric fine-tuning                      | Out of scope for this milestone            |
 
 ⚠️ **Forbidden:** upserting agent memory into Milestone 7 company RAG collections (`brasaland_knowledge`, `trackflow_knowledge`, … or any `*_knowledge` corpus). RAG may be **read** as a tool; memory persistence must use Redis/KV or a **separate** vector collection (e.g. `*_agent_memory`). Mixing curated docs with episodic/approved chat facts breaks Recall@3 / faithfulness and weakens poison controls.
 
-A generic “we used Redis because it’s popular” without tying to CONTEXT memorable types fails the rubric.
+A generic “we used Redis because it’s popular” without tying to BRIEFING memorable types fails the rubric.
 
 ---
 
@@ -93,7 +93,7 @@ or:
 }
 ```
 
-**Must NOT propose** (document ≥3 company-specific examples from CONTEXT): one-off queries, thanks/closings, single-use summaries, forbidden PII/salary/PHI/etc.
+**Must NOT propose** (document ≥3 company-specific examples from BRIEFING): one-off queries, thanks/closings, single-use summaries, forbidden PII/salary/PHI/etc.
 
 When `memory_proposal` is non-null and no pending proposal exists: surface the ask inside `reply`; store pending state. **Do not write** yet.
 
@@ -131,7 +131,7 @@ After resolution, continue the turn normally (user may approve **and** ask a new
 
 Implement at least one of: TTL, dedupe by key/semantic similarity, summarize clusters, drop low-relevance entries. Document the policy and why it matches company volume/risk.
 
-Poisoning defense (required design decision): never write without confirmation; refuse CONTEXT-forbidden content even if the user “approves”; keep rejection audits so repeated poison attempts are visible.
+Poisoning defense (required design decision): never write without confirmation; refuse forbidden-BRIEFING content even if the user “approves”; keep rejection audits so repeated poison attempts are visible.
 
 ---
 
@@ -139,7 +139,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 
 ### Cycle A — approve then reuse
 
-1. User corrects a memorable fact (CONTEXT “should propose” example).
+1. User corrects a memorable fact (BRIEFING “should propose” example).
 2. Agent proposes; does **not** write yet.
 3. User clearly approves → write + audit.
 4. Later session/turn: agent uses the stored fact without re-asking.
@@ -154,7 +154,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 
 ## PR evidence checklist
 
-- [ ] Written backend justification tied to CONTEXT memorable types.
+- [ ] Written backend justification tied to BRIEFING memorable types.
 - [ ] Memory store is not Milestone 7 `*_knowledge` / company RAG collections (RAG read-only as tool).
 - [ ] Explicit read/write interface (not prompt-only memory).
 - [ ] ≥3 memorable and ≥3 non-memorable documented examples.
@@ -163,7 +163,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 - [ ] Audit for approve and reject paths.
 - [ ] Consolidation/cleanup documented and runnable.
 - [ ] Two complete evidence cycles attached to the PR.
-- [ ] Design decisions answer CONTEXT never-store rules + no multi-agent requirement.
+- [ ] Design decisions answer BRIEFING never-store rules + no multi-agent requirement.
 
 ---
 
@@ -174,7 +174,7 @@ Poisoning defense (required design decision): never write without confirmation; 
 | Write on self-evaluation without user OK | Rubric requires explicit confirmation             |
 | `"yes" in message` as confirmation       | Ambiguous / gaming-prone; must classify intent    |
 | Unlimited append-only store              | Missing consolidation                             |
-| Ignoring CONTEXT never-store list        | Company-specific restriction fails                |
+| Ignoring BRIEFING never-store list        | Company-specific restriction fails                |
 | Writing memory into M7 `*_knowledge` RAG | RAG is read-only tool; use separate memory store  |
 | Second agent just for “memory proposal”  | Unnecessary; structured field on same call enough |
 | Assuming silence = approve               | Default must be discard                           |
@@ -182,5 +182,5 @@ Poisoning defense (required design decision): never write without confirmation; 
 ## Validation notes
 
 - Exercise approve + reject paths in Docker/test target.
-- Spot-check CONTEXT “never enter memory” items cannot be written even after a fake approve.
+- Spot-check BRIEFING “never enter memory” items cannot be written even after a fake approve.
 - Design Part 1 so Part 2 (harness) can wrap it — memory must not become an unchecked poison channel; explicit confirm already limits silent writes.

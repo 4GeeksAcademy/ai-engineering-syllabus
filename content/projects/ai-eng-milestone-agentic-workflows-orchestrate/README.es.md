@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí se definen los departamentos, el formato de las RFPs, las reglas de persistencia y los lineamientos específicos de tu empresa para esta parte del hito.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** antes de escribir cualquier línea de código — allí se definen los departamentos, el formato de las RFPs, las reglas de persistencia y los lineamientos específicos de tu empresa para esta parte del hito.
 
 ---
 
@@ -44,7 +44,7 @@ El equipo de Ventas recibe cada semana decenas de RFPs (_Request for Proposal_) 
 
 Las RFPs reales llegan como PDF. Convertirlas a Markdown antes del LLM reduce costo de tokens y ruido. Usa `py-readability-metrics` sobre el Markdown para estimar costo de procesamiento (Flesch-Kincaid, Gunning Fog, etc.), no como nota literaria.
 
-**Modo ticket** significa que cada subida es una fila con ciclo de vida que la UI puede consultar. El mismo ticket continúa en partes posteriores — el vocabulario completo vive en el CONTEXT. **Esta parte solo usa:**
+**Modo ticket** significa que cada subida es una fila con ciclo de vida que la UI puede consultar. El mismo ticket continúa en partes posteriores — el vocabulario completo vive en el BRIEFING. **Esta parte solo usa:**
 
 | Estado              | Cuándo                                                                        |
 | ------------------- | ----------------------------------------------------------------------------- |
@@ -72,7 +72,7 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 2. Instala las dependencias nuevas que necesites con `uv add` (por ejemplo, `uv add markitdown` y `uv add py-readability-metrics`) — nunca con `pip install` ni `pipenv`.
 3. Extiende `uis/backoffice` para la UI de subida — no crees una app frontend nueva.
 4. Añade rutas HTTP en el **backend existente** bajo `services/` (mismo proceso / mismo API). Implementa el pipeline de agentes en `data/pipelines/` (p. ej. `data/pipelines/rfp_intake/`). Pon runners CLI sueltos en `scripts/` si hace falta.
-5. Lee tu `CONTEXT-company.md` antes de definir departamentos, esquema o RFPs de prueba. Usa los PDF de muestra en `rfp-requests/<empresa>/` de la carpeta CONTEXT — súbelos por la UI para verificar el flujo.
+5. Lee tu `company-BRIEFING.md` antes de definir departamentos, esquema o RFPs de prueba. Usa los PDF de muestra en `rfp-requests/<empresa>/` de la carpeta BRIEFING — súbelos por la UI para verificar el flujo.
 
 ---
 
@@ -94,7 +94,7 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 **Ingesta y conversión del documento**
 
 - [ ] Convierte cada RFP de PDF a Markdown **antes** de que cualquier agente la lea (obligatorio: MarkItDown o equivalente documentado)
-- [ ] Extrae metadatos del documento convertido (campos que pide tu CONTEXT)
+- [ ] Extrae metadatos del documento convertido (campos que pide tu BRIEFING)
 - [ ] Calcula métricas de legibilidad que anticipen el costo de procesamiento (se sugiere `py-readability-metrics`)
 - [ ] Guarda metadatos y métricas en PostgreSQL junto al ticket
 
@@ -114,18 +114,18 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 
 - [ ] Implementa el enrutamiento del documento clasificado hacia el resto del flujo agéntico (flag en cola, campo en DB o contrato de handoff documentado — sin segundo API). El handoff **debe** llevar `ticket_id` + payload del synthesizer (`key_aspects` / estructura de workstreams) para que la Parte 2 arranque sin re-parsear el PDF.
 
-⚠️ **IMPORTANTE:** Los nombres de los departamentos, el formato de las RFPs y los criterios de clasificación deben coincidir con lo que se especifica en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de los departamentos, el formato de las RFPs y los criterios de clasificación deben coincidir con lo que se especifica en tu `company-BRIEFING.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Pruebas**
 
 - [ ] Incluye pruebas unitarias en `tests/pipelines/` para el agente clasificador y para al menos un agente worker
-- [ ] Verifica contra los PDF de muestra del CONTEXT (formal aceptar, informal aceptar, inválido rechazar) subiéndolos por la UI
+- [ ] Verifica contra los PDF de muestra del BRIEFING (formal aceptar, informal aceptar, inválido rechazar) subiéndolos por la UI
 
 ---
 
 ## 🧭 Preguntas de Diseño
 
-- ¿Qué pasa si una RFP menciona un departamento que no existe en tu `CONTEXT-company.md`? ¿Cómo lo maneja tu clasificador/orquestador?
+- ¿Qué pasa si una RFP menciona un departamento que no existe en tu `company-BRIEFING.md`? ¿Cómo lo maneja tu clasificador/orquestador?
 - ¿Qué necesita realmente cada worker del estado compartido? ¿Le pasas el documento completo o solo lo relevante — y qué haces si falta una cifra requerida?
 - ¿Cómo decides que un documento "no es una RFP"? ¿Qué pasa con un falso negativo?
 - ¿Qué pasa si dos workers devuelven información contradictoria sobre la misma sección?
@@ -144,9 +144,9 @@ Sigue trabajando sobre la copia (fork) del monorepo de tu empresa que vienes usa
 - [ ] Metadatos y métricas de legibilidad almacenados por documento procesado
 - [ ] Orchestrator-worker-synthesizer como agentes separados en un grafo `rfp_intake` dedicado
 - [ ] El handoff de enrutamiento lleva `ticket_id` + payload synthesizer / `key_aspects` para la Parte 2 (flag de cola, campo DB o contrato documentado)
-- [ ] El resultado final lista aspectos clave + contactos por departamento — verificable contra los PDF de muestra del CONTEXT
+- [ ] El resultado final lista aspectos clave + contactos por departamento — verificable contra los PDF de muestra del BRIEFING
 - [ ] Pruebas unitarias del clasificador y al menos un worker
-- [ ] La implementación usa los departamentos y el formato de RFP del `CONTEXT-company.md` de tu empresa
+- [ ] La implementación usa los departamentos y el formato de RFP del `company-BRIEFING.md` de tu empresa
 
 ---
 
@@ -156,7 +156,7 @@ Esta es la Parte 1 de 3 del Hito. Entrégala con su propio Pull Request contra t
 
 1. Haz commit y push de tu rama `feature/rfp-intake`
 2. Abre un Pull Request describiendo qué implementaste y cómo probarlo
-3. Incluye en la descripción del PR un ejemplo de RFP de prueba (de `rfp-requests/` del CONTEXT) y el resultado que produce tu flujo
+3. Incluye en la descripción del PR un ejemplo de RFP de prueba (de `rfp-requests/` del BRIEFING) y el resultado que produce tu flujo
 4. Solicita revisión a tu tech lead
 
 ---

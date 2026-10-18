@@ -93,7 +93,7 @@ Como mínimo, tu proyecto debe incluir un comando claro para validar o ejecutar 
 
 2. Una vez tengas tu propio repositorio, ábrelo en **GitHub Codespaces** o clónalo localmente.
 
-3. Lee completamente tu archivo **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/02-coding-fundamentals)** antes de escribir código. Allí encontrarás:
+3. Lee completamente tu archivo **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/02-coding-fundamentals)** antes de escribir código. Allí encontrarás:
    - Las entidades específicas que debes modelar (productos, clientes, pedidos, etc.)
    - Los nombres exactos de los campos y sus tipos
    - Las reglas de validación específicas de tu empresa
@@ -119,22 +119,22 @@ Como mínimo, tu proyecto debe incluir un comando claro para validar o ejecutar 
 
 ## 💻 Lo que Debes Hacer
 
-Implementa las siguientes funcionalidades en TypeScript. Todos los nombres de entidades, campos y reglas deben coincidir exactamente con lo especificado en tu CONTEXT.md.
+Implementa las siguientes funcionalidades en TypeScript. Todos los nombres de entidades, campos y reglas deben coincidir exactamente con lo especificado en tu BRIEFING.md.
 
 ### Backend / Lógica
 
-- [ ] Define las **interfaces TypeScript** para todas las entidades principales de tu empresa especificadas en tu CONTEXT.md
+- [ ] Define las **interfaces TypeScript** para todas las entidades principales de tu empresa especificadas en tu BRIEFING.md
 - [ ] Implementa funciones de **filtrado** que permitan buscar elementos por uno o más criterios (por ejemplo: filtrar por categoría, por rango de precio, por estado)
 - [ ] Implementa funciones de **ordenamiento** que ordenen arrays según diferentes criterios (ascendente, descendente, por múltiples campos)
 - [ ] Implementa **búsqueda lineal** para encontrar elementos en arrays desordenados
 - [ ] Implementa **búsqueda binaria** para encontrar elementos en arrays previamente ordenados
 - [ ] Crea funciones de **agregación** que generen reportes: contar elementos por categoría, calcular totales, promedios, máximos y mínimos
-- [ ] Implementa **validaciones de negocio** que verifiquen que los objetos cumplen con las reglas de tu CONTEXT.md antes de ser procesados
+- [ ] Implementa **validaciones de negocio** que verifiquen que los objetos cumplen con las reglas de tu BRIEFING.md antes de ser procesados
 - [ ] Todas las funciones deben tener **tipos explícitos** en parámetros y valores de retorno
 - [ ] El código debe seguir el principio de **responsabilidad única**: cada función hace una sola cosa
 - [ ] El proyecto incluye un comando claro para validar o ejecutar el código TypeScript durante el desarrollo
 
-⚠️ **IMPORTANTE:** Los nombres de campos, tipos de entidades y reglas de validación en tu implementación deben coincidir exactamente con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, tipos de entidades y reglas de validación en tu implementación deben coincidir exactamente con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 ### Frontend / Pruebas (Opcional)
 
@@ -163,13 +163,13 @@ npx http-server . -p 3000 -a 0.0.0.0
 
 ### Corrección técnica
 
-- [ ] Las interfaces TypeScript modelan correctamente las entidades especificadas en el CONTEXT.md con todos sus campos y tipos
+- [ ] Las interfaces TypeScript modelan correctamente las entidades especificadas en el BRIEFING.md con todos sus campos y tipos
 - [ ] Las funciones de filtrado devuelven correctamente los elementos que cumplen los criterios especificados
 - [ ] El ordenamiento funciona correctamente en orden ascendente y descendente
 - [ ] La búsqueda lineal encuentra elementos en arrays desordenados sin errores
 - [ ] La búsqueda binaria funciona correctamente en arrays ordenados y devuelve el índice correcto o -1 si no se encuentra
 - [ ] Las agregaciones calculan correctamente totales, promedios, conteos y valores extremos
-- [ ] Las validaciones rechazan datos que no cumplen con las reglas de negocio del CONTEXT.md
+- [ ] Las validaciones rechazan datos que no cumplen con las reglas de negocio del BRIEFING.md
 - [ ] No hay errores de compilación de TypeScript en ningún archivo
 - [ ] Existe un comando documentado para validar o ejecutar TypeScript en local (`npx tsc --noEmit`, `npm run typecheck`, etc.)
 
@@ -181,9 +181,9 @@ npx http-server . -p 3000 -a 0.0.0.0
 
 ### Adaptación al contexto
 
-- [ ] Todos los nombres de entidades, campos y tipos coinciden exactamente con los especificados en el CONTEXT.md
-- [ ] Las validaciones implementadas corresponden a las reglas de negocio definidas en el CONTEXT.md
-- [ ] Los reportes generados responden a las necesidades específicas descritas en el CONTEXT.md
+- [ ] Todos los nombres de entidades, campos y tipos coinciden exactamente con los especificados en el BRIEFING.md
+- [ ] Las validaciones implementadas corresponden a las reglas de negocio definidas en el BRIEFING.md
+- [ ] Los reportes generados responden a las necesidades específicas descritas en el BRIEFING.md
 
 ### Calidad de código
 

@@ -374,7 +374,7 @@ A complete submission should demonstrate:
 
 ## Reviewer notes
 
-- Which endpoint gets converted varies per company CONTEXT — grade against the student's justification, not a fixed route name.
+- Which endpoint gets converted varies per company BRIEFING — grade against the student's justification, not a fixed route name.
 - Task implementation details (report generation, batch processing, notification send) depend on prior milestones — evaluate queue mechanics, not business logic specifics.
 - `mher/flower` vs `celery flower` both acceptable if monitoring works on `:5555`.
 - DLQ can be a dedicated Celery queue **or** a database table — this project requires the **database record** with `task_id`, attempt, and error.

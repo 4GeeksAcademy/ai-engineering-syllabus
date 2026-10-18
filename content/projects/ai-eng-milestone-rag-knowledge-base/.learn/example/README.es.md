@@ -14,7 +14,7 @@ El personal de mostrador de **Maple Street Library** responde a diario las misma
 
 | Proyecto evaluable (`ai-eng-milestone-rag-knowledge-base`) | Este ejemplo de clase              |
 | ---------------------------------------------------------- | ---------------------------------- |
-| Monorepo completo + documentos de `CONTEXT-company.md`     | Mini `library-api` + 3 archivos MD |
+| Monorepo completo + documentos de `company-BRIEFING.md`     | Mini `library-api` + 3 archivos MD |
 | Nombre de colección específico de empresa                  | `maple_knowledge`                  |
 | Integración UI en backoffice                               | Página única bajo `uis/`           |
 | PR al fork del estudiante                                  | Qdrant local vía Docker            |

@@ -10,7 +10,7 @@ _These instructions are also available in [English](./README.md)._
 
 ### Nota de alcance
 
-Solo para sesión en vivo. Mismos patrones SDD que el proyecto oficial; catálogos CONTEXT y profundidad del monorepo reducidos. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+Solo para sesión en vivo. Mismos patrones SDD que el proyecto oficial; catálogos BRIEFING y profundidad del monorepo reducidos. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
 
 Una cocina de coworking controla café, leche y snacks. Antes editaban un número `stock` en una hoja. Ops quiere un tablero mínimo: alta de artículos, movimientos, nunca tocar stock directo — y marcar lo que esté bajo el punto de reorden.
 

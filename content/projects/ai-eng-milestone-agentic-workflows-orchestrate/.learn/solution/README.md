@@ -1,6 +1,6 @@
 # Milestone 9 Part 1 — RFP Intake & Orchestration — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align departments, RFP format, and classification criteria with their assigned `CONTEXT-company.md`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align departments, RFP format, and classification criteria with their assigned `company-BRIEFING.md`.
 
 ---
 
@@ -35,7 +35,7 @@ flowchart LR
 1. **One backend** — extend existing `services/` API; no second HTTP service. Standalone CLIs → `scripts/`.
 2. **Pipeline owns the graph** — LangGraph (or equivalent) lives under `data/pipelines/rfp_intake/`; routers only create tickets, enqueue, and query Postgres.
 3. **Postgres source of truth** — Ticket, RFP metadata, and `key_aspects` in Supabase/PostgreSQL (SQLModel). Not TinyDB / JSON-as-DB.
-4. **PDF via UI → `data/raw/`** — runtime artifact of intake; test with CONTEXT `rfp-requests/` uploaded through the UI.
+4. **PDF via UI → `data/raw/`** — runtime artifact of intake; test with BRIEFING `rfp-requests/` uploaded through the UI.
 5. **Convert before classify** — no agent reads raw PDF bytes; Markdown first (MarkItDown or documented equivalent).
 6. **Classifier is a hard gate** — non-RFP → `discarded`; do not enqueue orchestrator.
 7. **Separate agents** — orchestrator, workers, synthesizer are distinct nodes — dedicated `rfp_intake` graph, not bolted onto CX.
@@ -85,14 +85,14 @@ Persist in PostgreSQL: ticket id, `raw_pdf_path`, markdown path, metadata JSON/c
 {
   "is_rfp": true,
   "confidence": 0.94,
-  "reason": "Contains scope, pricing request, and submission deadline per CONTEXT RFP template.",
+  "reason": "Contains scope, pricing request, and submission deadline per BRIEFING RFP template.",
   "detected_departments": ["operaciones", "procurement"]
 }
 ```
 
 If `is_rfp` is false: set ticket `discarded`, log reason, **do not** enqueue orchestrator. Other tickets continue independently.
 
-Unit tests: CONTEXT formal RFP, informal RFP, invalid reject (and HealthCore PHI case if assigned).
+Unit tests: BRIEFING formal RFP, informal RFP, invalid reject (and HealthCore PHI case if assigned).
 
 ---
 
@@ -146,7 +146,7 @@ Workers run in parallel where the runtime allows; synthesizer waits for all work
 
 ## Readability & metadata
 
-Use `py-readability-metrics` on Markdown body. Store alongside CONTEXT-required metadata fields in Postgres.
+Use `py-readability-metrics` on Markdown body. Store alongside required-BRIEFING metadata fields in Postgres.
 
 ---
 
@@ -166,9 +166,9 @@ Part 1 ends with **routing**: validated RFP + synthesizer output ready for Part 
 - [ ] Classifier rejects non-RFP with `discarded`
 - [ ] Orchestrator / workers / synthesizer as separate agents
 - [ ] Routing handoff: `ticket_id` + synthesizer payload ready for Part 2
-- [ ] Final output lists per-department needs + contacts (CONTEXT-aligned)
+- [ ] Final output lists per-department needs + contacts (aligned-BRIEFING)
 - [ ] Unit tests: classifier + ≥1 worker
-- [ ] Sample CONTEXT RFP + pipeline output attached to PR
+- [ ] Sample BRIEFING RFP + pipeline output attached to PR
 
 ---
 
@@ -185,13 +185,13 @@ Part 1 ends with **routing**: validated RFP + synthesizer output ready for Part 
 | PDF sent directly to LLM                    | Convert first                               |
 | Silent failure on non-RFP                   | Explicit `discarded`                        |
 | Invented volumes in workers                 | Use `open_questions`                        |
-| Generic department names                    | Must match CONTEXT                          |
+| Generic department names                    | Must match BRIEFING                          |
 
 ---
 
 ## Validation notes
 
-- Run pipeline via Docker/test target; upload CONTEXT sample PDFs through UI.
+- Run pipeline via Docker/test target; upload BRIEFING sample PDFs through UI.
 - Upload non-RFP; confirm `discarded` and no worker invocation.
 - Confirm rows in Postgres for ticket / metadata / key_aspects.
 - Confirm PDF path under `data/raw/` and synthesizer JSON enough for Sales without opening the PDF.

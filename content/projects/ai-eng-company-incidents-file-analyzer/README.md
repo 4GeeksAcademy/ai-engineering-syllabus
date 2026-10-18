@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start:** Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incidents-file-analysis)** before writing any code — it defines the exact CSV field names, valid categories, allowed statuses, and the expected output values your implementation must produce.
+**Before you start:** Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/incidents-file-analysis)** before writing any code — it defines the exact CSV field names, valid categories, allowed statuses, and the expected output values your implementation must produce.
 
 ---
 
@@ -25,11 +25,11 @@ The problem is that **this file cannot be sent to an AI tool**. It contains sens
 
 Your tech lead has decided to proceed in two phases. First, a Python script to quickly validate that the analysis process works correctly on the 100-record test file. If the output is correct, the script will be run on the full production file. Once the logic is confirmed solid, the functionality will be integrated into the platform your company is already building: a backend API and a web interface from which the team can upload the file, view the summary, and export the results.
 
-> **Note from your tech lead:** _"Start with the script — we need to confirm that the validation logic and metric calculations are correct before building anything on top of them. Once the script works and the numbers match the expected values in the CONTEXT, move it into the API and build the interface. The end goal is that anyone on the team can upload the file from the browser, see the summary on screen, and download it as CSV without touching the terminal."_
+> **Note from your tech lead:** _"Start with the script — we need to confirm that the validation logic and metric calculations are correct before building anything on top of them. Once the script works and the numbers match the expected values in the BRIEFING, move it into the API and build the interface. The end goal is that anyone on the team can upload the file from the browser, see the summary on screen, and download it as CSV without touching the terminal."_
 
 ### What counts as an incomplete or corrupt record?
 
-Real-world data always has problems. For this project, a record is considered **invalid** if it is missing at least one of the required fields defined in your CONTEXT, or if it contains a value in a field that is not within the allowed set (statuses and categories). The logic must detect them, count them, and exclude them from the main analysis — but never silently ignore them.
+Real-world data always has problems. For this project, a record is considered **invalid** if it is missing at least one of the required fields defined in your BRIEFING, or if it contains a value in a field that is not within the allowed set (statuses and categories). The logic must detect them, count them, and exclude them from the main analysis — but never silently ignore them.
 
 > 🔀 **PR approved → merge it into `main`.** Otherwise the feature never gets deployed, and your next branch starts from outdated code, which leads to merge conflicts.
 
@@ -43,7 +43,7 @@ Real-world data always has problems. For this project, a record is considered **
    https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo
    ```
 
-2. Read your **CONTEXT-company.md** file before writing a single line of code. It defines the CSV structure, required fields, valid values, and the expected results your implementation must match.
+2. Read your **company-BRIEFING.md** file before writing a single line of code. It defines the CSV structure, required fields, valid values, and the expected results your implementation must match.
 3. Work inside the corresponding folders of the monorepo (see the submission section).
 
 There is no starter code. The project starts from scratch.
@@ -60,11 +60,11 @@ There is no starter code. The project starts from scratch.
 - [ ] Calculate the following metrics on **valid records**:
   - [ ] Total number of elements processed (valid and invalid separately).
   - [ ] Breakdown by incident category.
-  - [ ] Breakdown by status (`open`, `closed`, `discarded` — or their equivalents in your CONTEXT).
+  - [ ] Breakdown by status (`open`, `closed`, `discarded` — or their equivalents in your BRIEFING).
   - [ ] Average satisfaction index for closed cases that have a recorded score.
 - [ ] Print the summary to the console in a readable format: use separators, clear labels, and alignment.
 - [ ] At the end of execution, ask the user: `Export results to CSV? [y / n]`. If they choose `y`, save the results to `results.csv` (one row per metric).
-- [ ] Verify that the results match exactly the expected values in your CONTEXT.
+- [ ] Verify that the results match exactly the expected values in your BRIEFING.
 
 ### Phase 2 — Integration into the platform
 
@@ -85,7 +85,7 @@ Once the script logic is validated, extract that same logic into reusable servic
 - [ ] Include a button to download the results as CSV.
 - [ ] Inform the user if the file contains invalid records and how many of each type.
 
-⚠️ **IMPORTANT:** Field names, categories, statuses, and expected values in your implementation must match exactly what is specified in your CONTEXT.md. A generic implementation that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** Field names, categories, statuses, and expected values in your implementation must match exactly what is specified in your BRIEFING.md. A generic implementation that ignores your company's context will not be accepted.
 
 ---
 
@@ -97,7 +97,7 @@ Once the script logic is validated, extract that same logic into reusable servic
 - [ ] Detects, classifies, and shows invalid records with their type of problem.
 - [ ] All five required metrics appear in the console output with a readable format.
 - [ ] CSV export works and produces a well-structured file.
-- [ ] Results match exactly the expected values in the CONTEXT.
+- [ ] Results match exactly the expected values in the BRIEFING.
 
 ### Backend
 
@@ -126,7 +126,7 @@ The project must be organised in the monorepo as follows:
 ```text
 scripts/
   analyze.py              ← analysis script (Phase 1)
-  incidents-COMPANY.csv   ← test file (attached, see CONTEXT)
+  incidents-COMPANY.csv   ← test file (attached, see BRIEFING)
 
 services/
   api/                    ← backend with analysis and export endpoints

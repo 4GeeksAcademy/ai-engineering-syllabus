@@ -16,7 +16,7 @@ Pause only the waiting branch. Persist with a checkpointer. Resume without resta
 
 | Graded project (`ai-eng-milestone-agentic-workflows-produce`) | This class example                |
 | ------------------------------------------------------------- | --------------------------------- |
-| Company monorepo + CONTEXT approvers / §7 arbitration         | Maple Street grant desk only      |
+| Company monorepo + BRIEFING approvers / §7 arbitration         | Maple Street grant desk only      |
 | Full Parts 1–2 pipeline                                       | Fixture Part 2 assignment tickets |
 | SQLite/Postgres checkpointer                                  | SQLite file checkpointer          |
 | Full `uis/backoffice` approval UI                             | CLI approve/reject + JSON ticket  |

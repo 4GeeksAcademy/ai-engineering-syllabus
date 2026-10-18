@@ -11,12 +11,12 @@ Emoji legend — severity: ⛔️ blocker · ⚠️ warning · 🧴 cosmetic. Ca
 
 ## Summary
 
-| ID       | Sev         | Category         | Location                                     | Issue                                          |
-| -------- | ----------- | ---------------- | -------------------------------------------- | ---------------------------------------------- |
-| INTRA-01 | ⛔️ blocker  | 👷‍♂️ intra-project | README · What We Will Evaluate               | Eval "X" has no matching deliverable           |
-| CTX-01   | ⚠️ warning  | 📄 context       | README · Challenge                           | README says 5 roles; CONTEXT-brasaland lists 3 |
-| SOL-01   | ⚠️ warning  | 💡 solution      | .learn/solution/README.md                    | Requirement "daily summary" not covered        |
-| XPROJ-01 | 🧴 cosmetic | ❎ cross-project | openclaw-memory vs openclaw-onboarding-agent | Wording drift in shared terminology            |
+| ID       | Sev         | Category         | Location                                     | Issue                                           |
+| -------- | ----------- | ---------------- | -------------------------------------------- | ----------------------------------------------- |
+| INTRA-01 | ⛔️ blocker  | 👷‍♂️ intra-project | README · What We Will Evaluate               | Eval "X" has no matching deliverable            |
+| CTX-01   | ⚠️ warning  | 📄 briefing      | README · Challenge                           | README says 5 roles; brasaland-BRIEFING lists 3 |
+| SOL-01   | ⚠️ warning  | 💡 solution      | .learn/solution/README.md                    | Requirement "daily summary" not covered         |
+| XPROJ-01 | 🧴 cosmetic | ❎ cross-project | openclaw-memory vs openclaw-onboarding-agent | Wording drift in shared terminology             |
 
 ## Findings
 
@@ -29,11 +29,11 @@ Emoji legend — severity: ⛔️ blocker · ⚠️ warning · 🧴 cosmetic. Ca
   - A) <change side 1 to match side 2>
   - B) <change side 2 to match side 1>
 
-### CTX-01 · ⚠️ warning · 📄 context
+### CTX-01 · ⚠️ warning · 📄 briefing
 
-- **Where:** _Challenge_ ↔ `CONTEXT-<company>.en.md`
+- **Where:** _Challenge_ ↔ `<company>-BRIEFING.en.md`
 - **README:** [content/projects/<slug>/README.md](content/projects/<slug>/README.md)
-- **Context:** [content/contexts/<ctx>/CONTEXT-<company>.en.md](content/contexts/<ctx>/CONTEXT-<company>.en.md)
+- **Context:** [content/contexts/<ctx>/<company>-BRIEFING.en.md](content/contexts/<ctx>/<company>-BRIEFING.en.md)
 - **Conflict:** <one line>
 - **Alternatives:**
   - A) <align README to context>
@@ -56,4 +56,4 @@ Emoji legend — severity: ⛔️ blocker · ⚠️ warning · 🧴 cosmetic. Ca
 - Never recommend which alternative to take unless the user asks — present both.
 - If a project is clean, say so explicitly instead of inventing findings.
 - Issue IDs are report-global: number each category continuously across the whole report and never reset per project. Tell projects apart via the location + README link.
-- Every finding must include a clickable **README** link so the user can jump to the file. Make link paths workspace-root-relative, i.e. prefix with the repo folder: `ai-engineering-syllabus/content/projects/<slug>/README.md` (same for context: `ai-engineering-syllabus/<ctx-folder>/CONTEXT-<company>.en.md`). Use the `dir` field from the script output to build these.
+- Every finding must include a clickable **README** link so the user can jump to the file. Make link paths workspace-root-relative, i.e. prefix with the repo folder: `ai-engineering-syllabus/content/projects/<slug>/README.md` (same for context: `ai-engineering-syllabus/<ctx-folder>/<company>-BRIEFING.en.md`). Use the `dir` field from the script output to build these.

@@ -10,7 +10,7 @@ _These instructions are also available in [English](./README.md)._
 
 ### Nota de alcance
 
-Solo para sesión en vivo. Mismos patrones que el proyecto oficial; catálogos CONTEXT y profundidad del monorepo reducidos. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
+Solo para sesión en vivo. Mismos patrones que el proyecto oficial; catálogos BRIEFING y profundidad del monorepo reducidos. Los estudiantes siguen el enunciado completo en el `README.md` de la raíz del proyecto.
 
 Una cadena pequeña de cafeterías tiene tres locales. Los turnos reportan fallos de equipo y huecos de personal por WhatsApp o teléfono; nada está centralizado. La responsable de ops quiere un tablero mínimo: registrar, asignar área, mover estado y ver quién cambió qué.
 

@@ -71,7 +71,7 @@ The report must **explicitly interpret** which pattern the curve shows — not j
 
 ## Metric selection (MAE vs RMSE)
 
-Calculate both on training and validation. Choose one as primary based on business cost from `CONTEXT-company.md`:
+Calculate both on training and validation. Choose one as primary based on business cost from `company-BRIEFING.md`:
 
 | Metric   | Penalizes                            | Better when...                                                                 |
 | -------- | ------------------------------------ | ------------------------------------------------------------------------------ |
@@ -80,7 +80,7 @@ Calculate both on training and validation. Choose one as primary based on busine
 
 Example justification:
 
-> Our CONTEXT indicates underestimating peak-season sales causes stockouts — large errors are disproportionately costly. RMSE is the primary metric because it penalizes those large misses more than MAE.
+> Our BRIEFING indicates underestimating peak-season sales causes stockouts — large errors are disproportionately costly. RMSE is the primary metric because it penalizes those large misses more than MAE.
 
 ---
 
@@ -117,7 +117,7 @@ def test_temporal_cv_preserves_chronological_order():
 - [ ] Primary metric reported as mean ± standard deviation across folds
 - [ ] Learning curve saved to `data/eval/learning_curve.png` with explicit interpretation
 - [ ] MAE and RMSE calculated for train and validation
-- [ ] Primary metric justified with business context from `CONTEXT.md`
+- [ ] Primary metric justified with business context from `BRIEFING.md`
 - [ ] Report classifies model as well fitted / underfitting / overfitting with evidence
 - [ ] Corrective action is specific and tied to the diagnosis
 - [ ] Chronological-order unit test passes

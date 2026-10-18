@@ -1,6 +1,6 @@
 ---
 name: project-analyzer
-description: Analyze ai-engineering-syllabus projects for inconsistencies and conflicts — within a single project (challenge vs deliverables vs evals), between a project README and its CONTEXT file(s), between a project and its reference solution, and across a group of projects. Read-only. Produces a chat report of findings plus solution alternatives. Use when the user asks to analyze, audit, review coherence of, or find conflicts/inconsistencies in one or more projects under content/projects.
+description: Analyze ai-engineering-syllabus projects for inconsistencies and conflicts — within a single project (challenge vs deliverables vs evals), between a project README and its BRIEFING file(s), between a project and its reference solution, and across a group of projects. Read-only. Produces a chat report of findings plus solution alternatives. Use when the user asks to analyze, audit, review coherence of, or find conflicts/inconsistencies in one or more projects under content/projects.
 ---
 
 # Project Analyzer
@@ -10,13 +10,13 @@ Read-only coherence auditor for projects under `ai-engineering-syllabus/content/
 ## Scope of analysis (4 checks)
 
 1. **INTRA** — intra-project coherence: the Challenge, _What You Need to Do_ (deliverables), and _What We Will Evaluate_ (evals) must agree. Every deliverable should be evaluated; every eval should trace to a deliverable and to the challenge.
-2. **CTX** — README vs its context files under `content/contexts/`: fields, roles, deliverables, constraints referenced in the README must match the context. The script resolves the context folder by project slug or prefix-stripped slug, so it only auto-links **standalone project contexts** (topic-named folders like `supplier-directory`, `openclaw-onboarding-agent`). **Module-numbered milestone contexts** (`00-general-contexts` … `10-realtime`) are NOT auto-linked yet; for `ai-eng-milestone-*` projects, if the script returns no `context`, resolve the folder manually (slug suffix ≈ folder name minus its number) and read the English `CONTEXT-*.md` files before doing the CTX check. Many non-milestone projects have no company context — that is expected, not a finding.
+2. **CTX** — README vs its briefing files under `content/contexts/`: fields, roles, deliverables, constraints referenced in the README must match the briefing. The script resolves the context folder by project slug or prefix-stripped slug, so it only auto-links **standalone project briefings** (topic-named folders like `supplier-directory`, `openclaw-onboarding-agent`). **Module-numbered milestone briefings** (`00-general-contexts` … `10-realtime`) are NOT auto-linked yet; for `ai-eng-milestone-*` projects, if the script returns no `context`, resolve the folder manually (slug suffix ≈ folder name minus its number) and read the English `*-BRIEFING.md` files before doing the CTX check. Many non-milestone projects have no company briefing — that is expected, not a finding.
 3. **SOL** — `.learn/solution/README.md` vs the project's stated requirements + eval criteria: the solution must actually cover them.
-4. **XPROJ** — cross-project: contradictions, overlaps, and scope collisions across a group (grouped by slug prefix or shared CONTEXT company).
+4. **XPROJ** — cross-project: contradictions, overlaps, and scope collisions across a group (grouped by slug prefix or shared BRIEFING company).
 
 **Out of scope (do not report):** `learn.json` metadata coherence, and EN/ES translation drift (`README.md` vs `README.es.md`).
 
-**English files only.** Analyze `README.md`, `.learn/solution/README.md`, and English context files (`CONTEXT-*.en.md` or no-language `CONTEXT-*.md`) exclusively. Never read or analyze `*.es.md` files. The script already excludes Spanish bodies from its output.
+**English files only.** Analyze `README.md`, `.learn/solution/README.md`, and English briefing files (`*-BRIEFING.en.md` or no-language `*-BRIEFING.md`) exclusively. Never read or analyze `*.es.md` files. The script already excludes Spanish bodies from its output.
 
 ## Hard rules
 
@@ -41,8 +41,8 @@ python3 .../analyze_projects.py --repo-root ai-engineering-syllabus --projects <
 # grouped by slug prefix (e.g. openclaw, ai-eng)
 python3 .../analyze_projects.py --repo-root ai-engineering-syllabus --group-prefix openclaw
 
-# grouped by shared CONTEXT company (e.g. brasaland, nexova)
-python3 .../analyze_projects.py --repo-root ai-engineering-syllabus --group-context brasaland
+# grouped by shared BRIEFING company (e.g. brasaland, nexova)
+python3 .../analyze_projects.py --repo-root ai-engineering-syllabus --group-briefing brasaland
 
 # everything
 python3 .../analyze_projects.py --repo-root ai-engineering-syllabus --all
@@ -64,7 +64,7 @@ For each project in scope, reason over the extracted structure:
 - **SOL:** Check the solution covers each requirement and satisfies each eval criterion. Flag requirements/evals with no corresponding solution coverage, and solution steps that contradict the stated requirements.
 - **XPROJ:** Skip entirely when `scope_count == 1` (nothing to compare). Otherwise, using `groups.by_context_company` (and `by_slug_prefix` only if `--group-by-prefix` was passed), compare projects in the set. Flag contradictory instructions/facts, duplicate or near-duplicate deliverables, and scope overlaps between sibling projects.
 
-Read additional files directly when the JSON is insufficient (e.g. full solution body, a specific English context file). Never open `*.es.md` files.
+Read additional files directly when the JSON is insufficient (e.g. full solution body, a specific English briefing file). Never open `*.es.md` files.
 
 ### Step 3 — Report (chat only)
 
@@ -77,7 +77,7 @@ Use the [report template](report-template.md). Each finding gets: a stable **iss
 | Category | Emoji | Meaning                                                  |
 | -------- | ----- | -------------------------------------------------------- |
 | `INTRA`  | 👷‍♂️    | intra-project: challenge ↔ deliverables ↔ evals mismatch |
-| `CTX`    | 📄    | context: README ↔ CONTEXT mismatch                       |
+| `CTX`    | 📄    | briefing: README ↔ BRIEFING mismatch                     |
 | `SOL`    | 💡    | solution ↔ requirements/evals mismatch                   |
 | `XPROJ`  | ❎    | cross-project conflict/overlap                           |
 

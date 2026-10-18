@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Reference quality bar for the company's **first public website**: semantic landing page, CONTEXT-driven application form, Tailwind styling, accessibility, Schema.org, and client-side validation. No backend required.
+Reference quality bar for the company's **first public website**: semantic landing page, driven-BRIEFING application form, Tailwind styling, accessibility, Schema.org, and client-side validation. No backend required.
 
 ## Expected File Structure
 
@@ -11,7 +11,7 @@ Reference quality bar for the company's **first public website**: semantic landi
 ├── index.html          # landing page
 ├── application.html    # sign-up / application form
 ├── validation.js       # all form validation logic
-└── CONTEXT.md          # company-specific fields (from syllabus contexts)
+└── BRIEFING.md          # company-specific fields (from syllabus contexts)
 ```
 
 Serve during development (Codespaces-compatible):
@@ -35,7 +35,7 @@ Prefer PageSpeed Insights on the **public Codespaces URL** (port forwarding → 
 
 ### Application form (`application.html`)
 
-- All fields from student's **CONTEXT.md** with correct `name`, `type`, and labels.
+- All fields from student's **BRIEFING.md** with correct `name`, `type`, and labels.
 - `<label for="...">` on every input; `<fieldset>`/`<legend>` for grouped fields.
 - `required` on mandatory fields; submit + clear buttons.
 - Tailwind focus/error/success states.
@@ -45,7 +45,7 @@ Prefer PageSpeed Insights on the **public Codespaces URL** (port forwarding → 
 - Real-time or `blur` validation per field.
 - Specific error messages — not generic "invalid field".
 - Block submit when invalid; show success message on valid simulated submit.
-- CONTEXT-specific rules (email format, phone, date ranges, domain enums).
+- specific-BRIEFING rules (email format, phone, date ranges, domain enums).
 
 ## Indicative Schema.org Block
 
@@ -66,7 +66,7 @@ Prefer PageSpeed Insights on the **public Codespaces URL** (port forwarding → 
 </script>
 ```
 
-Adapt `@type` and properties to the company sector in CONTEXT.
+Adapt `@type` and properties to the company sector in BRIEFING.
 
 ## Indicative Validation Pattern
 
@@ -100,7 +100,7 @@ form.addEventListener("submit", (event) => {
 });
 ```
 
-Wire one validator per CONTEXT field; map errors to visible elements with `aria-describedby` where appropriate.
+Wire one validator per BRIEFING field; map errors to visible elements with `aria-describedby` where appropriate.
 
 ## Responsive / Tailwind Checklist
 
@@ -120,13 +120,13 @@ Wire one validator per CONTEXT field; map errors to visible elements with `aria-
 - [ ] Semantic structure and Schema.org present.
 - [ ] Fully responsive Tailwind layout; documented `npx http-server` command works.
 - [ ] Keyboard-accessible navigation and form controls.
-- [ ] All CONTEXT form fields implemented with matching validation rules.
+- [ ] All BRIEFING form fields implemented with matching validation rules.
 - [ ] Error messages specific; submit blocked until valid.
-- [ ] Landing content reflects company sector and tone from CONTEXT.
+- [ ] Landing content reflects company sector and tone from BRIEFING.
 - [ ] PageSpeed **or** Lighthouse score ≥ 80 (public Codespaces URL or local/Codespaces preview).
 
 ## Reviewer Notes
 
-- Field names and domain values must match CONTEXT — generic forms fail context adherence criteria.
-- `CONTEXT.md` in the student repo should remain the syllabus copy or a faithful import.
+- Field names and domain values must match BRIEFING — generic forms fail context adherence criteria.
+- `BRIEFING.md` in the student repo should remain the syllabus copy or a faithful import.
 - Accept different section naming on the landing page if structure and intent are met.

@@ -1,6 +1,6 @@
 # Milestone — Agent Observability (Part 1) — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Agent ids, `flow_type`, `action_type`, `department_id`, and `needs_intervention` rules below are **indicative** — students must align with their assigned `CONTEXT-company.md` under `content/contexts/10-realtime/agent-observability/`. Part 2 (control: pause/resume/cancel) is [`ai-eng-milestone-real-time-agent-control`](../../ai-eng-milestone-real-time-agent-control/.learn/solution/README.md) — out of scope here.
+Reference quality bar for the student's company monorepo fork. Agent ids, `flow_type`, `action_type`, `department_id`, and `needs_intervention` rules below are **indicative** — students must align with their assigned `company-BRIEFING.md` under `content/contexts/10-realtime/agent-observability/`. Part 2 (control: pause/resume/cancel) is [`ai-eng-milestone-real-time-agent-control`](../../ai-eng-milestone-real-time-agent-control/.learn/solution/README.md) — out of scope here.
 
 ---
 
@@ -23,11 +23,11 @@ flowchart LR
 1. **Three entities, not one blob** — Agent (registry + live status), Flow/Execution (one run of `chat_session` or `rfp_workflow`), Task/Step (one `action_type` in one flow for one agent). An agent belongs to many flows over time; a flow has many tasks; a task belongs to exactly one flow and one agent.
 2. **Instrument, don't rewrite** — emit at existing step / tool / status change points. Do not change RAG, LangGraph nodes, or RFP approval logic.
 3. **Persist even with zero SSE clients** — history must survive refresh and disconnect. Stream is a fan-out of already-stored events, not the source of truth.
-4. **Named SSE events** — `agent_step` and `agent_status_changed` (CONTEXT names). Never a single generic `event: message` for all domain traffic.
+4. **Named SSE events** — `agent_step` and `agent_status_changed` (BRIEFING names). Never a single generic `event: message` for all domain traffic.
 5. **Traceable chain** — every task stores `trigger` (prior `task_id` **or** external cause such as inbound message / `ticket_id`), `derived_task_ids`, `prev_task_id`, `next_task_id`, plus `flow_id` and `agent_id`.
 6. **Look, don't touch** — `available_actions` is derived from status (informational). No pause/resume/kill handlers in this part.
 7. **Auth same as backoffice** — JWT on REST and SSE. Client uses `fetch` + `ReadableStream` (not bare `EventSource`).
-8. **CONTEXT fidelity** — `agent_id`, `flow_type`, `action_type`, `department_id` (when a step is department-scoped), and `needs_intervention` rules match the assigned company file. HealthCore: **no PHI** in events, logs, or persisted task payloads.
+8. **BRIEFING fidelity** — `agent_id`, `flow_type`, `action_type`, `department_id` (when a step is department-scoped), and `needs_intervention` rules match the assigned company file. HealthCore: **no PHI** in events, logs, or persisted task payloads.
 9. **Monorepo paths only** — `services/`, `uis/backoffice`, `tests/`; no `parte-1-agent-observability/` delivery folder.
 
 ---
@@ -59,7 +59,7 @@ Flow  1 ──< contains >────────── * Task
 Agent 1 ──< executes >────────── * Task   (scoped by flow_id so concurrent flows don't mix)
 ```
 
-| Entity | Required fields (plus CONTEXT extras)                                                                                        |
+| Entity | Required fields (plus BRIEFING extras)                                                                                        |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------- |
 | Agent  | `agent_id`, `name`, `flow_types[]`, `status`, `needs_intervention`                                                           |
 | Flow   | `flow_id`, `flow_type`, `status`, `triggered_by`, `participating_agent_ids`                                                  |
@@ -67,7 +67,7 @@ Agent 1 ──< executes >────────── * Task   (scoped by flo
 
 `trigger` is **not** always another task: chat flows typically start from an inbound message; RFP flows from the existing `ticket_id`. Model that as a typed union (`{"kind":"task","task_id":"..."}` vs `{"kind":"external","source":"ticket","ticket_id":"..."}`) rather than a nullable FK only.
 
-**`needs_intervention` (CONTEXT pattern — implement the assigned company's rule, not a generic timeout):** typically `true` when a `chat_session` stays on `query`/`tool_call` longer than 20s without `deliver`, or an `rfp_workflow` exceeds the configured `evaluate` retry limit without a pass. HealthCore also flags `contains_phi: true` from the compliance evaluator as high-priority intervention — still **without** storing PHI.
+**`needs_intervention` (BRIEFING pattern — implement the assigned company's rule, not a generic timeout):** typically `true` when a `chat_session` stays on `query`/`tool_call` longer than 20s without `deliver`, or an `rfp_workflow` exceeds the configured `evaluate` retry limit without a pass. HealthCore also flags `contains_phi: true` from the compliance evaluator as high-priority intervention — still **without** storing PHI.
 
 **`available_actions`:** pure function of `status` (e.g. `running` → `["pause"]` tagged as available; `paused` → `["resume","kill"]`). Return strings/tags only. Part 2 will POST to those same names.
 
@@ -95,7 +95,7 @@ data: {"agent_id":"first_line_support","flow_id":"chat_0447","status":"running"}
 : keepalive
 ```
 
-Use **your** CONTEXT `agent_id` / `department_id` values. Nexova `seleccion` above is an example, not a universal default.
+Use **your** BRIEFING `agent_id` / `department_id` values. Nexova `seleccion` above is an example, not a universal default.
 
 **Acceptable:** persist first, then publish; FastAPI `StreamingResponse` (or equivalent) yielding encoded frames; keep-alive comments; JWT dependency shared with backoffice.
 
@@ -172,7 +172,7 @@ UI: intervention flag must be visually distinct. Task rows must show trigger, de
 
 | Check             | Pass criteria                                                                                                                             |
 | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| SSE               | `Content-Type` includes `text/event-stream`; named `event:`; JSON `data` has CONTEXT keys (`agent_id`, `flow_id`, `action_type` on steps) |
+| SSE               | `Content-Type` includes `text/event-stream`; named `event:`; JSON `data` has BRIEFING keys (`agent_id`, `flow_id`, `action_type` on steps) |
 | Auth              | Unauthenticated REST and SSE rejected                                                                                                     |
 | Agents            | List includes id, name, flow(s), status, `needs_intervention`; detail includes informational `available_actions`                          |
 | Flow              | Given `flow_id`, participating agents + tasks in order                                                                                    |
@@ -190,7 +190,7 @@ UI: intervention flag must be visually distinct. Task rows must show trigger, de
 | One table named "agent_run" mixing agent + flow + task  | Cardinality and concurrent flows break                |
 | Live SSE without persistence                            | History disappears on refresh                         |
 | Generic `message` events                                | Rubric requires `agent_step` / `agent_status_changed` |
-| Inventing agent ids                                     | Must match CONTEXT                                    |
+| Inventing agent ids                                     | Must match BRIEFING                                    |
 | `EventSource` only                                      | Cannot send `Authorization`                           |
 | Executing pause because the UI shows the button         | Part 2 only                                           |
 | Duplicating RFP department approval inside this panel   | Observe from outside                                  |

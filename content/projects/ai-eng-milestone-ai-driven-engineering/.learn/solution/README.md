@@ -2,9 +2,9 @@
 
 This README is the canonical reference for **"Milestone 4 — AI-driven Engineering"**. It describes what a correct delivery should include inside the student fork of [ai-engineering-company-project-monorepo](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). This folder documents expected structure and reviewer checks only; it is not runnable code.
 
-## Alignment with company context
+## Alignment with company briefing
 
-All memory-bank content, `AGENTS.md` guardrails, `.agents/rules`, and the reusable skill must reflect the student’s assigned **CONTEXT-company.md** (and related CONTEXT files). Generic placeholders that ignore sector, KPIs, naming, or constraints from the scenario should be treated as incomplete.
+All memory-bank content, `AGENTS.md` guardrails, `.agents/rules`, and the reusable skill must reflect the student’s assigned **company-BRIEFING.md** (and related BRIEFING files). Generic placeholders that ignore sector, KPIs, naming, or constraints from the scenario should be treated as incomplete.
 
 ---
 
@@ -16,7 +16,7 @@ A valid solution includes at least:
 
 | File                          | Purpose                                                                                                                     |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `memory-bank/projectbrief.md` | Business description, project goals, and the problem the product solves—grounded in the assigned CONTEXT.                   |
+| `memory-bank/projectbrief.md` | Business description, project goals, and the problem the product solves—grounded in the assigned BRIEFING.                   |
 | `memory-bank/techContext.md`  | Stack, architectural decisions already taken, and technical constraints (tooling, monorepo layout, deployment assumptions). |
 | `memory-bank/progress.md`     | What is implemented today, what is in flight, and sensible next steps—updated like a living log, not a marketing roadmap.   |
 
@@ -58,7 +58,7 @@ This milestone does **not** require creating Next.js apps. A correct delivery do
 | Path               | What goes here when created                                  |
 | ------------------ | ------------------------------------------------------------ |
 | `/uis`             | Frontend projects                                            |
-| `./uis/website`    | Public corporate website (home `/`, brand/copy from CONTEXT) |
+| `./uis/website`    | Public corporate website (home `/`, brand/copy from BRIEFING) |
 | `./uis/backoffice` | Internal app (own layout; entry view on `/`)                 |
 | `/services`        | Backend APIs and services                                    |
 
@@ -73,7 +73,7 @@ Use this checklist against student submissions:
 ### Agent infrastructure
 
 - [ ] `memory-bank/` exists with `projectbrief.md`, `techContext.md`, and `progress.md`.
-- [ ] Memory bank reflects **both** business and technical context tied to CONTEXT-company.md.
+- [ ] Memory bank reflects **both** business and technical context tied to company-BRIEFING.md.
 - [ ] `AGENTS.md` lists mandatory memory-bank reads at session start.
 - [ ] `AGENTS.md` defines a **minimum four-step ordered** workflow before commit.
 - [ ] `AGENTS.md` lists paths the agent must not touch without explicit confirmation.

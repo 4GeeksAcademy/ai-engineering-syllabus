@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it defines the departments, the RFP format, persistence rules, and the guidelines specific to your company for this part of the milestone.
+**Before you start**: Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/09-agentic-workflows)** before writing a single line of code — it defines the departments, the RFP format, persistence rules, and the guidelines specific to your company for this part of the milestone.
 
 ---
 
@@ -44,7 +44,7 @@ The Sales team receives dozens of RFPs (_Requests for Proposal_) in PDF every we
 
 Real-world RFPs arrive as PDFs. Converting them to Markdown before the LLM cuts token cost and noise. Use `py-readability-metrics` on the Markdown to estimate processing cost (Flesch-Kincaid, Gunning Fog, etc.), not as a literary grade.
 
-**Ticket mode** means each upload becomes a row with a lifecycle the UI can poll. Same ticket continues in later parts — full vocabulary lives in CONTEXT. **This part only uses:**
+**Ticket mode** means each upload becomes a row with a lifecycle the UI can poll. Same ticket continues in later parts — full vocabulary lives in BRIEFING. **This part only uses:**
 
 | Status            | When                                                            |
 | ----------------- | --------------------------------------------------------------- |
@@ -72,7 +72,7 @@ Keep working on the fork of your company's monorepo that you've been using since
 2. Install any new dependencies with `uv add` (for example, `uv add markitdown` and `uv add py-readability-metrics`) — never with `pip install` or `pipenv`.
 3. Extend `uis/backoffice` for the upload UI — don't create a new frontend app.
 4. Add HTTP routes on the **existing** backend under `services/` (same process / same API). Implement the agent pipeline in `data/pipelines/` (e.g. `data/pipelines/rfp_intake/`). Put one-off CLI runners in `scripts/` if needed.
-5. Read your `CONTEXT-company.md` before defining departments, schema, or test RFPs. Use the sample PDFs under `rfp-requests/<company>/` in the CONTEXT folder — upload them through the UI to verify the flow.
+5. Read your `company-BRIEFING.md` before defining departments, schema, or test RFPs. Use the sample PDFs under `rfp-requests/<company>/` in the BRIEFING folder — upload them through the UI to verify the flow.
 
 ---
 
@@ -94,7 +94,7 @@ Keep working on the fork of your company's monorepo that you've been using since
 **Document ingestion and conversion**
 
 - [ ] Convert each RFP from PDF to Markdown **before** any agent reads it (required: MarkItDown or a documented equivalent)
-- [ ] Extract metadata from the converted document (fields required by your CONTEXT)
+- [ ] Extract metadata from the converted document (fields required by your BRIEFING)
 - [ ] Compute readability metrics that anticipate processing cost (suggested: `py-readability-metrics`)
 - [ ] Store metadata and metrics in PostgreSQL with the ticket
 
@@ -114,18 +114,18 @@ Keep working on the fork of your company's monorepo that you've been using since
 
 - [ ] Implement routing of the classified document toward the rest of the agentic flow (queue flag, DB field, or documented handoff contract — no second API). The handoff **must** carry `ticket_id` + synthesizer payload (`key_aspects` / workstream structure) so Part 2 can start without re-parsing the PDF.
 
-⚠️ **IMPORTANT:** Department names, RFP format, and classification criteria must match your `CONTEXT-company.md`. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** Department names, RFP format, and classification criteria must match your `company-BRIEFING.md`. A generic implementation that ignores the context will not be accepted.
 
 **Testing**
 
 - [ ] Include unit tests in `tests/pipelines/` for the classifier agent and at least one worker agent
-- [ ] Verify against the CONTEXT sample PDFs (formal accept, informal accept, invalid reject) by uploading them through the UI
+- [ ] Verify against the BRIEFING sample PDFs (formal accept, informal accept, invalid reject) by uploading them through the UI
 
 ---
 
 ## 🧭 Design Questions
 
-- What happens if an RFP mentions a department that doesn't exist in your `CONTEXT-company.md`? How does your classifier/orchestrator handle it?
+- What happens if an RFP mentions a department that doesn't exist in your `company-BRIEFING.md`? How does your classifier/orchestrator handle it?
 - What does each worker actually need from shared state? Are you passing the whole document, or only what's relevant — and what do you do when a required figure is missing?
 - How do you decide that a document "isn't an RFP"? What happens on a false negative?
 - What happens if two workers return contradictory information about the same section?
@@ -144,9 +144,9 @@ Keep working on the fork of your company's monorepo that you've been using since
 - [ ] Metadata and readability metrics stored per processed document
 - [ ] Orchestrator-worker-synthesizer as separate agents on a dedicated `rfp_intake` graph
 - [ ] Routing handoff carries `ticket_id` + synthesizer / `key_aspects` payload for Part 2 (queue flag, DB field, or documented contract)
-- [ ] Final result lists per-department key aspects + contacts — verifiable against CONTEXT sample PDFs
+- [ ] Final result lists per-department key aspects + contacts — verifiable against BRIEFING sample PDFs
 - [ ] Unit tests for classifier and at least one worker
-- [ ] Implementation matches departments and RFP format in `CONTEXT-company.md`
+- [ ] Implementation matches departments and RFP format in `company-BRIEFING.md`
 
 ---
 
@@ -156,7 +156,7 @@ This is Part 1 of 3 of Milestone. Submit it with its own Pull Request against yo
 
 1. Commit and push your `feature/rfp-intake` branch
 2. Open a Pull Request describing what you implemented and how to test it
-3. Include a sample test RFP (from CONTEXT `rfp-requests/`) and the output your flow produces in the PR description
+3. Include a sample test RFP (from BRIEFING `rfp-requests/`) and the output your flow produces in the PR description
 4. Request a review from your tech lead
 
 ---

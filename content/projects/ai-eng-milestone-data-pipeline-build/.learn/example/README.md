@@ -16,7 +16,7 @@ Starting spec: the mini design below replaces `PIPELINE_DESIGN.md`.
 
 | Graded project (`ai-eng-milestone-data-pipeline-build`) | This class example                   |
 | ------------------------------------------------------- | ------------------------------------ |
-| Company CONTEXT + inventory monorepo                    | Fictional GreenPatch CONTEXT (below) |
+| Company BRIEFING + inventory monorepo                    | Fictional GreenPatch BRIEFING (below) |
 | Full CTO ticket + script execution                      | Same phases, smaller dataset         |
 | Commit to student monorepo fork                         | Local demo only                      |
 

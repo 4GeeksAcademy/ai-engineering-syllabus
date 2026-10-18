@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start:** Read your **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager)** before writing any code — it defines the field names, valid categories, branch locations, and expected seed values your implementation must use.
+**Before you start:** Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager)** before writing any code — it defines the field names, valid categories, branch locations, and expected seed values your implementation must use.
 
 ---
 
@@ -49,7 +49,7 @@ You do not need to implement any of this in the current delivery. The point is t
 ## 🌱 How to Start the Project
 
 1. Work in [**ai-engineering-company-project-monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). If you haven't set it up yet, fork it and open it in **GitHub Codespaces** or clone it locally.
-2. Read your **CONTEXT-company.md** before writing a single line of code. It defines the incident data structure, your company's branches, valid categories, and expected seed values.
+2. Read your **company-BRIEFING.md** before writing a single line of code. It defines the incident data structure, your company's branches, valid categories, and expected seed values.
 3. This project extends the work from Milestone 5: reuse the existing database, API structure, and frontend architecture.
 
 ---
@@ -62,7 +62,7 @@ You do not need to implement any of this in the current delivery. The point is t
   - `id` — unique identifier, generated automatically.
   - `title` — brief incident title (required).
   - `description` — detailed description (required).
-  - `category` — category as defined in your CONTEXT.
+  - `category` — category as defined in your BRIEFING.
   - `status` — lifecycle state: `open`, `in_progress`, `resolved`, `discarded`.
   - `origin` — source of the report: `customer`, `branch`, `internal`.
   - `branch` — branch that manages or reports the incident (required for all origins; use `central` when not specific to any branch).
@@ -73,7 +73,7 @@ You do not need to implement any of this in the current delivery. The point is t
 ### Historical Data Seed (`/scripts`)
 
 - [ ] Create the `seed_incidents.py` script that reads the CSV file from the previous project and loads all its rows into the database, assigning `origin: "customer"` to every record.
-- [ ] The script must apply the **CSV → model transformations** specified in your CONTEXT (status map, category map, `description` → `title`, `date` → `created_at`, location → `branch`) before insert — the analyzer CSV schema is not identical to this manager's model.
+- [ ] The script must apply the **CSV → model transformations** specified in your BRIEFING (status map, category map, `description` → `title`, `date` → `created_at`, location → `branch`) before insert — the analyzer CSV schema is not identical to this manager's model.
 - [ ] The script must reuse the existing validation logic — extract the shared functions to `packages/shared/` if you haven't already: invalid CSV records are not inserted and are reported to the console at the end of execution.
 - [ ] The script is idempotent: running it twice does not duplicate records (check against an identifying field from the CSV before inserting).
 
@@ -98,7 +98,7 @@ You do not need to implement any of this in the current delivery. The point is t
 **Registration form:**
 
 - [ ] Create an incident registration page accessible from the application menu.
-- [ ] The form includes all model fields. The `branch` field is always visible and required, with every branch option from your CONTEXT (including `central`, displayed as the label your CONTEXT specifies).
+- [ ] The form includes all model fields. The `branch` field is always visible and required, with every branch option from your BRIEFING (including `central`, displayed as the label your BRIEFING specifies).
 - [ ] When `origin` is `branch`, the `branch` field is visually highlighted to remind the user they are reporting from a specific location.
 - [ ] On submit, the form shows a loading indicator while the request is in progress — the submit button is disabled during that time.
 - [ ] If the API returns an error, the form shows a user-friendly message — never the raw server error text. If the error identifies a specific field, the message appears next to that field.
@@ -117,7 +117,7 @@ You do not need to implement any of this in the current delivery. The point is t
 - [ ] Display the aggregated metrics from the `/summary` endpoint: totals by status, category, origin, and branch.
 - [ ] If data takes time to load or the request fails, the panel shows the corresponding state without breaking the rest of the page.
 
-⚠️ **IMPORTANT:** Field names, categories, branch locations, and values in your implementation must match exactly what is specified in your CONTEXT.md. A generic implementation that ignores your company's context will not be accepted.
+⚠️ **IMPORTANT:** Field names, categories, branch locations, and values in your implementation must match exactly what is specified in your BRIEFING.md. A generic implementation that ignores your company's context will not be accepted.
 
 ---
 
@@ -127,10 +127,10 @@ You do not need to implement any of this in the current delivery. The point is t
 
 - [ ] The model includes all required fields with their integrity constraints.
 - [ ] The seed script correctly loads historical incidents assigning `origin: "customer"`.
-- [ ] The seed script applies the CSV → model transformations defined in your CONTEXT (status, category, title, dates, and branch mapping) before insert.
+- [ ] The seed script applies the CSV → model transformations defined in your BRIEFING (status, category, title, dates, and branch mapping) before insert.
 - [ ] Invalid CSV records are not inserted and are reported to the console.
 - [ ] The script is idempotent: running it twice does not duplicate data.
-- [ ] After seeding, `/api/incidents/summary` totals by **model** `status` and `category` match the transformed expected values in your CONTEXT (same valid-record set as the incidents-file-analyzer project).
+- [ ] After seeding, `/api/incidents/summary` totals by **model** `status` and `category` match the transformed expected values in your BRIEFING (same valid-record set as the incidents-file-analyzer project).
 
 ### Backend
 
@@ -143,7 +143,7 @@ You do not need to implement any of this in the current delivery. The point is t
 ### Frontend
 
 - [ ] The form validates required fields on the client before submitting.
-- [ ] When `origin` is `branch`, the `branch` field is visually highlighted and the dropdown shows CONTEXT display labels.
+- [ ] When `origin` is `branch`, the `branch` field is visually highlighted and the dropdown shows BRIEFING display labels.
 - [ ] Loading states are visible and the submit button is disabled during the request.
 - [ ] API errors are shown in plain language to the user, never as technical text.
 - [ ] The list correctly handles all three possible states: loading, empty, with data.

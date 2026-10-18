@@ -17,7 +17,7 @@ El tablero **Signal Yard** de la Parte 1 ya muestra `yard_desk` e `inbound_wave`
 | Monorepo de empresa + panel de observabilidad Parte 1          | Solo Signal Yard                       |
 | Reutilizar checkpointer real de LangGraph                      | Dict de checkpoint stub en memoria     |
 | JWT de empresa + roles eng/ops                                 | Token demo → `actor_id` fijo           |
-| Cascada CONTEXT de tareas de departamento pendientes           | Marcar hijas `cancelled` en store stub |
+| Cascada BRIEFING de tareas de departamento pendientes           | Marcar hijas `cancelled` en store stub |
 | PR de empresa + preguntas de diseño                            | Demo en vivo + 6 tests automatizados   |
 
 ---
@@ -89,5 +89,5 @@ El tablero **Signal Yard** de la Parte 1 ya muestra `yard_desk` e `inbound_wave`
 ## Fuera de alcance del ejemplo
 
 - LangGraph real / cableado HITL de RFP
-- Empresas del CONTEXT
+- Empresas del BRIEFING
 - WebSocket de chat con streaming de tokens (proyecto post-grad de communication)

@@ -1,6 +1,6 @@
 # Milestone 7 — RAG & Knowledge Base — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align collection names, document paths, and field names with their assigned `CONTEXT-company.md`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align collection names, document paths, and field names with their assigned `company-BRIEFING.md`.
 
 ---
 
@@ -8,7 +8,7 @@ Reference quality bar for the student's company monorepo fork. Values below are 
 
 ```mermaid
 flowchart LR
-  DOCS[CONTEXT source docs] --> SETUP[setup]
+  DOCS[BRIEFING source docs] --> SETUP[setup]
   SETUP --> CHUNK[Semantic chunks]
   CHUNK --> EMB1[embed]
   EMB1 --> QD[(Qdrant collection)]
@@ -38,7 +38,7 @@ flowchart LR
 
 Responsibilities only:
 
-1. Load documents from `docs/company-knowledge-base/` after copying them from `content/contexts/00-general-contexts/<company>/` (filenames listed in `CONTEXT-company.md`, e.g. `brasaland-loyalty-program.en.md`)
+1. Load documents from `docs/company-knowledge-base/` after copying them from `content/contexts/00-general-contexts/<company>/` (filenames listed in `company-BRIEFING.md`, e.g. `brasaland-loyalty-program.en.md`)
 2. Split into chunks at semantic boundaries (`##` headings, product blocks, numbered procedure groups)
 3. For each chunk, compute `point_id` deterministically (e.g. hash of `document + section + chunk_index`) so re-runs upsert instead of duplicate
 4. Call `embed(chunk.text)` and upsert to Qdrant
@@ -47,10 +47,10 @@ Responsibilities only:
 
 | Field             | Type  | Purpose                          |
 | ----------------- | ----- | -------------------------------- |
-| `company`         | `str` | Company slug from CONTEXT        |
-| `source_document` | `str` | Stable doc id from CONTEXT enum  |
+| `company`         | `str` | Company slug from BRIEFING        |
+| `source_document` | `str` | Stable doc id from BRIEFING enum  |
 | `section`         | `str` | Heading or logical section name  |
-| `language`        | `str` | `en` or `es` per CONTEXT         |
+| `language`        | `str` | `en` or `es` per BRIEFING         |
 | `chunk_index`     | `int` | Ordinal within section           |
 | `text`            | `str` | Chunk body for generation prompt |
 
@@ -63,9 +63,9 @@ Responsibilities only:
 ### Qdrant collection
 
 ```python
-# Indicative — use name from CONTEXT
+# Indicative — use name from BRIEFING
 client.create_collection(
-    collection_name="brasaland_knowledge",  # exact name from CONTEXT-company.md
+    collection_name="brasaland_knowledge",  # exact name from company-BRIEFING.md
     vectors_config=VectorParams(size=EMBED_DIM, distance=Distance.COSINE),
 )
 ```
@@ -184,13 +184,13 @@ def test_query_returns_llm_output_not_raw_chunks(monkeypatch):
 
 ## Phase 5b — Retrieval eval (`data/eval/`)
 
-Measure **Recall@3** against `data/eval/test-queries.json` (≥ 8 questions covering all CONTEXT source documents).
+Measure **Recall@3** against `data/eval/test-queries.json` (≥ 8 questions covering all BRIEFING source documents).
 
 **Indicative method:**
 
 1. For each question, call `retrieve(question, k=3, min_score=0)` (or a low floor) and collect `source_document` / `chunk_index` (or chunk ids) from the top hits.
 2. A question **hits** if any of the top-3 payloads matches the expected source chunk recorded in `test-queries.json`.
-3. `Recall@3 = hits / total_questions`. CONTEXT requires ≥ **80%**.
+3. `Recall@3 = hits / total_questions`. BRIEFING requires ≥ **80%**.
 4. Document the run (script under `data/eval/` or a short note in `docs/rag/rag-design.md`) so reviewers can reproduce it.
 
 Prefer mocking or a local Qdrant loaded by `setup()` — do not invent scores.
@@ -242,7 +242,7 @@ qdrant:
 | ------------------------------- | ----------------------------------------------- |
 | Modular four functions          | `data/process/rag.py`, `data/pipelines/rag.py`  |
 | No raw vector results to client | API response schema + manual curl test          |
-| CONTEXT alignment               | Collection name, doc paths, domain terms        |
+| BRIEFING alignment               | Collection name, doc paths, domain terms        |
 | Salesperson voice               | Generation system prompt in `generate_answer()` |
 | Honest refusal                  | Empty retrieve() → no invented company facts    |
 | Recall@3 + test queries         | `data/eval/test-queries.json`                   |

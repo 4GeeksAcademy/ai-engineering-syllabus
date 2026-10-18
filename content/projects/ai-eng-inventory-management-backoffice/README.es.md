@@ -11,7 +11,7 @@ _These instructions are also available in [English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** antes de escribir ningún componente — define los nombres de entidades, etiquetas de campos, restricciones de negocio y vocabulario de dominio que deben aparecer en la interfaz.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/05-backend-development)** antes de escribir ningún componente — define los nombres de entidades, etiquetas de campos, restricciones de negocio y vocabulario de dominio que deben aparecer en la interfaz.
 
 ---
 
@@ -60,7 +60,7 @@ El frontend del backoffice ya existe en tu monorepo. Estás añadiendo la secci�
    ```
    NEXT_PUBLIC_INVENTORY_API_URL=http://localhost:8000
    ```
-5. Lee tu **CONTEXT-company.md** — los nombres de entidades, etiquetas de campos y vocabulario de dominio deben coincidir con lo que existe en la API y en la interfaz.
+5. Lee tu **company-BRIEFING.md** — los nombres de entidades, etiquetas de campos y vocabulario de dominio deben coincidir con lo que existe en la API y en la interfaz.
 6. Asegúrate de que el servicio de backend (`services/`) está ejecutándose localmente antes de probar el frontend.
 
 ---
@@ -76,7 +76,7 @@ El frontend del backoffice ya existe en tu monorepo. Estás añadiendo la secci�
 ### Página de productos — `/backoffice/inventory/products`
 
 - [ ] Obtén y muestra todos los productos desde `GET /inventory/products`.
-- [ ] Muestra el valor de `current_stock` para cada producto junto con los campos específicos de entidad definidos en tu CONTEXT.md.
+- [ ] Muestra el valor de `current_stock` para cada producto junto con los campos específicos de entidad definidos en tu BRIEFING.md.
 - [ ] Aplica indicadores visuales de nivel de stock: usa color o iconografía para distinguir el stock saludable del stock bajo. Define tus propios umbrales — documéntalos en un comentario.
 - [ ] Incluye un enlace o botón claramente etiquetado en cada fila de producto para crear una orden de entrada o de salida para ese producto.
 
@@ -105,7 +105,7 @@ El frontend del backoffice ya existe en tu monorepo. Estás añadiendo la secci�
 
 - [ ] Las cuatro páginas de inventario deben redirigir a los usuarios no autenticados a la página de login. Usa el mismo patrón de comprobación de auth ya presente en el backoffice.
 
-⚠️ **IMPORTANTE:** Los nombres de entidades, etiquetas de campos y el vocabulario de la interfaz deben coincidir con lo especificado en tu CONTEXT.md — usa el lenguaje de dominio de tu empresa, no los términos genéricos de este README.
+⚠️ **IMPORTANTE:** Los nombres de entidades, etiquetas de campos y el vocabulario de la interfaz deben coincidir con lo especificado en tu BRIEFING.md — usa el lenguaje de dominio de tu empresa, no los términos genéricos de este README.
 
 ---
 
@@ -120,7 +120,7 @@ El frontend del backoffice ya existe en tu monorepo. Estás añadiendo la secci�
 - [ ] Una respuesta `400` del endpoint de salida muestra el mensaje de error de la API de forma visible en la interfaz.
 - [ ] La página de historial de órdenes muestra todas las órdenes con distinción entrada/salida, nombre de producto, cantidad, fecha y `user_uuid`.
 - [ ] Las cuatro páginas redirigen a los usuarios no autenticados al login.
-- [ ] Los nombres de entidades y etiquetas de campos en la interfaz coinciden con la especificación del CONTEXT.md.
+- [ ] Los nombres de entidades y etiquetas de campos en la interfaz coinciden con la especificación del BRIEFING.md.
 
 ---
 

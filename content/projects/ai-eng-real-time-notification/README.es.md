@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification)** antes de escribir código — ahí se definen los eventos operativos, nombres de campos y restricciones específicas de tu empresa para esta parte.
+**Antes de empezar**: lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/notification)** antes de escribir código — ahí se definen los eventos operativos, nombres de campos y restricciones específicas de tu empresa para esta parte.
 
 ---
 
@@ -39,7 +39,7 @@ Sigue trabajando en el fork del monorepo de tu empresa que has usado a lo largo 
 
 1. Crea una rama nueva desde tu rama principal: `feature/sse-notifications`.
 2. Ubica el servicio y la vista de dashboard que hoy dependen de polling — vas a extender esas rutas, no crear una app paralela ni una carpeta de entrega.
-3. Revisa tu `CONTEXT-company.md` para confirmar cómo se representa un ticket de RFP (campos, estado inicial) — eso define qué debe llevar la notificación en tiempo real.
+3. Revisa tu `company-BRIEFING.md` para confirmar cómo se representa un ticket de RFP (campos, estado inicial) — eso define qué debe llevar la notificación en tiempo real.
 4. Añade dependencias nuevas con `uv add` (backend) / el gestor de paquetes que ya uses en el monorepo para la UI — nunca con `pip install` ni `pipenv`.
 5. Implementa en el layout existente: SSE en `services/`, UI consumidora en `uis/`, pruebas en `tests/`.
 
@@ -56,7 +56,7 @@ Si necesitas un repaso de cómo montar un proyecto, mira [cómo empezar un proye
 - [ ] Configura correctamente los headers y el keep-alive de la conexión SSE para que no se cierre prematuramente (`Content-Type: text/event-stream`, y frames de comentario keep-alive cuando haga falta)
 - [ ] Protege el stream con el **mismo JWT** que usa la API del backoffice — clientes sin autenticación no deben recibir eventos
 
-⚠️ **IMPORTANTE:** los nombres de campos, entidades y valores del dominio en tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** los nombres de campos, entidades y valores del dominio en tu implementación deben coincidir con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Frontend (`uis/`)**
 
@@ -68,16 +68,16 @@ Si necesitas un repaso de cómo montar un proyecto, mira [cómo empezar un proye
 
 **Pruebas (`tests/`)**
 
-- [ ] Prueba el endpoint SSE en sí: afirma que los headers de respuesta incluyen `text/event-stream`, que el wire usa un `event:` nombrado (p. ej. `rfp_ticket_created`), y que `data:` es JSON con la forma de payload / campos del CONTEXT exigidos — no solo un test unitario abstracto de un dict desligado del framing SSE
+- [ ] Prueba el endpoint SSE en sí: afirma que los headers de respuesta incluyen `text/event-stream`, que el wire usa un `event:` nombrado (p. ej. `rfp_ticket_created`), y que `data:` es JSON con la forma de payload / campos del BRIEFING exigidos — no solo un test unitario abstracto de un dict desligado del framing SSE
 - [ ] Prueba o verificación manual documentada de reconexión + recuperación tras una caída (el backoff dispara, los tickets perdidos se recuperan o se manejan de forma explícita, sin duplicar UI para el mismo `ticket_id`)
 
 ---
 
 ## 🎁 Opcional: Otro Caso de Notificación en Tiempo Real
 
-El ticket de RFP es tu entrega obligatoria. Si quieres práctica adicional (esto no es requisito para aprobar la parte), puedes implementar **un segundo tipo de notificación push**, reutilizando el mismo endpoint SSE con un nuevo nombre de evento. Elige como máximo una de estas opciones, la que mejor encaje con lo que ya construiste y con tu CONTEXT:
+El ticket de RFP es tu entrega obligatoria. Si quieres práctica adicional (esto no es requisito para aprobar la parte), puedes implementar **un segundo tipo de notificación push**, reutilizando el mismo endpoint SSE con un nuevo nombre de evento. Elige como máximo una de estas opciones, la que mejor encaje con lo que ya construiste y con tu BRIEFING:
 
-- **Alerta de umbral de negocio** — notifica cuando una métrica de tu pipeline de reporting cruza el umbral crítico que tu CONTEXT define para tu empresa (por ejemplo, una caída de ventas, una tasa de inasistencia, o una tasa de rechazo de facturación, según corresponda).
+- **Alerta de umbral de negocio** — notifica cuando una métrica de tu pipeline de reporting cruza el umbral crítico que tu BRIEFING define para tu empresa (por ejemplo, una caída de ventas, una tasa de inasistencia, o una tasa de rechazo de facturación, según corresponda).
 - **Escalamiento de agente** — notifica cuando una conversación es escalada de agente a humano, para que quien supervisa lo vea aparecer en el dashboard sin recargar.
 - **Alerta por inactividad operativa** — notifica cuando un proceso o ubicación no registra la actividad esperada durante un período definido (por ejemplo, sin ventas registradas en un rango de horas, o una vacante sin cubrir más allá del plazo esperado).
 
@@ -102,7 +102,7 @@ Antes de dar por cerrada la implementación, piensa y documenta tu respuesta a e
 - [ ] El endpoint SSE exige el mismo JWT que el backoffice; el cliente lo envía vía `fetch` (no `EventSource` a pelo)
 - [ ] El endpoint SSE usa un evento nombrado y con payload estructurado para el ticket de RFP, no un único tipo de mensaje genérico; las pruebas cubren `text/event-stream`, nombre de evento y forma del JSON en `data`
 - [ ] No existe ninguna llamada a un modelo o agente en la implementación de esta parte
-- [ ] Los nombres de campos y entidades coinciden con los definidos en el CONTEXT.md de tu empresa
+- [ ] Los nombres de campos y entidades coinciden con los definidos en el BRIEFING.md de tu empresa
 
 ---
 

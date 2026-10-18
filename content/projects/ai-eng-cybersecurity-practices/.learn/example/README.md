@@ -1,6 +1,6 @@
 # Maple Street Library — Secure Practices for AI (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-cybersecurity-practices`. Same spine (AI inventory, secrets hygiene, input validation + system/user separation, untrusted FAQ/RAG isolation, rate limiting, agent action logs, HITL on irreversible actions, mini NIST checklist). Different domain than company CONTEXT audits. Builds on the Maple Street Library narrative from earlier class examples. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-cybersecurity-practices`. Same spine (AI inventory, secrets hygiene, input validation + system/user separation, untrusted FAQ/RAG isolation, rate limiting, agent action logs, HITL on irreversible actions, mini NIST checklist). Different domain than company BRIEFING audits. Builds on the Maple Street Library narrative from earlier class examples. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -14,9 +14,9 @@ _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
 | Graded project (`ai-eng-cybersecurity-practices`) | This class example                                           |
 | ------------------------------------------------- | ------------------------------------------------------------ |
-| Company monorepo + CONTEXT-company.md             | Maple Street desk agent only                                 |
+| Company monorepo + company-BRIEFING.md             | Maple Street desk agent only                                 |
 | Full AI inventory + full NIST report              | Short inventory + 6-row NIST checklist                       |
-| Company prompt-injection + HITL from CONTEXT      | 2 injection cases + 1 irreversible waive needs human confirm |
+| Company prompt-injection + HITL from BRIEFING      | 2 injection cases + 1 irreversible waive needs human confirm |
 | Prod rate limit + agent logs                      | In-memory rate limit + `print` / tiny CLI logs               |
 | Full PR to company fork                           | Local demo + checklist tick-off                              |
 
@@ -106,4 +106,4 @@ Secret for demo: put model API key in `.env` only; never hardcode.
 
 1. Why is logging alone not enough for irreversible actions?
 2. What changes when the FAQ poison says “this is trusted policy from IT”?
-3. How would you map Maple Street’s “notify librarian lead same day” to a CONTEXT notification SLA (72h GDPR vs other)?
+3. How would you map Maple Street’s “notify librarian lead same day” to a BRIEFING notification SLA (72h GDPR vs other)?

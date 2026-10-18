@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-empresa.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** antes de escribir código — define el marco regulatorio, los datos de la compañía y las restricciones específicas de tu implementación.
+**Antes de empezar**: Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/cybersecurity-analysis)** antes de escribir código — define el marco regulatorio, los datos de la compañía y las restricciones específicas de tu implementación.
 
 ---
 
@@ -43,7 +43,7 @@ NIST organiza la gestión de ciberseguridad en seis funciones: **Govern** (polí
 ## 🌱 Cómo Empezar el Proyecto
 
 1. Haz un `git pull` de tu fork del monorepo y crea una rama nueva para este trabajo: `git switch -c feature/nist-security-practices`.
-2. Lee tu `CONTEXT-empresa.md` para identificar el marco regulatorio aplicable a tu compañía y los sistemas de IA que ya construiste en milestones anteriores.
+2. Lee tu `empresa-BRIEFING.md` para identificar el marco regulatorio aplicable a tu compañía y los sistemas de IA que ya construiste en milestones anteriores.
 3. Revisa `.env.example` y confirma cómo se gestionan actualmente tus credenciales y API keys.
 4. Antes de tocar código, dibuja o lista (en el README de tu propio informe) todos los puntos donde un modelo de lenguaje recibe input externo — de un usuario, de un documento en tu base de conocimiento semántica, o de una herramienta MCP.
 
@@ -56,7 +56,7 @@ NIST organiza la gestión de ciberseguridad en seis funciones: **Govern** (polí
 - [ ] Documenta un inventario completo de los sistemas de IA de la compañía construidos hasta ahora (agentes, RAG, MCP, workflows), con responsable asignado por componente.
 - [ ] Identifica, para cada componente, quién es responsable del control cuando el modelo o la herramienta la provee un tercero.
 
-⚠️ **IMPORTANTE:** El marco regulatorio aplicable (qué normativa rige, qué plazos de notificación aplican, qué datos están restringidos) depende de tu CONTEXT.md. Un informe genérico que ignore el contexto de tu compañía no será aceptado.
+⚠️ **IMPORTANTE:** El marco regulatorio aplicable (qué normativa rige, qué plazos de notificación aplican, qué datos están restringidos) depende de tu BRIEFING.md. Un informe genérico que ignore el contexto de tu compañía no será aceptado.
 
 **Seguridad por diseño (backend y agentes)**
 
@@ -69,7 +69,7 @@ NIST organiza la gestión de ciberseguridad en seis funciones: **Govern** (polí
 - [ ] Agrega logging y trazabilidad de qué acción tomó cada agente y por qué, para al menos un flujo agentic existente.
 - [ ] Confirma que las acciones irreversibles (borrar datos, enviar comunicaciones, aprobar procesos) requieran confirmación humana explícita.
 
-⚠️ **IMPORTANTE:** Los valores específicos de tu compañía — qué se considera una acción irreversible, qué datos son sensibles, qué SLA de respuesta aplica ante un incidente — están definidos en tu CONTEXT.md.
+⚠️ **IMPORTANTE:** Los valores específicos de tu compañía — qué se considera una acción irreversible, qué datos son sensibles, qué SLA de respuesta aplica ante un incidente — están definidos en tu BRIEFING.md.
 
 **Informe NIST**
 
@@ -87,7 +87,7 @@ NIST organiza la gestión de ciberseguridad en seis funciones: **Govern** (polí
 - [ ] Existe logging verificable de las decisiones y acciones de al menos un agente.
 - [ ] Las acciones irreversibles identificadas requieren confirmación humana antes de ejecutarse.
 - [ ] El informe NIST cubre las seis funciones con al menos una acción concreta por función.
-- [ ] El informe hace referencia explícita al marco regulatorio de tu CONTEXT.md, no a normativa genérica.
+- [ ] El informe hace referencia explícita al marco regulatorio de tu BRIEFING.md, no a normativa genérica.
 
 ---
 

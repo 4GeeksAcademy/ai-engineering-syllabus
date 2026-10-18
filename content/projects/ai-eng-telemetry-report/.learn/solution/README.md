@@ -4,9 +4,9 @@ This reference solution defines the expected quality bar for Phase 4 in the stud
 
 This is **not** a business report. Sales, conversion, and revenue metrics belong to the Data Pipelines milestone. Examples below are indicative.
 
-## Alignment with company context
+## Alignment with company briefing
 
-Metric functions must use `event_type` values and `tags` dimensions from the student's approved `telemetry-plan.md` / capture catalogue (grounded in **CONTEXT-company.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`). Grade against **operational** questions — volume, errors, latency, availability — not business KPIs.
+Metric functions must use `event_type` values and `tags` dimensions from the student's approved `telemetry-plan.md` / capture catalogue (grounded in **company-BRIEFING.md** under `content/contexts/06-telemetry-data-pipelines/telemetry/`). Grade against **operational** questions — volume, errors, latency, availability — not business KPIs.
 
 Prerequisite data: ≥20 real rows including **at least one technical event** (error, failed login, etc.) besides business events.
 

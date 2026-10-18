@@ -1,6 +1,6 @@
 # Milestone — Agent Control (Part 2) — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Agent ids, command payloads, and permission notes below are **indicative** — students must align with their assigned `CONTEXT-company.md` under `content/contexts/10-realtime/agent-control/`. Part 1 entities (`Agent` / `Flow` / `Task`) and agent ids come from [`agent-observability/`](../../../contexts/10-realtime/agent-observability/); do not invent a parallel registry.
+Reference quality bar for the student's company monorepo fork. Agent ids, command payloads, and permission notes below are **indicative** — students must align with their assigned `company-BRIEFING.md` under `content/contexts/10-realtime/agent-control/`. Part 1 entities (`Agent` / `Flow` / `Task`) and agent ids come from [`agent-observability/`](../../../contexts/10-realtime/agent-observability/); do not invent a parallel registry.
 
 ---
 
@@ -24,7 +24,7 @@ flowchart LR
 1. **Extend Part 1, don't fork** — same `agent_id` / `flow_id` / Task history. Informational `available_actions` become executable buttons.
 2. **`paused` ≠ `cancelled`** — distinct statuses. `paused` is resumable; `cancelled` is terminal (only a new flow/execution may start).
 3. **Reuse checkpointing for `rfp_pipeline`** — same LangGraph checkpointer that already backs HITL approval. Do **not** build a second checkpoint store.
-4. **Chat pause ≠ graph checkpoint** — conversational agent: abort mid-stream / hold session open; resume releases the hold (CONTEXT: no checkpoint replay required).
+4. **Chat pause ≠ graph checkpoint** — conversational agent: abort mid-stream / hold session open; resume releases the hold (BRIEFING: no checkpoint replay required).
 5. **Kill switch ≠ business approval** — operator `pause`/`resume`/`cancel` is a separate permission set from department `approve` / `request_changes`. Never bypass Compliance PHI approval (HealthCore) via cancel.
 6. **Pub/sub fan-out** — every subscriber on that agent/flow gets `control_applied` (or equivalent), not only the commander.
 7. **`actor_id` from JWT** — never trust a client-supplied actor field.
@@ -60,16 +60,16 @@ flowchart LR
 | Current                             | `pause`                                                                                                                   | `resume`     | `cancel`      |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------- |
 | `running`                           | → `paused`                                                                                                                | reject       | → `cancelled` |
-| `waiting_for_human` (business HITL) | → `paused` (optional / CONTEXT) or reject — **document**; UI must still show HITL vs operator pause as different concepts | reject / n/a | → `cancelled` |
+| `waiting_for_human` (business HITL) | → `paused` (optional / BRIEFING) or reject — **document**; UI must still show HITL vs operator pause as different concepts | reject / n/a | → `cancelled` |
 | `paused`                            | reject                                                                                                                    | → `running`  | → `cancelled` |
 | `cancelled`                         | reject                                                                                                                    | **reject**   | reject        |
 | `completed` / `failed`              | reject                                                                                                                    | reject       | reject        |
 
-Exact names must match CONTEXT. Conversational vs RFP pause semantics differ (stream abort vs checkpoint) but status vocabulary stays shared.
+Exact names must match BRIEFING. Conversational vs RFP pause semantics differ (stream abort vs checkpoint) but status vocabulary stays shared.
 
 ---
 
-## WebSocket contract (indicative — match CONTEXT)
+## WebSocket contract (indicative — match BRIEFING)
 
 Inbound commands:
 
@@ -102,7 +102,7 @@ async def apply_control(cmd: str, agent_id: str, flow_id: str, actor_id: str):
         if not transitions.allowed(agent.status, cmd):
             return Rejected(reason="invalid_transition", current_status=agent.status)
 
-        if agent_id.endswith("_pipeline") or agent_id == "rfp_pipeline":  # CONTEXT id
+        if agent_id.endswith("_pipeline") or agent_id == "rfp_pipeline":  # BRIEFING id
             if cmd == "pause":
                 await graph.pause_and_checkpoint(thread_id=flow.thread_id)
                 agent.status = "paused"
@@ -121,7 +121,7 @@ async def apply_control(cmd: str, agent_id: str, flow_id: str, actor_id: str):
         await store.append_control_task(
             flow_id=flow_id,
             agent_id=agent_id,
-            action_type=cmd,  # or CONTEXT control action_type
+            action_type=cmd,  # or BRIEFING control action_type
             actor_id=actor_id,
         )
         await bus.publish(

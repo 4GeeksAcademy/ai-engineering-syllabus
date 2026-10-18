@@ -1,6 +1,6 @@
 # Curso For Devs — contextos
 
-CONTEXT por compañía para los proyectos en [`../../projects/4-devs`](../../projects/4-devs).
+BRIEFING por compañía para los proyectos en [`../../projects/4-devs`](../../projects/4-devs).
 
 | Carpeta                                                    | Usado por                           |
 | ---------------------------------------------------------- | ----------------------------------- |

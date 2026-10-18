@@ -20,7 +20,7 @@ Build this on the **same FastAPI service** students already use for auth — ext
 
 | Kept (same spine as graded project)             | Simplified for class                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| TinyDB + Supabase dual connection               | No CONTEXT.md — generic `Product` only (`id`, `name`, `sku`) |
+| TinyDB + Supabase dual connection               | No BRIEFING.md — generic `Product` only (`id`, `name`, `sku`) |
 | SQLModel models + separate Pydantic schemas     | No company-specific fields (`warehouse`, `exit_type`, etc.)  |
 | `/inventory` router with all 6 endpoints        | No seed-data script required in class                        |
 | Computed `current_stock` from orders            | Single location — no per-warehouse stock split               |

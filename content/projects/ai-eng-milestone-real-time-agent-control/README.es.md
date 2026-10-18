@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-control)** antes de escribir una sola línea de código — ahí se define qué acciones de control aplican a cada agente de tu empresa y qué campos espera tu implementación. Las entidades e ids de agente de la Parte 1 viven en [`agent-observability/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-observability); este CONTEXT solo añade semántica de control encima.
+**Antes de empezar**: Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-control)** antes de escribir una sola línea de código — ahí se define qué acciones de control aplican a cada agente de tu empresa y qué campos espera tu implementación. Las entidades e ids de agente de la Parte 1 viven en [`agent-observability/`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/10-realtime/agent-observability); este BRIEFING solo añade semántica de control encima.
 
 ---
 
@@ -56,7 +56,7 @@ Continúa sobre la misma rama de trabajo del monorepo de tu empresa. La Parte 1 
 1. Crea una rama nueva desde tu rama principal: `feature/agent-control-websocket`.
 2. Antes de escribir código, decide cómo tu entidad **Agente** de la Parte 1 va a representar la diferencia entre "pausado" (reanudable) y "cancelado" (terminal) — no los mezcles en un mismo campo de estado sin distinción.
 3. Identifica dónde tu sistema multiagente ya usa checkpointing para retomar ejecuciones — vas a **reutilizar ese mecanismo** para que pausar/reanudar funcione de verdad, no vas a construir uno nuevo desde cero.
-4. Revisa tu `CONTEXT-company.md` en `content/contexts/10-realtime/agent-control/` para confirmar qué acciones de control aplican a cada agente de tu empresa.
+4. Revisa tu `company-BRIEFING.md` en `content/contexts/10-realtime/agent-control/` para confirmar qué acciones de control aplican a cada agente de tu empresa.
 5. Agrega nuevas dependencias con `uv add` — nunca con `pip install` o `pipenv`.
 6. Implementa bajo la estructura existente: WebSocket + lógica de control en `services/`, panel en `uis/backoffice`, tests en `tests/`.
 
@@ -79,7 +79,7 @@ Continúa sobre la misma rama de trabajo del monorepo de tu empresa. La Parte 1 
 - [ ] Valida que la acción solicitada sea válida para el estado actual del agente (por ejemplo, no se puede "reanudar" un agente que nunca fue pausado) y responde con un error claro si no lo es
 - [ ] Protege el canal WebSocket con el mismo JWT que el resto del backoffice, y registra el `actor_id` a partir de esa identidad — no confíes en un campo enviado por el cliente
 
-⚠️ **IMPORTANTE:** los nombres de acciones, estados y campos deben coincidir con lo especificado en tu `CONTEXT-company.md`. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** los nombres de acciones, estados y campos deben coincidir con lo especificado en tu `company-BRIEFING.md`. Una implementación genérica que ignore el contexto no será aceptada.
 
 **Frontend (`uis/backoffice`)**
 
@@ -121,7 +121,7 @@ Continúa sobre la misma rama de trabajo del monorepo de tu empresa. La Parte 1 
 - [ ] El canal WebSocket requiere el mismo JWT que el resto del backoffice
 - [ ] La reconexión del WebSocket recupera el estado real del agente, sin desincronización
 - [ ] La lógica de aprobación de negocio existente no fue duplicada ni alterada
-- [ ] Nombres de acciones, estados y campos coinciden con `CONTEXT-company.md`
+- [ ] Nombres de acciones, estados y campos coinciden con `company-BRIEFING.md`
 
 ---
 

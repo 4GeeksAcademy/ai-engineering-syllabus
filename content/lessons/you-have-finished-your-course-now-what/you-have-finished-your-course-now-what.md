@@ -70,7 +70,7 @@ After the capstone is in, you can keep building. Complementary projects are **no
 
 Use them during job search, interview prep, or self-study. Pick the track that matches the role you want — do not try to "finish the extras" before you apply.
 
-Each project has its own README, CONTEXT, and evaluation. Open the folder and follow that README. Work on a feature branch and open a PR on **your** fork, same as the milestones. A generic implementation that ignores the company will not be accepted — same rule as the milestones.
+Each project has its own README, BRIEFING, and evaluation. Open the folder and follow that README. Work on a feature branch and open a PR on **your** fork, same as the milestones. A generic implementation that ignores the company will not be accepted — same rule as the milestones.
 
 Complementary work is useful when you can **tell it as an engineering story**, not as a list of extra tickets. Keep the capstone video as the default link in applications. Point to a complementary PR when it matches the role. One strong story beats five unfinished extras.
 
@@ -86,7 +86,7 @@ Run this in order. Complementary items are optional; the video is not.
 - [ ] Video recorded with your own voice — no AI voice generator
 - [ ] Capstone submitted in the LMS before starting complementary work
 - [ ] After delivery: one complementary project chosen (or none) — not several started in parallel
-- [ ] Complementary work stays on the company fork, on a named feature branch, aligned with that project's CONTEXT
+- [ ] Complementary work stays on the company fork, on a named feature branch, aligned with that project's BRIEFING
 
 ## Conclusion
 

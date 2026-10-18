@@ -1,6 +1,6 @@
 # Maple Street Library — Auditoría OWASP Top 10 (Ejemplo de clase)
 
-> **Para instructores:** Escenario paralelo de aula para `ai-eng-cybersecurity-vulnerabilities`. Misma columna vertebral (checklist de endurecimiento, matriz OWASP para backend / frontend / agente, corrección crítica + prueba antes/después). Dominio distinto a las auditorías con CONTEXT de compañía. Continúa la narrativa Maple Street Library de ejemplos previos. El alumnado sigue el brief completo del `README.md` raíz del proyecto.
+> **Para instructores:** Escenario paralelo de aula para `ai-eng-cybersecurity-vulnerabilities`. Misma columna vertebral (checklist de endurecimiento, matriz OWASP para backend / frontend / agente, corrección crítica + prueba antes/después). Dominio distinto a las auditorías con BRIEFING de compañía. Continúa la narrativa Maple Street Library de ejemplos previos. El alumnado sigue el brief completo del `README.md` raíz del proyecto.
 
 _These instructions are also available in [English](./README.md)._
 
@@ -14,7 +14,7 @@ _These instructions are also available in [English](./README.md)._
 
 | Proyecto evaluado (`ai-eng-cybersecurity-vulnerabilities`) | Este ejemplo de clase                       |
 | ---------------------------------------------------------- | ------------------------------------------- |
-| Monorepo de compañía + CONTEXT-empresa.md                  | Solo API de mostrador + agente Maple Street |
+| Monorepo de compañía + empresa-BRIEFING.md                  | Solo API de mostrador + agente Maple Street |
 | Endurecimiento completo en VM prod                         | Pasos documentados en VM de aula            |
 | 10 categorías OWASP × 3 carriles                           | Matriz corta + foco A01, A02, A05 en agente |
 | PR al fork de compañía                                     | Checklist local + comandos demo             |
@@ -83,4 +83,4 @@ Alcance: **API FAQ de mostrador + agente waive** — no el ERP completo de la bi
 
 1. ¿Por qué auditar el agente por separado si llama a la misma API?
 2. ¿Qué categoría OWASP es DEBUG=true — y por qué el logging no basta?
-3. ¿Cómo cambiaría la lista de puertos de Maple Street vs los puertos SSE/MCP de un CONTEXT de compañía?
+3. ¿Cómo cambiaría la lista de puertos de Maple Street vs los puertos SSE/MCP de un BRIEFING de compañía?

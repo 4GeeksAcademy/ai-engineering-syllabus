@@ -1,6 +1,6 @@
 # Maple Street Library — RFP Intake & Orchestration (Class Example)
 
-> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-agentic-workflows-orchestrate`. Same spine (PDF → Markdown, classifier gate, orchestrator-worker-synthesizer, ticket lifecycle). Different domain than company CONTEXT agents. Students still follow the full brief in the project root `README.md`.
+> **For instructors:** Parallel classroom scenario for `ai-eng-milestone-agentic-workflows-orchestrate`. Same spine (PDF → Markdown, classifier gate, orchestrator-worker-synthesizer, ticket lifecycle). Different domain than company BRIEFING agents. Students still follow the full brief in the project root `README.md`.
 
 _Estas instrucciones también están disponibles en [español](./README.es.md)._
 
@@ -16,7 +16,7 @@ In one session: build the **first stretch** of an agentic workflow that receives
 
 | Graded project (`ai-eng-milestone-agentic-workflows-orchestrate`) | This class example                                                  |
 | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Company monorepo + CONTEXT departments / RFP format               | Maple Street grant desk only                                        |
+| Company monorepo + BRIEFING departments / RFP format               | Maple Street grant desk only                                        |
 | Full `uis/backoffice` ticket UI                                   | CLI upload + JSON status file                                       |
 | MarkItDown + py-readability-metrics in Docker services            | Stub converter + fixed readability fixture                          |
 | Full LangGraph + MCP stack from Milestone 8                       | Minimal pipeline: classifier → orchestrator → workers → synthesizer |

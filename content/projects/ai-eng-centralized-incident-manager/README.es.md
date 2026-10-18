@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar:** Lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager)** antes de escribir código — define los nombres de campos, categorías válidas, sedes de tu empresa y los valores semilla esperados para tu implementación.
+**Antes de empezar:** Lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/centralized-incident-manager)** antes de escribir código — define los nombres de campos, categorías válidas, sedes de tu empresa y los valores semilla esperados para tu implementación.
 
 ---
 
@@ -49,7 +49,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 ## 🌱 Cómo empezar el proyecto
 
 1. Trabaja en [**ai-engineering-company-project-monorepo**](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo). Si aún no lo tienes configurado, haz un fork y ábrelo en **GitHub Codespaces** o clónalo localmente.
-2. Lee tu **CONTEXT-company.md** antes de escribir una sola línea de código. Define la estructura de datos de incidencias, las sedes de tu empresa, las categorías válidas y los valores semilla esperados.
+2. Lee tu **company-BRIEFING.md** antes de escribir una sola línea de código. Define la estructura de datos de incidencias, las sedes de tu empresa, las categorías válidas y los valores semilla esperados.
 3. Este proyecto extiende el trabajo del Hito 5: reutiliza la base de datos, la estructura de la API y la arquitectura del frontend existentes.
 
 ---
@@ -62,7 +62,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
   - `id` — identificador único generado automáticamente.
   - `title` — título breve de la incidencia (obligatorio).
   - `description` — descripción detallada (obligatorio).
-  - `category` — categoría según las definidas en tu CONTEXT.
+  - `category` — categoría según las definidas en tu BRIEFING.
   - `status` — estado del ciclo de vida: `open`, `in_progress`, `resolved`, `discarded`.
   - `origin` — origen del reporte: `customer`, `branch`, `internal`.
   - `branch` — sede que gestiona o reporta la incidencia (obligatorio para todos los orígenes; usar `central` cuando no corresponda a una sede específica).
@@ -73,7 +73,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 ### Seed de datos históricos (`/scripts`)
 
 - [ ] Crea el script `seed_incidents.py` que lee el fichero CSV del proyecto anterior y carga todas sus filas en la base de datos asignando `origin: "customer"` a todos los registros.
-- [ ] El script debe aplicar las **transformaciones CSV → modelo** especificadas en tu CONTEXT (mapa de estados, mapa de categorías, `description` → `title`, `date` → `created_at`, ubicación → `branch`) antes del insert — el esquema del CSV del analizador no es idéntico al de este gestor.
+- [ ] El script debe aplicar las **transformaciones CSV → modelo** especificadas en tu BRIEFING (mapa de estados, mapa de categorías, `description` → `title`, `date` → `created_at`, ubicación → `branch`) antes del insert — el esquema del CSV del analizador no es idéntico al de este gestor.
 - [ ] El script debe reutilizar la lógica de validación ya existente — extrae las funciones comunes a `packages/shared/` si aún no lo has hecho: los registros inválidos del CSV no se insertan y se reportan en consola al final de la ejecución.
 - [ ] El script es idempotente: si se ejecuta dos veces no duplica registros (comprueba por un campo identificador del CSV antes de insertar).
 
@@ -98,7 +98,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 **Formulario de registro:**
 
 - [ ] Crea una página de registro de incidencias accesible desde el menú de la aplicación.
-- [ ] El formulario incluye todos los campos del modelo. El campo `branch` es siempre visible y obligatorio, con todas las opciones de sede de tu CONTEXT (incluido `central`, mostrado como la etiqueta que indique tu CONTEXT).
+- [ ] El formulario incluye todos los campos del modelo. El campo `branch` es siempre visible y obligatorio, con todas las opciones de sede de tu BRIEFING (incluido `central`, mostrado como la etiqueta que indique tu BRIEFING).
 - [ ] Cuando `origin` sea `branch`, el campo `branch` se destaca visualmente para recordar al usuario que está reportando desde una sede específica.
 - [ ] Al enviar, el formulario muestra un indicador de carga mientras la petición está en curso — el botón de envío queda deshabilitado durante ese tiempo.
 - [ ] Si la API devuelve un error, el formulario muestra un mensaje comprensible para el usuario, nunca el mensaje técnico del servidor. Si el error identifica un campo concreto, el mensaje aparece junto a ese campo.
@@ -117,7 +117,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 - [ ] Muestra las métricas agregadas del endpoint `/summary`: totales por estado, por categoría, por origen y por sede.
 - [ ] Si los datos tardan en cargarse o fallan, el panel muestra el estado correspondiente sin romper el resto de la página.
 
-⚠️ **IMPORTANTE:** Los nombres de campos, categorías, sedes y valores de tu implementación deben coincidir exactamente con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, categorías, sedes y valores de tu implementación deben coincidir exactamente con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 ---
 
@@ -127,10 +127,10 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 
 - [ ] El modelo incluye todos los campos requeridos con sus restricciones de integridad.
 - [ ] El script de seed carga correctamente las incidencias históricas asignando `origin: "customer"`.
-- [ ] El script de seed aplica las transformaciones CSV → modelo definidas en tu CONTEXT (estado, categoría, título, fechas y sede) antes del insert.
+- [ ] El script de seed aplica las transformaciones CSV → modelo definidas en tu BRIEFING (estado, categoría, título, fechas y sede) antes del insert.
 - [ ] Los registros inválidos del CSV no se insertan y se reportan en consola.
 - [ ] El script es idempotente: ejecutarlo dos veces no duplica datos.
-- [ ] Tras el seed, los totales por `status` y `category` del modelo en `/api/incidents/summary` coinciden con los valores transformados esperados en tu CONTEXT (mismo conjunto de registros válidos que en el proyecto incidents-file-analyzer).
+- [ ] Tras el seed, los totales por `status` y `category` del modelo en `/api/incidents/summary` coinciden con los valores transformados esperados en tu BRIEFING (mismo conjunto de registros válidos que en el proyecto incidents-file-analyzer).
 
 ### Backend
 
@@ -143,7 +143,7 @@ No hace falta implementar nada de esto en la entrega actual. La idea es ver que 
 ### Frontend
 
 - [ ] El formulario valida campos obligatorios en el cliente antes de enviar.
-- [ ] Cuando `origin` es `branch`, el campo `branch` se resalta visualmente y el desplegable muestra las etiquetas de CONTEXT.
+- [ ] Cuando `origin` es `branch`, el campo `branch` se resalta visualmente y el desplegable muestra las etiquetas de BRIEFING.
 - [ ] Los estados de carga son visibles y el botón de envío queda deshabilitado durante la petición.
 - [ ] Los errores de la API se muestran en lenguaje comprensible para el usuario, nunca como texto técnico.
 - [ ] El listado gestiona correctamente los tres estados posibles: cargando, vacío, con datos.

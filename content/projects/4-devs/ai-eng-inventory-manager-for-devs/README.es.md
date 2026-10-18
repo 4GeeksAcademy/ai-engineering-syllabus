@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee tu **[CONTEXT-company.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/inventory-manager-for-devs)** antes de escribir una sola línea de spec — define las unidades de medida, categorías, lotes y puntos de reorden concretos de tu implementación.
+**Antes de empezar**: lee tu **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/4-devs/inventory-manager-for-devs)** antes de escribir una sola línea de spec — define las unidades de medida, categorías, lotes y puntos de reorden concretos de tu implementación.
 
 ---
 
@@ -36,7 +36,7 @@ La segunda trampa es la contraria: escribir 20 páginas de spec para un CRUD. La
 >
 > Antes de que el agente escriba una sola línea de código de este módulo, quiero ver el spec. No el código — el spec. Ese es el artefacto que voy a revisar y aprobar, y solo después de aprobarlo se pasa a implementación.
 >
-> El requisito, en una frase: el equipo de operaciones necesita dar de alta artículos de inventario, registrar sus movimientos de entrada, salida y ajuste, y saber en todo momento qué está por debajo del punto de reorden. Los nombres de las entidades, las unidades de medida y los valores de dominio salen de tu CONTEXT, no de tu imaginación.
+> El requisito, en una frase: el equipo de operaciones necesita dar de alta artículos de inventario, registrar sus movimientos de entrada, salida y ajuste, y saber en todo momento qué está por debajo del punto de reorden. Los nombres de las entidades, las unidades de medida y los valores de dominio salen de tu BRIEFING, no de tu imaginación.
 >
 > Hay una cosa que no es negociable, y quiero que quede como criterio de aceptación explícito, no como una nota al margen: el stock de un artículo se calcula a partir de sus movimientos. No existe un endpoint, un campo de formulario ni una operación que edite el stock directamente. Si tu spec no lo dice con esa claridad, el agente lo va a hacer mal, y no será culpa suya.
 >
@@ -98,7 +98,7 @@ El spec no sustituye a la suite de tests, la origina. El código sigue siendo la
 ### Fase 4 — Implement
 
 - [ ] Implementa las tareas en el orden definido, sin saltarte el plan ni improvisar alcance nuevo directamente con el agente.
-- [ ] Implementa el alta, edición, listado y baja de artículos de inventario, con los campos definidos en tu CONTEXT.
+- [ ] Implementa el alta, edición, listado y baja de artículos de inventario, con los campos definidos en tu BRIEFING.
 - [ ] Implementa el registro de movimientos de stock: entrada, salida y ajuste, cada uno con su motivo y su marca temporal.
 - [ ] El stock disponible de un artículo se calcula a partir de sus movimientos — no existe operación que lo edite directamente.
 - [ ] Implementa un punto de reorden por artículo y una señal visible en el backoffice cuando el stock quede por debajo.
@@ -125,7 +125,7 @@ El spec no sustituye a la suite de tests, la origina. El código sigue siendo la
 - [ ] Existen criterios y tests para comportamiento no deseado: movimiento que dejaría stock negativo, movimiento sobre artículo o lote inexistente.
 - [ ] Cada tarea en `tasks.md` referencia el criterio de aceptación que implementa, y cada commit de implementación referencia su tarea.
 - [ ] La suite de tests verifica los criterios de aceptación del spec, no solo el "happy path".
-- [ ] El gestor de inventario permite dar de alta artículos y registrar movimientos de entrada, salida y ajuste, con los nombres de entidad y valores de dominio del CONTEXT de la empresa asignada.
+- [ ] El gestor de inventario permite dar de alta artículos y registrar movimientos de entrada, salida y ajuste, con los nombres de entidad y valores de dominio del BRIEFING de la empresa asignada.
 - [ ] El backoffice señala de forma visible los artículos por debajo del punto de reorden.
 - [ ] El cambio de requisito se resolvió editando el spec primero y regenerando solo las tareas afectadas — no hay evidencia de parches de código sin spec actualizado.
 - [ ] El historial de commits separa las tareas del desarrollo; no existe un commit único que agrupe todo el trabajo.

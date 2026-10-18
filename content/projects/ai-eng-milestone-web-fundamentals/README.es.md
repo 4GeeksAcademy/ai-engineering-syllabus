@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de comenzar**: Lee tu **[CONTEXT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** antes de escribir cualquier código — define los datos específicos de tu empresa, nombres de campos, valores de dominio y restricciones para tu implementación. También lee las [instrucciones](https://4geeks.com/es/lesson/como-comenzar-un-proyecto-de-codificacion) sobre cómo comenzar un proyecto de programación.
+**Antes de comenzar**: Lee tu **[BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals)** antes de escribir cualquier código — define los datos específicos de tu empresa, nombres de campos, valores de dominio y restricciones para tu implementación. También lee las [instrucciones](https://4geeks.com/es/lesson/como-comenzar-un-proyecto-de-codificacion) sobre cómo comenzar un proyecto de programación.
 
 ---
 
@@ -33,7 +33,7 @@ Este sitio debe funcionar en cualquier dispositivo, cumplir con estándares de a
 >
 > Hola,
 >
-> Como sabes, hemos decidido dar el salto a lo digital. Necesitamos lanzar nuestro sitio web público lo antes posible. Revisa el `CONTEXT.md` para entender exactamente qué hace nuestra empresa y qué información necesitamos capturar de las personas interesadas.
+> Como sabes, hemos decidido dar el salto a lo digital. Necesitamos lanzar nuestro sitio web público lo antes posible. Revisa el `BRIEFING.md` para entender exactamente qué hace nuestra empresa y qué información necesitamos capturar de las personas interesadas.
 >
 > El sitio debe tener dos partes:
 >
@@ -48,7 +48,7 @@ Este sitio debe funcionar en cualquier dispositivo, cumplir con estándares de a
 > **2. Formulario de aplicación/registro** — Una página separada donde las personas puedan:
 >
 > - Completar sus datos personales
-> - Proporcionar la información específica que necesitamos (ver `CONTEXT.md`)
+> - Proporcionar la información específica que necesitamos (ver `BRIEFING.md`)
 > - Enviar su aplicación (no necesitas conectarlo a nada todavía, solo validar los datos)
 >
 > **Requisitos técnicos que debes cumplir:**
@@ -78,7 +78,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 
 2. Una vez tengas tu propio repositorio, ábrelo en un Codespace o clónalo localmente.
 
-3. Lee completamente tu archivo [`CONTEXT.md`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals) — contiene los datos específicos de tu empresa, los campos exactos que tu formulario debe incluir, y cualquier restricción o regla de validación específica del dominio.
+3. Lee completamente tu archivo [`BRIEFING.md`](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/01-web-fundamentals) — contiene los datos específicos de tu empresa, los campos exactos que tu formulario debe incluir, y cualquier restricción o regla de validación específica del dominio.
 
 4. Crea la estructura básica de tu proyecto:
 
@@ -119,7 +119,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 ### Formulario de Aplicación/Registro
 
 - [ ] Crear `application.html` con un formulario estructurado
-- [ ] Incluir los campos especificados en tu `CONTEXT.md`
+- [ ] Incluir los campos especificados en tu `BRIEFING.md`
 - [ ] Usar tipos de input apropiados (`email`, `tel`, `date`, `number`, etc.)
 - [ ] Añadir `<label>` asociado correctamente con cada input (usando atributo `for`)
 - [ ] Agrupar campos relacionados usando `<fieldset>` y `<legend>` donde sea apropiado
@@ -134,7 +134,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 - [ ] Prevenir el envío del formulario si hay errores de validación
 - [ ] Mostrar un mensaje de éxito cuando la validación sea correcta (simular envío)
 
-⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu CONTEXT.md. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los nombres de campos, IDs de entidad y valores específicos del dominio en tu implementación deben coincidir con lo especificado en tu BRIEFING.md. Una implementación genérica que ignore el contexto no será aceptada.
 
 ---
 
@@ -169,7 +169,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 
 ### Formulario y Validación
 
-- [ ] Todos los campos especificados en el CONTEXT.md están presentes
+- [ ] Todos los campos especificados en el BRIEFING.md están presentes
 - [ ] Los tipos de input son apropiados para cada campo
 - [ ] La validación con JavaScript funciona correctamente para todos los campos
 - [ ] Los mensajes de error son específicos y útiles (no solo "campo inválido")
@@ -179,9 +179,9 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
 
 ### Adherencia al Contexto
 
-- [ ] La landing page refleja fielmente el tipo de empresa y sector especificado en CONTEXT.md
+- [ ] La landing page refleja fielmente el tipo de empresa y sector especificado en BRIEFING.md
 - [ ] El contenido presenta la experiencia y ventajas competitivas de la empresa
-- [ ] Los campos del formulario coinciden exactamente con los requeridos en CONTEXT.md
+- [ ] Los campos del formulario coinciden exactamente con los requeridos en BRIEFING.md
 - [ ] Cualquier regla de validación específica del dominio está implementada
 - [ ] El tono y contenido son coherentes con una empresa establecida que se digitaliza
 
@@ -195,7 +195,7 @@ No clones este repositorio porque vamos a usar una plantilla diferente.
    - `index.html`
    - `application.html`
    - `validation.js`
-   - Tu `CONTEXT.md` (no modificado)
+   - Tu `BRIEFING.md` (no modificado)
 
 3. Incluye tu **URL pública de Codespaces** y una captura de PageSpeed Insights **o** Lighthouse de Chrome DevTools (puntuación ≥ 80) en la descripción del PR
 

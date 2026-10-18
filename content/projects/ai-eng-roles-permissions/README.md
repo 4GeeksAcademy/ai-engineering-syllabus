@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[CONTEXT-roles-permissions.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/roles-permissions)** before writing any code — that's where your company's roles, departments, and concrete access rules live.
+**Before you start**: read your **[COMPANY-BRIEF.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts)** and your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/roles-permissions)** before writing any code — that's where your company's roles, departments, and concrete access rules live.
 
 ---
 
@@ -44,7 +44,7 @@ It's easy to confuse these two concepts because both "restrict" something — bu
 ## 🌱 How to Start the Project
 
 1. `pull` the latest changes from your fork of the monorepo.
-2. Read `COMPANY-BRIEF.md` and `CONTEXT-roles-permissions.md` in full before touching any code.
+2. Read `COMPANY-BRIEF.md` and `company-BRIEFING.md` in full before touching any code.
 3. Create a new branch: `feature/roles-permissions`.
 4. Map every existing endpoint in your system and classify it by the minimum role required to use it.
 5. Design the data model for roles, departments, and their relationship to the user before writing your first migration.
@@ -73,7 +73,7 @@ It's easy to confuse these two concepts because both "restrict" something — bu
 - [ ] Show only the departmental data that corresponds to the authenticated user
 - [ ] Implement a roles and departments administration view accessible only to the Admin role
 
-⚠️ **IMPORTANT:** the exact role names, existing departments, and rules for which information concerns each department must match exactly what's specified in your `CONTEXT-roles-permissions.md`. A generic implementation that ignores that context will not be accepted.
+⚠️ **IMPORTANT:** the exact role names, existing departments, and rules for which information concerns each department must match exactly what's specified in your `company-BRIEFING.md`. A generic implementation that ignores that context will not be accepted.
 
 ---
 

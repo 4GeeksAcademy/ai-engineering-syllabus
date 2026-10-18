@@ -50,7 +50,7 @@ After the opening instructor note, add a single line so both files discover each
 ## Workflow
 
 1. **Read the official briefs**  
-   Read `README.md` and `README.es.md` at the project root. Extract: stack, mandatory integrations, data shapes, API/UI expectations, evaluation dimensions, and constraints (e.g. CONTEXT files, monorepo paths).
+   Read `README.md` and `README.es.md` at the project root. Extract: stack, mandatory integrations, data shapes, API/UI expectations, evaluation dimensions, and constraints (e.g. BRIEFING files, monorepo paths).
 
 2. **Extract the teaching spine**  
    List **3–7 non-negotiable technical ideas** (e.g. Pydantic validation + TinyDB + seed idempotency + filtered `GET`; or Next.js App Router + `useSearchParams`; or agent tool loop). The example must exercise **the same spine**, not every bullet of the full rubric.

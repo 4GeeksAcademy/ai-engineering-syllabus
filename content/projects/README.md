@@ -12,7 +12,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
    Capstone n8n workflow: barcode webhook → Open Food Facts → traffic-light + Nutri-Score rules → tone-adaptive Groq verdict, with diagram, README, tests, and CHANGELOG.
 
 1. **[Company Project Milestone: Choose Your Company](./ai-eng-milestone-choose-company)**  
-   `Milestone 0` — Pick your fictional company, capture it in `CONTEXT.md`, and prepare the narrative and data you will reuse in later milestones.
+   `Milestone 0` — Pick your fictional company, capture it in `BRIEFING.md`, and prepare the narrative and data you will reuse in later milestones.
 
 2. **[Artist landing: HTML, CSS, SEO and accessibility](./html-css-artist-landing-seo-access)**  
    Accessible, SEO-optimized landing page for an artist using semantic HTML and CSS.
@@ -21,7 +21,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
    Responsive dashboard with HTML and Tailwind showing KPIs, drivers, and operational details (no React).
 
 4. **[Company Project Milestone: Web Fundamentals](./ai-eng-milestone-web-fundamentals)**  
-   `Milestone 1` — Your company's public website: landing page plus application/sign-up form with semantic HTML5, Tailwind, Schema.org, and JavaScript validation. Follow `CONTEXT.md` for data and form fields.
+   `Milestone 1` — Your company's public website: landing page plus application/sign-up form with semantic HTML5, Tailwind, Schema.org, and JavaScript validation. Follow `BRIEFING.md` for data and form fields.
 
 5. **[Collaborative project: online store with HTML and Tailwind](./collaborative-project-html-tailwind-online-store)**  
    Collaborative e-commerce prototype (min. 5 pages: Home, Catalog, Product, Cart, Checkout) with HTML and Tailwind, teamwork with branches and pull requests.
@@ -42,7 +42,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Configure OpenClaw memory types (episodic, semantic, procedural), restructure workspace files, and validate that context persists across sessions.
 
 11. **[Onboarding Agent with Memory](./openclaw-onboarding-agent)**  
-    Build a company onboarding flow: an OpenClaw agent with memory that reads HR templates and sends personalized onboarding email from your assigned `CONTEXT-company.md`.
+    Build a company onboarding flow: an OpenClaw agent with memory that reads HR templates and sends personalized onboarding email from your assigned `company-BRIEFING.md`.
 
 12. **[Cinema Seat Manager (TypeScript)](./seats-management-typescript)**  
     Command-line cinema seat reservation system using a 2D array, with reserve, count, and adjacent-seat search functions.
@@ -69,7 +69,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Next.js 16 + TypeScript + Tailwind UI clone from a product brief: layout, reusable components, and typed listing data.
 
 20. **[Company Project Milestone: Talent Pipeline Tracker](./ai-eng-milestone-frontend-development)**  
-    `Milestone 3` — Next.js App Router frontend for the recruitment API: candidate list and detail, filters and search, notes CRUD, register and edit forms, async UI states, and TypeScript types aligned with `CONTEXT-company.md`.
+    `Milestone 3` — Next.js App Router frontend for the recruitment API: candidate list and detail, filters and search, notes CRUD, register and edit forms, async UI states, and TypeScript types aligned with `company-BRIEFING.md`.
 
 21. **[Company financial dashboard context project](./company-financial-dashboard-context-project)**  
     Module project: drive a coding agent to understand an unfamiliar full-stack repo (no prior stack knowledge required), verify claims against code, derive and test `.agents/rules` from repo evidence, and leave a `memory-bank` (product, stack, status) so the repo is agent-ready.
@@ -96,7 +96,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Build a basic FastAPI inventory API plus a Python AI agent loop that uses API endpoints as tools, logs each interaction to CSV, and supports natural-language stock operations.
 
 29. **[Supplier Directory — Lightweight Storage API](./ai-eng-supplier-directory)**  
-    FastAPI + TinyDB + Pydantic supplier API: seeded data from `CONTEXT`, validation, CRUD, and filter endpoints (by country and category) with rate-change timestamps.
+    FastAPI + TinyDB + Pydantic supplier API: seeded data from `BRIEFING`, validation, CRUD, and filter endpoints (by country and category) with rate-change timestamps.
 
 30. **[Securing the API: Authentication and Route Restriction in FastAPI](./ai-eng-user-authentication-api)**  
     JWT-based auth on the supplier API: register, login, protected routes, password hashing, and ownership checks.
@@ -111,7 +111,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Add a comprehensive unit-test suite to the authentication API: token logic, validation edge cases, and endpoint behavior without testing framework plumbing.
 
 34. **[Centralized Incident Manager](./ai-eng-centralized-incident-manager)**  
-    Integrate a real-time incident manager into the company monorepo: log, query, and track incidents from the browser using your assigned `CONTEXT-company.md`.
+    Integrate a real-time incident manager into the company monorepo: log, query, and track incidents from the browser using your assigned `company-BRIEFING.md`.
 
 35. **[Error Handling](./ai-eng-error-handling)**  
     Audit and fix error handling across the monorepo: API failures, loading states, user-facing messages, and script crash output before the next milestone adds complexity.
@@ -123,7 +123,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Multi-table SQL on a normalized EduTrack schema: JOINs, cross-table metrics, and answers that require relating students, courses, and enrollments.
 
 38. **[Company Project Milestone: Backend — Inventory Management](./ai-eng-milestone-backend-development)**  
-    `Milestone 5` (backend) — FastAPI + SQLModel inventory API on Supabase: dual-database setup, inbound/outbound orders, and business rules from `CONTEXT-company.md`.
+    `Milestone 5` (backend) — FastAPI + SQLModel inventory API on Supabase: dual-database setup, inbound/outbound orders, and business rules from `company-BRIEFING.md`.
 
 39. **[Company Project Milestone: Backoffice — Inventory Management](./ai-eng-inventory-management-backoffice)**  
     `Milestone 5` (frontend) — Backoffice UI for inventory operations: lists, forms, and states wired to the Milestone 5 backend API.
@@ -144,10 +144,10 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Profile frontend and API hot paths, implement justified caching (TTL, `useMemo`, FastAPI cache), and document trade-offs in a technical report.
 
 45. **[Designing your company's telemetry plan](./ai-eng-telemetry-plan)**  
-    Design `telemetry-plan.md` and `event-schemas.json` from CONTEXT mandatory metrics plus a broad opportunity catalogue before any instrumentation code.
+    Design `telemetry-plan.md` and `event-schemas.json` from BRIEFING mandatory metrics plus a broad opportunity catalogue before any instrumentation code.
 
 46. **[Company's Telemetry – Frontend capture](./ai-eng-telemetry-capture)**  
-    Stub `POST /telemetry/events` + `TelemetryService` (queue, batch/debounce, `sendBeacon`, retry) instrumenting CONTEXT mandatory metrics and a technical baseline via single `track()`.
+    Stub `POST /telemetry/events` + `TelemetryService` (queue, batch/debounce, `sendBeacon`, retry) instrumenting BRIEFING mandatory metrics and a technical baseline via single `track()`.
 
 47. **[Company's Telemetry – Storage](./ai-eng-telemetry-storage)**  
     Replace stub with Supabase `telemetry_events`: per-event validation, bulk insert, `{ received, stored, rejected }`, frontend untouched.
@@ -186,7 +186,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Tune a churn classifier on StreamLoop's telecom-style dataset: sklearn Pipeline with internal preprocessing, default baseline, RandomizedSearchCV → GridSearchCV on train only, business-aligned scoring, `cv_results_` stability review, and `tuning_report.md`.
 
 59. **[Milestone 7 — RAG & Knowledge Base](./ai-eng-milestone-rag-knowledge-base)**  
-    `Milestone 7` — Modular RAG in the company monorepo: chunk and index CONTEXT documents in Qdrant (`setup`, `embed`), retrieve with similarity threshold, generate salesperson-voice answers (`query`), expose `POST /knowledge/query` via FastAPI, minimal query UI, and unit tests — no LangChain; never return raw vector hits.
+    `Milestone 7` — Modular RAG in the company monorepo: chunk and index BRIEFING documents in Qdrant (`setup`, `embed`), retrieve with similarity threshold, generate salesperson-voice answers (`query`), expose `POST /knowledge/query` via FastAPI, minimal query UI, and unit tests — no LangChain; never return raw vector hits.
 
 60. **[Support Agent with LangGraph — Part 1: Migration and Agent Flow](./ai-eng-langgraph-agent-base)**  
     `Part 1 of 2` — Wrap Milestone 7 RAG in a compiled LangGraph with minimal state, single-responsibility nodes, conditional edges, checkpointing, queryable traces, evals in `tests/pipelines/`, and `POST /agent/query` — reuse `data/pipelines/` without duplication.
@@ -198,25 +198,25 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
     Expose Incidents Manager and read-only inventory as an authenticated FastMCP server (API Key, least privilege, discovery schemas, invocation logs), validate with an MCP client, and migrate the LangGraph support agent to consume incidents through MCP instead of direct HTTP tools.
 
 63. **[Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)](./ai-eng-milestone-agentic-engineering)**  
-    `Milestone 8` Part 1 — Extend the LangGraph company agent (RAG + MCP) with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only CONTEXT-allowed facts, never silent auto-writes. Same agent identity as Part 2.
+    `Milestone 8` Part 1 — Extend the LangGraph company agent (RAG + MCP) with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only allowed-BRIEFING facts, never silent auto-writes. Same agent identity as Part 2.
 
 64. **[Milestone 8 — Securing Agents: Harness and Guardrails (Part 2 of 2)](./ai-eng-agent-harness)**  
-    `Milestone 8` Part 2 — Lock down the **same** company agent after memory: CONTEXT-aligned secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and **deterministic** harness tests — layered defenses, not a single filter or live-LLM-only gate.
+    `Milestone 8` Part 2 — Lock down the **same** company agent after memory: aligned-BRIEFING secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and **deterministic** harness tests — layered defenses, not a single filter or live-LLM-only gate.
 
 65. **[Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3)](./ai-eng-milestone-agentic-workflows-orchestrate)**  
-    `Milestone 9` Part 1 — Agentic RFP intake: triage router, RFP filter, orchestrator-worker decomposition into parallel workstreams, then synthesizer into the defined workstream structure from CONTEXT.
+    `Milestone 9` Part 1 — Agentic RFP intake: triage router, RFP filter, orchestrator-worker decomposition into parallel workstreams, then synthesizer into the defined workstream structure from BRIEFING.
 
 66. **[Milestone — Agentic RFP Workflow: Response Generation (Part 2 of 3)](./ai-eng-milestone-agentic-workflows-evaluate)**  
     `Milestone 9` Part 2 — Map workstreams to departments, generate and self-evaluate each section, and produce department assignment tickets — same ticket row as Part 1.
 
 67. **[Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)](./ai-eng-milestone-agentic-workflows-produce)**  
-    `Milestone 9` Part 3 — Human-in-the-loop interrupt/resume per department, parallel branches under interrupt, CONTEXT conflict arbiter, automatic final-document synthesis, and E2E continuity from Parts 1–2.
+    `Milestone 9` Part 3 — Human-in-the-loop interrupt/resume per department, parallel branches under interrupt, BRIEFING conflict arbiter, automatic final-document synthesis, and E2E continuity from Parts 1–2.
 
 68. **[Milestone — Real-Time Systems: Agent Observability (Part 1 of 2)](./ai-eng-milestone-real-time-agent-observability)**  
-    `Milestone 10` Part 1 — Persist Agent / Flow / Task with trigger chains, SSE named events (`agent_step`, `agent_status_changed`), JWT-protected backoffice panel (live list/detail + paginated history) for the conversational agent and RFP pipeline — observe only; control is Part 2. CONTEXT: [`10-realtime/agent-observability`](../contexts/10-realtime/agent-observability).
+    `Milestone 10` Part 1 — Persist Agent / Flow / Task with trigger chains, SSE named events (`agent_step`, `agent_status_changed`), JWT-protected backoffice panel (live list/detail + paginated history) for the conversational agent and RFP pipeline — observe only; control is Part 2. BRIEFING: [`10-realtime/agent-observability`](../contexts/10-realtime/agent-observability).
 
 69. **[Milestone — Real-Time Systems: Agent Control (Part 2 of 2)](./ai-eng-milestone-real-time-agent-control)**  
-    `Milestone 10` Part 2 — Wire Part 1 available-actions into real `pause` / `resume` / `cancel` over WebSocket: reuse LangGraph checkpoints, pub/sub fan-out, JWT-derived `actor_id` audit, terminal cancel vs resumable pause — kill switch, not business approval. CONTEXT: [`10-realtime/agent-control`](../contexts/10-realtime/agent-control).
+    `Milestone 10` Part 2 — Wire Part 1 available-actions into real `pause` / `resume` / `cancel` over WebSocket: reuse LangGraph checkpoints, pub/sub fan-out, JWT-derived `actor_id` audit, terminal cancel vs resumable pause — kill switch, not business approval. BRIEFING: [`10-realtime/agent-control`](../contexts/10-realtime/agent-control).
 
 70. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
     Capstone — Record a ~5-minute landscape pitch of the company AI system: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with `FirstnameLastname-ProjectName.mp4`, a 1–2 sentence description, and the signed media release.
@@ -226,7 +226,7 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 Separate track under [`./4-devs`](./4-devs). Contexts live in [`../contexts/4-devs`](../contexts/4-devs).
 
 - **[Operations Backoffice – Incident Manager](./4-devs/ai-eng-incident-manager-for-devs)**  
-  Steward + feature: derive monorepo conventions into `.agents/rules` and a `memory-bank`, then ship a CONTEXT-driven incident manager with lifecycle and change traceability (`contexts/4-devs/incident-manager-for-devs`).
+  Steward + feature: derive monorepo conventions into `.agents/rules` and a `memory-bank`, then ship a driven-BRIEFING incident manager with lifecycle and change traceability (`contexts/4-devs/incident-manager-for-devs`).
 
 - **[Operations Backoffice – Inventory Manager](./4-devs/ai-eng-inventory-manager-for-devs)**  
   Spec Driven Development: EARS `spec` / `plan` / `tasks`, inventory where stock is derived from movements, tests mapped to criteria, mid-stream requirement change via spec-first (`contexts/4-devs/inventory-manager-for-devs`).
@@ -251,7 +251,7 @@ Not part of the syllabus sequence. Kept here for reference or optional use.
   Guided OWASP audit on your monorepo app: ≥3 real findings with before/after proof, rate limits on sensitive endpoints, and secrets rotation documentation.
 
 - **[Real-Time Systems (Part 1 of 2): SSE Notifications](./ai-eng-real-time-notification)**  
-  Post-graduation extra — Push RFP ticket notifications to the company dashboard over SSE: named event + CONTEXT payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent). Not the same as in-syllabus agent observability (`ai-eng-milestone-real-time-agent-observability`).
+  Post-graduation extra — Push RFP ticket notifications to the company dashboard over SSE: named event + BRIEFING payload, keep-alive, `fetch` + `ReadableStream`, progressive backoff reconnect without duplicates — communication layer only (no model/agent). Not the same as in-syllabus agent observability (`ai-eng-milestone-real-time-agent-observability`).
 
 - **[Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-real-time-communication)**  
   Post-graduation extra — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic. Not the same as in-syllabus agent control (`ai-eng-milestone-real-time-agent-control`).

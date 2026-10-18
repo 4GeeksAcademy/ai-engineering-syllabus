@@ -1,6 +1,6 @@
 # Milestone 9 Part 3 — Approval & Document Completion — Reference Solution
 
-Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align department approvers, CONTEXT conflict triggers / fixed arbiter, and final document format with their assigned `CONTEXT-company.md`.
+Reference quality bar for the student's company monorepo fork. Values below are **indicative** — students must align department approvers, BRIEFING conflict triggers / fixed arbiter, and final document format with their assigned `company-BRIEFING.md`.
 
 ---
 
@@ -34,7 +34,7 @@ flowchart LR
 2. **Scoped interrupt** — pause only the department branch waiting on approval.
 3. **Durable pause** — checkpointer (SQLite/Postgres) before interrupt; resume from checkpoint.
 4. **Resume is an entrypoint** — validated human payload; not a full graph restart.
-5. **Explicit arbitration** — CONTEXT conflict triggers → fixed arbiter (named human / deterministic rule); not LLM freestyle among agents.
+5. **Explicit arbitration** — BRIEFING conflict triggers → fixed arbiter (named human / deterministic rule); not LLM freestyle among agents.
 6. **Namespaced `thread_id`** — e.g. `rfp-{ticket_id}` (optionally `:{department}`); concurrent tickets never share a checkpoint.
 7. **Synthesize last** — final document only when every required department is approved.
 8. **One continuous ticket** — Part 1→2→3 shares identity, statuses, and artifacts.
@@ -55,7 +55,7 @@ flowchart LR
 | `services/.../routers/rfp.py`                           | Same existing API — approve/reject/resume + GET ticket            |
 | `uis/backoffice/.../approvals/`                         | Per-department approve / reject / changes                         |
 | `tests/pipelines/test_interrupt_resume.py`              | Interrupt + resume                                                |
-| `tests/pipelines/test_arbitration.py`                   | CONTEXT trigger → fixed arbiter path                              |
+| `tests/pipelines/test_arbitration.py`                   | BRIEFING trigger → fixed arbiter path                              |
 | `tests/pipelines/test_iteration_limit.py`               | Cap enforcement                                                   |
 | `tests/pipelines/test_parallel_interrupt.py`            | Approve B while A still interrupted                               |
 | `tests/pipelines/test_e2e_produce.py` or `scripts/`     | Fixture + simulated resumes E2E                                   |
@@ -111,7 +111,7 @@ Reject / `request_changes` should route back to Part 2 generation for that depar
 
 ## Arbitration
 
-Implement the **trigger ids and fixed arbiters** from your CONTEXT §7 (TrackFlow / Brasaland / Nexova / HealthCore). Detect contradictions in structured state; route to the named human or deterministic rule — never LLM consensus.
+Implement the **trigger ids and fixed arbiters** from your BRIEFING §7 (TrackFlow / Brasaland / Nexova / HealthCore). Detect contradictions in structured state; route to the named human or deterministic rule — never LLM consensus.
 
 Arbitration node output (indicative):
 
@@ -132,9 +132,9 @@ Agents may surface a conflict; they must not resolve it by free-form voting.
 
 ## Ultimate synthesizer
 
-Runs only when every required CONTEXT department shows `approved`:
+Runs only when every required BRIEFING department shows `approved`:
 
-1. Concatenate / template approved sections into CONTEXT final-document format.
+1. Concatenate / template approved sections into BRIEFING final-document format.
 2. Attach approval metadata (who, when) and execution trace reference.
 3. Store artifact; set ticket `done`; expose download/link in backoffice.
 
@@ -176,14 +176,14 @@ Enough to answer “which agent did what, in what order” for one run without d
 - [ ] Resume entrypoint with validated human decisions
 - [ ] Test/trace: approve B while A still interrupted
 - [ ] `thread_id` namespaced by ticket (and dept if applicable)
-- [ ] Arbitration on CONTEXT triggers + fixed arbiter + iteration limit
+- [ ] Arbitration on BRIEFING triggers + fixed arbiter + iteration limit
 - [ ] Per-node trace with agent/input/output/timestamp
 - [ ] Final document only after all approvals
 - [ ] Ticket `done` + accessible artifact
 - [ ] Reproducible E2E/fixture with simulated approvals (script or integration test)
 - [ ] E2E sample across Parts 1–3 linked in PR
 - [ ] Tests: interrupt/resume, iteration limit, arbitration, parallel-under-interrupt
-- [ ] CONTEXT approvers + §7 arbitration + final format honored
+- [ ] BRIEFING approvers + §7 arbitration + final format honored
 
 ---
 
@@ -197,9 +197,9 @@ Enough to answer “which agent did what, in what order” for one run without d
 | Shared `thread_id` across tickets         | Concurrent runs corrupt checkpoints    |
 | In-memory checkpointer in “prod” tests    | State lost across process restarts     |
 | Resume = re-invoke from start             | Must continue from checkpoint          |
-| Arbitration node without CONTEXT triggers | Decorative stub; fails rubric          |
+| Arbitration node without BRIEFING triggers | Decorative stub; fails rubric          |
 | Agents resolve conflicts alone            | Fixed arbiter / rules required         |
-| Invented multi-level hierarchy            | Use CONTEXT owners only (+ CEO if any) |
+| Invented multi-level hierarchy            | Use BRIEFING owners only (+ CEO if any) |
 | Manual-only E2E (no fixture script)       | Review must be reproducible            |
 | Synthesize with pending approvals         | Final doc must wait for full sign-off  |
 | Broken Part 1→2→3 handoff                 | E2E continuity is graded               |
@@ -210,7 +210,7 @@ Enough to answer “which agent did what, in what order” for one run without d
 
 - **Required test:** approve department B while A remains interrupted; confirm B completes and A stays paused.
 - Reject one section; confirm synthesizer does not run and revision path is taken.
-- Force a CONTEXT §7 trigger (e.g. TrackFlow `volume-vs-capacity`); confirm arbitration node + fixed arbiter path execute and are traced.
+- Force a BRIEFING §7 trigger (e.g. TrackFlow `volume-vs-capacity`); confirm arbitration node + fixed arbiter path execute and are traced.
 - Run fixture E2E with programmatic resumes; no dependency on live UI clicks for CI/review.
 - Restart the process mid-interrupt; resume from checkpointer without replaying Part 1.
 - Two concurrent tickets with distinct `thread_id`s; confirm checkpoints do not collide.
