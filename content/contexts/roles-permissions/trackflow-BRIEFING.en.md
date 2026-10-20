@@ -1,194 +1,55 @@
-# BRIEFING — Roles and Permissions · TrackFlow
+# CONTEXT — Roles and Permissions · TrackFlow
 
-_Estas instrucciones también están disponibles en [español](./trackflow-BRIEFING.es.md)._
+## 1. Why this matters to TrackFlow
 
-> **Project:** Platform – Roles and Permissions  
-> **Repository path:** `content/contexts/roles-permissions/trackflow-BRIEFING.en.md`
+TrackFlow manages warehousing and last-mile delivery in Los Angeles and Zaragoza for e-commerce brands that trust the company with their entire logistics operation. A warehouse operative, a carrier coordinator, and an account manager currently have the same level of system access — meaning anyone could, in theory, view a client's commercial contract, modify another country's inventory, or look up a colleague's employment data without anyone noticing.
 
----
+## 2. TrackFlow's roles
 
-## Your company
+Use exactly these three roles as a minimum:
 
-You are part of **TrackFlow Tech**. TrackFlow is a last-mile and warehouse company (~130 people) with sites in Los Angeles and Zaragoza. CTO **Andrés Kim** opened this ticket after Legal flagged that every authenticated user currently has the same access — warehouse notes must not leak into commercial accounts.
+| System role | Who holds it at TrackFlow | Typical capabilities |
+|---|---|---|
+| **Employee** | Warehouse operatives, carrier coordinators, CX agents, corporate staff | Log picking activity, update incident status, view shipment status within their work queue, view their own employment data |
+| **Supervisor** | Ana Whitfield (Warehouse), Carlos Vega (Carriers), Valentina Cruz (CX), Sofía Ramos (Returns), Rafael Sanz (People) | Everything Employee has + view their area's operations dashboard, approve exceptions, reassign work within their team |
+| **Admin** | Andrés Kim (CTO), Thomas Harry (CEO) | Everything above + manage users, view data across both countries and all departments, configure roles and departments |
 
-Use this file as the source of truth for **role names**, **departments**, **capability rules**, and **seed users**. A generic RBAC that ignores these values will not be accepted.
+## 3. TrackFlow's departments
 
----
+- **Warehouse Operations**
+- **Last Mile and Carrier Management**
+- **Reverse Logistics (Returns)**
+- **Customer Experience (CX)**
+- **Commercial and Client Relations**
+- **People**
+- **Technology**
+- **Executive Direction**
 
-## Roles (capability axis)
+## 4. Rules for what information concerns each department
 
-Roles answer _"what can this person do?"_ — not which data they see. Persist them as their own entity. Do **not** collapse this into `is_admin`.
+- A **Warehouse Supervisor** sees inventory, discrepancies, and incoming orders, but not clients' commercial contracts (that's Commercial).
+- A **Commercial Supervisor** sees each client's account status and renewal data, but not per-warehouse operational inventory detail.
+- A **CX** user sees tickets and their SLA, but not per-carrier financial performance (that's Last Mile/Commercial combined with Executive Direction).
+- A **People** user sees TrackFlow staff employment data (contracts, absences, leave, onboarding progress), but not client, inventory, or shipment data.
+- No Supervisor from another department sees their team members' employment data beyond what's operational (schedules and assignments). Contracts, justified absences, and personal data belong exclusively to People.
+- Any **Employee** can view their own employment data, never anyone else's.
+- Only **Executive Direction** sees the consolidated view across the United States and Spain at once.
 
-| `code`       | Display name | Rank | Capabilities                                                                                                                                                                                                                   |
-| ------------ | ------------ | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `employee`   | Employee     | 1    | Create and read records in **own department**. Cannot approve, delete, or manage users/roles/departments.                                                                                                                      |
-| `supervisor` | Supervisor   | 2    | Everything an Employee can do, plus update/approve records in **own department**. Cannot delete, cannot manage users/roles/departments, cannot see other departments.                                                          |
-| `admin`      | Admin        | 3    | Everything a Supervisor can do, plus delete records, manage users, and administer roles and departments. **Cross-department visibility is an Admin capability** — it does not mean the Admin lost their department assignment. |
+## 5. Important detail
 
-Rank is strictly hierarchical: `employee` < `supervisor` < `admin`. Changing a user's department must not change this rank.
+TrackFlow operates in two countries with distinct client brands, but **this is not multi-tenancy** — it's scoping by department and, optionally, by country. Don't model end-client data isolation in this project; that belongs to a different platform project. The relevant axis here is role × department.
 
----
+People works under two different labour frameworks (United States and Spain). You can model country as an additional attribute of the employment record, but you don't need to isolate People data by country in this project.
 
-## Departments (data-scope axis)
+## 6. Minimum seed data
 
-Departments answer _"what information concerns this person?"_ They grant **no** extra actions. Persist them as their own entity, independent from role.
+Create at least:
+- 3 Employee users (from different departments: Warehouse, Carriers, and one more)
+- 2 Supervisor users (one of them from People)
+- 1 Admin user
+- The 8 departments listed above
 
-| `code`                 | Display name                     | Director / owner | Data that belongs to this department                                    |
-| ---------------------- | -------------------------------- | ---------------- | ----------------------------------------------------------------------- |
-| `warehouse_operations` | Warehouse Operations             | Ana Whitfield    | Inventory discrepancy notes, inbound/picking operational reports        |
-| `last_mile`            | Last Mile and Carrier Management | Carlos Vega      | Carrier performance notes, failed-delivery reports                      |
-| `reverse_logistics`    | Reverse Logistics                | Sofía Ramos      | Returns-approval notes, inspection reports                              |
-| `customer_experience`  | Customer Experience              | Valentina Cruz   | Query-volume notes, agent-ops reports                                   |
-| `commercial`           | Commercial and Client Relations  | Miguel Torres    | Account-health notes, renewal reports                                   |
-| `technology`           | Technology                       | Andrés Kim       | Platform config notes (still department-scoped for Employee/Supervisor) |
+## 7. Specific acceptance criteria
 
-A Warehouse Supervisor and a Commercial Supervisor have **identical Supervisor capabilities**. They must not see each other's departmental records.
-
----
-
-## Independence rule
-
-- `User.role_id` and `User.department_id` are separate foreign keys (or equivalent). Neither is derived from the other.
-- `PATCH` (or equivalent) that changes only the role must leave the department untouched.
-- `PATCH` that changes only the department must leave the role untouched.
-- Admin users still **belong** to a department (`technology` in the seed). Cross-department read/write is a **role** privilege, not a missing department.
-
----
-
-## Resource access matrix
-
-Apply **role first**, then **department**. Insufficient role → **403** with an explicit body. Never return `200` with empty/silenced data to hide a missing capability.
-
-Direct `GET` of another department's record by id → **403** (Employee/Supervisor). List endpoints for department-scoped collections may return only the caller's department — that is scoping, not a silent denial.
-
-| Resource                                                   | Minimum role                                                                                    | Department-scoped?                    | Notes                                                              |
-| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------ |
-| `GET /auth/me`                                             | authenticated                                                                                   | no                                    | Returns role **and** department                                    |
-| `GET/POST /users` (create/list)                            | `admin`                                                                                         | no                                    | User administration                                                |
-| `PATCH /users/{id}/assignment`                             | `admin`                                                                                         | no                                    | Change `role_id` and/or `department_id` independently              |
-| `GET/POST /roles`, `GET/PUT /roles/{id}`                   | `admin`                                                                                         | no                                    | Role administration                                                |
-| `GET/POST /departments`, `GET/PUT /departments/{id}`       | `admin`                                                                                         | no                                    | Department administration                                          |
-| Existing write endpoints that mutate business data         | `supervisor` (update/approve), `admin` (delete)                                                 | yes, when the record has a department | Map your current inventory/supplier/incident routes onto this rule |
-| `GET/POST /internal-reports` (canonical scoped collection) | `employee` (read/create own dept), `supervisor` (update own dept), `admin` (all depts + delete) | **yes**                               | Required even if other modules are incomplete                      |
-
-### Canonical department-scoped collection: `internal-reports`
-
-If your monorepo does not yet have a clean department-scoped entity, implement this one. If you already have incidents/inventory/suppliers, **also** tag those records with `department_id` and enforce the same rule.
-
-| Field           | Type            | Rules       |
-| --------------- | --------------- | ----------- |
-| `id`            | string/uuid     | primary key |
-| `department_id` | FK → Department | required    |
-| `title`         | string          | required    |
-| `body`          | string          | required    |
-| `created_by`    | FK → User       | required    |
-| `created_at`    | datetime        | system      |
-
----
-
-## Seed data
-
-Seed **exactly** these roles, departments, and users (plus any extra you need for local demo). Passwords may be a shared dev hash; emails must match.
-
-### Roles
-
-```python
-ROLES_SEED = [
-    {"code": "employee", "name": "Employee", "rank": 1},
-    {"code": "supervisor", "name": "Supervisor", "rank": 2},
-    {"code": "admin", "name": "Admin", "rank": 3},
-]
-```
-
-### Departments
-
-```python
-DEPARTMENTS_SEED = [
-    {"code": "warehouse_operations", "name": "Warehouse Operations"},
-    {"code": "last_mile", "name": "Last Mile and Carrier Management"},
-    {"code": "reverse_logistics", "name": "Reverse Logistics"},
-    {"code": "customer_experience", "name": "Customer Experience"},
-    {"code": "commercial", "name": "Commercial and Client Relations"},
-    {"code": "technology", "name": "Technology"},
-]
-```
-
-### Users (role and department set independently)
-
-```python
-USERS_SEED = [
-    {
-        "email": "ana.warehouse@trackflow.example",
-        "role": "supervisor",
-        "department": "warehouse_operations",
-        "name": "Ana Whitfield",
-    },
-    {
-        "email": "miguel.commercial@trackflow.example",
-        "role": "supervisor",
-        "department": "commercial",
-        "name": "Miguel Torres",
-    },
-    {
-        "email": "carlos.carriers@trackflow.example",
-        "role": "employee",
-        "department": "last_mile",
-        "name": "Carlos Vega",
-    },
-    {
-        "email": "sofia.returns@trackflow.example",
-        "role": "employee",
-        "department": "reverse_logistics",
-        "name": "Sofía Ramos",
-    },
-    {
-        "email": "andres.admin@trackflow.example",
-        "role": "admin",
-        "department": "technology",
-        "name": "Andrés Kim",
-    },
-]
-```
-
-Ana and Miguel are the **same-role / different-department** pair used in evaluation.
-
-### Internal reports (minimum)
-
-Seed at least one report in `warehouse_operations` and one in `commercial` so the pair above can be tested.
-
-```python
-INTERNAL_REPORTS_SEED = [
-    {
-        "department": "warehouse_operations",
-        "title": "Zaragoza — cycle count variance",
-        "body": "SKU TF-1044 variance of 37 units after Friday count. Client not notified yet.",
-    },
-    {
-        "department": "commercial",
-        "title": "Account Northwind — renewal risk",
-        "body": "On-time delivery below contracted 96%. QBR scheduled. No warehouse internals in this note.",
-    },
-]
-```
-
----
-
-## Frontend / backoffice
-
-- Hide or disable create/approve/delete actions the current role cannot perform.
-- Lists of departmental data show **only** the authenticated user's department (Admin sees all).
-- Admin-only view: list/create/edit **roles** and **departments**, and assign them to users **independently**. Employee and Supervisor who open that route (or call the API) get **403**.
-
----
-
-## Tests Legal will ask for
-
-1. Employee calling a Supervisor-only update → **403**.
-2. Supervisor calling Admin-only `GET /roles` or user assignment → **403**.
-3. Ana (`supervisor` + `warehouse_operations`) `GET` Miguel's commercial report by id → **403**.
-4. Changing Miguel's department to `customer_experience` does **not** change his role; changing Ana's role to `employee` does **not** change her department.
-5. Permission checks live in one dependency/middleware — not copied into every route body.
-
----
-
-_Internal document — 4Geeks Academy · AI Engineering Track_
+- A Warehouse Supervisor who tries to query a client's contract renewal status (Commercial department) must receive a rejection.
+- A Warehouse Supervisor who tries to view the contract or absences of an operative on their own team (People data) must receive a rejection.

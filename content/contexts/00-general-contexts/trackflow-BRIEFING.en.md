@@ -24,6 +24,8 @@ The company is organised around the following areas:
 
 **Commercial and Client Relations** manages TrackFlow's portfolio of brand clients. Miguel Torres leads account managers and business development people who are responsible for retaining existing clients and winning new ones. Client contracts run annually, and renewals are won or lost based on whether clients feel their logistics operation is running well.
 
+**People** looks after the people who make TrackFlow work. Rafael Sanz leads a team of three from Zaragoza, handling hiring, onboarding, policies, and employee questions across both countries and two different labour frameworks. Every new hire in the corporate team — Technology, Commercial, Customer Experience, or operations management — needs to understand how a two-country logistics business actually runs before they can do their job well, and right now that understanding is left to chance.
+
 **Technology** is the team building and maintaining everything. Andrés Kim leads a team of developers, data engineers, and systems people from Zaragoza. The current architecture is a patchwork: two different warehouse systems, an ERP from the early 2010s, and integrations between them that were built quickly and never properly documented. When something breaks, the team finds out through a WhatsApp message from someone in operations.
 
 **Executive Leadership** sits with Thomas, who manages the business from Los Angeles with a weekly consolidated report that each director prepares manually — a process that consumes hours every Sunday evening and still delivers data that is already a day or two old.
@@ -34,7 +36,7 @@ TrackFlow has good clients, a skilled operations team, and a clear value proposi
 
 The consequence is that TrackFlow is slower, more error-prone, and less profitable than it needs to be — and the gap is growing as competitors invest in automation.
 
-Daniel has created an internal unit called **TrackFlow Tech** with a clear mandate: build the systems, integrations, and intelligent automations that allow TrackFlow to operate as the modern logistics company it needs to become.
+Thomas has created an internal unit called **TrackFlow Tech** with a clear mandate: build the systems, integrations, and intelligent automations that allow TrackFlow to operate as the modern logistics company it needs to become.
 
 **You are part of that unit.**
 
@@ -94,6 +96,16 @@ Account managers track their accounts in personal spreadsheets and email threads
 
 ---
 
+### 🧑‍🤝‍🧑 People
+
+**Manager:** Rafael Sanz (3-person team in Zaragoza)
+
+Hiring and onboarding for the corporate team are managed by email, with a different welcome PDF in each country. Each manager explains how the company operates in their own way, and nobody checks whether a new hire actually understands the warehouse, carrier, and returns processes the business runs on. Access to internal systems takes days because it depends on someone remembering to request it. Employee questions about leave, policies, and benefits arrive by email and chat, and are answered differently depending on who replies. There are no People KPIs — headcount, turnover, time to hire — by country, and the team manages two very different labour frameworks (United States and Spain) without a system.
+
+**What they need:** A structured onboarding flow for corporate hires covering the company, its operations, the role, ways of working, and internal guidelines — with comprehension checkpoints and progress tracking; automated access provisioning requests; an internal HR portal for leave and policy consultation; a People KPI dashboard by country; and an internal HR agent that answers policy questions from official documentation. Multilingual support (Spanish + English) is optional but highly recommended, starting from one base language.
+
+---
+
 ### 💻 Technology
 
 **CTO:** Andrés Kim (7-person team in Zaragoza)
@@ -106,9 +118,9 @@ TrackFlow's tech architecture is the result of years of unplanned growth: two di
 
 ### 📊 Executive Direction
 
-**CEO:** Daniel Espinoza
+**CEO:** Thomas Espinoza
 
-Daniel receives a consolidated report every Monday that his directors prepare on Sunday evening — 3 to 4 hours of work per director. By 10am Monday, some data is already two days old. There is no unified view of the business by country. Strategic decisions are made with partial data.
+Thomas receives a consolidated report every Monday that his directors prepare on Sunday evening — 3 to 4 hours of work per director. By 10am Monday, some data is already two days old. There is no unified view of the business by country. Strategic decisions are made with partial data.
 
 **What he needs:** A global executive dashboard with real-time KPIs from both operations (shipment volume, on-time delivery, costs, returns, CSAT), an automatically generated weekly report at 7am Monday, country comparison views, threshold alerts, and a natural-language AI assistant.
 
