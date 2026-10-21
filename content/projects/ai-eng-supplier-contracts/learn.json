@@ -1,0 +1,41 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Agentic Engineering – Supplier and Contract Management",
+    "es": "Agentic Engineering – Gestión de Proveedores y Contratos"
+  },
+  "description": {
+    "en": "Build a supervisor + specialists multi-agent system for supplier price alerts and contract analysis: traceable sources and clause/page cites, deterministic calc tools, consultation budget, human approval before vendor communications, and auditable agent identity — aligned to your company briefing under content/contexts/supplier-contracts.",
+    "es": "Construye un sistema multi-agente supervisor + especialistas para alertas de precio de proveedores y análisis de contratos: trazabilidad a fuente y citas de cláusula/página, herramientas de cálculo deterministas, presupuesto de consultas, aprobación humana antes de comunicar con el proveedor e identidad auditable del agente — alineado a tu briefing de empresa en content/contexts/supplier-contracts."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-supplier-contracts",
+  "difficulty": "intermediate",
+  "duration": 8,
+  "technologies": [
+    "python",
+    "langgraph",
+    "multi-agent",
+    "pdf-extraction",
+    "human-in-the-loop",
+    "testing"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-supplier-contracts/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-supplier-contracts/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Agentic Engineering – Supplier and Contract Management with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-supplier-contracts #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #multiagent #humanintheloop",
+      "es": "Acabo de completar Agentic Engineering – Gestión de Proveedores y Contratos con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-supplier-contracts #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #multiagent #humanintheloop"
+    },
+    {
+      "en": "Built and shipped: Agentic Engineering – Supplier and Contract Management. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-supplier-contracts #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #multiagent #humanintheloop",
+      "es": "Construido y publicado: Agentic Engineering – Gestión de Proveedores y Contratos. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-supplier-contracts #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #multiagent #humanintheloop"
+    }
+  ]
+}
