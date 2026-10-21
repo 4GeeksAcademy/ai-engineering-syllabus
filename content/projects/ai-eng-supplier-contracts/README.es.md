@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee el **[BRIEFING de tu empresa](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir una sola línea de código. Ahí están los proveedores, los contratos y los datos de precios con los que trabajarás, los umbrales de alerta y quién aprueba cada decisión.
+**Antes de empezar**: lee el **[BRIEFING de tu empresa](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/supplier-contracts)** antes de escribir una sola línea de código. Ahí están los proveedores, los contratos y los datos de precios con los que trabajarás, los umbrales de alerta y quién aprueba cada decisión.
 
 ---
 

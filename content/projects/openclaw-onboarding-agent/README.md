@@ -11,7 +11,7 @@ _These instructions are [available in Spanish](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start:** Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code — it defines the employee fields, HR roles, onboarding instructions, and deliverables specific to your company.
+**Before you start:** Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/openclaw-onboarding-agent)** before writing any code — it defines the employee fields, HR roles, onboarding instructions, and deliverables specific to your company.
 
 ---
 
@@ -103,7 +103,7 @@ flowchart TD
 ## 🌱 How to Start
 
 1. Work and build this project on the VPS you previously configured with OpenClaw, provided by 4Geeks Academy. From the company monorepo, consult only the company briefing and company data.
-2. Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — it defines the employee fields, onboarding instructions, required deliverables, and any company-specific constraints.
+2. Read your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/openclaw-onboarding-agent)** — it defines the employee fields, onboarding instructions, required deliverables, and any company-specific constraints.
 3. Create a new OpenClaw workspace dedicated exclusively to the onboarding agent.
 4. Identify which integrations the flow requires based on the process instructions and install them in the new workspace.
 
@@ -147,7 +147,7 @@ flowchart TD
 
 - [ ] _(Optional)_ Add a `MEM0-REFLECTION.md` file (or a dedicated section in `MEMORY-DECISION.md`) explaining how an external memory layer such as **mem0** could improve this onboarding solution — what problems it would solve better than `Memory.md` + `/memory` + QMD, and what trade-offs it would introduce
 
-⚠️ **IMPORTANT:** HR roles, employee fields, onboarding instructions, and required deliverables must match exactly what is specified in your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**. A generic implementation that ignores the context will not be accepted.
+⚠️ **IMPORTANT:** HR roles, employee fields, onboarding instructions, and required deliverables must match exactly what is specified in your **[company-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/openclaw-onboarding-agent)**. A generic implementation that ignores the context will not be accepted.
 
 ---
 

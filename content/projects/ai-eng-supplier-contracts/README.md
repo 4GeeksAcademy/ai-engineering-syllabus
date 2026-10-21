@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[company BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code. It defines the suppliers, contracts, and pricing data you'll work with, the alert thresholds, and who approves each decision.
+**Before you start**: read your **[company BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/supplier-contracts)** before writing any code. It defines the suppliers, contracts, and pricing data you'll work with, the alert thresholds, and who approves each decision.
 
 ---
 

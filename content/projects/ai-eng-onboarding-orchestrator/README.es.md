@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar**: lee el **[BRIEFING de tu empresa](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir una sola línea de código. Ahí están las etapas del onboarding corporativo, el contenido que debe conocer cada nueva incorporación, los documentos y accesos que se gestionan y quién aprueba cada etapa.
+**Antes de empezar**: lee el **[BRIEFING de tu empresa](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/onboarding-orchestrator)** antes de escribir una sola línea de código. Ahí están las etapas del onboarding corporativo, el contenido que debe conocer cada nueva incorporación, los documentos y accesos que se gestionan y quién aprueba cada etapa.
 
 ---
 

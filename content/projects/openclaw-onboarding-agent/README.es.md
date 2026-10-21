@@ -11,7 +11,7 @@ _These instructions are [available in English](./README.md)._
 
 <!-- endhide -->
 
-**Antes de empezar:** Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** antes de escribir ningún código — define los campos del empleado, los roles de RRHH, las instrucciones de onboarding y los entregables específicos de tu empresa.
+**Antes de empezar:** Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/openclaw-onboarding-agent)** antes de escribir ningún código — define los campos del empleado, los roles de RRHH, las instrucciones de onboarding y los entregables específicos de tu empresa.
 
 ---
 
@@ -103,7 +103,7 @@ flowchart TD
 ## 🌱 Cómo Empezar
 
 1. Trabaja y desarrolla este proyecto en el VPS que configuraste anteriormente con OpenClaw, dado por 4Geeks Academy. Del monorepo de la empresa consulta únicamente el contexto y los datos de la empresa.
-2. Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** — define los campos del empleado, las instrucciones de onboarding, los entregables requeridos y cualquier restricción específica de tu empresa.
+2. Lee tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/openclaw-onboarding-agent)** — define los campos del empleado, las instrucciones de onboarding, los entregables requeridos y cualquier restricción específica de tu empresa.
 3. Crea un nuevo workspace en OpenClaw dedicado exclusivamente al agente de onboarding.
 4. Identifica qué integraciones necesita el flujo según las instrucciones del proceso e instálalas en el nuevo workspace.
 
@@ -147,7 +147,7 @@ flowchart TD
 
 - [ ] _(Opcional)_ Añadir un archivo `MEM0-REFLECTION.md` (o una sección dedicada en `MEMORY-DECISION.md`) que explique cómo una capa de memoria externa como **mem0** podría mejorar esta solución de onboarding: qué problemas resolvería mejor que `Memory.md` + `/memory` + QMD y qué trade-offs introduciría
 
-⚠️ **IMPORTANTE:** Los roles de RRHH, los campos del empleado, las instrucciones de onboarding y los entregables requeridos deben corresponderse exactamente con lo especificado en tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)**. Una implementación genérica que ignore el contexto no será aceptada.
+⚠️ **IMPORTANTE:** Los roles de RRHH, los campos del empleado, las instrucciones de onboarding y los entregables requeridos deben corresponderse exactamente con lo especificado en tu **[empresa-BRIEFING.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/openclaw-onboarding-agent)**. Una implementación genérica que ignore el contexto no será aceptada.
 
 ---
 

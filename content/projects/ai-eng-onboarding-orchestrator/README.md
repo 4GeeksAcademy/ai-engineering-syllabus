@@ -11,7 +11,7 @@ _Estas instrucciones están [disponibles en español](./README.es.md)._
 
 <!-- endhide -->
 
-**Before you start**: read your **[company BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts)** before writing any code. It defines the stages of corporate onboarding, the content every new hire must learn, the documents and access to be handled, and who approves each stage.
+**Before you start**: read your **[company BRIEFING](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/onboarding-orchestrator)** before writing any code. It defines the stages of corporate onboarding, the content every new hire must learn, the documents and access to be handled, and who approves each stage.
 
 ---
 
