@@ -10,7 +10,7 @@ This repository contains the **AI Engineering syllabus** and related learning ma
 
 ## Projects (hands-on practice)
 
-You can find the practical projects in [`content/projects`](./content/projects). **Suggested order** (56 projects): web fundamentals and Tailwind first, then OpenClaw setup through memory/onboarding, TypeScript and UML modeling, React/Next.js and company milestones, AI-assisted specs and monorepo work, APIs and auth, incidents and SQL audits, inventory backend/backoffice, Docker, performance, telemetry, data pipelines, background jobs, and message queues.
+You can find the practical projects in [`content/projects`](./content/projects). **Suggested order** (76 projects): web fundamentals and Tailwind first, then VPS prep and OpenClaw setup through memory/onboarding, TypeScript and UML modeling, React/Next.js and company milestones, AI-assisted specs and monorepo work, APIs and auth, incidents and SQL audits, inventory backend/backoffice, Docker, performance, telemetry, data pipelines, background jobs, message queues, sales forecasting, RAG and agentic workflows, real-time systems, and cybersecurity.
 
 **Technologies and skills developed in the projects:**
 

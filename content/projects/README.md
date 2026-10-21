@@ -2,7 +2,7 @@
 
 Repository of hands-on projects for the **AI Engineering** program at 4Geeks Academy. Each folder is a standalone project with its own README, evaluation criteria, and (when applicable) `learn.json` for the platform.
 
-Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, accessibility) and Tailwind, through company milestones and collaboration, **OpenClaw agent setup and integrations**, then TypeScript and system design, React/Next.js and AI-assisted delivery, APIs, authentication, agents, performance, telemetry, data pipelines, background jobs, message queues, RAG knowledge bases, agentic RFP workflows, real-time systems, and a **final 5-minute project pitch**.
+Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, accessibility) and Tailwind, through company milestones and collaboration, **VPS preparation and OpenClaw agent setup**, then TypeScript and system design, React/Next.js and AI-assisted delivery, APIs, authentication, agents, performance, telemetry, data pipelines, background jobs, message queues, sales forecasting, RAG knowledge bases, agentic RFP workflows, real-time systems, cybersecurity, and a **final 5-minute project pitch**.
 
 ---
 
@@ -26,199 +26,214 @@ Projects follow a pedagogical order: from web fundamentals (HTML, CSS, SEO, acce
 5. **[Collaborative project: online store with HTML and Tailwind](./collaborative-project-html-tailwind-online-store)**  
    Collaborative e-commerce prototype (min. 5 pages: Home, Catalog, Product, Cart, Checkout) with HTML and Tailwind, teamwork with branches and pull requests.
 
-6. **[Setting Up Your Personal AI Agent with OpenClaw](./openclaw-setup)**  
+6. **[SSH into a VPS, audit resources, and optimize RAM](./vps-ssh-resource-optimization)**  
+   Prepare the company VPS before any deploy: SSH access, resource inventory, safe RAM cleanup, and an ops handoff to leadership.
+
+7. **[Setting Up Your Personal AI Agent with OpenClaw](./openclaw-setup)**  
    Deploy and configure OpenClaw on a VPS with LiteLLM, validate local chat, and document a safe delivery package (sanitized config + proof screenshot).
 
-7. **[Connect Your Agent: Telegram, Google Drive & Calendar](./openclaw-connection)**  
+8. **[Connect Your Agent: Telegram, Google Drive & Calendar](./openclaw-connection)**  
    Configuration-only project: Telegram channel, Zapier MCP, Google Drive and Calendar actions, and an end-to-end flow confirmed in screenshots (after OpenClaw is running).
 
-8. **[My Agent, My Way: Teaching Your Personal Assistant New Skills](./openclaw-skills)**  
+9. **[My Agent, My Way: Teaching Your Personal Assistant New Skills](./openclaw-skills)**  
    Continue in your existing OpenClaw environment and repo from prior assignments: fill the five `.openclaw` briefing files, commit `SKILLS_DESIGN.md`, and implement at least two OpenClaw skills using only Zapier integrations you already have (Google apps, GitHub, Telegram); add any missing paths per your instructor and OpenClaw docs.
 
-9. **[My 4Geeks Assistant — Teaching OpenClaw to Track Your Progress](./openclaw-integration)**  
-   Connect OpenClaw to the 4Geeks API with your account token so the agent can report pending projects, course progress, and related LearnPack data.
+10. **[My 4Geeks Assistant — Teaching OpenClaw to Track Your Progress](./openclaw-integration)**  
+    Connect OpenClaw to the 4Geeks API with your account token so the agent can report pending projects, course progress, and related LearnPack data.
 
-10. **[Give Your Agent a Memory](./openclaw-memory)**  
+11. **[Give Your Agent a Memory](./openclaw-memory)**  
     Configure OpenClaw memory types (episodic, semantic, procedural), restructure workspace files, and validate that context persists across sessions.
 
-11. **[Onboarding Agent with Memory](./openclaw-onboarding-agent)**  
+12. **[Onboarding Agent with Memory](./openclaw-onboarding-agent)**  
     Build a company onboarding flow: an OpenClaw agent with memory that reads HR templates and sends personalized onboarding email from your assigned `company-BRIEFING.md`.
 
-12. **[Cinema Seat Manager (TypeScript)](./seats-management-typescript)**  
+13. **[Cinema Seat Manager (TypeScript)](./seats-management-typescript)**  
     Command-line cinema seat reservation system using a 2D array, with reserve, count, and adjacent-seat search functions.
 
-13. **[Music Playlist Player — Object modeling](./data-modeling-and-class-diagrams-music-player)**  
+14. **[Music Playlist Player — Object modeling](./data-modeling-and-class-diagrams-music-player)**  
     UML-style class diagram for a music playlist player in diagram.4geeks.com: entities, data types, and relationships.
 
-14. **[Digital Wallet — Object modeling](./data-modeling-and-class-diagrams-digital-wallet)**  
+15. **[Digital Wallet — Object modeling](./data-modeling-and-class-diagrams-digital-wallet)**  
     UML-style class diagram for a digital wallet with transaction history in diagram.4geeks.com: entities, data types, and relationships.
 
-15. **[Company Project Milestone: Coding Fundamentals (TypeScript)](./ai-eng-milestone-coding-fundamentals)**  
+16. **[Company Project Milestone: Coding Fundamentals (TypeScript)](./ai-eng-milestone-coding-fundamentals)**  
     `Milestone 2` — Programming fundamentals with TypeScript: small, testable modules focusing on control flow, arrays, objects, functions, and edge cases, using clean code practices.
 
-16. **[AI Agent Rental Platform: Admin panel prototype](./agent-hub-ui-specs-and-prompts)**  
+17. **[AI Agent Rental Platform: Admin panel prototype](./agent-hub-ui-specs-and-prompts)**  
     Spec-driven frontend project for a multi-view admin panel: write `SPECS.md` first, then build dashboard and management views with HTML, Tailwind, and vanilla JavaScript interactions.
 
-17. **[Talk to the Machine: Chat interface with a real AI API](./chat-interface-real-ai-api)**  
+18. **[Talk to the Machine: Chat interface with a real AI API](./chat-interface-real-ai-api)**  
     Build a browser-based chat interface that calls the Groq API with `fetch`, sends full conversation history, and tracks cumulative token usage plus response metrics.
 
-18. **[Wanderlust Explorer with React and Next.js](./nextjs-wanderlust-explorer)**  
+19. **[Wanderlust Explorer with React and Next.js](./nextjs-wanderlust-explorer)**  
     Next.js App Router app from scratch: experiences list with URL-driven search and filters, detail pages, favorites in state, and a local TypeScript dataset.
 
-19. **[Building an Airbnb UI Clone with Next.js and React](./nextjs-airbnb-ui-clone)**  
+20. **[Building an Airbnb UI Clone with Next.js and React](./nextjs-airbnb-ui-clone)**  
     Next.js 16 + TypeScript + Tailwind UI clone from a product brief: layout, reusable components, and typed listing data.
 
-20. **[Company Project Milestone: Talent Pipeline Tracker](./ai-eng-milestone-frontend-development)**  
+21. **[Company Project Milestone: Talent Pipeline Tracker](./ai-eng-milestone-frontend-development)**  
     `Milestone 3` — Next.js App Router frontend for the recruitment API: candidate list and detail, filters and search, notes CRUD, register and edit forms, async UI states, and TypeScript types aligned with `company-BRIEFING.md`.
 
-21. **[Company financial dashboard context project](./company-financial-dashboard-context-project)**  
+22. **[Company financial dashboard context project](./company-financial-dashboard-context-project)**  
     Module project: drive a coding agent to understand an unfamiliar full-stack repo (no prior stack knowledge required), verify claims against code, derive and test `.agents/rules` from repo evidence, and leave a `memory-bank` (product, stack, status) so the repo is agent-ready.
 
-22. **[Company financial dashboard specs project](./company-financial-dashboard-specs-project)**  
+23. **[Company financial dashboard specs project](./company-financial-dashboard-specs-project)**  
     Continue on the inherited financial dashboard repo: drive a coding agent to explore `/docs`, draft TypeScript types, `components.md`, and a data-contract README for three PM features—verify every field against OpenAPI. No React implementation.
 
-23. **[Company financial dashboard skills project](./company-financial-dashboard-skills-project)**  
+24. **[Company financial dashboard skills project](./company-financial-dashboard-skills-project)**  
     Continue on the inherited financial dashboard repo (after context project): drive a coding agent to apply `accessibility` and `vercel-react-best-practices`, discover one more skill via `npx skills find`, author an internal `.skills/` file (commits, deployment, testing/QA, or repo-specific), verify outcomes, and update the memory bank.
 
-24. **[Milestone 4 — AI-driven Engineering](./ai-eng-milestone-ai-driven-engineering)**  
+25. **[Milestone 4 — AI-driven Engineering](./ai-eng-milestone-ai-driven-engineering)**  
     `Milestone 4` — Monorepo layout: public Next.js site, internal backoffice, services/APIs, and integration of prior milestones with an AI-assisted delivery workflow.
 
-25. **[Backend Architecture Proposal](./ai-eng-architectural-proposal)**  
+26. **[Backend Architecture Proposal](./ai-eng-architectural-proposal)**  
     Produce an architecture document and diagrams for extending the company system (services, data, risks, and trade-offs).
 
-26. **[Voice to-do list with AI API](./voice-to-do-list-api)**  
+27. **[Voice to-do list with AI API](./voice-to-do-list-api)**  
     Build a voice-powered to-do flow that captures user input, integrates with an AI API, and transforms spoken requests into actionable task management behavior.
 
-27. **[Incident Analyzer — Script and Control Panel](./ai-eng-company-incidents-file-analyzer)**  
+28. **[Incident Analyzer — Script and Control Panel](./ai-eng-company-incidents-file-analyzer)**  
     Python script to validate and summarize incident CSVs (sensitive data stays internal), then FastAPI + web UI to upload files, view summaries, and export results.
 
-28. **[AI basic Inventory Agent Loop](./ai-basic-inventory-agent-loop)**  
+29. **[AI basic Inventory Agent Loop](./ai-basic-inventory-agent-loop)**  
     Build a basic FastAPI inventory API plus a Python AI agent loop that uses API endpoints as tools, logs each interaction to CSV, and supports natural-language stock operations.
 
-29. **[Supplier Directory — Lightweight Storage API](./ai-eng-supplier-directory)**  
+30. **[Supplier Directory — Lightweight Storage API](./ai-eng-supplier-directory)**  
     FastAPI + TinyDB + Pydantic supplier API: seeded data from `BRIEFING`, validation, CRUD, and filter endpoints (by country and category) with rate-change timestamps.
 
-30. **[Securing the API: Authentication and Route Restriction in FastAPI](./ai-eng-user-authentication-api)**  
+31. **[Securing the API: Authentication and Route Restriction in FastAPI](./ai-eng-user-authentication-api)**  
     JWT-based auth on the supplier API: register, login, protected routes, password hashing, and ownership checks.
 
-31. **[Connecting the Lock: Authentication Flows in the Frontend](./ai-eng-user-authentication-flows)**  
+32. **[Connecting the Lock: Authentication Flows in the Frontend](./ai-eng-user-authentication-flows)**  
     Frontend flows against the secured API: login, register, session handling, and protected views.
 
-32. **[The Missing Piece: Password Reset Flow](./ai-eng-user-authentication-restore)**  
+33. **[The Missing Piece: Password Reset Flow](./ai-eng-user-authentication-restore)**  
     End-to-end password reset: secure tokens, email or dev stub, and UI/API alignment.
 
-33. **[Building Bullet-Proof Applications](./ai-eng-building-bullet-proof-applications)**  
+34. **[Building Bullet-Proof Applications](./ai-eng-building-bullet-proof-applications)**  
     Add a comprehensive unit-test suite to the authentication API: token logic, validation edge cases, and endpoint behavior without testing framework plumbing.
 
-34. **[Centralized Incident Manager](./ai-eng-centralized-incident-manager)**  
+35. **[Centralized Incident Manager](./ai-eng-centralized-incident-manager)**  
     Integrate a real-time incident manager into the company monorepo: log, query, and track incidents from the browser using your assigned `company-BRIEFING.md`.
 
-35. **[Error Handling](./ai-eng-error-handling)**  
+36. **[Error Handling](./ai-eng-error-handling)**  
     Audit and fix error handling across the monorepo: API failures, loading states, user-facing messages, and script crash output before the next milestone adds complexity.
 
-36. **[EduTrack Data Audit](./edutrack-data-audit-sql)**  
+37. **[EduTrack Data Audit](./edutrack-data-audit-sql)**  
     SQL audit on a single-table enrollments dataset: data-quality checks, aggregations, and written findings for an operations lead.
 
-37. **[EduTrack Data Audit — Related Tables](./edutrack-data-audit-sql-related-tables)**  
+38. **[EduTrack Data Audit — Related Tables](./edutrack-data-audit-sql-related-tables)**  
     Multi-table SQL on a normalized EduTrack schema: JOINs, cross-table metrics, and answers that require relating students, courses, and enrollments.
 
-38. **[Company Project Milestone: Backend — Inventory Management](./ai-eng-milestone-backend-development)**  
+39. **[Company Project Milestone: Backend — Inventory Management](./ai-eng-milestone-backend-development)**  
     `Milestone 5` (backend) — FastAPI + SQLModel inventory API on Supabase: dual-database setup, inbound/outbound orders, and business rules from `company-BRIEFING.md`.
 
-39. **[Company Project Milestone: Backoffice — Inventory Management](./ai-eng-inventory-management-backoffice)**  
+40. **[Company Project Milestone: Backoffice — Inventory Management](./ai-eng-inventory-management-backoffice)**  
     `Milestone 5` (frontend) — Backoffice UI for inventory operations: lists, forms, and states wired to the Milestone 5 backend API.
 
-40. **[Launch Ready: Containerized MVP from Scratch](./launch-ready-containerized-mvp)**  
+41. **[Launch Ready: Containerized MVP from Scratch](./launch-ready-containerized-mvp)**  
     Standalone module: Dockerize a small AI-generated MVP with Dockerfile, Compose, and reproducible local runs.
 
-41. **[Company Monorepo Containerization](./ai-eng-container-project)**  
+42. **[Company Monorepo Containerization](./ai-eng-container-project)**  
     Containerize the company monorepo: multi-service `docker-compose.yml`, environment configuration, and production-ready local orchestration.
 
-42. **[Frontend Performance Audit](./ai-eng-performance-web-vitals)**  
+43. **[Frontend Performance Audit](./ai-eng-performance-web-vitals)**  
     Lighthouse audit of corporate site and backoffice, reusable components/hooks refactor, and before/after performance report with Core Web Vitals fixes.
 
-43. **[Backend Serialization Audit](./ai-eng-performance-serialization)**  
+44. **[Backend Serialization Audit](./ai-eng-performance-serialization)**  
     Endpoint-by-endpoint serialization audit on the monorepo API: DTOs, payload shaping, and security fixes before scale.
 
-44. **[Performance Optimisation: Caching](./ai-eng-performance-caching)**  
+45. **[Performance Optimisation: Caching](./ai-eng-performance-caching)**  
     Profile frontend and API hot paths, implement justified caching (TTL, `useMemo`, FastAPI cache), and document trade-offs in a technical report.
 
-45. **[Designing your company's telemetry plan](./ai-eng-telemetry-plan)**  
+46. **[Designing your company's telemetry plan](./ai-eng-telemetry-plan)**  
     Design `telemetry-plan.md` and `event-schemas.json` from BRIEFING mandatory metrics plus a broad opportunity catalogue before any instrumentation code.
 
-46. **[Company's Telemetry – Frontend capture](./ai-eng-telemetry-capture)**  
+47. **[Company's Telemetry – Frontend capture](./ai-eng-telemetry-capture)**  
     Stub `POST /telemetry/events` + `TelemetryService` (queue, batch/debounce, `sendBeacon`, retry) instrumenting BRIEFING mandatory metrics and a technical baseline via single `track()`.
 
-47. **[Company's Telemetry – Storage](./ai-eng-telemetry-storage)**  
+48. **[Company's Telemetry – Storage](./ai-eng-telemetry-storage)**  
     Replace stub with Supabase `telemetry_events`: per-event validation, bulk insert, `{ received, stored, rejected }`, frontend untouched.
 
-48. **[Company's Telemetry – Technical Report](./ai-eng-telemetry-report)**  
+49. **[Company's Telemetry – Technical Report](./ai-eng-telemetry-report)**  
     Pandas technical/operational pipeline plus `GET /telemetry/report` (≥3 metrics, 60s cache) — not a business dashboard.
 
-49. **[Designing a Data Pipeline: From Raw Data to Reliable Insights](./designing-data-pipeline)**  
+50. **[Designing a Data Pipeline: From Raw Data to Reliable Insights](./designing-data-pipeline)**  
     Standalone ETL design exercise for Veridian Logistics: analyze nightly CSV exports with updates-as-inserts, document deduplication and idempotency, and produce `PIPELINE_DESIGN.md` — no orchestration code.
 
-50. **[Milestone 6 — Company's Data Pipeline Design (1/3)](./ai-eng-milestone-data-pipeline-design)**  
+51. **[Milestone 6 — Company's Data Pipeline Design (1/3)](./ai-eng-milestone-data-pipeline-design)**  
     `Milestone 6` (design) — Document a production-ready telemetry pipeline in the company monorepo: current state, ETL flow diagram, idempotency, execution log, and Prefect mapping before writing code.
 
-51. **[Milestone 6 — Implementing a Resilient Data Pipeline (2/3)](./ai-eng-milestone-data-pipeline-build)**  
+52. **[Milestone 6 — Implementing a Resilient Data Pipeline (2/3)](./ai-eng-milestone-data-pipeline-build)**  
     `Milestone 6` (build) — Implement Prefect extract-transform-load flows in the monorepo with retries, idempotent loads, script-based execution, and pipeline status/trigger API endpoints.
 
-52. **[Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3)](./ai-eng-milestone-data-pipeline-enhancement)**  
+53. **[Milestone 6 — Company's Data Pipeline Enhancement: Subflows and Tests (3/3)](./ai-eng-milestone-data-pipeline-enhancement)**  
     `Milestone 6` (enhancement) — Refactor the pipeline into reusable subflows, add isolated unit tests for transformation tasks, and ensure script-based execution via `python data/pipelines/pipeline.py`.
 
-53. **[Background Processes](./ai-eng-cronjobs)**  
+54. **[Background Processes](./ai-eng-cronjobs)**  
     Nightly telemetry export cronjob in the company monorepo: independent CLI script, `job_runs` state machine, distributed lock, idempotent CSV export, pipeline subprocess trigger, and `TARGET_DATE` override for testing.
 
-54. **[Branch Queue — Tagged Service Queue](./branch-queue)**  
+55. **[Branch Queue — Tagged Service Queue](./branch-queue)**  
     Terminal Python queue manager for a bank branch: one deque per service type, global ticket counter, CLI menu, and design notes on per-service queues vs a shared list — stdlib only.
 
-55. **[Triage Queue — Priority Queue Manager](./triage-queue)**  
+56. **[Triage Queue — Priority Queue Manager](./triage-queue)**  
     Terminal Python priority queue for an emergency unit: triage levels 1–3 with FIFO within level, five core operations, CLI menu, and data-structure design notes — stdlib only.
 
-56. **[Message Queues and Async Tasks](./ai-eng-message-queue)**  
+57. **[Message Queues and Async Tasks](./ai-eng-message-queue)**  
     Decouple heavy API work with Redis and Celery in the company monorepo: `202` + `task_id`, `GET /tasks/{task_id}`, retries with backoff, Dead Letter Queue, separate worker process, and Flower monitoring.
 
-57. **[Sentiment Analysis on Customer Reviews — WeLoveReviews](./existing-model-sentiment-analysis-reviews)**  
+58. **[Sentiment Analysis on Customer Reviews — WeLoveReviews](./existing-model-sentiment-analysis-reviews)**  
     Integrate `nlptown/bert-base-multilingual-uncased-sentiment` from Hugging Face to classify 500 service reviews, find false negatives from product-review domain mismatch, validate predictions manually, and deliver a client-ready report.
 
-58. **[StreamLoop — Tuning the Churn Model](./streamloop-churn-model-tuning)**  
+59. **[StreamLoop — Tuning the Churn Model](./streamloop-churn-model-tuning)**  
     Tune a churn classifier on StreamLoop's telecom-style dataset: sklearn Pipeline with internal preprocessing, default baseline, RandomizedSearchCV → GridSearchCV on train only, business-aligned scoring, `cv_results_` stability review, and `tuning_report.md`.
 
-59. **[Milestone 7 — RAG & Knowledge Base](./ai-eng-milestone-rag-knowledge-base)**  
+60. **[Sales Forecasting with Time Series Feature Engineering](./ai-eng-sales-forecasting-timeseries)**  
+    Forecast company sales from the historical CSV: trend/seasonality split, causal lag and rolling features, honest train/test split, no leakage. BRIEFING: [`sales-forecasting`](../contexts/sales-forecasting).
+
+61. **[Evaluating a Regression Model](./ai-eng-evaluating-regression-model)**  
+    Judge the forecasting model already trained: underfit vs overfit, stability across training windows, and one specific corrective action tied to the cost of errors in the company briefing. BRIEFING: [`sales-forecasting`](../contexts/sales-forecasting).
+
+62. **[Milestone 7 — RAG & Knowledge Base](./ai-eng-milestone-rag-knowledge-base)**  
     `Milestone 7` — Modular RAG in the company monorepo: chunk and index BRIEFING documents in Qdrant (`setup`, `embed`), retrieve with similarity threshold, generate salesperson-voice answers (`query`), expose `POST /knowledge/query` via FastAPI, minimal query UI, and unit tests — no LangChain; never return raw vector hits.
 
-60. **[Support Agent with LangGraph — Part 1: Migration and Agent Flow](./ai-eng-langgraph-agent-base)**  
+63. **[Support Agent with LangGraph — Part 1: Migration and Agent Flow](./ai-eng-langgraph-agent-base)**  
     `Part 1 of 2` — Wrap Milestone 7 RAG in a compiled LangGraph with minimal state, single-responsibility nodes, conditional edges, checkpointing, queryable traces, evals in `tests/pipelines/`, and `POST /agent/query` — reuse `data/pipelines/` without duplication.
 
-61. **[Support Agent with LangGraph — Part 2: Tools Outside the RAG](./ai-eng-langgraph-agent-tools)**  
+64. **[Support Agent with LangGraph — Part 2: Tools Outside the RAG](./ai-eng-langgraph-agent-tools)**  
     `Part 2 of 2` — Extend the Part 1 graph with typed external tools: incident ticket lookup against your real incident manager API (timeout + honest fallback), optional inventory lookup, automatic RAG vs tool routing, extended traces, and ≥2 new routing evals in `tests/pipelines/` — no simulated operational data.
 
-62. **[MCP Server: Connecting Your Agent to the Company's Tools](./ai-eng-mcp-company-tools)**  
+65. **[MCP Server: Connecting Your Agent to the Company's Tools](./ai-eng-mcp-company-tools)**  
     Expose Incidents Manager and read-only inventory as an authenticated FastMCP server (API Key, least privilege, discovery schemas, invocation logs), validate with an MCP client, and migrate the LangGraph support agent to consume incidents through MCP instead of direct HTTP tools.
 
-63. **[Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)](./ai-eng-milestone-agentic-engineering)**  
+66. **[Milestone 8 — Agent Memory and Self-Improvement (Part 1 of 2)](./ai-eng-milestone-agentic-engineering)**  
     `Milestone 8` Part 1 — Extend the LangGraph company agent (RAG + MCP) with persistent memory: explicit read/write interface, structured `memory_proposal`, in-conversation propose → classified confirm → audit → consolidate — only allowed-BRIEFING facts, never silent auto-writes. Same agent identity as Part 2.
 
-64. **[Milestone 8 — Securing Agents: Harness and Guardrails (Part 2 of 2)](./ai-eng-agent-harness)**  
+67. **[Milestone 8 — Securing Agents: Harness and Guardrails (Part 2 of 2)](./ai-eng-agent-harness)**  
     `Milestone 8` Part 2 — Lock down the **same** company agent after memory: aligned-BRIEFING secure system prompt, content/scope guardrails (personal-use block + casual redirect), anti-injection isolation for RAG/MCP text, output validation, guardrail observability, and **deterministic** harness tests — layered defenses, not a single filter or live-LLM-only gate.
 
-65. **[Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3)](./ai-eng-milestone-agentic-workflows-orchestrate)**  
+68. **[Milestone — Agentic RFP Workflow: Intake & Routing (Part 1 of 3)](./ai-eng-milestone-agentic-workflows-orchestrate)**  
     `Milestone 9` Part 1 — Agentic RFP intake: triage router, RFP filter, orchestrator-worker decomposition into parallel workstreams, then synthesizer into the defined workstream structure from BRIEFING.
 
-66. **[Milestone — Agentic RFP Workflow: Response Generation (Part 2 of 3)](./ai-eng-milestone-agentic-workflows-evaluate)**  
+69. **[Milestone — Agentic RFP Workflow: Response Generation (Part 2 of 3)](./ai-eng-milestone-agentic-workflows-evaluate)**  
     `Milestone 9` Part 2 — Map workstreams to departments, generate and self-evaluate each section, and produce department assignment tickets — same ticket row as Part 1.
 
-67. **[Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)](./ai-eng-milestone-agentic-workflows-produce)**  
+70. **[Milestone — Agentic RFP Workflow: Approval & Completion (Part 3 of 3)](./ai-eng-milestone-agentic-workflows-produce)**  
     `Milestone 9` Part 3 — Human-in-the-loop interrupt/resume per department, parallel branches under interrupt, BRIEFING conflict arbiter, automatic final-document synthesis, and E2E continuity from Parts 1–2.
 
-68. **[Milestone — Real-Time Systems: Agent Observability (Part 1 of 2)](./ai-eng-milestone-real-time-agent-observability)**  
+71. **[Milestone — Real-Time Systems: Agent Observability (Part 1 of 2)](./ai-eng-milestone-real-time-agent-observability)**  
     `Milestone 10` Part 1 — Persist Agent / Flow / Task with trigger chains, SSE named events (`agent_step`, `agent_status_changed`), JWT-protected backoffice panel (live list/detail + paginated history) for the conversational agent and RFP pipeline — observe only; control is Part 2. BRIEFING: [`10-realtime/agent-observability`](../contexts/10-realtime/agent-observability).
 
-69. **[Milestone — Real-Time Systems: Agent Control (Part 2 of 2)](./ai-eng-milestone-real-time-agent-control)**  
+72. **[Milestone — Real-Time Systems: Agent Control (Part 2 of 2)](./ai-eng-milestone-real-time-agent-control)**  
     `Milestone 10` Part 2 — Wire Part 1 available-actions into real `pause` / `resume` / `cancel` over WebSocket: reuse LangGraph checkpoints, pub/sub fan-out, JWT-derived `actor_id` audit, terminal cancel vs resumable pause — kill switch, not business approval. BRIEFING: [`10-realtime/agent-control`](../contexts/10-realtime/agent-control).
 
-70. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
+73. **[Secure Practices for AI Integration in Systems](./ai-eng-cybersecurity-practices)**  
+    Prove every component that touches a model — endpoints, agents, third-party integrations — follows the company's security-by-design rules. BRIEFING: [`cybersecurity-analysis`](../contexts/cybersecurity-analysis).
+
+74. **[Web Vulnerability Audit and Remediation (OWASP Top 10)](./ai-eng-cybersecurity-vulnerabilities)**  
+    Audit the company frontend, backend, and agentic system against OWASP Top 10 and remediate the critical findings with before/after proof. BRIEFING: [`cybersecurity-analysis`](../contexts/cybersecurity-analysis).
+
+75. **[Capstone — Final Project Video: 5-Minute AI Pitch](./ai-eng-capstone-project)**  
     Capstone — Record a ~5-minute landscape pitch of the company AI system: hook, problem, live demo, engineering trade-offs, and a cut-ready 4Geeks Q&A. Deliver a Google Drive (or similar) folder with `FirstnameLastname-ProjectName.mp4`, a 1–2 sentence description, and the signed media release.
 
 ## For Devs course
@@ -255,6 +270,15 @@ Not part of the syllabus sequence. Kept here for reference or optional use.
 
 - **[Real-Time Systems (Part 2 of 2): WebSocket Chat Streaming](./ai-eng-real-time-communication)**  
   Post-graduation extra — Bidirectional WebSocket for the existing support agent: token streaming, mid-response interrupt + checkpointing, pub/sub per session, live typing UI, backoff reconnect — reuse Part 1 event naming; do not rewrite agent logic. Not the same as in-syllabus agent control (`ai-eng-milestone-real-time-agent-control`).
+
+- **[Agentic Engineering – Supplier and Contract Management](./ai-eng-supplier-contracts)**  
+  Supervisor plus pricing and contract specialists: detect increases against the contract, deterministic calc tools, human approval before vendor messages. BRIEFING: [`supplier-contracts`](../contexts/supplier-contracts).
+
+- **[Agentic Engineering – Onboarding Agent](./ai-eng-onboarding-orchestrator)**  
+  Single LangGraph agent that walks each new hire through the company onboarding stages, with resume after restart and human approval. BRIEFING: [`onboarding-orchestrator`](../contexts/onboarding-orchestrator).
+
+- **[Agentic Engineering – Monthly Financial Close](./ai-eng-financial-close)**  
+  Monthly close in the leadership inbox: budget vs actual, deviation thresholds, traceable calculations, human review before distribution. BRIEFING: [`financial-close`](../contexts/financial-close).
 
 ---
 
