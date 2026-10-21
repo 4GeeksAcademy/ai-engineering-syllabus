@@ -1,0 +1,41 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Agentic Engineering – Monthly Financial Close",
+    "es": "Agentic Engineering – Cierre Financiero Mensual"
+  },
+  "description": {
+    "en": "Build a closing agent with deterministic calc tools for monthly financial close: traceable figures to source records, actual vs budget deviations, honest incomplete-data reports, human approval before distribution, and auditable agent identity — aligned to your company briefing under content/contexts/financial-close.",
+    "es": "Construye un agente de cierre con herramientas de cálculo deterministas para el cierre financiero mensual: cifras trazables a registros fuente, desviaciones real vs presupuesto, informes honestos con datos incompletos, aprobación humana antes de distribuir e identidad auditable del agente — alineado a tu briefing de empresa en content/contexts/financial-close."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-financial-close",
+  "difficulty": "intermediate",
+  "duration": 8,
+  "technologies": [
+    "python",
+    "agents",
+    "tool-use",
+    "human-in-the-loop",
+    "testing",
+    "scheduling"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-financial-close/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-financial-close/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Agentic Engineering – Monthly Financial Close with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-financial-close #AIEngineering #LearnPack #4GeeksAcademy #python #agents #tooluse #humanintheloop",
+      "es": "Acabo de completar Agentic Engineering – Cierre Financiero Mensual con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-financial-close #AIEngineering #LearnPack #4GeeksAcademy #python #agents #tooluse #humanintheloop"
+    },
+    {
+      "en": "Built and shipped: Agentic Engineering – Monthly Financial Close. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-financial-close #AIEngineering #LearnPack #4GeeksAcademy #python #agents #tooluse #humanintheloop",
+      "es": "Construido y publicado: Agentic Engineering – Cierre Financiero Mensual. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-financial-close #AIEngineering #LearnPack #4GeeksAcademy #python #agents #tooluse #humanintheloop"
+    }
+  ]
+}
