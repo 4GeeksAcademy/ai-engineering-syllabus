@@ -1,0 +1,42 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Agentic Engineering – Onboarding Agent",
+    "es": "Agentic Engineering – Agente de incorporaciones"
+  },
+  "description": {
+    "en": "Build a single long-running LangGraph Onboarding Agent with an explicit stage graph, checkpointer resume, comprehension gates, official-doc RAG (no invented answers), human approval interrupts, deadline escalation, and auditable agent identity — aligned to your company briefing under content/contexts/onboarding-orchestrator.",
+    "es": "Construye un Agente de incorporaciones LangGraph de larga duración con grafo explícito de etapas, resume con checkpointer, gates de comprensión, RAG sobre docs oficiales (sin inventar respuestas), interrupciones de aprobación humana, escalado por plazos e identidad auditable del agente — alineado a tu briefing de empresa en content/contexts/onboarding-orchestrator."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-onboarding-orchestrator",
+  "difficulty": "intermediate",
+  "duration": 8,
+  "technologies": [
+    "python",
+    "langgraph",
+    "agents",
+    "checkpointer",
+    "human-in-the-loop",
+    "rag",
+    "testing"
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-onboarding-orchestrator/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-onboarding-orchestrator/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Agentic Engineering – Onboarding Agent with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-onboarding-orchestrator #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #rag",
+      "es": "Acabo de completar Agentic Engineering – Agente de incorporaciones con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-onboarding-orchestrator #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #rag"
+    },
+    {
+      "en": "Built and shipped: Agentic Engineering – Onboarding Agent. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-onboarding-orchestrator #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #rag",
+      "es": "Construido y publicado: Agentic Engineering – Agente de incorporaciones. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-onboarding-orchestrator #AIEngineering #LearnPack #4GeeksAcademy #python #langgraph #agents #rag"
+    }
+  ]
+}
