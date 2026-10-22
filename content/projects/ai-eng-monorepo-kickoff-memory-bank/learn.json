@@ -1,0 +1,56 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Monorepo Kickoff – Memory Bank and Project Context",
+    "es": "Puesta en marcha del monorepo – Banco de memoria y contexto del proyecto"
+  },
+  "description": {
+    "en": "Leave the company monorepo agent-ready: discover with a coding agent, curate a memory-bank (vision, empty stack policy, pending slots), index it from CONTEXT.md, keep full processes in docs/, and prove a clean session can orient without inventing technology.",
+    "es": "Deja el monorepo de empresa listo para agentes: descubre con un coding agent, cura un memory-bank (visión, política de stack vacío, huecos pendientes), indéxalo desde CONTEXT.md, guarda procesos íntegros en docs/ y demuestra que una sesión limpia se orienta sin inventar tecnología."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-monorepo-kickoff-memory-bank",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "ai",
+    "coding-agents",
+    "documentation",
+    "repository-management",
+    "git",
+    "governance",
+    "monorepo"
+  ],
+  "talents": [
+    {
+      "badge": "git-collaborator",
+      "points": 2
+    },
+    {
+      "badge": "ai-engineer",
+      "points": 3
+    },
+    {
+      "badge": "context-engineer",
+      "points": 3
+    }
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-monorepo-kickoff-memory-bank/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-monorepo-kickoff-memory-bank/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Monorepo Kickoff – Memory Bank and Project Context with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-memory-bank #AIEngineering #LearnPack #4GeeksAcademy #CodingAgents #MemoryBank",
+      "es": "Acabo de completar Puesta en marcha del monorepo – Banco de memoria y contexto del proyecto con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-memory-bank #AIEngineering #LearnPack #4GeeksAcademy #CodingAgents #MemoryBank"
+    },
+    {
+      "en": "Built and shipped: Monorepo Kickoff – Memory Bank and Project Context. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-memory-bank #AIEngineering #LearnPack #4GeeksAcademy #ContextEngineering #Git",
+      "es": "Construido y publicado: Puesta en marcha del monorepo – Banco de memoria y contexto del proyecto. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-memory-bank #AIEngineering #LearnPack #4GeeksAcademy #ContextEngineering #Git"
+    }
+  ]
+}
