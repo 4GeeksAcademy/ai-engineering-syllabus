@@ -71,7 +71,7 @@ Este modelo predice el sentimiento como una **puntuación de 1 a 5 estrellas** (
 
 Antes de modelar, explora el dataset con ayuda de tu agente de código:
 
-1. Abre **[PROMPT.es.md](./PROMPT.es.md)** en la carpeta de este proyecto.
+1. Abre **[PROMPT.es.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/existing-model-sentiment-analysis-reviews/PROMPT.es.md)** en la carpeta de este proyecto.
 2. Copia todo lo que está debajo de la línea del encabezado en tu agente (Cursor, Copilot, Claude Code, etc.).
 3. Deja que el agente trabaje en la **sección de EDA** de **`src/explore.ipynb`** — solo exploración, insights y propuesta de limpieza.
 
