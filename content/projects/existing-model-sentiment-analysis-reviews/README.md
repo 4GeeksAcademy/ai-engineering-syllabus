@@ -71,8 +71,8 @@ This model predicts sentiment as a **star rating from 1 to 5** (not a simple POS
 
 Before modeling, explore the dataset with help from your coding agent:
 
-1. Open **[PROMPT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/existing-model-sentiment-analysis-reviews/PROMPT.md)** in this project folder.
-2. Copy everything below the header line into your agent (Cursor, Copilot, Claude Code, etc.).
+1. Open this **[PROMPT.md](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/existing-model-sentiment-analysis-reviews/PROMPT.md)**. It has useful prompts for your work.
+2. Copy everything below the header line and execute the prompts in your agent (Cursor, Copilot, Claude Code, etc.).
 3. Let the agent work in the **EDA section** of **`src/explore.ipynb`** — exploration, insights, and cleaning proposal only.
 
 The prompt stops after EDA. Everything below is your job in the same notebook and in `src/app.py`.

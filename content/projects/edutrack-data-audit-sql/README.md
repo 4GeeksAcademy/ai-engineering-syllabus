@@ -71,21 +71,22 @@ This project does not start from a code template: you create an empty repository
 - [ ] Import `edutrack.sql` into a Supabase project successfully
 - [ ] Verify that the `enrollments`, `students`, and `courses` tables exist and contain data
 
-
 ### Queries — Reading and Filtering
- 
+
 - [ ] **Q1.** List all enrollments for the course `'Intro to Python'`, showing student name, email, and completion percentage
 - [ ] **Q2.** Retrieve all enrollments where `completion_percentage` is less than 10 — these are potential dropouts
 - [ ] **Q3.** Find all enrollments where the instructor field is `NULL`
 - [ ] **Q4.** List the 5 students with the highest `completion_percentage` who have **not** yet passed (`passed = false`)
 - [ ] **Q5.** Show all enrollments with an `enrollment_date` on or after `'2024-07-01'`, ordered by `enrollment_date` descending
+
 ### Queries — Data Corrections
- 
+
 - [ ] **Q6.** **INSERT** the missing enrollment record provided in the brief (student name, email, course, date, and initial values are specified in the comments of `edutrack.sql`)
 - [ ] **Q7.** **UPDATE** all enrollments where `instructor` is `NULL` — assign the default value `'Pending assignment'`
 - [ ] **Q8.** **DELETE** all enrollments tied to the imported test accounts (`@test.com`) — confirm the affected rows with a SELECT first
+
 ### Queries — Aggregation and Reporting
- 
+
 - [ ] **Q9.** Count the number of enrollments grouped by `category`
 - [ ] **Q10.** Calculate the average `completion_percentage` grouped by `course_title`, ordered from lowest to highest
 - [ ] **Q11.** Show only the courses with **more than 3 enrollments** (use `HAVING`)

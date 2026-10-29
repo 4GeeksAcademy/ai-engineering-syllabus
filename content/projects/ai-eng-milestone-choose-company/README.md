@@ -33,7 +33,7 @@ When choosing, think beyond the sector you find most familiar. Consider: which c
 
 ## 🌱 How to Start the Project
 
-1. Create your copy of the [template repository](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo): click **Use this template** on GitHub (recommended) or fork it to your account.
+1. Create your copy of the [template repository](https://github.com/new?template_name=ai-engineering-company-project-monorepo&template_owner=4GeeksAcademy): click **Use this template** on GitHub (recommended) or fork it to your account.
 2. Open your repository in GitHub Codespaces (recommended) or clone it to your local machine.
 3. Read the four company profiles available in the [general briefing files `company-BRIEFING.md` in this repository](https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/contexts/00-general-contexts) — Brasaland, HealthCore, Nexova, and TrackFlow. Each one describes a real company scenario with department problems, data structures, characters, and a milestone map.
 4. Complete the deliverable described below.
