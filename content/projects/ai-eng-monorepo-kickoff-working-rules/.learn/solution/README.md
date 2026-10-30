@@ -31,17 +31,17 @@ Repo hygiene ──► .gitignore + .env.example match the secrets rule
 
 ## Recommended layout (indicative)
 
-| Path                                        | Responsibility                                                                       |
-| ------------------------------------------- | ------------------------------------------------------------------------------------ |
-| `AGENTS.md`                                 | Entry point: purpose, stack + key commands, red lines, rules index                   |
-| `.agents/rules/coding-conventions.md`       | Naming, format, lint, pnpm/uv only, tool+command per checkable convention            |
-| `.agents/rules/anti-patterns.md`            | ≥6 taboos, each with one-line reason + allowed alternative                           |
-| `.agents/rules/environment-access.md`       | Secrets boundaries + ≥5 EARS approval triggers                                       |
-| `.agents/rules/<extra>.md`                  | Fourth justified minimum (e. for git workflow, definition of done, scope discipline) |
-| `.editorconfig` / formatter config          | Makes conventions enforceable by tools                                               |
-| `.env.example`                              | Required env var names with fictitious values                                        |
-| `docs/agent-rules/probes.md`                | ≥4 probes; baseline vs with-rules; which rule caused each change                     |
-| Tool stubs (`CLAUDE.md`, `.cursor/rules/…`) | One-line pointer to `AGENTS.md` only                                                 |
+| Path                                        | Responsibility                                                                         |
+| ------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `AGENTS.md`                                 | Entry point: purpose, stack + key commands, red lines, rules index                     |
+| `.agents/rules/coding-conventions.md`       | Naming, format, lint, pnpm/uv only, tool+command per checkable convention              |
+| `.agents/rules/anti-patterns.md`            | ≥6 taboos, each with one-line reason + allowed alternative                             |
+| `.agents/rules/environment-access.md`       | Secrets boundaries + ≥5 EARS approval triggers                                         |
+| `.agents/rules/<extra>.md`                  | Fourth justified minimum (e.g. for git workflow, definition of done, scope discipline) |
+| `.editorconfig` / formatter config          | Makes conventions enforceable by tools                                                 |
+| `.env.example`                              | Required env var names with fictitious values                                          |
+| `docs/agent-rules/probes.md`                | ≥4 probes; baseline vs with-rules; which rule caused each change                       |
+| Tool stubs (`CLAUDE.md`, `.cursor/rules/…`) | One-line pointer to `AGENTS.md` only                                                   |
 
 ---
 

@@ -24,12 +24,8 @@
   ],
   "talents": [
     {
-      "badge": "git-collaborator",
-      "points": 2
-    },
-    {
       "badge": "ai-engineer",
-      "points": 3
+      "points": 2
     },
     {
       "badge": "context-engineer",

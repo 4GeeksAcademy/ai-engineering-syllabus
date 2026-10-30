@@ -45,23 +45,23 @@ campus-bike-share/
 ### Conversación de descubrimiento
 
 - [ ] En modo planificación/chat, pide al agente que lea las tres fuentes y liste ambigüedades antes de proponer ficheros
-- [ ] Decidid juntos: `ops-notes.md` → íntegro en `docs/`; `membership.md` + BRIEFING → sintetizar
-- [ ] Conservad 1–2 preguntas del agente que cambien lo escrito
+- [ ] Decide juntos: `ops-notes.md` → íntegro en `docs/`; `membership.md` + BRIEFING → sintetizar
+- [ ] Conserva 1–2 preguntas del agente que cambien lo que escribas
 
 ### Banco de memoria (conjunto mínimo)
 
-- [ ] Cread `memory-bank/` con ficheros separados: visión + aceptación (incl. **3** historias de Ops, Membership y otro rol), stack (vacío + política + plantilla), arquitectura (solo responsabilidades de carpetas), comandos (pendiente + desbloqueo), tabúes (al menos “no inventar stack”), estado actual
-- [ ] Citad la fuente en cada fichero; enlazad `docs/ops-notes.md` indicando cuándo leerlo
+- [ ] Crea `memory-bank/` con ficheros separados: visión + aceptación (incl. **3** historias de Ops, Membership y otro rol), stack (vacío + política + plantilla), arquitectura (solo responsabilidades de carpetas), comandos (pendiente + desbloqueo), tabúes (al menos “no inventar stack”), estado actual
+- [ ] Cita la fuente en cada fichero; enlaza `docs/ops-notes.md` indicando cuándo leerlo
 
 ### Punto de entrada del contexto
 
-- [ ] Reemplazad `CONTEXT.md`: blurb de 3–4 líneas + índice de cada fichero de memory-bank y docs con cuándo leerlo + “actualizar este índice cuando cambien tech/docs/estado”
+- [ ] Reemplaza `CONTEXT.md`: blurb de 3–4 líneas + índice de cada fichero de memory-bank y docs con cuándo leerlo + “actualizar este índice cuando cambien tech/docs/estado”
 
 ### Verificar juntos
 
-- [ ] Chat nuevo, “empieza desde `CONTEXT.md`”: preguntad quiénes son los usuarios, qué queda fuera de alcance y si FastAPI es el stack → el agente debe decir que el stack no está decidido y citar la política
-- [ ] Pedidle que proponga una librería → debe exigir versión exacta + fuente oficial
-- [ ] Corregid alucinaciones y repreguntad una vez
+- [ ] Chat nuevo, “empieza desde `CONTEXT.md`”: pregunta quiénes son los usuarios, qué queda fuera de alcance y si FastAPI es el stack → el agente debe decir que el stack no está decidido y citar la política
+- [ ] Pídele que proponga una librería → debe exigir versión exacta + fuente oficial
+- [ ] Corrige alucinaciones y repregunta una vez
 
 ---
 

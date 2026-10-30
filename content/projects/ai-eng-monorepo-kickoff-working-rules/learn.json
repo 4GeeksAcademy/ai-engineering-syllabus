@@ -12,7 +12,7 @@
   "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
   "slug": "ai-eng-monorepo-kickoff-working-rules",
   "difficulty": "intermediate",
-  "duration": 8,
+  "duration": 2,
   "technologies": [
     "agents",
     "platform-engineering",
@@ -21,10 +21,13 @@
     "pnpm",
     "uv"
   ],
-  "translations": [
-    "es",
-    "en"
+  "talents": [
+    {
+      "badge": "ai-engineer",
+      "points": 2
+    }
   ],
+  "translations": ["es", "en"],
   "projectType": "project",
   "telemetry": {
     "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="

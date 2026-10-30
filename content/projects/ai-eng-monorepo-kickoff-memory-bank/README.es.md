@@ -28,7 +28,7 @@ Hay una segunda trampa: rellenar huecos. Hoy no existe stack, ni comandos de bui
 > **De:** tu CTO
 > **Asunto:** ticket — contexto base del monorepo antes de la primera funcionalidad
 >
-> Antes de abrir el primer PRD de producto, quiero que el repositorio tenga memoria propia. No quiero un volcado del BRIEFING; quiero lo que tú y el agente hayáis destilado de él después de discutirlo. Si algún documento de un departamento describe un proceso que no admite resumen sin perder información, llévalo a `docs/` tal cual y referéncialo desde el contexto. Esa decisión es tuya; si dudas, pregunta antes de inventar.
+> Antes de abrir el primer PRD de producto, quiero que el repositorio tenga memoria propia. No quiero un volcado del BRIEFING; quiero lo que tú y el agente hayan destilado de él después de discutirlo. Si algún documento de un departamento describe un proceso que no admite resumen sin perder información, llévalo a `docs/` tal cual y referéncialo desde el contexto. Esa decisión es tuya; si dudas, pregunta antes de inventar.
 >
 > Sobre el stack, seamos claros: **hoy no hay ninguna tecnología decidida y no la vas a decidir en este ticket.** El documento de stack nace vacío y crece con el proyecto: cada vez que entre una tecnología nueva, se registra ahí. Lo que sí quiero desde hoy es la política de entrada. Solo fuentes oficiales y verificadas por una persona, librerías conocidas y mantenidas, versiones exactas fijadas — nada de `latest` ni rangos abiertos — y APIs en su versión vigente comprobada en la documentación oficial, no en lo que el agente recuerde de su entrenamiento.
 >
