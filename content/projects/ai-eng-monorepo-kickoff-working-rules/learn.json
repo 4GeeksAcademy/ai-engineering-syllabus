@@ -1,0 +1,47 @@
+{
+  "gitpod": true,
+  "title": {
+    "en": "Monorepo Kickoff – Coding Agent Working Rules",
+    "es": "Puesta en marcha del monorepo – Reglas de trabajo para agentes de código"
+  },
+  "description": {
+    "en": "Define the non-negotiable minimum for coding agents in the company monorepo: AGENTS.md as the single entry point, verifiable rules for conventions, taboos and environment access, company-specific red lines, and probes that prove the rules change agent behaviour.",
+    "es": "Define el mínimo no negociable para agentes de código en el monorepo de la empresa: AGENTS.md como único punto de entrada, reglas verificables de convenciones, tabúes y entorno, líneas rojas propias de la empresa y sondas que demuestran que las reglas cambian el comportamiento del agente."
+  },
+  "status": "draft",
+  "template_url": "https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo",
+  "slug": "ai-eng-monorepo-kickoff-working-rules",
+  "difficulty": "intermediate",
+  "duration": 2,
+  "technologies": [
+    "agents",
+    "platform-engineering",
+    "documentation",
+    "git",
+    "pnpm",
+    "uv"
+  ],
+  "talents": [
+    {
+      "badge": "ai-engineer",
+      "points": 2
+    }
+  ],
+  "translations": ["es", "en"],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/ai-eng-monorepo-kickoff-working-rules/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/ai-eng-monorepo-kickoff-working-rules/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Monorepo Kickoff – Coding Agent Working Rules with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-working-rules #AIEngineering #LearnPack #4GeeksAcademy #agents #platformengineering #documentation",
+      "es": "Acabo de completar Puesta en marcha del monorepo – Reglas de trabajo para agentes de código con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-working-rules #AIEngineering #LearnPack #4GeeksAcademy #agents #platformengineering #documentation"
+    },
+    {
+      "en": "Built and shipped: Monorepo Kickoff – Coding Agent Working Rules. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-working-rules #AIEngineering #LearnPack #4GeeksAcademy #agents #platformengineering #documentation",
+      "es": "Construido y publicado: Puesta en marcha del monorepo – Reglas de trabajo para agentes de código. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/ai-eng-monorepo-kickoff-working-rules #AIEngineering #LearnPack #4GeeksAcademy #agents #platformengineering #documentation"
+    }
+  ]
+}
