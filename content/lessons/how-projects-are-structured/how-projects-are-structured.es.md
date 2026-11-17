@@ -143,10 +143,6 @@ Cuando abras un proyecto nuevo, prueba este orden:
 6. Revisa tu trabajo contra **✅ Qué evaluaremos**.
 7. Sigue **📦 Cómo entregar**.
 
-## ¿Tu proyecto es de la compañía?
-
-Muchos proyectos del curso son **proyectos de la compañía**: se construyen dentro del monorepo de tu empresa y usan sus briefings. El README de cada proyecto siempre lo indica. Si el tuyo lo es, continúa con la lección [Proyectos de la compañía y el monorepo](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/lessons/company-projects-and-monorepo/company-projects-and-monorepo.es.md).
-
 ## Checklist antes de empezar cualquier proyecto
 
 - [ ] Leí **🎯 Tu reto** completo y puedo explicar el problema con mis palabras.
