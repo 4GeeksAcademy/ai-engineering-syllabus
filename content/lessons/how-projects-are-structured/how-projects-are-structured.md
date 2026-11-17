@@ -143,10 +143,6 @@ When you open a new project, try this order:
 6. Check your work against **✅ What we will evaluate**.
 7. Follow **📦 How to submit**.
 
-## Is your project a company project?
-
-Many projects in the course are **company projects**: they are built inside your company monorepo and use its briefings. Each project's README always says so. If yours is one, continue with the lesson [Company projects and the monorepo](https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/lessons/company-projects-and-monorepo/company-projects-and-monorepo.md).
-
 ## Checklist before starting any project
 
 - [ ] I read **🎯 Your challenge** in full and can explain the problem in my own words.
