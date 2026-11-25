@@ -130,15 +130,15 @@ Use a descriptive commit message.
 
 ---
 
-## 📦 How to submit this project
+## 📦 How to deliver your assignment
 
-Submit the **URL of your GitHub profile**:
+Deliver the **URL of your GitHub profile**:
 
 ```text
 https://github.com/<your-username>
 ```
 
-Before submitting, open it in an incognito window and check that the README is visible without signing in.
+Before delivering, open it in an incognito window and check that the README is visible without signing in.
 
 ---
 

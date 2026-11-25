@@ -130,7 +130,7 @@ Usa un mensaje de commit descriptivo.
 
 ---
 
-## 📦 Cómo entregar este proyecto
+## 📦 Cómo entregar tu tarea
 
 Entrega la **URL de tu perfil de GitHub**:
 
