@@ -1,0 +1,47 @@
+{
+  "gitpod": false,
+  "title": {
+    "en": "Create Your GitHub Profile README",
+    "es": "Crea el README de tu perfil de GitHub"
+  },
+  "description": {
+    "en": "Create, version and publish your GitHub profile README with Markdown and Git, either manually or with a coding agent.",
+    "es": "Crea, versiona y publica el README de tu perfil de GitHub con Markdown y Git, de forma manual o con un agente de código."
+  },
+  "status": "draft",
+  "slug": "github-profile-readme",
+  "difficulty": "beginner",
+  "duration": 1,
+  "technologies": [
+    "git",
+    "github",
+    "markdown",
+    "command-line"
+  ],
+  "talents": [
+    {
+      "badge": "git-collaborator",
+      "points": 5
+    }
+  ],
+  "translations": [
+    "es",
+    "en"
+  ],
+  "projectType": "project",
+  "telemetry": {
+    "batch": "https://breathecode.herokuapp.com/v1/assignment/me/telemetry?asset_id="
+  },
+  "solution": "https://github.com/4GeeksAcademy/ai-engineering-syllabus/blob/main/content/projects/github-profile-readme/.learn/solution/README.md",
+  "preview": "https://raw.githubusercontent.com/4GeeksAcademy/ai-engineering-syllabus/main/content/projects/github-profile-readme/.learn/preview.png",
+  "sharing": [
+    {
+      "en": "I just completed Create Your GitHub Profile README with LearnPack @4GeeksAcademy. Check it out: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/github-profile-readme #AIEngineering #LearnPack #4GeeksAcademy #git #github #markdown",
+      "es": "Acabo de completar Crea el README de tu perfil de GitHub con LearnPack @4GeeksAcademy. Mira el proyecto: https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/github-profile-readme #AIEngineering #LearnPack #4GeeksAcademy #git #github #markdown"
+    },
+    {
+      "en": "Built and shipped: Create Your GitHub Profile README. Learning by building with @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/github-profile-readme #AIEngineering #LearnPack #4GeeksAcademy #git #github #markdown",
+      "es": "Construido y publicado: Crea el README de tu perfil de GitHub. Aprendiendo con proyectos reales en @4GeeksAcademy. https://github.com/4GeeksAcademy/ai-engineering-syllabus/tree/main/content/projects/github-profile-readme #AIEngineering #LearnPack #4GeeksAcademy #git #github #markdown"
+    }
+  ]
+}
