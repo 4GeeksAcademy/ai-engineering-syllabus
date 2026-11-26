@@ -18,9 +18,11 @@ Behind that URL there must be:
 
 | Criterion | How to verify |
 | --- | --- |
-| Special repository exists and is public | Open the profile URL in an incognito window: the README appears above the pinned repositories. |
+| Special repository exists and is public | Open `https://github.com/<username>/<username>` in an incognito window. |
+| Profile displays the README properly | Open the profile URL in an incognito window: the README appears above the pinned repositories and renders as expected. |
 | Introduction | The README states who the student is (name or alias, plus what they do, study, or are learning). |
-| Contact | At least one working link (LinkedIn, public email `mailto:`, portfolio, X, etc.). Click it. |
+| Contact | At least one working link (LinkedIn, social media, portfolio, or a professional email). Click it. |
+| No sensitive personal data | No home address, personal phone number, or ID documents. If present, ask the student to remove them. |
 | Markdown renders correctly | Headings, lists, links, and images display correctly; no raw Markdown syntax or broken images. |
 | Real and personal content | No placeholders (`<your name>`, `[Your Name]`, `Lorem ipsum`), no leftover template sections, no obviously made-up facts. |
 | Git usage | Open `https://github.com/<username>/<username>/commits`: there is at least one student commit after the initial one, with a descriptive message (not `update`, `asdf`, `.`). |

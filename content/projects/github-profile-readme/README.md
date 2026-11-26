@@ -19,11 +19,19 @@ By [@ehiber](https://github.com/ehiber) and [other contributors](https://github.
 
 ## 🎯 Your challenge
 
-Your GitHub profile is your business card as a developer. Recruiters, classmates, and future clients will visit it to find out who you are, what you are learning, and how to reach you. Right now it is empty, and that is your first project: **give your profile a face**.
+Your GitHub profile is your business card in the tech world. Recruiters, classmates, and future clients will visit it to find out who you are, what you are learning, and how to reach you. Right now it is empty, and that is your first project: **give your profile a face**.
 
 GitHub has a special feature: if you create a **public** repository named **exactly like your username**, the `README.md` of that repository shows up at the top of your profile. That file is written in **Markdown**, and you will create, version, and publish it with **Git**, just like any other project.
 
 The content is up to you: you decide how to introduce yourself. The only requirements are that anyone visiting your profile knows **who you are** and **how to contact you**. Beyond that, add whatever you like: what you are learning, technologies you are interested in, your hobbies, images, GIFs, badges, or stats.
+
+> 🔒 **Be careful with your personal data:** everything you put on your profile is publicly visible. Do not publish your address, personal phone number, or ID documents. For contact, prefer a LinkedIn or social media profile, or a professional email that you don't use to sign in to personal apps.
+
+If you want to add a visual touch, these resources can help (they are optional):
+
+- **Badges:** [markdown-badges](https://github.com/Ileriayo/markdown-badges)
+- **Icons:** [Devicon](https://devicon.dev/), [Magnific Icons](https://www.magnific.com/icons), [Simple Icons](https://simpleicons.org/)
+- **Logos:** [VectorLogoZone](https://www.vectorlogo.zone/)
 
 For inspiration, check out how some people on the 4Geeks Academy team introduce themselves:
 
@@ -33,6 +41,8 @@ For inspiration, check out how some people on the 4Geeks Academy team introduce 
 - [github.com/deimianvasquez](https://github.com/deimianvasquez)
 - [github.com/ehiber](https://github.com/ehiber)
 - [github.com/lbdelilla](https://github.com/lbdelilla)
+
+And if you want even more inspiration, check out this [list with dozens of GitHub profiles](https://github.com/MaxRohowsky/best-github-profile-readme).
 
 > Notice what they have in common and how they differ. There is no single correct format: a good profile README is clear, honest, and reflects the person who wrote it.
 
@@ -60,7 +70,7 @@ From here, follow the main path in the next section.
 
 ## 💻 What you need to do
 
-> 💡 **Why by hand?** This project exists so you can practice three things you will use every day as a developer: writing **Markdown**, saving your changes with **Git** (`add` and `commit`), and publishing them to **GitHub** (`push`). That is why we recommend the manual path: making mistakes and fixing them is part of learning.
+> 💡 **Why by hand?** This project exists so you can practice three things you will use every day in your tech career: writing **Markdown**, saving your changes with **Git** (`add` and `commit`), and publishing them to **GitHub** (`push`). That is why we recommend the manual path: making mistakes and fixing them is part of learning.
 
 > 🤖 **Feeling stuck?** If you don't know what to write, Markdown looks strange, or the terminal scares you, don't stop. Get help from a coding agent (explained in the alternative below). You can use it only for the part you find hard or for the whole process. What matters is that you finish and understand what was done.
 
@@ -71,7 +81,7 @@ You write the README yourself, line by line.
 - [ ] Open the repository folder in your code editor (for example, VS Code).
 - [ ] Edit the `README.md` file using Markdown: headings (`#`, `##`), paragraphs, lists, links (`[text](url)`), images (`![alt](url)`) and, if you like, emojis.
 - [ ] Include an **introduction** (who you are, what you are learning, or what you are interested in).
-- [ ] Include at least one **way to contact you** (LinkedIn, public email, portfolio, X, etc.).
+- [ ] Include at least one **way to contact you** (LinkedIn, social media, portfolio, or a professional email).
 - [ ] Check how it looks with your editor's Markdown preview (in VS Code: `Ctrl+Shift+V` / `Cmd+Shift+V`).
 - [ ] Save your changes with Git and upload them to GitHub from the terminal:
 
@@ -119,7 +129,8 @@ Use a descriptive commit message.
 
 ## ✅ What we will evaluate
 
-- [ ] There is a **public** repository with the same name as your username, and its `README.md` is displayed on your GitHub profile.
+- [ ] There is a **public** repository with the same name as your username.
+- [ ] Your GitHub profile properly displays the content of the `README.md`.
 - [ ] The README includes an **introduction** that makes it clear who you are.
 - [ ] The README includes at least one **way to contact you** with a working link.
 - [ ] The Markdown renders correctly: headings, lists, links, and images (if any) look right and there are no broken links.
