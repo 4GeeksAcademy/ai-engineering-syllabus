@@ -73,6 +73,18 @@ _These instructions are also available in [English](https://github.com/4GeeksAca
 
 Replace `<slug>` with the real slug. The link text stays in the reader's language; the link points at the OTHER language file.
 
+## Links to other lessons (mandatory format)
+
+When the body mentions **another lesson** (related reading, "next steps", "see also"), link to its **published 4Geeks URL**, never to the GitHub file:
+
+| File | URL format | Example |
+| --- | --- | --- |
+| English (`<slug>.md`) | `https://learn.4geeks.com/lesson/<slug>` | `https://learn.4geeks.com/lesson/how-projects-are-structured` |
+| Spanish (`<slug>.es.md`) | `https://learn.4geeks.com/es/lesson/<slug>-es` | `https://learn.4geeks.com/es/lesson/how-projects-are-structured-es` |
+
+- The link must point to the lesson in the **same language** as the file it appears in (Spanish files use the `/es/` path prefix **and** the `-es` slug suffix).
+- This rule does **not** apply to the language cross-link hide block above, which keeps the GitHub URL.
+
 ## Document structure (in order)
 
 1. **Frontmatter** (above).
@@ -140,6 +152,7 @@ Confirm you have (or ask for) these. If multiple are missing, ask for all at onc
 - [ ] H1 text matches frontmatter `title` (same language), ignoring any leading emoji on the H1.
 - [ ] Title, H1, and section headings are sentence case (only first word + proper nouns capitalized), not Title Case. Emojis only outside frontmatter (H1 / section headings).
 - [ ] Cross-link hide block present right after H1, using the global GitHub `main` URL, pointing to the OTHER language file with the correct slug.
+- [ ] Links to other lessons use `https://learn.4geeks.com/lesson/<slug>` (English) or `https://learn.4geeks.com/es/lesson/<slug>-es` (Spanish), never GitHub file URLs.
 - [ ] Two-paragraph hook (problem → reframe), no heading.
 - [ ] Body uses `##`/`###`; every code block has a language tag.
 - [ ] Checklist section and Conclusion section present.
