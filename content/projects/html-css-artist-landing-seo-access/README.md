@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-> By [@marcogonzalo](https://github.com/marcogonzalo), [@ehiber](https://github.com/ehiber) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+> By [@marcogonzalo](https://github.com/marcogonzalo), [@ehiber](https://github.com/ehiber) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![build by developers](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=twitter)](https://twitter.com/4geeksacademy)
@@ -90,4 +90,4 @@ Include in the repository a screenshot of the PageSpeed result for the public pr
 
 ## Contributors
 
-This and many other projects are built by students as part of the [4Geeks Academy Bootcamp](https://4geeksacademy.com/). By [@marcogonzalo](https://github.com/marcogonzalo), [@ehiber](https://github.com/ehiber) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors). Find out more about our [AI Engineering Course](https://4geeksacademy.com/us/coding-bootcamps/ai-engineering).
+This and many other projects are built by students as part of the [4Geeks Academy Bootcamp](https://4geeks.com/). By [@marcogonzalo](https://github.com/marcogonzalo), [@ehiber](https://github.com/ehiber) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors). Find out more about [AI Engineering Course](https://4geeks.com/us/coding-bootcamps/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence).

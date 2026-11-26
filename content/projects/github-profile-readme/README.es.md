@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-Por [@ehiber](https://github.com/ehiber) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@ehiber](https://github.com/ehiber) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) en [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -153,4 +153,4 @@ Antes de entregar, ábrela en una ventana de incógnito y comprueba que el READM
 
 ---
 
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/es) de 4Geeks Academy. Conoce más sobre los cursos de [Full-Stack Software Developer](https://4geeksacademy.com/es/career-programs/full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/es/career-programs/data-science-ml), [Ciberseguridad](https://4geeksacademy.com/es/career-programs/cybersecurity) e [Ingeniería de IA](https://4geeksacademy.com/es/career-programs/ai-engineering).
+Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeks.com/es) de 4Geeks Academy. Conoce más sobre los cursos de [Ingeniería de IA](https://4geeks.com/es/career-programs/ai-engineering) y [Agentes y Automatizaciones con IA](https://4geeks.com/es/programas-de-carrera/agentes-y-automatizaciones-con-inteligencia-artificial).

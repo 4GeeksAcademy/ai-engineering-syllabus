@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) en [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -36,7 +36,7 @@ Tu tech lead ha abierto un **ticket** a partir de una **RFI** que llegó del ár
 > - Justifica por qué elegiste XGBoost o Random Forest para este caso, no asumas que uno es "mejor" sin argumentarlo.
 > - Reporta el error con una métrica que yo pueda explicarle a Finanzas sin que parezca una caja negra.
 
-**Conocimiento complementario: leer una serie de tiempo antes de modelarla.** Antes de construir features, descompón la serie en tres componentes: **tendencia** (la dirección de largo plazo), **estacionalidad** (el patrón que se repite según el calendario, por ejemplo un pico en diciembre) y **residual** (lo que queda — ruido o eventos que las otras dos no explican). Una herramienta como `statsmodels.tsa.seasonal_decompose` grafica los tres componentes por separado para que puedas *ver* si la estacionalidad que vas a construir como feature realmente coincide con lo que hay en los datos, en lugar de adivinar. Esta descomposición es una lente de diagnóstico, no un modelo — el pronóstico lo sigues haciendo con un regresor, como se describe abajo.
+**Conocimiento complementario: leer una serie de tiempo antes de modelarla.** Antes de construir features, descompón la serie en tres componentes: **tendencia** (la dirección de largo plazo), **estacionalidad** (el patrón que se repite según el calendario, por ejemplo un pico en diciembre) y **residual** (lo que queda — ruido o eventos que las otras dos no explican). Una herramienta como `statsmodels.tsa.seasonal_decompose` grafica los tres componentes por separado para que puedas _ver_ si la estacionalidad que vas a construir como feature realmente coincide con lo que hay en los datos, en lugar de adivinar. Esta descomposición es una lente de diagnóstico, no un modelo — el pronóstico lo sigues haciendo con un regresor, como se describe abajo.
 
 Una vez que entiendes la forma de la serie, tradúcela en features que un regresor pueda consumir:
 
@@ -119,4 +119,4 @@ Una vez que entiendes la forma de la serie, tradúcela en features que un regres
 
 ---
 
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Programas de Carrera](https://4geeksacademy.com/es/comparar-programas) de [4Geeks Academy](https://4geeksacademy.com). Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors). Encuentra más acerca de [Ingeniería de IA](https://4geeksacademy.com/es/coding-bootcamps/ingenieria-ia), [Data Science & Machine Learning](https://4geeksacademy.com/es/coding-bootcamps/data-science-ml), [Ciberseguridad](https://4geeksacademy.com/es/coding-bootcamps/ciberseguridad) y [Desarrollador Full-Stack con IA](https://4geeksacademy.com/es/coding-bootcamps/full-stack-developer).
+Este y muchos otros proyectos son construidos por estudiantes como parte de los [Programas de Carrera](https://4geeks.com/es/comparar-programas) de [4Geeks Academy](https://4geeks.com). Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros contribuidores](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors). Encuentra más acerca de [Ingeniería de IA](https://4geeks.com/es/programas-de-carrera/ingenieria-ia) y [Agentes y Automatizaciones con IA](https://4geeks.com/es/programas-de-carrera/agentes-y-automatizaciones-con-inteligencia-artificial).

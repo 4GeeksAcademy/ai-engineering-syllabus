@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-memory/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-memory/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -23,7 +23,7 @@ You need to fix that.
 
 Your task is to identify a **real personal need** — something you genuinely want your agent to remember or track across sessions — and then implement the right type of memory for it. Not every need requires the same solution: storing your preferred coding style is different from logging a daily work journal, which is different from letting the agent remember facts about your ongoing projects.
 
-Before you write a single line of configuration, you should be able to answer: *What does my agent need to remember, and why is this memory type the right fit for this specific case?*
+Before you write a single line of configuration, you should be able to answer: _What does my agent need to remember, and why is this memory type the right fit for this specific case?_
 
 > Your agent's memory architecture should satisfy the following requirements:
 >
@@ -121,4 +121,4 @@ Push your `feature/memory-setup` branch to your GitHub repository and share the 
 
 ---
 
-This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-memory/graphs/contributors). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).
+This and many other projects are built by students as part of the [Career Programs](https://4geeks.com/compare-programs) at [4Geeks Academy](https://4geeks.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-memory/graphs/contributors). Find out more about [AI Engineering](https://4geeks.com/en/career-programs/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence).

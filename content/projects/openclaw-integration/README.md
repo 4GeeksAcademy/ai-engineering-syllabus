@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-4geeks-assistant/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-4geeks-assistant/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -40,10 +40,12 @@ This project does not require forking a template repo. All work happens inside y
 1. Make sure your OpenClaw instance is running and accessible.
 2. Open a conversation with your agent.
 3. Retrieve your 4Geeks student token:
-  - Sign in to [learn.4geeks.com](https://learn.4geeks.com).
-  - Open your browser's developer tools and select the **Application** tab.
-  - Under **Storage**, open **Cookies**, then select `https://learn.4geeks.com`.
-  - Filter for `4g_tok` and copy its value.
+
+- Sign in to [learn.4geeks.com](https://learn.4geeks.com).
+- Open your browser's developer tools and select the **Application** tab.
+- Under **Storage**, open **Cookies**, then select `https://learn.4geeks.com`.
+- Filter for `4g_tok` and copy its value.
+
 4. Document every skill you create and every conversation that led to it in a file called `SKILL_LOG.md` — this is your deliverable.
 
 > ⚠️ **IMPORTANT:** Your student token is a credential. Store it using OpenClaw's secure configuration mechanism — never paste it directly into a skill file or commit it to a repository.
@@ -111,4 +113,4 @@ Push your `SKILL_LOG.md` to your personal GitHub repository for this project. Sh
 
 ---
 
-This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](https://github.com/4GeeksAcademy/openclaw-4geeks-assistant/graphs/contributors). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).
+This and many other projects are built by students as part of the [Career Programs](https://4geeks.com/compare-programs) at [4Geeks Academy](https://4geeks.com). By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](https://github.com/4GeeksAcademy/openclaw-4geeks-assistant/graphs/contributors). Find out more about [AI Engineering](https://4geeks.com/en/career-programs/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence).

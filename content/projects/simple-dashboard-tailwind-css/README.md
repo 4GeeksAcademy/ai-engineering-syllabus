@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -127,4 +127,4 @@ You must submit a repository that includes the HTML document with the full struc
 
 ---
 
-This and many other projects are built by students as part of the [Coding Bootcamps](https://4geeksacademy.com/) at 4Geeks Academy. Find out more about the [AI Engineering](https://4geeksacademy.com/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/coding-bootcamps/cybersecurity), and [Full-Stack Software Developer](https://4geeksacademy.com/coding-bootcamps/full-stack-developer) [courses](https://4geeksacademy.com/en/program-comparison).
+This and many other projects are built by students as part of the [Coding Bootcamps](https://4geeks.com/) at 4Geeks Academy. Find out more about the [AI Engineering](https://4geeks.com/coding-bootcamps/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence) [courses](https://4geeks.com/en/program-comparison).

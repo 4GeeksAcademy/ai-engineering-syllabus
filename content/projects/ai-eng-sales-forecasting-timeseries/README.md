@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -36,7 +36,7 @@ Your tech lead has opened a **ticket** based on an **RFI** that came in from Fin
 > - Justify why you chose XGBoost or Random Forest for this case — don't assume one is "better" without arguing it.
 > - Report the error with a metric I can explain to Finance without it sounding like a black box.
 
-**Complementary knowledge: reading a time series before modeling it.** Before engineering features, decompose the series into three components: **trend** (the long-term direction), **seasonality** (the repeating pattern tied to the calendar, e.g. a December spike), and **residual** (what's left over — noise or events the other two don't explain). A tool like `statsmodels.tsa.seasonal_decompose` plots the three separately so you can *see* whether the seasonality you engineer as a feature actually matches what's in the data, instead of guessing. This decomposition is a diagnostic lens, not a model — you still forecast with a regressor below.
+**Complementary knowledge: reading a time series before modeling it.** Before engineering features, decompose the series into three components: **trend** (the long-term direction), **seasonality** (the repeating pattern tied to the calendar, e.g. a December spike), and **residual** (what's left over — noise or events the other two don't explain). A tool like `statsmodels.tsa.seasonal_decompose` plots the three separately so you can _see_ whether the seasonality you engineer as a feature actually matches what's in the data, instead of guessing. This decomposition is a diagnostic lens, not a model — you still forecast with a regressor below.
 
 Once you understand the shape of the series, translate that into features a regressor can consume:
 
@@ -119,4 +119,4 @@ Once you understand the shape of the series, translate that into features a regr
 
 ---
 
-This and many other projects are built by students as part of the [Career Programs](https://4geeksacademy.com/compare-programs) at [4Geeks Academy](https://4geeksacademy.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors). Find out more about [AI Engineering](https://4geeksacademy.com/en/coding-bootcamps/ai-engineering), [Data Science & Machine Learning](https://4geeksacademy.com/en/coding-bootcamps/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/coding-bootcamps/cybersecurity) and [Full-Stack Software Developer with AI](https://4geeksacademy.com/en/coding-bootcamps/full-stack-developer).
+This and many other projects are built by students as part of the [Career Programs](https://4geeks.com/compare-programs) at [4Geeks Academy](https://4geeks.com). By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors). Find out more about [AI Engineering](https://4geeks.com/en/career-programs/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence).

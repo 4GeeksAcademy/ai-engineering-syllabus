@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -107,12 +107,12 @@ Read the `BRIEFING.md` at the **root of your monorepo** before doing anything el
 
 This milestone does **not** ask you to create the apps. Clarify in your memory bank / agent rules where product code belongs when those folders are used later (or if the template already has them). Follow the template READMEs inside each path — do not create a second frontend or API tree elsewhere.
 
-| Path               | What goes here when created                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------ |
-| `/uis`             | Frontend projects for the company                                                          |
+| Path               | What goes here when created                                                                 |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `/uis`             | Frontend projects for the company                                                           |
 | `./uis/website`    | Public-facing corporate website (home route `/`, brand and copy aligned with `BRIEFING.md`) |
-| `./uis/backoffice` | Internal company app (own layout, separate from the public site; entry view on `/`)        |
-| `/services`        | Backend APIs and services                                                                  |
+| `./uis/backoffice` | Internal company app (own layout, separate from the public site; entry view on `/`)         |
+| `/services`        | Backend APIs and services                                                                   |
 
 ---
 
@@ -136,4 +136,4 @@ This milestone does **not** ask you to create the apps. Clarify in your memory b
 
 ---
 
-This and many other projects are built by students as part of the [Coding Bootcamps](https://4geeksacademy.com/) at 4Geeks Academy. By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors). Find out more about [Full-Stack Software Developer](https://4geeksacademy.com/en/career-programs/full-stack), [Data Science & Machine Learning](https://4geeksacademy.com/en/career-programs/data-science-ml), [Cybersecurity](https://4geeksacademy.com/en/career-programs/cybersecurity) and [AI Engineering](https://4geeksacademy.com/en/career-programs/ai-engineering).
+This and many other projects are built by students as part of the [Coding Bootcamps](https://4geeks.com/) at 4Geeks Academy. By [@4GeeksAcademy](https://github.com/4GeeksAcademy) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-syllabus/graphs/contributors). Find out more about [AI Engineering](https://4geeks.com/en/career-programs/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence).

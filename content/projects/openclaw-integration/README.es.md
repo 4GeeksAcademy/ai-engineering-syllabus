@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-4geeks-assistant/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-4geeks-assistant/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -40,10 +40,12 @@ Este proyecto no requiere hacer fork de un repositorio plantilla. Todo el trabaj
 1. Asegúrate de que tu instancia de OpenClaw esté activa y accesible.
 2. Abre una conversación con tu agente.
 3. Obtén tu token de estudiante de 4Geeks:
-  - Inicia sesión en [learn.4geeks.com](https://learn.4geeks.com).
-  - Abre las herramientas de desarrollo de tu navegador y selecciona la pestaña **Application**.
-  - En **Storage**, abre **Cookies** y luego selecciona `https://learn.4geeks.com`.
-  - Filtra por `4g_tok` y copia su valor.
+
+- Inicia sesión en [learn.4geeks.com](https://learn.4geeks.com).
+- Abre las herramientas de desarrollo de tu navegador y selecciona la pestaña **Application**.
+- En **Storage**, abre **Cookies** y luego selecciona `https://learn.4geeks.com`.
+- Filtra por `4g_tok` y copia su valor.
+
 4. Documenta cada skill que crees y cada conversación que la originó en un archivo llamado `SKILL_LOG.md` — este es tu entregable.
 
 > ⚠️ **IMPORTANTE:** Tu token de estudiante es una credencial. Almacénala usando el mecanismo de configuración segura de OpenClaw — nunca la pegues directamente en un archivo de skill ni la incluyas en un repositorio de código.
@@ -111,4 +113,4 @@ Sube tu `SKILL_LOG.md` a tu repositorio personal de GitHub para este proyecto. C
 
 ---
 
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Ingeniería de IA](https://4geeksacademy.com/es/coding-bootcamps/ingenieria-ia), [Data Science & Machine Learning](https://4geeksacademy.com/es/coding-bootcamps/curso-datascience-machine-learning), [Ciberseguridad](https://4geeksacademy.com/es/coding-bootcamps/curso-ciberseguridad) y [Full-Stack Software Developer con IA](https://4geeksacademy.com/es/coding-bootcamps/programador-full-stack).
+Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeks.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeks.com/es/comparar-programas) de [Ingeniería de IA](https://4geeks.com/es/programas-de-carrera/ingenieria-ia) y [Agentes y Automatizaciones con IA](https://4geeks.com/es/programas-de-carrera/agentes-y-automatizaciones-con-inteligencia-artificial).

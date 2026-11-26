@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-memory/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/openclaw-memory/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 [![build by developers](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -23,7 +23,7 @@ Eso hay que arreglarlo.
 
 Tu tarea es identificar una **necesidad personal real** — algo que genuinamente quieras que tu agente recuerde o rastree entre sesiones — e implementar el tipo de memoria adecuado para esa necesidad. No todo requiere la misma solución: guardar tu estilo de código preferido es diferente a llevar un diario de trabajo diario, que a su vez es diferente a hacer que el agente recuerde hechos sobre tus proyectos en curso.
 
-Antes de escribir una sola línea de configuración, deberías poder responder: *¿Qué necesita recordar mi agente y por qué este tipo de memoria es la opción correcta para este caso concreto?*
+Antes de escribir una sola línea de configuración, deberías poder responder: _¿Qué necesita recordar mi agente y por qué este tipo de memoria es la opción correcta para este caso concreto?_
 
 > La arquitectura de memoria de tu agente debe satisfacer los siguientes requisitos:
 >
@@ -121,4 +121,4 @@ Sube tu rama `feature/memory-setup` a tu repositorio de GitHub y comparte el enl
 
 ---
 
-Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeksacademy.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeksacademy.com/es/comparar-programas) de [Ingeniería de IA](https://4geeksacademy.com/es/coding-bootcamps/ingenieria-ia), [Data Science & Machine Learning](https://4geeksacademy.com/es/coding-bootcamps/curso-datascience-machine-learning), [Ciberseguridad](https://4geeksacademy.com/es/coding-bootcamps/curso-ciberseguridad) y [Full-Stack Software Developer con IA](https://4geeksacademy.com/es/coding-bootcamps/programador-full-stack).
+Este y muchos otros proyectos son construidos por estudiantes como parte de los [Coding Bootcamps](https://4geeks.com/) de 4Geeks Academy. Encuentra más acerca de los [cursos](https://4geeks.com/es/comparar-programas) de [Ingeniería de IA](https://4geeks.com/es/programas-de-carrera/ingenieria-ia) y [Agentes y Automatizaciones con IA](https://4geeks.com/es/programas-de-carrera/agentes-y-automatizaciones-con-inteligencia-artificial).

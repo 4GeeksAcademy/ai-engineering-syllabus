@@ -2,7 +2,7 @@
 
 <!-- hide -->
 
-By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeksacademy.com/)
+By [@marcogonzalo](https://github.com/marcogonzalo) and [other contributors](https://github.com/4GeeksAcademy/ai-engineering-company-project-monorepo/graphs/contributors) at [4Geeks Academy](https://4geeks.com/)
 
 ![build by developers](https://img.shields.io/badge/build_by-Developers-blue)
 ![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)
@@ -145,4 +145,4 @@ In the Pull Request description, include:
 
 ---
 
-This and many other projects are built by students as part of 4Geeks Academy's [Coding Bootcamps](https://4geeksacademy.com/). Find out more about our [courses](https://4geeksacademy.com/us/coding-bootcamps) in [Full-Stack Software Development](https://4geeksacademy.com/us/coding-bootcamps/full-stack-developer), [Data Science & Machine Learning](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning), [Cybersecurity](https://4geeksacademy.com/us/coding-bootcamps/cybersecurity), and [AI Engineering](https://4geeksacademy.com/us/coding-bootcamps/ai-engineering).
+This and many other projects are built by students as part of 4Geeks Academy's [Coding Bootcamps](https://4geeks.com/). Find out more about our [courses](https://4geeks.com/us/coding-bootcamps) in [AI Engineering](https://4geeks.com/us/coding-bootcamps/ai-engineering) and [Agents and Automations with AI](https://4geeks.com/en/career-programs/agents-and-automations-with-artificial-intelligence).
