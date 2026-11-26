@@ -4,7 +4,7 @@ El programa de estudios de Ingeniería de Inteligencia Artificial incluye alguno
 
 <!-- ocultar -->
 
-Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors) en [4Geeks Academy](https://4geeksacademy.com/)
+Por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors) en [4Geeks Academy](https://4geeks.com/)
 
 [![creado por desarrolladores](https://img.shields.io/badge/build_by-Developers-blue)](https://4geeks.com)
 [![4Geeks Academy](https://img.shields.io/twitter/follow/4geeksacademy?style=social&logo=x)](https://x.com/4geeksacademy)
@@ -60,4 +60,4 @@ _These instructions are [available in English](./README.md)_.
 
 ## Colaboradores
 
-Este contenido forma parte del [Programa de Carrera de Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia) de 4Geeks Academy. Este trabajo ha sido creado por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors). Para más información, visite [4GeeksAcademy.com](https://4geeksacademy.com).
+Este contenido forma parte del [Programa de Carrera de Ingeniería de IA](https://4geeks.com/es/programas-de-carrera/ingenieria-ia) de 4Geeks Academy. Este trabajo ha sido creado por [@marcogonzalo](https://github.com/marcogonzalo) y [otros colaboradores](https://github.com/4GeeksAcademy/first-dashboard-tailwind-css/graphs/contributors). Para más información, visite [4GeeksAcademy.com](https://4geeks.com).
